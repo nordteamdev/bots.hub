@@ -1,0 +1,37 @@
+{
+	"2": {
+		"ferm": true,
+		"id": 1,
+		"count": 1,
+		"balance": 0,
+		"bitcoin": 150
+	},
+	"25": {
+		"ferm": true,
+		"id": 3,
+		"count": 101,
+		"balance": 1515000,
+		"bitcoin": 151500
+	},
+	"247": {
+		"ferm": true,
+		"id": 1,
+		"count": 100,
+		"balance": 150000,
+		"bitcoin": 15000
+	},
+	"327": {
+		"ferm": true,
+		"id": 3,
+		"count": 100,
+		"balance": 1350000,
+		"bitcoin": 150000
+	},
+	"522": {
+		"ferm": true,
+		"id": 3,
+		"count": 100,
+		"balance": 750000,
+		"bitcoin": 150000
+	}
+}

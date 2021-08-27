@@ -1,0 +1,20 @@
+{
+  "name": "Anna",
+  "version": "0.0.2",
+  "description": "Bot Anna by @zuvs",
+  "main": "anna.js",
+  "scripts": {},
+  "author": "Mihail Bezmolenko",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.6.0",
+    "google-tts-api": "0.0.4",
+    "node-qiwi-api": "^1.1.1",
+    "prequest": "^1.0.0",
+    "qr-image": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "tcp-ping": "^0.1.1",
+    "vk-io": "^4.0.0-rc.29"
+  }
+}

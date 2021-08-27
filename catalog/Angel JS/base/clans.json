@@ -1,0 +1,90 @@
+{
+	"2": {
+		"owner": {
+			"id": 474668811,
+			"uid": 0,
+			"balance": 5005,
+			"dollars": 0,
+			"euro": 0,
+			"manat": 0,
+			"diamonds": 0,
+			"emeralds": 0,
+			"coal": 0,
+			"iron": 0,
+			"gold": 0,
+			"bank": 0,
+			"btc": 999999999750,
+			"farm_btc": 0,
+			"biz": 0,
+			"rating": 0,
+			"regDate": "15.11.2018",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false,
+				"commands": false
+			},
+			"tag": "РосКомНадзор",
+			"work": 0,
+			"business": 0,
+			"notifications": true,
+			"ccard": true,
+			"card": 0,
+			"seccard": "766",
+			"cardss": "6302618024386547",
+			"exp": 1,
+			"level": 1,
+			"right": 4,
+			"foolder": 110,
+			"floder": 156,
+			"operator": 0,
+			"number": 0,
+			"language": 2,
+			"healths": 100,
+			"hunger": 100,
+			"referal": null,
+			"transport": {
+				"car": 0,
+				"yacht": 0,
+				"airplane": 0,
+				"helicopter": 0
+			},
+			"realty": {
+				"home": 0,
+				"apartment": 0
+			},
+			"misc": {
+				"phone": 0,
+				"farm": 0
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			},
+			"pp": 0,
+			"keyboard": false,
+			"call": 10000,
+			"reals": 9745,
+			"clanid": 2
+		},
+		"users": {
+			"0": {
+				"names": "РосКомНадзор",
+				"level": 2
+			}
+		},
+		"number": 2,
+		"name": "Тест",
+		"balance": 5005,
+		"smile": "🎱",
+		"open": true,
+		"price": 100,
+		"exs": 0,
+		"people": 1
+	}
+}
