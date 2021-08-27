@@ -1,0 +1,21 @@
+# IDE
+/.idea
+
+# Что-то с macOS
+**/.DS_Store
+
+# Локальные конфиги
+/my_config.php
+/scripts/my_analytics.php
+/dashboard/scripts/my_analytics.php
+
+# Что доделать/переделать
+/plans
+
+# Большая база от другого проекта
+/callback/Hooks_message_new/Big_db.php
+/callback/Hooks_message_new/Big_db_search_class.php
+
+#Стимбот
+/callback/Hooks_wall_repost/SteamBot.php
+/callback/Hooks_wall_repost/SBscript/*
