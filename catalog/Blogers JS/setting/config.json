@@ -1,0 +1,20 @@
+{
+ 
+	"group_url": "Hupen-Bloger игровой бот", 
+	"bot": "HupenBloggerBot",
+	"ver": "v2.0",
+	"group": 182068937,
+	"hbadmin": "https://vk.com/topic-179951294_39383631",
+	"beseda": "https://vk.me/join/AJQ1d6SpzRBdKVBDvIlxyZwf",
+	"gl": "vk.com/turygin1",
+	"coder": 555,
+	"ban_topic": "",
+	"antiflood_time": 30,
+	"antiflood_limit": 15,
+	"bonus_balance": false,
+	"bonus_exs": false,
+	"promo": {
+		"activ": 30,
+		"balance": 300000
+	}
+}
