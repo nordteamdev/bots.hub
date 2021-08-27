@@ -1,0 +1,32 @@
+{
+	"bands": {
+		"7": {
+			"leader": 339551065,
+			"name": "Пропаа",
+			"type": 0,
+			"members": 1,
+			"users": {
+				"33": {
+					"id": 517567280,
+					"pozuvnoy": false,
+					"inband": false
+				}
+			},
+			"id": 7,
+			"cars": {},
+			"banned": false
+		},
+		"8": {
+			"leader": 517567280,
+			"name": "Admin",
+			"type": 0,
+			"members": 1,
+			"users": {},
+			"id": 8,
+			"cars": {},
+			"banned": false
+		}
+	},
+	"number": 9,
+	"kapt": false
+}

@@ -1,0 +1,102 @@
+{
+	"games": {
+		"3": {
+			"creatorvk": 564463283,
+			"creatorid": 1,
+			"name": "Кубик",
+			"icon": "🎲",
+			"params": {},
+			"commands": {
+				"кубик": {
+					"task": "кубик",
+					"code": "\nif(!$args[1]) return context.send(\"🎲 Неверный синтаксис (needreplace{$args[0]needreplace})! Используйте: кубик [число]\")\ncontext.send(\"Твоё число: needreplace{$args[1]needreplace}\")\ncontext.send(\"Выпало: $rand139\")\nif(Number($args[1]) !== $rand139) return context.send(\"🎲 Вы проиграли, выпало: $rand139\")\nif(Number($args[1]) !== 3) return context.send(\"🎲 Тебе не выпало 3 :/\")",
+					"params": {
+						"rand139": {
+							"tag": "rand139",
+							"code": "let thisrandomrand139 = getRandomInRange(1, 6)\nwhile(evalcode.includes(\"$rand139\")){\nevalcode = evalcode.replace(\"$rand139\", thisrandomrand139)\n}"
+						}
+					}
+				}
+			}
+		},
+		"4": {
+			"creatorvk": 379244078,
+			"creatorid": 2,
+			"name": "📼 рисунок",
+			"icon": "😒",
+			"params": {},
+			"commands": {
+				"кубик": {
+					"task": "кубик",
+					"code": "\nif(!$args[1]) return context.send(\"Невенрный синтаксис\")\nif(!Number($args[1])) return context.send(\"ты пидор укажи число\")\nif($args[1] > 6 || $args[1] < 1) return context.send(\"Укажи число от 1 до 6\")\nif(Number($args[1]) !== $rand699) return context.send(\"ты не чего не выбил ахыахывахахвахвах тебе выпало: $rand699\")\nif($args[1] == $rand699) return context.send(\"опа\")",
+					"params": {
+						"rand699": {
+							"tag": "rand699",
+							"code": "let thisrandomrand699 = getRandomInRange(1, 6)\nwhile(evalcode.includes(\"$rand699\")){\nevalcode = evalcode.replace(\"$rand699\", thisrandomrand699)\n}"
+						}
+					}
+				},
+				"привет": {
+					"task": "привет",
+					"code": "\nif(exit < 3) return context.send(\"d\")",
+					"params": {}
+				}
+			}
+		},
+		"5": {
+			"creatorvk": 564463283,
+			"creatorid": 4,
+			"name": "AdminPidor",
+			"icon": "😳",
+			"params": {},
+			"commands": {
+				"админ пидор?": {
+					"task": "админ пидор?",
+					"code": "\nif($rand180 == 1) return context.send(\"Да, админ пидораз полнейший\")\ncontext.send(\"Нет, админ нормальный чоловик\")",
+					"params": {
+						"rand180": {
+							"tag": "rand180",
+							"code": "let thisrandomrand180 = getRandomInRange(1, 2)\nwhile(evalcode.includes(\"$rand180\")){\nevalcode = evalcode.replace(\"$rand180\", thisrandomrand180)\n}"
+						}
+					}
+				}
+			}
+		},
+		"6": {
+			"creatorvk": 379244078,
+			"creatorid": 1,
+			"name": "Кубикs",
+			"icon": "🥳",
+			"params": {},
+			"commands": {
+				"привет": {
+					"task": "привет",
+					"code": "\ncontext.send(\"$name, привет\")",
+					"params": {}
+				},
+				"кубик": {
+					"task": "кубик",
+					"code": "\nif(!$args[1]) return context.send(\"Введите число ок-да\")\nif(!Number($args[1])) return context.send(\"Укажите число\")\nif($args[1] > 6 && $args[1] < 1) return context.send(\"Введите число от 1 до 6\")\nif(Number($args[1]) == $rand422) return context.send(\"вы не выиграли\\nвам выпало число: needreplace{$args[1]needreplace}\")\nif(Number($args[1]) != $rand422) return context.send(\"вы опять не выиграли вам выпало число: $rand422\")",
+					"params": {
+						"rand422": {
+							"tag": "rand422",
+							"code": "let thisrandomrand422 = getRandomInRange(1,  6)\nwhile(evalcode.includes(\"$rand422\")){\nevalcode = evalcode.replace(\"$rand422\", thisrandomrand422)\n}"
+						}
+					}
+				},
+				".": {
+					"task": ".",
+					"code": "",
+					"params": {}
+				}
+			}
+		}
+	},
+	"id": 6,
+	"params": {
+		"1": {
+			"tag": "name",
+			"code": "vk.api.users.get({user_ids: context.senderId}).then(nameget => {\nevalcode = evalcode.replace(`$name`, nameget[0].first_name)})"
+		}
+	}
+}
