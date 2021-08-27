@@ -1,0 +1,2 @@
+node sistem
+pause

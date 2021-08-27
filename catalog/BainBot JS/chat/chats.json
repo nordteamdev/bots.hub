@@ -1,0 +1,52 @@
+{
+	"1": {
+		"activate": true,
+		"name": 0,
+		"flood": 0,
+		"rules": "Правила не установлены",
+		"title": "Ggwp",
+		"banned": [],
+		"users": {
+			"500580851": {
+				"warns": 0,
+				"isBanned": false,
+				"permanently": false,
+				"group": 4
+			},
+			"540817140": {
+				"warns": 0,
+				"isBanned": false,
+				"permanently": false,
+				"group": 2
+			}
+		}
+	},
+	"2": {
+		"activate": true,
+		"name": 0,
+		"flood": 0,
+		"rules": "Правила не установлены",
+		"title": "TESTERS #2",
+		"banned": [],
+		"users": {
+			"449532928": {
+				"warns": 0,
+				"isBanned": false,
+				"permanently": false,
+				"group": 0
+			},
+			"496175718": {
+				"warns": 0,
+				"isBanned": false,
+				"permanently": false,
+				"group": 2
+			},
+			"500580851": {
+				"warns": 0,
+				"isBanned": false,
+				"permanently": false,
+				"group": 4
+			}
+		}
+	}
+}

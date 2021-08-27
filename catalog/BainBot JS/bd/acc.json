@@ -1,0 +1,170 @@
+{
+	"users": {
+		"NaN": {
+			"number": null,
+			"id": 310004014,
+			"balance": 500000,
+			"health": 100,
+			"golod": 100,
+			"gigiena": 100,
+			"need": 100,
+			"coffe": 0,
+			"kartoxa": 0,
+			"pivo": 0,
+			"tea": 0,
+			"burg": 0,
+			"sup": 0,
+			"milo": 0,
+			"shampun": 0,
+			"poroshok": 0,
+			"pasta": 0,
+			"keyboard": true,
+			"level": 0,
+			"adm_time": 0,
+			"clanid": false,
+			"bitcoin": 0,
+			"donate": 0,
+			"hack": false,
+			"wins": 0,
+			"loses": 0,
+			"fix": false,
+			"bloks": {
+				"rep": false,
+				"cases": false,
+				"bonus": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"olig": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"bitcoin": 0,
+				"count": 0,
+				"balance": 0
+			},
+			"lvl": 1,
+			"exp": 0,
+			"exsup": 50,
+			"nick": true,
+			"ref": false,
+			"refs": 0,
+			"agent": 0,
+			"verify": false,
+			"block_top": false,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 40,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 1,
+				"last_msg": "13:02:07 | 28:05:2019"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false,
+					"max_peop": 0
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false,
+					"max_peop": 0
+				}
+			},
+			"cars": false,
+			"moto": false,
+			"prist": false,
+			"restoran": false,
+			"garage": false,
+			"phone": false,
+			"reys": false,
+			"aircraft": false,
+			"house": false,
+			"kv": false,
+			"housep": 0,
+			"pit": false,
+			"bank_balance": 0,
+			"lodka": false,
+			"pcc": false,
+			"tag": "Новичок",
+			"brak": {
+				"status": false,
+				"i": false
+			},
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 45,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Тимофей Попов",
+			"lvl_v": 1,
+			"rtime": "13:02:06 | 28:05:2019"
+		}
+	},
+	"number": null,
+	"msg": null
+}
