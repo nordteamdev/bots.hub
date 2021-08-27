@@ -1,0 +1,167 @@
+[
+	{
+	"name": "обычный",
+	"smile": "",
+	"price": {
+		"price": 2500,
+		"diamonds": 0,
+		"bitcoins": 0,
+		"rub": 0
+	},
+	"items": [
+		{
+			"name": "Вип",
+			"cmd": "if(accs[i].rights < 1) {accs[i].rights = 1}",
+			"chance": 3,
+			"limit": "null",
+			"uid": 0
+		},
+		{
+			"name": "1 000 поинтов",
+			"cmd": "accs[i].balance += 1000",
+			"chance": 4,
+			"limit": "null",
+			"uid": 1
+		},
+		{
+			"name": "4 000 поинтов",
+			"cmd": "accs[i].balance += 4000",
+			"chance": 17,
+			"limit": "null",
+			"uid": 2
+		},
+		{
+			"name": "2 500 поинтов",
+			"cmd": "accs[i].balance += 2500",
+			"chance": 60,
+			"limit": "null",
+			"uid": 3
+		},
+		{
+			"name": "100 exp",
+			"cmd": "accs[i].exp += 100",
+			"chance": 99,
+			"limit": "null",
+			"uid": 4
+		},
+		{
+			"name": "1 доллар",
+			"cmd": "accs[i].inventory.diamonds += 1",
+			"chance": 100,
+			"limit": "null",
+			"uid": 5
+		}
+	],
+	"uid": 0
+	},
+	{
+		"name": "золотой",
+		"smile": "👑",
+		"price": {
+			"price": 0,
+			"diamonds": 0,
+			"bitcoins": 20,
+			"rub": 0
+		},
+		"items": [
+			{
+				"name": "5 000 поинтов.",
+				"cmd": "accs[i].balance += 5000",
+				"chance": 1,
+				"limit": "null",
+				"uid": 0
+			},
+			{
+				"name": "7 500 поинтов.",
+				"cmd": "accs[i].balance += 7500",
+				"chance": 20,
+				"limit": "null",
+				"uid": 1
+			},
+			{
+				"name": "12 500 поинтов",
+				"cmd": "accs[i].balance += 12500",
+				"chance": 30,
+				"limit": "null",
+				"uid": 2
+			},
+			{
+				"name": "500 exp",
+				"cmd": "accs[i].exp += 500",
+				"chance": 80,
+				"limit": "null",
+				"uid": 7
+			},
+			{
+				"name": "1 000 exp",
+				"cmd": "accs[i].exp += 1000",
+				"chance": 90,
+				"limit": "null",
+				"uid": 8
+			},
+			{
+				"name": "10 долларов",
+				"cmd": "accs[i].inventory.diamonds += 10",
+				"chance": 95,
+				"limit": "null",
+				"uid": 9
+			},
+			{
+				"name": "2 MCoins",
+				"cmd": "accs[i].inventory.bitcoins += 2",
+				"chance": 100,
+				"limit": "null",
+				"uid": 10
+			}
+		],
+		"uid": 1
+	},
+	{
+		"name": "серебрянный",
+		"smile": "💰",
+		"price": {
+			"price": 0,
+			"diamonds": 4,
+			"bitcoins": 0,
+			"rub": 0
+		},
+		"items": [
+			{
+				"name": "Вип.",
+				"cmd": "if(accs[i].rights < 1) {accs[i].rights = 1}",
+				"chance": 2,
+				"limit": "null",
+				"uid": 0
+			},
+			{
+				"name": "5 долларов",
+				"cmd": "accs[i].inventory.diamonds += 5",
+				"chance": 5,
+				"limit": "null",
+				"uid": 1
+			},
+			{
+				"name": "1 MCoins",
+				"cmd": "accs[i].inventory.bitcoins += 1",
+				"chance": 6,
+				"limit": "null",
+				"uid": 2
+			},
+			{
+				"name": "5к",
+				"cmd": "accs[i].balance += 5000",
+				"chance": 90,
+				"limit": "null",
+				"uid": 3
+			}, 
+			{
+				"name": "30к",
+				"cmd": "accs[i].balance += 30000",
+				"chance": 100,
+				"limit": "null",
+				"uid": 4
+			}
+		],
+		"uid": 2
+	}
+]
