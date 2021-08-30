@@ -1,0 +1,1210 @@
+[
+	{
+		"id": 0,
+		"users": {},
+		"name": "привет дружок",
+		"balance": 0,
+		"rating": -1,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 1,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 1,
+		"users": {},
+		"name": "а",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 2,
+		"users": {
+			"7": {
+				"id": 367227413,
+				"uid": 7,
+				"level": 3
+			}
+		},
+		"name": "сверху пидоры",
+		"balance": 105245103043,
+		"rating": 2,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 3,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 3,
+		"users": {
+			"3": {
+				"id": 557634165,
+				"uid": 3,
+				"level": 1
+			},
+			"69": {
+				"id": 550576632,
+				"uid": 69,
+				"level": 1
+			}
+		},
+		"name": "снизу лохи",
+		"balance": 4000002030417554,
+		"rating": 2,
+		"smile": "🍒",
+		"peoples": 2,
+		"wons": 3,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 4,
+		"users": {
+			"8": {
+				"id": 347250552,
+				"uid": 8,
+				"level": 3
+			}
+		},
+		"name": "🅓🅐🅝🅨🅐",
+		"balance": 3227071608473,
+		"rating": 2,
+		"smile": "⛄",
+		"peoples": 1,
+		"wons": 3,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 5,
+		"users": {
+			"40": {
+				"id": 543638000,
+				"uid": 40,
+				"level": 3
+			},
+			"54": {
+				"id": 513609365,
+				"uid": 54,
+				"level": 1
+			}
+		},
+		"name": "Nova",
+		"balance": 83330397809,
+		"rating": 16,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 18,
+		"los": 1,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 6,
+		"users": {
+			"4": {
+				"id": 329410567,
+				"uid": 4,
+				"level": 3
+			}
+		},
+		"name": "😈BANDA😈",
+		"balance": 4896058616,
+		"rating": 1,
+		"smile": "😈",
+		"peoples": 1,
+		"wons": 2,
+		"los": 0,
+		"open": true,
+		"lvl": 1
+	},
+	{
+		"id": 7,
+		"users": {
+			"41": {
+				"id": 396458424,
+				"uid": 41,
+				"level": 3
+			},
+			"42": {
+				"id": 213535486,
+				"uid": 42,
+				"level": 2
+			}
+		},
+		"name": "️🌪️ᴘᴀʀᴀᴅɪsᴇ🌪",
+		"balance": 1013075195870,
+		"rating": 4,
+		"smile": "🤡",
+		"peoples": 2,
+		"wons": 5,
+		"los": 0,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 8,
+		"users": {
+			"4": {
+				"id": 329410567,
+				"uid": 4,
+				"level": 3
+			},
+			"162": {
+				"id": 558496232,
+				"uid": 162,
+				"level": 2
+			},
+			"166": {
+				"id": 528230639,
+				"uid": 166,
+				"level": 2
+			},
+			"491": {
+				"id": 522611571,
+				"uid": 491,
+				"level": 2
+			},
+			"675": {
+				"id": 582116570,
+				"uid": 675,
+				"level": 2
+			}
+		},
+		"name": "👻GHOSTS👻",
+		"balance": 1994681821017,
+		"rating": 69,
+		"smile": "☠",
+		"peoples": 5,
+		"wons": 94,
+		"los": 24,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 11,
+		"users": {},
+		"name": "♡Rous♡",
+		"balance": 0,
+		"rating": 15,
+		"smile": "💀",
+		"peoples": 0,
+		"wons": 20,
+		"los": 4,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 12,
+		"users": {},
+		"name": "Ажур",
+		"balance": 102009075817188,
+		"rating": 1,
+		"smile": "💰",
+		"peoples": 0,
+		"wons": 100,
+		"los": 0,
+		"open": false,
+		"lvl": 1
+	},
+	{
+		"id": 13,
+		"users": {},
+		"name": "ауе",
+		"balance": 7611126139,
+		"rating": 1,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 2,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 14,
+		"users": {
+			"100": {
+				"id": 539041495,
+				"uid": 100,
+				"level": 1
+			}
+		},
+		"name": "13",
+		"balance": 139695793418,
+		"rating": 2,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 3,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 15,
+		"users": {
+			"1": {
+				"id": 532324056,
+				"uid": 1,
+				"level": 1
+			},
+			"6": {
+				"id": 574584984,
+				"uid": 6,
+				"level": 1
+			}
+		},
+		"name": "💥",
+		"balance": 8272779326870,
+		"rating": 68,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 86,
+		"los": 17,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 16,
+		"users": {
+			"129": {
+				"id": 477347049,
+				"uid": 129,
+				"level": 1
+			},
+			"170": {
+				"id": 580846808,
+				"uid": 170,
+				"level": 1
+			},
+			"269": {
+				"id": 459900458,
+				"uid": 269,
+				"level": 1
+			}
+		},
+		"name": "Стая🥀",
+		"balance": 0,
+		"rating": 83,
+		"smile": "⚔",
+		"peoples": 3,
+		"wons": 98,
+		"los": 14,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 17,
+		"users": {
+			"103": {
+				"id": 562507761,
+				"uid": 103,
+				"level": 1
+			},
+			"165": {
+				"id": 492760887,
+				"uid": 165,
+				"level": 2
+			},
+			"190": {
+				"id": 208391451,
+				"uid": 190,
+				"level": 2
+			},
+			"196": {
+				"id": 553918956,
+				"uid": 196,
+				"level": 2
+			},
+			"376": {
+				"id": 479730411,
+				"uid": 376,
+				"level": 2
+			},
+			"378": {
+				"id": 216549386,
+				"uid": 378,
+				"level": 2
+			}
+		},
+		"name": "🍒ViliAilis🍒",
+		"balance": 14431764405381,
+		"rating": 0,
+		"smile": "🚂",
+		"peoples": 6,
+		"wons": 0,
+		"los": 0,
+		"open": true,
+		"lvl": 2
+	},
+	{
+		"id": 18,
+		"users": {},
+		"name": "GOLD",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 19,
+		"users": {
+			"270": {
+				"id": 447572400,
+				"uid": 270,
+				"level": 3
+			},
+			"296": {
+				"id": 514511371,
+				"uid": 296,
+				"level": 2
+			},
+			"380": {
+				"id": 514618547,
+				"uid": 380,
+				"level": 1
+			}
+		},
+		"name": "...",
+		"balance": 3752386043408515,
+		"rating": 18,
+		"smile": "🛡",
+		"peoples": 3,
+		"wons": 19,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 20,
+		"users": {},
+		"name": "1414",
+		"balance": 24376697675,
+		"rating": 1,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 2,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 21,
+		"users": {
+			"16": {
+				"id": 573662973,
+				"uid": 16,
+				"level": 1
+			}
+		},
+		"name": "*TRIO*",
+		"balance": 4906775940985,
+		"rating": 48,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 57,
+		"los": 8,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 22,
+		"users": {
+			"208": {
+				"id": 375636463,
+				"uid": 208,
+				"level": 3
+			}
+		},
+		"name": "Mysty",
+		"balance": 13709908223379,
+		"rating": 9,
+		"smile": "🔞",
+		"peoples": 1,
+		"wons": 11,
+		"los": 1,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 23,
+		"users": {
+			"205": {
+				"id": 398410706,
+				"uid": 205,
+				"level": 3
+			}
+		},
+		"name": "FoReVeR",
+		"balance": 302151063980,
+		"rating": -1,
+		"smile": "👑",
+		"peoples": 1,
+		"wons": 3,
+		"los": 3,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 24,
+		"users": {},
+		"name": "Paradise",
+		"balance": 0,
+		"rating": 1,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 3,
+		"los": 1,
+		"clanowner": 116,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 25,
+		"users": {
+			"489": {
+				"id": 574898498,
+				"uid": 489,
+				"level": 2
+			}
+		},
+		"name": "🚬Smoking🚬",
+		"balance": 676835394199,
+		"rating": 4,
+		"smile": "🚬",
+		"peoples": 1,
+		"wons": 10,
+		"los": 5,
+		"clanowner": 116,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 26,
+		"users": {},
+		"name": "F",
+		"balance": 0,
+		"rating": 9,
+		"smile": "💗",
+		"peoples": 0,
+		"wons": 18,
+		"los": 8,
+		"clanowner": 229,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 27,
+		"users": {},
+		"name": "☆→Жафар←☆",
+		"balance": 1083272205709,
+		"rating": 22,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 25,
+		"los": 2,
+		"clanowner": 116,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 28,
+		"users": {},
+		"name": "🤘 Ахсукеры🤘",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 141,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 29,
+		"users": {
+			"141": {
+				"id": 488462969,
+				"uid": 141,
+				"level": 3
+			}
+		},
+		"name": "Петух",
+		"balance": 3780506476166,
+		"rating": 128,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 158,
+		"los": 29,
+		"clanowner": 141,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 30,
+		"users": {},
+		"name": "AdminTeam",
+		"balance": 47083522326,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 2,
+		"los": 1,
+		"clanowner": 301,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 31,
+		"users": {
+			"80": {
+				"id": 390913202,
+				"uid": 80,
+				"level": 3
+			}
+		},
+		"name": "◇●◇",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 80,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 32,
+		"users": {
+			"278": {
+				"id": 572412005,
+				"uid": 278,
+				"level": 3
+			}
+		},
+		"name": "😈               😈",
+		"balance": 145078372702128,
+		"rating": 2,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 3,
+		"los": 0,
+		"clanowner": 278,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 33,
+		"users": {
+			"198": {
+				"id": 273559798,
+				"uid": 198,
+				"level": 3
+			}
+		},
+		"name": "EBASOSIHA",
+		"balance": 0,
+		"rating": 47,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 65,
+		"los": 17,
+		"clanowner": 198,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 34,
+		"users": {
+			"0": {
+				"id": 556842930,
+				"uid": 0,
+				"level": 3
+			}
+		},
+		"name": "пока гей",
+		"balance": 0,
+		"rating": 1097,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 116,
+		"los": 18,
+		"clanowner": 0,
+		"open": false,
+		"lvl": 0
+	},
+	{
+		"id": 35,
+		"users": {
+			"74": {
+				"id": 154831872,
+				"uid": 74,
+				"level": 3
+			},
+			"207": {
+				"id": 554255262,
+				"uid": 207,
+				"level": 2
+			}
+		},
+		"name": "𒈞Дикий𒈞",
+		"balance": 80876038620628,
+		"rating": 225,
+		"smile": "🐾",
+		"peoples": 2,
+		"wons": 272,
+		"los": 46,
+		"clanowner": 74,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 37,
+		"users": {},
+		"name": "Шлюхи",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 135,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 38,
+		"users": {},
+		"name": "Проститутки",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 135,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 39,
+		"users": {
+			"135": {
+				"id": 492373628,
+				"uid": 135,
+				"level": 3
+			}
+		},
+		"name": "✾πρøρøk✾",
+		"balance": 183918472361,
+		"rating": 2,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 4,
+		"los": 1,
+		"clanowner": 135,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 40,
+		"users": {
+			"157": {
+				"id": 472471467,
+				"uid": 157,
+				"level": 3
+			},
+			"274": {
+				"id": 446725238,
+				"uid": 274,
+				"level": 2
+			}
+		},
+		"name": "пукинаторы",
+		"balance": 327419620924,
+		"rating": 49,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 58,
+		"los": 8,
+		"clanowner": 157,
+		"open": true,
+		"lvl": 1
+	},
+	{
+		"id": 41,
+		"users": {
+			"653": {
+				"id": 573897571,
+				"uid": 653,
+				"level": 1
+			}
+		},
+		"name": "🥀 loneliness 🥀",
+		"balance": 508328686627479,
+		"rating": 186,
+		"smile": "💥",
+		"peoples": 1,
+		"wons": 232,
+		"los": 45,
+		"clanowner": 426,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 42,
+		"users": {
+			"627": {
+				"id": 471531922,
+				"uid": 627,
+				"level": 3
+			}
+		},
+		"name": "✫𝕆𝕞𝕖𝕘𝕒✫",
+		"balance": 466808520837,
+		"rating": 7,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 8,
+		"los": 0,
+		"clanowner": 627,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 43,
+		"users": {
+			"641": {
+				"id": 577402891,
+				"uid": 641,
+				"level": 3
+			}
+		},
+		"name": "diversion",
+		"balance": 70211092338,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 2,
+		"los": 1,
+		"clanowner": 641,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 44,
+		"users": {
+			"692": {
+				"id": 291200676,
+				"uid": 692,
+				"level": 3
+			}
+		},
+		"name": "🤩СвергнуАрабов🤩",
+		"balance": 30510304058537,
+		"rating": 266,
+		"smile": "シ",
+		"peoples": 1,
+		"wons": 318,
+		"los": 51,
+		"clanowner": 692,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 45,
+		"users": {
+			"748": {
+				"id": 574700962,
+				"uid": 748,
+				"level": 3
+			}
+		},
+		"name": "🔥🔞😈😈🔞🔥",
+		"balance": 856243269697,
+		"rating": 9,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 16,
+		"los": 6,
+		"clanowner": 748,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 46,
+		"users": {
+			"41": {
+				"id": 396458424,
+				"uid": 41,
+				"level": 3
+			},
+			"291": {
+				"id": 496604218,
+				"uid": 291,
+				"level": 1
+			}
+		},
+		"name": "ананас",
+		"balance": 0,
+		"rating": -1,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 2,
+		"los": 2,
+		"clanowner": 41,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 47,
+		"users": {
+			"809": {
+				"id": 545294622,
+				"uid": 809,
+				"level": 3
+			}
+		},
+		"name": "ВыстегнимТоп1",
+		"balance": 7081804209190,
+		"rating": 45,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 65,
+		"los": 19,
+		"clanowner": 809,
+		"open": false,
+		"lvl": 1
+	},
+	{
+		"id": 48,
+		"users": {
+			"828": {
+				"id": 555085570,
+				"uid": 828,
+				"level": 3
+			}
+		},
+		"name": "ПетуховОбгоним",
+		"balance": 676318633731,
+		"rating": 6,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 8,
+		"los": 1,
+		"clanowner": 828,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 49,
+		"users": {
+			"116": {
+				"id": 526073152,
+				"uid": 116,
+				"level": 3
+			}
+		},
+		"name": "Dog",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 116,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 50,
+		"users": {},
+		"name": "🎲™ДЕПУТАТЫ™🎲",
+		"balance": 287936882945,
+		"rating": 2,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 5,
+		"los": 2,
+		"clanowner": 301,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 51,
+		"users": {
+			"182": {
+				"id": 524945727,
+				"uid": 182,
+				"level": 3
+			},
+			"958": {
+				"id": 558442948,
+				"uid": 958,
+				"level": 1
+			}
+		},
+		"name": "🔝🍍GUCCI🍍🔝",
+		"balance": 4700139165610,
+		"rating": 42,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 54,
+		"los": 11,
+		"clanowner": 182,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 52,
+		"users": {
+			"866": {
+				"id": 518272526,
+				"uid": 866,
+				"level": 3
+			}
+		},
+		"name": "~ТоПчИкИ~",
+		"balance": 505411373106,
+		"rating": 3,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 5,
+		"los": 1,
+		"clanowner": 866,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 53,
+		"users": {
+			"426": {
+				"id": 548529363,
+				"uid": 426,
+				"level": 3
+			}
+		},
+		"name": "easy",
+		"balance": 529962670437,
+		"rating": 5,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 6,
+		"los": 0,
+		"clanowner": 426,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 54,
+		"users": {
+			"831": {
+				"id": 414020628,
+				"uid": 831,
+				"level": 2
+			},
+			"940": {
+				"id": 271323835,
+				"uid": 940,
+				"level": 2
+			},
+			"974": {
+				"id": 275179595,
+				"uid": 974,
+				"level": 3
+			},
+			"1029": {
+				"id": 368847790,
+				"uid": 1029,
+				"level": 1
+			},
+			"1031": {
+				"id": 284371795,
+				"uid": 1031,
+				"level": 2
+			},
+			"1032": {
+				"id": 338201798,
+				"uid": 1032,
+				"level": 2
+			},
+			"1071": {
+				"id": 461012852,
+				"uid": 1071,
+				"level": 1
+			},
+			"1088": {
+				"id": 362394644,
+				"uid": 1088,
+				"level": 1
+			}
+		},
+		"name": "КланВойти54",
+		"balance": 3542000803120,
+		"rating": 664,
+		"smile": "⚔",
+		"peoples": 8,
+		"wons": 763,
+		"los": 98,
+		"clanowner": 974,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 55,
+		"users": {
+			"402": {
+				"id": 576990284,
+				"uid": 402,
+				"level": 1
+			},
+			"1097": {
+				"id": 526979715,
+				"uid": 1097,
+				"level": 3
+			},
+			"1098": {
+				"id": 243216332,
+				"uid": 1098,
+				"level": 1
+			}
+		},
+		"name": "«Братья»",
+		"balance": 510986803429,
+		"rating": 4,
+		"smile": "🛡",
+		"peoples": 3,
+		"wons": 5,
+		"los": 0,
+		"clanowner": 1097,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 56,
+		"users": {
+			"1101": {
+				"id": 460766747,
+				"uid": 1101,
+				"level": 3
+			},
+			"1193": {
+				"id": 287607232,
+				"uid": 1193,
+				"level": 2
+			}
+		},
+		"name": "💠艾斯特💠",
+		"balance": 0,
+		"rating": 137,
+		"smile": "📈",
+		"peoples": 2,
+		"wons": 169,
+		"los": 31,
+		"clanowner": 1101,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 57,
+		"users": {
+			"745": {
+				"id": 509229068,
+				"uid": 745,
+				"level": 3
+			}
+		},
+		"name": "🔥🖤Hell❤🔥",
+		"balance": 98903181817,
+		"rating": 1,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 2,
+		"los": 0,
+		"clanowner": 745,
+		"open": true,
+		"lvl": 2
+	},
+	{
+		"id": 58,
+		"users": {
+			"1216": {
+				"id": 542306949,
+				"uid": 1216,
+				"level": 3
+			}
+		},
+		"name": "Админский",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"clanowner": 1216,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 59,
+		"users": {
+			"812": {
+				"id": 577903971,
+				"uid": 812,
+				"level": 1
+			},
+			"1015": {
+				"id": 269065203,
+				"uid": 1015,
+				"level": 3
+			}
+		},
+		"name": "КланВойти59",
+		"balance": 1231335417716,
+		"rating": 352,
+		"smile": "🍃",
+		"peoples": 2,
+		"wons": 429,
+		"los": 76,
+		"clanowner": 1015,
+		"open": true,
+		"lvl": 2
+	},
+	{
+		"id": 60,
+		"users": {
+			"1240": {
+				"id": 387226,
+				"uid": 1240,
+				"level": 3
+			}
+		},
+		"name": "_14/88_",
+		"balance": 0,
+		"rating": 24,
+		"smile": "⚔",
+		"peoples": 1,
+		"wons": 26,
+		"los": 1,
+		"clanowner": 1240,
+		"open": true,
+		"lvl": 3
+	}
+]

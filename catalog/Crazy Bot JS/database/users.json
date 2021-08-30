@@ -1,0 +1,104 @@
+[
+	{
+		"id": 329410567,
+		"uid": 0,
+		"balance": 7.197e+74,
+		"bank": 2.5e+61,
+		"btc": 5.0000170000000005e+101,
+		"farm_btc": 100,
+		"farms": 1e+64,
+		"farmslimit": 1e+93,
+		"mnc": 439400000000,
+		"manic": 7,
+		"energy": 10,
+		"opit": 9412,
+		"biz": 16000000000000,
+		"zhelezo": 1e+48,
+		"zoloto": 1e+50,
+		"manic_pribil": 0,
+		"tur": 0,
+		"dostuptur": 1,
+		"almaz": 1e+56,
+		"bizlvl": 0,
+		"manic_lvl": 1,
+		"nicklimit": 55556555,
+		"rating": 0,
+		"regDate": "66.66.6666, 66:66:66",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": 0,
+			"bonus": -8502,
+			"poxod": -8502,
+			"poxod2": -8502,
+			"kopat": false,
+			"hack": -8502,
+			"vidat": -8502,
+			"peredat": -8502,
+			"ataka": -8502,
+			"farm_btc": 677
+		},
+		"tag": "owner",
+		"work": 9,
+		"business": 13,
+		"notifications": true,
+		"exp": 1,
+		"level": 50122,
+		"case1": 50000,
+		"case2": 50000,
+		"case3": 50000,
+		"case4": 50000,
+		"case5": 50000,
+		"case6": 50002,
+		"case7": -6,
+		"referal": null,
+		"promo": false,
+		"prez": false,
+		"transport": {
+			"car": 20,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 15,
+			"apartment": 8,
+			"elka": 0
+		},
+		"misc": {
+			"phone": 9,
+			"farm": 3,
+			"manic": 7,
+			"pet": 12,
+			"balance": 0,
+			"rating": 0,
+			"opit": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 10,
+			"trade": true,
+			"old": false,
+			"limit": 1000000000000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 3,
+			"requests": []
+		},
+		"quests": [
+			1,
+			0,
+			0,
+			0
+		],
+		"foolder": 11,
+		"verify": 1,
+		"uran": 0,
+		"snowman": 8,
+		"elka": 0
+	}
+]

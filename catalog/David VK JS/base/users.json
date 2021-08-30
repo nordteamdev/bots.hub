@@ -1,0 +1,77 @@
+[
+	{
+		"realname": "Илья",
+		"realfam": "Райский",
+		"id": 521344632,
+		"uid": 0,
+		"balance": 5000,
+		"diamonds": 0,
+		"emeralds": 0,
+		"coal": 0,
+		"iron": 0,
+		"gold": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "14.0.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"translation": false,
+			"hasWorked": false,
+			"commands": false,
+			"clanwar": false,
+			"delacc": false,
+			"bonus": false,
+			"obva": false,
+			"krik": false,
+			"mine": false
+		},
+		"tag": "Илья",
+		"clanid": false,
+		"keyboard": true,
+		"numberss": false,
+		"work": 0,
+		"business": 0,
+		"pp": 0,
+		"notifications": true,
+		"ccard": false,
+		"card": 0,
+		"seccard": 0,
+		"cardss": 0,
+		"exp": 1,
+		"level": 1,
+		"right": 10,
+		"foolder": 4,
+		"floder": 8,
+		"operator": 0,
+		"number": 0,
+		"call": 0,
+		"language": 1,
+		"healths": 100,
+		"hunger": 100,
+		"reals": 0,
+		"jalobs": 0,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	}
+]

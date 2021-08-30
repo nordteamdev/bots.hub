@@ -1,0 +1,46 @@
+[
+	{
+		"name": "Поставить лайку разработчику", 
+		"price": 3000,
+		"type": "like",
+		"object": {
+			 "owner_id": 284682278,
+			 "item_id": 456239978,
+			 "link": "https://vk.com/photo284682278_456239978",
+			 "type": "photo"
+		},
+		"uid": 0
+		},
+		{
+			"name": "Поставить лайк аве группы", 
+			"price": 1000,
+			"type": "like",
+			"object": {
+				 "owner_id": -137139998,
+				 "item_id": 456239193,
+				 "link": "https://vk.com/photo-137139998_456239193",
+				 "type": "photo"
+			},
+			"uid": 1
+		},
+		{
+			"name": "Вступить в группу", 
+			"price": 7000,
+			"type": "sub",
+			"object": {
+				 "group_id": 137139998,
+				 "link": "https://vk.com/crazybots2017"
+			},
+			"uid": 2
+		},
+		{
+			"name": "Использование", 
+			"price": 1000,
+			"type": "used",
+			"object": {
+				 "type": "cmds",
+				 "count": 50
+			},
+			"uid": 3
+		}
+]

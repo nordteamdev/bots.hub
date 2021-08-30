@@ -1,0 +1,18 @@
+[
+	{
+		"name": "Поставить лайк админу", 
+		"type": "like",
+		"object": "photo",
+		"item_id": 456239978,
+		"owner_id": 284682278,
+		"uid": 0
+	},
+	{
+	    "name": "Вступить в группу",
+		"type": "like",
+		"object": "photo",
+		"item_id": 456239978,
+		"owner_id": 284682278,
+		"uid": 1
+	}
+]

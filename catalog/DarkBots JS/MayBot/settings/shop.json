@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Майнер", 
+		"buy": {
+			"price": 0,
+			"diamonds": 2,
+			"bitcoins": 0
+		},
+		"desc": "Зарабатывает за вас поинты!",
+		"cmd": "accs[i].inventory.rabs += %colvo%",
+		"limit": "limiter.rabs(%user_id%, %colvo%)",
+		"uid": 0
+	},
+	{
+		"name": "Ратник", 
+		"buy": {
+			"price": 0,
+			"diamonds": 5,
+			"bitcoins": 0
+		},
+		"desc": "Ускоряет работу майнеров в 2 раза",
+		"cmd": "accs[i].inventory.barons += %colvo%",
+		"limit": "limiter.barons(%user_id%, %colvo%)",
+		"uid": 1
+	}
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Привелегия <<VIP>>",
+        "cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+        "uid": 0,
+        "amount": 10
+    },
+    {
+        "name": "Привелегия <<PREMIUM>>",
+        "cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 2",
+        "uid": 1,
+        "amount": 30
+    },
+    {
+        "name": "Привелегия <<MODERATOR>>",
+        "cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 3",
+        "uid": 2,
+        "amount": 70
+    },
+    {
+        "name": "Привелегия <<ADMINISTRATOR>>",
+        "cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+        "uid": 3,
+        "amount": 100
+    }
+]

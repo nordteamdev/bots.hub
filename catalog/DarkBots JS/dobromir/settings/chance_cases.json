@@ -1,0 +1,29 @@
+{
+"free": [
+	{
+		"price": "Vip", 
+		"type": "legend",
+		"uid": 0
+	},
+	{
+	    "price": "3000 ботсов", 
+		"type": "rare",
+		"uid": 1
+	},
+	{
+	    "price": "5000 ботсов", 
+		"type": "rare",
+		"uid": 2
+	},
+	{
+	    "price": "1000000 ботсов", 
+		"type": "legend",
+		"uid": 3
+	},
+	{
+	    "price": "1000 ботсов", 
+		"type": "normal",
+		"uid": 4
+	}
+]
+}

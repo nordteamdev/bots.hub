@@ -1,0 +1,328 @@
+[
+	{
+		"user_id": 284682278,
+		"desc": "284682278-7642490477",
+		"type": "DONAT",
+		"status": true,
+		"uid": 0
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-3962034386",
+		"type": "DONAT",
+		"status": true,
+		"uid": 1
+	},
+	{
+		"user_id": 235048504,
+		"desc": "235048504-9552710254",
+		"type": "DONAT",
+		"status": true,
+		"uid": 2
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-1572237711",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"uid": 3
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-9756344212",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"uid": 4
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-5850953274",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"uid": 5
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-2522330038",
+		"type": "DONAT",
+		"status": true,
+		"uid": 6
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-278148366",
+		"type": "DONAT",
+		"status": true,
+		"uid": 7
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-1798729352",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"uid": 8
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-4185417141",
+		"type": "DONAT",
+		"status": true,
+		"uid": 9
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-5846457938",
+		"type": "PRIVILEGIA",
+		"status": true,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 10
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-1964443761",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 11
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-9605785438",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+		"uid": 12
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-5347515148",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 13
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-4167746469",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 2",
+		"uid": 14
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-8412765118",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+		"uid": 15
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-7168391748",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 16
+	},
+	{
+		"user_id": 288320203,
+		"desc": "288320203-4191879587",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 17
+	},
+	{
+		"user_id": 288320203,
+		"desc": "288320203-4813459108",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 2",
+		"uid": 18
+	},
+	{
+		"user_id": 288320203,
+		"desc": "288320203-7423466031",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+		"uid": 19
+	},
+	{
+		"user_id": 288320203,
+		"desc": "288320203-4957479939",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 20
+	},
+	{
+		"user_id": 453716952,
+		"desc": "453716952-545913923",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 21
+	},
+	{
+		"user_id": 440234379,
+		"desc": "440234379-6677861588",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 22
+	},
+	{
+		"user_id": 440234379,
+		"desc": "440234379-2070890298",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 23
+	},
+	{
+		"user_id": 440234379,
+		"desc": "440234379-8356661517",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 24
+	},
+	{
+		"user_id": 327549336,
+		"desc": "327549336-2175399258",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 25
+	},
+	{
+		"user_id": 327549336,
+		"desc": "327549336-3029065558",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 26
+	},
+	{
+		"user_id": 440234379,
+		"desc": "440234379-6233270799",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 27
+	},
+	{
+		"user_id": 327549336,
+		"desc": "327549336-8458784547",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 28
+	},
+	{
+		"user_id": 327549336,
+		"desc": "327549336-1441954576",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 29
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-5916465146",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 30
+	},
+	{
+		"user_id": 284682278,
+		"desc": "284682278-6071426773",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 31
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-4743601674",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 32
+	},
+	{
+		"user_id": 450647698,
+		"desc": "450647698-2112412890",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 33
+	},
+	{
+		"user_id": 450647698,
+		"desc": "450647698-4513850180",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 34
+	},
+	{
+		"user_id": 205360549,
+		"desc": "205360549-4121735533",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 35
+	},
+	{
+		"user_id": 288320203,
+		"desc": "288320203-9345096737",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 36
+	},
+	{
+		"user_id": 183533453,
+		"desc": "183533453-8967477155",
+		"type": "DONAT",
+		"status": true,
+		"cmd": 0,
+		"uid": 37
+	},
+	{
+		"user_id": 205360549,
+		"desc": "205360549-4628782448",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 38
+	},
+	{
+		"user_id": 210125691,
+		"desc": "210125691-5419208858",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 1",
+		"uid": 39
+	},
+	{
+		"user_id": 210125691,
+		"desc": "210125691-7901978403",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+		"uid": 40
+	},
+	{
+		"user_id": 326215070,
+		"desc": "326215070-7398906498",
+		"type": "PRIVILEGIA",
+		"status": false,
+		"cmd": "accs[accs.filter(a=> a.id == %USER_ID%).map(a=> a.uid)].rights = 4",
+		"uid": 41
+	}
+]
