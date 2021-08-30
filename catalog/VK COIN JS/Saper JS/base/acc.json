@@ -1,0 +1,1985 @@
+{
+	"number": 89,
+	"users": {
+		"1": {
+			"uid": 274969784,
+			"name": "Кодер",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 3,
+				"winmoney": 10000,
+				"losemoney": 1222000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1558448724014,
+				"games": 4
+			},
+			"menu": "none"
+		},
+		"2": {
+			"uid": 2,
+			"name": "Король",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 753.6,
+					"bets": "628"
+				},
+				"keys": [
+					"3"
+				],
+				"win": 4,
+				"lose": 2,
+				"winmoney": 1652,
+				"losemoney": 101
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 6
+			},
+			"menu": "none"
+		},
+		"3": {
+			"uid": 3,
+			"name": "ฺмм",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"4": {
+			"uid": 4,
+			"name": "Гей",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"5": {
+			"uid": 524929279,
+			"name": "Даша",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"6": {
+			"uid": 328216474,
+			"name": "Ваня",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"7": {
+			"uid": 289094596,
+			"name": "Адель",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 8,
+				"lose": 11,
+				"winmoney": 859440,
+				"losemoney": 1190160
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579794215192,
+				"games": 9
+			},
+			"menu": "none"
+		},
+		"8": {
+			"uid": 260755000,
+			"name": "Вова",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"9": {
+			"uid": 206820534,
+			"name": "Александр",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 144,
+					"bets": "100"
+				},
+				"keys": [
+					"3",
+					"1"
+				],
+				"win": 4,
+				"lose": 6,
+				"winmoney": 400,
+				"losemoney": 404
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579793706620,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"10": {
+			"uid": 243449043,
+			"name": "Александр",
+			"coins": 2000,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"11": {
+			"uid": 556722786,
+			"name": "Алексей",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"12": {
+			"uid": 536213241,
+			"name": "Bulat",
+			"coins": "200",
+			"games": {
+				"bet": {
+					"win": "200",
+					"bets": "200"
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 0,
+				"winmoney": 200,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"13": {
+			"uid": 573307424,
+			"name": "Карим",
+			"coins": 6720,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 2,
+				"lose": 3,
+				"winmoney": 11000,
+				"losemoney": 21000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 5
+			},
+			"menu": "none"
+		},
+		"14": {
+			"uid": 469138001,
+			"name": "Альберт",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 20966.4,
+					"bets": "17472"
+				},
+				"keys": [
+					"5"
+				],
+				"win": 2,
+				"lose": 8,
+				"winmoney": 17572,
+				"losemoney": 2600
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579796117271,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"15": {
+			"uid": 271685167,
+			"name": "Влад",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 20
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"16": {
+			"uid": 519104737,
+			"name": "Иван",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"17": {
+			"uid": 346127433,
+			"name": "Максим",
+			"coins": 20000,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"18": {
+			"uid": 564939269,
+			"name": "Артём",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"19": {
+			"uid": 563129924,
+			"name": "Неизвестный",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 5,
+				"lose": 7,
+				"winmoney": 541,
+				"losemoney": 15047
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579797553969,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"20": {
+			"uid": 548827094,
+			"name": "Влад",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 10
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"21": {
+			"uid": 545638564,
+			"name": "Макс",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"22": {
+			"uid": 411140989,
+			"name": "Александр",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"23": {
+			"uid": 285425371,
+			"name": "Ваня",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 20000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"24": {
+			"uid": 572939710,
+			"name": "Admin",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 5,
+				"lose": 5,
+				"winmoney": 500,
+				"losemoney": 1100
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579793501763,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"25": {
+			"uid": 294109637,
+			"name": "Михаил",
+			"coins": 80,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 2,
+				"winmoney": 0,
+				"losemoney": 20
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"26": {
+			"uid": 572119029,
+			"name": "Кузнечик",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"27": {
+			"uid": 202078259,
+			"name": "Тихон",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 1
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"28": {
+			"uid": 484627884,
+			"name": "Михаил",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"29": {
+			"uid": 261333399,
+			"name": "Александр",
+			"coins": 20000,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"30": {
+			"uid": 186947992,
+			"name": "Олег",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"31": {
+			"uid": 541274052,
+			"name": "Алена",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"32": {
+			"uid": 552827858,
+			"name": "Сергей",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"33": {
+			"uid": 302553331,
+			"name": "Иван",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 10
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"34": {
+			"uid": 551803083,
+			"name": "No",
+			"coins": 900,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 100
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "StartGame_new"
+		},
+		"35": {
+			"uid": 281513831,
+			"name": "Евгения",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"36": {
+			"uid": 234009855,
+			"name": "Тимур",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"37": {
+			"uid": 219172000,
+			"name": "Коля",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"38": {
+			"uid": 253070024,
+			"name": "Серёжа",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"39": {
+			"uid": 235747364,
+			"name": "Серёжа",
+			"coins": 0.0029999999969732016,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 3,
+				"winmoney": 0,
+				"losemoney": 200000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 3
+			},
+			"menu": "none"
+		},
+		"40": {
+			"uid": 544483743,
+			"name": "Валера",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"41": {
+			"uid": 472656224,
+			"name": "Филарет",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"42": {
+			"uid": 436102073,
+			"name": "Кирилл",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 2,
+				"lose": 2,
+				"winmoney": 300000,
+				"losemoney": 570800
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 4
+			},
+			"menu": "none"
+		},
+		"43": {
+			"uid": 579669699,
+			"name": "Наталия",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"44": {
+			"uid": 412308445,
+			"name": "Евгений",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"45": {
+			"uid": 413826205,
+			"name": "Лёха",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "StartGame_new"
+		},
+		"46": {
+			"uid": 279871294,
+			"name": "Саша",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"47": {
+			"uid": 570540799,
+			"name": "Radk",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"48": {
+			"uid": 325169855,
+			"name": "Тихон",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 20000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"49": {
+			"uid": 480327616,
+			"name": "Дамир",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 20000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"50": {
+			"uid": 236264341,
+			"name": "Eldor",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"51": {
+			"uid": 168653258,
+			"name": "Иван",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 1,
+				"winmoney": 50,
+				"losemoney": 95
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"52": {
+			"uid": 537399287,
+			"name": "Сергей",
+			"coins": 67881,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 3,
+				"lose": 7,
+				"winmoney": 300,
+				"losemoney": 700
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579797309492,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"53": {
+			"uid": 465013952,
+			"name": "Антон",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"54": {
+			"uid": 491634971,
+			"name": "Кирилл",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 5,
+				"winmoney": 0,
+				"losemoney": 14000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 5
+			},
+			"menu": "none"
+		},
+		"55": {
+			"uid": 493457249,
+			"name": "Виктория",
+			"coins": 0.404,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"56": {
+			"uid": 286035868,
+			"name": "Валерий",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"57": {
+			"uid": 465901361,
+			"name": "Дима",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"58": {
+			"uid": 233173328,
+			"name": "Никита",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 14400,
+					"bets": "10000"
+				},
+				"keys": [
+					"9",
+					"5"
+				],
+				"win": 2,
+				"lose": 4,
+				"winmoney": 20000,
+				"losemoney": 4000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 6
+			},
+			"menu": "none"
+		},
+		"59": {
+			"uid": 311537877,
+			"name": "Леонид",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 20
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"60": {
+			"uid": 420459021,
+			"name": "Nikita",
+			"coins": 592,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 2,
+				"winmoney": 0,
+				"losemoney": 200
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"61": {
+			"uid": 496824527,
+			"name": "Александр",
+			"coins": 1.4,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 1,
+				"winmoney": 2,
+				"losemoney": 1
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"62": {
+			"uid": 270255946,
+			"name": "Тихон",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"63": {
+			"uid": 440407189,
+			"name": "Никита",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"64": {
+			"uid": 554061649,
+			"name": "Даня",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"65": {
+			"uid": 379040281,
+			"name": "Гамлет",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 100
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"66": {
+			"uid": 560501252,
+			"name": "Даниил",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"67": {
+			"uid": 257409481,
+			"name": "Егор",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"68": {
+			"uid": 576269781,
+			"name": "Диана",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"69": {
+			"uid": 172864196,
+			"name": "Александр",
+			"coins": 18518.4,
+			"games": {
+				"bet": {
+					"win": 18518.4,
+					"bets": "12860"
+				},
+				"keys": [
+					"6",
+					"2"
+				],
+				"win": 1,
+				"lose": 1,
+				"winmoney": 12860,
+				"losemoney": 1000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"70": {
+			"uid": 439427650,
+			"name": "Максим",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 120,
+					"bets": "100"
+				},
+				"keys": [
+					"2"
+				],
+				"win": 4,
+				"lose": 7,
+				"winmoney": 16320,
+				"losemoney": 10600
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579798236825,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"71": {
+			"uid": 569902358,
+			"name": "Maria",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"72": {
+			"uid": 524020689,
+			"name": "Кирилл",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 1000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"73": {
+			"uid": 511810449,
+			"name": "Серёжа",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"74": {
+			"uid": 520273225,
+			"name": "Фиршат",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"75": {
+			"uid": 392162059,
+			"name": "Владислав",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"76": {
+			"uid": 465140606,
+			"name": "Дима",
+			"coins": 0.40000000000000036,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 1,
+				"winmoney": 10,
+				"losemoney": 14
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "none"
+		},
+		"77": {
+			"uid": 533274841,
+			"name": "Никита",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 14400,
+					"bets": "10000"
+				},
+				"keys": [
+					"4",
+					"5"
+				],
+				"win": 5,
+				"lose": 7,
+				"winmoney": 23200,
+				"losemoney": 13313
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 13
+			},
+			"menu": "none"
+		},
+		"78": {
+			"uid": 579583511,
+			"name": "Вжух",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 30000,
+					"bets": "25000"
+				},
+				"keys": [
+					"1"
+				],
+				"win": 1,
+				"lose": 2,
+				"winmoney": 25000,
+				"losemoney": 5020
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 3
+			},
+			"menu": "none"
+		},
+		"79": {
+			"uid": 491067282,
+			"name": "Рустам",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"80": {
+			"uid": 468051022,
+			"name": "Глеб",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"81": {
+			"uid": 509231535,
+			"name": "Никита",
+			"coins": 194000,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 1,
+				"winmoney": 0,
+				"losemoney": 1000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 1
+			},
+			"menu": "none"
+		},
+		"82": {
+			"uid": 517137346,
+			"name": "Семён",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 7,
+				"lose": 7,
+				"winmoney": 17486,
+				"losemoney": 26928
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579841379288,
+				"games": 4
+			},
+			"menu": "none"
+		},
+		"83": {
+			"uid": 38527975,
+			"name": "Антон",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 4,
+				"lose": 6,
+				"winmoney": 35,
+				"losemoney": 40
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579847594289,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"84": {
+			"uid": 426358363,
+			"name": "Тимофей",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"85": {
+			"uid": 576911553,
+			"name": "Ya-Tebya",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 2.4,
+					"bets": "2"
+				},
+				"keys": [
+					"7"
+				],
+				"win": 4,
+				"lose": 6,
+				"winmoney": 5,
+				"losemoney": 7
+			},
+			"bonus": {
+				"group": 0,
+				"time": 1579843569739,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"86": {
+			"uid": 558722669,
+			"name": "Левых",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "none"
+		},
+		"87": {
+			"uid": 453742510,
+			"name": "Сергей",
+			"coins": 200000,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 0,
+				"winmoney": 0,
+				"losemoney": 0
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 0
+			},
+			"menu": "StartGame_new"
+		},
+		"88": {
+			"uid": 474524671,
+			"name": "Руслан",
+			"coins": 0.6000000000000001,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 1,
+				"lose": 1,
+				"winmoney": 3,
+				"losemoney": 3
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 2
+			},
+			"menu": "StartGame_new"
+		},
+		"89": {
+			"uid": 563203731,
+			"name": "Гоша",
+			"coins": 0,
+			"games": {
+				"bet": {
+					"win": 0,
+					"bets": 0
+				},
+				"keys": [],
+				"win": 0,
+				"lose": 3,
+				"winmoney": 0,
+				"losemoney": 20000
+			},
+			"bonus": {
+				"group": 0,
+				"time": 0,
+				"games": 3
+			},
+			"menu": "none"
+		}
+	}
+}

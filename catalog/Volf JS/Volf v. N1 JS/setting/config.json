@@ -1,0 +1,17 @@
+{
+ 
+	"group_url": "@club180117338 (UP Бот)", 
+	"bot": "UPBOT",
+	"ver": "v0.3.2",
+	"group": 180117338,
+	"coder": 425217120,
+	"ban_topic": "",
+	"antiflood_time": 30000,
+	"antiflood_limit": 15,
+	"bonus_balance": false,
+	"bonus_exs": false,
+	"promo": {
+		"activ": 30,
+		"balance": 200000
+	}
+}

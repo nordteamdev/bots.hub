@@ -1,0 +1,22 @@
+{
+	"clans": {
+		"1": {
+			"id": 1,
+			"name": "Admins Team",
+			"dev": 2,
+			"users": {
+				"2": {
+					"level": 0
+				},
+				"42": {
+					"level": 0
+				},
+				"647": {
+					"level": 0
+				}
+			},
+			"balance": 900000,
+			"people": 3
+		}
+ 	}
+}

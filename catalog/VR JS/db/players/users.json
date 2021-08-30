@@ -1,0 +1,38 @@
+[
+	{
+		"id": 275944431,
+		"uid": 0,
+		"admin": 1,
+		"balance": 0,
+		"rassa": 2,
+		"ps": 0,
+		"reg": 0,
+		"train": 4,
+		"promo": [],
+		"tag": "VR MAN",
+		"mention": true,
+		"rass": true,
+		"str": 50,
+		"vit": 4000,
+		"lobby": "10",
+		"lobbym": 1
+	},
+	{
+		"id": 239323586,
+		"uid": 1,
+		"admin": 1,
+		"balance": 0,
+		"rassa": 1,
+		"ps": 0,
+		"reg": 0,
+		"train": 4,
+		"promo": [],
+		"tag": "VR MAN",
+		"mention": true,
+		"rass": true,
+		"str": 50,
+		"vit": 4000,
+		"lobby": 10,
+		"lobbym": 0
+	}
+]

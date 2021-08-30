@@ -1,0 +1,23 @@
+{
+  "name": "wheel-coin",
+  "version": "1.0.0",
+  "description": "copy bot",
+  "main": "start.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Revalto",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "deferred": "^0.7.11",
+    "fs": "0.0.1-security",
+    "md5": "^2.2.1",
+    "modules": "^0.4.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.4",
+    "node": "^13.5.0",
+    "node-vkcoinapi": "^1.8.0",
+    "vk-io": "^4.0.0-rc.30"
+  }
+}
