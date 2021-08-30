@@ -1,0 +1,47 @@
+var Default = require("./default");
+module.exports = {
+    "User": function (data) {
+	    Default.call(this, data);
+	    this.id = data._id;
+	    this.first_name = data.first_name;
+	    this.last_name = data.last_name;
+		this.nickname = data.nickname;
+		this.register = data.register;
+		this.balance = data.balance;
+		this.rating = data.rating;
+		this.uid = data.uid;
+		this.coins = data.coins;
+		this.nick = data.nick;
+		this.section = data.section;
+		this.miner = data.miner;
+		this.miner_step = data.miner_step;
+		this.miner_spot = data.miner_spot;
+		this.bank = data.bank;
+		this.marry = data.marry;
+		this.bonus = data.bonus;
+		this.job = data.job;
+		this.days = data.days;
+		this.cooldown = data.cooldown;
+		this.roulette = data.roulette;
+		this.shot = data.shot;
+		this.ignore = data.ignore;
+		this.admin = data.admin;
+		this.creator = data.creator;
+		this.bussines = data.bussines;
+		this.miners = data.miners;
+		this.car = data.car;
+		this.house = data.house;
+		this.helicopter = data.helicopter;
+		this.phone = data.phone;
+		this.gameconsole = data.gameconsole;
+		this.apartment = data.apartment;
+		this.ptichka = data.ptichka;
+		this.yacht = data.yacht;
+		this.computer = data.computer;
+		this.aircraft = data.aircraft;
+		this.isAdmin = data.admin;
+		this.isBanned = data.ignore;
+		this.isBoss = data.creator;
+ 	    this.name = data.nickname ? data.nickname : (data.first_name.slice(0, 1) + ". " + data.last_name);
+    }
+};

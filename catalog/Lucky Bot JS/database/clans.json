@@ -1,0 +1,261 @@
+[
+	{
+		"id": 0,
+		"users": {},
+		"name": "круто",
+		"balance": 78000000000000000,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 1,
+		"users": {
+			"7": {
+				"id": 479928763,
+				"uid": 7,
+				"level": 1
+			}
+		},
+		"name": "Хавно",
+		"balance": 99999999999,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 2,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 2,
+		"users": {
+			"11": {
+				"id": 421169574,
+				"uid": 11,
+				"level": 3
+			}
+		},
+		"name": "суенд",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	},
+	{
+		"id": 3,
+		"users": {
+			"2": {
+				"id": 349635934,
+				"uid": 2,
+				"level": 3
+			}
+		},
+		"name": "ADMINS",
+		"balance": 0,
+		"rating": 0,
+		"smile": "💰",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 4,
+		"users": {
+			"8": {
+				"id": 226269364,
+				"uid": 8,
+				"level": 3
+			}
+		},
+		"name": "Алекс",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 5,
+		"users": {
+			"38": {
+				"id": 566442247,
+				"uid": 38,
+				"level": 3
+			}
+		},
+		"name": "ᴡᴏʟғ",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 6,
+		"users": {
+			"40": {
+				"id": 473723795,
+				"uid": 40,
+				"level": 3
+			}
+		},
+		"name": "лори",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 7,
+		"users": {
+			"107": {
+				"id": 553781215,
+				"uid": 107,
+				"level": 3
+			},
+			"110": {
+				"id": 520754297,
+				"uid": 110,
+				"level": 2
+			},
+			"114": {
+				"id": 474978831,
+				"uid": 114,
+				"level": 2
+			},
+			"133": {
+				"id": 538114387,
+				"uid": 133,
+				"level": 1
+			},
+			"134": {
+				"id": 316244421,
+				"uid": 134,
+				"level": 1
+			},
+			"150": {
+				"id": 528468348,
+				"uid": 150,
+				"level": 1
+			}
+		},
+		"name": "ТОП😈",
+		"balance": 26668917463,
+		"rating": 15,
+		"smile": "😈",
+		"peoples": 6,
+		"wons": 17,
+		"los": 1,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 8,
+		"users": {
+			"0": {
+				"id": 545423358,
+				"uid": 0,
+				"level": 1
+			},
+			"14": {
+				"id": 557968650,
+				"uid": 14,
+				"level": 3
+			}
+		},
+		"name": "Админы",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": false,
+		"lvl": 3
+	},
+	{
+		"id": 9,
+		"users": {},
+		"name": "Боги",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"open": false,
+		"lvl": 0
+	},
+	{
+		"id": 10,
+		"users": {},
+		"name": "Влады",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 0,
+		"wons": 1,
+		"los": 0,
+		"open": false,
+		"lvl": 0
+	},
+	{
+		"id": 11,
+		"users": {
+			"47": {
+				"id": 567412154,
+				"uid": 47,
+				"level": 3
+			}
+		},
+		"name": "Infinity bot",
+		"balance": 0,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 3
+	},
+	{
+		"id": 12,
+		"users": {
+			"34": {
+				"id": 457536858,
+				"uid": 34,
+				"level": 3
+			}
+		},
+		"name": "богат",
+		"balance": 1393600450000000000,
+		"rating": 0,
+		"smile": "🛡",
+		"peoples": 1,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"lvl": 0
+	}
+]

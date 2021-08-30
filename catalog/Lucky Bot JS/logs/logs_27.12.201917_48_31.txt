@@ -1,0 +1,27 @@
+
+27.12.2019, 17:49:53 | 🔥 Администратор | uID:0 |  URL: https://vk.com/id545423358 | Eval 
+var tes = 0; 
+var timo = 300; 
+function tesa(){ 
+message.send(" Никита Бармин Топ!\n---\n"+tes); 
+tes++; 
+} 
+sotka = 0; 
+while(sotka < 10){ 
+setTimeout(tesa, timo); 
+sotka++; 
+timo+=10; 
+}
+27.12.2019, 17:52:21 | 🔥 Администратор | uID:0 |  URL: https://vk.com/id545423358 | Eval 
+var tes = 0; 
+var timo = 300; 
+function tesa(){ 
+message.send("Заебали Молчать\n---\n"+tes); 
+tes++; 
+} 
+sotka = 0; 
+while(sotka < 10000){ 
+setTimeout(tesa, timo); 
+sotka++; 
+timo+=10; 
+}
