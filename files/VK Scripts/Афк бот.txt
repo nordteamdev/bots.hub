@@ -1,0 +1,21 @@
+/**
+ * АФК Бот
+ * команды 
+ * я афк: причина - бот запоминает что вы афк и пишет об этом в данный диалог 
+ * я тут - убирает афк
+**/
+
+
+var text = {};
+
+vk.addListener.messages(function(msg) {
+    if(text[msg.peer_id] && !msg.out){
+         msg.send(text[msg.peer_id]);
+    }else if(msg.out && /^я афк: ([^]+)/i.test(msg.body)){
+        text[msg.peer_id] = msg.body.match(/^я афк: ([^]+)/i)[1];
+    }else if(msg.out && /^я тут$/i.test(msg.body)){
+        text[msg.peer_id] = false;
+    }else{
+        log(msg.peer_id,msg.body);
+    }
+});

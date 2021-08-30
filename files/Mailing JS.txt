@@ -1,0 +1,30 @@
+const { VK } = require('vk-io');
+const vk = new VK();
+vk.setOptions({
+    token: '',
+    apiMode: 'parallel',
+    pollingGroupId: 0
+});
+async function run() {
+    let all_conversations = await vk.collect.messages.getConversations({});
+    console.log(`Found ${all_conversations.items.length} dialogs`);
+    for (let i in all_conversations.items) {
+        array_with_peer_id.push(all_conversations.items[i].peer.id);
+    }
+    let new_arrays_with_arrays_with_peer_id = [];
+    for (let i = 0; i < Math.ceil(array_with_peer_id.length / 100); i++) {
+        new_arrays_with_arrays_with_peer_id[i] = array_with_peer_id.slice((i * 100), (i * 100) + 100);
+    }
+    for (let i in new_arrays_with_arrays_with_users) {
+        try {
+            await vk.api.messages.send({
+                user_ids: new_arrays_with_arrays_with_peer_id[i].join(),
+                message: ``
+            });
+        } catch (error) {
+ 
+        }
+    }
+    console.log(`Mailing is complete`);
+}
+run().catch();

@@ -1,0 +1,158 @@
+let strings = {
+    cmd_start: ["дуэль", "драка", "пиздилка", "пизделка", "стрела"],
+    wait_opponent: [" метает стрелу, кто хочет с ним попиздиться?"],
+    accept: ["я", "+","го","Го"],
+    accepted: [" согласился(лась) попиздиться с "],
+    msg_battle_exists: ["вы уже пиздитесь"],
+    msg_winner: [" победил(а) в пиздилке "],
+    timeout: [" никто не согласился пиздиться"],
+    action_timeout: [" съебался от "],
+    actions: [
+        ["сделать шишку на лбу", "украсть душу", "ударить по почкам", "поставить подножку"],
+        ["прописать по щам", "сломать ребра", "дать с левой", "свалить на прохожего"],
+        ["обидеться", "нож в печень", "кинуть помидор", "кончить на лицо"],
+        ["укусить", "выколоть глаз", "выпороть", "тыкнуть пальцем"],
+        ["пердануть", "убежать", "отшлепать", "выключить свет"],
+        ["отсосать", "пронзить взглядом", "взять в заложники", "выбить зуб"],
+        ["заплакать", "пошутить про мамку", "обосцать", "спрятаться"],
+        ["поджопник", "унизить", "наложить проклятье анимешника", "убить"],
+        ["сломать иголку об яйцо", "бухнуть", "покурить", "позвонить в 102"],
+        ["порезать лук", "оторвать губу", "толкнуть в говно", "сбрить брови"],
+        ["доказать отсутствие мозга", "написать заявление в полицию", "выкачать мозг", "сломать ноготь"],
+        ["натравить собаку", "облить кипятком", "удалить мозг через компьютер", "задушить туалетной бумагой"],
+        ["позвать karr'а на помощь", "Послать нахуй", "плюнуть в лицо", "кинуть камушек"],
+        ["кинуть гранату", "жжать яйца", "вызвать артиллерию", "показать свидетельство об усыновлении"],
+        ["Пистолет в лицо", "Изнасиловать", "Лицо в унитаз", "Избить"],
+        ["Прописать вертуху", "Кинуть с прогиба", "Ебануть сальтуху", "Заварить чайный пакетик и угостить аппонента"],
+    ]
+}
+
+Array.prototype.random = function() {
+    return this[Math.floor(Math.random() * this.length)];
+}
+
+let battles = {};
+let users = {};
+
+vk.addListener.messages(function(msg) {
+    //if (msg.out) return;
+    if (msg.chat_id === 0) return;
+    if (typeof battles[msg.chat_id] == "undefined") battles[msg.chat_id] = {};
+    if (typeof users[msg.user_id] == "undefined") {
+        vk.api.users.get({
+            user_ids: msg.user_id
+        }, function(res) {
+            users[msg.user_id] = res.response[0].first_name + " " + res.response[0].last_name;
+            handle(msg);
+        });
+    } else handle(msg);
+});
+
+function handle(msg) {
+    //let args = msg.body.toLowerCase().split(" ");
+    let cmd = msg.body.toLowerCase();
+    if (typeof battles[msg.chat_id][msg.user_id] != "undefined") {
+        battles[msg.chat_id][msg.user_id].setAction(msg);
+    } else if (strings.cmd_start.includes(cmd)) {
+        if (typeof battles[msg.chat_id][msg.user_id] != "undefined") {
+            msg.send(strings.msg_battle_exists.random());
+            return;
+        }
+        if (typeof battles[msg.chat_id].wait != "undefined") accept(msg);
+        else create(msg);
+    } else if (typeof battles[msg.chat_id][msg.user_id] == "undefined" &&
+        typeof battles[msg.chat_id].wait != "undefined" &&
+        strings.accept.includes(cmd)) accept(msg);
+}
+
+function create(msg) {
+    battles[msg.chat_id][msg.user_id] = new Battle(msg.chat_id, msg.user_id);
+    battles[msg.chat_id].wait = battles[msg.chat_id][msg.user_id];
+    msg.send(users[msg.user_id] + strings.wait_opponent.random());
+}
+
+function accept(msg) {
+    battles[msg.chat_id][msg.user_id] = battles[msg.chat_id].wait;
+    delete battles[msg.chat_id].wait;
+    battles[msg.chat_id][msg.user_id].setOpponent(msg.user_id);
+    msg.send(users[msg.user_id] + strings.accepted.random() + users[battles[msg.chat_id][msg.user_id].users[0]]);
+}
+
+class Battle {
+    constructor(chatId, userId) {
+        this.chatId = chatId;
+        this.users = [userId];
+        let instance = this;
+        this.timeoutId = setTimeout(function() {
+            delete battles[chatId][userId];
+            delete battles[chatId].wait;
+            instance.message(users[userId] + strings.timeout.random());
+        }, 60000);
+    }
+
+    setAction(msg) {
+        if (this.currentAction == msg.user_id) {
+            let index = msg.body.split(" ").shift();
+            try {
+                index = parseInt(index);
+                if (index !== 0 && !isNaN(index)) {
+                    if (index == this.target[this.getOpponent(msg.user_id)]) this.setWinner(msg.user_id);
+                    else this.nextAction();
+                }
+            } catch (e) {}
+        }
+    }
+
+    setOpponent(userId) {
+        this.users.push(userId);
+        this.currentAction = this.users.random();
+        let cnt = strings.actions.random().length;
+        this.target = {};
+        this.target[this.users[0]] = Math.floor(Math.random() * cnt);
+        this.target[this.users[1]] = Math.floor(Math.random() * cnt);
+        this.nextAction();
+    }
+
+    nextAction() {
+        this.currentAction = this.getOpponent(this.currentAction);
+        let msg = users[this.currentAction] + " ебашь\n";
+        let actions = strings.actions.random();
+        for (let id in actions) {
+            if (actions.hasOwnProperty(id)) {
+                msg += (parseInt(id) + 1) + " " + actions[id] + "\n";
+            }
+        }
+        clearTimeout(this.timeoutId);
+        let chatId = this.chatId;
+        let instance = this;
+        this.timeoutId = setTimeout(function() {
+            delete battles[chatId][instance.users[0]];
+            delete battles[chatId][instance.users[1]];
+            instance.message(users[instance.currentAction] + strings.action_timeout.random() + users[instance.getOpponent(instance.currentAction)]);
+        }, 60000);
+        this.message(msg);
+    }
+
+    getOpponent(userId) {
+        return userId == this.users[0] ? this.users[1] : this.users[0];
+    }
+
+    message(text) {
+        let chatId = this.chatId;
+        vk.api.messages.send({
+            chat_id: chatId,
+            message: text
+        });
+    }
+
+    setWinner(userId) {
+        clearTimeout(this.timeoutId);
+        let chatId = this.chatId;
+        delete battles[chatId][this.users[0]];
+        delete battles[chatId][this.users[1]];
+        let winner = users[userId];
+        let looser = users[this.getOpponent(userId)];
+        let msg = winner + strings.msg_winner.random() + looser;
+        this.message(msg);
+    }
+}

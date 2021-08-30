@@ -1,0 +1,42 @@
+vk.addListener.messages(function(msg) {
+    if(msg.body == "Иди нахуй")msg.send("Сосать, урод");
+    if(msg.body == "Мать ебал")msg.send("Перешел на мать - школьник");
+    if(msg.body == "Соси")msg.send("Fuck U");
+    if(msg.body == "Сука")msg.send("Твоя сестра");
+    if(msg.body == "Пизда")msg.send("Твоя");
+    if(msg.body == "Хуй")msg.send("Ты сосёшь");
+    if(msg.body == "Манда")msg.send("Ты болеешь спидом");
+    if(msg.body == "Ты мой мать ебал?")msg.send("Я твой рот ебал");
+    if(msg.body == "Ты сосёшь мне")msg.send("Я сосу твоей сестре, у неё сладкая залупа");
+    if(msg.body == "Ты любишь куни?")msg.send("Я тебе хуй в жопу засуну");
+    if(msg.body == "Пока")msg.send("Ага, удачи");
+    if(msg.body == "пока")msg.send("Ага, удачи");
+    if(msg.body == "Прощяй")msg.send("Ага, удачи");
+    if(msg.body == "прощяй")msg.send("Ага, удачи");
+    if(msg.body == "Ты гей?")msg.send("Я бот...");
+    if(msg.body == "ты гей?")msg.send("Я бот...");
+    if(msg.body == "Ты гей")msg.send("Я бот...");
+    if(msg.body == "ты гей")msg.send("Я бот...");
+    if(msg.body == "Привет")msg.send("Привет, что ты хочешь знать о моём боте?");
+    if(msg.body == "Всё")msg.send("Окей, пиши моему хозяину vk.com/zhenyaggwp или в дискорд M4r$shm3LOw#2297");
+    if(msg.body == "Кто твой хозяин?")msg.send("vk.com/zhenyaggwp или в дискорд M4r$shm3LOw#2297");
+    if(msg.body == "/help")msg.send("Данный бот пока в разработке. Но ты можешь просто с ним пообщаться.");
+    if(msg.body == "Как у тебя дела?")msg.send("Хорошо.");
+    if(msg.body == "Что делаешь?")msg.send("С тобой общаюсь.");
+    if(msg.body == "хакер")msg.send("THack3forU");
+    if(msg.body == "займи косарь до завтра")msg.send("У меня только сотка");
+    if(msg.body == "здохни")msg.send("Гуляй лесом");
+    if(msg.body == "Ты лох")msg.send("Хватит с зеркалом говорить, лучше со мной=)");
+    if(msg.body == "Ты лох!")msg.send("Хватит с зеркалом говорить, лучше со мной=)");
+    if(msg.body == "ты лох")msg.send("Хватит с зеркалом говорить, лучше со мной=)");
+    if(msg.body == "ты лох!")msg.send("Хватит с зеркалом говорить, лучше со мной=)");
+    if(msg.body == "Как дела?")msg.send("Всё номана");
+    if(msg.body == "Ты наркоман?")msg.send("Кабум и кашмар, мм пенёк, на яблоко похож. Наркоман? Не. Не думаю.");
+    if(msg.body == "Ты плохой")msg.send("Я так не думаю");
+    if(msg.body == "Ты наркоман")msg.send("Кабум и кашмар, мм пенёк, на яблоко похож. Наркоман? Не. Не думаю.");
+    if(msg.body == "Ебал")msg.send("Я твою мать ебал");
+    if(msg.body == "Пидор")msg.send("Твой парень");
+    if(msg.body == "Гей")msg.send("Твой Отец");
+    
+});
+

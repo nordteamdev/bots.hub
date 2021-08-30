@@ -1,0 +1,14 @@
+import requests
+
+parse = [i for i in range(19415)]
+b = 0
+
+link = 'https://vk.com/sticker/1'
+
+for i in parse:
+print(f'{link}-{i}-128')
+p = requests.get(f'{link}-{i}-128')
+out = open(f'C:/Users/User/Desktop/stickers/{b}.png', "wb")
+out.write(p.content)
+out.close()
+b += 1

@@ -1,0 +1,148 @@
+Интервал на восстановление энергии:
+
+setInterval(async () => {
+users.filter(x=> x.energ < 10).map(x=> {
+x.energ += 1;
+});
+}, 180000);
+
+Команды боссов:
+
+cmd.hear(/^(?:босс атака)$/i, async (message, bot) => {
+if(message.user.energ == 0) return bot(`энергия закончилась. 🙁`)
+	if(botinfo.boss <= 0) return bot(`босс мертв, следите за новостями в группе. 👊🏻`)
+	botinfo.boss -= message.user.sataka;
+	message.user.bossyr += message.user.sataka;
+	message.user.energ -= 1;
+	
+	return bot(`вы нанесли боссу ${utils.sp(message.user.sataka)} урона.
+❤ Жизней: ${utils.sp(botinfo.boss)}/${utils.sp(botinfo.boss_max)}
+🏋 Энергия: ${message.user.energ}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Босс атака`
+}, 
+"color": "positive" 
+}]
+] 
+}) 
+})
+});
+
+cmd.hear(/^(?:босс сила)$/i, async (message, bot) => {
+	if(message.user.balance < 100000000000) return bot(`вам нужно 100.000.000.000$ для этого.`)
+		
+	message.user.balance -= 100000000000;
+	message.user.sataka += 1;
+	
+	return bot(`сила Вашей атаки была повышена за 100.000.000.000$ 👊
+💰 Баланс: ${utils.sp(message.user.balance)}$`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Босс сила`
+}, 
+"color": "positive" 
+}]
+] 
+}) 
+})
+});
+
+cmd.hear(/^(?:босс топ)$/i, async (message, bot) => {
+	let top = [];
+
+	users.map(x=> {
+		top.push({ bossyr: x.bossyr, rating: x.rating, tag: x.tag, id: x.id, mention: x.mention});
+	});
+
+	top.sort((a, b) => {
+		return b.bossyr - a.bossyr;
+	});
+
+	let text = ``;
+	const find = () => {
+		let pos = 1000;
+
+		for (let i = 0; i < top.length; i++)
+		{
+			if(top[i].id === message.senderId) return pos = i;
+		}
+
+		return pos;
+	}
+
+	for (let i = 0; i < 10; i++)
+	{
+		if(!top[i]) return;
+		const user = top[i];
+
+		text += `${i === 9 ? `&#128287;` : `${i + 1}&#8419;`} @id${user.id} (${user.tag}) — нанёс ${utils.sp(user.bossyr)} урона
+		`;
+	}
+
+	await bot(`топ по общему урону:
+		${text}
+—————————————————
+${utils.gi(find() + 1)} ${message.user.tag} — нанёс ${utils.sp(message.user.bossyr)} урона`);
+
+});
+
+cmd.hear(/^(?:босс)$/i, async (message, bot) => {
+	
+	return bot(`босс "Коронавирус":
+	❤ Жизней: ${utils.sp(botinfo.boss)}/${utils.sp(botinfo.boss_max)}
+	🎯 Вы нанесли: ${utils.sp(message.user.bossyr)} урона.
+	👊 Сила вашей атаки: ${utils.sp(message.user.sataka)}
+	
+	🔝 Увеличить силу удара: «босс сила»
+💳 Стоимость: 100.000.000.000$
+
+👥 Топ игроков по урону: «босс топ»
+🔨 Ударить босса: «босс атака»`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Босс сила`
+}, 
+"color": "positive" 
+},
+{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Босс топ`
+}, 
+"color": "primary" 
+}],
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Босс атака`
+}, 
+"color": "negative" 
+}]
+] 
+}) 
+})
+});

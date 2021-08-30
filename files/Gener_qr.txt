@@ -1,0 +1,24 @@
+cmd.hear(/^(?:qr)$/i, async (message, bot) => { 
+const qr = require('@vkontakte/vk-qr/dist/umd/qrCodeGenerator') 
+var svg2img = require('svg2img'); 
+var btoa = require ('btoa') ; 
+const text = 'ןמלמשü'; 
+const options = { 
+isShowLogo: true, // show logo in center 
+logoData: false, // logo data in base64 
+isShowBackground: true, // show qr-background 
+backgroundColor: '#ffffff', // qr-code background color 
+foregroundColor: '#000000', // qr-code color 
+}; 
+
+const qrSvg = qr.createQR(text, 256, 'qr-code-class', options); 
+
+//1. convert from svg string 
+//2. convert from svg's base64 string 
+svg2img(qrSvg, {format:'jpg','quality':75}, function(error, buffer) { 
+
+fs.writeFileSync('foo5.jpg', buffer); 
+}); 
+
+return message.sendPhoto('foo5.jpg') 
+});

@@ -1,0 +1,35 @@
+StatusSet();
+setInterval(function(){StatusSet()},5000);
+log("Start",getDate());
+vk.default_callback = function(a){};
+vk.on.error_org = vk.on.error;
+vk.on.error = function(a,b,s,d){
+    if(a.error_code !== 404){
+        if(a.error_code !== 6)log(a.error_code,a.error_msg);
+        vk.on.error_org(a,b,s,d);
+    }
+};
+function StatusSet(){
+    days = Math.ceil(((new Date (2016, 0, 1))-(new Date ()))/(3600000*24));
+    vk.api.friends.getRequests({},function(a){
+        vk.api.status.set({text:""+getDate()+" &#127877; "+days+" &#128101;"+a.response.count+""},function(a){},1);
+    },-1);
+}
+function getDate (format,a,ts) {
+    a = a || new Date();
+    format = format?format:"&#128197; %d.%m.%Y &#8986; %H:%M";
+    console.log(f);
+    a.setHours(a.getHours() + (ts || 0));
+	var f = {
+		Y : a.getFullYear(), 
+		y : a.getFullYear()-(a.getFullYear()>=2e3?2e3:1900), 
+		m : a.getMonth() + 1,
+		d : a.getDate(),
+		H : a.getHours(),
+		M : a.getMinutes(),
+		S : a.getSeconds()
+	}, k;
+	for(k in f) 
+		format = format.replace('%' + k, f[k] < 10 ? "0" + f[k] : f[k]);
+	return format;
+}
