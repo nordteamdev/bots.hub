@@ -1,0 +1,191 @@
+{
+	"users": [
+		{
+			"id": 456,
+			"vk": 508391242,
+			"balance": 1531,
+			"admin": 0,
+			"vip": 0,
+			"ban": false,
+			"prefix": "Тёма",
+			"modules": {
+				"1": {
+					"price": 50,
+					"count": 0,
+					"profit": 1
+				},
+				"2": {
+					"price": 1400,
+					"count": 0,
+					"profit": 2
+				},
+				"3": {
+					"price": 2500,
+					"count": 0,
+					"profit": 3
+				},
+				"4": {
+					"price": 5000,
+					"count": 0,
+					"profit": 4
+				},
+				"5": {
+					"price": 10250,
+					"count": 0,
+					"profit": 6
+				},
+				"6": {
+					"price": 15000,
+					"count": 0,
+					"profit": 8
+				},
+				"7": {
+					"price": 40000,
+					"count": 0,
+					"profit": 10
+				}
+			}
+		},
+		{
+			"id": 457,
+			"vk": 473361059,
+			"balance": 30004,
+			"admin": 0,
+			"vip": 0,
+			"ban": false,
+			"prefix": "Даниил",
+			"modules": {
+				"1": {
+					"price": 50,
+					"count": 0,
+					"profit": 1
+				},
+				"2": {
+					"price": 1400,
+					"count": 0,
+					"profit": 2
+				},
+				"3": {
+					"price": 3750,
+					"count": 1,
+					"profit": 3
+				},
+				"4": {
+					"price": 5000,
+					"count": 0,
+					"profit": 4
+				},
+				"5": {
+					"price": 10250,
+					"count": 0,
+					"profit": 6
+				},
+				"6": {
+					"price": 15000,
+					"count": 0,
+					"profit": 8
+				},
+				"7": {
+					"price": 40000,
+					"count": 0,
+					"profit": 10
+				}
+			}
+		},
+		{
+			"id": 458,
+			"vk": 394618999,
+			"balance": 0,
+			"admin": 0,
+			"vip": 0,
+			"ban": false,
+			"prefix": "Михаил",
+			"modules": {
+				"1": {
+					"price": 50,
+					"count": 0,
+					"profit": 1
+				},
+				"2": {
+					"price": 1400,
+					"count": 0,
+					"profit": 2
+				},
+				"3": {
+					"price": 2500,
+					"count": 0,
+					"profit": 3
+				},
+				"4": {
+					"price": 5000,
+					"count": 0,
+					"profit": 4
+				},
+				"5": {
+					"price": 10250,
+					"count": 0,
+					"profit": 6
+				},
+				"6": {
+					"price": 15000,
+					"count": 0,
+					"profit": 8
+				},
+				"7": {
+					"price": 40000,
+					"count": 0,
+					"profit": 10
+				}
+			}
+		},
+		{
+			"id": 460,
+			"vk": 226754952,
+			"balance": 3,
+			"admin": 0,
+			"vip": 0,
+			"ban": false,
+			"prefix": "Тимур",
+			"modules": {
+				"1": {
+					"price": 50,
+					"count": 0,
+					"profit": 1
+				},
+				"2": {
+					"price": 1400,
+					"count": 0,
+					"profit": 2
+				},
+				"3": {
+					"price": 2500,
+					"count": 0,
+					"profit": 3
+				},
+				"4": {
+					"price": 5000,
+					"count": 0,
+					"profit": 4
+				},
+				"5": {
+					"price": 10250,
+					"count": 0,
+					"profit": 6
+				},
+				"6": {
+					"price": 15000,
+					"count": 0,
+					"profit": 8
+				},
+				"7": {
+					"price": 40000,
+					"count": 0,
+					"profit": 10
+				}
+			}
+		}
+	],
+	"number": 460,
+	"donat": {},
+	"pay": []
+}
