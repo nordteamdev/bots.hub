@@ -1,0 +1,10806 @@
+[
+	{
+		"id": 336041508,
+		"uid": 0,
+		"balance": 6.66666666666659e+27,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 3,
+		"regDate": "31.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Алексей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 8
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 21,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 537111096,
+		"uid": 1,
+		"balance": 300000000003,
+		"bank": 1000000,
+		"btc": 2004000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019 15:36",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"poxod": true,
+			"poxod2": true,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "сделай такой",
+		"work": 0,
+		"business": [],
+		"notifications": false,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"materia": 0,
+		"zelya": 4,
+		"status": 3,
+		"case": 2,
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 538637319,
+		"uid": 2,
+		"balance": 100000000002,
+		"bank": 0,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "💾 Администратор",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0,
+			"farm_btc": 45824800
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 3,
+			"requests": []
+		},
+		"status": 3,
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 523361989,
+		"uid": 4,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Владимир",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 568633461,
+		"uid": 5,
+		"balance": 5001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Артем",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 348323518,
+		"uid": 6,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Дамир",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 368829130,
+		"uid": 7,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Максим",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 381321047,
+		"uid": 8,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Данил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 300867669,
+		"uid": 9,
+		"balance": 9.99999e+59,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Кирилл",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 551673706,
+		"uid": 10,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "No",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 556256622,
+		"uid": 11,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Егор",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 409318715,
+		"uid": 12,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Ваня",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 540661472,
+		"uid": 13,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Макс",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 568574236,
+		"uid": 14,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "マイケル",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 455308374,
+		"uid": 15,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Иван",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 312574146,
+		"uid": 16,
+		"balance": 442500185556,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 3450200000000,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 5,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Иван",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 8
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 562170211,
+		"uid": 17,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Яна",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 350867055,
+		"uid": 18,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 2,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Данил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 525999873,
+		"uid": 19,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Джон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 491288231,
+		"uid": 20,
+		"balance": 95500162731,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 5,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 27601000000,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 1,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Stepan",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 9500
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 484737065,
+		"uid": 21,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Тимур",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 439350899,
+		"uid": 22,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Егор",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"materia": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 476389788,
+		"uid": 23,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Олег",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 516697842,
+		"uid": 24,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Лера",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 485751242,
+		"uid": 25,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Игорь",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 535125966,
+		"uid": 26,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Ревенко",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 569812945,
+		"uid": 27,
+		"balance": 200100000005000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Тимофей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 418579953,
+		"uid": 28,
+		"balance": 200005000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Илья",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 464893049,
+		"uid": 29,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "22.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Тимофей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 508971955,
+		"uid": 29,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "23.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Макс",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 499185708,
+		"uid": 30,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "23.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Макс",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 394829364,
+		"uid": 31,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 5,
+		"regDate": "23.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Влад",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 466545547,
+		"uid": 32,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "23.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Даниил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 567572982,
+		"uid": 33,
+		"balance": 302012094,
+		"bank": 0,
+		"btc": 999,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"cases": {
+			"surprise": 0,
+			"platinium": 0
+		},
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "23.10.2019.1574534155495",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"poxod2": true,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Киря",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 323044450,
+		"uid": 34,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "24.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Даня",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 563613451,
+		"uid": 35,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"surprise": 0,
+		"platinium": 100000,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 3,
+		"regDate": "27.10.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Михаил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 220931482,
+		"uid": 36,
+		"balance": 639858482605656200000,
+		"bank": 0,
+		"btc": 1000999,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Илья",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 414165364,
+		"uid": 37,
+		"balance": 166000000000000,
+		"bank": 50000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 2000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 6954,
+		"biz": 9600000000,
+		"surprise": 0,
+		"platinium": 99884,
+		"zhelezo": 23,
+		"materia": 0,
+		"zoloto": 71,
+		"almaz": 0,
+		"bizlvl": 1,
+		"nicklimit": 40,
+		"rating": 151132,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "итачи",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 1400000
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 434330118,
+		"uid": 38,
+		"balance": null,
+		"bank": 0,
+		"btc": 9.9999999999e+52,
+		"farm_btc": 0,
+		"farms": 99999,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 709,
+		"biz": 150000000000,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 999001999,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 1815,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "🐫PEDIGREE🐫",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 28,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 16,
+			"apartment": 8
+		},
+		"misc": {
+			"phone": 14,
+			"farm": 3,
+			"pet": 8,
+			"farm_btc": 59999400
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0
+	},
+	{
+		"id": 572090502,
+		"uid": 39,
+		"balance": 99999997050000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 2,
+		"platinium": 2,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 2,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Кирилл",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 509493639,
+		"uid": 40,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Павел",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 467236236,
+		"uid": 41,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Артем",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 179365663,
+		"uid": 42,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Андрей",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 543706169,
+		"uid": 43,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 575062134,
+		"uid": 44,
+		"balance": 0,
+		"bank": 985000045100000000000,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 1403,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 4999990,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 5,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 576070765,
+		"uid": 45,
+		"balance": 9.99999999999999e+74,
+		"bank": 1.0000000004534597e+252,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 9.99999999999999e+65,
+		"regDate": "2.0.2020",
+		"mention": false,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "👻",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0,
+		"poxod": 0,
+		"petpoxod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0,
+		"zelya": 1
+	},
+	{
+		"id": 575062134,
+		"uid": 46,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 575062134,
+		"uid": 47,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 575062134,
+		"uid": 48,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 527953717,
+		"uid": 49,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 556227498,
+		"uid": 50,
+		"balance": 1.3862727630990654e+26,
+		"bank": 0,
+		"btc": 96378262826229,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 37263727373638740000,
+		"biz": 0,
+		"surprise": 14,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 917638262727,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 96372863826372620,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "миллионер номер 2",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 451320940,
+		"uid": 51,
+		"balance": 8.163727826434901e+92,
+		"bank": 4.8982362e+82,
+		"btc": 6.626544186326746e+39,
+		"farm_btc": 0,
+		"farms": 100000000000000000000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 1.3962636829274931e+26,
+		"biz": 560,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 1.7278739173828364e+56,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 1,
+		"nicklimit": 40,
+		"rating": 4.319684793457092e+57,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "😈Я Админ а ты хуйня розовая",
+		"work": 0,
+		"business": 12,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 1,
+			"yacht": 1,
+			"airplane": 1,
+			"helicopter": 1
+		},
+		"realty": {
+			"home": 1,
+			"apartment": 1
+		},
+		"misc": {
+			"phone": 14,
+			"farm": 3,
+			"pet": 8,
+			"computer": 1,
+			"farm_btc": 5.999999999999999e+22
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 2,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"zelya": 1
+	},
+	{
+		"id": 251045462,
+		"uid": 52,
+		"balance": 10000000075000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 2.5727553253379182e+200,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "😈",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"zelya": 1
+	},
+	{
+		"id": 163082415,
+		"uid": 53,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 412916016,
+		"uid": 54,
+		"balance": 1.1879999414999997e+21,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 240002111298697800000,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "%%%ИГРОК₽$&",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0,
+			"farm_btc": 99999999999999900
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0,
+		"zelya": 1,
+		"poxod": 0,
+		"petpoxod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 521764632,
+		"uid": 55,
+		"balance": 1680800000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 792,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 129058,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Илья",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 226269364,
+		"uid": 56,
+		"balance": 50000028568,
+		"bank": 0,
+		"btc": 999999,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 2,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 12564,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Алекс",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 556790991,
+		"uid": 57,
+		"balance": 10050000138888,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 264,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Willian",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 306108135,
+		"uid": 58,
+		"balance": 200000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Стас",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 508288905,
+		"uid": 59,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Екатерина",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 331245628,
+		"uid": 60,
+		"balance": 10554000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 597,
+		"biz": 0,
+		"surprise": 4,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 331245628,
+		"uid": 61,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 331245628,
+		"uid": 62,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 331245628,
+		"uid": 63,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 449992080,
+		"uid": 64,
+		"balance": 5.619374999999999e+80,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 9.999e+27,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "💙 Чувства ♥",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 1,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 331245628,
+		"uid": 65,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 449992080,
+		"uid": 66,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Иван",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 449992080,
+		"uid": 67,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Иван",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 182766533,
+		"uid": 68,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "💀СМЕРТОНОСНЫЙ💀",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 16,
+			"apartment": 8
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0,
+			"farm_btc": null
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0,
+		"poxod": 0,
+		"petpoxod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 141868594,
+		"uid": 69,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Марсель",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 549835546,
+		"uid": 70,
+		"balance": null,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 2000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 1109,
+		"biz": 8400000000,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 11,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Саша",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 1200000
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0
+	},
+	{
+		"id": 295727353,
+		"uid": 71,
+		"balance": 2660000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 147,
+		"biz": 0,
+		"surprise": 10,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 152000,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Захар",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 483023532,
+		"uid": 72,
+		"balance": 1,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 894,
+		"biz": 9600000000,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 6,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Даниил",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0
+	},
+	{
+		"id": 442317262,
+		"uid": 73,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Даня",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 517353237,
+		"uid": 74,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 4827,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 99936,
+		"zhelezo": 441,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "🇰🇿ҚАЗАҚ🇰🇿",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 491928289,
+		"uid": 75,
+		"balance": 6.407199997600003e+145,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 9.999999e+87,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "👑Boss👑",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 567347911,
+		"uid": 76,
+		"balance": 9.99e+26,
+		"bank": 375686528802750,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 2000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 797,
+		"biz": 640,
+		"surprise": 14,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 36,
+		"nicklimit": 40,
+		"rating": 4,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Danil",
+		"work": 0,
+		"business": 12,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 1400000
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 551797815,
+		"uid": 77,
+		"balance": 23227750000939987000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 2217,
+		"biz": 0,
+		"surprise": 12,
+		"platinium": 20,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 6.0600000099999725e+35,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Терорист",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"zelya": 1
+	},
+	{
+		"id": 450733429,
+		"uid": 79,
+		"balance": 4003568111943,
+		"bank": 10000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 3000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 704,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 4,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Виталий",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 8
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 393092344,
+		"uid": 80,
+		"balance": 7278000000,
+		"bank": 1000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 866,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 38491,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Ǻρélṧîηќά",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"zelya": 2
+	},
+	{
+		"id": 216434141,
+		"uid": 81,
+		"balance": 7490000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 506,
+		"biz": 0,
+		"surprise": 3,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 363,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Принцесса💞💞💕💕💞",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 547230265,
+		"uid": 82,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 597,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Евгений",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"zelya": 1
+	},
+	{
+		"id": 456639931,
+		"uid": 83,
+		"balance": 387500125000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 750,
+		"biz": 0,
+		"surprise": 14,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 12564,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Руслан",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 546999538,
+		"uid": 84,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Виталик",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 501398971,
+		"uid": 85,
+		"balance": 504957000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 2000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 147,
+		"biz": 0,
+		"surprise": 8,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 363,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 1200000
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 356085528,
+		"uid": 86,
+		"balance": 1.2499999999926065e+40,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 190,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "👊🏻✌🏻🤜🏻🤛🏻",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0
+	},
+	{
+		"id": 26901769,
+		"uid": 87,
+		"balance": 50000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Дмитрий",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 284566550,
+		"uid": 88,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 504873482,
+		"uid": 89,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Егор",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 485307074,
+		"uid": 90,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Богдан",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 533327432,
+		"uid": 91,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Данил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 560696487,
+		"uid": 92,
+		"balance": 100000000002,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Павел",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 2,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 485433980,
+		"uid": 93,
+		"balance": 1.5e+26,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 7571,
+		"biz": 300000000000,
+		"surprise": 12,
+		"platinium": 1234468,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 1,
+		"nicklimit": 40,
+		"rating": 125640,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "бодябилдер",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": null,
+		"zelya": 1
+	},
+	{
+		"id": 460125897,
+		"uid": 94,
+		"balance": 9.580420201499724e+37,
+		"bank": 0,
+		"btc": 9.919943715555485e+28,
+		"farm_btc": 0,
+		"farms": 1,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 200000,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 2.797202397600666e+28,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Злодей😈",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": null
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 394699172,
+		"uid": 100,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 476736702,
+		"uid": 95,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "🦹‍♀️",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0,
+		"zelya": 1
+	},
+	{
+		"id": 571822836,
+		"uid": 96,
+		"balance": 100000000002,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Иван",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 530295957,
+		"uid": 97,
+		"balance": 1100000000001,
+		"bank": 0,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "хуй",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 479125731,
+		"uid": 98,
+		"balance": 1,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Нар",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 467533687,
+		"uid": 99,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Роман",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 467533687,
+		"uid": 100,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Роман",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 449686972,
+		"uid": 101,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Вадим",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 509663867,
+		"uid": 102,
+		"balance": 100034056441,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"hack": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "Дима",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 509663867,
+		"uid": 103,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Дима",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 318950809,
+		"uid": 104,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 522,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 1089,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Артём",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 514796072,
+		"uid": 105,
+		"balance": 1,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 1001,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 438,
+		"biz": 8400000000,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 26,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Никита",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 28,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 16,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 8,
+			"farm_btc": 600600
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 318950809,
+		"uid": 106,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Артём",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": true,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 571259308,
+		"uid": 107,
+		"balance": 1.0006275028471028e+42,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 5.999580998102006e+34,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "🙈",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 398693704,
+		"uid": 108,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Дамир",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 317698721,
+		"uid": 109,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Борис",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 500160425,
+		"uid": 110,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Мадара Учиха",
+		"work": 0,
+		"business": [],
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"poxod": 0,
+		"petpoxod": 0,
+		"novogod": 0,
+		"adm": 0,
+		"report": true,
+		"trade": true,
+		"firstmsg": true,
+		"home": 0,
+		"apartment": 0
+	},
+	{
+		"id": 342996942,
+		"uid": 111,
+		"balance": 129496000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Владислав",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 526220565,
+		"uid": 112,
+		"balance": 1406250001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 7200000000,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 1,
+		"nicklimit": 40,
+		"rating": 3,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Никита",
+		"work": 0,
+		"business": 10,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 7770113,
+		"uid": 113,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Jay",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 535411449,
+		"uid": 114,
+		"balance": 2.49999975e+66,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 272,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 100000000000000000000,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 1.0000000000000028e+229,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Адам",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 372838250,
+		"uid": 115,
+		"balance": 50000050002,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Алан",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 531651453,
+		"uid": 116,
+		"balance": 88963520001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 110,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 53,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Никита",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 22,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 10,
+			"apartment": 8
+		},
+		"misc": {
+			"phone": 9,
+			"farm": 0,
+			"pet": 5,
+			"computer": 5
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 1,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 416725417,
+		"uid": 117,
+		"balance": null,
+		"bank": 10000000,
+		"btc": 1000000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 402,
+		"biz": 0,
+		"surprise": 14,
+		"platinium": 1,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Egor",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": 0
+	},
+	{
+		"id": 301015165,
+		"uid": 118,
+		"balance": 100000000001,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Даниил",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 512276953,
+		"uid": 119,
+		"balance": 1,
+		"bank": 5000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Дмитрий",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 567054318,
+		"uid": 120,
+		"balance": 100000000002,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Кирилл",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 268732864,
+		"uid": 121,
+		"balance": 100000007144,
+		"bank": 0,
+		"btc": 999999,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 2,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Олег",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 141850082,
+		"uid": 122,
+		"balance": 7.5e+214,
+		"bank": 50000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 1e+206,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "❤❤❤",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 500336871,
+		"uid": 123,
+		"balance": 2000000150000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Денис",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 424473269,
+		"uid": 124,
+		"balance": 107147000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 3,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Марат",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 502466923,
+		"uid": 125,
+		"balance": -2.49251e+23,
+		"bank": 100000000000000000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 5000000000001,
+		"platinium": 50000001,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Сергей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 434343764,
+		"uid": 126,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Lenya",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 511831910,
+		"uid": 127,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Артемий",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 491103752,
+		"uid": 128,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 5000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 425,
+		"biz": 600000000000,
+		"surprise": 15,
+		"platinium": 1,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 5,
+		"nicklimit": 40,
+		"rating": 12564,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"petpoxod": false,
+			"bonus": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Wer",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 28,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 16,
+			"apartment": 8
+		},
+		"misc": {
+			"phone": 14,
+			"farm": 3,
+			"pet": 8,
+			"computer": 5,
+			"farm_btc": null
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 5,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 257527231,
+		"uid": 129,
+		"balance": 100006991015,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Андрей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 345414425,
+		"uid": 130,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Дмитрий",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 488642466,
+		"uid": 131,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Коля",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 562583417,
+		"uid": 132,
+		"balance": 9.339974494779285e+69,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 300000000000,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 6,
+		"nicklimit": 40,
+		"rating": 4.40011003480534e+60,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "❤️😈dodge challenher😈❤️2/0",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 415241932,
+		"uid": 133,
+		"balance": 9.989999995951039e+23,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 1728,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 132,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 25128,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"hack": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false
+		},
+		"tag": "💵AXYEHЫЙ EБAHATNK💵",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 307311752,
+		"uid": 134,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Сергей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 485764124,
+		"uid": 135,
+		"balance": 200000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Арсений",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 502594528,
+		"uid": 136,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Анастасия",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 515819895,
+		"uid": 137,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 1000000,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 844,
+		"biz": 0,
+		"surprise": 0,
+		"platinium": 0,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 729,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Владимир",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": null
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 569509448,
+		"uid": 138,
+		"balance": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 3,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Твинк",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 322243724,
+		"uid": 139,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Ксения",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 561550518,
+		"uid": 140,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "2.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Артур",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 240469276,
+		"uid": 141,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 400,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "3.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Максим",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"novogod": null
+	},
+	{
+		"id": 319071889,
+		"uid": 142,
+		"balance": 100000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "3.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Володя",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 442772150,
+		"uid": 143,
+		"balance": 110000000000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"energy": 10,
+		"opit": 100,
+		"biz": 0,
+		"surprise": 15,
+		"platinium": 5,
+		"zhelezo": 0,
+		"materia": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 40,
+		"rating": 0,
+		"regDate": "3.0.2020",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"kopat": false,
+			"bonus": false,
+			"petpoxod": false,
+			"farms": false,
+			"farm_btc": false,
+			"hack": false
+		},
+		"tag": "Ваня",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"status": 0,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"report": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	}
+]

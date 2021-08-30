@@ -1,0 +1,5 @@
+<?php
+$reportConference = 2000000059;
+$admin = 496175718;
+$dopToken = '23c7b679cdc0565756fd75959c6860981ace37ea9e4da8e46c342745d772fa997af28a546081fac64a690';
+?>

@@ -1,0 +1,464 @@
+[
+	{
+		"id": 483677565,
+		"uid": 0,
+		"balance": 1000005000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "5.11.2018",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Илья",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 469284392,
+		"uid": 1,
+		"balance": 109947948529756000,
+		"bank": 500000000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 202000,
+		"regDate": "9.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Александр",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 13,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 15,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 10,
+			"farm": 3
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 433473147,
+		"uid": 2,
+		"balance": null,
+		"bank": 1000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 7357755443456,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Антон",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 15,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 286259030,
+		"uid": 3,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Оксана",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 286259030,
+		"uid": 4,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Оксана",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 231276424,
+		"uid": 5,
+		"balance": 1250,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Егор",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 206822627,
+		"uid": 6,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Сергей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 349270583,
+		"uid": 7,
+		"balance": 1e+188,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Сергей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 369647226,
+		"uid": 8,
+		"balance": 10000000000003604000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": true,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Дима",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 417362847,
+		"uid": 9,
+		"balance": 9999996446679753000,
+		"bank": 0,
+		"btc": 1000,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Евгения",
+		"work": 0,
+		"business": 11,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": 1,
+		"transport": {
+			"car": 26,
+			"yacht": 13,
+			"airplane": 17,
+			"helicopter": 13
+		},
+		"realty": {
+			"home": 15,
+			"apartment": 8
+		},
+		"misc": {
+			"phone": 10,
+			"farm": 3
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	},
+	{
+		"id": 487122395,
+		"uid": 10,
+		"balance": 5000,
+		"bank": 5000000,
+		"btc": 0,
+		"farm_btc": 0,
+		"biz": 0,
+		"rating": 0,
+		"regDate": "15.1.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false
+		},
+		"tag": "Дмитрий",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	}
+]

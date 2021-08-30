@@ -1,0 +1,59 @@
+[
+	{
+		"id": 442156802,
+		"uid": 0,
+		"rub": 10000,
+		"balance": 10000000,
+		"rubins": 0,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"prefix": 1,
+		"biz": 0,
+		"right": 4,
+		"givemyrub": false,
+		"warns": 0,
+		"warn": 0,
+		"warn_p": "Нет",
+		"rating": 0,
+		"regDate": "02.01.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"Poxod": false,
+			"shaxta": false
+		},
+		"tag": "📖",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"pets": {
+			"pet": 0,
+			"level": 0
+		},
+		"giverub": false
+	},
+	

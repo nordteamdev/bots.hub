@@ -1,0 +1,70 @@
+[
+	{
+		"id": 336041508,
+		"uid": 0,
+		"balance": 6.66666666666659e+27,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 3,
+		"regDate": "31.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": true,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Алексей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 8
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 21,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		}
+	}
+]
