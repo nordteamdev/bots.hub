@@ -1,0 +1,2 @@
+node vk.js
+pause

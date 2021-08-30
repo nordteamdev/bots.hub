@@ -1,0 +1,22 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "VK-Promise": "^0.2.91",
+    "chance": {
+      "integrity": "sha512-W99uMuboG5CT1iToDmizEH6yQYqICzZnrSRbbXPuJErzFWLPaoiEDvwnKbESjDo/8st1n3pyh70VBMmfqPmf+Q==",
+      "resolved": "https://registry.npmjs.org/chance/-/chance-1.0.12.tgz",
+      "version": "1.0.12"
+    },
+    "colors": "^1.1.2",
+    "date-and-time": "^0.6.2",
+    "fs": "0.0.1-security",
+    "mathjs": "^4.0.0",
+    "mysql": "^2.15.0",
+    "rucaptcha": "^1.0.5",
+    "rucaptcha-client": "^1.0.4",
+    "steam-web": "^0.7.0",
+    "tcp-ping": "^0.1.1",
+    "vk-io": "^3.2.0"
+  }
+}

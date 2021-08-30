@@ -1,0 +1,36 @@
+﻿{
+	"banlist": [],
+	"promocodes": {},
+	"clans": [],
+	"accs":  [
+		{
+			"id": 347241116,
+			"balance": 11111,
+			"nickname": "DEV",
+			"level": 3,
+			"exp": 125,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "Только что",
+			"rights": 7,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 0
+		}
+	],
+	"bank": []
+}

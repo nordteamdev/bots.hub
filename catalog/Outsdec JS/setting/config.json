@@ -1,0 +1,17 @@
+{
+ 
+	"group_url": "[outsdecbot|OutsdecBot]", 
+	"bot": "",
+	"ver": "v2.0",
+	"group": 1,
+	"coder": 339414555,
+	"ban_topic": "",
+	"antiflood_time": 30000,
+	"antiflood_limit": 15,
+	"bonus_balance": false,
+	"bonus_exs": false,
+	"promo": {
+		"activ": 30,
+		"balance": 200000
+	}
+}

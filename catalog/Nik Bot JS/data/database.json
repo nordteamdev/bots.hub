@@ -1,0 +1,2780 @@
+{
+	"banlist": [],
+	"promocodes": {},
+	"clans": [],
+	"accs":  [
+		{
+			"id": 502212198,
+			"balance": 11111,
+			"nickname": "DEV",
+			"level": 1,
+			"exp": 125,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "Только что",
+			"rights": 5,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 0
+		},
+		{
+			"id": 277773716,
+			"balance": 10000,
+			"nickname": "Olęg",
+			"level": 1,
+			"exp": 45,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "01.08.2018 23:07:03",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 1
+		},
+		{
+			"id": 264837781,
+			"balance": 10000,
+			"nickname": "Vlad",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 02:14:37",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 2
+		},
+		{
+			"id": 373373817,
+			"balance": 202548,
+			"nickname": "Вова",
+			"level": 1,
+			"exp": 85,
+			"bets": 0,
+			"winDuel": 1,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 02:19:49",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 3
+		},
+		{
+			"id": 499551176,
+			"balance": 10000,
+			"nickname": "Виталий",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 02:47:32",
+			"rights": 2,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 4
+		},
+		{
+			"id": 343185211,
+			"balance": 808,
+			"nickname": "Test",
+			"level": 1,
+			"exp": 288,
+			"bets": 101010102131955150000,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 03:12:51",
+			"rights": 35,
+			"clan_uid": -1,
+			"next_exp": 9,
+			"next_level": 900,
+			"uid": 5
+		},
+		{
+			"id": 498154881,
+			"balance": 296,
+			"nickname": "Ярослав",
+			"level": 1,
+			"exp": 65,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 04:03:14",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 6
+		},
+		{
+			"id": 461829691,
+			"balance": 688,
+			"nickname": "Артём",
+			"level": 1,
+			"exp": 30,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 05:20:04",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 7
+		},
+		{
+			"balance": 10000,
+			"nickname": "Пользователь",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 05:27:08",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 8
+		},
+		{
+			"id": 489530197,
+			"balance": 16000,
+			"nickname": "Армен",
+			"level": 1,
+			"exp": 85,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:47:40",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 9
+		},
+		{
+			"id": -158861435,
+			"balance": 10000,
+			"nickname": "Пользователь",
+			"level": 1,
+			"exp": 265,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:47:49",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 10
+		},
+		{
+			"id": 169060430,
+			"balance": 10000,
+			"nickname": "Лёха",
+			"level": 1,
+			"exp": 30,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:47:51",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 11
+		},
+		{
+			"id": 183170228,
+			"balance": 10000,
+			"nickname": "Данила",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:47:59",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 12
+		},
+		{
+			"id": 331538275,
+			"balance": 10000,
+			"nickname": "Виктория",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:48:00",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 13
+		},
+		{
+			"id": 187734017,
+			"balance": 1555,
+			"nickname": "Никита",
+			"level": 1,
+			"exp": 35,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:48:52",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 14
+		},
+		{
+			"id": 344821206,
+			"balance": 10000,
+			"nickname": "Соня",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:48:56",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 15
+		},
+		{
+			"id": 341050731,
+			"balance": 10000,
+			"nickname": "Костя",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:48:56",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 16
+		},
+		{
+			"id": 420437405,
+			"balance": 10000,
+			"nickname": "Владислав",
+			"level": 1,
+			"exp": 15,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:49:56",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 17
+		},
+		{
+			"id": 362800732,
+			"balance": 10000,
+			"nickname": "Всеволод",
+			"level": 1,
+			"exp": 35,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:50:30",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 18
+		},
+		{
+			"id": 233928808,
+			"balance": 10001,
+			"nickname": "Даниил",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:50:32",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 19
+		},
+		{
+			"id": 354049062,
+			"balance": 10000,
+			"nickname": "Тимофей",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:51:05",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 20
+		},
+		{
+			"id": 318398927,
+			"balance": 10000,
+			"nickname": "Артем",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:51:21",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 21
+		},
+		{
+			"id": 357808946,
+			"balance": 10000,
+			"nickname": "Ранис",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:52:22",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 22
+		},
+		{
+			"id": 144955868,
+			"balance": 10000,
+			"nickname": "Валерий",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:54:21",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 23
+		},
+		{
+			"id": 484027160,
+			"balance": 10000,
+			"nickname": "Карилл",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:54:39",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 24
+		},
+		{
+			"id": 245106148,
+			"balance": 10000,
+			"nickname": "Никита",
+			"level": 2,
+			"exp": 350,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:56:50",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 7,
+			"next_level": 700,
+			"uid": 25
+		},
+		{
+			"id": 226526307,
+			"balance": 10000,
+			"nickname": "Вова",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:57:36",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 26
+		},
+		{
+			"id": 312606871,
+			"balance": 10000,
+			"nickname": "Дарья",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 06:59:25",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 27
+		},
+		{
+			"id": 448854224,
+			"balance": 10000,
+			"nickname": "Егор",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:00:14",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 28
+		},
+		{
+			"id": 368922300,
+			"balance": 10000,
+			"nickname": "Сеня",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:01:43",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 29
+		},
+		{
+			"id": 326998943,
+			"balance": 10000,
+			"nickname": "Никита",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:02:14",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 30
+		},
+		{
+			"id": 333765246,
+			"balance": 10000,
+			"nickname": "Матвей",
+			"level": 1,
+			"exp": 30,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:02:19",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 31
+		},
+		{
+			"id": 282110479,
+			"balance": 10000,
+			"nickname": "Эмиль",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:02:46",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 32
+		},
+		{
+			"id": 276063192,
+			"balance": 10000,
+			"nickname": "Руслан",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:05:36",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 33
+		},
+		{
+			"id": 186406731,
+			"balance": 10000,
+			"nickname": "Никита",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:05:55",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 34
+		},
+		{
+			"id": 205948497,
+			"balance": 10000,
+			"nickname": "Полина",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:06:00",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 35
+		},
+		{
+			"id": 428289973,
+			"balance": 10000,
+			"nickname": "Максим",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:06:03",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 36
+		},
+		{
+			"id": 494775949,
+			"balance": 10000,
+			"nickname": "Maxim",
+			"level": 1,
+			"exp": 20,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:07:09",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 37
+		},
+		{
+			"id": 294755903,
+			"balance": 10000,
+			"nickname": "Максим",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:08:43",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 38
+		},
+		{
+			"id": 180643604,
+			"balance": 10000,
+			"nickname": "Кирилл",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:10:03",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 39
+		},
+		{
+			"id": 223913242,
+			"balance": 10000,
+			"nickname": "Степан",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:10:28",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 40
+		},
+		{
+			"id": 482216934,
+			"balance": 10000,
+			"nickname": "Кирилл",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:16:35",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 41
+		},
+		{
+			"id": 362039218,
+			"balance": 10000,
+			"nickname": "Маргарита",
+			"level": 1,
+			"exp": 15,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:19:19",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 42
+		},
+		{
+			"id": 391848972,
+			"balance": 10000,
+			"nickname": "Deniz",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:19:38",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 43
+		},
+		{
+			"id": 131864558,
+			"balance": 10000,
+			"nickname": "Зуфар",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:20:52",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 44
+		},
+		{
+			"id": 226396165,
+			"balance": 10000,
+			"nickname": "Наташа",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:22:02",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 45
+		},
+		{
+			"id": 379046956,
+			"balance": 10000,
+			"nickname": "Алина",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:23:02",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 46
+		},
+		{
+			"id": 365593067,
+			"balance": 10000,
+			"nickname": "Василиса",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:23:51",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 47
+		},
+		{
+			"id": 438159431,
+			"balance": 10000,
+			"nickname": "Никита",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:24:07",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 48
+		},
+		{
+			"id": 395070810,
+			"balance": 10000,
+			"nickname": "Илья",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:24:08",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 49
+		},
+		{
+			"id": 399660502,
+			"balance": 10000,
+			"nickname": "Вероника",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:27:44",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 50
+		},
+		{
+			"id": 226618271,
+			"balance": 10000,
+			"nickname": "Женя",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:28:20",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 51
+		},
+		{
+			"id": 367406131,
+			"balance": 10000,
+			"nickname": "Виталя",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:29:18",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 52
+		},
+		{
+			"id": 458686456,
+			"balance": 10000,
+			"nickname": "Вадим",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:29:29",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 53
+		},
+		{
+			"id": 377091557,
+			"balance": 10000,
+			"nickname": "Стас",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:29:45",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 54
+		},
+		{
+			"id": 346008944,
+			"balance": 10000,
+			"nickname": "Симон",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:30:19",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 55
+		},
+		{
+			"id": 380559624,
+			"balance": 4.95927857076114e+29,
+			"nickname": "Алёна",
+			"level": 4,
+			"exp": 350,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 1,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:40:39",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 7,
+			"next_level": 700,
+			"uid": 56
+		},
+		{
+			"id": 183446100,
+			"balance": 10000,
+			"nickname": "Никита",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:47:54",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 57
+		},
+		{
+			"id": 454632733,
+			"balance": 10000,
+			"nickname": "Влад",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:55:47",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 58
+		},
+		{
+			"id": 454872573,
+			"balance": 10000,
+			"nickname": "Влад",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 07:57:33",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 59
+		},
+		{
+			"id": 448031493,
+			"balance": 10000,
+			"nickname": "Влад",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 08:48:24",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 60
+		},
+		{
+			"id": 369530599,
+			"balance": 984,
+			"nickname": "Vladislav",
+			"level": 1,
+			"exp": 210,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 08:49:12",
+			"rights": 4,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 61
+		},
+		{
+			"id": 206249025,
+			"balance": 10000,
+			"nickname": "Станислав",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 08:50:54",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 62
+		},
+		{
+			"id": 278184185,
+			"balance": 2420,
+			"nickname": "Вадим",
+			"level": 1,
+			"exp": 20,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 08:59:29",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 63
+		},
+		{
+			"id": 483449180,
+			"balance": 10000,
+			"nickname": "Варварская",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 09:56:31",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 64
+		},
+		{
+			"id": 409013083,
+			"balance": 10000,
+			"nickname": "Роман",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 10:59:59",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 65
+		},
+		{
+			"id": 345971128,
+			"balance": 10000,
+			"nickname": "Котёнок",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 11:05:04",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 66
+		},
+		{
+			"id": 402255064,
+			"balance": 10000,
+			"nickname": "Алишер",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 11:32:54",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 67
+		},
+		{
+			"id": 311351269,
+			"balance": 10000,
+			"nickname": "Вениамин",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 11:52:38",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 68
+		},
+		{
+			"id": 492858582,
+			"balance": 10000,
+			"nickname": "Александр",
+			"level": 1,
+			"exp": 5,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 12:05:28",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 69
+		},
+		{
+			"id": 467509633,
+			"balance": 10000,
+			"nickname": "Мегарыцарь",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 12:50:18",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 70
+		},
+		{
+			"id": 168653258,
+			"balance": 10000,
+			"nickname": "Владимир",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 13:23:58",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 71
+		},
+		{
+			"id": 371239602,
+			"balance": 10000,
+			"nickname": "Leo",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 14:33:19",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 72
+		},
+		{
+			"id": 308082660,
+			"balance": 10000,
+			"nickname": "Дима",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 14:40:40",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 73
+		},
+		{
+			"id": 384368380,
+			"balance": 109999,
+			"nickname": "Иван",
+			"level": 1,
+			"exp": 25,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:03:12",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 74
+		},
+		{
+			"id": 328595601,
+			"balance": 10000,
+			"nickname": "Илья",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:09:39",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 75
+		},
+		{
+			"id": 452872513,
+			"balance": 10000,
+			"nickname": "Абу",
+			"level": 1,
+			"exp": 10,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:31:36",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 76
+		},
+		{
+			"id": 201365595,
+			"balance": 9,
+			"nickname": "Александр",
+			"level": 1,
+			"exp": 50,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:31:51",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 77
+		},
+		{
+			"id": 497539045,
+			"balance": 10000,
+			"nickname": "Дима",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:49:13",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 78
+		},
+		{
+			"id": 440921030,
+			"balance": 10000,
+			"nickname": "Дмитрий",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 15:55:59",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 79
+		},
+		{
+			"id": 462850523,
+			"balance": 10000,
+			"nickname": "Алиса",
+			"level": 1,
+			"exp": 0,
+			"bets": 0,
+			"winDuel": 0,
+			"loseDuel": 0,
+			"inventory": {
+				"invites": 0,
+				"scans": 0,
+				"nicks": 0,
+				"diamonds": 0,
+				"bitcoins": 0,
+				"barons": 0,
+				"rabs": 0,
+				"cases": {
+					"donate": 0
+				}
+			},
+			"register": "02.08.2018 16:33:32",
+			"rights": 0,
+			"clan_uid": -1,
+			"next_exp": 5,
+			"next_level": 500,
+			"uid": 80
+		}
+	],
+	"bank": [
+		{
+			"number": 0,
+			"balance": {
+				"balance": 375,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 347241116
+		},
+		{
+			"number": 1,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 345873450
+		},
+		{
+			"number": 2,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 343185211
+		},
+		{
+			"number": 3,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": -158861435
+		},
+		{
+			"number": 4,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 421778926
+		},
+		{
+			"number": 5,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 169060430
+		},
+		{
+			"number": 6,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 226526307
+		},
+		{
+			"number": 7,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 362800732
+		},
+		{
+			"number": 8,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 312606871
+		},
+		{
+			"number": 9,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 357808946
+		},
+		{
+			"number": 10,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 448854224
+		},
+		{
+			"number": 11,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 144955868
+		},
+		{
+			"number": 12,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 368922300
+		},
+		{
+			"number": 13,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 326998943
+		},
+		{
+			"number": 14,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 333765246
+		},
+		{
+			"number": 15,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 282110479
+		},
+		{
+			"number": 16,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 187734017
+		},
+		{
+			"number": 17,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 276063192
+		},
+		{
+			"number": 18,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 186406731
+		},
+		{
+			"number": 19,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 205948497
+		},
+		{
+			"number": 20,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 428289973
+		},
+		{
+			"number": 21,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 494775949
+		},
+		{
+			"number": 22,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 294755903
+		},
+		{
+			"number": 23,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 180643604
+		},
+		{
+			"number": 24,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 223913242
+		},
+		{
+			"number": 25,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 482216934
+		},
+		{
+			"number": 26,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 362039218
+		},
+		{
+			"number": 27,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 391848972
+		},
+		{
+			"number": 28,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 131864558
+		},
+		{
+			"number": 29,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 226396165
+		},
+		{
+			"number": 30,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 379046956
+		},
+		{
+			"number": 31,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 365593067
+		},
+		{
+			"number": 32,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 438159431
+		},
+		{
+			"number": 33,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 395070810
+		},
+		{
+			"number": 34,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 399660502
+		},
+		{
+			"number": 35,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 226618271
+		},
+		{
+			"number": 36,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 367406131
+		},
+		{
+			"number": 37,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 458686456
+		},
+		{
+			"number": 38,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 346008944
+		},
+		{
+			"number": 39,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 377091557
+		},
+		{
+			"number": 40,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 420437405
+		},
+		{
+			"number": 41,
+			"balance": {
+				"balance": 400000000,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 342196978
+		},
+		{
+			"number": 42,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 461929633
+		},
+		{
+			"number": 43,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 408717579
+		},
+		{
+			"number": 44,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 413899561
+		},
+		{
+			"number": 45,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 183446100
+		},
+		{
+			"number": 46,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 205571409
+		},
+		{
+			"number": 47,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 424657228
+		},
+		{
+			"number": 48,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 434539783
+		},
+		{
+			"number": 49,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 454549000
+		},
+		{
+			"number": 50,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 190567051
+		},
+		{
+			"number": 51,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 298898381
+		},
+		{
+			"number": 52,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 274678553
+		},
+		{
+			"number": 53,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 488789389
+		},
+		{
+			"number": 54,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 403216051
+		},
+		{
+			"number": 55,
+			"balance": {
+				"balance": 0,
+				"diamonds": 0,
+				"bitcoins": 0
+			},
+			"id": 489528282
+		}
+	]
+}

@@ -1,0 +1,2 @@
+node OutsdecBots.js
+pause

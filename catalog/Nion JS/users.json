@@ -1,0 +1,85 @@
+[
+	{
+		"id": 263623627,
+		"uid": 0,
+		"mats": 0,
+		"bank": 0,
+		"golod": 100,
+		"petlvl": 1,
+		"artifact": 0,
+		"ygol": 0,
+		"zarplata": 0,
+		"roza": 0,
+		"almaz": 0,
+		"irans": 0,
+		"rating": 0,
+		"cart": 0,
+		"farm_btc": 0,
+		"goldrullet": 0,
+		"bronserullet": 0,
+		"serebrorullet": 0,
+		"brank": 0,
+		"grank": 0,
+		"bpriglos": 0,
+		"gpriglos": 0,
+		"balance": 500000,
+		"alvl": 0,
+		"quest11": 0,
+		"quest22": 0,
+		"floder": 12,
+		"avig": 0,
+		"biz": 0,
+		"razvez": 0,
+		"pizza": 0,
+		"warn": 0,
+		"vipquest1": 0,
+		"vipquest2": 0,
+		"tityl": "Новичок",
+		"work": 0,
+		"ybralcmd": 0,
+		"regDate": "19.3.2019",
+		"mention": true,
+		"keyboard": true,
+		"ban": false,
+		"tester": false,
+		"lox": false,
+		"referal": null,
+		"timers": {
+			"bonus": false,
+			"hasWorked": false,
+			"clanwar": false,
+			"dln": false,
+			"pizza": false,
+			"useeda": false,
+			"pit": false,
+			"poxod": false,
+			"shaxta": false,
+			"sunduk": false,
+			"capt": false
+		},
+		"transport": {
+			"car": 0
+		},
+		"dom": {
+			"home": 0
+		},
+		"pet": {
+			"pitom": 0
+		},
+		"ferma": {
+			"farm": 0
+		},
+		"questi": {
+			"quest1": 1,
+			"quest2": 1
+		},
+		"tag": "Александр",
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"marriage": {
+			"partner": 0,
+			"requesti": []
+		}
+	}
+]

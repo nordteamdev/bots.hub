@@ -1,0 +1,26 @@
+{
+  "name": "node-vk-bot",
+  "version": "1.0.0",
+  "repository": "https://github.com/pepelatz/node-vk-bot.git",
+  "author": "Vlad Zadvorny <vladzadvorny@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "vk-easy": "^1.4.1"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  }
+}

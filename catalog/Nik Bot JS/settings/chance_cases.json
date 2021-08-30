@@ -1,0 +1,204 @@
+[
+	{
+	"name": "обычный",
+	"price": {
+		"price": 30000,
+		"diamonds": 0,
+		"bitcoins": 0,
+		"rub": 0
+	},
+	"items": [
+		{
+			"name": "Вип",
+			"cmd": "if(accs[i].rights < 1) {accs[i].rights = 1}",
+			"chance": 3,
+			"limit": "null",
+			"uid": 0
+		},
+		{
+			"name": "1 000 000$",
+			"cmd": "accs[i].balance += 1000000",
+			"chance": 4,
+			"limit": "null",
+			"uid": 1
+		},
+		{
+			"name": "40 000$",
+			"cmd": "accs[i].balance += 40000",
+			"chance": 17,
+			"limit": "null",
+			"uid": 2
+		},
+		{
+			"name": "25 000$",
+			"cmd": "accs[i].balance += 25000",
+			"chance": 60,
+			"limit": "null",
+			"uid": 3
+		},
+		{
+			"name": "100 exp",
+			"cmd": "accs[i].exp += 100",
+			"chance": 99,
+			"limit": "null",
+			"uid": 4
+		},
+		{
+			"name": "1 💎",
+			"cmd": "accs[i].inventory.diamonds += 1",
+			"chance": 100,
+			"limit": "null",
+			"uid": 5
+		}
+	],
+	"uid": 0
+	},
+    {
+		"name": "донат",
+		"price": {
+			"price": 1000000000000000000000000000000000000000000000000000000000000000000000000000,
+			"diamonds": 0,
+			"bitcoins": 0,
+			"rub": 0
+		},
+		"items": [
+			{
+				"name": "⚠HELPER⚠ ",
+				"cmd": "if(accs[i].rights < 4) {accs[i].rights = 4}",
+				"chance": 3,
+				"limit": "null",
+				"uid": 0
+			},
+			{
+				"name": "Администратор",
+				"cmd": "if(accs[i].rights < 3) {accs[i].rights = 3}",
+				"chance": 15,
+				"limit": "null",
+				"uid": 1
+			},
+			{
+				"name": "Модератор",
+				"cmd": "if(accs[i].rights < 2) {accs[i].rights = 2}",
+				"chance": 25,
+				"limit": "null",
+				"uid": 2
+			},
+			{
+				"name": "Вип",
+				"cmd": "if(accs[i].rights < 1) {accs[i].rights = 1}",
+				"chance": 100,
+				"limit": "null",
+				"uid": 3
+			}
+		],
+		"uid": 1
+	},
+	{
+		"name": "превосходный",
+		"price": {
+			"price": 0,
+			"diamonds": 0,
+			"bitcoins": 1,
+			"rub": 0
+		},
+		"items": [
+			{
+				"name": "5 000 000$.",
+				"cmd": "accs[i].balance += 5000000",
+				"chance": 1,
+				"limit": "null",
+				"uid": 0
+			},
+			{
+				"name": "750 000$.",
+				"cmd": "accs[i].balance += 750000",
+				"chance": 20,
+				"limit": "null",
+				"uid": 1
+			},
+			{
+				"name": "1 250 000$",
+				"cmd": "accs[i].balance += 1250000",
+				"chance": 30,
+				"limit": "null",
+				"uid": 2
+			},
+			{
+				"name": "500 exp",
+				"cmd": "accs[i].exp += 500",
+				"chance": 80,
+				"limit": "null",
+				"uid": 7
+			},
+			{
+				"name": "1 000 exp",
+				"cmd": "accs[i].exp += 1000",
+				"chance": 90,
+				"limit": "null",
+				"uid": 8
+			},
+			{
+				"name": "10 💎",
+				"cmd": "accs[i].inventory.diamonds += 10",
+				"chance": 95,
+				"limit": "null",
+				"uid": 9
+			},
+			{
+				"name": "2 💳",
+				"cmd": "accs[i].inventory.bitcoins += 2",
+				"chance": 100,
+				"limit": "null",
+				"uid": 10
+			}
+		],
+		"uid": 2
+	},
+	{
+		"name": "алмазный",
+		"price": {
+			"price": 0,
+			"diamonds": 1,
+			"bitcoins": 0,
+			"rub": 0
+		},
+		"items": [
+			{
+				"name": "Вип.",
+				"cmd": "if(accs[i].rights < 1) {accs[i].rights = 1}",
+				"chance": 2,
+				"limit": "null",
+				"uid": 0
+			},
+			{
+				"name": "5 💎",
+				"cmd": "accs[i].inventory.diamonds += 5",
+				"chance": 5,
+				"limit": "null",
+				"uid": 1
+			},
+			{
+				"name": "1 💳",
+				"cmd": "accs[i].inventory.bitcoins += 1",
+				"chance": 6,
+				"limit": "null",
+				"uid": 2
+			},
+			{
+				"name": "5000$",
+				"cmd": "accs[i].balance += 5000",
+				"chance": 90,
+				"limit": "null",
+				"uid": 3
+			}, 
+			{
+				"name": "30000$",
+				"cmd": "accs[i].balance += 30000",
+				"chance": 100,
+				"limit": "null",
+				"uid": 4
+			}
+		],
+		"uid": 3
+	}
+]
