@@ -3,7 +3,7 @@
 
 
 ## About the repository
-welcome to the bots hub. this repository is a public hub where bots, sites and scripts are collected, in short, everything related to VK and bots.
+**Welcome to the bots hub.** This repository is a public hub where bots, sites and scripts are collected, in short: everything related to VK and bots.
 
 ## Clone Repository
 >**I don't have a github desktop...**
