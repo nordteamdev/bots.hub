@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/derwear/bots.hub/main/screens/logotype.png?sanitize=true"></p>
+<p align="center">![Add](./screens/logotype.png)</p>
 <p align="center">
 
 ## About the repository
