@@ -1,4 +1,5 @@
-<p align="center">![Add](./screens/logotype.png)</p>
+<p align="center">
+![Add](./screens/logotype.png)</p>
 <p align="center">
 
 ## About the repository
