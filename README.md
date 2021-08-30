@@ -14,11 +14,8 @@ welcome to the bots hub. this repository is a public hub where bots, sites and s
 >**I have a github desktop...**
 >- Open Github Desktop
 >- Сlick "Add", and click "Clone Repository"
->![Add](./screens/step1.png)
 >- Copy link (in browser, after click "Code")
->![Copy Link](./screens/step2.png)
 >- Paste link to the field, select path, and click "Clone"
->![Clone](./screens/step3.png)
 
 ...or...
 
