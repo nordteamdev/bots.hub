@@ -1,0 +1,9 @@
+<video width="100%" controls preload="auto">
+	<source src="{{VIDEO_SRC}}" type="video/mp4">
+	<source src="{{VIDEO_SRC}}" type="video/ogg">
+</video>
+<script>
+	jQuery(document).ready(function($) {
+		$('video').mediaelementplayer();
+	});
+</script>

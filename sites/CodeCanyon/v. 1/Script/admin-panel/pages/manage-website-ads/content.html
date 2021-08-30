@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Advertisements > Manage Website Ads</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Website Ads</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success ads-settings-alert"></div>
+                    <form class="ads-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="header" id="header" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('header', true);?></textarea>
+                                <label class="form-label">Header <small>(Appears on all pages right under the nav bar)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="footer" id="footer" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('footer', true);?></textarea>
+                                <label class="form-label">Footer <small>(Appears on all pages right before the footer)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="sidebar" id="sidebar" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('sidebar', true);?></textarea>
+                                <label class="form-label">Sidebar <small>(Appears on the bottom of home/article sidebar)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="home_latest_news" id="home_latest_news" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('home_latest_news', true);?></textarea>
+                                <label class="form-label">Latest news <small>(Appears between the latest news section in the home page)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="home_latest_lists" id="home_latest_lists" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('home_latest_lists', true);?></textarea>
+                                <label class="form-label">Latest lists <small>(Appears between the latest lists section in the home page)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="home_latest_videos" id="home_latest_videos" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('home_latest_videos', true);?></textarea>
+                                <label class="form-label">Latest videos <small>(Appears between the latest videos section in the home page)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="home_latest_music" id="home_latest_music" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('home_latest_music', true);?></textarea>
+                                <label class="form-label">Latest music <small>(Appears between the latest music section in the home page)</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="between" id="between" class="form-control" cols="30" rows="5"><?php echo FL_GetAd('between', true);?></textarea>
+                                <label class="form-label">Between articles <small>(Appears between the entries in the article page)</small></label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_ads_settings = $('form.ads-settings');
+    form_ads_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=update_ads&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_ads_settings.find('.waves-effect').text('Please wait..');
+        },
+        beforeSubmit : function(arr, $form, options){
+          delete arr[0];
+          delete arr[1];
+          delete arr[2];
+          delete arr[3];
+          delete arr[4];
+          delete arr[5];
+          delete arr[6];
+          delete arr[7];
+          arr.push({name:'header', value:btoa($('#header').val())});
+          arr.push({name:'footer', value:btoa($('#footer').val())});
+          arr.push({name:'sidebar', value:btoa($('#sidebar').val())});
+          arr.push({name:'home_latest_news', value:btoa($('#home_latest_news').val())});
+          arr.push({name:'home_latest_lists', value:btoa($('#home_latest_lists').val())});
+          arr.push({name:'home_latest_videos', value:btoa($('#home_latest_videos').val())});
+          arr.push({name:'home_latest_music', value:btoa($('#home_latest_music').val())});
+          arr.push({name:'between', value:btoa($('#between').val())});
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_ads_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.ads-settings-alert').html('<i class="fa fa-check"></i> Ads updated successfully');
+                setTimeout(function () {
+                    $('.ads-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

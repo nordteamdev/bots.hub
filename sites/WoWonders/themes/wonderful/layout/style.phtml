@@ -1,0 +1,368 @@
+<style>
+@font-face {
+    font-family: OpenSansLight;
+    src: url("<?php echo $wo['config']['theme_url'];?>/fonts/OpenSansLight/OpenSansLight.woff") format("woff");
+    font-weight: normal;
+}
+@font-face {
+    font-family: OpenSansRegular;
+    src: url("<?php echo $wo['config']['theme_url'];?>/fonts/OpenSansRegular/OpenSansRegular.woff") format("woff");
+    font-weight: normal;
+}
+@font-face {
+    font-family: OpenSansSemiBold;
+    src: url("<?php echo $wo['config']['theme_url'];?>/fonts/OpenSansSemiBold/OpenSansSemiBold.woff") format("woff");
+    font-weight: normal;
+}
+ @font-face {
+    font-family: OpenSansBold;
+    src: url("<?php echo $wo['config']['theme_url'];?>/fonts/OpenSansBold/OpenSansBold.woff") format("woff");
+    font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Material-Design-Iconic-Font';
+  src: url('<?php echo $wo['config']['theme_url'];?>/fonts/Material-Design-Iconic-Font.woff2?v=2.2.0') format('woff2'), url('<?php echo $wo['config']['theme_url'];?>/fonts/Material-Design-Iconic-Font.woff?v=2.2.0') format('woff'), url('<?php echo $wo['config']['theme_url'];?>/fonts/Material-Design-Iconic-Font.ttf?v=2.2.0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'weathericons';
+  src: url('<?php echo $wo['config']['theme_url'];?>/fonts/weathericons-regular-webfont.eot');
+  src: url('<?php echo $wo['config']['theme_url'];?>/fonts/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('<?php echo $wo['config']['theme_url'];?>/fonts/weathericons-regular-webfont.woff') format('woff'), url('<?php echo $wo['config']['theme_url'];?>/fonts/weathericons-regular-webfont.ttf') format('truetype'), url('<?php echo $wo['config']['theme_url'];?>/fonts/weathericons-regular-webfont.svg#weathericons-regular-webfontRg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ul.profile-completion-bar li.completion-bar div.completion-bar-wrapper{border-color: <?php echo $wo['config']['btn_background_color'];?>;}
+ul.profile-completion-bar li.completion-bar div.completion-bar-status{background: <?php echo $wo['config']['btn_background_color'];?>;}
+.mdbtn:hover{
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.cusupgrade{
+	background: <?php echo $wo['config']['header_background'];?> !important;
+	color: <?php echo $wo['config']['header_color'];?> !important;
+}
+.setting-well select:focus, .setting-well input[type='text']:focus, .setting-well input[type='password']:focus, .setting-well textarea:focus {
+	border-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.login input:focus + i.zmdi {
+  color:<?php echo $wo['config']['btn_background_color'];?>;
+}
+#welcomeheader {
+    background: <?php echo $wo['config']['header_background'];?>; border: none;
+    height:45px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+#add-friend-btn{
+	background-color: #2196F3;color: white;
+}
+#group-join-btn{
+	background-color: #e6e6e6;
+}
+#page-like-btn{
+	background-color: #00BCD4;color: white;
+}
+#user-message-btn{
+	background-color: #607D8B;color: white;
+}
+#follow-request-btn{
+	background-color: #2c79b5;color: white;
+}
+.navbar-default {
+    background: <?php echo $wo['config']['header_background'];?>; border: none;
+    height:45px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+.modal-header {
+    background: <?php echo $wo['config']['header_background'];?>;
+    padding: 15px;
+    border-bottom: 1px solid <?php echo $wo['config']['header_background'];?>;
+}
+.modal-title, .modal-header .close {
+    color: <?php echo $wo['config']['header_color'];?>;
+}
+.groupmenulist:hover {
+    border-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.result-bar{
+    background-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.avtive {
+	border-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+#bar_loading {
+    background-color: <?php echo $wo['config']['header_color'];?> !important;
+}
+.plyr--audio .plyr__controls button.tab-focus:focus, .plyr--audio .plyr__controls button:hover, .plyr__play-large{
+	background: <?php echo $wo['config']['btn_background_color'];?> !important;
+	color: <?php echo $wo['config']['btn_color'];?> !important;
+}
+.plyr__progress--played, .plyr__volume--display {
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.plyr--video .plyr__controls button.tab-focus:focus, .plyr--video .plyr__controls button:hover{
+	background: <?php echo $wo['config']['btn_background_color'];?> !important;
+	color: <?php echo $wo['config']['btn_color'];?> !important;
+}
+.cs-loader-inner,  .main  {
+	color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.login input:focus {
+    border-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.login:not(.loading) button:hover {
+    background: <?php echo $wo['config']['btn_hover_background_color'];?> !important;
+    color: <?php echo $wo['config']['btn_color'];?>;
+}
+.login button {
+    background: <?php echo $wo['config']['btn_background_color'];?> !important;
+    color: <?php echo $wo['config']['btn_color'];?> !important;
+}
+.mejs-controls .mejs-time-rail .mejs-time-current, .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current, .mejs-controls .mejs-volume-button .mejs-volume-slider .mejs-volume-current {
+    background-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+    background: <?php echo $wo['config']['btn_background_color'];?> !important;
+    background-image: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: <?php echo $wo['config']['header_color'];?> !important;
+    background-color: rgba(222, 222, 222, 0.36) !important;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover, .nav-names li:hover {
+   color: <?php echo $wo['config']['header_color'];?> !important;
+   background-color: <?php echo $wo['config']['header_hover_border'];?> !important;
+}
+.market-header {
+	color: <?php echo $wo['config']['header_color'];?>;
+	background: <?php echo $wo['config']['header_background'];?>;
+	background-image: url(<?php echo $wo['config']['theme_url'];?>/img/mpattern.png);
+}
+body {
+   background-color: <?php echo $wo['config']['body_background'];?>;
+}
+.navbar-default .navbar-nav>li>a {
+    color: <?php echo $wo['config']['header_color'];?>;
+    font-size: 13px;
+}
+a.unread-update {
+    color: <?php echo $wo['config']['header_color'];?> !important;
+}
+.btn-main {
+    color: <?php echo $wo['config']['btn_color'];?>;
+    background-color: <?php echo $wo['config']['btn_background_color'];?>;
+    border-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.btn-main:hover {
+    color: <?php echo $wo['config']['btn_hover_color'];?>;
+    background-color: <?php echo $wo['config']['btn_hover_background_color'];?>;
+    border-color: <?php echo $wo['config']['btn_hover_background_color'];?>;
+}
+.setting-panel .col-md-8 .list-group-item:first-child, .profile-lists .list-group-item:first-child, .col-md-8 .list-group-item:first-child, .col-md-3.custom .list-group-item:first-child, .col-sm-4 .list-group-item:first-child, .col-md-7 .list-group-item:first-child, .col-md-9 .list-group-item:first-child, .red-list .list-group-item:first-child, .active.list-group-item:first-child {
+	color: #444;
+	background-color: #fcfcfc;
+	border-bottom: 1px solid #f1f1f1;
+	padding: 18px;
+}
+.setting-panel .col-md-8 .list-group-item:first-child a, .profile-lists .list-group-item:first-child a, .col-md-8 .list-group-item:first-child a, .col-md-7 .list-group-item:first-child a, .active.list-group-item:first-child a {
+    color: #444 !important;
+}
+.list-group-item.black-list.active-list, .red-list.active-list {
+    color: <?php echo $wo['config']['btn_color'];?>;
+    background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.ads-navbar-wrapper ul li a.active {
+     background-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.list-group-item.black-list {
+	background: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.profile-top-line {
+	background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+#bar {
+	background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.list-group-item.black-list a{
+	color: <?php echo $wo['config']['btn_color'];?>;
+}
+.list-group-item.black-list.active-list a{
+	color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.main-color, .small-text a {
+	color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: <?php echo $wo['config']['btn_color'];?>;
+    cursor: default;
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+    border-bottom: 1px solid <?php echo $wo['config']['btn_background_color'];?>;
+    background-color: transparent
+}
+.btn-active {
+    color: <?php echo $wo['config']['btn_color'];?>;
+    background: <?php echo $wo['config']['btn_background_color'];?>;
+    outline: none;
+    border: 1px solid <?php echo $wo['config']['btn_background_color'];?>
+}
+.btn-active:hover, .btn-active:focus {
+    border: 1px solid <?php echo $wo['config']['btn_hover_background_color'];?>;
+    color: <?php echo $wo['config']['btn_hover_color'];?>;
+    background: <?php echo $wo['config']['btn_hover_background_color'];?>;
+}
+.btn-active-color:hover {
+    background: <?php echo $wo['config']['btn_hover_background_color'];?>;
+}
+.chat-tab .online-toggle {
+    background: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.profile-style .user-follow-button button.btn-active, .btn-login, .btn-register {
+    background: <?php echo $wo['config']['btn_background_color'];?>;
+    color: <?php echo $wo['config']['btn_color'];?>;
+}
+.profile-style .user-follow-button button.btn-active:hover, .btn-login:hover, .btn-login:focus, .btn-register:hover, .btn-register:focus {
+    color: <?php echo $wo['config']['btn_hover_color'];?>;
+    background: <?php echo $wo['config']['btn_hover_background_color'];?>;
+}
+button:disabled  {
+    background-color: <?php echo $wo['config']['btn_disabled'];?> !important;
+}
+.panel-login>.panel-heading a.active {
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+    font-size: 18px;
+}
+.hash {
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.sixteen-font-size {
+	color: rgba(200, 200, 200, 0.5);
+}
+.sended_message div.outgoing a.hash{
+	color:white !important;
+}
+.messages-wrapper div.outgoing a.hash{
+	color:white !important;
+}
+.search-container .search-input {
+	color: <?php echo $wo['config']['header_color'];?> !important;
+    background: <?php echo $wo['config']['header_search_color'];?> !important;
+}
+.chat-messages-wrapper .outgoing {
+	background: <?php echo $wo['config']['chat_outgoing_background'];?>;
+}
+.normal-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+}
+.post-privacy-menu li a:hover, .post-privacy-menu li div:hover {
+	color: <?php echo $wo['config']['btn_color'];?>;
+	background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.active.fa-thumbs-up {
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.post-privacy-menu li a:hover, .post-privacy-menu li div:hover { 
+	background-color: <?php echo $wo['config']['btn_background_color'];?>;
+	color: <?php echo $wo['config']['btn_color'];?>; 
+}
+.api-ex-urls {
+    background-color: <?php echo $wo['config']['btn_background_color'];?>; color: <?php echo $wo['config']['btn_color'];?>;
+}
+.user-username {
+    color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.upload-image {
+    border: 3px dashed <?php echo $wo['config']['btn_background_color'];?>;
+}
+.events-tab-list li { background-color: <?php echo $wo['config']['btn_background_color'];?>; }
+.events-tab-list li:hover { background-color: <?php echo $wo['config']['btn_background_color'];?>; }
+.active-e-tab { background-color: <?php echo $wo['config']['btn_background_color'];?> !important; }
+.main { color: <?php echo $wo['config']['btn_background_color'];?> !important; }
+.events-list-dropup-menu ul li a:hover { background: <?php echo $wo['config']['btn_background_color'];?>; }
+.products .product .product-links .more-info, .usr-offline { color: <?php echo $wo['config']['btn_background_color'];?>; }
+.blog-dd-ul li span:hover, .blog-dd-ul li a:hover { background: <?php echo $wo['config']['btn_background_color'];?> !important; }
+.blog_publ {background: <?php echo $wo['config']['btn_background_color'];?> ; border: 1px solid <?php echo $wo['config']['btn_background_color'];?> ; }
+
+
+.ads-navbar-wrapper {
+  background-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.slide-film-desc:hover{
+  color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.movies h3.latest-movies, h3.recommended-movies {
+  border-left: 3px solid  <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_settings_page h3, .wo_terms_page h3, .movies-top-breadcrumb, .movies-navbar-wrapper, .wo_create_form_cover > svg{
+	color: <?php echo $wo['config']['btn_color'];?>;
+    background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_settings_page h3 a, .movies-navbar-wrapper ul li a, .movies-navbar-wrapper ul li .collapse li a, .movies-navbar-wrapper ul li a svg.pull-right, .main-blog-sidebar .popular-categories li a:hover{
+	color: <?php echo $wo['config']['btn_color'];?>;
+}
+.wo_side_settings li.avtive svg{
+	fill:<?php echo $wo['config']['btn_color'];?>;
+	background: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_create_form_cover, .main-blog-sidebar .popular-categories li a{
+	color:<?php echo $wo['config']['btn_background_color'];?>
+}
+.main-blog-sidebar .popular-categories li{
+	border-color:<?php echo $wo['config']['btn_background_color'];?>;
+}
+.main-blog-sidebar .popular-categories li:hover{
+	background:<?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_sett__sidebar.main .sett__img span{
+	color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_sett__sidebar.main li.avtive a{
+	border-color: <?php echo $wo['config']['btn_background_color'];?>;
+	color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_sett__sidebar.main li.avtive a svg, .wo_msg_tabs li.active a svg{
+	fill: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.wo_search_page .nav-tabs li.active a{color: <?php echo $wo['config']['header_color'];?>;background-color: <?php echo $wo['config']['header_background'];?>;}
+.red-list.active-list svg, .text-sender-container .sendMessages .send-button svg{
+	fill: <?php echo $wo['config']['btn_color'];?>
+}
+
+.pp_mat_input span.bar{
+	background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+
+
+.search-filter-form .ui-widget-content {
+    background: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.search-filter-form .ui-state-default, .search-filter-form .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background-color: <?php echo $wo['config']['btn_background_color'];?>;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -0.2em;
+}
+
+.reaction-like::before {
+    content: "<?php echo $wo['lang']['like'];?>";
+}
+.reaction-love::before {
+    content: "<?php echo $wo['lang']['love'];?>";
+}
+.reaction-haha::before {
+    content: "<?php echo $wo['lang']['haha'];?>";
+}
+.reaction-wow::before {
+    content: "<?php echo $wo['lang']['wow'];?>";
+}
+.reaction-sad::before {
+    content: "<?php echo $wo['lang']['sad'];?>";
+}
+.reaction-angry::before {
+    content: "<?php echo $wo['lang']['angry'];?>";
+}
+<?php if ($wo['config']['google_map'] == 0) { ?>
+.filterbyz li {
+    width: 16.5%;
+}
+<?php }?>
+</style>

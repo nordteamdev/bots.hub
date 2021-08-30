@@ -1,0 +1,89 @@
+<div class="settings-header">
+	<h3><i class="fa fa-cog fa-fw "></i> {{LANG general_settings}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="general-settings" method="POST">
+    <div class="setting-general-alert"></div>
+	<fieldset>
+		<!-- Select Basic 
+		<div class="form-group">
+			<label class="col-md-3" for="maintenance">{{LANG maintenance_mode}}</label>
+			<div class="col-md-6">
+				<select id="maintenance" name="maintenance" class="form-control">
+				    <option value="1" <?php echo ($fl['config']['maintenance'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+				    <option value="2" <?php echo ($fl['config']['maintenance'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+				</select>
+				<span class="help-block">{{LANG admin_main_mode_desc}}</span>
+			</div>
+		</div>
+		 Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="registration">{{LANG user_registration}}</label>
+			<div class="col-md-6">
+				<select id="registration" name="registration" class="form-control">
+				    <option value="1" <?php echo ($fl['config']['registration'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+				    <option value="2" <?php echo ($fl['config']['registration'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+				</select>
+				<span class="help-block">{{LANG user_registration_desc}}</span>
+			</div>
+		</div>
+		<hr>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="validation">{{LANG email_validation}}</label>
+			<div class="col-md-6">
+				<select id="validation" name="validation" class="form-control">
+				    <option value="1" <?php echo ($fl['config']['validation'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+				    <option value="2" <?php echo ($fl['config']['validation'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+				</select>
+				<span class="help-block">{{LANG email_validation_desc}}</span>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="delete_account">{{LANG delete_account}}</label>
+			<div class="col-md-6">
+				<select id="delete_account" name="delete_account" class="form-control">
+				    <option value="1" <?php echo ($fl['config']['delete_account'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+				    <option value="2" <?php echo ($fl['config']['delete_account'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+				</select>
+				<span class="help-block">{{LANG delete_account_desc}}</span>
+			</div>
+		</div>
+		<hr>
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-3" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+<script>
+$(function() {
+  var form = $('form#general-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=admincp&s=general',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-general-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

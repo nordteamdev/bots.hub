@@ -1,0 +1,59 @@
+<div class="thread-replies" data-thread-reply="<?php echo $wo['threadreply']['id']; ?>" id="reply-<?php echo $wo['threadreply']['id']; ?>">
+	<div class="col-md-2">
+		<a href="<?php echo ($wo['threadreply']['user_data']['url']); ?>"><h4 class="text-center user-title-thread main">
+			<?php echo ($wo['threadreply']['user_data']['username']); ?>
+		</h4>
+		</a>
+		<div class="text-center">
+		<a href="<?php echo ($wo['threadreply']['user_data']['url']); ?>" data-ajax="?link1=timeline&u=<?php echo $wo['threadreply']['user_data']['username']; ?>"><img src="<?php echo $wo['threadreply']['user_data']['avatar']; ?>" alt="Avatar" class="avatar" width="90"></a>
+		</div>
+		<hr>
+		<p class="small text-center">
+			<?php echo $wo['lang']['joined']; ?>: 
+			<?php echo Wo_Time_Elapsed_String($wo['threadreply']['user_data']['joined']); ?>	
+		</p>
+		<p class="small text-center">
+			<?php if ($wo['threadreply']['user_data']['admin'] == 1): ?>
+			<?php echo $wo['lang']['site_admin']; ?>
+			<?php else: ?>
+				<?php echo $wo['lang']['registered']; ?>
+			<?php endif; ?>
+		</p>
+	</div>
+	<div class="col-md-10">
+		<h4 class="time <?php echo Wo_RightToLeft('pull-left');?> ">
+			<?php if ($wo['threadreply']['post_quoted'] == 1): ?>
+				<i class="fa fa-reply" aria-hidden="true"></i> 
+			<?php else: ?>
+				<i class="fa fa-reply-all" aria-hidden="true"></i> 
+			<?php endif; ?>
+			<span> <?php echo Wo_Time_Elapsed_String($wo['threadreply']['posted_time']); ?></span>
+		</h4>
+		<div class="<?php echo Wo_RightToLeft('pull-right');?> ">
+			<a class="btn btn-default btn-sm" href="<?php echo $wo['threadreply']['reply-url']; ?>" data-ajax="?link1=threadquote&tid=<?php echo $wo['threadreply']['id'];?>">
+		   		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-up-left"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+		    </a>
+		    <?php if ($wo['threadreply']['is_owner'] || $wo['threadreply']['is_admin']): ?>
+			    <a class="btn btn-default btn-sm" href="<?php echo $wo['threadreply']['edit-url']; ?>" data-ajax="?link1=editreply&tid=<?php echo $wo['threadreply']['id'];?>">
+			        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+		        </a>
+				<a class="btn btn-default delete-reply btn-sm" id="<?php echo $wo['threadreply']['id']; ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+				</a>
+		    <?php endif; ?>
+	       <a href="#reply-<?php echo $wo['threadreply']['id']; ?>" class="btn btn-default btn-sm">
+	       		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+	       </a>
+		</div>
+
+		<div class="clear"></div>
+
+		<hr>
+		<div class="small">
+			<?php echo Wo_BbcodeToHtml($wo['threadreply']['post_text']); ?>
+		</div>
+
+	</div>
+
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,221 @@
+{strip}
+{if empty($pd)}
+
+<div class="feed h-mod __like">
+
+
+
+	<header>
+	
+	
+		<div class="feed_ava_like"><img src="/getPhoto?p={$res.profile_photo}&sz=small"></div>
+	    <div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+        <a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+		<div class="feed_ac">
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+			<span class="feed_date">{$this->feedConvDate($res.added)}</span>
+		</div>
+	
+        <div class="feed_ha"><span class="kn_shortcutmenu">
+		
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		
+		
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+
+
+	
+
+            </span>&nbsp;{$this->lang['liked_a_post']} </div>
+	
+	</header>
+
+ 
+	<div class="divider_feed_like"></div>
+	
+	<header>
+    <div class="feed_ava">
+        <a href="/profile?q={$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.ugender}" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+    </div>
+        <div class="feed_h"><span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		
+		<a href="/profile?q={$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+	
+        </div>
+	</header>
+    <div class="feed_cnt" data-feedid="{$pid}" id='{ldelim}"fid":"{$pid}","uid":"{$res.uid}"{rdelim}'>
+        
+
+        <div class="feed_b">
+			{$this->corrFeed()}
+        </div>
+
+    </div>
+</div>
+
+{else}
+
+{assign var="str_text" value=$this->str_smilies($this->generateMediaPost($p_text,'text'))}
+{assign var="bgcolor" value=$this->generateMediaPost($p_text,'bgcolor')}
+{assign var="track_cover" value=$this->generateMediaPost($p_text,'songs_cover')}
+{assign var="tagged_friends" value=$this->generateMediaPost($p_text,'tagged_people')}
+{assign var="tagged_places" value=$this->generateMediaPost($p_text,'places')}
+{assign var="photos" value=$this->generateMediaPost($p_text,'photos',$pid)}
+{assign var="video" value=$this->generateMediaPost($p_text,'videos')}
+{assign var="tracks" value=$this->generateMediaPost($p_text,'tracks')}
+{assign var="links" value=$this->generateMediaPost($p_text,'links')}
+{assign var="item_type" value="post"}
+{assign var="k_it_type" value=""}
+{assign var="more" value=0}
+{assign var="c_more" value=0}
+
+<div class="feed h-mod __like">
+	<header class="feed-like-header-top">
+	
+	
+		<div class="feed_ava_like"><img src="/getPhoto?p={$res.profile_photo}&sz=small"></div>
+	
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+	
+        <div class="feed_ha"><span class="kn_shortcutmenu">
+		
+
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+
+
+
+            </span>&nbsp;{$this->lang['liked_this']} </div>
+	
+	</header>
+
+	
+
+ 
+	<header>
+
+    <div class="feed_ava">
+        <a href="/user/{$pd.puid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$pd.puphoto}&sz=small&g={$pd.gender}" alt="{$pd.fullname}" width="48" height="48">
+            </div>
+        </a>
+    </div>
+        <div class="feed_h"><span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$pd.puid}","uname":"{$pd.fullname}","uphoto":"{$pd.puphoto}","ugender":"{$pd.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$pd.puid}">
+		</div>
+		
+		<a href="/user/{$pd.puid}" class="ob" hrefattr="true">{$pd.fullname}</a></span>
+		{$tagged_friends} {if count($tagged_places)}{$tagged_places[0]}{/if}
+        </div>
+	</header>
+    <div class="feed_cnt" data-feedid="{$pid}" id='{ldelim}"fid":"{$pid}","uid":"{$res.uid}"{rdelim}'>
+       
+
+        <div class="feed_b">
+            <div class=" __arw-t __accent">
+                <div class="media-statuss_cnt">
+{if $bgcolor} {$bgcolor} {else}
+				 
+				
+				{$this->checkForTranslating($str_text)}
+				
+				
+				{if empty($video[0]) && empty($photos[0]) && !$links && count($tagged_places)}
+				<!-- Show Map Location -->
+				<div class="feed_map_cnt_f">{$tagged_places[1]}</div>
+				{/if}
+				
+			
+				{if $video[0] != '' && $video[1] != ''}
+				{if $c_more < 2}
+				<div class="feed_videos_cnt">{$video[0]}</div>
+				{/if}
+				{if $video[1] == 1} {$k_it_type = 'video'}{/if}
+				{$c_more = $c_more+1}
+				{if $video[1] > 3}
+				{$more = 1}
+				{/if}
+				{else if $pd.type == 'videos'}
+				{$this->unv_feed('video',$res.id)}
+				{/if}
+				
+				{if $photos[0] != '' && $photos[1] != ''}
+				{if $photos[1] == 1 && $k_it_type == ''} {$k_it_type = 'photos'}
+				{else if $photos[1] >= 1 && $k_it_type != ''} {$k_it_type = ''}
+				{/if}
+				{if $c_more < 2}
+				<div class="feed_image_collage __{$photos[1]}">{$photos[0]}</div>
+				{/if}
+				{$c_more = $c_more+1}
+				{if $photos[1] && $video[0] != '' || $photos[1] > 2}
+				{$more = 1}
+				{/if}
+				{else if $pd.type === 'photo'}
+				Photo is not available
+				{/if}
+				
+				
+				{if $links && $c_more < 2}
+				<div class="feed_links_cnt">{$links}</div>
+				{$k_it_type = ''}
+				{$c_more = $c_more+1}
+				{/if}
+				
+				
+				{if !empty($tracks[0]) && !empty($tracks[1]) && $c_more < 2}
+				{$k_it_type = ''}
+				
+				{if !$photos && !$video[0] && !$tagged_places && !$links}
+				{if $track_cover}{assign var="song_use_cv" value="1"}<div class="feed_media_post_muz_av"><img src="{$track_cover}"></div>{/if}
+				{/if}
+				
+				
+				<div class="feed_songs_cnt {if isset($song_use_cv)}__is_cover{/if}">{$tracks[0]}</div>
+				{$c_more = $c_more+1}
+				{if $tracks[1] > 4 || ($tracks[1] && $tagged_places) }
+				{$more = 1}
+				
+				{/if}{/if}
+				{/if}
+			
+				
+                    <div class="media_more {if !$more}invisible{/if}"><a href="/post?i={$pid}" data-type-post="1" class="media_more_a scrollbottom" hrefattr="true"><span class="media_more_ic">&#8226;&#8226;&#8226;</span></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="feed_f">
+				{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+
+		<div class="feed_post_comments_widget" id="feed_post_comments_section_{$pid}"></div>
+		<script>
+		var post_id = '{$pid}', $feed_id = '{$res.id}', post_author = '{$res.uid}';
+		{literal}
+		var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+		// build comments section
+		commentsWidget(post_id,
+						ga('#feed_post_comments_section_'+post_id),
+						'post',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+post_id,post_author,'2',1);
+		{/literal}
+		</script>
+		</div>
+
+    </div>
+</div>
+{/if}
+
+{/strip}

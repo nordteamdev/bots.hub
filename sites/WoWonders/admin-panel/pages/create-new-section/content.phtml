@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Forums > Create New Section</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Create New Section</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success newsection-alert"></div>
+                    <div class="alert alert-danger newsection-error-alert"></div>
+                    <form class="newsection" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="name" name="name" class="form-control">
+                                <label class="form-label">Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="description" id="description" class="form-control" cols="30" rows="3"></textarea>
+                                <label class="form-label">Description</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_new_section = $('form.newsection');
+    form_new_section.ajaxForm({
+        url: Wo_Ajax_Requests_File()  +  '?f=new-forum-section&hash=' + $('.main_session').val(),
+        beforeSend: function() {
+            form_new_section.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.newsection-alert').html('<i class="fa fa-check"></i> Section successfully added');
+                $('.newsection-error-alert').empty();
+            } else {
+                $('.newsection-alert').empty();
+                $(".newsection-error-alert").html(data['message']);
+            } 
+            form_new_section.find('button').text('Create');
+        }
+    });
+});
+</script>

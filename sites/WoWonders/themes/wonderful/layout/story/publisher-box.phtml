@@ -1,0 +1,959 @@
+<?php
+$hashtag = '';
+$url = '';
+if (isset($_GET['link1']) && $_GET['link1'] == 'hashtag' && !empty($_GET['hash'])) {
+  $hashtag = '#' . $_GET['hash'];
+}
+if (!empty($_GET['url'])) {
+  $url = urldecode($_REQUEST['url']);
+}
+?>
+<form action="#" method="post" class="post publisher-box" id="publisher-box-focus">
+	<div class="panel panel-white post panel-shadow" style="margin-bottom: 10px;">
+		<div id="post-textarea">
+			<?php if ($wo['page'] != 'events') { ?>
+				<img class="post-avatar" src="<?php echo (empty($wo['page_profile']['avatar'])) ? $wo['user']['avatar'] : $wo['page_profile']['avatar'];?>">
+			<?php } ?>
+			<div class="postprogress" id="loading_indicator">
+				<div class="indeterminate"></div>
+			</div>
+			<textarea onkeyup="textAreaAdjust(this, 70)" onclick="Wo_ShowPosInfo()" name="postText" class="form-control postText" cols="10" rows="3" placeholder="<?php echo $wo['lang']['publisher_box_placeholder']; ?>" dir="auto"><?php echo $hashtag;?><?php echo $url; ?></textarea> 
+			<div class="poster-left-buttons camera-button" onclick="Wo_ShowPosInfo();">
+				<div class="input-group">
+					<span class="btn btn-default btn-file" id="camera-button-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#737373" d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z" /></svg><input type="file" id="publisher-photos" accept="image/x-png, image/gif, image/jpeg" name="postPhotos[]" multiple="multiple">
+					</span>
+				</div>
+            </div>
+		</div>
+		<?php if ($wo['config']['video_upload'] == 1) { ?>
+		<div class="publisher-hidden-option" id="video-form">
+         <div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+            <span class="pull-left">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              <input name="videocount" type="text" class="form-control bg_read_input" readonly>
+            </span>
+            
+            <span class="pull-right pointer video-custom-thumb">
+              <?php echo $wo['lang']['custom_thumbnail']; ?>&nbsp;<i class="fa fa-caret-down"></i>
+            </span>
+         </div>
+         <div class="video-poster-image">
+           <div class="thumb-renderer pointer" onclick="$('#custom-video-thumb').trigger('click');">
+             <div id="post_vthumb_droparea">
+                <div class="preview">
+                  <h3><?php echo $wo['lang']['drop_img_here']; ?></h3>
+                  <div class="error-text-renderer">
+                    
+                  </div>
+                  <div>
+                    <span><?php echo $wo['lang']['or']; ?></span>
+                    <p>
+                      <?php echo $wo['lang']['browse_to_upload']; ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="image">
+                </div>
+             </div>
+           </div>
+         </div>
+         <input type="file" class="hidden" name="video_thumb" id="custom-video-thumb" accept="image/*">
+      </div>
+		<?php } ?>
+      <?php if ($wo['config']['audio_upload'] == 1) { ?>
+      <div class="publisher-hidden-option" id="music-form">
+         <div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music"><path d="M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"></path><polyline points="9 17 9 5 21 3 21 15"></polyline></svg>
+           <input name="musiccount" type="text" class="form-control bg_read_input" readonly>
+         </div>
+      </div>
+      <?php } ?>
+      <div id="poll-form">
+			<div class="publisher-hidden-option answers">
+				<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> 1">
+				<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> 2">
+			</div>
+			<div class="create-poll" onclick="Wo_AddAnswer();" id="add_answer">
+				<div class="create-text"><?php echo $wo['lang']['add_answer'] ?></div>
+			</div>
+		</div>
+      <div id="album-form">
+        <div class="publisher-hidden-option">
+           <input name="album_name" type="text" class="form-control" placeholder="<?php echo $wo['lang']['album_name'];?>">
+        </div>
+       </div>
+      <div class="publisher-hidden-option" id="photo-form">
+         <div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <input name="phtoscount" type="text" class="form-control bg_read_input" readonly>
+         </div>
+         <div class="create-album <?php echo Wo_RightToLeft('pull-right');?>" onclick="Wo_OpenAlbum();">
+           <div class="create-text">
+             <?php echo $wo['lang']['create_album'];?>
+           </div>
+         </div>
+         <div class="clear"></div>
+	     <div style="overflow-x: auto;"><div id="image-holder"></div></div>  
+      </div>
+      <div class="publisher-hidden-option" id="file-form">
+         <div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+            <input name="filename" type="text" class="form-control bg_read_input" readonly>
+         </div>
+      </div>
+      <div class="publisher-hidden-option" id="map-form">
+         <div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <input name="postMap" id="searchTextField" type="text" class="form-control" placeholder="<?php echo $wo['lang']['maps_placeholder']?>">
+         </div>
+      </div>
+      <div id="emo-form">
+        <div class="publisher-hidden-option">
+            <div class="feelings-type-to <?php echo Wo_RightToLeft('pull-left');?> pointer" onclick="Wo_RestFeelings();"></div>
+            <span class="feelings-value"></span>
+            <input name="feeling" id="feelings-text" type="text" class="form-control bg_read_input" placeholder="<?php echo html_entity_decode($wo["lang"]["feel_d"])?>" onclick="Wo_ShowFeelings();" autocomplete="no">
+            <input name="feeling_type" type="hidden" id="feeling-type" value="">
+            <div class="clear"></div>
+        </div>
+        <div class="feeling-type feeling-types">
+          <ul>
+            <li class="pointer" onclick='Wo_ShowFeelingType("feelings", "<?php echo $wo['lang']['feeling'];?>", "<?php echo $wo['lang']['feeling_q'];?>", "smile-o");'>
+              <i class="fa fa-fw fa-smile-o fa-wh"></i> <?php echo $wo['lang']['feeling'];?>
+            </li>
+            <li class="pointer" onclick='Wo_ShowFeelingType("traveling", "<?php echo $wo['lang']['traveling'];?>" , "<?php echo $wo['lang']['traveling_q'];?>", "plane");'>
+              <i class="fa fa-fw fa-plane"></i> <?php echo $wo['lang']['traveling'];?>
+            </li>
+            <li class="pointer" onclick='Wo_ShowFeelingType("watching", "<?php echo $wo['lang']['watching'];?>", "<?php echo $wo['lang']['watching_q'];?>", "eye");'>
+              <i class="fa fa-fw fa-eye"></i> <?php echo $wo['lang']['watching'];?>
+            </li>
+            <li class="pointer" onclick='Wo_ShowFeelingType("playing", "<?php echo $wo['lang']['playing'];?>", "<?php echo $wo['lang']['playing_q'];?>", "gamepad");'>
+              <i class="fa fa-fw fa-gamepad"></i> <?php echo $wo['lang']['playing'];?>
+            </li>
+            <li class="pointer" onclick='Wo_ShowFeelingType("listening", "<?php echo addslashes($wo['lang']['listening']);?>", "<?php echo addslashes($wo['lang']['listening_q']);?>", "headphones");'>
+              <i class="fa fa-fw fa-headphones"></i> <?php echo $wo['lang']['listening'];?>
+            </li>
+          </ul>
+        </div>
+        <div class="feeling-type feelings">
+          <ul>
+            <?php 
+            foreach ($wo['feelingIcons'] as $icon_name => $icon_code) {
+            ?>
+            <li class="pointer" onclick="Wo_AddFeeling('<?php echo $icon_name;?>', '<?php echo $wo['lang'][$icon_name]; ?>', '<?php echo $icon_code;?>');"><i class="twa-lg twa twa-<?php echo $icon_code; ?>"></i> <?php echo $wo['lang'][$icon_name]; ?></li>
+            <?php
+            }
+            ?>
+          </ul>
+        </div>
+         <?php  
+        foreach ($wo['emo'] as $code => $name) {
+            $code   = $code;
+            echo  '<span onclick="Wo_AddEmo(\'' . $code . '\',\'#post-textarea textarea\');"><i class="pointer twa-lg twa twa-' . $name . '"></i></span>';
+        } 
+        ?>
+		
+		
+      </div>
+	  <div id="gif-form">
+	  <?php if ($wo['config']['stickers'] == 1): ?>
+          <div class="w100" id="publisher-box-stickers">
+            <input type="text" class="form-control" style="border: none;border-top: 1px solid #ddd;box-shadow: none;border-radius: 0px;" placeholder="<?php echo $wo['lang']['search'] ?> GIFs" onkeyup="Wo_GetPostStickers(this.value)">
+            <div id="publisher-box-stickers-cont">
+              
+            </div>
+          </div>
+        <?php endif ?>
+	  </div>
+	  
+	  
+      <div id="results"></div>
+      <div class="publisher-hidden-option">
+         <div id="progress">
+            <span id="percent">0%</span>
+            <div class="progress">
+             <div id="bar" class="progress-bar progress-bar-striped active"></div> 
+            </div>
+            <div class="clear"></div>
+         </div>
+      </div>
+	  
+      <div class="publisher-box-footer">
+		<div class="row margin0">
+         <?php if ($wo['config']['video_upload'] == 1) { ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Upload Video<?php } ?><?php if($wo['language'] == "arabic") { ?>رفع فيديو<?php } ?><?php if($wo['language'] == "dutch") { ?>Upload Video<?php } ?><?php if($wo['language'] == "french") { ?>Télécharger une video<?php } ?><?php if($wo['language'] == "german") { ?>Video hochladen<?php } ?><?php if($wo['language'] == "italian") { ?>Carica video<?php } ?><?php if($wo['language'] == "portuguese") { ?>Envio vídeo<?php } ?><?php if($wo['language'] == "russian") { ?>Загрузить видео<?php } ?><?php if($wo['language'] == "spanish") { ?>Subir video<?php } ?><?php if($wo['language'] == "turkish") { ?>Video yükle<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file btnvideo">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video" color="#F57C00"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+				  <input type="file" id="publisher-video" name="postVideo" accept="video/*">
+                  </span>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+         
+		 <?php if ($wo['config']['audio_upload'] == 1) { ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>" id="recordPostAudioWrapper">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Record Audio<?php } ?><?php if($wo['language'] == "arabic") { ?>تسجيل صوتي<?php } ?><?php if($wo['language'] == "dutch") { ?>Geluid opnemen<?php } ?><?php if($wo['language'] == "french") { ?>Enregistrement audio<?php } ?><?php if($wo['language'] == "german") { ?>Ton aufnehmen<?php } ?><?php if($wo['language'] == "italian") { ?>Registra audio<?php } ?><?php if($wo['language'] == "portuguese") { ?>Gravar audio<?php } ?><?php if($wo['language'] == "russian") { ?>Запись аудио<?php } ?><?php if($wo['language'] == "spanish") { ?>Grabar audio<?php } ?><?php if($wo['language'] == "turkish") { ?>Ses kaydı<?php } ?>">
+               <div class="input-group">
+                  <span  class="btn btn-default btn-file btnrecord" id="recordPostAudio" data-record="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mic" color="#3F51B5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                  </span>
+                  <span id="postRecordingTime" class="hidden">00:00</span>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+          
+      <?php if($wo['config']['fileSharing'] == 1) { ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Upload File<?php } ?><?php if($wo['language'] == "arabic") { ?>رفع ملف<?php } ?><?php if($wo['language'] == "dutch") { ?>Upload bestand<?php } ?><?php if($wo['language'] == "french") { ?>Téléverser un fichier<?php } ?><?php if($wo['language'] == "german") { ?>Datei hochladen<?php } ?><?php if($wo['language'] == "italian") { ?>Caricare un file<?php } ?><?php if($wo['language'] == "portuguese") { ?>Subir arquivo<?php } ?><?php if($wo['language'] == "russian") { ?>Загрузить файл<?php } ?><?php if($wo['language'] == "spanish") { ?>Subir archivo<?php } ?><?php if($wo['language'] == "turkish") { ?>Dosya yükleme<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file btnattach">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" color="#43A047"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+						<input type="file" id="publisher-file" name="postFile">
+                  </span>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+         <?php if (($wo['page'] == 'home' || $wo['page'] == 'timeline') && $wo['config']['classified'] == 1) { ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Create Product<?php } ?><?php if($wo['language'] == "arabic") { ?>إنشاء منتج<?php } ?><?php if($wo['language'] == "dutch") { ?>Product maken<?php } ?><?php if($wo['language'] == "french") { ?>Créer un produit<?php } ?><?php if($wo['language'] == "german") { ?>Produkt erstellen<?php } ?><?php if($wo['language'] == "italian") { ?>Crea prodotto<?php } ?><?php if($wo['language'] == "portuguese") { ?>Criar produto<?php } ?><?php if($wo['language'] == "russian") { ?>Создать продукт<?php } ?><?php if($wo['language'] == "spanish") { ?>Crear producto<?php } ?><?php if($wo['language'] == "turkish") { ?>Ürün Yarat<?php } ?>">
+               <div class="input-group">
+                  <a href="<?php echo Wo_SeoLink('index.php?link1=new-product');?>" class="btn btn-default btn-file btnproduct">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-cart" color="#E91E63"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Create Poll<?php } ?><?php if($wo['language'] == "arabic") { ?>إنشاء استطلاع<?php } ?><?php if($wo['language'] == "dutch") { ?>Maak peiling<?php } ?><?php if($wo['language'] == "french") { ?>Créer un sondage<?php } ?><?php if($wo['language'] == "german") { ?>Umfrage erstellen<?php } ?><?php if($wo['language'] == "italian") { ?>Crea sondaggio<?php } ?><?php if($wo['language'] == "portuguese") { ?>Criar Enquete<?php } ?><?php if($wo['language'] == "russian") { ?>Создать опрос<?php } ?><?php if($wo['language'] == "spanish") { ?>Crear encuesta<?php } ?><?php if($wo['language'] == "turkish") { ?>Anket Oluştur<?php } ?>">
+               <div class="input-group">
+                   <span class="btn btn-default btn-file poll-form btnpoll">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" color="#2196F3"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  </span>
+               </div>
+            </div>
+         </div>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Add Location<?php } ?><?php if($wo['language'] == "arabic") { ?>إضافة موقع<?php } ?><?php if($wo['language'] == "dutch") { ?>Voeg locatie toe<?php } ?><?php if($wo['language'] == "french") { ?>Ajouter un emplacement<?php } ?><?php if($wo['language'] == "german") { ?>Ort hinzufügen<?php } ?><?php if($wo['language'] == "italian") { ?>Aggiungi luogo<?php } ?><?php if($wo['language'] == "portuguese") { ?>Adicionar local<?php } ?><?php if($wo['language'] == "russian") { ?>Добавить местоположение<?php } ?><?php if($wo['language'] == "spanish") { ?>Agregar Direccion<?php } ?><?php if($wo['language'] == "turkish") { ?>Konum ekle<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file map-form btnlocation">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin" color="#ff3d00"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </span>
+               </div>
+            </div>
+         </div>
+         <?php if ($wo['config']['audio_upload'] == 1) { ?>
+         <div class="<?php echo Wo_RightToLeft('pull-left');?>">
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Upload Music<?php } ?><?php if($wo['language'] == "arabic") { ?>تحميل الموسيقى<?php } ?><?php if($wo['language'] == "dutch") { ?>Upload muziek<?php } ?><?php if($wo['language'] == "french") { ?>Télécharger de la musique<?php } ?><?php if($wo['language'] == "german") { ?>Musik hochladen<?php } ?><?php if($wo['language'] == "italian") { ?>Carica musica<?php } ?><?php if($wo['language'] == "portuguese") { ?>Carregar música<?php } ?><?php if($wo['language'] == "russian") { ?>Загрузить музыку<?php } ?><?php if($wo['language'] == "spanish") { ?>Subir música<?php } ?><?php if($wo['language'] == "turkish") { ?>Müzik Yükle<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file btnmusic">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music" color="#607D8B"><path d="M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"></path><polyline points="9 17 9 5 21 3 21 15"></polyline></svg>
+						<input type="file" id="publisher-music" name="postMusic" accept="audio/*">
+                  </span>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+         
+		 
+		 <div class="<?php echo Wo_RightToLeft('pull-right');?> emo-form" >
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Feeling / Activity<?php } ?><?php if($wo['language'] == "arabic") { ?>الشعور / النشاط<?php } ?><?php if($wo['language'] == "dutch") { ?>Gevoel / Activiteit<?php } ?><?php if($wo['language'] == "french") { ?>Sentiment / Activité<?php } ?><?php if($wo['language'] == "german") { ?>Gefühl / Aktivität<?php } ?><?php if($wo['language'] == "italian") { ?>Sensazione / Attività<?php } ?><?php if($wo['language'] == "portuguese") { ?>Sentimento / Atividade<?php } ?><?php if($wo['language'] == "russian") { ?>Чувство / активность<?php } ?><?php if($wo['language'] == "spanish") { ?>Sentimiento / Actividad<?php } ?><?php if($wo['language'] == "turkish") { ?>Feeling / Activity<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file btnemoji">
+					<svg fill="#e0a800" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-user-plus"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"></path></svg>
+                  </span>
+               </div>
+            </div>
+         </div>
+		 <?php if ($wo['config']['stickers'] == 1): ?>
+		 <div class="<?php echo Wo_RightToLeft('pull-right');?> gif-form" >
+            <div class="poster-left-buttons" data-toggle="tooltip" title="<?php if($wo['language'] == "english") { ?>Insert GIF<?php } ?><?php if($wo['language'] == "arabic") { ?>إدراج جيف<?php } ?><?php if($wo['language'] == "dutch") { ?>Plaats GIF<?php } ?><?php if($wo['language'] == "french") { ?>Insérer un GIF<?php } ?><?php if($wo['language'] == "german") { ?>GIF einfügen<?php } ?><?php if($wo['language'] == "italian") { ?>Inserisci GIF<?php } ?><?php if($wo['language'] == "portuguese") { ?>Inserir GIF<?php } ?><?php if($wo['language'] == "russian") { ?>Вставить GIF<?php } ?><?php if($wo['language'] == "spanish") { ?>Insertar GIF<?php } ?><?php if($wo['language'] == "turkish") { ?>GIF ekle<?php } ?>">
+               <div class="input-group">
+                  <span class="btn btn-default btn-file btngif">
+					<svg fill="#9C27B0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-user-plus" style="width: 34px;height: 34px;"><path d="M0 0h24v24H0z" fill="none"></path><defs> <path d="M24 24H0V0h24v24z" id="a"></path> </defs> <clipPath id="b"> <use overflow="visible" xlink:href="#a"></use> </clipPath> <path clip-path="url(#b)" d="M11.5 9H13v6h-1.5zM9 9H6c-.6 0-1 .5-1 1v4c0 .5.4 1 1 1h3c.6 0 1-.5 1-1v-2H8.5v1.5h-2v-3H10V10c0-.5-.4-1-1-1zm10 1.5V9h-4.5v6H16v-2h2v-1.5h-2v-1z"></path></svg>
+                  </span>
+               </div>
+            </div>
+         </div>
+		 <?php endif ?>
+         </div>
+		 
+		 <div class="row margin0 pub_box_footer">
+			<div class="<?php echo Wo_RightToLeft('pull-right');?>">
+				<button type="button" onclick="Wo_GetPRecordLink($('#postRecord'))" id="publisher-button" class="mdbtn wabe form-control btn btn-main"><span id="postbutton"><?php echo $wo['lang']['post_label']; ?></span></button>
+			</div>
+			
+			<div class="<?php echo Wo_RightToLeft('pull-right');?>"><div class="ball-pulse"><div></div><div></div><div></div></div></div>
+			
+			<div id="status"></div>
+			
+			<?php if (!isset($wo['input']['recipient']) && $wo['page'] != 'group') { ?>
+			<div class="<?php echo Wo_RightToLeft('pull-left');?>">
+				<div class="poster-left-select">
+					<div class="publisher-hidden-option inputsm">
+					<?php $postprivacyCookie = (!empty($_COOKIE['post_privacy'])) ? $_COOKIE['post_privacy'] : 0;?>
+            <select name="postPrivacy" class="form-control inputsm">
+              <?php if (empty($_GET['p'])) {?>
+                <option value="3" <?php echo ($postprivacyCookie == 3) ? ' selected': ''?>><?php echo $wo['lang']['only_me'];?></option>
+                <option value="0" <?php echo ($postprivacyCookie == 0) ? ' selected': ''?>><?php echo $wo['lang']['everyone'];?></option>
+                <?php if ($wo['config']['connectivitySystem'] == 0) { ?>
+                <option value="1" <?php echo ($postprivacyCookie == 1) ? ' selected': ''?>><?php echo $wo['lang']['people_i_follow'];?></option>
+                <option value="2" <?php echo ($postprivacyCookie == 2) ? ' selected': ''?>><?php echo $wo['lang']['people_follow_me'];?></option>
+                <?php } else {?>
+                <option value="1" <?php echo ($postprivacyCookie == 1) ? ' selected': ''?>><?php echo $wo['lang']['my_friends'];?></option>
+                <?php }?>
+              <?php } else { ?>
+                <option value="0" <?php echo ($postprivacyCookie == 0) ? ' selected': ''?>><?php echo $wo['lang']['everyone'];?></option>
+                <option value="2" <?php echo ($postprivacyCookie == 2) ? ' selected': ''?>><?php echo $wo['lang']['liked_my_page'];?></option>
+              <?php } ?>
+            </select>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
+			
+			<div class="<?php echo Wo_RightToLeft('pull-left');?> charsLeft-post"><span id="charsLeft"></span></div>
+			
+			<div class="clear"></div>
+		 </div>
+      </div>
+   </div>
+   <?php if (isset($wo['input']['recipient'])) { ?>
+   <input type="hidden" name="recipient_id" value="<?php echo $wo['user_profile']['user_id']; ?>">
+   <?php } ?>
+   <?php if ($wo['page'] == 'page') {?>
+   <input type="hidden" name="page_id" value="<?php echo $wo['page_profile']['page_id']; ?>">
+   <?php } else if ($wo['page'] == 'group') {?>
+   <input type="hidden" name="group_id" value="<?php echo $wo['group_profile']['id']; ?>">
+   <?php } else if ($wo['page'] == 'events') { ?>
+   <input type="hidden" name="event_id" value="<?php echo $wo['event']['id']; ?>">
+   <?php } ?>
+   <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+   <input type="hidden" name="postRecord" value="" id="postRecord">
+   <input type="hidden" name="postSticker" value="" id="postSticker" onchange="alert(this.value)">
+</form>
+<div id="hidden_inputbox"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#publisher-photos").on('change', function() {
+	//Get count of selected files
+	var countFiles = $(this)[0].files.length;
+	var imgPath = $(this)[0].value;
+	var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+	var image_holder = $("#image-holder");
+	image_holder.empty();
+	if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+		if (typeof(FileReader) != "undefined") {
+		//loop for each file selected for uploaded.
+		for (var i = 0; i < countFiles; i++) 
+		{
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                  }).appendTo(image_holder);
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[i]);
+              }
+            } else {
+              image_holder.html("<p>This browser does not support FileReader.</p>");
+            }
+         }
+	});
+});
+var fetch_url = 1;
+$(function () {
+  var allowed = "<?php echo $wo['config']['allowedExtenstion']?>";
+  <?php if (!empty($url)) { ?>
+    $('textarea').trigger('click');
+    setTimeout(function () {
+      $('textarea').trigger('keyup')
+    }, 1000);
+  <?php } ?>
+  $('.postText').triggeredAutocomplete({
+     hidden: '#hidden_inputbox',
+     source: Wo_Ajax_Requests_File() + "?f=mention",
+     trigger: "@" 
+  });
+  <?php if ($wo['config']['maxCharacters'] != 10000) { ?>
+  $('.postText').limit("<?php echo $wo['config']['maxCharacters']?>", '#charsLeft');
+  <?php } ?>
+  $('.emo-form').click(function () {
+    $('#emo-form').slideToggle(200);
+    Wo_RestFeelings();
+  });
+
+  $('.gif-form').click(function () {
+    $('#gif-form').slideToggle(200);
+  });
+  
+  $('.map-form').click(function () {
+    $('#map-form').slideToggle(200);
+  });
+  $('.poll-form').click(function () {
+    $('#poll-form').slideToggle(200);
+     $('.answers').find('input').each(function (index_id) {
+       $(this).val('');
+    });
+  });
+  $("#publisher-file").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#file-form input").val(filename);
+    $("#file-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-file").val('');
+      $("#file-form input").val('');
+      $("#file-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $("#publisher-photos").change(function () {
+    var numFiles = this.files.length;
+    $("#photo-form input").val(numFiles + ' photo(s) selected');
+    $("#photo-form").slideDown(200);
+  });
+
+  $("#publisher-video").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#video-form input[type='text']").val(filename);
+    $("#video-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-video").val('');
+      $("#video-form input[type='text']").val('');
+      $("#video-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $("#publisher-music").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#music-form input").val(filename);
+    $("#music-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-music").val('');
+      $("#music-form input").val('');
+      $("#music-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $(document).on("click",".read-ads-description",function(event) {
+    var self = $(this);
+    self.toggleClass('unsetheight');
+  });
+  
+  $(document).on('click', '.rads-clicks', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    var url   = self.find('a').attr('href');
+    window.open(url, '_blank');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-c',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+  
+  $(document).on('click', '.rvad-clicks', function(event) {
+    var self  = $(this);
+    self.off("click").removeClass('rvad-clicks');
+    var ad_id = self.parent().attr('id');
+    var url   = self.find('a').attr('href');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-c',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+  
+  $(document).on('click', '.rvad-views', function(event) {
+    var self  = $(this);
+    self.off("click").removeClass('rvad-views');
+    var ad_id = self.parent().attr('id');
+    var url   = self.find('a').attr('href');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-v',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+  
+  
+  
+  <?php if ($wo['config']['video_upload'] == 1) { ?>
+  var thumb_drop_block = $(".thumb-renderer");
+
+  if (typeof(window.FileReader) == 'undefined') {
+    thumb_drop_block.find('.preview').text('Drag drop is not supported in your browser!');
+  }
+
+  else{
+    thumb_drop_block[0].ondragover = function() {
+        thumb_drop_block.addClass('hover');
+        return false;
+    };
+        
+    thumb_drop_block[0].ondragleave = function() {
+        thumb_drop_block.removeClass('hover');
+        return false;
+    };
+
+    thumb_drop_block[0].ondrop = function(event) {
+        event.preventDefault();
+        thumb_drop_block.removeClass('hover');
+        var file = event.dataTransfer.files;
+        $("#custom-video-thumb").prop('files', file);
+    };
+  }
+  <?php } ?>
+
+  $("#custom-video-thumb").change(function(event) {
+    $("#post_vthumb_droparea").find('.preview').hide(5, function() {
+      $("#post_vthumb_droparea").find('.image').html($("<img>",{
+        src:window.URL.createObjectURL(event.target.files[0])
+      })).show(5);
+    });;
+  });
+
+  $(".video-custom-thumb").click(function(event) {
+    $(this).find('i').toggleClass('rotate-90d');
+
+    $('.video-poster-image').slideToggle(50,function () {
+      var display_stat = $(this).css('display');
+
+      if (display_stat == 'none') {
+        $(".video-poster-image").find('.preview').show(10);
+        $(".video-poster-image").find('.image').empty().hide(10);
+        $("#custom-video-thumb").val('');
+      }
+
+    });
+  });
+
+  $(document).on('click', '.rads-views', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    var url   = self.find('a').attr('href');
+    window.open(url, '_blank');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-v',ad_id:ad_id},
+      })
+      .done(/* pass */)
+      .fail(/* pass */)
+    }
+    event.preventDefault();
+  });
+
+  var bar = $('#bar');
+  var percent = $('#percent');
+  var status = $('#status');
+  var publisher_button = $('#publisher-button');
+
+  $('form.post').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=posts&s=insert_new_post',
+    beforeSend: function () {
+      var percentVal = '0%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+      publisher_button.attr('disabled', true);
+      publisher_button.css('color', '#333');
+      $('#publisher-box-focus .pub-footer-bottom').find('.ball-pulse').fadeIn(100);
+    },
+    uploadProgress: function (event, position, total, percentComplete) {
+      var percentVal = percentComplete + '%';
+      bar.width(percentVal);
+      $('#progress').slideDown(200);
+      if(percentComplete > 50) {
+        percent.addClass('white');
+      }
+      percent.html(percentVal);
+    },
+    success: function (data) {
+      $('#progress').slideUp(200);
+      publisher_button.attr('disabled', false);
+      publisher_button.css('color', '#fff');
+      percent.removeClass('white');
+      $('.postText').css('height', 'auto');
+      $("#postRecord").val('');
+      $("#postSticker").val('');
+      if(data.status == 200) {
+        fetch_url = 1;
+        if(data.html.length > 0) {
+          $('#posts, #posts_hashtag').find('.posts-container').remove();
+        }
+        $('#posts, #posts_hashtag').prepend(data.html);
+        $('#video-form, #emo-form, #music-form, #map-form, #file-form, #photo-form, #album-form, .feeling-type, #poll-form, #gif-form').slideUp(200);
+		    $(".video-poster-image").hide(10, function() {
+          $(this).find('.preview').show(10);
+          $(this).find('.image').empty().hide(10);
+          $(".video-custom-thumb").find('i').removeClass('rotate-90d');
+        });
+		
+        Wo_RemoveFetchedUrl();
+        $("body").removeClass('pub-focus');
+        $('form.post').clearForm();
+        $('.feelings-value').html('');
+        $('#postSticker').html('');
+        $('select').prop('selectedIndex', 1);
+        <?php if ($wo['config']['maxCharacters'] != 10000) { ?>
+        $('#charsLeft').text("<?php echo $wo['config']['maxCharacters']?>");
+        <?php } ?>
+        <?php if (!empty($url)) { ?>
+        window.close();
+        <?php } ?>
+        if (data.invalid_file == 1) {
+          $("#invalid_file").modal('show');
+          Wo_Delay(function(){
+            $("#invalid_file").modal('hide');
+          },3000);
+        }
+        else if(data.invalid_file == 2){
+          $("#file_not_supported").modal('show');
+          Wo_Delay(function(){
+            $("#file_not_supported").modal('hide');
+          },3000);
+        }
+      } 
+      else if (data.status == 400) {
+        if (data.invalid_file == 1) {
+          $("#invalid_file").modal('show');
+          Wo_Delay(function(){
+            $("#invalid_file").modal('hide');
+          },3000);
+        }
+        else if(data.invalid_file == 2){
+          $("#file_not_supported").modal('show');
+          Wo_Delay(function(){
+            $("#file_not_supported").modal('hide');
+          },3000);
+        }
+        else{
+         // alert('Foramt is not supported, please try again later');
+        }
+      } 
+      fetch_url = 1;
+      $('#publisher-box-focus .pub-footer-bottom').find('.ball-pulse').fadeOut(100);
+    }
+  });
+  <?php if ($wo['config']['google_map'] == 1) { ?>
+  var pac_input = document.getElementById('searchTextField');
+  (function pacSelectFirst(input) {
+    // store the original event binding function
+    var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+    function addEventListenerWrapper(type, listener) {
+      // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+      // and then trigger the original listener.
+      if(type == "keydown") {
+        var orig_listener = listener;
+        listener = function (event) {
+          var suggestion_selected = $(".pac-item-selected").length > 0;
+          if(event.which == 13 && !suggestion_selected) {
+            var simulated_downarrow = $.Event("keydown", {
+              keyCode: 40,
+              which: 40
+            });
+            orig_listener.apply(input, [simulated_downarrow]);
+          }
+          orig_listener.apply(input, [event]);
+        };
+      }
+      // add the modified listener
+      _addEventListener.apply(input, [type, listener]);
+    }
+    if(input.addEventListener)
+      input.addEventListener = addEventListenerWrapper;
+    else if(input.attachEvent)
+      input.attachEvent = addEventListenerWrapper;
+  })(pac_input);
+
+  $(function () {
+     var autocomplete = new google.maps.places.Autocomplete(pac_input);
+  });
+<?php } ?>
+  
+  var getUrl  = $('.form-control.postText'); //url to extract from text field
+  var sent = 0;
+  $('.form-control.postText').bind("paste keyup input propertychange", function(e) {    
+    
+    if (($(".extracted_url").length > 0)){
+      return false;
+    }
+
+    else if (/(https?:\/\/(?:.*)\.(?:png|jpg|gif|jpeg))/ig.test(getUrl.val())) {
+      /* pass */
+    }
+
+    else{
+      var match_url = /(https?:\/\/[^\s]+)/g;
+      if (match_url.test(getUrl.val()) && sent == 0 && fetch_url == 1) {
+          sent = 1;
+          $("#results").hide();
+          $("#loading_indicator").show(); 
+          var extracted_url = getUrl.val().match(match_url)[0];
+
+          $.post(Wo_Ajax_Requests_File() + '?f=posts&s=fetch_url',{'url': extracted_url}, function(data){         
+            extracted_images = data.images;
+            total_images     = parseInt(data.images.length-1);
+            img_arr_pos      = total_images;
+
+            if(extracted_images != ''){
+              inc_image   = '<div class="extracted_thumb" id="extracted_thumb"><img src="'+data.images[img_arr_pos]+'"></div>';
+              input_image = data.images[img_arr_pos];
+            } 
+
+            else {
+              inc_image   = '';
+              input_image = '';
+            }
+            
+            var img_content = '';
+            if (total_images > 1) {
+              img_content = '<div class="thumb_select"><div class="thumb_sel"><span class="prev_thumb" id="thumb_next"><i class="fa fa-arrow-circle-right"></i></span><span class="next_thumb" id="thumb_prev"><i class="fa fa-arrow-circle-left"></i></span> </div><span class="small_text" id="total_imgs">'+img_arr_pos+' of '+total_images+'</span></div></div></div>';
+            }
+
+            var content = '<div class="extracted_url"><span class="remove-fetched-url" onclick="Wo_RemoveFetchedUrl();"><i class="fa fa-remove"></i></span>'+ inc_image +'<div class="extracted_content"><input class="form-control url-input" type="text" name="url_title" value="'+data.title+'" dir="auto"><br><textarea onkeyup="textAreaAdjust(this, 70)" class="form-control url-input-textarea url-input" name="url_content" placeholder="Description" dir="auto">' + data.content + '</textarea><input type="hidden" id="url_image" name="url_image" value="'+ input_image +'"><input type="hidden" id="url_link" name="url_link" value="'+data.url+'"><div class="clear"></div>' + img_content;
+
+            $("#results").html(content); 
+            $("#results").fadeIn(); 
+            $("#loading_indicator").hide();
+            sent = 0;
+
+          },'json');
+      }
+    }
+  });
+
+
+  
+  $("body").on("click","#thumb_prev", function(e){    
+    if(img_arr_pos>0) 
+    {
+      img_arr_pos--; 
+      
+      $("#extracted_thumb").html('<img src="'+extracted_images[img_arr_pos]+'">');
+
+      $("#url_image").attr('value', extracted_images[img_arr_pos]);
+      
+      $("#total_imgs").html((img_arr_pos) +' of '+ total_images);
+    }
+  });
+  
+  $("body").on("click","#thumb_next", function(e){    
+    if(img_arr_pos<total_images)
+    {
+      img_arr_pos++;
+      
+      $("#extracted_thumb").html('<img src="'+extracted_images[img_arr_pos]+'">');
+
+      $("#url_image").attr('value', extracted_images[img_arr_pos]);
+      
+      $("#total_imgs").html((img_arr_pos) +' of '+ total_images);
+    }
+  });
+
+});
+
+
+
+function Wo_RemoveFetchedUrl() {
+  fetch_url = 0;
+  var content = $('form.publisher-box').find('.extracted_url');
+  content.slideUp(function () {
+    $(this).remove();
+    if ($('.form-control.postText').val() != '') {
+      $('.form-control.postText').focus();
+    }
+  });
+}
+
+function Wo_OpenAlbum() {
+  $('#album-form').slideToggle(200);
+}
+function Wo_ShowFeelings() {
+  if ($('.feelings-type-to').is(':empty')) {
+    $('.feeling-types').slideToggle(200);
+  }
+  
+}
+var pac_input2 = document.getElementById('feelings-text');
+function Wo_ShowFeelingType(type, text, placeholder, icon) {
+  $('.feeling-types').slideUp(200, function () {
+    $('.feelings-type-to').html('<i class="fa fa-' + icon + '"></i> ' + text + '');
+    $('#feelings-text').attr('placeholder', decodeHtml(placeholder)).focus();
+    $('#feeling-type').val(type);
+    if (type != 'feelings') {
+      $('#feelings-text').attr('readonly', false);
+    }
+    if (type == 'traveling') {
+      var autocomplete = new google.maps.places.Autocomplete(pac_input2);
+    } else {
+      google.maps.event.clearInstanceListeners(pac_input2);
+    }
+    $('.' + type).slideToggle(200);
+  });
+}
+function Wo_RestFeelings() {
+  $('.feelings-type-to, .feelings-value').empty();
+  $('#feelings-text').val('');
+  $('#feelings-text').attr('readonly', true);
+  $('#feelings-text').attr('placeholder', decodeHtml("<?php echo $wo["lang"]["feel_d"]?>"));
+  $('.feeling-type, .feelings-type').slideUp(200);
+  google.maps.event.clearInstanceListeners(pac_input2);
+  Wo_ShowFeelings();
+}
+
+function Wo_AddFeeling(type, text, icon) {
+  $('#feelings-text').val(type);
+  $('.feelings-value').html('<span><i class="twa-lg twa twa-' + icon + '"></i> ' + text + '</span>')
+  Wo_ShowFeelingType('feelings', 'Feeling', 'What are you feeling ?', 'smile-o');
+}
+function smokeTheAt(str) {
+  var n = str.search("@");
+  if(n != "-1"){
+    alert('sd');
+  }
+}
+
+function Wo_AddAnswer() {
+  answer_id = 0;
+  $('.answers').find('input').each(function (index_id) {
+     answer_id = Number(index_id) + 1;
+  });
+  var last_answer_id = (Number(answer_id) + 1);
+  if (last_answer_id < 9) {
+     $('.answers').append('<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> ' + last_answer_id + '">');
+     if (last_answer_id == 8) {
+      $('#add_answer').hide();
+     }
+     $('.answers').find('input:last').focus();
+  } else {
+     $('#add_answer').hide();
+  }
+  
+}
+function Wo_ShowPosInfo() {
+  if ($(".postText").attr('opened')) {
+    return false;
+  }
+  $(".postText").attr('opened', '1');
+  $(".postText").css('height', '75px');
+  $(".publisher-box-footer").slideDown(100);
+}
+$(document).on('focus','#publisher-box-focus',function(){
+	$("body").addClass('pub-focus');
+  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+      $(".publisher-box-footer").slideDown(100);
+      $(".postText").attr('opened', '1');
+  }
+});
+$('#focus-overlay').on('click',function (){
+    $("body").removeClass('pub-focus');
+});
+$(function() {
+  $(window).scroll(function() {
+    var scrollfocus = $(window).scrollTop();
+    if (scrollfocus >= 500) {
+      $("body").removeClass('pub-focus');
+    }
+  });
+});
+function Wo_ResetAnswers() {
+  $('.answers').find('input').each(function (index_id) {
+     $(this).val('');
+  });
+  $('#poll-form').slideUp(200);
+}
+function Wo_PostSticker(self){
+  if (!self) {
+    return false;
+  }
+  $('#postSticker').val($(self).attr('data-gif'));
+  Wo_Delay(function(){
+     Wo_GetPRecordLink();
+  },500)
+}
+function Wo_GetPostStickers(keyword){
+  if (!keyword) {
+    //return false;
+  }
+  $('#publisher-box-stickers').find('.ball-pulse').fadeIn(100);
+  Wo_Delay(function(){
+    $.ajax({
+      url: 'https://api.giphy.com/v1/gifs/search?',
+      type: 'GET',
+      dataType: 'json',
+      data: {q:keyword,api_key:'<?php echo $wo['config']['giphy_api'];?>', limit: 20},
+    })
+    .done(function(data) {
+      if (data.meta.status == 200 && data.data.length > 0) {
+        $('#publisher-box-stickers-cont').empty();
+        var appended = false;
+        for (var i = 0; i < data.data.length; i++) {
+            appended = true;
+            if (appended == true) {
+              appended = false;
+              $('#publisher-box-stickers-cont').append($('<img alt="gif" src="'+data.data[i].images.fixed_height_small.url+'" data-gif="' + data.data[i].images.fixed_height.url + '" onclick="Wo_PostSticker(this)" autoplay loop>'));
+              appended = true;
+            }
+        }
+        var images = 0;
+        Wo_ElementLoad($('img[alt=gif]'), function(){
+          images++;
+        });
+        if (data.data.length == images || images >= 5) {
+          $('#publisher-box-stickers').find('.ball-pulse').fadeOut(100);
+        }
+      }
+      else{
+        $('#publisher-box-stickers-cont').html('<p class="no_gifs_found"><i class="fa fa-frown-o"></i> <?php echo $wo['lang']['no_result']; ?></p>');
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  },100);
+}
+</script>
+<style>.pac-item > span:last-child {display: none;}#gif-form{display:none}.postprogress {height: 4px;display: block;width: 100%;background-color: #acece6;border-radius: 2px;background-clip: padding-box;overflow: hidden;top: 0px !important;right: 0px !important;}.postprogress .indeterminate {background-color: #26a69a;}.postprogress .indeterminate:before {content: '';position: absolute;background-color: inherit;top: 0;left: 0;bottom: 0;will-change: left, right;-webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;}.postprogress .indeterminate:after {content: '';position: absolute;background-color: inherit;top: 0;left: 0;bottom: 0;will-change: left, right;-webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;-webkit-animation-delay: 1.15s;animation-delay: 1.15s;}@-webkit-keyframes indeterminate {0% {left: -35%;right: 100%; }60% {left: 100%;right: -90%; }100% {left: 100%;right: -90%; } }@keyframes indeterminate {0% {left: -35%;right: 100%; }60% {left: 100%;right: -90%; }100% {left: 100%;right: -90%; } }@-webkit-keyframes indeterminate-short {0% {left: -200%;right: 100%; }60% {left: 107%;right: -8%; }100% {left: 107%;right: -8%; } }@keyframes indeterminate-short {0% {left: -200%;right: 100%; }60% {left: 107%;right: -8%; }100% {left: 107%;right: -8%; } }</style>

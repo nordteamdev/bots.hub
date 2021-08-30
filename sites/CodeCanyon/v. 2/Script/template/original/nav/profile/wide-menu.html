@@ -1,0 +1,43 @@
+{strip}
+
+{assign var=home_hr value="/user/{$user.id}"}
+
+
+
+
+
+
+
+{/strip}
+
+
+
+
+
+
+
+<div class="wide-profile mainContentSingleColumn gm-cl-aft grid" style="display:none;">
+<div id="mainTopContentRow" class="mainTopContentRow">
+
+<div id="hook_Block_CompactProfileBlock" class="hookBlock inlineBlock">
+    <div class="compactProfile">
+        <div class="compactProfile_pht" id="profile_change_main_photo">
+ 
+            <a href="{$home_hr}" class="compactProfile_pht_l" hrefattr="true">
+
+        <img src="/getPhoto?p={$user['profile_photo']}&sz=thumb&g={$user['gender']}" class="compactProfile_pht_cnt">
+		
+		</a>
+ 
+        </div>
+
+        <div class="compactProfile_info"><span class="compactProfile_info_cnt ellip"><a href="{$home_hr}" class="compactProfile_info_l o" hrefattr="true"><span class="compactProfile_n">{$user['fullname']}</span></a>
+            </span>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+</div>

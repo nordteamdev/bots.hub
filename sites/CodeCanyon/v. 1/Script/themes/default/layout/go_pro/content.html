@@ -1,0 +1,108 @@
+<?php if (FL_IsPRO() == false): ?>
+<div class="pro-packages-container fl-plus-box-shadow">
+	<div class="col-md-10 col-sm-12 col-xs-12 col-lg-10 col-md-offset-1 col-lg-offset-1">
+		<div class="pro-packages-header">
+			<h2>{{LANG pro_packages}}</h2>
+			<p><?php
+					$name    = $fl['config']['name'];
+					$subject = $fl['lang']['discover_features'];
+					echo str_replace('{{SITE_NAME}}',$name,$subject);
+				?> 🎉</p>
+		</div>
+		<div class="fl_go_pro">
+			<div class="fl_gp_content">
+				<h2>{{LANG pick_plan}}</h2>
+				<div class="fl_gp_details">
+					<ul>
+						<li><div class="fl_gp_bg_shadow"></div><span>{{LANG posting_limit}}</span></li>
+						<li><div class="fl_gp_bg_shadow"></div><span>{{LANG featured_posts}}</span></li>
+						<li><div class="fl_gp_bg_shadow"></div><span>{{LANG no_ads}}</span></li>
+						<li><div class="fl_gp_bg_shadow"></div><span>{{LANG verified_badge}}</span></li>
+					</ul>					
+				</div>
+			</div>
+			<div class="fl_gp_features">
+				<div class="fl_gp_feat">
+					<div class="fl_gp_feat_head">
+						<span class="fl_gp_duration">{{LANG free_mbr}}</span>
+						<h2 class="fl_gp_monthly_heading">$0/m</h2>
+					</div>
+					<div class="fl_gp_feat_body">
+						<ul>
+							<li><span>{{LANG posting_limit}}</span>{{CONFIG user_max_posts}}</li>
+							<li><span>{{LANG featured_posts}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+							<li><span>{{LANG no_ads}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+							<li><span>{{LANG verified_badge}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+						</ul>
+						<a href="{{LINK }}" class="btn btn-info">{{LANG stay_free}}</a>
+					</div>
+				</div>
+				<div class="fl_gp_feat">
+					<div class="fl_gp_feat_head">
+						<span class="fl_gp_duration">{{LANG pro_mbr}}</span>
+						<h2 class="fl_gp_monthly_heading">${{CONFIG pro_pkg_price}}/m</h2>
+					</div>
+					<div class="fl_gp_feat_body">
+						<ul>
+							<li><span>{{LANG posting_limit}}</span>1000</li>
+							<li><span>{{LANG featured_posts}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+							<li><span>{{LANG no_ads}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+							<li><span>{{LANG verified_badge}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+						</ul>
+						<a href="javascript:void();" onclick="FL_PurchasePkg('pro',this);" class="btn btn-info">{{LANG upgrade}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<script>
+	function FL_PurchasePkg(pkg,self){
+		if (!pkg || pkg != 'pro' || !self) {
+			return false;
+		}
+
+		$(self).text("{{LANG please_wait}}").attr('disabled', 'true');
+
+		$.ajax({
+			url: FL_Ajax_Requests_File() +  '?f=go_pro&s=purchase&hash_id=' + $('.main_session').val(),
+			type: 'POST',
+			dataType: 'json',
+			data: {type: pkg},
+		})
+		.done(function(data) {
+
+			if (data.status == 200) {
+				document.location.href = data.url;
+			}
+
+			else{
+				swal({
+					title: "{{LANG error}}",
+					text: "{{LANG error_found_request}}",
+					type: "error"
+				});
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		});
+	}
+</script>
+
+<?php else: ?>
+<div class="pro-packages-container fl-plus-box-shadow">
+	<div class="go-pro-head-upgraded">
+		<h4>{{LANG congratulations}}</h4>
+		<p>{{LANG u_are_pro}}</p>
+	</div>
+	<div class="go-pro-footer-upgraded">
+		<a href="{{LINK }}">
+			<button class="btn-main btn btn-lg">		
+				{{LANG start_new_features}}
+			</button>
+		</a>
+	</div>
+</div>
+<?php endif; ?>

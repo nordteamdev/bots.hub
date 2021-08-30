@@ -1,0 +1,34 @@
+<div class="product col-proxs-12 col-xs-6 col-sm-4 col-md-4" id="product-<?php echo $wo['product']['id']?>" data-id="<?php echo $wo['product']['id']?>" data_price="<?php echo $wo['product']['price']?>">
+	<div class="product_info">
+		<div class="product-image">
+			<div class="product-price">
+				<?php echo (!empty($wo['currencies'][$wo['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];?><?php echo $wo['product']['price']?>
+			</div>
+			<a href="<?php echo $wo['product']['url']?>"><img src="<?php echo $wo['product']['images'][0]['image_org'];?>"></a>
+			<div class="product-links">
+				<div class="info-middle">
+					<a class="more-info" href="<?php echo $wo['product']['url']?>"><?php echo $wo['lang']['view'] ?></a>
+					<?php if ($wo['loggedin']) { if ($wo['product']['seller']['id'] != $wo['user']['user_id']) { ?>
+						<span class="contact more-info" onclick="Wo_OpenChatTab(<?php echo $wo['product']['seller']['id']?>)"><?php echo $wo['lang']['buy'] ?></span> 
+					<?php } ?>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+		<div class="produc_info">
+			<div class="product-title">
+				<a href="<?php echo $wo['product']['url']?>" title="<?php echo $wo['product']['name']?>"><?php echo $wo['product']['name']?></a>
+			</div>
+			<div class="product-by">
+				<?php
+				    $product_by_ = $wo['product']['category'];
+				    $product_by_ = str_replace('{product_category_name}', $wo['products_categories'][$wo['product']['category']], $product_by_);
+				?>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=products&c_id=' . $wo['product']['category']);?>"><?php echo $wo['products_categories'][$wo['product']['category']];?></a>
+			</div>
+			<!--<div class="product-desc"><?php echo mb_substr($wo['product']['description'], 0, 150, "UTF-8") . '...';?></div>-->
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>

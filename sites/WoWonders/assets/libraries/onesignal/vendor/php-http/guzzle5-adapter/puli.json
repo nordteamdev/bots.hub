@@ -1,0 +1,11 @@
+{
+    "version": "1.0",
+    "name": "php-http/guzzle5-adapter",
+    "bindings": {
+        "35746582-1b50-41ea-805b-a91da22fec16": {
+            "_class": "Puli\\Discovery\\Binding\\ClassBinding",
+            "class": "Http\\Adapter\\Guzzle5\\Client",
+            "type": "Http\\Client\\HttpClient"
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{strip}
+{assign var=lby value=0}
+{assign var=b value=0}
+{assign var=d value=0}
+{assign var=t value=0}
+{assign var=l_t value=0}
+
+
+
+
+<ul>
+{foreach $q as $r}
+
+{$lby = $r.lastby}
+
+{assign var=dt value=$this->chatGnDate($r.time)}
+
+
+
+{if $l_t !== $dt[0]}
+<div class="cnt_w_chat_m">
+<div class="ch_f1_dt">
+<div class="chat_f2_dt">{$dt[1]}</div>
+</div>
+</div>
+{/if}
+
+{if $r.fromUser == $me}
+<li {if $r.bg == 'no'}class="m_transparent"{/if} id="chat_msg_{$r.id}">
+<div class="cnt_w_chat_m _me">
+
+
+<div title="{$this->pm_time($r.time)}" rel="tipsy" class="chat_w_msg from-me {if $d === 0 || $l_t !== $dt[0]}_ml{/if}">{$this->str_smilies($r.msg,false,false,false,true)}</div>
+
+</div>
+</li>
+<div class="clear"></div>
+{$b = 0}
+{$d = $d+1}
+
+{else}
+<li {if $r.bg == 'no'}class="m_transparent"{/if} id="chat_msg_{$r.id}">
+<div class="cnt_w_chat_m">
+
+<div title="{$this->pm_time($r.time)}" rel="tipsy" class="chat_w_msg from-they {if $b === 0 || $l_t !== $dt[0]}_ml{/if}">{$this->str_smilies($r.msg,false,false,false,true)}</div>
+
+
+</div>
+</li>
+<div class="clear"></div>
+{$d = 0}
+{$b = $b+1}
+
+{/if}
+
+{$lby = $r.lastby}
+
+
+{$l_t = date('j',$r.time)}
+{foreachelse}
+{$this->empty_chat_conv()}
+{/foreach}
+</ul>
+
+{/strip}

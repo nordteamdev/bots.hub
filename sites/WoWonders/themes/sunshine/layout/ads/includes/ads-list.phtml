@@ -1,0 +1,46 @@
+<tr data-ad-id="<?php echo $wo['ad']['id']; ?>">
+	<td>
+		<span><?php echo $wo['ad']['id']; ?></span>
+	</td>
+	<td>
+		<span class="toggle-user-ad-status" id="<?php echo $wo['ad']['id']; ?>" data-status="<?php echo $wo['ad']['status']; ?>">
+		<?php if ($wo['ad']['status'] == 1): ?>
+			<label class="ads_switch checked" role="switch"><span class="switch__label"></span></label>
+		<?php else: ?>
+			<label class="ads_switch" role="switch"><span class="switch__label"></span></label>
+		<?php endif;?>
+		</span>
+	</td>
+	<td width="280">
+		<span><?php echo $wo['ad']['name']; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['lang'][$wo['ad']['bidding']]; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['ad']['clicks']; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['ad']['views']; ?></span>
+	</td>
+	<td data-ad-status="<?php echo $wo['ad']['id']; ?>" width="100">
+		<span>
+			<?php if ($wo['ad']['status'] == 1): ?>
+				<?php echo $wo['lang']['active']; ?>
+			<?php else: ?>
+				<?php echo $wo['lang']['not_active']; ?>
+			<?php endif; ?>
+		</span>
+	</td>
+	<td>
+		<a href="<?php echo $wo['ad']['edit-url']; ?>" title="<?php echo $wo['lang']['edit']; ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#2196f3" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg>
+		</a>&nbsp;
+		<span class="pointer delete-ad" id="<?php echo $wo['ad']['id']; ?>" title="<?php echo $wo['lang']['delete']; ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#f44336" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+		</span>&nbsp;
+		<a href="<?php echo $wo['ad']['chart-url']; ?>" title="<?php echo $wo['lang']['stats']; ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="#4caf50" d="M17.45,15.18L22,7.31V19L22,21H2V3H4V15.54L9.5,6L16,9.78L20.24,2.45L21.97,3.45L16.74,12.5L10.23,8.75L4.31,19H6.57L10.96,11.44L17.45,15.18Z" /></svg>
+		</a>
+	</td>
+</tr>

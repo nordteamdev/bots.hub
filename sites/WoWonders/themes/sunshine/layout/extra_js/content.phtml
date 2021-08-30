@@ -1,0 +1,319 @@
+<script>
+  function Wo_GetNewActivities() {
+      var before_activity_id = $('#activities-wrapper > .activity').attr('data-activity-id');
+      if (typeof before_activity_id === 'undefined') {
+           return false;
+      }
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_new_activities', {
+        before_activity_id: before_activity_id
+      }, function (data) {
+        if(data.status == 200) {
+          $('.activities-wrapper').prepend(data.html);
+        }
+      });
+    }
+    function Wo_GetMoreActivities() {
+      var activity_container = $('.activity-container');
+      var after_activity_id = $('#activities-wrapper .activity:last').attr('data-activity-id');
+      Wo_progressIconLoader(activity_container);
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_more_activities', {
+        after_activity_id: after_activity_id
+      }, function (data) {
+        if(data.status == 200) {
+          if(data.html.length == 0) {
+            $('.no-activities').html(data.message);
+          } else {
+            $('#activities-wrapper').append(data.html);
+          }
+          $("#activities-wrapper").animate({
+            scrollTop: $('#activities-wrapper')[0].scrollHeight
+          }, 100);
+          Wo_progressIconLoader(activity_container);
+        }
+      });
+    };
+function Wo_RegisterReaction(element){
+    var reaction = $(element).attr('data-reaction');
+    var post_id = $(element).attr('data-post-id');
+    var path = "<?php echo $wo['config']['theme_url']?>";
+    var lang = $(element).attr('data-reaction-lang');
+    if (!post_id || !reaction) {
+      return false;
+    }
+
+    $('.reactions-box-container-'+post_id).fadeOut(1);
+
+    var reaction_icon = '';
+    var reaction_color = '';
+
+    switch (reaction) {
+      case 'Like':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/like-sm.png" alt="<?php echo $wo['lang']['like'];?>"></div>';
+          reaction_color = '#1da1f2';
+          break;
+      case 'Love':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/love-sm.png" alt="<?php echo $wo['lang']['love'];?>"></div>';
+          reaction_color = '#f25268';
+          break;
+      case 'HaHa':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/haha-sm.png" alt="<?php echo $wo['lang']['haha'];?>"></div>';
+          reaction_color = '#f3b715';
+          break;
+      case 'Wow':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/wow-sm.png" alt="<?php echo $wo['lang']['wow'];?>"></div>';
+          reaction_color = '#f3b715';
+          break;
+      case 'Sad':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/sad-sm.png" alt="<?php echo $wo['lang']['sad'];?>"></div>';
+          reaction_color = '#f3b715';
+          break;
+      case 'Angry':
+          reaction_icon = '<div class="inline_post_emoji"><img class="" src="<?php echo $wo['config']['theme_url'];?>/reaction/angry-sm.png" alt="<?php echo $wo['lang']['angry'];?>"></div>';
+          reaction_color = '#f7806c';
+          break;
+  }
+
+    $('.status-reaction-'+post_id).html(''+reaction_icon+'' + lang).css({"color": reaction_color});
+    $('.status-reaction-'+post_id).addClass("active-like");
+    $.get(Wo_Ajax_Requests_File(), {f: 'posts', s: 'register_reaction', post_id: post_id, reaction: reaction}, function (data) {
+      if(data.status == 200) {
+        $('.post-reactions-icons-'+post_id).html(data.reactions);
+		    
+      }
+      if (data.can_send == 1) {
+        Wo_SendMessages();
+      }
+    });
+}
+
+function Wo_RegisterFollow(id, is_confirm) {
+  var _follow_con = $('[id=Follow-' + id + ']');
+  is_confirm_f    = 0;
+
+  if (is_confirm == 1) {
+    is_confirm_f = 1;
+  }
+
+  <?php if ($wo['config']['connectivitySystem'] == 0): ?>
+    html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ', ' + is_confirm_f + ')" class="btn-active btn btn-default btn-sm wo_following_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg><span class="button-text"> <?php echo $wo["lang"]["following_btn"];?></span></button>';
+    if (is_confirm_f == 1) {
+      html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ', ' + is_confirm_f + ')" class="btn-requested btn btn-default btn-sm wo_request_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span class="button-text"> <?php echo $wo["lang"]["requested"];?></span></button>';
+    }
+    if (_follow_con.find('button').hasClass('btn-active') || _follow_con.find('button').hasClass('btn-requested')) {
+      html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ', ' + is_confirm_f + ')" class="btn btn-default btn-sm wo_follow_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span class="button-text"> <?php echo $wo["lang"]["follow"];?></span></button>';
+    }
+  <?php else: ?>
+    if (_follow_con.find('button').hasClass('btn-active')) {
+      if (!confirm("<?php echo $wo['lang']['are_you_sure_unfriend'] ?>")) {
+          return false;
+      }
+    }
+    html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ')" class="btn-requested btn btn-default btn-sm wo_request_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span class="button-text"> <?php echo $wo["lang"]["requested"];?></span></button>';
+    if (_follow_con.find('button').hasClass('btn-requested') || _follow_con.find('button').hasClass('btn-active')) {
+      html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ')" class="btn btn-default btn-sm wo_follow_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span class="button-text"> <?php echo $wo["lang"]["add_friend"];?></span></button>';
+    }
+
+  <?php endif; ?>
+
+  _follow_con.html(html_);
+
+  $.get(Wo_Ajax_Requests_File(), {f: 'follow_user', following_id: id}, function(data) {
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+
+    else if(data.status == 400){
+      html_ = '<button type="button" onclick="Wo_RegisterFollow(' + id + ')" class="btn btn-default btn-sm wo_follow_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span class="button-text"> <?php echo $wo["lang"]["add_friend"];?></span></button>';
+      _follow_con.html(html_);
+
+      $("#modal-alert").modal('show');
+
+      Wo_Delay(function(){
+        $("#modal-alert").modal('hide');
+      },3000);
+    }
+  });
+
+}
+
+function Wo_RegisterGroupJoin(id, is_confirm) {
+  var _join_con = $('[id=join-' + id + ']');
+  is_confirm_ = 0;
+  if (is_confirm == 1) {
+    is_confirm_ = 1;
+  }
+  html_join = '<button type="button" onclick="Wo_RegisterGroupJoin(' + id + ', ' + is_confirm_ + ')" class="btn-active btn btn-default btn-sm wo_following_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span class="button-text"> <?php echo $wo["lang"]["joined"];?></span></button>';
+  if (is_confirm_ == 1) {
+    html_join = '<button type="button" onclick="Wo_RegisterGroupJoin(' + id + ', ' + is_confirm_ + ')" class="btn-requested btn btn-default btn-sm wo_request_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span class="button-text"> <?php echo $wo["lang"]["requested"];?></span></button>';
+  }
+  if (_join_con.find('button').hasClass('btn-requested') || _join_con.find('button').hasClass('btn-active')) {
+    html_join = '<button type="button" onclick="Wo_RegisterGroupJoin(' + id + ', ' + is_confirm_ + ')" class="btn btn-default btn-sm wo_follow_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span class="button-text"> <?php echo $wo["lang"]["join"];?></span></button>';
+  }
+  _join_con.html(html_join);
+  $.get(Wo_Ajax_Requests_File(), {f: 'join_group', group_id: id}, function (data) {
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+
+function Wo_RegisterEventGoing(id) {
+  var _join_con = $('[id=going-' + id + ']');
+  html_join = '<button type="button" onclick="Wo_RegisterEventGoing(' + id + ')" class="btn-active btn btn-default btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span class="button-text"> <?php echo $wo["lang"]["going"];?></span></button>';
+  if (_join_con.find('button').hasClass('btn-active')) {
+    html_join = '<button type="button" onclick="Wo_RegisterEventGoing(' + id + ')" class="btn btn-default btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span class="button-text"> <?php echo $wo["lang"]["go"];?></span></button>';
+  }
+  _join_con.html(html_join);
+  $.get(Wo_Ajax_Requests_File(), {f: 'go_event', event_id: id}, function (data) {
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+
+function Wo_RegisterEventInterested(id) {
+  var _join_con = $('[id=interested-' + id + ']');
+  html_join = '<button type="button" onclick="Wo_RegisterEventInterested(' + id + ')" class="btn-active btn btn-default btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg><span class="button-text"> <?php echo $wo["lang"]["interested"];?></span></button>';
+  if (_join_con.find('button').hasClass('btn-active')) {
+    html_join = '<button type="button" onclick="Wo_RegisterEventInterested(' + id + ')" class="btn btn-default btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg><span class="button-text"> <?php echo $wo["lang"]["interested"];?></span></button>';
+  }
+  _join_con.html(html_join);
+  $.get(Wo_Ajax_Requests_File(), {f: 'interested_event', event_id: id}, function (data) {
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+
+
+function Wo_RegisterPageLike(id) {
+  element_like = $('[id=like-' + id + ']');
+  html_like = '<button type="button" onclick="Wo_RegisterPageLike(' + id + ')" class="btn-active btn btn-default btn-sm wo_following_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg><span class="button-text"> <?php echo $wo["lang"]["liked"];?></span></button>';
+  if (element_like.find('button').hasClass('btn-active')) {
+  	html_like = '<button type="button" onclick="Wo_RegisterPageLike(' + id + ')" class="btn btn-default btn-sm wo_follow_btn" id="wo_useract_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg><span class="button-text"> <?php echo $wo["lang"]["like"];?></span></button>';
+  }
+  element_like.html(html_like);
+  $.get(Wo_Ajax_Requests_File(), {f: 'like_page', page_id: id}, function (data) {
+    if(data.status == 200) {
+      if ($('.sidebar-listed-page-like').attr('data-type') == "sidebar") {
+        setTimeout(function () {
+          Wo_ReloadSideBarPages();
+        }, 500);
+      }
+    }
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+
+function Wo_RegisterLike(post_id) {
+  var post = $('[id=post-' + post_id + ']');
+  html_like = '<span class="active-like"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg><span class="like-btn-mobile"> <?php echo $wo["lang"]["liked"];?></span></span>';
+  if (post.find("[id^=like-button]").parent().find('.active-like').length > 0) {
+  	html_like = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="like-btn-mobile"> <?php echo $wo["lang"]["like"];?></span>';
+  } 
+  <?php if ($wo['config']['second_post_button'] == 'dislike') { ?>
+   post.find("[id^=wonder-button]").html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg> <span class="like-btn-mobile"> <?php echo $wo["lang"]["dislike"];?></span>');
+  <?php } ?>
+  post.find("[id^=like-button]").html(html_like);
+  $.get(Wo_Ajax_Requests_File(), {f: 'posts', s: 'register_like', post_id: post_id}, function (data) {
+    if(data.status == 200) {
+      post.find("[id^=likes]").text(data.likes);
+    } else {
+      post.find("[id^=likes]").text(data.likes);
+    }
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+
+function Wo_RegisterWonder(post_id) {
+  var post = $('[id=post-' + post_id + ']');
+  wonder_icon = '<?php echo $wo["second_post_button_icon"]?>';
+  wonder_lang = "<?php echo $wo['lang']['wonder']; ?>";
+  wonder_lang_2 = "<?php echo $wo['lang']['wondered']; ?>";
+  <?php if ($wo['config']['second_post_button'] == 'dislike') { ?>
+  wonder_lang = "<?php echo $wo['lang']['dislike']; ?>";
+  wonder_lang_2 = "<?php echo $wo['lang']['disliked']; ?>";
+  <?php } ?>
+  html_wonder = '<span class="active-wonder">' + wonder_icon + '<span class="like-btn-mobile">' + wonder_lang_2 + '</span></span>';
+  if (post.find("[id^=wonder-button]").parent().find('.active-wonder').length > 0) {
+  	html_wonder = '' + wonder_icon + '<span class="like-btn-mobile">' + wonder_lang + '</span>';
+  } 
+  post.find("[id^=wonder-button]").html(html_wonder);
+  <?php if ($wo['config']['second_post_button'] == 'dislike') { ?>
+   post.find("[id^=like-button]").html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="like-btn-mobile"> <?php echo $wo["lang"]["like"];?></span>');
+  <?php } ?>
+  $.get(Wo_Ajax_Requests_File(), {f: 'posts', s: 'register_wonder', post_id: post_id}, function (data) {
+    if(data.status == 200) {
+      post.find("[id^=wonders]").text(data.wonders);
+    } else {
+      post.find("[id^=wonders]").text(data.wonders);
+    }
+    if (data.can_send == 1) {
+      Wo_SendMessages();
+    }
+  });
+}
+function Wo_IsLangValid(lang){
+  var langs = [ "en", "tr","fr","es","nl","de","it","pt","ru","ar"]; 
+  if (lang && langs.indexOf(lang) != -1) {
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+function Wo_DetectTextLang(text){
+  var lcode = false;
+  if (text || typeof(text) == 'string') {
+    guessLanguage.info(text, function(lang) {
+    lcode = lang[0];
+    });
+  }
+  return lcode;
+}
+function Wo_Translate(id,lang){
+  if (!id || !lang && Wo_IsLangValid(lang)) {
+    return false;
+  }else{
+    var translatable_text = $("[data-translate-text="+id+"]").text();
+    if (lang == Wo_DetectTextLang(translatable_text)) {
+      $("[data-trans-btn=" + id + "]").removeAttr('onclick')
+      return false;
+    }
+    $.ajax({
+      url: 'https://translate.yandex.net/api/v1.5/tr.json/translate',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        key:'<?php echo $wo['config']['yandex_translation_api']; ?>',
+        text:String(translatable_text),
+        lang:String(lang)},
+    }).done(function(data) {
+      if (data.code == 200) {
+        $("[data-translate-text="+id+"]").text(data.text[0])
+        $("[data-trans-btn=" + id + "]").removeAttr('onclick')
+      }
+    }).fail(function() {
+      console.log("translation error");
+    })
+  }
+}
+
+$(document).on('click', '#night_mode_toggle', function(event) {
+  mode = $(this).attr('data-mode');
+  if (mode == 'night') {
+      $('head').append('<link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/stylesheet/dark.css<?php echo $wo['update_cache']; ?>" id="night-mode-css">');
+      $('#night_mode_toggle').attr('data-mode', 'day');
+      $('#night-mode-text').text('<?php echo $wo['lang']['day_mode']?>');
+  } else {
+      $('#night-mode-css').remove();
+      $('#night_mode_toggle').attr('data-mode', 'night');
+      $('#night-mode-text').text('<?php echo $wo['lang']['night_mode']?>');
+  }
+  $.post(Wo_Ajax_Requests_File() + '?mode=' + mode);
+});
+</script>

@@ -1,0 +1,214 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > E-mail & SMS Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>E-mail Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <label for="smtp_or_mail">Server Type</label>
+                        <div class="form-group">
+                            <input type="radio" name="smtp_or_mail" id="smtp_or_mail-enabled" value="smtp" <?php echo ($wo['config']['smtp_or_mail'] == 'smtp') ? 'checked': '';?>>
+                            <label for="smtp_or_mail-enabled">SMTP Server</label>
+                            <input type="radio" name="smtp_or_mail" id="smtp_or_mail-disabled" value="mail" <?php echo ($wo['config']['smtp_or_mail'] == 'mail') ? 'checked': '';?>>
+                            <label for="smtp_or_mail-disabled" class="m-l-20">Server Mail (Default)</label>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_host" name="smtp_host" class="form-control" value="<?php echo $wo['config']['smtp_host'];?>">
+                                <label class="form-label">SMTP Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_username" name="smtp_username" class="form-control" value="<?php echo $wo['config']['smtp_username'];?>">
+                                <label class="form-label">SMTP Username</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" id="smtp_password" name="smtp_password" class="form-control" value="<?php echo $wo['config']['smtp_password'];?>">
+                                <label class="form-label">SMTP Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_port" name="smtp_port" class="form-control" value="<?php echo $wo['config']['smtp_port'];?>">
+                                <label class="form-label">SMTP Port</label>
+                            </div>
+                        </div>
+                        <label for="smtp_encryption">SMTP Encryption</label>
+                        <div class="form-group">
+                            <input type="radio" name="smtp_encryption" id="smtp_encryption-enabled" value="tls" <?php echo (strtolower($wo['config']['smtp_encryption']) == 'tls') ? 'checked': '';?>>
+                            <label for="smtp_encryption-enabled">TLS</label>
+                            <input type="radio" name="smtp_encryption" id="smtp_encryption-disabled" value="ssl" <?php echo (strtolower($wo['config']['smtp_encryption']) == 'ssl') ? 'checked': '';?>>
+                            <label for="smtp_encryption-disabled" class="m-l-20">SSL</label>
+                        </div>
+                        <span class="help-block">After clicking "Test message", a test message will be sent to your account email address.</span>
+                        <span class="help-block" style="color:red;">Please save the form before testing the server.</span>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                        <button type="button" class="btn btn-warning m-t-15 waves-effect" onclick="Wo_TestMessage();">Test E-mail Server</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>SMS Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success sms-settings-alert"></div>
+                    <form class="sms-settings" method="POST">
+                        <div class="">To start sending SMS, you have to create an account and buy credits in <a href="http://www.twilio.com">Twilio</a> <span class="red">OR</span> <a href="http://www.bulksms.com/">BulkSMS</a> <span class="red">OR</span> <a href="https://www.infobip.com/">Infobip</a>.</div><br>
+                        <label for="sms_provider">Default SMS provider</label>
+                        <div class="form-group">
+                            <input type="radio" name="sms_provider" id="sms_provider-enabled" value="twilio" <?php echo ($wo['config']['sms_provider'] == 'twilio') ? 'checked': '';?>>
+                            <label for="sms_provider-enabled">Twilio</label>
+                            <input type="radio" name="sms_provider" id="sms_provider-disabled" value="bulksms" <?php echo ($wo['config']['sms_provider'] == 'bulksms') ? 'checked': '';?>>
+                            <label for="sms_provider-disabled" class="m-l-20">BulkSMS</label>
+                            <input type="radio" name="sms_provider" id="sms_provider-enabled1" value="infobip" <?php echo ($wo['config']['sms_provider'] == 'infobip') ? 'checked': '';?>>
+                            <label for="sms_provider-enabled1" class="m-l-20">Infobip</label>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="eapi" name="eapi" class="form-control" value="<?php echo $wo['config']['eapi'];?>">
+                                <label class="form-label">BulkSMS Eapi_URL</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="sms_username" name="sms_username" class="form-control" value="<?php echo $wo['config']['sms_username'];?>">
+                                <label class="form-label">BulkSMS Username</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" id="sms_password" name="sms_password" class="form-control" value="<?php echo $wo['config']['sms_password'];?>">
+                                <label class="form-label">BulkSMS Password</label>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="sms_twilio_username" name="sms_twilio_username" class="form-control" value="<?php echo $wo['config']['sms_twilio_username'];?>">
+                                <label class="form-label">Twilio account_sid</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="sms_twilio_password" name="sms_twilio_password" class="form-control" value="<?php echo $wo['config']['sms_twilio_password'];?>">
+                                <label class="form-label">Twilio auth_token</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="sms_t_phone_number" name="sms_t_phone_number" class="form-control" value="<?php echo $wo['config']['sms_t_phone_number'];?>">
+                                <label class="form-label">Twilio Phone number</label>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="infobip_username" name="infobip_username" class="form-control" value="<?php echo $wo['config']['infobip_username'];?>">
+                                <label class="form-label">Infobip Username</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="infobip_password" name="infobip_password" class="form-control" value="<?php echo $wo['config']['infobip_password'];?>">
+                                <label class="form-label">Infobip password</label>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="sms_phone_number" name="sms_phone_number" class="form-control" value="<?php echo $wo['config']['sms_phone_number'];?>">
+                                <label class="form-label">Your Phone number <small>e.g (+9053..)</small></label>
+                            </div>
+                        </div>
+                      
+                        <span class="help-block">After clicking "Test Server", a test message will be sent to your phone</span>
+                        <span class="help-block" style="color:red;">Please save the form before testing the server.</span>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                        <button type="button" class="btn btn-warning m-t-15 waves-effect" onclick="Wo_TestSMSMessage();">Test SMS Server</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+function Wo_TestMessage() {
+    $('form.email-settings').find('.btn-warning').text('Please wait..');
+    $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s: 'test_message'}, function (data) {
+        if (data.status == 200) {
+            alert('Message sent!');
+        } else {
+            alert('Message failed to sent, error: ' + data.error);
+        }
+        $('form.email-settings').find('.btn-warning').text('Test E-mail Server');
+    });
+}
+function Wo_TestSMSMessage() {
+    $('form.sms-settings').find('.btn-warning').text('Please wait..');
+    $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s: 'test_sms_message'}, function (data) {
+        if (data.status == 200) {
+            alert('Message sent !');
+        } else {
+            alert('Message failed to sent, error: ' + data.error);
+        }
+        $('form.sms-settings').find('.btn-warning').text('Test SMS Server');
+    });
+}
+$(function() {
+    var form_email_settings = $('form.email-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email_settings.find('.btn-primary').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email_settings.find('.btn-primary').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.email-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_sms_settings = $('form.sms-settings');
+    form_sms_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_sms_settings.find('.btn-primary').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_sms_settings.find('.btn-primary').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.sms-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.sms-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

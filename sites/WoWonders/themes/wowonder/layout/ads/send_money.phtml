@@ -1,0 +1,131 @@
+<div class="modal fade" id="send_money_modal" role="dialog">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> <?php echo $wo['lang']['send_money'] ?></h4>
+			</div>
+			<div class="modal-body">
+				<form class="form" id="send-money-form" autocomplete="off">
+					<div class="col-md-12" id="send-money-form-alert">
+						<?php if ($wo['user']['wallet'] == '0.00' || $wo['user']['wallet'] == '0'): ?>
+							<div class="alert alert-warning">
+								<?php echo $wo['lang']['balance_is_0'] ?> 
+								<span>
+									<i class="fa fa-university" aria-hidden="true"></i>
+								</span>
+								<a href="<?php echo Wo_SeoLink('index.php?link1=wallet'); ?>">      
+									<?php echo $wo['lang']['top_up'] ?>
+								</a>
+							</div>
+						<?php else: ?>  
+							<div class="alert alert-info"> 
+								<p>
+									<i class="fa fa-info-circle"></i> <?php echo $wo['lang']['u_send_money']; ?>
+								</p>
+							</div>
+						<?php endif; ?>
+					</div>
+					<div class="text-center">
+						<div class="form-group w100 add-amount">
+							<h5>
+								<span><?php echo Wo_GetCurrency($wo['config']['ads_currency']); ?></span>
+								<b><input type="text" placeholder="0.00" min="1.00" max="1000" name="amount" id="amount" /></b>
+							</h5>
+						</div>
+					</div>
+					<label class="col-md-1"></label>
+					<div class="form-group col-md-10">
+						<label class="col-md-12 bold"><?php echo $wo['lang']['send_to']; ?></label>
+						<div class="col-md-12">
+							<input id="search" type="text" placeholder="<?php echo $wo['lang']['search_name_or_email']; ?>" class="form-control">
+							<div class="dropdown">
+								<ul class="dropdown-menu money-recipients-list"></ul>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<label class="col-md-1"></label>
+					<div class="text-center">
+						<div class="form-group">
+							<button type="submit" class="btn btn-main" <?php echo ($wo['user']['wallet'] == '0.00' || $wo['user']['wallet'] == '0') ? 'disabled' : ''; ?>>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+								<?php echo $wo['lang']['continue'];?>
+							</button>
+							<div class="ball-pulse" style="float:none;"><div></div><div></div><div></div></div>
+						</div>
+					</div>
+					<input type="hidden" id="recipient_user_id" name="user_id">
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+  jQuery(document).ready(function($) {
+    $("#send-money-form").find('#search').keydown(function(event) {
+      let name = $(this).val();
+      $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'family',s:'search',name:name},
+      })
+      .done(function(data) {
+        if (data.status == 200) {
+          $("#send-money-form").find(".dropdown").addClass('open').find('ul').empty();
+          for (var i = 0; i < data.users.length; i++) {
+            $("<li>",{
+              class:"pointer",
+              id: data.users[i].user_id,
+              text: data.users[i].name
+            }).appendTo('ul.money-recipients-list');     
+          }
+        }
+        else{
+          $("#send-money-form").find(".dropdown").removeClass('open').find('ul').empty();
+        }
+      });
+    });
+
+
+    $(document).on('click', 'ul.money-recipients-list li', function(event) {
+      event.preventDefault();
+      $("#recipient_user_id").val($(this).attr('id'));
+      $("#send-money-form").find('#search').val($(this).text());
+      $("#send-money-form").find(".dropdown").removeClass('open').find('ul').empty();
+    });
+
+    $("#send-money-form").ajaxForm({
+      url: Wo_Ajax_Requests_File() + '?f=wallet&s=send',
+      type:"POST",
+      beforeSend: function() {
+        $('#send-money-form').find('.ball-pulse').fadeIn(100);
+      },
+      success: function(data) {
+        scrollToTop();
+        if (data['status'] == 200) {
+          var alert_msg = $("<div>",{
+            class: "alert alert-success",
+            text: data['message']
+          }).prepend('<i class="fa fa-info-check-o"></i> ');;
+
+          $("#send-money-form-alert").html(alert_msg);
+          $("#send-money-form").resetForm();
+        } 
+
+        else if (data['message']) {
+          var alert_msg = $("<div>",{
+            class: "alert alert-danger",
+            text: (data['message'])
+          }).prepend('<i class="fa fa-info-circle"></i> ');
+
+          $("#send-money-form-alert").html(alert_msg);
+        } 
+		$('#send-money-form').find('.ball-pulse').fadeOut(100);
+      }
+    });
+
+  });
+</script>

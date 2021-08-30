@@ -1,0 +1,24 @@
+<div class="profile-style user-data" id="add-<?php echo $wo['UsersList']['user_id']?>" data-user-id="<?php echo $wo['UsersList']['user_id'];?>">
+   <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+      <img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture" />
+   </div>
+   <span class="user-popover" data-id="<?php echo $wo['UsersList']['id'];?>" data-type="<?php echo $wo['UsersList']['type'];?>">
+   <a href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username']?>">
+   <?php echo $wo['UsersList']['name']; ?>
+   <?php if($wo['UsersList']['verified'] == 1) {   ?>
+   <span class="verified-color"><i class="fa fa-check-circle" title="<?php echo $wo['lang']['verified_user'];?>"></i></span>
+   <?php  } ?>
+   </a>
+   </span>
+   <?php if($wo['config']['user_lastseen'] == 1 && $wo['UsersList']['showlastseen'] != 0): ?>
+   <div class="user-lastseen">
+      <?php echo Wo_UserStatus($wo['UsersList']['user_id'],$wo['UsersList']['lastseen']); ?>
+   </div>
+   <?php endif; ?>
+   <div class="user-follow-button">
+      <button type="button" onclick="Wo_RegisterAddGroup(<?php echo $wo['UsersList']['user_id'];?>, <?php echo $wo['group_profile']['id'];?>)" class="btn btn-default btn-sm">
+      <i class="fa fa-user-plus progress-icon" data-icon="user-plus"></i>
+      <span class="button-text"> <?php echo $wo['lang']['add'];?></span>
+      </button>
+   </div>
+</div>

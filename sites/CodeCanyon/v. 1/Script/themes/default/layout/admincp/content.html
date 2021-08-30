@@ -1,0 +1,20 @@
+<div class="page-margin">
+  <?php if (is_dir('install')) { ?>
+  <div class="alert alert-danger">
+    <i class="fa fa-fw fa-exclamation-triangle"></i> <strong>Risk:</strong>Please delete the ./install folder for security reasons.
+  </div>
+  <?php } ?>
+   <div class="row">
+       <div class="col-md-3">
+        <div class="settings-sidebar">
+        	<ul class="list-group">
+        	    {{LIST_MENU}}
+              <li class="list-group-item"><i class="fa fa-fw fa-copyright"></i> Build v1.0</li>
+    		</ul>
+        </div>
+      </div>
+      <div class="col-md-9  no-padding-left">
+        {{ADMINCP_PAGE}}
+      </div>
+   </div>
+</div>

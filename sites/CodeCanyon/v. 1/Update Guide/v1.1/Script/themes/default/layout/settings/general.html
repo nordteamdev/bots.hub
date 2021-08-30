@@ -1,0 +1,89 @@
+<div class="settings-header">
+	<h3><i class="fa fa-cog fa-fw "></i> {{LANG general_settings}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="general-settings" method="POST">
+    <div class="setting-general-alert"></div>
+	<fieldset>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="username">{{LANG username}}</label>  
+			<div class="col-md-6">
+				<input id="username" name="username" type="text" placeholder="" class="form-control input-md" value="{{USER username}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="email">{{LANG email}}</label>  
+			<div class="col-md-6">
+				<input id="email" name="email" type="text" placeholder="" class="form-control input-md" value="{{USER email}}"> 
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-2" for="gender">{{LANG gender}}</label>
+			<div class="col-md-6">
+				<select id="gender" name="gender" class="form-control">
+				    <option value="male" <?php echo ($fl['setting']['gender'] == 'male') ? 'selected': '';?>>{{LANG male}}</option>
+				    <option value="female" <?php echo ($fl['setting']['gender'] == 'female') ? 'selected': '';?>>{{LANG female}}</option>
+				</select>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-2" for="country">{{LANG country}}</label>
+			<div class="col-md-6">
+				<select id="country" name="country" class="form-control">
+				    {{COUNTRIES_LAYOUT}}
+				</select>
+			</div>
+		</div>
+		<?php if ($fl['is_admin'] == true) { ?>
+		  {{ADMIN_LAYOUT}}
+		<?php } ?>
+		<hr>
+		<?php if (is_array($fl['profile_fields'])): ?>
+			<?php foreach ($fl['profile_fields'] as $key => $fl['field']): ?>
+				<?php echo FL_LoadPage('settings/profile-fields'); ?>
+			<?php endforeach; ?>
+			<input type="hidden" name="cf" value="1">
+		<?php endif; ?>
+
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<input type="hidden" name="user_id" value="{{USER user_id}}">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-2" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<script>
+$(function() {
+  var form = $('form#general-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=settings&s=general',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-general-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

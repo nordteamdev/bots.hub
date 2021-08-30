@@ -1,0 +1,133 @@
+<div class="entry" data-type="option" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-check-square-o"></i> 
+	   {{LANG poll}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<div class="form-group">
+	    <input type="text" class="form-control" data-name="entry_option_name" placeholder="{{LANG question}}">
+	    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadImage('{{ENTRY_TIME}}', '{{LANG set_as_p_image}}');">
+	    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+	</div>
+	<div class="img-content">
+		<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+		    <div class="content">
+			    <i class="fa fa-upload"></i> {{LANG choose_img}}
+		    </div>
+	    </div>
+	    <div class="img-set-as"></div>
+	</div>
+	<div class="image-link">
+	    <div class="form-group">
+		    <input type="text" class="form-control" id="entry-image-link" placeholder="{{LANG img_link}}">
+		</div>
+		<div class="form-group pull-right">
+	        <button class="btn btn-blue" type="button" onclick="FL_FetchImage({{ENTRY_TIME}}, '{{LANG set_as_p_image}}');">
+		      <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	        </button>
+	    </div>
+	    <div class="clear"></div>
+	</div>
+
+	<span href="#" class="fetch-image-link" onclick="FL_OpenFetchImageInput({{ENTRY_TIME}});"><i class="fa fa-link"></i> {{LANG fetch_url_from_image}}</span>
+	<hr>
+	<ul class="nav nav-tabs toggle-answer-type">
+	  <li class="active">
+		  <a data-toggle="tab" href="#answer-text-{{ENTRY_TIME}}" class="btn btn-default">
+		  	<i class="fa fa-th-list "></i>
+		  </a>
+	  </li>
+	  <li>
+		  <a data-toggle="tab" href="#answer-img-{{ENTRY_TIME}}" class="btn btn-default">
+		  	<i class="fa fa-th-large"></i>
+		  </a>
+	  </li>
+	</ul>
+	<div class="answers tab-content">
+		<div id="answer-text-{{ENTRY_TIME}}" class="tab-pane active" data-ans-type="text">
+			<div id="answer-text-cont">
+				<div class="answer" id="answer-1" data-id="1">
+			    	<input type="text" class="form-control entry_answer" data-answer="entry_answer" placeholder="{{LANG answer}} 1">
+			    	<span class="fa fa-times" onclick="FL_RemoveInput({{ENTRY_TIME}}, 1);"></span>
+			    </div>
+			    <div class="answer" id="answer-2" data-id="2">
+			    	<input type="text" class="form-control entry_answer" data-answer="entry_answer" placeholder="{{LANG answer}} 2">
+			    	<span class="fa fa-times" onclick="FL_RemoveInput({{ENTRY_TIME}}, 2);"></span>
+			    </div>
+			    <div class="answer" id="answer-3" data-id="3">
+			    	<input type="text" class="form-control entry_answer" data-answer="entry_answer" placeholder="{{LANG answer}} 3">
+			    	<span class="fa fa-times" onclick="FL_RemoveInput({{ENTRY_TIME}}, 3);"></span>
+			    </div>
+			</div>
+			<div class="clear"></div>
+			<hr>
+		    <button class="btn btn-main" onclick="FL_AddAnswer({{ENTRY_TIME}}, '{{LANG answer}}');" type="button"><i class="fa fa-plus progress-icon" data-icon="plus"></i> {{LANG add_answer}}
+			</button>
+		</div>
+
+		<div id="answer-img-{{ENTRY_TIME}}" class="tab-pane fade" data-ans-type="img">
+			<div id="answer-img-cont">
+				<div class="col-xs-12 answer-img-wrapper">
+					<div class="answer-img" >
+						<div class="pick-answer-img opt-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="1">
+
+							<div class="preview">
+								<h5 id="preview-image-{{ENTRY_TIME}}-1"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+								
+							</div>
+							<input class="hidden entry_answer" data-answer="entry_answer" id="1" value="">
+						</div>
+					</div>
+					<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+				</div>
+				<div class="col-xs-12 answer-img-wrapper">
+					<div class="answer-img">
+						<div class="pick-answer-img opt-ans-preview-{{ENTRY_TIME}}"  id="{{ENTRY_TIME}}" data-id="2">
+							<div class="preview">
+								<h5 id="preview-image-{{ENTRY_TIME}}-2"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							</div>
+							<input class="hidden entry_answer" data-answer="entry_answer" id="2" value="">
+						</div>
+					</div>
+					<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+				</div>
+				<div class="col-xs-12 answer-img-wrapper">
+					<div class="answer-img">
+						<div class="pick-answer-img opt-ans-preview-{{ENTRY_TIME}}"  id="{{ENTRY_TIME}}" data-id="3">
+							<div class="preview">
+								<h5 id="preview-image-{{ENTRY_TIME}}-3"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							</div>
+							<input class="hidden entry_answer" data-answer="entry_answer" id="3" value="">
+						</div>
+					</div>
+					<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+				</div>
+				<div class="col-xs-12 answer-img-wrapper">
+					<div class="answer-img">
+						<div class="pick-answer-img opt-ans-preview-{{ENTRY_TIME}}"  id="{{ENTRY_TIME}}" data-id="4">
+							<div class="preview">
+								<h5 id="preview-image-{{ENTRY_TIME}}-4"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							</div>
+							<input class="hidden entry_answer" data-answer="entry_answer" id="4" value="">
+						</div>
+					</div>
+					<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+				</div>
+
+			</div>
+			<div class="clear"></div>
+			<hr>
+			<button class="btn btn-main" onclick="FL_AddImgAnswer({{ENTRY_TIME}}, '{{LANG choose_img}}');" type="button">
+			<i class="fa fa-plus progress-icon" data-icon="plus"></i> {{LANG add_answer}}
+			</button>
+		</div>
+		<input type="file" id="opt-img-{{ENTRY_TIME}}" class="hidden" onchange="FL_UploadOptImg({{ENTRY_TIME}},this);">
+	</div>
+	
+</div>

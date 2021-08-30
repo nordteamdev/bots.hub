@@ -1,0 +1,139 @@
+<div class="fl-reaction-cont">
+	<div class="fl-reaction-header">
+		<h4 class="pull-left">{{LANG your_reaction}}</h4>
+		<?php if ($fl['loggedin'] && $fl['reported'] == true): ?>
+			<div class="fl-report-post pull-right" title="{{LANG cancel_report}}">
+				<div onclick="FL_ReportPost('{{STORY_ID}}','{{STORY_PAGE}}',this);">
+					<i class="fa fa-flag progress-icon" data-icon="flag"></i>
+					<span>{{LANG cancel_report}}</span> 
+				</div>
+			</div>
+		<?php elseif ($fl['loggedin'] && empty($fl['reported'])): ?>
+			<div class="fl-report-post pull-right" title="{{LANG report_post}}">
+				<div onclick="FL_ReportPost('{{STORY_ID}}','{{STORY_PAGE}}',this);">
+					<i class="fa fa-flag progress-icon" data-icon="flag"></i>
+					<span>{{LANG report_post}}</span>
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
+	<div class="fl-reaction-body">
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][2]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][2]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f602.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>LOL</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][1]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][1]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f60d.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>LOVED</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][4]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][4]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f610.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>PURE</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][5]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][5]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f60e.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>AW</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][3]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][3]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f604.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>FUNNY</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][6]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][6]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f44e.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>BAD!</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][8]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][8]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f612.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>EEW</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][7]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][7]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f631.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>OMG!</span>
+			</div>
+		</div>
+		<div class="fl-reaction-emo" >
+			<div class="pre-bar">
+				<span>
+					<small><?php echo $fl['user_reactions'][9]['num']; ?></small>
+				</span>
+			</div>
+			<div class="reaction" style="background:<?php echo($fl['user_reactions'][9]['status']); ?>;">
+				<img src="<?php echo $fl['config']['site_url']. '/themes/default/img/icons/72x72/1f621.png'; ?>" alt="">
+			</div>
+			<div class="reaction-type">
+				<span>ANGRY</span>
+			</div>
+		</div>
+	</div>
+</div>

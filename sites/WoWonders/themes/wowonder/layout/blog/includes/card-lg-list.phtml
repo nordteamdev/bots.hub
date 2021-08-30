@@ -1,0 +1,52 @@
+<div class="blog-ls-box col-sm-6 col-md-4" data-rm-blog="<?php echo $wo['blog']['id'];?>">
+	<div class="view-blog" id="<?php echo $wo['blog']['id']; ?>">
+        <div class="article-image">
+        	<img src="<?php echo $wo['blog']['thumbnail']; ?>" alt="<?php echo $wo['blog']['title']; ?>">
+        </div>
+        <div class="art-text">
+          	<a href="<?php echo $wo['blog']['url']; ?>">
+	         	<h4 title="<?php echo $wo['blog']['title']; ?>">
+	         		<?php echo $wo['blog']['title']; ?>
+	         	</h4>
+            </a>
+
+            <!--<p class="art-description">
+          	<?php echo $wo['blog']['description'];?>	
+          	</p>-->
+
+            <div class="blog-meta-desc">
+	            <span class="<?php echo Wo_RightToLeft('pull-left');?>"> 
+	            	<time>
+		              	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+		              	<?php echo date("d M Y",$wo['blog']['posted']); ?>
+	            	</time>
+					&nbsp;
+	            	<small>
+	            		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+						<?php echo $wo['blog']['view']; ?>
+	            	</small>
+	            </span>
+		        <?php if ($wo['blog']['is_post_admin']):?>
+		            <div class="dropdown dropup <?php echo Wo_RightToLeft('pull-right');?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up dropdown-toggle pointer" data-toggle="dropdown" color="#969696"><polyline points="18 15 12 9 6 15"></polyline></svg>
+			            <ul class="dropdown-menu post-privacy-menu post-options <?php echo Wo_RightToLeft('pull-right');?>" role="menu">
+			                <li class="pointer">
+								<a class="delete-blog" id="<?php echo $wo['blog']['id'];?>">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+									<?php echo $wo['lang']['delete']; ?>
+								</a>
+							</li>
+			                <li>
+								<a href="<?php echo Wo_SeoLink('index.php?link1=edit-blog&id=' . $wo['blog']['id']) ?>" id="<?php echo $wo['blog']['id'];?>">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+									<?php echo $wo['lang']['edit']; ?>
+								</a>
+							</li>
+			            </ul>
+		            </div>
+	            <?php endif;?>
+	            <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

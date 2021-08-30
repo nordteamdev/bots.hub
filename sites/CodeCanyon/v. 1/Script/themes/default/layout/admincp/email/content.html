@@ -1,0 +1,94 @@
+<div class="settings-header">
+	<h3><i class="fa fa-envelope-o fa-fw "></i> {{LANG email_settings}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="general-settings" method="POST">
+    <div class="setting-general-alert"></div>
+	<fieldset>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_or_mail">E-mail server</label>
+			<div class="col-md-6">
+				<select id="smtp_or_mail" name="smtp_or_mail" class="form-control">
+				    <option value="smtp" <?php echo ($fl['config']['smtp_or_mail'] == 'smtp') ? 'selected' : '';?>>SMTP</option>
+				    <option value="mail" <?php echo ($fl['config']['smtp_or_mail'] == 'mail') ? 'selected' : '';?>>Default - mail()</option>
+				</select>
+			</div>
+		</div>
+		<hr>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_host">SMTP host name</label>  
+			<div class="col-md-6">
+				<input id="smtp_host" name="smtp_host" type="text" placeholder="" class="form-control input-md" value="{{CONFIG smtp_host}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_encryption">SMTP encryption</label>  
+			<div class="col-md-6">
+				<select id="smtp_encryption" name="smtp_encryption" class="form-control">
+				    <option value="tls" <?php echo ($fl['config']['smtp_encryption'] == 'tls') ? 'selected' : '';?>>TLS</option>
+				    <option value="ssl" <?php echo ($fl['config']['smtp_encryption'] == 'ssl') ? 'selected' : '';?>>SSL</option>
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_port">SMTP port</label>  
+			<div class="col-md-6">
+				<input id="smtp_port" name="smtp_port" type="text" placeholder="" class="form-control input-md" value="{{CONFIG smtp_port}}">
+			</div>
+		</div>
+		<hr>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_username">SMTP username</label>  
+			<div class="col-md-6">
+				<input id="smtp_username" name="smtp_username" type="text" placeholder="" class="form-control input-md" value="{{CONFIG smtp_username}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="smtp_password">SMTP password</label>  
+			<div class="col-md-6">
+				<input id="smtp_password" name="smtp_password" type="text" placeholder="" class="form-control input-md" value="{{CONFIG smtp_password}}">
+			</div>
+		</div>
+		<hr>
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-3" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+<script>
+$(function() {
+  var form = $('form#general-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=admincp&s=site',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-general-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

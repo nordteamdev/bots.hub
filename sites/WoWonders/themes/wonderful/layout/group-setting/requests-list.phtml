@@ -1,0 +1,15 @@
+<div class="profile-style" id="request-<?php echo $wo['request']['user_id'] ?>">
+   <a href="<?php echo $wo['request']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['request']['username']?>">
+      <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+         <img src="<?php echo $wo['request']['avatar'];?>" alt="<?php echo $wo['request']['name']; ?> Profile Picture" />
+      </div>
+      <?php echo $wo['request']['name']; ?>
+   </a>
+   <div class="page-website">
+      <?php echo Wo_UserStatus($wo['request']['user_id'],$wo['request']['lastseen']); ?>
+   </div>
+   <div>
+   <span onclick="Wo_AcceptJoinGroup(<?php echo $wo['request']['user_id']?>, <?php echo $wo['setting']['id']?>);" class="btn btn-default btn-sm"><i class="fa fa-check"></i> <?php echo $wo['lang']['accept']; ?></span>
+   <span onclick="Wo_DeleteJoinGroup(<?php echo $wo['request']['user_id']?>, <?php echo $wo['setting']['id']?>);" class="btn btn-default btn-sm"><i class="fa fa-remove"></i> <?php echo $wo['lang']['delete']; ?></span>
+   </div>
+</div>

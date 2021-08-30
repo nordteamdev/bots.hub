@@ -1,0 +1,16 @@
+<tr data-verif-request-id="{{REQUEST_ID}}">
+	<td>{{REQUEST_ID}}</td>
+	<td class="hidden">{{REQUEST_USERNAME}}</td>
+	<td><a href="{{USER url}}" target="_blank">{{REQUEST_USERNAME}}</a></td>
+	<td>{{REQUEST_TYPE}}</td>
+	<td>Pending</td>
+
+	<td class="pointer verification-action">
+		<span onclick="FL_VerifyUser({{REQUEST_ID}});" title="Verify"><i class="fa fa-check-circle-o"></i></span> |
+		<span onclick="FL_DeleteVerifRequest({{REQUEST_ID}});" title="Ignore"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span> |
+		<span title="View">
+			<a class="fl-load-verif-request" href="{{REQUEST_AJAX}}"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+		</span>
+
+	</td>
+</tr>

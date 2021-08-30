@@ -1,0 +1,34 @@
+{if $sct}<section id="pm_dlg_lft_users">{/if}
+{foreach $query as $res}
+{assign var=last_message value=$this->getLastMessage($res.id)}
+                        <div onclick="chatWith(event,this)" class="uChatDLeft disc-i" id="y-{$res.id}"  data-uconv='{literal}{{/literal}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{literal}}{/literal}'>
+                            <div id="lst-mitem-avatar-{$res.id}" class="disc-i_image">
+                                <div class="ucard-v __rounded __xxs">
+                                    <div class="section">
+                                        <div class="photo"><img class="photo_img" width="40" height="40" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}"></div>
+											<div id="f_onl_gtm">{if $this->getUserStatus($res.id)}<div class="ic-online"></div>{/if}</div>
+                                        <div id="lst-mitem-st-{$res.id}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="disc-i_cnt"><div class="msg_timestamp_u">{$this->lastMessageConvertTime($last_message.time)}</div>
+                                <div id="lst-mitem-name-{$res.id}" class="disc-i_cnt_name">{$res.fullname}</div>
+								
+                                <div id="lst-mitem-lst-msg-{$res.id}">
+				 <div id="chat_lstMsg" class="disc-i_cnt_tx ellip">{if $last_message.fromUser === $i} {$this->lang['me']}: {/if} {$this->str_smilies($last_message.msg,1,false,false,true)}</div>
+                                </div>
+                            </div>
+                            <div class="notificationFeedNewToolbar_dialogs notifications notifications__hide">
+                                <div class="counterText">0</div>
+                                <markercnt></markercnt>
+                            </div>
+                        </div>
+
+{foreachelse}
+{if $sct}
+<div class="pm_no_dialogs">{$this->lang['you_dosent_have_dialog_with_users']}</div>
+{else}
+0
+{/if}
+{/foreach}
+{if $sct}</section>{/if}

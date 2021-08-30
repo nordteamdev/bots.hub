@@ -1,0 +1,10 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+<div class="wrapper">
+	<?php echo Wo_LoadPage('welcome/welcome-header-logo');?>
+	<form class="login" id="forgot-form" method="post" style="padding-bottom:10px;">
+		<h5><?php echo $wo['lang']['invalid_markup']; ?>.</h5>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=welcome');?>"><?php echo $wo['lang']['go_back'] ?></a>
+	</form>
+	<?php echo Wo_LoadPage('footer/welcome');?>
+</div>
+<?php echo Wo_LoadPage('welcome/welcome-users-profiles');?>

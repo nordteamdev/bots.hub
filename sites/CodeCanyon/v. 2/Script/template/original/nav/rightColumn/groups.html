@@ -1,0 +1,54 @@
+{strip}
+{assign var=groups value=$this->suggestedGroups()}
+
+<!-- suggested groups -->
+{if $groups}
+<section id="suggested_groups" class="sp_right_col">
+<div class="psbc_header_title">{$this->lang['suggested_communities']}</div>
+ 
+<ul class="psbc_cnt">
+
+
+{foreach $groups as $group}
+{assign var="mutual_friends_c" value=""}
+
+
+{assign var="community_src_logo" value="{$group.logo}"}
+{assign var="checks3pictLogo" value=$this->CheckS3Pictures($community_src_logo)}
+
+
+{if $this->CheckS3Pictures($community_src_logo)}
+
+{assign var="community_src_logo" value={$checks3pictLogo}}
+{else}
+{assign var="community_src_logo" value="{$smarty.const.__COMMUNITIES_IMAGES_DIR}/{$group.id}/{$group.logo}"}
+{/if}
+
+           <li class="sugg_each_group">
+            
+
+               
+
+                    <div class="sugg_group_logo_i">
+					<!--<div class="sugg_group_cover_img" style="background-image:url({$smarty.const.__COMMUNITIES_COVERS_DIR}{$group.cover})"></div>-->
+                        <a href="/community/{$group.id}" hrefattr="true"><img class="sugg_group_logo" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$group.id}&size=small&clubid={$group.id}&corr=1&logo=true" /></a>
+                    </div>
+				<div class="sugg_group_info">
+				<div class="sugg_group_name ellip"><a href="/community/{$group.id}" hrefattr="true">{$group.name}</a></div>
+<div class="sugg_group_categ f11 ellip">{$this->lang[$group.category]}{if !empty($group.subcategory)}&nbsp;<span class="communities_row_info_bullet">&#8226;</span>&nbsp;{$this->lang[$group.subcategory]}{/if}</div>
+            <div class="sugg_group_followers_count f11 ellip"><a href="javascript:void(0);" onclick="return showCommunityFollowersPopup(event,'{$group.id}');">{$this->groupGetFollowersCount($group.id)}&nbsp;{$this->lang['Followers']}</a></div>  
+			  </div>
+
+                
+
+			</li>
+{/foreach}
+
+
+</ul>
+
+</section>
+{/if}
+
+
+{/strip}

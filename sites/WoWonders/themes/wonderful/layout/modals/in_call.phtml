@@ -1,0 +1,22 @@
+<div class="modal fade" id="re-calling-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa fa-video-camera"></i> <?php echo $wo['lang']['new_video_call'];?></h4>
+         </div>
+         <div class="modal-body">
+            <div class="row" style="display: table;position: relative;">
+              <div class="pull-left" style="display: table-cell;vertical-align: middle;margin: 0 10px;<?php echo ($wo['language_type'] == 'rtl') ? 'padding-left: 0; padding-right: 15px;' : 'padding-right:0; ';?>">
+                <img src="<?php echo $wo['incall']['in_call_user']['avatar'];?>" alt="" class="hidden-mobile-image" style="width: 50px;border-radius: 50%;">
+              </div>
+              <p style="display: table-cell;vertical-align: middle;"><b><?php echo $wo['incall']['in_call_user']['name'];?></b><br><?php echo $wo['lang']['new_video_call_desc'];?></p>
+              <div class="clear"></div>
+            </div>
+         </div>
+         <div class="modal-footer">
+             <button data-href="<?php echo $wo['incall']['url'];?>" type="button" class="btn answer-call btn-main" onclick="Wo_AnswerCall('<?php echo $wo['incall']['id'];?>', '<?php echo $wo['incall']['url'];?>');"><i class="fa fa-video-camera progress-icon" data-icon="video-camera"></i> <?php echo $wo['lang']['accept_and_start'];?></button>
+             <button type="button" class="btn decline-call btn-default" onclick="Wo_DeclineCall('<?php echo $wo['incall']['id'];?>');"><i class="fa fa-times progress-icon" data-icon="times"></i> <?php echo $wo['lang']['decline'];?></button>
+         </div>
+      </div>
+   </div>
+</div>

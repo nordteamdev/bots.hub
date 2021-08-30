@@ -1,0 +1,23 @@
+<div class="search_header">
+<div class="search_header_pd">
+<div class="v2_gs_main-menu h-mod">
+	<ul class="main-menu">
+		<li class="main-menu_li"><a href="/search?key={$key}&c=p" hrefattr="true"><span class="main-menu_a {if $categ === 'p' || !$categ}__active{/if}">{$this->lang['People']}</span></a></li>
+		<!--<li class="main-menu_li"><span class="gs_tab main-menu_a">{$this->lang['Groups']}</span></li>-->
+		<li class="main-menu_li"><a href="/search?key={$key}&c=g" hrefattr="true"><span class="gs_tab main-menu_a __empty {if $categ === 'g'}__active{/if}">{$this->lang['Games']}</span></a></li>
+		<li class="main-menu_li"><a href="/search?key={$key}&c=m" hrefattr="true"><span class="gs_tab main-menu_a {if $categ === 'm'}__active{/if}">{$this->lang['Music']}</span></a></li>
+		<li class="main-menu_li"><a href="/search?key={$key}&c=v" hrefattr="true"><span class="gs_tab main-menu_a {if $categ === 'v'}__active{/if}">{$this->lang['Video']}</span></a></li>
+	</ul>
+</div>
+
+
+<div class="v2_gs_search v2_gs_left_column">
+
+		<div class="search-wrapper __medium _search_pg">
+			<div class="it_w search-input search-input_active"><label><input type="text" name="st.query" value="{$key}" id="query_usersearch" class="it search-input_it" placeholder="{$this->lang['search_input_placeholder']}" maxlength="250" previoussearchvalue="{$key}"><div class="search-input_control search-input_process"><i class="search-input_ic ic18 ic18_anim-procces"></i></div><a href="/search?key=" id="search_ic_submit" hrefattr="true"><span class="search-input_control search-input_search-ic"><i class="search-input_ic ic ic_search"></i></span></a><a class="search-input_control search-input_close"><i id="livesearch_cancelId" class="search-input_ic ic curPointer ic_close-g"></i></a></label></div>
+		</div>
+
+</div>
+
+</div>
+</div>

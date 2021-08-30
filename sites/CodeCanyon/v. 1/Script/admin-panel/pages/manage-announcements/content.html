@@ -1,0 +1,245 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Announcements</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Announcements</h2>
+                </div>
+                <div class="body">
+                    <div class="announcement-alert"></div>
+                    <form class="add-announcement" method="POST">
+                    	<div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="text" id="text" class="form-control" cols="30" rows="10"></textarea>
+                                <label class="form-label">Create New Announcement (HTML Allowed)</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Create</button>
+                    </form>
+                    <div class="page-margin">
+			            <hr>
+			            <h5>Active Announcements</h5>
+			            <div class="active-announcements announcements">
+			              <?php 
+			              $fetch_active_ann_data_array = array(
+						        'table' => T_ANNOUNCEMENT,
+						        'column' => '*',
+						        'limit' => 500000,
+						        'order' => array(
+						            'type' => 'DESC',
+						            'column' => 'id'
+						        ),
+						        'where' => array(
+						            array(
+						                'column' => 'active',
+						                'value' => '1',
+						                'mark' => '='
+						            )
+						        )
+						    );
+
+						    $active_announcement_list      = FL_FetchDataFromDB($fetch_active_ann_data_array); 
+						    $active_announcement_list_html = '';
+						    $table                         = T_ANNOUNCEMENT_VIEWS;
+						    foreach ($active_announcement_list as $fl['announcement']) {
+						        
+						        $fl['announcement']['time']  = FL_Time_Elapsed_String($fl['announcement']['time']);
+						        $fl['announcement']['views'] = FL_CountData(array( 0 => array(
+						            'column' => '`announcement_id`',
+						            'value' => $fl['announcement']['id'],
+						            'mark' => '='
+						        )),$table);
+
+						        echo  FL_LoadAdminPage("manage-announcements/active",array(
+						            'ANN_ID'    => $fl['announcement']['id'],
+						            'ANN_VIEWS' => $fl['announcement']['views'],
+						            'ANN_TEXT'  => FL_Decode($fl['announcement']['text']),
+						            'ANN_TIME'  => $fl['announcement']['time'],
+						        ));
+						    }
+						     ?>
+			            </div>
+			         </div>
+			         <div class="page-margin">
+			            <hr>
+			            <h5>Inactive Announcements</h5>
+			            <div class="inactive-announcements announcements">
+			               <?php 
+			                   $fetch_inactive_ann_data_array = array(
+							        'table' => T_ANNOUNCEMENT,
+							        'column' => '*',
+							        'limit' => 500000,
+							        'order' => array(
+							            'type' => 'DESC',
+							            'column' => 'id'
+							        ),
+							        'where' => array(
+							            array(
+							                'column' => 'active',
+							                'value' => '0',
+							                'mark' => '='
+							            )
+							        )
+							    );
+
+							    $inactive_announcement_list      = FL_FetchDataFromDB($fetch_inactive_ann_data_array); 
+							    $inactive_announcement_list_html = '';
+							    foreach ($inactive_announcement_list as $fl['announcement']) {
+							        
+							        $fl['announcement']['time']  = FL_Time_Elapsed_String($fl['announcement']['time']);
+							        $fl['announcement']['views'] = FL_CountData(array( 0 => array(
+							            'column' => '`announcement_id`',
+							            'value' => $fl['announcement']['id'],
+							            'mark' => '='
+							        )),$table);
+							        echo FL_LoadAdminPage("manage-announcements/inactive",array(
+							            'ANN_ID'    => $fl['announcement']['id'],
+							            'ANN_VIEWS' => $fl['announcement']['views'],
+							            'ANN_TEXT'  => FL_Decode($fl['announcement']['text']),
+							            'ANN_TIME'  => $fl['announcement']['time'],
+							        ));
+							    }
+			                  ?>
+			            </div>
+			         </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+	jQuery(document).ready(function($) {
+		var form = $('form.add-announcement');
+		form.ajaxForm({
+
+		    url: '{{LINK ajax_requests.php?f=announcement&s=insert&hash_id=}}' + $('.main_session').val(),
+		    type:"POST",
+		    dataType:"json",
+		    beforeSend: function() {
+		      form.find('button').attr('disabled', 'true');
+		    },
+		    success: function(data) {
+		      if (data.status == 200) {
+		      	$('.active-announcements').prepend(data.html);
+		      	form.find('textarea').val('');
+		      }
+		      else if (data.status == 400) {
+		        $('.announcement-alert').html('<div class="alert alert-danger">' + data.message + '</div>');
+		      }
+		      form.find('button').removeAttr('disabled');
+		    }
+		});
+	});
+
+	function FL_ToggleAnnouncement(id,a){
+		if (!id || (a != 1 && a != 0)) {
+			return false;
+		}
+		$.ajax({
+			url: '{{LINK ajax_requests.php}}',
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'announcement',s:'toggle',id:id,a:a},
+		})
+		.done(function(data) {
+			if (data.status == 200 && a == 0) {
+				$("div[data-active-announcement='"+id+"']").slideUp('fast',function(){
+					$(this).remove();
+					$(".inactive-announcements").prepend(data.html);
+				})
+			}
+			else if (data.status == 200 && a == 1) {
+				$("div[data-inactive-announcement='"+id+"']").slideUp('fast',function(){
+					$(this).remove();
+					$(".active-announcements").prepend(data.html);
+				})
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+	}
+
+	function FL_DeleteAnnouncement(id,a){
+		if (!id || (a != 1 && a != 0)) {
+			return false;
+		}
+		$.ajax({
+			url: '{{LINK ajax_requests.php}}',
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'announcement',s:'delete',id:id},
+		})
+		.done(function(data) {
+			if (data.status == 200 && a == 1) {
+				$("div[data-active-announcement='"+id+"']").slideUp('fast',function(){
+					$(this).remove();
+				})
+			}
+			else if (data.status == 200 && a == 0) {
+				$("div[data-inactive-announcement='"+id+"']").slideUp('fast',function(){
+					$(this).remove();
+				})
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	}
+</script>
+
+<style>
+.alert-white{
+	border: 1px solid #f7931a !important;
+	color: #666;
+	background: #fff;
+	overflow: hidden;
+}
+.alert-white span{
+	float: right;
+}
+.announcements p {
+	color: #333;
+}
+.hide-an {
+	color: #555;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.active-announcement p{
+	width: auto;
+	margin-bottom: 5px;
+}
+
+.active-announcement small{
+	padding: 5px 0;
+	font-size: 11px;
+	color: #9197a3;
+}
+.inactive-announcement span{
+	float: right;
+	padding: 2px;
+	cursor: pointer;
+}
+
+
+.inactive-announcement p{
+	width: auto;
+	margin-left: 3px;
+}
+
+.inactive-announcement small{
+	padding: 5px 0;
+	font-size: 11px;
+	color: #9197a3;
+}
+</style>

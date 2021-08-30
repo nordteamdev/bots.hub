@@ -1,0 +1,3217 @@
+//colors
+$white: #fff;
+$color_tree_poppy_approx: rgb(247,147,26);
+$color_storm_dust_approx: #666;
+$color_alabaster_approx: #fcfcfc;
+$color_tundora_approx: #444;
+$color_mountain_mist_approx: #999;
+$wild_sand: #f4f4f4;
+$red_80: rgba(255, 0, 0, 0.8);
+$black_50: rgba(0, 0, 0, 0.5);
+$black_80: rgba(0, 0, 0, 0.8);
+$black_40: rgba(0, 0, 0, 0.4);
+$color_alto_approx: #ddd;
+$color_coral_red_approx: #f33d4c;
+$color_sandy_brown_approx: #ed9e6a;
+$color_teal_approx: #008484;
+$color_curious_blue_approx: #2b87ce;
+$color_forest_green_approx: #17b02f;
+$color_waikawa_gray_approx: #5462a5;
+$color_japanese_laurel_approx: green;
+$red: red;
+$color_mercury_approx: #e3e4e8;
+$seashell: #f1f1f1;
+$color_gallery_approx: #ededed;
+$color_mine_shaft_approx: #333;
+$black_30: rgba(0, 0, 0, 0.3);
+$color_fuscous_gray_approx: #555;
+$color_cinnabar_approx: #ea4335;
+$color_log_cabin_approx: #222;
+$color_tapa_approx: #777;
+$color_suva_gray_approx: #888;
+$color_azure_approx: #3b5998;
+$color_cornflower_blue_approx: #6cadde;
+$color_yellow_orange_approx: #f9a23e;
+$color_apple_blossom_approx: #a84849;
+$black_60: rgba(0, 0, 0, 0.6);
+$color_viking_approx: #6fb2e2;
+$color_malibu_approx: #75b9ea;
+$color_carnation_approx: #ef5c51;
+$color_celeste_approx: #ccc;
+$color_gray_nurse_approx: #e8e8e8;
+$concrete: #f2f2f2;
+$color_fuzzy_wuzzy_brown_approx: #c45a5b;
+$color_pink_swan_approx: #b7b7b7;
+$black_20: rgba(0,0,0,.2);
+$color_bleached_cedar_approx: #323;
+$color_concrete_approx: #f3f3f3;
+$color_key_lime_pie_70_approx: rgba(199,199,28,0.7);
+$color_nevada_approx: #6c7477;
+$gallery: #efefef;
+$black: #000;
+$color_picton_blue_approx: #55acee;
+$color_crusta_approx: #ee802f;
+$color_timberwolf_approx: #dad5ce;
+$color_star_dust_approx: #9f9c99;
+$color_flush_mahogany_approx: #ca3636;
+
+//fonts
+$font_0: Roboto;
+$font_1: sans-serif !important;
+$font_2: Hind;
+$font_3: arial;
+$font_4: verdana;
+$font_5: sans-serif;
+$font_6: tahoma;
+$font_7: Arial;
+$font_8: Tahoma;
+$font_9: Hind !important;
+
+//@extend-elements
+//original selectors
+//.news-border-color:hover, .active.news-border-color:hover
+%extend_1 {
+    border-bottom: 3px solid $color_coral_red_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+
+//original selectors
+//.news-color-text-main, h4.news-color-text, h4.quiz-color-text, h4.video-color-text, h4.lists-color-text, h4.trending-color-text, h4.music-color-text, h4.polls-color-text
+%extend_2 {
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+//original selectors
+//.custom-navs, #search-page .nav-news, #search-page .nav-lists, #search-page .nav-videos, #search-page .nav-music, #search-page .nav-polls
+%extend_3 {
+    color: $white !important;
+    border: 1px solid transparent !important;
+    padding: 10px 30px;
+}
+
+//original selectors
+//.fetched-facebook, .fetched-instagram, .fetched-soundcloud
+%extend_4 {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+}
+
+//original selectors
+//.main-errors-success, .errors, .success
+%extend_5 {
+    padding: 5px;
+    padding-left: 0;
+    padding-top: 0;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+//original selectors
+//.setting-panel, .setting-panel.no-padding
+%extend_6 {
+    background-color: $white;
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+}
+
+//original selectors
+//.setting-panel select, .setting-panel.no-padding select, .setting-panel input[type='text'], .setting-panel input[type='password']
+%extend_7 {
+    height: 30px !important;
+    color: $color_storm_dust_approx !important;
+    font-size: 13px;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $concrete, 0 0 0 1px $concrete;
+    border: none;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+}
+
+
+@import "https://fonts.googleapis.com/css?family=Roboto";
+@import "https://fonts.googleapis.com/css?family=Hind";
+a {
+    color: $color_storm_dust_approx;
+}
+body {
+    background: $color_alabaster_approx;
+    background-size: cover;
+    font-family: $font_0, $font_1;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    &.news-page {
+        background-color: $white !important;
+    }
+}
+.content-container {
+    min-height: 100%;
+    margin-bottom: 40px;
+    height: 100%;
+    margin-top: 70px;
+    &:not(#footer .content-container) {
+        min-height: 500px;
+    }
+}
+.dropdown-menu {
+    animation-name: slidenavAnimation;
+    animation-duration: .1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    a {
+        color: $color_tundora_approx !important;
+        font-size: 13px !important;
+        &:hover {
+            color: $white !important;
+        }
+    }
+}
+.latest-container {
+    margin-top: 70px !important;
+}
+.profile-content-container {
+    margin-bottom: 40px;
+    height: 100%;
+    min-height: 500px;
+}
+.no-padding-left {
+    padding-left: 0;
+}
+.no-padding-right {
+    padding-right: 0;
+}
+.top-news {
+    cursor: pointer;
+    width: 100%;
+    height: 312px;
+    overflow: hidden;
+    color: $white;
+    background: $white;
+    position: relative;
+    z-index: 1;
+    h3 {
+        font-size: 15px;
+        padding-left: 5px;
+        margin: 8px;
+        margin-left: 1px;
+    }
+    a {
+        color: $white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .white-hover {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-color: $black_50;
+        display: none;
+    }
+    .description {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        width: 100%;
+        padding: 5px;
+        background: linear-gradient(transparent, $black_80);
+        cursor: pointer;
+        .news-title {
+            color: $white;
+            font-size: 24px;
+            word-wrap: break-word;
+            //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            text-shadow: 1px 1px $black_40;
+            font-weight: normal;
+            margin: 4px;
+        }
+        .news-desc {
+            color: $color_alto_approx;
+            font-size: 16px;
+            word-wrap: break-word;
+            //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            text-shadow: 1px 1px $black_40;
+            font-weight: normal;
+            margin: 4px;
+            margin-bottom: 8px;
+        }
+        .news-pub {
+            display: none;
+            margin: 5px;
+            color: $color_alto_approx;
+            font-size: 12px;
+        }
+        .category {
+            text-transform: uppercase;
+            padding-left: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: $color_alto_approx;
+            .news-category {
+                border-left: 3px solid $color_coral_red_approx;
+                padding-left: 10px;
+            }
+            .lists-category {
+                border-left: 3px solid $color_sandy_brown_approx;
+                padding-left: 10px;
+            }
+            .polls-category {
+                border-left: 3px solid $color_teal_approx;
+                padding-left: 10px;
+            }
+            .videos-category {
+                border-left: 3px solid $color_curious_blue_approx;
+                padding-left: 10px;
+            }
+            .quiz-category {
+                border-left: 3px solid $color_forest_green_approx;
+                padding-left: 10px;
+            }
+            .music-category {
+                border-left: 3px solid $color_waikawa_gray_approx;
+                padding-left: 10px;
+            }
+        }
+    }
+    .read-more {
+        margin: 0;
+        font-size: 20px;
+    }
+    &.multi {
+        width: 100%;
+        height: 153px;
+        margin-bottom: 5px;
+        img {
+            max-width: 100%;
+            width: 100%;
+        }
+        .description .news-title {
+            font-size: 18px;
+        }
+    }
+    .news img {
+        width: 100%;
+    }
+}
+.latest-videos-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    margin-left: -25px;
+    margin-top: -40px;
+    font-size: 60px;
+    color: $white;
+    display: none;
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: 3px 3px $black_50;
+}
+.clear {
+    clear: both;
+}
+.news-background-color {
+    background: $color_coral_red_approx !important;
+}
+.music-background-color {
+    background: $color_waikawa_gray_approx !important;
+}
+.quiz-background-color {
+    background: $color_forest_green_approx !important;
+}
+.video-background-color {
+    background: $color_curious_blue_approx !important;
+}
+.lists-background-color {
+    background: $color_sandy_brown_approx !important;
+}
+.polls-background-color {
+    background: $color_teal_approx !important;
+}
+.active {
+    &.news-border-color {
+        border-bottom: 3px solid $color_coral_red_approx !important;
+        color: $white !important;
+        text-decoration: none;
+        &:hover {
+            @extend %extend_1;
+        }
+    }
+    &.music-border-color {
+        border-bottom: 3px solid $color_waikawa_gray_approx !important;
+        color: $white !important;
+        text-decoration: none;
+    }
+    &.video-border-color {
+        border-bottom: 3px solid $color_curious_blue_approx !important;
+        color: $white !important;
+        text-decoration: none;
+    }
+    &.lists-border-color {
+        border-bottom: 3px solid $color_sandy_brown_approx !important;
+        color: $white !important;
+        text-decoration: none;
+    }
+    &.polls-border-color {
+        border-bottom: 3px solid $color_teal_approx !important;
+        color: $white !important;
+        text-decoration: none;
+    }
+    &.quzzes-border-color {
+        border-bottom: 3px solid $color_forest_green_approx !important;
+        color: $white !important;
+        text-decoration: none;
+    }
+}
+.news-color {
+    color: $color_coral_red_approx !important;
+}
+.quiz-color {
+    color: $color_forest_green_approx !important;
+}
+.video-color {
+    color: $color_curious_blue_approx !important;
+}
+.lists-color {
+    color: $color_sandy_brown_approx !important;
+}
+.polls-color {
+    color: $color_teal_approx !important;
+}
+.news-manage-header {
+    background: $color_coral_red_approx !important;
+    color: $white !important;
+}
+.lists-manage-header {
+    background: $color_sandy_brown_approx !important;
+    color: $white !important;
+}
+.videos-manage-header {
+    background: $color_curious_blue_approx !important;
+    color: $white !important;
+}
+.music-manage-header {
+    background: $color_waikawa_gray_approx !important;
+    color: $white !important;
+}
+.polls-manage-header {
+    background: $color_teal_approx !important;
+    color: $white !important;
+}
+.active-1 {
+    color: $color_japanese_laurel_approx;
+}
+.active-0 {
+    color: $red;
+}
+.news-color-text-main {
+    @extend %extend_2;
+}
+h4 {
+    &.news-color-text {
+        @extend %extend_2;
+        color: $color_coral_red_approx !important;
+        border-bottom: 2px solid $color_coral_red_approx;
+    }
+    &.quiz-color-text {
+        @extend %extend_2;
+        color: $color_forest_green_approx !important;
+        border-bottom: 2px solid $color_forest_green_approx;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    &.video-color-text {
+        @extend %extend_2;
+        color: $color_curious_blue_approx !important;
+        border-bottom: 2px solid $color_curious_blue_approx;
+    }
+    &.lists-color-text {
+        @extend %extend_2;
+        color: $color_sandy_brown_approx !important;
+        border-bottom: 2px solid $color_sandy_brown_approx;
+    }
+    &.trending-color-text {
+        @extend %extend_2;
+        color: $red !important;
+        border-bottom: 2px solid $red;
+    }
+    &.music-color-text {
+        @extend %extend_2;
+        color: $color_waikawa_gray_approx !important;
+        padding: 10px;
+        padding-left: 0;
+        border-bottom: 2px solid $color_waikawa_gray_approx;
+    }
+    &.polls-color-text {
+        @extend %extend_2;
+        color: $color_teal_approx !important;
+        padding: 10px;
+        padding-left: 0;
+        border-bottom: 2px solid $color_teal_approx;
+    }
+    &.quizzes-color-text {
+        color: $color_forest_green_approx !important;
+        border-bottom: 2px solid $color_forest_green_approx;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-right: 5px;
+    }
+    &.rssfeed-color-text {
+        color: $color_crusta_approx !important;
+        border-bottom: 2px solid $color_crusta_approx;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-right: 5px;
+    }
+}
+.custom-navs {
+    @extend %extend_3;
+}
+#search-page {
+    padding: 20px;
+    .nav-news {
+        @extend %extend_3;
+        background-color: $color_coral_red_approx;
+    }
+    .nav-lists {
+        @extend %extend_3;
+        background-color: $color_sandy_brown_approx;
+    }
+    .nav-videos {
+        @extend %extend_3;
+        background-color: $color_curious_blue_approx;
+    }
+    .nav-music {
+        @extend %extend_3;
+        background-color: $color_waikawa_gray_approx;
+    }
+    .nav-polls {
+        @extend %extend_3;
+        background-color: $color_teal_approx;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
+    .nav-quizzes {
+        color: $white !important;
+        border: 1px solid transparent !important;
+        padding: 10px 30px;
+        background: $color_forest_green_approx;
+    }
+    .nav-tabs .active {
+        opacity: 0.8;
+    }
+}
+.custom-page {
+    background: $white;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px 2px 0 0;
+    padding: 5px;
+    hr {
+        margin-left: 15px;
+        margin-right: 15px;
+        position: relative;
+    }
+}
+.next-col-home {
+    margin-top: 10px;
+    background: $white;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px 2px 0 0;
+    padding: 5px;
+    hr {
+        margin-left: 15px;
+        margin-right: 15px;
+        position: relative;
+    }
+}
+.main-container {
+    background: $white;
+    border: 1px solid $color_gallery_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px;
+    h3 {
+        margin-top: 0;
+        margin-bottom: -3px;
+        color: $white;
+        font-size: 16px;
+        padding: 8px;
+        padding-left: 15px;
+        //Instead of the line below you could use @include border-top-right-radius($radius)
+        border-top-right-radius: 3px;
+        //Instead of the line below you could use @include border-top-left-radius($radius)
+        border-top-left-radius: 3px;
+        //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+    }
+    .content {
+        padding: 15px;
+        padding-top: 5px;
+        h5 {
+            font-size: 17px;
+            font-weight: 0;
+        }
+    }
+}
+.pointer {
+    cursor: pointer;
+}
+.custom-dropdown {
+    left: auto;
+    right: 0;
+    &.dropdown-menu > li > a {
+        &:focus {
+            color: $color_mine_shaft_approx !important;
+        }
+        &:hover {
+            color: $color_mine_shaft_approx !important;
+        }
+    }
+}
+.share-button {
+    top: 5px;
+    position: absolute;
+    right: 5px;
+    display: none;
+    .share-icon {
+        color: $white;
+        font-size: 26px;
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: 2px 2px $black_30;
+    }
+}
+.preview-image {
+    border: 3px dashed $color_alto_approx;
+    width: 100%;
+    max-width: 100%;
+    display: table;
+    overflow: hidden;
+    cursor: pointer;
+    height: 150px;
+    margin-bottom: 20px;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        border: 3px dashed $color_coral_red_approx;
+    }
+    img {
+        max-width: 100%;
+    }
+    .content {
+        font-size: 16px;
+        color: $color_fuscous_gray_approx;
+        padding: 0;
+        margin-bottom: 20px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        .post-image {
+            overflow: hidden;
+            width: 100%;
+            max-height: 150px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+.home-page-ads {
+    padding: 15px;
+}
+.img-content {
+    position: relative;
+    .img-set-as {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        cursor: pointer;
+    }
+}
+.twitter-tweet-rendered {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+.EmbeddedTweet {
+    max-width: 100% !important;
+}
+.fetched-facebook {
+    @extend %extend_4;
+}
+.fetched-instagram {
+    @extend %extend_4;
+}
+.fetched-soundcloud {
+    @extend %extend_4;
+}
+#post-entries {
+    margin-top: 20px;
+}
+.entry {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid $color_gallery_approx;
+    background-color: $color_alabaster_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px;
+    .entry-name {
+        margin-bottom: 20px;
+        color: $color_storm_dust_approx;
+    }
+    .entry-times {
+        color: $color_storm_dust_approx;
+        cursor: pointer;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: color 0.2s;
+        &:hover {
+            color: $color_cinnabar_approx;
+        }
+    }
+}
+.latest-news-img {
+    position: relative;
+    img {
+        width: 100%;
+    }
+}
+.latest-news-title {
+    a {
+        color: $color_log_cabin_approx;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: all 0.1s;
+        &:hover {
+            text-decoration: none;
+            color: $color_tree_poppy_approx;
+        }
+    }
+    h4 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    h3 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+}
+.youtube-player {
+    margin-top: 20px;
+}
+.latest-videos-title {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    background: linear-gradient(transparent, $black_80);
+    h4 {
+        color: $white;
+        font-size: 18px;
+        font-weight: normal;
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: 1px 1px $black_30;
+        margin: 5px;
+    }
+}
+.home-lists-list {
+    margin-top: 20px;
+}
+.latest-news-list {
+    margin-bottom: 10px;
+}
+.margin-top-20 {
+    margin-top: 10px;
+}
+.video-list {
+    position: relative;
+    cursor: pointer;
+}
+.latest-news-info {
+    font-size: 11px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: $color_tapa_approx;
+}
+.latest-news-icons {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: $color_fuscous_gray_approx;
+}
+.latest-news-disc {
+    font-size: 13px;
+    color: $color_suva_gray_approx;
+}
+.facebook-color {
+    color: $color_azure_approx !important;
+}
+.twitter-color {
+    color: $color_cornflower_blue_approx !important;
+}
+.google-color {
+    color: $color_cinnabar_approx !important;
+}
+.logo-img {
+    max-width: 125px;
+    margin-top: -9px;
+    img {
+        width: 100%;
+    }
+}
+.tab-content {
+    margin-top: 20px;
+}
+.search-header {
+    margin-right: -20px;
+    position: relative;
+    input {
+        height: 35px;
+        border: 0;
+        padding-left: 30px;
+        color: $white;
+        width: 300px !important;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 20px;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: all 0.3s;
+        background-color: transparent !important;
+        border: 1px solid $color_storm_dust_approx;
+        &:focus {
+            margin-right: 30px;
+            border: 1px solid $color_mountain_mist_approx;
+        }
+    }
+    i {
+        position: absolute;
+        padding: 10px;
+        top: 0;
+        cursor: pointer;
+        left: 15px;
+        color: $color_yellow_orange_approx;
+    }
+}
+iframe {
+    border: 1px solid $color_gallery_approx;
+}
+#footer {
+    background-color: transparent;
+    padding: 10px;
+    width: 100%;
+    .texts {
+        margin-top: 15px;
+        border-top: 1px solid $color_gallery_approx;
+        color: $white !important;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 20px;
+    }
+    a {
+        color: $color_tapa_approx;
+    }
+    .social-icons {
+        font-size: 22px;
+        padding: 1px;
+        margin-top: -5px;
+    }
+    .footer-text {
+        color: $color_tapa_approx;
+    }
+}
+.news-header-dropdown {
+    width: 1100px;
+    position: fixed;
+    z-index: 99;
+    margin-left: -550px;
+    display: none;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 0 5px $color_tapa_approx;
+    left: 50%;
+    top: 50px;
+    background-color: $white;
+    min-height: 300px;
+    ul {
+        padding-left: 0;
+        li {
+            padding: 10px;
+            border-right: 1px solid $color_gallery_approx;
+            list-style: none;
+            width: auto;
+            cursor: pointer;
+            &:hover {
+                background: $color_apple_blossom_approx;
+                color: $white;
+            }
+        }
+    }
+}
+.header-user-img {
+    width: 20px;
+    border: none;
+    margin-right: 2px;
+    margin-top: -2px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px;
+}
+.list-news {
+    .description {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        width: 100%;
+        padding: 5px;
+        background: linear-gradient(transparent, $black_80);
+    }
+    .news-title {
+        color: $white;
+        font-size: 16px;
+        word-wrap: break-word;
+        //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        text-shadow: 1px 1px $black_60;
+        font-weight: 700;
+        margin: 4px;
+    }
+}
+.login-con {
+    margin: 0 auto;
+    width: 30%;
+    margin-top: 10%;
+    padding-top: 0;
+}
+.overlay {
+    background: url(../img/overlay-image.png);
+    z-index: -11;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0.7;
+    left: 0;
+}
+.login-form {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 15px;
+    padding-top: 0;
+    h4 {
+        width: 100%;
+        padding-top: 10px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $wild_sand;
+    }
+    input {
+        display: initial;
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+    a {
+        width: 100%;
+    }
+}
+.avatar-read {
+    display: none;
+}
+.input-login {
+    width: 60%;
+}
+.btn-main {
+    background-color: $color_tree_poppy_approx;
+    border-color: $color_tree_poppy_approx;
+    color: $white !important;
+    outline: none;
+    &:hover {
+        background-color: $color_yellow_orange_approx;
+        color: $white;
+    }
+    &:focus {
+        color: $white;
+        outline: none;
+    }
+}
+.btn-blue {
+    background-color: $color_viking_approx;
+    border-color: $color_viking_approx;
+    color: $white !important;
+    outline: none;
+    &:hover {
+        background-color: $color_malibu_approx;
+        color: $white;
+    }
+    &:focus {
+        color: $white;
+        outline: none;
+    }
+}
+.btn-red {
+    background-color: $color_cinnabar_approx;
+    border-color: $color_cinnabar_approx;
+    color: $white !important;
+    outline: none;
+    &:hover {
+        background-color: $color_carnation_approx;
+        color: $white;
+    }
+    &:focus {
+        color: $white;
+        outline: none;
+    }
+}
+.news-tags {
+    margin-bottom: 30px;
+    a.tags {
+        background: $color_celeste_approx;
+        padding: 10px;
+        color: $white;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        &.news {
+            background: $color_coral_red_approx;
+        }
+        &.lists {
+            background: $color_sandy_brown_approx;
+        }
+        &.polls {
+            background: $color_teal_approx;
+        }
+        &.videos {
+            background: $color_curious_blue_approx;
+        }
+        &.music {
+            background: $color_waikawa_gray_approx;
+        }
+    }
+}
+.btn-gray {
+    background-color: $color_suva_gray_approx;
+    border-color: $color_suva_gray_approx;
+    color: $white !important;
+    outline: none;
+    &:hover {
+        color: $white;
+        background-color: $color_mountain_mist_approx;
+    }
+    &:focus {
+        color: $white;
+        outline: none;
+    }
+}
+.login-with-button {
+    margin-bottom: 5px;
+}
+.main-errors-success {
+    @extend %extend_5;
+}
+.errors {
+    @extend %extend_5;
+    color: $red;
+}
+.success {
+    @extend %extend_5;
+    color: $color_japanese_laurel_approx;
+}
+.green {
+    color: $color_japanese_laurel_approx;
+}
+.forgot-password {
+    color: $color_fuscous_gray_approx;
+    font-size: 12px;
+}
+.or-login {
+    color: $color_fuscous_gray_approx;
+    font-size: 12px;
+    text-align: center;
+}
+.login-form-bottom-link {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
+    color: $white;
+    a {
+        color: $color_alabaster_approx !important;
+        text-decoration: underline;
+    }
+}
+.account-activate-icon {
+    font-size: 80px;
+    color: $color_forest_green_approx;
+}
+.account-activate-error-icon {
+    font-size: 80px;
+    color: $color_cinnabar_approx;
+}
+.profile-content {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 3px $color_suva_gray_approx;
+}
+.profile-images {
+    width: 100%;
+    position: relative;
+    .cover-content {
+        width: 100%;
+        .cover-image {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .avatar-content {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        .avatar-image {
+            width: 200px;
+            height: 200px;
+            border: 4px solid $white;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 2px $color_mine_shaft_approx;
+            img {
+                width: 100%;
+            }
+        }
+        .profile-name {
+            left: 110%;
+            bottom: 0;
+            width: 300px;
+            position: absolute;
+            span {
+                font-size: 32px;
+                color: $white;
+                font-weight: 500;
+                //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                text-shadow: 0 1px 4px $black_80;
+                &.verified-icon {
+                    color: $color_picton_blue_approx;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+.info-content {
+    margin-top: 20px;
+    .profile-info {
+        border: 1px solid $color_gallery_approx;
+        .list-group {
+            margin-bottom: 0;
+            background: $white;
+            .list-group-item {
+                padding: 7px;
+                color: $color_fuscous_gray_approx;
+                &:first-child {
+                    background: $color_alabaster_approx;
+                    color: $color_tundora_approx;
+                }
+            }
+        }
+    }
+    .profile-posts {
+        border: 1px solid $color_gallery_approx;
+        background: $white;
+        margin-bottom: 20px;
+        .profile-news-content {
+            padding: 15px;
+            .news-list {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+.categories-content {
+    width: 100%;
+    .categories-ul {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $color_gray_nurse_approx;
+        a {
+            color: $color_fuscous_gray_approx;
+            display: inline-block;
+            cursor: pointer;
+            padding: 0 20px;
+            //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+            transition: all 0.2s;
+            border-bottom: 2px solid $white;
+            padding-bottom: 8px;
+            list-style: none;
+        }
+    }
+}
+.padding-0 {
+    padding: 0 !important;
+}
+.help-block {
+    font-size: 12px;
+}
+.cd-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+    padding: 12px;
+    color: $white;
+    cursor: pointer;
+    font-size: 16px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 2px;
+    background-color: $color_tree_poppy_approx;
+}
+.fetch-image-link {
+    cursor: pointer;
+    &:hover {
+        color: $color_tree_poppy_approx;
+    }
+}
+.image-link {
+    display: none;
+}
+#fetched-image {
+    margin-bottom: 20px;
+    img {
+        max-width: 100%;
+    }
+}
+.error-con {
+    padding: 10px;
+    background: transparent;
+    color: $white;
+    background-color: $color_cinnabar_approx;
+    margin-bottom: 20px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px;
+    &:empty {
+        padding: 0 !important;
+        margin-bottom: 0;
+        border: 0;
+    }
+}
+.answers {
+    margin-top: 20px;
+    .answer {
+        position: relative;
+        .entry_answer {
+            margin-bottom: 15px;
+            padding: 10px;
+            height: 45px;
+        }
+        span {
+            position: absolute;
+            right: 10px;
+            color: $color_tapa_approx;
+            top: 30%;
+            cursor: pointer;
+        }
+    }
+    .tab-pane {
+        overflow: hidden !important;
+    }
+}
+.sidebar {
+    padding-left: 20px;
+    border-left: 1px solid $color_gallery_approx;
+    margin-top: 10px;
+}
+.news-container {
+    margin-top: 10px;
+    .news-desc {
+        margin-bottom: 15px;
+        margin-top: 20px;
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: normal;
+            word-wrap: break-word;
+            color: $color_fuscous_gray_approx;
+        }
+    }
+    .news-admin {
+        margin-bottom: 20px;
+    }
+    .news-publisher {
+        margin-top: 20px;
+        .publisher-image {
+            float: left;
+            position: relative;
+            margin: 0 10px 5px 0;
+            width: 55px;
+            height: 55px;
+            img {
+                width: 100%;
+                border: 1px solid $color_mercury_approx;
+            }
+        }
+        .publisher-name {
+            margin-bottom: 5px;
+            a {
+                font-weight: 600;
+            }
+        }
+        .publisher-type {
+            color: $color_suva_gray_approx;
+            font-size: 11px;
+        }
+        h5 {
+            color: $color_mountain_mist_approx;
+            font-weight: 600;
+        }
+        .views {
+            color: $color_tapa_approx;
+        }
+    }
+    .news-share-buttons {
+        margin-top: 10px;
+        margin-left: 5px;
+        .btn-share {
+            text-align: center;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 1px;
+            padding: 7px;
+            width: 90px;
+            cursor: pointer;
+        }
+        .btn-shares {
+            text-align: center;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 1px;
+            margin-bottom: -10px;
+            color: $color_tapa_approx;
+            width: 90px;
+        }
+        ul li {
+            padding-right: 0;
+            padding-left: 0;
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .news-entries {
+        margin-top: 25px;
+    }
+    .news-title h1 {
+        margin-top: 0;
+        font-size: 36px;
+    }
+    .news-time p {
+        color: $color_suva_gray_approx;
+        font-size: 12px;
+    }
+    .pages-link a {
+        margin-bottom: 20px;
+    }
+}
+.load-more-button-wrapper {
+    text-align: center;
+    margin: 20px;
+}
+.latest-news-nav {
+    margin-bottom: 10px;
+    background: $color_coral_red_approx;
+    .nav > li > a {
+        color: $white !important;
+        &:focus {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.latest-lists-nav {
+    margin-bottom: 10px;
+    background: $color_sandy_brown_approx;
+    .nav > li > a {
+        color: $white !important;
+        &:focus {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.latest-videos-nav {
+    margin-bottom: 10px;
+    background: $color_curious_blue_approx;
+    .nav > li > a {
+        color: $white !important;
+        &:focus {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.latest-polls-nav {
+    margin-bottom: 10px;
+    background: $color_teal_approx;
+    .nav > li > a {
+        color: $white !important;
+        &:focus {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.latest-music-nav {
+    margin-bottom: 10px;
+    background: $color_waikawa_gray_approx;
+    .nav > li > a {
+        color: $white !important;
+        &:focus {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.no-results {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.ads-contnet {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    &:empty {
+        margin: 0 !important;
+    }
+}
+.admin-panel-well {
+    margin-bottom: 20px;
+    .admin-static {
+        background: $color_celeste_approx;
+        color: $white;
+        font-size: 20px;
+        padding: 7px;
+        min-height: 100px;
+        text-align: center;
+        width: 25%;
+    }
+    .icon {
+        font-size: 40px;
+    }
+    .text {
+        font-size: 18px;
+    }
+    .users-count {
+        background: $color_tree_poppy_approx;
+    }
+    .news-count {
+        background: $color_coral_red_approx;
+    }
+    .lists-count {
+        background: $color_sandy_brown_approx;
+    }
+    .videos-count {
+        background: $color_curious_blue_approx;
+    }
+    .music-count {
+        background: $color_waikawa_gray_approx;
+    }
+    .polls-count {
+        background: $color_teal_approx;
+    }
+    .drafts-count {
+        background: $color_tundora_approx;
+    }
+    .online-count {
+        background: $color_apple_blossom_approx;
+    }
+}
+.entry-style {
+    margin-bottom: 60px;
+    .entry-image {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    .entry-title h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .entry-text p {
+        font-size: 16px !important;
+    }
+}
+.categories {
+    background: transparent;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: none;
+    border: 0;
+    li {
+        padding: 8px;
+    }
+}
+.sidebar-content {
+    .sidebar-news {
+        width: 100%;
+        .news {
+            margin-bottom: 20px;
+        }
+        img {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 2px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .news-title {
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .news-info {
+            color: $color_mountain_mist_approx;
+            font-size: 11px;
+            span {
+                margin-right: 10px;
+            }
+        }
+    }
+    h4 {
+        &.news {
+            color: $color_coral_red_approx;
+            border-bottom: 1px solid $color_coral_red_approx;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        &.lists {
+            color: $color_sandy_brown_approx;
+            border-bottom: 1px solid $color_sandy_brown_approx;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        &.videos {
+            color: $color_curious_blue_approx;
+            border-bottom: 1px solid $color_curious_blue_approx;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        &.music {
+            color: $color_waikawa_gray_approx;
+            border-bottom: 1px solid $color_waikawa_gray_approx;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        &.polls {
+            color: $color_teal_approx;
+            border-bottom: 1px solid $color_teal_approx;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}
+.settings-header {
+    background-color: $color_alabaster_approx;
+    width: 100%;
+    z-index: 99;
+    margin-bottom: -10px;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+    padding: 15px;
+    padding-left: 25px;
+    color: $color_fuscous_gray_approx;
+    h3 {
+        margin-top: 0;
+        font-size: 16px;
+    }
+}
+.setting-panel {
+    @extend %extend_6;
+    &.no-padding {
+        padding: 0 !important;
+        @extend %extend_6;
+        select {
+            @extend %extend_7;
+        }
+        textarea {
+            color: $color_storm_dust_approx !important;
+            font-size: 13px;
+        }
+    }
+    select {
+        @extend %extend_7;
+    }
+    input[type='text'] {
+        @extend %extend_7;
+    }
+    input[type='password'] {
+        @extend %extend_7;
+    }
+    .btn-main {
+        height: 30px !important;
+        font-size: 13px;
+        min-width: 100px !important;
+    }
+    textarea {
+        color: $color_storm_dust_approx !important;
+        font-size: 13px;
+    }
+}
+@media(max-width: 1200px) {
+    .top-news {
+        width: 100%;
+        height: auto;
+        .description {
+            bottom: 0;
+        }
+        &.multi {
+            height: auto;
+        }
+    }
+    .no-padding-left {
+        padding-left: 15px !important;
+        margin-top: 20px;
+    }
+    .no-padding-right {
+        padding-right: 15px !important;
+        margin-top: 20px;
+    }
+    .no-padding-mobile {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    .answer-img-wrapper {
+        width: 100% !important;
+    }
+}
+@media(max-width: 992px) {
+    .search-header {
+        display: none;
+    }
+    .input-login {
+        width: 100%;
+    }
+    .login-con {
+        width: 50%;
+    }
+    .profile-images .avatar-content {
+        .avatar-image {
+            width: 150px;
+            height: 150px;
+            border: 2px solid $white;
+        }
+        .profile-name span {
+            font-size: 24px;
+        }
+    }
+}
+.entry-options {
+    margin-top: 20px;
+    .answer {
+        padding: 15px;
+        margin-top: 8px;
+        position: relative;
+        background-color: $color_alabaster_approx;
+        border: 1px solid $wild_sand;
+        cursor: pointer;
+        &.active {
+            background-color: $concrete;
+            border: 1px solid $seashell;
+        }
+        &:hover {
+            background-color: $wild_sand;
+        }
+        .answer-info {
+            color: $color_fuscous_gray_approx;
+            font-size: 16px;
+            i {
+                margin-right: 10px;
+            }
+        }
+        .answer-vote {
+            font-size: 16px;
+            color: $color_fuscous_gray_approx;
+            .total-votes {
+                color: $color_tapa_approx;
+                font-size: 12px;
+            }
+        }
+    }
+    .percentage-border {
+        background-color: $color_coral_red_approx;
+        padding: 2px;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: width 0.3s;
+        &:empty {
+            padding: 0;
+        }
+    }
+    .votes {
+        color: $color_fuscous_gray_approx;
+        margin-top: 10px;
+    }
+}
+.footer-container- {
+    margin-bottom: 0px !important;
+    margin-top: 20px !important;
+}
+.footer-container {
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 1px 0 0 #e3e4e8, 0 0 0 1px #f1f1f1;
+    .footer-links {
+        margin-top: 10px;
+        ul {
+            list-style: none;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+            li {
+                .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+                    background: transparent;
+                    color: $color_tree_poppy_approx !important;
+                }
+                display: inline-block;
+                padding-right: 10px;
+                a {
+                    color: #333;
+                    font-size: 100%;
+                }
+            }
+        }
+    }
+    .footer-copyright {
+        margin-top: 10px;
+        color: #888;
+    }
+}
+.show-from-mobile {
+    display: none !important;
+}
+@media(max-width: 720px) {
+    .sidebar {
+        padding-left: 0 !important;
+        border-left: 0 !important;
+    }
+    .footer-container .pull-right, .footer-container .pull-left {
+        float: inherit !important;
+    }
+    .footer-container {
+        text-align: center;
+    }
+    .profile-images .avatar-content .avatar-image {
+        width: 50px;
+        height: 50px;
+    }
+    .content-container {
+        margin-bottom: 20px;
+        margin-top: 50px;
+    }
+    .btn-shares {
+        margin-top: 20px;
+        text-align: left !important;
+    }
+    .fa-ellipsis-h {
+        display: none;
+    }
+    .custom-navs {
+        width: 100%;
+        padding-left: 10px;
+    }
+    #search-page {
+        .nav-news {
+            width: 100%;
+            padding-left: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+        .nav-lists {
+            width: 100%;
+            padding-left: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+        .nav-videos {
+            width: 100%;
+            padding-left: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+        .nav-music {
+            width: 100%;
+            padding-left: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+        .nav-polls {
+            width: 100%;
+            padding-left: 10px;
+            width: 100%;
+            padding-left: 10px;
+        }
+    }
+    .hide-from-mobile {
+        display: none !important;
+    }
+    .show-from-mobile {
+        display: block !important;
+    }
+    .navbar-custom-collapse {
+        padding-left: 10px;
+    }
+    .input-login {
+        width: 100%;
+    }
+    .login-con {
+        width: 99%;
+    }
+    .vote-image-wrapper {
+        width: 100% !important;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .answer-img-wrapper {
+        width: 100% !important;
+    }
+    .top-news .news-desc {
+        display: none;
+    }
+    .nav.navbar-findcond ul.navbar-nav a:hover {
+        border-width: 0 !important;
+    }
+    .nav-tabs > li {
+        width: 100%;
+        > a {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0 !important;
+        }
+    }
+    .info-content {
+        margin-top: 0 !important;
+        
+    }
+    .info-content #search-page {
+        margin-bottom: 20px;
+    }
+    .profile-images .avatar-content {
+        .avatar-image {
+            width: 50px;
+            height: 50px;
+        }
+        .profile-name span {
+            font-size: 18px;
+        }
+    }
+    .toggle-answer-type li {
+        margin-bottom: 6px !important;
+    }
+    .auth-footer .footer-inner {
+        p {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+        ul {
+            width: 100%;
+            li {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    .display-quiz-result .result-share ul.list-inline li {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .swal-wide .swal2-buttonswrapper ul.list-inline li {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+.btn-wowonder {
+    background-color: $color_apple_blossom_approx;
+    border-color: $color_fuzzy_wuzzy_brown_approx !important;
+    &:hover {
+        background-color: $color_fuzzy_wuzzy_brown_approx !important;
+        border-color: $color_apple_blossom_approx !important;
+    }
+}
+.toggle-answer-type {
+    border: none !important;
+    li {
+        margin-bottom: 0;
+        margin-right: 5px;
+        a {
+            border: 1px solid $color_pink_swan_approx;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 4px;
+            font-size: 13px;
+            padding: 5px 10px;
+            color: $color_storm_dust_approx !important;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 1px 2px $black_20;
+        }
+        &.active a {
+            border: 1px solid $color_alto_approx !important;
+            color: $color_tree_poppy_approx !important;
+        }
+    }
+}
+.answer-img-wrapper {
+    width: 48.5%;
+    padding: 0;
+    display: inline-block;
+    float: left;
+    position: relative;
+    span {
+        position: absolute;
+        right: 5px;
+        top: 1px;
+        color: $color_storm_dust_approx;
+        cursor: pointer;
+        visibility: hidden;
+        font-size: 13px;
+        padding: 1px 5px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 10em;
+        background: $color_alto_approx;
+    }
+    .answer-img {
+        background: $white;
+        .entry_answer {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+        }
+    }
+    &:nth-child(odd) {
+        margin-right: 14px;
+    }
+    &:hover > span {
+        visibility: visible;
+    }
+}
+.pick-answer-img {
+    width: 100%;
+    min-height: 150px;
+    .preview {
+        width: 100%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            max-height: 150px !important;
+        }
+    }
+    div h5 {
+        width: 100%;
+        min-height: 150px;
+        max-height: 15px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        text-align: center;
+        line-height: 150px;
+        color: $color_storm_dust_approx;
+        border: 3px dashed $color_alto_approx;
+        cursor: pointer;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: .40s all;
+        &:hover {
+            border-color: $color_viking_approx;
+        }
+    }
+}
+.vote-image-wrapper {
+    width: 48.4%;
+    float: left;
+    margin-bottom: 10px;
+    .percentage-border-wrapper {
+        width: 100% !important;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        background-color: $color_mercury_approx;
+    }
+    .percentage-border {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+    }
+    .answer-info {
+        width: 100% !important;
+        img {
+            width: 100% !important;
+            height: 250px;
+        }
+    }
+    .answer-vote-wrapper {
+        width: 100% !important;
+        padding: 3px 0;
+        overflow: hidden;
+        span.pull-right {
+            font-family: $font_2, $font_3;
+            font-size: 15px;
+            color: $color_bleached_cedar_approx;
+        }
+    }
+    .answer {
+        width: 100% !important;
+        height: 305px;
+        overflow: hidden;
+        padding: 10px !important;
+        padding-bottom: 0 !important;
+    }
+    &:nth-child(odd) {
+        margin-right: 20px;
+    }
+}
+#img-uploading-wrapper {
+    position: relative;
+    height: 100%;
+    position: fixed;
+    z-index: 9;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    &:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $black_30;
+    }
+    .loader {
+        border: 3px solid $color_concrete_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        border-top: 3px solid $color_curious_blue_approx;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+}
+@-webkit-keyframes spin {
+    0% {
+    }
+    100% {
+    }
+}
+@keyframes spin {
+    0% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotate(0deg);
+    }
+    100% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: rotate(360deg);
+    }
+}
+.auth-footer {
+    margin: 0;
+    padding: 5px 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    .footer-inner {
+        width: 100%;
+        overflow: hidden;
+        p {
+            display: inline-block;
+            color: $white;
+            padding: 5px 0;
+            margin: 0;
+        }
+        ul {
+            list-style: outside none none;
+            margin: 0;
+            padding: 0;
+            li {
+                color: $color_concrete_approx;
+                padding: 5px 0;
+                display: inline-block;
+                margin-right: 10px;
+                a {
+                    color: $white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.load-more-comments {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    button {
+        width: 100%;
+        overflow: hidden;
+        padding: 10px;
+        text-align: center;
+        background: $white;
+        color: $color_mine_shaft_approx;
+        font-size: 14px;
+        font-family: $font_3, $font_4, $font_5;
+        font-weight: 500;
+        border: 1px solid $color_celeste_approx;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+    }
+}
+#fountainG {
+    position: relative;
+    width: 126px;
+    height: 15px;
+    margin: auto;
+}
+.fountainG {
+    position: absolute;
+    top: 0;
+    background-color: $color_key_lime_pie_70_approx;
+    width: 15px;
+    height: 15px;
+    animation-name: bounce_fountainG;
+    animation-duration: 0.975s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: scale(.3);
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 10px;
+}
+#fountainG_1 {
+    left: 0;
+    animation-delay: 0.386s;
+}
+#fountainG_2 {
+    left: 16px;
+    animation-delay: 0.4825s;
+}
+#fountainG_3 {
+    left: 31px;
+    animation-delay: 0.589s;
+}
+#fountainG_4 {
+    left: 47px;
+    animation-delay: 0.6855s;
+}
+#fountainG_5 {
+    left: 63px;
+    animation-delay: 0.782s;
+}
+#fountainG_6 {
+    left: 79px;
+    animation-delay: 0.8785s;
+}
+#fountainG_7 {
+    left: 94px;
+    animation-delay: 0.975s;
+}
+#fountainG_8 {
+    left: 110px;
+    animation-delay: 1.0715s;
+}
+@keyframes bounce_fountainG {
+    0% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(1);
+        background-color: $color_tree_poppy_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(.3);
+        background-color: $white;
+    }
+}
+@-o-keyframes bounce_fountainG {
+    0% {
+        background-color: $color_tree_poppy_approx;
+    }
+    100% {
+        background-color: $white;
+    }
+}
+@-ms-keyframes bounce_fountainG {
+    0% {
+        background-color: $color_tree_poppy_approx;
+    }
+    100% {
+        background-color: $white;
+    }
+}
+@-webkit-keyframes bounce_fountainG {
+    0% {
+        background-color: $color_tree_poppy_approx;
+    }
+    100% {
+        background-color: $white;
+    }
+}
+@-moz-keyframes bounce_fountainG {
+    0% {
+        background-color: $color_tree_poppy_approx;
+    }
+    100% {
+        background-color: $white;
+    }
+}
+.delete-comment {
+    color: $color_mountain_mist_approx;
+    display: none;
+    &:hover {
+        color: $color_mine_shaft_approx;
+    }
+}
+.comms-reply {
+    font-family: $font_3;
+    font-weight: 700;
+    color: $color_storm_dust_approx;
+    font-size: 12px;
+    &:hover {
+        text-decoration: underline;
+        color: $color_mine_shaft_approx;
+    }
+}
+.padding-rx {
+    padding-right: 0;
+}
+#fl-reply-modal {
+    margin-top: 200px;
+}
+.fl-comment-cont {
+    width: 100%;
+    overflow: hidden;
+}
+.fl-comment-box {
+    width: 100%;
+    overflow: hidden;
+    .fl-comment-box-form {
+        display: block;
+        width: 100%;
+        border: 1px solid $color_alto_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 0;
+        textarea {
+            width: 100%;
+            border: none;
+            padding: 15px;
+            height: 50px;
+            resize: none;
+            outline: 0;
+            font-size: 13px;
+            color: $color_nevada_approx;
+            background-color: transparent;
+        }
+        .fl-comment-box-footer {
+            width: 100%;
+            overflow: hidden;
+            padding: 5px;
+            border-top: 1px solid $gallery;
+        }
+    }
+    .fl-comment-list-cont {
+        width: 100%;
+        overflow: hidden;
+        .fl-comment-list-header {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            h5 {
+                width: 100%;
+                overflow: hidden;
+                color: $color_mine_shaft_approx;
+                font-size: 14px;
+                font-family: $font_3;
+                font-weight: 600;
+            }
+            div {
+                width: 100%;
+                overflow: hidden;
+                height: 2px;
+                background: $color_gallery_approx;
+                span {
+                    width: 20%;
+                    height: 2px;
+                    background: $color_yellow_orange_approx;
+                    display: block;
+                }
+            }
+        }
+        .fl-comment-list-body {
+            width: 100%;
+            overflow: hidden;
+            .fl-comment-item {
+                width: 100%;
+                overflow: hidden;
+                margin-bottom: 20px;
+                margin-top: 10px;
+                border-bottom: 1px solid $gallery;
+                padding-bottom: 7px;
+                &:last-child {
+                    border-bottom: none;
+                }
+                .fl-comment-item-replies {
+                    width: 100%;
+                    overflow: hidden;
+                    margin-top: 10px;
+                }
+                .fl-comment-item-replies-list {
+                    width: 100%;
+                    overflow: hidden;
+                }
+                .fl-comment-item-img {
+                    width: 48px;
+                    height: 48px;
+                    overflow: hidden;
+                    display: inline-block;
+                }
+                .col-md-1 {
+                    padding: 0;
+                    display: inline-block;
+                    float: left;
+                }
+                .fl-comment-item-cont {
+                    width: 100%;
+                    overflow: hidden;
+                    div {
+                        width: 100%;
+                        padding: 5px 0 0;
+                        margin: 0;
+                        a {
+                            font-family: $font_3;
+                            font-weight: 600;
+                            color: $color_storm_dust_approx;
+                        }
+                        time {
+                            font-size: 13px;
+                            color: $color_mountain_mist_approx;
+                        }
+                    }
+                    p {
+                        width: 100%;
+                        padding: 5px 0;
+                        margin: 0;
+                        font-size: 14px;
+                        color: $black;
+                        font-weight: 400;
+                        line-height: 21px;
+                        opacity: .9;
+                    }
+                }
+            }
+        }
+    }
+}
+.fl-comment-item-reply-form {
+    position: relative;
+    i {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        color: $color_mountain_mist_approx;
+        cursor: pointer;
+    }
+    input {
+        padding-right: 25px;
+        &:focus {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: 0 0 5px $color_viking_approx;
+            border: 1px solid $color_viking_approx;
+        }
+    }
+}
+.responsive-img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.fl-load-more-content {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    button {
+        width: 30%;
+        padding: 4px;
+        background: $white;
+        text-align: center;
+        border: 1px solid $gallery;
+        outline: 0;
+        margin-bottom: 20px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 2px;
+        color: $color_fuscous_gray_approx;
+        background-color: $white;
+        border-color: $seashell;
+        font-family: $font_3, $font_4, $font_6, $font_5;
+    }
+}
+#top_news_cont {
+    width: 100%;
+}
+#fl-loading-bar {
+    background-color: $color_tree_poppy_approx;
+    height: 3px;
+    width: 0;
+    &:empty {
+        height: 0;
+    }
+}
+.fl-reaction-cont {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    .fl-reaction-header {
+        margin-bottom: 30px;
+        width: 100%;
+        background: $white;
+        border-bottom: 4px solid $color_tree_poppy_approx;
+        h4 {
+            color: $color_storm_dust_approx;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: $font_3, $font_4, $font_6;
+        }
+    }
+}
+.fl-reaction-body {
+    width: 100%;
+    overflow: hidden;
+    .fl-reaction-emo {
+        width: 10%;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 3px;
+        &:last-child {
+            margin-right: 0;
+        }
+        .reaction {
+            width: 100%;
+            height: 70px;
+            overflow: hidden;
+            text-align: center;
+            background: $seashell;
+            padding: 17px 0;
+            //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+            transition: all ease .27s;
+            &:hover {
+                background: $color_alto_approx;
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        .reaction-type {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+            text-align: center;
+            span {
+                width: 100%;
+                font-size: 12px;
+                text-align: center;
+                color: $color_mountain_mist_approx;
+                font-family: $font_3, $font_4, $font_6, $font_5;
+                font-weight: 400;
+            }
+        }
+        .pre-bar {
+            width: 100%;
+            min-height: 30px;
+            position: relative;
+            span {
+                width: 90%;
+                display: block;
+                background: $color_tree_poppy_approx;
+                margin: 3px auto;
+                //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+                transition: height .27s;
+                position: absolute;
+                bottom: 0;
+                left: 3px;
+                small {
+                    width: 100%;
+                    display: block;
+                    padding: 2px;
+                    text-align: center;
+                    position: absolute;
+                    top: -22px;
+                    font-family: $font_3, $font_4, $font_6;
+                    font-weight: 600;
+                    color: $color_storm_dust_approx;
+                }
+            }
+        }
+    }
+}
+.verified-icon {
+    color: $color_picton_blue_approx;
+}
+.no-data-found {
+    width: 100%;
+    overflow: hidden;
+    background: $seashell;
+    h5 {
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        font-family: $font_7, $font_8, $font_5;
+        font-size: 15px;
+        color: $color_storm_dust_approx;
+        padding: 100px 0;
+    }
+}
+.latest-quizzes-nav {
+    background: $color_forest_green_approx;
+    a {
+        color: $white;
+        &:hover {
+            opacity: 0.8;
+            background: transparent !important;
+        }
+    }
+}
+.qz-lg-ans-wrapper {
+    p.answer-text {
+        font-family: $font_8;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 3px;
+        max-height: 30px;
+        overflow: hidden;
+        font-family: $font_9;
+        white-space: nowrap;
+        margin-top: 2px;
+    }
+    div.answer {
+        height: 315px;
+        margin-top: 0;
+        border: 1px solid $seashell;
+    }
+}
+.swal-wide {
+    width: 850px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    right: 0 !important;
+    left: 0 !important;
+    .sa-custom {
+        margin-top: 0!important;
+        width: 100%!important;
+        min-height: 350px!important;
+        height: auto!important;
+    }
+    .swal2-buttonswrapper ul.list-inline {
+        text-align: center;
+        li {
+            div {
+                padding: 5px 20px;
+                //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+                border-radius: 2px;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+.swal2-small {
+    max-width: 400px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    right: 0 !important;
+    left: 0 !important;
+}
+.verification-pending {
+    width: 100%;
+    overflow: hidden;
+    background: $white;
+    p {
+        width: 100%;
+        font-family: $font_3;
+        font-size: 16px;
+        line-height: 200px;
+        text-align: center;
+        color: $color_mine_shaft_approx;
+    }
+}
+.verification-completed {
+    width: 100%;
+    overflow: hidden;
+    background: $white;
+    p {
+        width: 100%;
+        font-family: $font_3;
+        font-size: 16px;
+        line-height: 200px;
+        text-align: center;
+        color: $color_mine_shaft_approx;
+    }
+}
+#verification-form-reset {
+    padding: 5px 20px !important;
+    margin-right: 5px;
+    font-size: 13px;
+}
+.verification-request-alert {
+    font-family: $font_6;
+}
+.preview-verification-pictures {
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+    text-align: center;
+    background: $seashell;
+    border: 2px dashed $color_mine_shaft_approx;
+    cursor: pointer;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: ease all .30s;
+    margin-bottom: 20px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    &:hover {
+        border-color: $color_cornflower_blue_approx;
+    }
+    div {
+        width: 100%;
+        overflow: hidden;
+        height: 200px;
+    }
+    i {
+        width: 100%;
+        overflow: hidden;
+        padding-top: 60px;
+        color: $color_mountain_mist_approx;
+        font-size: 40px;
+    }
+    small {
+        color: $color_mine_shaft_approx;
+        font-family: $font_3;
+        font-size: 13px;
+        width: 90%;
+        display: inline-block;
+    }
+}
+.verification-request-header {
+    overflow: hidden;
+    h4 {
+        width: 100%;
+        color: $color_mine_shaft_approx;
+        font-family: $font_3;
+        font-weight: 500;
+    }
+    p {
+        width: 100%;
+        color: $color_mine_shaft_approx;
+        font-family: $font_3;
+    }
+}
+.verification-username {
+    font-size: 15px !important;
+    padding: 10px 0;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+    font-weight: 400;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: ease all .30s;
+    padding-left: 15px;
+    &:-ms-input-placeholder {
+        color: $color_tapa_approx !important;
+        font-family: $font_2, $font_3, $font_6, $font_4;
+    }
+    &:-moz-placeholder {
+        color: $color_tapa_approx !important;
+        font-family: $font_2, $font_3, $font_6, $font_4;
+    }
+}
+.verification-text {
+    font-size: 15px !important;
+    padding: 10px 0;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+    font-weight: 400;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: ease all .30s;
+    padding-left: 15px;
+    resize: none;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+    padding-bottom: 20px;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: ease all .30s;
+    margin-bottom: 15px;
+    &:-ms-input-placeholder {
+        color: $color_tapa_approx !important;
+        font-family: $font_2, $font_3, $font_6, $font_4;
+    }
+    &:-moz-placeholder {
+        color: $color_tapa_approx !important;
+        font-family: $font_2, $font_3, $font_6, $font_4;
+    }
+}
+.verification-username::-webkit-input-placeholder {
+    color: $color_tapa_approx !important;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+}
+.verification-text::-webkit-input-placeholder {
+    color: $color_tapa_approx !important;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+}
+.verification-username::-moz-placeholder {
+    color: $color_tapa_approx !important;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+}
+.verification-text::-moz-placeholder {
+    color: $color_tapa_approx !important;
+    font-family: $font_2, $font_3, $font_6, $font_4;
+}
+#display-quiz-result {
+    width: 100%;
+    overflow: hidden;
+}
+.display-quiz-result {
+    width: 100%;
+    background: $white;
+    height: auto !important;
+    padding: 15px;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 1px 0 0 $color_mercury_approx, 0 0 0 1px $seashell;
+    border: 1px solid $seashell;
+    margin-bottom: 20px;
+    .result-gif {
+        max-height: 350px;
+        overflow: hidden;
+    }
+    .result-header {
+        padding: 10px;
+        h3 {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 2.625rem;
+            color: $color_log_cabin_approx;
+        }
+        p {
+            margin-top: 15px;
+        }
+    }
+    .result-body {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .result-share {
+        padding: 10px;
+        ul.list-inline li {
+            div {
+                padding: 5px 20px;
+                //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+                border-radius: 2px;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+    .result-text h3 {
+        margin-top: 0;
+    }
+}
+#question-answers {
+    width: 100%;
+    overflow: hidden;
+}
+.question-ans-wrapper {
+    padding: 0 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    max-height: unset;
+    margin-top: 1px;
+    border: 1px solid $seashell;
+    .question-ans-footer {
+        padding: 0;
+        margin: 10px -7px 0;
+        border-top: 1px solid $color_timberwolf_approx;
+        background: $white;
+        input {
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            border: none;
+        }
+        select {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+            //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+            box-shadow: none;
+            border: none;
+            border-top: 1px solid $color_timberwolf_approx;
+            color: $color_star_dust_approx;
+            padding: 6px 8px;
+        }
+    }
+}
+.pick-questionans-img {
+    width: 100%;
+    min-height: 150px;
+    .preview img {
+        width: 100%;
+        max-height: 150px !important;
+    }
+    div h5 {
+        width: 100%;
+        min-height: 150px;
+        max-height: 15px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        text-align: center;
+        line-height: 145px;
+        color: $color_storm_dust_approx;
+        border: 3px dashed $color_alto_approx;
+        cursor: pointer;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: .40s all;
+        &:hover {
+            border-color: $color_viking_approx;
+        }
+    }
+}
+.add-result-btn {
+    width: 100%;
+    background: $color_coral_red_approx;
+    color: $white;
+    outline: 0 !important;
+    margin-bottom: 40px;
+    &:hover {
+        background: $color_coral_red_approx;
+        color: $white;
+    }
+    &:focus {
+        background: $color_coral_red_approx !important;
+        color: $white;
+        outline: 0 !important;
+    }
+    &:active {
+        color: $white !important;
+    }
+}
+.add-question-btn {
+    width: 100%;
+    background: $color_forest_green_approx;
+    color: $white;
+    outline: 0 !important;
+    margin-bottom: 40px;
+    &:hover {
+        background: $color_forest_green_approx;
+        color: $white;
+    }
+    &:focus {
+        background: $color_forest_green_approx !important;
+        color: $white;
+        outline: 0 !important;
+    }
+    &:active {
+        color: $white !important;
+    }
+}
+.quiz-questions-header {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    h5 {
+        width: 100%;
+        overflow: hidden;
+        padding: 7px 0;
+        color: $color_storm_dust_approx;
+        text-align: center;
+        background: $seashell;
+    }
+}
+.rss-icon {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: $font_3;
+    a i {
+        color: $color_crusta_approx !important;
+    }
+}
+.rss-home {
+    font-size: 14px;
+    font-family: $font_3;
+    color: $color_tapa_approx;
+    i {
+        color: $color_crusta_approx;
+    }
+}
+.fl-breaking-news {
+    height: 35px;
+    width: 100%;
+    background: $color_flush_mahogany_approx;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 15px;
+    h3 {
+        color: $white;
+        white-space: nowrap;
+        margin: 0;
+        line-height: 35px;
+        font-size: 16px;
+        text-align: center;
+        font-family: $font_3;
+        a {
+            color: $white;
+            text-decoration: none;
+            &:hover {
+                color: $seashell;
+                text-decoration: underline;
+            }
+        }
+    }
+    span {
+        color: $white;
+        background: $color_tundora_approx;
+        line-height: 35px;
+        width: auto;
+        padding: 0 20px;
+        font-size: 15px;
+        text-align: center;
+        font-family: $font_3;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+.no-image {
+    width: 100%;
+    height: 100%;
+    background: $seashell;
+    text-align: center;
+    i {
+        display: block;
+        height: 100%;
+        font-size: 40px;
+    }
+}
+@media(max-width: 1000px) {
+    .fl-rss-feed-item .latest-news-img {
+        max-height: 150px;
+        overflow: hidden;
+    }
+}
+@media(max-width: 750px) {
+    .fl-rss-feed-item .latest-news-img {
+        max-height: 385px;
+        overflow: hidden;
+    }
+}
+#fetched-video {
+    overflow: hidden;
+    .mejs__container {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+video {
+    width: 100% !important;
+    height: 100% !important;
+}
+.mejs__container {
+    width: 100% !important;
+    min-height: 350px;
+    .mejs__overlay {
+        width: 100% !important;
+        min-height: 350px;
+    }
+}
+.share-e-form {
+    width: 100%;
+    overflow: hidden;
+    input {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 0;
+    }
+    textarea {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 0;
+        resize: vertical;
+        min-height: 70px;
+    }
+    button {
+        padding: 5px 40px;
+    }
+    label {
+        color: $color_storm_dust_approx;
+        font-family: $font_7;
+        font-weight: 500;
+    }
+    .optional label {
+        opacity: 0.7;
+    }
+    .share-alert div {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 0;
+        font-size: 14px;
+    }
+}
+.alert-white {
+    border: 1px solid $color_tree_poppy_approx !important;
+    color: $color_storm_dust_approx;
+    background: $white;
+    overflow: hidden;
+    color: $color_storm_dust_approx;
+    opacity: .9;
+    margin-top: 10px;
+    span.hide-an {
+        float: right;
+        margin: -3px 0 5px 5px;
+        color: $color_storm_dust_approx;
+        font-size: 15px;
+        opacity: 0.7;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+.brnews-form {
+    margin-top: 100px;
+    form {
+        width: 100%;
+        overflow: hidden;
+        textarea {
+            resize: vertical;
+            padding-top: 5px;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+        }
+        input[type="url"] {
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 0;
+        }
+    }
+}
+nav.navbar-findcond {
+    background: $color_tundora_approx;
+    border-top: 2px solid $color_tree_poppy_approx;
+    a {
+        color: $white;
+    }
+    ul {
+        &.navbar-nav {
+            a {
+                color: $white;
+                font-size: 15px;
+                border-style: solid;
+                border-width: 0 0 2px 0;
+                border-color: transparent;
+                padding-bottom: 13px;
+                &:hover {
+                    background: transparent;
+                    color: $white;
+                    color: $color_tree_poppy_approx;
+                    border-color: $color_tree_poppy_approx;
+                }
+                &:visited {
+                    background: transparent;
+                    color: $white;
+                }
+                &:focus {
+                    background: transparent;
+                    color: $white;
+                }
+                &:active {
+                    background: transparent;
+                    color: $white;
+                }
+            }
+            li.active a {
+                border-color: $color_tree_poppy_approx;
+                color: $color_tree_poppy_approx;
+            }
+        }
+        &.dropdown-menu {
+            border: 0;
+            background: $white;
+            margin: 2px 0;
+            > li > a {
+                color: $color_tundora_approx;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                &:hover {
+                    background: $color_alabaster_approx !important;
+                    color: $color_tundora_approx !important;
+                    border-color: transparent !important;
+                }
+            }
+        }
+    }
+    button.navbar-toggle {
+        background: $color_tree_poppy_approx;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 2px;
+        &:hover {
+            background: $color_mountain_mist_approx;
+        }
+        > span.icon-bar {
+            background: $white;
+        }
+    }
+    li.divider {
+        background: $wild_sand;
+    }
+    span.badge {
+        background: $color_tree_poppy_approx;
+        font-weight: normal;
+        font-size: 11px;
+        margin: 0 4px;
+        &.new {
+            background: $red_80;
+            color: $white;
+        }
+    }
+}
+.news-border-color:hover {
+    @extend %extend_1;
+}
+.music-border-color:hover {
+    border-bottom: 3px solid $color_waikawa_gray_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.quiz-border-color:hover {
+    border-bottom: 3px solid $color_forest_green_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.video-border-color:hover {
+    border-bottom: 3px solid $color_curious_blue_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.lists-border-color:hover {
+    border-bottom: 3px solid $color_sandy_brown_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.polls-border-color:hover {
+    border-bottom: 3px solid $color_teal_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.create-list-form h3 {
+    background-color: $color_sandy_brown_approx;
+}
+.create-news-form h3 {
+    background-color: $color_coral_red_approx;
+}
+.create-poll-form h3 {
+    background-color: $color_teal_approx;
+}
+.create-video-form h3 {
+    background-color: $color_curious_blue_approx;
+}
+.create-music-form h3 {
+    background-color: $color_waikawa_gray_approx;
+}
+.create-quiz-form .main-container h3 {
+    background-color: $color_forest_green_approx;
+}
+.entries li a {
+    padding: 3px 10px;
+    &:hover {
+        background-color: $color_tree_poppy_approx;
+        color: $white;
+    }
+}
+.nav-tabs > li > a {
+    color: $color_tree_poppy_approx !important;
+}
+.dropdown-news-list img {
+    width: 100%;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.sidebar-sticky.Stick {
+    position: fixed;
+    top: 68px;
+    width: 280px;
+}
+.settings-sidebar ul li {
+    a {
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+        &:focus {
+            text-decoration: none;
+        }
+    }
+    &:hover {
+        background-color: $color_alabaster_approx;
+    }
+    &.active {
+        border-left: 3px solid;
+        border-color: $color_tree_poppy_approx;
+        background-color: $color_alabaster_approx;
+    }
+}
+.ads-activation i.active {
+    color: $color_japanese_laurel_approx;
+}
+.fl-comment-item-cont:hover > div span.delete-comment {
+    display: block;
+}
+.quzzes-border-color:hover {
+    border-bottom: 3px solid $color_forest_green_approx !important;
+    color: $white !important;
+    text-decoration: none;
+}
+.user-post-nav li {
+    width: 16.6666666667%;
+    a {
+        padding: 10px 0 !important;
+        text-align: center;
+    }
+}
+.fl-rss-feed-item .latest-news-img {
+    max-height: 105px;
+    overflow: hidden;
+}

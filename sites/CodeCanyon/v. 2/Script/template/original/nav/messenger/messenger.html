@@ -1,0 +1,104 @@
+{strip}
+
+{if !$this->settings['_NODE_ENABLED']}
+{$this->info_msg("Sorry, You should configure your node app to run messenger")}
+{else}
+<div class="pmessenger mmmm_c_m">
+
+
+	<div class="pmessenger-contacts-list">
+	<div class="pmessenger-contacts-header">
+	<div class="pmessenger-contacts-header-tab mstabactive active" onclick="messenger.switchTabs(this,event,'conversations');">{$this->lang['Messenger_top_recently']}</div>
+	<div class="pmessenger-contacts-header-tab mstabactive" onclick="messenger.switchTabs(this,event,'online');">{$this->lang['Messenger_top_online']}</div>
+	</div>
+	<div class="_1nq2">
+	<span class="_5iwm _150g _58ah">
+		<label class="_58ak">
+		<input autocomplete="off" id="input-search-messenger" class="_58al" placeholder="{$this->lang['searchfriends']}" spellcheck="false" type="text" value="">
+		</label>
+		</span>
+    <i class="hidden_elem _2xme messenger-cancel-search img sp_2XX5N_0Ca5y sx_29d0b2" onclick="messenger.closeSearch(this,event);"></i>
+	<span class="_58-3" aria-hidden="true">{$this->lang['searchfriends']}</span>
+	</div>
+	<div id="messenger-contacts-online-res" class="nano __none"><div class="nano-content"></div></div>
+	<div id="messenger-contacts-search-res" class="nano __none"><div class="nano-content"></div></div>
+	<div id="messenger-contacts-last" class="nano">
+	<div class="nano-content">
+	
+	{include "{$this->theme_dir}/messenger/contact-markup.html"}
+	
+	
+	{if $this->settings['PM_CONVERSATIONS_LIMIT'] <= count($contacts)}
+	<div class="messenger-load-more-contacts-loader">
+	<a class="link-show-more loader-controls private" onclick="evstop(event); messenger.load_more_contacts(this);" uid="prevDialogs">{$this->lang['Load_more']}</a>
+	</div>
+	{/if}
+	</div>
+	</div>
+	
+	</div>
+	
+	<div class="pmessenger-messages-list empty">
+	
+		<input id="messenger_with_user" value="" type="hidden" />
+		<input type="hidden" id="mess-curr-color" value="#666" />
+		
+		<div class="pmessenger-msg-list-header" id="pmessenger-contact-header"></div>
+
+		<div id="pmessenger-messages-cnt">
+					<div id="messenger-search-result"><div class="nano"><div class="nano-content"></div></div></div>
+					<div id="messages-tick"></div>
+					
+					
+		</div>
+
+		<!-- attach files -->
+		<div class="WD_attached_tracks _PM" id="WD_tracks_PM"><ul></ul></div>
+		<div class="jb_attached_files __messages" id="WD_attach_files_PM"></div>
+		<input type="hidden" value="" class="__none hookData" id="last-message-datetime" />
+		
+		<div class="pmessenger-msg-list-contenteditable">		
+		
+
+			 
+		</div>
+	
+	
+	
+	</div>
+	
+	
+	<div id="mess-user-details"	class="pmessenger-user-details">
+	
+
+	
+	<div id="mess-right-col-userdetails" class="pmess-right-block"></div>
+	
+	<div id="mess-right-col-settings" class="expanded">
+	<h4 aria-expanded="true" onclick="messenger.expandTab(event,this);" class="_1lj0" aria-pressed="true">{$this->lang['Messenger_Options']}<div aria-label="toggle" aria-expanded="true" class="_1lj1" role="button" tabindex="0"></div></h4>
+	<div class="messenger_aria_expanded" id="messenger_aria_options">
+
+	
+	</div>
+	</div>
+	
+	<div id="mess-right-col-attachments" class="expanded">
+	<h4 aria-expanded="true" onclick="messenger.expandTab(event,this);" class="_1lj0" aria-pressed="true">{$this->lang['Messenger_attachments']}<div aria-label="toggle" aria-expanded="true" class="_1lj1" role="button" tabindex="0"></div></h4>
+	<div class="messenger_aria_expanded">
+	<div id="messenger-attachments-cnt" class="mess-attach-venobox"><div class="div-loader"></div></div>
+	</div>
+	</div>
+	</div>
+
+
+</div>
+
+{/if}
+
+
+
+
+
+
+
+{/strip}

@@ -1,0 +1,27 @@
+<div class="messages-recipients-list mobileopenlist" id="messages-group-<?php echo $wo['group']['group_id']; ?>" onclick="Wo_GetGroupMessages(<?php echo $wo['group']['group_id']; ?>,'<?php echo $wo['group']['group_name']; ?>');">
+   <span class="msg_ava_name" style="cursor:pointer;color:#555;">
+      <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+         <img alt="<?php echo $wo['group']['group_name']; ?> Group Picture" src="<?php echo $wo['group']['avatar'];?>">
+      </div>
+      <span class="messages-user-name">
+      <?php echo $wo['group']['group_name']; ?>
+      </span>
+      <span class="<?php echo Wo_RightToLeft('pull-right');?> group-lastseen">
+          <?php if (is_array($wo['group']['last_seen']) && in_array($wo['group']['group_id'], $wo['group']['last_seen'])): ?>
+            <i class="fa fa-circle main" style="font-size:10px;"></i>
+          <?php endif;?>
+      </span>
+   </span>
+   <div class="messages-last-seen" style="overflow: hidden;" >
+      <?php if (!empty($wo['group']['last_message'])): ?>
+         <div class="user-lastseen" >
+            <?php echo $wo['group']['last_message']['user_data']['name']; ?>: <?php echo Wo_Time_Elapsed_String($wo['group']['last_message']['time']); ?>
+         </div>
+      <?php else: ?>
+        <div class="user-lastseen" >
+          <?php echo $wo['lang']['never']; ?>
+        </div>
+     <?php endif; ?>
+   </div>
+   <div class="clear"></div>
+</div>

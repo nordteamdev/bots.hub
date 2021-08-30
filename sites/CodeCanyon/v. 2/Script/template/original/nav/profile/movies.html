@@ -1,0 +1,103 @@
+{strip}
+{assign var=is_friend value=$this->isfriend($user.id)}
+{include file={$_usermenu}}
+
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+
+<div data-headername="{$user.fullname}" data-backhref="/user/{$user.id}" id="modifyheader"></div>
+ 
+<div id="mainContentContentColumn" class="movies_pg">
+ <div id="middleColumn">
+   
+   
+   <div class="movies_u_while">
+   
+   	   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$movies[0]} {if $movies[0] > 1}{$this->lang['movies']}{else}{$this->lang['movie']}{/if}</div>
+							<div class="separator_slv"></div>
+				
+       </div>   
+   
+   {if $this->USER.id == $user.id}
+   
+   <div class="movies_pg_author_search">
+   
+   <div id="author_movies_res">
+ 	<div class="input_serch_ic"><input type="text" onkeyup="{literal}var t = this;setTimeout(function(){hideMoviesPgSugg(t)},500);{/literal}" class="uprof-search-media-inp" rel="input_search_movies" search-callback="profileAddMovies" placeholder="ex. 12 Angry Men" value="" />
+	<i class="div-loader input-ic-loader __none"></i></div>
+	<div class="nano movies-author-search-ul-while">
+	<div class="nano-content"><ul id="movie_list"></ul></div>
+   </div>
+   
+   </div>
+ 
+   
+   
+   {/if}
+   {if $movies[0] <= 0}
+   <h3>{$this->info_msg($this->lang['user_no_movies'])}</h3>
+   {/if}
+   
+	<ul class="movies_ul_while">
+	
+	{foreach $movies[1] as $movie}
+	{assign var=movie_in_coll value=$this->checkIfTheMovieIsAlreadyInColl($movie.page_id)}
+						<li class="prof_movie_item relative movie_pg_li">
+						<div class="relative">
+						<a href="/page/movie/{$movie.page_id}/" hrefattr="true" class="a_absolute"></a>
+								<div class="movie_cover col_card_hover" style="background-image:url(/movieGetPoster?p={urlencode($movie.movie_cover)})">
+								
+<div class="col_card_slide_up universal">
+<div class="hookData __none"><!--{$movie['json']}--></div>
+
+
+
+<div>
+
+
+{if $this->USER.id == $user.id}
+<a href="javascript:void(0);" title="{$this->lang['delete_from_my_collection']}" {if !$movie_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-remove" rel="{$movie.page_id}" rel-categ="movie" data-send='{ldelim}"id":"{$movie.page_id}","type":"movie","cover":"{$movie.movie_cover}","title":"{urlencode($movie.movie_title)}","page_id":"{$movie.p_pageid}"{rdelim}' onclick="removeItemPgFromMyColl(this,event);" class="col_card_li ellip author"><i class="icofont icofont-ui-remove">&#xed5c;</i><span class="ellip">{$this->lang['delete_from_my_collection']}</span></a>
+{else}
+<a href="javascript:void(0);" title="{$this->lang['delete_from_my_collection']}" {if !$movie_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-remove" rel="{$movie.page_id}" rel-categ="movie" data-send='{ldelim}"id":"{$movie.page_id}","type":"movie","cover":"{$movie.movie_cover}","title":"{urlencode($movie.movie_title)}","page_id":"{$movie.p_pageid}"{rdelim}' onclick="removeItemPgFromMyColl(this,event);" class="col_card_li ellip"><i class="icofont icofont-ui-remove">&#xed5c;</i><span class="ellip">{$this->lang['delete_from_my_collection']}</span></a>
+<a href="javascript:void(0);" title="{$this->lang['add_to_my_collection']}" {if $movie_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-add" rel="{$movie.page_id}" rel-categ="movie" data-send='{ldelim}"id":"{$movie.page_id}","type":"movie","cover":"{$movie.movie_cover}","title":"{urlencode($movie.movie_title)}","page_id":"{$movie.p_pageid}"{rdelim}' onclick="addItemPgToMyColl(this,event);" class="col_card_li ellip"><i class="icofont icofont-plus">&#xf0a5;</i><span class="ellip">{$this->lang['add_to_my_collection']}</span></a>
+{/if}
+</div>
+
+
+
+
+</div>
+								
+								
+								
+								</div>
+								<div class="movie_title">{$movie.movie_title}</div>
+						</div>
+						
+						<div class="ratings_ul_sys">
+						<ul class="page_rating_stars" rel="start-rating" data-rating='{ldelim}"item_id":"{$movie.page_id}","stars":"5","static":"{$this->checkItemIsRatedByMe($movie.page_id,"movie")}","current_stars":"{$this->getItemStars($movie.page_id,"movie")}","item_type":"movie"{rdelim}'></ul>
+						</div>
+						</li>
+
+	{/foreach}
+	
+	</ul>
+   
+   
+   
+   </div>
+   
+   
+   
+   
+  </div>
+  
+  </div>
+  
+  {/if}
+   
+{/strip}

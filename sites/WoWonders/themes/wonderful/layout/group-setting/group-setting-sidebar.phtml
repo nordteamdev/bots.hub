@@ -1,0 +1,39 @@
+<div class="sidebar-conatnier">
+	<div class="sidebar">
+		<ul class="wo_sett__sidebar group">
+			<div class="sett__img">
+				<a href="<?php echo $wo['setting']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['setting']['group_name'];?>">
+					<img src="<?php echo $wo['setting']['avatar'];?>" alt="Group Image" />
+					<span><?php echo $wo['setting']['name'];?></span>
+				</a>
+			</div>
+            <li class="<?php echo ($wo['setting_page'] == 'general-setting') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=general-setting');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=general-setting"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg> <?php echo $wo['lang']['general'];?></a>
+			</li>
+            <li class="<?php echo ($wo['setting_page'] == 'privacy-setting') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=privacy-setting');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=privacy-setting"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" /></svg> <?php echo $wo['lang']['privacy'];?></a>
+			</li>
+            <li class="<?php echo ($wo['setting_page'] == 'avatar-setting') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=avatar-setting');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=avatar-setting"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z" /></svg> <?php echo $wo['lang']['avatar_and_cover'];?></a>
+			</li>
+             <li class="<?php echo ($wo['setting_page'] == 'group-members') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=group-members');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=group-members"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> <?php echo $wo['lang']['members'];?></a>
+			</li>
+            <?php if ($wo['setting']['join_privacy'] == 2) { ?>
+            <li class="<?php echo ($wo['setting_page'] == 'requests') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=requests');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=requests"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" /></svg> <?php echo $wo['lang']['join_requests'];?> 
+            <?php 
+            $requests = Wo_CountGroupRequests($wo['setting']['id']);
+            if ($requests > 0) { ?>
+                  <div class="report-not-seen <?php echo Wo_RightToLeft('pull-right');?>"><?php echo $requests;?></div>
+            <?php } ?>
+				</a>
+			</li>
+            <?php } ?>
+            <li class="<?php echo ($wo['setting_page'] == 'delete-group') ? 'avtive': '';?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['setting']['group_name'] . '&link3=delete-group');?>" data-ajax="?link1=group-setting&group=<?php echo $wo['setting']['group_name']?>&link3=delete-group" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg> <?php echo $wo['lang']['delete_group'];?></a>
+			</li>
+		</ul>
+		<?php echo Wo_LoadPage('footer/sidebar-footer')?>
+	</div>
+</div>

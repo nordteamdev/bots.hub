@@ -1,0 +1,17 @@
+<tr class="setting-blog"  data-film-id="<?php echo $wo['film']['id']; ?>">
+   <td><?php echo $wo['film']['id']?></td>
+   <td>
+      <a href="<?php echo $wo['film']['url']; ?>">
+         <?php echo $wo['film']['name']; ?>
+      </a>
+   </td>
+   <td>
+     <div class="ajax-time">
+         <?php echo $wo['film']['release'];?>
+     </div>
+   </td>
+   <td>
+      <a class="btn btn-info waves-effect waves-light" href="<?php echo Wo_LoadAdminLinkSettings('edit-movie?id=' .  $wo['film']['id']); ?>" id="<?php echo $wo['film']['id']; ?>">EDIT</a>
+      <button class="btn btn-danger waves-effect waves-light delete-film" id="<?php echo $wo['film']['id']; ?>">DELETE</button>
+   </td>
+</tr>

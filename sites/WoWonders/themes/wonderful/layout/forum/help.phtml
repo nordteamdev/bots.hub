@@ -1,0 +1,120 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div role="tabpanel" class="tab-pane active" id="help"> 
+		<div class="col-md-12">
+			<div class="col-md-3">
+				<h5>
+					<a href="#1" class="main" style="display: block;">
+						<span><i class="fa fa-info-circle" aria-hidden="true"></i> 
+							How can I create a forum thread?
+						</span>
+					</a>
+					<small>Posting a New Thread</small>
+				</h5>
+				<hr>
+				<h5>
+					<a href="#2" class="main" style="display: block;">
+						<span><i class="fa fa-info-circle" aria-hidden="true"></i>
+						 How can I remove my thread? 
+						</span>
+					</a>
+					<small>Replying to a topic within a forum.</small>
+				</h5>
+				<hr>
+				<h5>
+					<a href="#3" class="main" style="display: block;">
+						<span><i class="fa fa-info-circle" aria-hidden="true"></i>
+						 How can I remove my message? 
+						</span>
+					</a>
+					<small>Remove replies</small>
+				</h5>
+				<hr>
+				<h5>
+					<a href="#4" class="main" style="display: block;">
+						<span><i class="fa fa-info-circle" aria-hidden="true"></i>
+						 How can I reply to thread? 
+						</span>
+					</a>
+					<small>Posting a New Reply</small>
+				</h5>
+
+				
+			</div>
+			<div class="col-md-9" >
+				<div id="1">
+					<div class="f_category">
+						<span class="pull-left"><i class="fa fa-question" aria-hidden="true"></i>
+							How can I create a forum thread?
+						</span>
+						<span class="pull-right show-help pointer" id="1"><i class="fa fa-external-link-square" aria-hidden="true"></i></span>
+					</div>
+					<div data-slide="1" class="small" style="margin-bottom: 30px;">
+						<h3>How can I create a forum thread?</h3>
+						When you go to a forum you are interested in and you wish to create a new thread (or topic), simply choose the button at the top and bottom of the forums entitled "New Thread". Please take note that you may not have permission to post a new thread in every forum as your administrator may have restricted posting in that forum to staff or archived the forum entirely.
+						
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div id="2">
+					<div class="f_category">
+						<span class="pull-left"><i class="fa fa-question" aria-hidden="true"></i>
+							How can I remove my thread? 
+						</span>
+						<span class="pull-right show-help pointer" id="2"><i class="fa fa-external-link-square" aria-hidden="true"></i></span>
+					</div>
+					<div data-slide="2" class="small" style="margin-bottom: 30px;">
+						<h3>How can I remove my thread? ? </h3>
+						When you want to delete the forum thread, you need to go to the link and at the bottom of the forum called "My Themes". Then select the one that you need to remove, pay attention to after removing the theme, everything that applies to it will also be deleted
+						
+						<div class="clear"></div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+
+				<div id="3">
+					<div class="f_category">
+						<span class="pull-left"><i class="fa fa-question" aria-hidden="true"></i>
+							How can I remove my message? 
+						</span>
+						<span class="pull-right show-help pointer" id="3"><i class="fa fa-external-link-square" aria-hidden="true"></i></span>
+					</div>
+					<div data-slide="3" class="small" style="margin-bottom: 30px;">
+						<h3>How can I remove my message? </h3>
+						When you want to delete a reply, you need to follow the link and at the bottom of the forum called "My Messages".
+						
+						<div class="clear"></div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+
+				<div id="4">
+					<div class="f_category">
+						<span class="pull-left"><i class="fa fa-question" aria-hidden="true"></i>
+							How can I edit my message? 
+						</span>
+						<span class="pull-right show-help pointer" id="4"><i class="fa fa-external-link-square" aria-hidden="true"></i></span>
+					</div>
+					<div data-slide="4" class="small" style="margin-bottom: 30px;">
+						<h3>How can I edit my message? </h3>
+						When you want to edit your reply, you need to go to the link and at the bottom of the forum called "My Messages." Go to the edit page and then save
+
+						<div class="clear"></div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+<div class="clear"></div>
+</div>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<script>
+	$(document).on("click",".show-help",function(){
+        $("div[data-slide=" +  $(this).attr("id")+"]").slideToggle();
+    });
+</script>

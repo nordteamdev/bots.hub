@@ -1,0 +1,22 @@
+{strip}
+
+<div class="a_feedback_b" id="feedback_notif_box">
+<div class="fdb1">Latest 100 messages</div>
+<div id="f" class="qnano">
+<ul class="fdb2 qnano-content">
+
+{foreach $q as $r}
+<li {if $r.read == 'no'}class="feedback_unread"{/if} id="{$r.id}" onclick="getThisFeedback(event,this);">
+<div class="fdb_subject">{$r.subject}</div>
+<div class="fdb_cnt">{if $r.attachment}<div class="glyphicon glyphicon-paperclip"></div>{/if}&nbsp;{pellipse($r.message,90)}</div>
+<div class="fdb_time">{$this->time_elapsed($r.send_at)}</div>
+</li>
+{foreachelse}
+No messages.<br/>If you want to recieve messages, make a bug in the site :)) .
+{/foreach}
+
+</ul></div>
+
+</div>
+
+{/strip}

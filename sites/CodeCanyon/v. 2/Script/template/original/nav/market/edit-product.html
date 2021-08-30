@@ -1,0 +1,136 @@
+{strip}
+{foreach $q as $r}
+<form>
+<input type="hidden" id="edit_product_id" value="{$r.id}" />
+<input type="hidden" id="product_edit_default_cover" value="{$r.product_cover}" />
+<div class="box_body">
+<div id="market_edit_item_box" class="market_edit_item_box market_edit_item_box_new">
+
+<div id="product_add_err" style="display:none;"></div>
+<a href="javascript:void(0);" style="display:none;" hrefattr="true" id="new_product_go"></a>
+<h4 class="subheader">{$this->lang['Choose_a_category']}</h4>
+<select class="css_modern_select" name="product_category">
+ 
+{foreach from=$this->settings['MARKETPLACE_PRODUCTS_CATEGORIES'] item=label key=key}
+ 
+
+    <optgroup label="{$this->lang["market_categ_{$key}"]}">
+		{foreach $this->settings['MARKETPLACE_PRODUCTS_CATEGORIES'][$key] as $subcateg}
+		<option {if $r.product_category == $subcateg}selected{/if} value="{$subcateg}">{$this->lang["market_subcateg_{$subcateg}"]}</option>
+		{/foreach}
+ 
+    </optgroup>
+	{/foreach}
+	
+</select>
+
+
+<h4 class="subheader">{$this->lang['Product_name']}</h4>
+<input id="item_name" type="text" class="dark" maxlength="120" value="{$r.product_name}">
+
+<h4 class="subheader">{$this->lang['Product_description']}</h4>
+<textarea id="item_description" name="product_description" class="market_ei_description dark" maxlength="4000" style="overflow: hidden; resize: none; height: 80px;">{$r.product_description}</textarea>
+
+<h4 class="subheader">{$this->lang['Product_photos']}</h4>
+<div id="new_product_photos_limit" style="display:none;">{$this->lang['products_pictures_limit']}</div>
+<div id="new_product_no_cover" style="display:none;">{$this->lang['products_no_cover']}</div>
+<div>
+<div class="market_cnt_pictures">
+<div id="market_new_photo_upload" class="market_ei_main_photo_wrap clear_fix fl_l" style="display:none;">
+    <img id="market_ei_main_photo" src="/template/{$smarty.const._THEME}/css/images/market_camera.png" class="market_ei_main_photo fl_l">
+    <div id="market_ei_main_photo_change" class="ui_thumb_x_button ui_thumb_small_x" data-title="Edit cover"  style="display:none">
+        <div class="ui_thumb_x"></div>
+    </div>
+    <div id="market_ei_main_photo_info" class="market_ei_main_photo_info" style="">
+        <div class="market_ei_main_photo_descr">{$this->lang['market_add_photos_descr']}</div>
+        <div id="market_ei_main_photo_upload"><button class="flat_button upload_btn secondary small" onclick="event.preventDefault();this.nextSibling.click();">{$this->lang['Select_an_image']}</button>
+		<input class="file for_cover" type="file" size="28" onchange="market.addPictures(event);" accept="image/*" name="files" id="files" style="visibility: hidden; position: absolute;" /></div>
+    </div>
+    <div class="margin_ei_main_photo_sign">{$this->lang['cover']}</div>
+</div>
+{assign var=getpictures value=$this->getProductPictures($r.id)}
+<div class="hookData __none" id="product_pics_count"><!--{json_encode($getpictures)}--></div>
+	
+	{if count($getpictures) > 0}
+
+	{foreach $getpictures as $picture}
+<div class="market_upload_images {if $r.product_cover == $picture.id}cover{/if}">
+
+	<a class="product_make_cover_image" onclick="market.makeDefaultCover(event);" href="javascript:void(0);" data-pic-id="{$picture.id}" data-pic-fakeid="{$this->USER.id}*{time()}">&nbsp;</a>
+	<a class="ui_thumb_x_button ui_thumb_small_x" id="delete_product_picture" onclick="market.deleteProductImage(this);" href="javascript:void(0);" data-pic-id="{$picture.id}" data-pic-filename="{$picture.filename}"><i class="ui_thumb_x"></i></a>
+ 
+	<div class="market_file_name ellip">{$this->time_elapsed($picture.added)}</div>
+	<img class="market_new_pictures" src="/getMarketPictures?p={$picture.id}&product_id={$r.id}&sz=small">
+	<div class="market_picture_is_cover">{$this->lang.cover}</div></div>
+{/foreach}
+{/if}
+
+ 
+
+<div id="market_ei_photos_wrap" class="market_ei_photos_wrap clear_fix">
+<div id="market_ei_photo_add" class="market_ei_photo_add inl_bl">
+<div class="market_ei_photos" id="market_ei_photos">
+    <div class="market_ei_photo_add_label" style="z-index: 90; left: 0px; top: 0px;" onclick="this.nextSibling.click();">Add</div>
+		<input class="file" type="file" size="28" onchange="market.addPictures(event);" accept="image/*" name="files[]" multiple="multiple" id="files" style="visibility: hidden; position: absolute;" />
+</div></div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+<h4 class="subheader">{$this->lang['Price']}</h4>
+<div class="clear_fix">
+    <input id="item_price" onkeypress="return inputPrice(event);" name="product_price" type="text" class="market_ei_price dark fl_l" value="{$r.price}">
+    <div id="item_currency" class="market_ei_currency fl_l">{$this->settings['MARKETPLACE_CURRENCY']}</div>
+  </div>
+
+
+
+<h4 class="subheader">{$this->lang['Location']}:</h4>
+<div class="market_ei_address_desc">
+
+
+ <div class="fl_l">
+<input id="product_location" autocomplete="off" name="product_location" placeholder="ex. Amsterdam, Netherlands" class="market_ei_price dark getuserlocation" type="text" value="{$r.product_location}"> 
+<input type="hidden" name="location_id" id="location_id" value="{$this->USER['location_id']}">
+<input type="hidden" id="settings_approved_location" name="location_approved" value="1" class="yes"> 
+
+ </div>
+
+
+<a class="change_address" onclick="market.changeLocation(this,event);">{$this->lang['change']}</a>
+
+ </div>
+
+
+<h4 class="subheader">&nbsp;</h4>
+</div>
+</div>
+
+<div class="box_controls_wrap" style="display: block;">
+    <div class="box_controls" style="margin-bottom: -19px;">
+        <table cellspacing="0" cellpadding="0" style="margin:auto;">
+            <tbody>
+                <tr>
+                    <td><button class="flat_button secondary" onclick="event.preventDefault();ga('#nohook_modal_close').trigger('click');">{$this->lang['Cancel']}</button></td>
+                    <td><button class="flat_button" onclick="market.placeProduct(event,this,this.form,'{$r.id}');">{$this->lang['Save']}</button></td>
+                </tr>
+            </tbody>
+        </table>
+     
+ 
+    </div>
+</div>
+</form>
+{foreachelse}
+{$this->info_msg($this->lang['sorry_product_was_not_found'])}
+{/foreach}
+{/strip}
+ 

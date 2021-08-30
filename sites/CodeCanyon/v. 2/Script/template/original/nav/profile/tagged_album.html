@@ -1,0 +1,43 @@
+
+{include file={$_usermenu}}
+<div class="profile-photos-gallery">
+<div class="photo-sc_h2 portlet-i_h2 photo-sc_h2__alb-page show-on-hover"><span title="{$this->lang['tagged_album']}" class="portlet-i_h2_tx ellip">
+  <span class="photo-sc_h2_alb-title" id="alb_detail_title">{$this->lang['tagged_album']}</span></span><span class="photo-sc_h2_alb-count portlet-i_h2_tx">{$pCount} {$this->lang['photos']}</span>
+</div>
+
+
+
+<div class="photos_content">
+
+
+{if $query != ''}
+
+
+{foreach $query as $result}
+{assign var="ownerID" value=$this->getOwnerOfPhotoInTaggedAlbum($result.photoid)}
+{assign var=is_gif value=$this->is_gif($result.photoid)}
+
+{assign var="likes_count" value=$this->getLikesCount($result.photoid,'photo')}
+{assign var="comments_count" value=$this->getCommentsCount($result.photoid,'photo')}
+{assign var="photo_owner" value=$result.photo_owner}
+{assign var="photoid" value=$result.photoid}
+{assign var="liked_byme" value=$this->likedByMe($result.photoid,'photo')}
+
+<div class="ec_items tagged image-hover">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.photoid}"></span>
+
+<a href="/photo?q={$ownerID}&show=tagged_album&x={$uid}&from=medium&a=0&o={b_encode($result.photoid)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($result.photoid)}">
+<img class="{if $is_gif}gifplayer{/if}" src="{$gPhoto}?p={$result.photoid}&sz=grid" 
+{if $is_gif}data-gif-id="gif-{$result.photoid}" data-gif="/getPhoto?p={$result.photoid}&sz=large&corr=1" data-wait="true" data-playon="hover"{/if}
+/>
+</a>
+
+{include file={$_notes}}
+
+</div></div>
+{/foreach}
+
+{/if}
+</div>
+</div>

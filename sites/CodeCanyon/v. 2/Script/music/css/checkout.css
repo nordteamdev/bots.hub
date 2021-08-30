@@ -1,0 +1,120 @@
+/* For purchasing system  [v1.5]*/
+
+.m_already_purchased {
+display: block;
+margin-top: 25%;
+padding: 25px 25px 25px 75px;
+background: #F0FFE8;
+border: 2px dashed #7DBE54;
+text-align: left;
+color: #757575;
+font-size: 15px;
+font-family: arial;
+font-style: italic;
+word-spacing: 1px;
+background: #F0FFE8 url(../css/images/ok.png) no-repeat 5% 50%;
+}
+.m_song_purchased {
+width: 100%;
+height: 95%;
+background: #FFF;
+overflow: hidden;
+}
+.m_song_purchased .text {
+display: inline-block;
+color: #4E9715;
+font-size: 15px;
+font-family: Arial;
+padding-left: 29px;
+margin-top: 150px;
+background: url(../css/images/ok.png) no-repeat 0% 50%;
+}
+.m_song_payment_button {
+display: inline-block;
+top: 12px;
+left: 200px;
+text-decoration: none;
+text-align: center;
+padding: 7px 21px 8px;
+font-size: 16px;
+border-radius: 3px;
+text-shadow: 0 1px 0 #458f11;
+box-shadow: inset 0 -1px 0 0 #21900D;
+background-color: #1daa09;
+background-image: url(/res/default/Images/green-button.png);
+background-repeat: repeat-x;
+background-image: -moz-linear-gradient(top,#78d81f,#1daa09);
+background-image: -o-linear-gradient(top,#78d81f,#1daa09);
+background-image: -webkit-linear-gradient(top,#78d81f,#1daa09);
+background-image: linear-gradient(top,#78d81f,#1daa09);
+position: relative;
+margin: 0;
+padding: 15px 55px 15px;
+border: 0;
+overflow: visible;
+color: #fff;
+font: 500 16px Arial;
+cursor: pointer;
+white-space: nowrap;
+border-radius: 3px;
+}
+
+.m_song_payment_button:hover {
+color: #fff;
+background-color: #70ca1b;
+background-position: 0 100%;
+background-image: -moz-linear-gradient(top,#70ca1b,#169305);
+background-image: -o-linear-gradient(top,#70ca1b,#169305);
+background-image: -webkit-linear-gradient(top,#70ca1b,#169305);
+background-image: linear-gradient(top,#70ca1b,#169305);
+text-decoration: none;
+}
+.m_song_payment_button .text.invisible {
+opacity:0;
+visibility:hidden;
+}
+.m_song_payment_button .waiting {
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -4px;
+margin-left: -15px;
+background: url(//localhost/music/css/images/btn-loading.gif) 0 0 no-repeat;
+height: 8px;
+width: 30px;
+opacity:0;
+visibility:hidden
+}
+.m_song_payment_button .waiting.active {
+opacity:1;
+visibility:visible
+}
+.p_paypal_content {
+width: 100%;
+height: 100%;
+background: #FFF;
+overflow: hidden;
+}
+.paypal_logo {
+width: 100%;
+height: 188px;
+background: url(../css/images/prov_big_paypal_arub.jpg) no-repeat 50% 50%;
+}
+
+.payment_error_code {
+width: 100%;
+height: 95%;
+background: #FFF;
+overflow: hidden;
+}
+.p_error_msg {
+display: block;
+border: 2px dashed #FF8B03;
+margin-top: 140px;
+padding: 25px 25px 25px 85px;
+background: #FFFCBC url(../css/images/check__active.png) no-repeat 5% 50%;
+color: #81532E;
+font-family: arial;
+font-size: 14px;
+font-style: italic;
+}

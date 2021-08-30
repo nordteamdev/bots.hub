@@ -1,0 +1,69 @@
+<div class="wo_settings_page sun_sett_page">
+	<h3><?php echo $wo['lang']['social_links'];?></h3>
+
+	<form  method="post" class="form-horizontal setting-profile-form" enctype="multipart/form-data">
+		<div class="setting-profile-alert setting-update-alert"></div>
+		
+		<div class="setting-panel row">
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="facebook" name="facebook" type="text" class="form-control input-md" value="<?php echo $wo['setting']['facebook'];?>" placeholder="<?php echo $wo['lang']['facebook'];?>">
+				<label class="plr15" for="facebook"><?php echo $wo['lang']['facebook'];?></label>  
+			</div>
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="twitter" name="twitter" type="text" class="form-control input-md" value="<?php echo $wo['setting']['twitter'];?>" placeholder="<?php echo $wo['lang']['twitter'];?>">
+				<label class="plr15" for="twitter"><?php echo $wo['lang']['twitter'];?></label>  
+			</div>
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="google" name="google" type="text" class="form-control input-md" value="<?php echo $wo['setting']['google'];?>" placeholder="<?php echo $wo['lang']['google'];?>">
+				<label class="plr15" for="google"><?php echo $wo['lang']['google'];?></label>
+			</div>
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="google" name="vk" type="text" class="form-control input-md" value="<?php echo $wo['setting']['vk'];?>" placeholder="<?php echo $wo['lang']['vkontakte'];?>">
+				<label class="plr15" for="vk"><?php echo $wo['lang']['vkontakte'];?></label>
+			</div>
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="linkedin" name="linkedin" type="text" class="form-control input-md" value="<?php echo $wo['setting']['linkedin'];?>" placeholder="<?php echo $wo['lang']['linkedin'];?>"> 
+				<label class="plr15" for="linkedin"><?php echo $wo['lang']['linkedin'];?></label>  
+			</div>
+			<!-- Text input-->
+			<div class="sun_input col-lg-6">
+				<input id="youtube" name="youtube" type="text" class="form-control input-md" value="<?php echo $wo['setting']['youtube'];?>" placeholder="<?php echo $wo['lang']['youtube'];?>"> 
+				<label class="plr15" for="youtube"><?php echo $wo['lang']['youtube'];?></label>  
+			</div>
+		</div>
+        <div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+		</div>
+        <input type="hidden" name="page_id" id="page-id" value="<?php echo $wo['setting']['page_id'];?>">
+       <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('form.setting-profile-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=pages&s=update_sociallink_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        scrollToTop();
+        $('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      } 
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

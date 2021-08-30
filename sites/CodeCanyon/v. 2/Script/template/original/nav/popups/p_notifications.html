@@ -1,0 +1,97 @@
+
+{assign var=friends_count value=$this->notifCount('friends')}
+{assign var=comments_count value=$this->notifCount('comment')}
+
+{assign var=gifts_count value=$this->notifCount('gift')}
+{assign var=groups_count value=$this->notifCount('group')}
+{assign var=other_count value=$this->notifCount('other')}
+ 
+<div id="hook_Block" class="notification_box_flying">
+<div class="close_ic_p_slide"><span id="close_flying_notification_box" class="tico tico__n-t notifs_close"><i class="tico_img ic ic_close"></i></span></div>
+<div class="header_til f13 notifs_title">{$this->lang['Notifications']}<div class="notif_top_settings"><a href="/settings/{$this->USER.id}/notifications" hrefattr="true" data-clbk="removePopup"><i class="vic _settings"></i></a></div><div id="notification_nav_bar_categ"></div></div>
+
+        <div id="hook_Block_NotificationsLayerMenu" class="hookBlock">
+            <div class="notifs_menu custom-scrolling usel-off"> 
+                <ul id="ntf_layer_left_menu" class="mml_cat_ul">
+
+                    <li class="mml_cat_li">
+					<a href="/notifications?cmd=all&token={time()}" title="All" id="ntf_layer_menu_link_All" data-category="All" data-navbartitle="{$this->lang['all_notif']}" onclick="notifNav(this,event)" class="notifs_menu_btn  __active">
+					<i class="ic_not_side ic_notif_all_28"></i></a>
+					</li>
+             
+                    <li class="mml_cat_li">
+					<a class="notifs_menu_btn" title="{$this->lang['friendships']}" href="/notifications?cmd=friends&token={time()}" data-navbartitle="{$this->lang['friendships']}"  onclick="notifNav(this,event)" id="ntf_layer_menu_link_Friendships" data-category="friends">
+					<i class="ic_not_side ic_notif_friendships_28"></i>
+					
+
+					{if $friends_count > 0}
+					<div class="notif_navb_count"><div class="notif_navb_txt">{$friends_count}</div></div>
+					{/if}
+					</a></li>
+					
+                    <li class="mml_cat_li">
+					<a class="notifs_menu_btn" title="{$this->lang['Communities']}" href="notifications?cmd=communities&token={time()}" data-navbartitle="{$this->lang['Communities']}"  onclick="notifNav(this,event)" id="ntf_layer_menu_link_Friendships" data-category="communities">
+					<i class="ic_not_side ic_notif_groups_28"></i>
+					
+
+					{if $groups_count > 0}
+					<div class="notif_navb_count"><div class="notif_navb_txt">{$groups_count}</div></div>
+					{/if}
+					</a></li>
+					
+					
+                    <li class="mml_cat_li">
+					<a class="notifs_menu_btn" title="{$this->lang['Comments']}" href="/notifications?cmd=comments&token={time()}" data-navbartitle="{$this->lang['Comments']}"  onclick="notifNav(this,event)" id="ntf_layer_menu_link_Friendships" data-category="comments">
+					<i class="ic_not_side ic_notif_comments_28"></i>
+					{if $comments_count > 0}<div class="notif_navb_count"><div class="notif_navb_txt">{$comments_count}</div></div>{/if}
+					</a></li>
+					
+					<li class="mml_cat_li">
+					<a class="notifs_menu_btn" title="{$this->lang['Gifts']}" href="/notifications?cmd=gifts&token={time()}" data-navbartitle="{$this->lang['Gifts']}"  onclick="notifNav(this,event)" id="ntf_layer_menu_link_Friendships" data-category="gifts">
+					<i class="ic_not_side ic_notif_gifts_28"></i>
+					{if $gifts_count > 0}<div class="notif_navb_count"><div class="notif_navb_txt">{$gifts_count}</div></div>{/if}
+					</a></li>
+					<!--
+                    <li class="mml_cat_li">
+					<a href="/nav/notifications/presents" id="ntf_layer_menu_link_Presents"  data-navbartitle="{$this->lang['gifts']}" onclick="notifNav(this,event)" data-category="Presents" class="notifs_menu_btn"><span class="tico"><i class="tico_img ic16 ic_notif_presents"></i>Gifts</span><span id="ntf_counter_Presents" class="mml_notif mml_notif__num __on">{$notif['gifts']}</span><span id="ntf_counter_Presents_news" class="mml_notif mml_notif__count">0</span></a></li>
+
+                    <li class="mml_cat_li">
+					<a href="/nav/notifications/groups" id="ntf_layer_menu_link_Groups"  data-navbartitle="{$this->lang['groups']}" onclick="notifNav(this,event)" data-category="Groups" class="notifs_menu_btn"><span class="tico"><i class="tico_img ic16 ic_notif_groups"></i>Groups</span><span id="ntf_counter_Groups" class="mml_notif mml_notif__num __on">{$notif['groups']}</span><span id="ntf_counter_Groups_news" class="mml_notif mml_notif__count">0</span></a></li>
+
+                    <li class="mml_cat_li">
+					<a href="/nav/notifications/games" id="ntf_layer_menu_link_Games"  data-navbartitle="{$this->lang['games']}" onclick="notifNav(this,event)" data-category="Games" class="notifs_menu_btn"><span class="tico"><i class="tico_img ic16 ic_notif_games"></i>Games</span><span id="ntf_counter_Games" class="mml_notif mml_notif__num __on">{$notif['games']}</span><span id="ntf_counter_Games_news" class="mml_notif mml_notif__count">0</span></a></li>
+
+                    <li class="mml_cat_li">
+					<a href="/nav/notifications/payments" id="ntf_layer_menu_link_Payments"  data-navbartitle="{$this->lang['payments']}" onclick="notifNav(this,event)" data-category="Payments" class="notifs_menu_btn"><span class="tico"><i class="tico_img ic16 ic_notif_payments"></i>Payments</span><span id="ntf_counter_Payments" class="mml_notif mml_notif__num __on">{$notif['payments']}</span><span id="ntf_counter_Payments_news" class="mml_notif mml_notif__count">0</span></a></li>
+					-->
+                    <li class="mml_cat_li">
+					<a href="/notifications?cmd=other&token={time()}" title="Other" id="ntf_layer_menu_link_Other"  data-navbartitle="{$this->lang['other']}" onclick="notifNav(this,event)" data-category="Other" class="notifs_menu_btn">
+					<i class="ic_not_side ic_notif_other_28"></i>
+					{if $other_count > 0}<div class="notif_navb_count"><div class="notif_navb_txt">{$other_count}</div></div>{/if}
+					</a></li>
+					
+                </ul>
+            </div>
+        </div>
+		<div class="notiflst_right nano" id="notif-nano">
+
+		<div class="notiflst nano-content">
+
+
+            <div id="hook_Block_NotificationsLayerContent" class=" hookBlock snotifs_wrap">
+                <div class="  notifs_wrap" style="    height: 100%;">
+                    <div class="" id="ntf_layer_content_scroll">
+                        <div id="ntf_layer_content_inner"><span></span></div>
+                    </div>
+                    <div id="ntf_layer_content_stub" class="notifs_stub">
+                        <div class="no_events_wrap usel-off">
+                            <div class="no_events"><i class="no_events_ic"></i>{$this->lang['no_new_notif']}</div>
+                        </div>
+                    </div>
+                    <div data-activate="showContent" data-history="on" data-category="Friendships" class="h-mod invisible" data-module="Notifications"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+</div>

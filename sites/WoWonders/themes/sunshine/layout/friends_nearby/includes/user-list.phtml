@@ -1,0 +1,60 @@
+<div class="user-data col-md-3 col-sm-4">
+	<div class="nearby_user_wrapper text-center" id="<?php echo $wo['UsersList']['user_data']['id']; ?>">
+		<?php if (Wo_IsUserPro($wo['UsersList']['user_data']['is_pro']) === true) { 
+			$user_pro_type = Wo_GetUserProType($wo['UsersList']['user_data']['pro_type']);
+		?>
+			<span class="sun_freind_pro_badge" style="background-color:<?php echo $user_pro_type['color_name'];?>">
+				<i class="fa fa-<?php echo $user_pro_type['icon'];?>" title="<?php echo $user_pro_type['type_name'];?>"></i>
+			</span>
+		<?php } ?>
+		<div class="avatar">
+			<a href="<?php echo $wo['UsersList']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['user_data']['username'];?>"><img src="<?php echo $wo['UsersList']['user_data']['avatar'];?>" alt="<?php echo $wo['UsersList']['user_data']['name']; ?>" /></a>
+			<div class="user-follow-button">
+				<?php echo Wo_GetFollowButton($wo['UsersList']['user_data']['user_id']);?>
+			</div>
+		</div>
+		<h4 class="user_wrapper_link">
+			<span class="user-popover" data-id="<?php echo $wo['UsersList']['user_data']['id'];?>" data-type="<?php echo $wo['UsersList']['user_data']['type'];?>">
+				<a href="<?php echo $wo['UsersList']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['user_data']['username'];?>"><?php echo $wo['UsersList']['user_data']['name']; ?></a>
+			</span>
+		</h4>
+		
+		<div class="user-map-button">
+			<?php if (!empty($wo['UsersList']['user_geoinfo']) && (!empty($wo['user']['lat']) && !empty($wo['user']['lng'])) && ($wo['UsersList']['distance'] > 0)): ?>
+				<small data-toggle='tooltip' title="<?php echo $wo['lang']['show_location']; ?>">
+					<span onclick="Wo_ShowUserLocationMap('<?php echo $wo['UsersList']['user_geoinfo']?>');">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> <?php echo $wo['lang']['close_to_u']; ?> <?php echo number_format($wo['UsersList']['distance'],3); ?>/k
+					</span>
+				</small>
+			<?php endif; ?>
+		</div>
+  
+		<ul class="list-unstyled sun_friends_fetrs">
+			<li>
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg></span>
+				<div>
+					<p><?php echo $wo['lang']['followers']; ?></p>
+					<b><?php echo $wo['UsersList']['user_data']['details']['followers_count'];?></b>
+				</div>
+			</li>
+			<li>
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z" /></svg></span>
+				<div>
+					<p><?php echo $wo['lang']['posts']; ?></p>
+					<b><?php echo $wo['UsersList']['user_data']['details']['post_count'];?></b>
+				</div>
+			</li>
+			<?php if($wo['config']['user_lastseen'] == 1 && $wo['UsersList']['user_data']['showlastseen'] != 0): ?>
+			<li>
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg></span>
+				<div>
+					<p><?php echo $wo['lang']['last_active']; ?></p>
+					<b><?php echo Wo_UserStatus($wo['UsersList']['user_data']['user_id'], $wo['UsersList']['user_data']['lastseen']); ?></b>
+				</div>
+			</li>
+			<?php endif; ?>
+		</ul>
+  
+		<div class="clear"></div>
+	</div>
+</div>

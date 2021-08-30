@@ -1,0 +1,270 @@
+{strip}
+{assign var=a_guests value=$this->adsMarkup('guests')}
+{assign var=a_friends value=$this->adsMarkup('friends')}
+{assign var=a_messages value=$this->adsMarkup('messages')}
+{assign var=a_apps value=$this->adsMarkup('apps')}
+{assign var=a_posts value=$this->adsMarkup('posts')}
+{assign var=a_user value=$this->adsMarkup('profile')}
+{$this->deleteEmptyAd()}
+
+<div class="ad-rowcol">
+<h2>Advertisement section</h2>
+<label class="addgame lvpreviewhide" for="hide-previews">Hide previews <input type="checkbox" style="vertical-align:middle;" id="hide-previews" onclick="hidePreviews(event);" /></label>
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=saveads" id="fform" method="post">
+
+
+
+
+					<fieldset>
+		<div class="v2_gs_filter __open __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Guests page</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		    <div class="form-group">
+            <label class="col-md-3" for="guests">Markup</label>
+
+            <div class="col-md-6">
+			
+			{if $a_guests.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_guests.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_guests.q.0.click}</div>
+			{/if}
+			
+				<textarea id="guests" name="guests" class="ads-textarea" resize="vertical">{if $a_guests.count}{$a_guests.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the left side of guests page, under last block.</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+
+					<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Friends page</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="friends">Markup</label>
+            <div class="col-md-6">
+			
+			{if $a_friends.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_friends.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_friends.q.0.click}</div>
+			{/if}
+			
+				<textarea id="friends" name="friends" class="ads-textarea" resize="vertical">{if $a_friends.count}{$a_friends.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the left side of friends page, under last block.</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+		
+		
+					<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Messages window</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="messages">Markup</label>
+            <div class="col-md-6">
+			
+			{if $a_messages.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_messages.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_messages.q.0.click}</div>
+			{/if}
+			
+				<textarea id="messages" name="messages" class="ads-textarea" resize="vertical">{if $a_messages.count}{$a_messages.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the right side of messages window, after popup. ( width: 236px; max-height: 360px; )</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+		
+		
+		
+							<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Apps page</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="apps">Markup</label>
+            <div class="col-md-6">
+			
+			{if $a_apps.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_apps.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_apps.q.0.click}</div>
+			{/if}
+			
+			
+				<textarea id="apps" name="apps" class="ads-textarea" resize="vertical">{if $a_apps.count}{$a_apps.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the left side of apps page, after "Top games" section.</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+		
+		
+		
+									<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Posts page</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="posts">Markup</label>
+            <div class="col-md-6">
+			
+			{if $a_posts.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_posts.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_posts.q.0.click}</div>
+			{/if}
+			
+				<textarea id="posts" name="posts" class="ads-textarea" resize="vertical">{if $a_posts.count}{$a_posts.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the left side of posts page, after last block.</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+	
+
+
+									<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">User Profile page</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="profile">Markup</label>
+            <div class="col-md-6">
+			
+			{if $a_user.count}
+			<div class="ads-added">Advertisement updated/added about {$this->time_elapsed($a_user.q.0.added)}</div>
+			<div class="ads-clicks-count">clicks: {$a_user.q.0.click}</div>
+			{/if}
+			
+			
+				<textarea id="profile" name="profile" class="ads-textarea" resize="vertical">{if $a_user.count}{$a_user.q.0.markup}{/if}</textarea>
+				<div class="input_info">Appear on the left side of user profile page, after last block.</div>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+
+
+	
+		        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();ga('.livepreview').hide();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+		
+
+</form>
+
+</div>
+
+<script>
+{literal}
+ga(document).ready(function(){
+formatCheckbox();
+filterBoxM();
+livepreview();
+});
+{/literal}
+</script>
+
+{/strip}

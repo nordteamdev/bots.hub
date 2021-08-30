@@ -1,0 +1,87 @@
+{strip}
+
+
+ 
+<div id="messenger-box-open" onclick="evstop(event);">
+			  
+<header class="messenger-box-header">{$this->lang['Contacts']}
+
+<span title="close" id="close-messenger-box" class="tico tico__n-t notifs_close"><i class="tico_img ic ic_close"></i></span>
+</header>
+
+
+<div id="messenger-contact-list" class="e messenger uMessenger uMessenger_view_dialog messenger_pinnedVisible messenger_pinnedHidden">			  
+
+<div class="messenger__layer messenger__layer_convo">
+
+
+<div class="messenger__body scrollView">
+
+<div class="messenger__loadable">
+
+
+<div class="messenger__folderList">
+
+<div class="mailScrap mailScrap_folder mailScrap_reachedBefore mailScrap_reachedAfter">
+
+
+<div class="mailScrap__items mailScrap__items_folder">
+{foreach $query as $res}
+{assign var=last_message value=$this->getLastMessage($res.id)}
+
+<div class="clickable convo  convo_last" id="mess_{$res.id}">
+   
+    <div class="convo__online">
+      
+    </div>
+  
+      
+    <a class="convo__avatar avatar avatar_1 avatar_size_xl" href="/user/{$res.id}" style="background-image : url('/getPhoto?p={$res.profile_photo}&sz=small')">&nbsp;</a>
+  
+      <a class="convo__body active" href="javascript:;" onclick="return new_chat_window(this,event);" id="y-{$res.id}" data-uch='{ldelim}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{rdelim}'>
+        <div class="convo__row convo__row_title">
+          <div class="convo__title">{$res.fullname} {if $this->getUserStatus($res.id)}<span class="ic-online"></span>{/if}</div>
+         
+			<div class="convo__star icon icon_star icon_blue"></div>
+  
+          <div class="convo__date">{$this->lastMessageConvertTime($last_message.time)}</div>
+        </div>
+        <div class="convo__row convo__row_text">
+          <div class="convo__typing"></div>
+          <div class="convo__text">{if $last_message.fromUser == $this->USER.id}<span class="convo__msgAuthor">{$this->lang['You']}:</span>{/if} {str_replace('&amp;','&',$this->str_smilies($this->str_messenger($last_message.msg,1),1))}</div>
+		  
+          {assign var=unread_msgs value={$this->getUnreadMessagesCount($res.id)}}
+		  
+    <div class="convo__unread oval {if $unread_msgs <= 0}oval_hidden{/if}">+{$unread_msgs}</div>
+  
+          <div class="convo__unreadOut"></div>
+        </div>
+      </a>
+    </div>
+
+
+
+{foreachelse}
+		<div class="empty_result">{$this->lang['you_dosent_have_dialog_with_users']}</div>
+		
+	{/foreach}	
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<footer class="messenger-box-footer">
+<a href="/messenger" hrefattr="true">{$this->lang['go_to_messenger']}</a>
+</footer>
+
+</div>
+
+{/strip}

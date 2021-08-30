@@ -1,0 +1,51 @@
+<?php if (count($wo['section']['forums']) > 0): ?>
+	<div class="col-md-12" style="margin: 4px 0px;">
+		<div class="f_category"> 
+			<?php echo $wo['section']['section_name']; ?>
+			<span class="<?php echo Wo_RightToLeft('pull-right');?> show-forums pointer" id="<?php echo $wo['section']['id']; ?>">
+				<i class="fa fa-caret-down"></i>
+			</span>
+		</div>
+
+		<div class="f_topics" data-slide="<?php echo $wo['section']['id']; ?>">
+			<table class="table forum-table table-striped">
+			<?php foreach ($wo['section']['forums'] as $wo['forum']):?>
+				
+				 <tr class="section-list">
+			        <td class="topic_icon"><i class="fa fa-comments-o <?php if ($wo['forum']['posts'] > 50) echo 'img-circle bg-main fff';?>" aria-hidden="true"></i></td>
+
+			        <td class="forum-meta-d">
+				        <a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$wo['forum']['id']);?>" class="flink">
+				        	<?php echo $wo['forum']['name']; ?>
+				        </a>
+			        	<div class="small"><?php echo $wo['forum']['description']; ?></div>
+			        </td>
+
+			        <td class="forum-meta-d text-center">
+			       	
+			        	<div>
+			        	    <span style="font-size:17px;"><?php echo $wo['forum']['posts']; ?></span>
+			        	</div>
+			        	<div>
+			        		<span class="small"><?php echo $wo['lang']['posts']; ?></span>
+			        	</div>
+				        
+			        </td>
+
+			        <td class="forum-meta-d text-center small bold">
+			        
+			        	<?php if ($wo['forum']['last_post'] > 0): ?>
+			        		<?php echo Wo_Time_Elapsed_String($wo['forum']['last_post']) ?>
+			        	<?php else: ?>
+			        		<?php echo $wo['lang']['never']; ?>
+			        	<?php endif; ?>
+			        	
+			        </td>
+			      </tr> 
+			  
+		    					
+			<?php endforeach;?>
+			</table>
+		</div>
+	</div>	
+<?php endif; ?>

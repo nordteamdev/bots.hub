@@ -1,0 +1,112 @@
+{strip}
+
+
+<div class="feed h-mod __like">
+
+
+	<header class="feed-like-header-top">
+	
+	
+		<div class="feed_ava_like"><img src="/getPhoto?p={$res.profile_photo}&sz=small"></div>
+	
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+	
+        <div class="feed_ha"><span class="kn_shortcutmenu">
+		
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		
+		
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+
+
+
+            </span>&nbsp;{$this->lang['liked_a_post']} </div>
+	
+	</header>
+
+
+
+
+
+
+
+
+	<div class="divider_feed_like"></div>
+<header>
+
+    <div class="feed_ava">
+        <a href="/profile?q={$post_res.puid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$post_res.puphoto}&sz=small&g={$post_res.gender}" alt="{$post_res.fullname}" width="48" height="48">
+            </div>
+        </a>
+    </div>
+        <div class="feed_h"><span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$post_res.puid}","uname":"{$post_res.fullname}","uphoto":"{$post_res.puphoto}","ugender":"{$post_res.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$post_res.puid}">
+		</div>
+		
+		<a href="/profile?q={$post_res.puid}" class="ob" hrefattr="true">{$post_res.fullname}</a></span>
+
+        </div>
+</header>
+    <div class="feed_cnt" id='{ldelim}"fid":"{$postid}","uid":"{$res.uid}"{rdelim}'>
+      
+
+        <div class="feed_b">
+            <div class="media-status __arw-t __accent">
+                <div class="media-status_cnt _block">
+		{if $p_song}
+
+<div class="track  soh-s ">
+<div class="track_hld ">
+     <span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$p_song_fname}","cover":"{$p_song_cover}","artist":"{$p_song_artist}","songname":"{$p_song_name}","albumname":"{$p_song_album}"{rdelim}' 
+	 title="Play" id="{$post_res.puid}_{$p_song_id}" class="track_play __play js-track_play __mus_out"></span>
+		<div class="track_cnt">
+		<a class="track_artist" href="javascript:;" onclick="nobilMusicSearch('{$p_song_artist} {$p_song_name}');">{$p_song_artist}</a>
+		&nbsp;-&nbsp;
+		<a class="track_song" href="javascript:;" onclick="nobilMusicSearch('{$p_song_name}')">{$p_song_name}</a>
+		<span class="foh-s track_info"> {$this->lang['from']} <a class="track_album" href="javascript:;" onclick="nobilMusicSearch('{$p_song_album}')">{$p_song_album}</a>
+		</span>
+		</div>
+		<div class="track_ac foh-s" id="{$post_res.puid}_{$p_song_id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['feed_add_track']}" class="track_add js-track_add "></span></div>
+		</div>
+</div>
+{else}
+                    <div class="h-mod media-block media-text NO__full " data-module="ProcessMoreInfo">
+                        <div class="media-text_cnt">
+                            <div class="media-text_cnt_tx textWrap">{$this->str_smilies($p_text)}
+                                <a href="/post?i={$res.itemid}&u={$res.uid}" data-type-post="1" class="media-text_a" hrefattr="true"></a>
+                            </div>
+                        </div>
+                    </div>
+{/if}
+                    <div class="media_more invisible"><a href="/post?i={$res.itemid}&u={$res.uid}" class="media_more_a" hrefattr="true"><span class="media_more_ic">***</span></a></div>
+                </div>
+            </div>
+			<div class="post_status_translate">{$this->checkForTranslating($p_text,true)}</div>
+        </div>
+        <div class="feed_f">
+				{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+    </div>
+</div>
+
+<script>
+var $feed_id = '{$res.id}', $feed_id = '{$res.id}', $itemid = '{$postid}', $author_id = '{$res.uid}';
+{literal}
+
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'post',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/strip}

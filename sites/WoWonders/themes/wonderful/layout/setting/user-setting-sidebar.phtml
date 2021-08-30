@@ -1,0 +1,35 @@
+<div class="container sidebar-conatnier" id="mobi-set-side">
+	<ul class="list-group filterbyz settings-by scrollmenu">
+            <li class="list-group-item hidden" contenteditable="false">Settings</li>
+            <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'general-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=general-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=general-setting"><?php echo $wo['lang']['general'];?></a></li>
+            <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'profile-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=profile-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=profile-setting"><?php echo $wo['lang']['profile'];?></a></li>
+           
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'privacy-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=privacy-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=privacy-setting"><?php echo $wo['lang']['privacy'];?></a></li>
+           
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'change-password-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=change-password-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=change-password-setting"><?php echo $wo['lang']['password'];?></a></li>
+
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'social-links') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=social-links');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=social-links"><?php echo $wo['lang']['social_links'];?></a></li>
+           
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'avatar-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=avatar-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=avatar-setting"><?php echo $wo['lang']['avatar_and_cover'];?></a></li>
+
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'design-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=design-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=design-setting"><?php echo $wo['lang']['design'];?></a></li>
+
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'blocked-users') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=blocked-users');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=blocked-users"><?php echo $wo['lang']['blocked_users'];?></a></li>
+           
+           <?php if ($wo['config']['emailNotification'] == 1) {?>
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'email-setting') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=email-setting');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=email-setting"><?php echo $wo['lang']['email_notification'];?></a></li>
+           <?php } ?>
+          
+            <?php if (!Wo_IsAdmin() && $wo['user']['verified'] == 0): ?>
+              <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'verification') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=verification');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=verification"><?php echo $wo['lang']['verification'];?></a></li>
+            <?php endif; ?>
+
+           <?php if ($wo['config']['affiliate_system'] == 1) {?>
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'affiliates') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=affiliates');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=affiliates"><?php echo $wo['lang']['my_affiliates'];?></a></li>
+           <?php } ?>
+           <?php if ($wo['config']['deleteAccount'] == 1) {?>
+           <li class="list-group-item filter-by-li <?php echo ($wo['setting_page'] == 'delete-account') ? 'avtive': '';?>" dir="auto"><a href="<?php echo Wo_SeoLink('index.php?link1=setting&' . $wo['user_setting'] . 'page=delete-account');?>" data-ajax="?link1=setting&<?php echo $wo['user_setting'];?>page=delete-account"><?php echo $wo['lang']['delete_account'];?></a></li>
+           <?php } ?>
+
+        </ul>
+</div>

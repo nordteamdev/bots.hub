@@ -1,0 +1,12 @@
+<div class="posts-container list-group">
+    <div class="no-posts">
+		<h1>
+			<span class="zmdi-hc-stack zmdi-hc-lg" style="-webkit-filter: drop-shadow(0px 9px 7px #8BC34A82);filter: drop-shadow(0px 9px 7px #8BC34A82);">
+				<i class="zmdi zmdi-circle zmdi-hc-stack-2x" style="color: #8BC34A;"></i>
+				<i class="zmdi zmdi-calendar-close zmdi-hc-stack-1x zmdi-hc-inverse"></i>
+			</span>
+		</h1>
+        <?php $lang = str_replace('{name}', $wo['event']['name'], $wo['lang']['no_posts_yet']) ;?><?php echo $lang; ?> 
+    </div>
+    <div class="clear"></div>
+</div>

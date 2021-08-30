@@ -1,0 +1,38 @@
+{strip}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		           <div id="ne-n" data-category="Other" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+					 
+                           <div class="grades_liked_status __notif"></div>
+					 
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+{$this->notifText($res.json)}
+
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+<div class="notif_btn">
+
+<button onclick="$(this).remove();$('#hook_FormButton_fri_{$res.id}').trigger('click');" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+
+</div>
+</div></div>
+
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+</div></div>
+{/foreach}
+                    </div></div>
+                </div>
+				{/strip}

@@ -1,0 +1,86 @@
+{strip}
+<div class="ad-rowcol">
+{foreach $q as $r}
+
+<h2>Edit post #<i>{$r.id}</i></h2>
+
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=takepostedit" id="fform" method="post">
+    <fieldset>
+        <div class="setting-general-alert setting-update-alert"></div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-3" for="type">Type</label>
+            <div class="col-md-6">
+                <input id="type" name="type" type="text" class="form-control input-md" value="{$r.type}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3" for="text">Info</label>
+            <div class="col-md-6">
+               <textarea name="text" id="text">{$r.text}</textarea>
+            </div>
+        </div>
+
+		   
+    <fieldset>
+		<div id="general" class="v2_gs_filter __ope __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">View post</span></div>
+
+<div class="v2_gs_filter_list">
+<div style="position:relative;">
+<div id="pointerOverlay" class="__auto" style="position:absolute!important;pointer-events: auto!important;visibility: visible!important;"></div>
+		
+		{if $r['type'] == 'song'}
+{$this->generatePostContent($r.id,"[postSong]{$r['text']}[/postSong]","tracks")}
+{else}
+{$this->generatePostContent($r.id,$r['text'],'text')}
+{$this->generatePostContent($r.id,$r['text'],'videos')}
+{$this->generatePostContent($r.id,$r['text'],'photos')}
+{$this->generatePostContent($r.id,$r['text'],'links')}
+{$this->generatePostContent($r.id,$r['text'],'tracks')}
+{$this->generatePostContent($r.id,$r['text'],'tagged_people')}
+{$this->generatePostContent($r.id,$r['text'],'places')}
+{$this->generatePostContent($r.id,$r['text'],'poll')}
+{/if}
+		
+		
+		</div>
+		</div>
+		
+		</div>
+		</fieldset>
+              
+        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{$r.id}">
+    </fieldset>
+	
+	
+	
+	
+	
+	
+	
+</form>
+<script>
+{literal}
+ga(document).ready(function(){
+filterBoxM();
+});
+{/literal}
+</script>
+
+{foreachelse}
+<h2>Post not found.</h2>
+{/foreach}
+</div>
+{/strip}

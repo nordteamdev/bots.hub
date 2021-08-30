@@ -1,0 +1,18 @@
+<!---------- DropDown for sharing --------->
+{strip}
+<div class="mus_dropDown_active">
+<div class="mus_dropdown_w __sharing __active">
+    <div class="mus_dropdown">
+        <ul class="mus_dropdown_lst">
+        <li class="s_net _fbc __fsize" target="iframeName" data-url="http://www.facebook.com/sharer/sharer.php?u={$sharing_url}&t={$sharing_title}" onclick="return share_popup(this);"><i class="fa fa-facebook"></i><span class="text">facebook</span></li>
+        <li class="s_net _twt __fsize" data-url="http://www.twitter.com/intent/tweet?url={$sharing_url}&text={$sharing_title}" onclick="return share_popup(this);"><i class="fa fa-twitter"></i><span class="text">twitter</span></li>
+	<li class="s_net _pint __fsize" data-url="https://www.pinterest.com/pin/create/button/?url={$sharing_url}&description={$sharing_title}&media={$sharing_cover}" onclick="return share_popup(this);"><i class="fa fa-pinterest"></i><span class="text">pinterest</span></li>
+	<li class="s_net _gplus __fsize" data-url="http://plus.google.com/share?url={$sharing_url}" onclick="return share_popup(this);"><i class="fa fa-google-plus"></i><span class="text">google</span></li>
+
+
+  </ul>
+</div>
+</div>
+</div>
+{/strip}
+

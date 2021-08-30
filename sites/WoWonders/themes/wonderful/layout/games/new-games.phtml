@@ -1,0 +1,43 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 offnavmenu"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 cushomewider" style="padding-left: 0px;padding-right: 0px;">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row" style="margin: 0px 0px 20px;">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=new-game'); ?>" data-ajax="?link1=new-game"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3F51B5" d="M7,6H17A6,6 0 0,1 23,12A6,6 0 0,1 17,18C15.22,18 13.63,17.23 12.53,16H11.47C10.37,17.23 8.78,18 7,18A6,6 0 0,1 1,12A6,6 0 0,1 7,6M6,9V11H4V13H6V15H8V13H10V11H8V9H6M15.5,12A1.5,1.5 0 0,0 14,13.5A1.5,1.5 0 0,0 15.5,15A1.5,1.5 0 0,0 17,13.5A1.5,1.5 0 0,0 15.5,12M18.5,9A1.5,1.5 0 0,0 17,10.5A1.5,1.5 0 0,0 18.5,12A1.5,1.5 0 0,0 20,10.5A1.5,1.5 0 0,0 18.5,9Z"></path></svg> <?php echo $wo['lang']['latest_games'] ?></a></li>
+					</ul>
+					<ul class="<?php echo Wo_RightToLeft('pull-right'); ?>">
+						<li><a data-ajax="?link1=games" href="<?php echo Wo_SeoLink('index.php?link1=games');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> <?php echo $wo['lang']['my_games']; ?></a></li>
+					</ul>
+				</div>
+				<?php
+               $games = Wo_GetAllGames(7000);
+               if (count($games) > 0) {
+                  foreach ($games as $wo['game']) {
+                  	  $wo['game']['all'] = 1;
+                      echo Wo_LoadPage('games/game-style');
+                  }
+               } else {
+                  echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> ' . $wo['lang']['no_games_found'] . '</h5>';
+               }
+               
+               ?>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<div class="col-md-3 cushomesmaller"><?php echo Wo_LoadPage('sidebar/content');?></div>
+	</div>
+	<!-- .row -->
+</div>
+<script>
+   function Wo_HoverOnGame(id) {
+      $('#game_' + id).find('#overlay-black').addClass('overlay-black').fadeIn(200);
+      $('#game_' + id).find('.game-name').fadeIn(200);
+   }
+   function Wo_LeaveOnGame(id) {
+      $('#game_' + id).find('#overlay-black').removeClass('overlay-black').fadeOut(400);
+      $('#game_' + id).find('.game-name').fadeOut(200);
+   }
+</script>

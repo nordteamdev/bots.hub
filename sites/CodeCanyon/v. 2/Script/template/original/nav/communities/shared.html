@@ -1,0 +1,56 @@
+			{assign var=group_details value=$this->getCommunityDetails($clubid)}
+			{assign var=group_followers_count value=$this->groupGetFollowersCount($clubid)}
+			{assign var=subscribed value=$this->CheckUserInGroup($clubid)}
+			
+			
+			<a href="/community/{$clubid}" class="nodecor" hrefattr="true">
+			<section id="shared_community">
+			
+			<div class="cover_bg">
+				<img src="{$group_details.cover_url}" />
+			</div>
+			
+			<div class="c_bot_details">
+			<div class="c_logo_i">
+				<img onerror="this.setAttribute('src','{$group_details.default_logo}');" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" />
+			</div>
+			<div class="c_descr_t ellip">
+			<div class="c_group_name">{$group_details.name}</div>
+			<div class="c_group_status">
+			{if $group_details.status != ''} 
+			
+			{$this->str_smilies($group_details.status)} 
+			
+			{else} 
+			
+			{$this->lang[$group_details.category]} 
+			
+			{if !empty($group_details.subcategory)}
+			
+			<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$group_details.subcategory]}
+			
+			{/if} 
+			
+			{/if}</div>
+			
+			<div class="c_group_followers">
+			<a href="javascript:void(0);" onclick="return showCommunityFollowersPopup(event,'{$clubid}');">{$group_followers_count}&nbsp;{$this->lang['Followers']}</a>
+			</div>
+			
+			
+			</div>
+			
+			
+			{if $group_details.privacy != 'Closed' || ($group_details.privacy == 'Closed' && $subscribed )}
+                    <div class="page_action_left fl_r">
+                        <button class="flat_button button_wide btn_f_unf_group {if !$subscribed}show{/if}" data-id="{$group_details.id}" onclick="joinThisGroup(event);" id="join_button_{$group_details.id}"><i class="join_to_group_ic"></i>{$this->lang['join_community']}</button>
+						<button class="flat_button button_wide secondary page_actions_btn btn_f_unf_group {if $subscribed}show{/if}" data-id="{$group_details.id}" onclick="confirmUnjoin(event);" id="unjoin_button_{$group_details.id}"><i class="unjoin_to_group_ic"></i>{$this->lang['Group_following']}</button>
+					</div>
+				{/if}
+			
+			
+			</div>
+			
+			
+			</section>
+		 </a>

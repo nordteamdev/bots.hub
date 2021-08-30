@@ -1,0 +1,83 @@
+<ul class="list-group profile-completion-bar" data-profile-completion="<?php echo array_sum($wo['pr_complition']); ?>">
+    <li class="percentage-bar">
+        <h4>
+            <span class="pull-left">
+                <span class="zmdi-hc-stack zmdi-hc-lg" style="margin-right: 6px;">
+						<i class="zmdi zmdi-circle zmdi-hc-stack-2x" style="color: #03A9F4;"></i>
+						<i class="zmdi zmdi-check-circle zmdi-hc-stack-1x" style="color: white;"></i>
+					</span>&nbsp;
+                <?php echo $wo['lang']['pr_completion']; ?>
+            </span>
+            <span class="pull-right">
+                <b class="completion-bar-percentage"><?php echo array_sum($wo['pr_complition']); ?></b>%
+            </span>
+        </h4>
+    </li>
+    <li class="completion-bar">
+        <div class="completion-bar-wrapper">
+            <div class="completion-bar-status" style="width: <?php echo array_sum($wo['pr_complition']); ?>%;">
+            </div>
+        </div>
+    </li>
+    <li>
+        <hr>
+    </li>
+    <?php if (empty($wo['pr_complition'][1])): ?>
+        <li class="completion-step" id="add-profile-avatar">
+            <i class="fa fa-fw fa-plus"></i> <?php echo $wo['lang']['ad_pr_picture']; ?>   
+        </li>
+    <?php else: ?>
+        <li class="completion-step">
+           <i class="fa fa-fw fa-check"></i> 
+           <span> <?php echo $wo['lang']['ad_pr_picture']; ?>  </span>  
+        </li>
+    <?php endif; ?>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][2])): ?>
+            <i class="fa fa-fw fa-check"></i>
+            <span> <?php echo $wo['lang']['add_ur_name']; ?> </span>
+        <?php else: ?>
+            <i class="fa fa-fw fa-plus"></i> 
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"> <?php echo $wo['lang']['add_ur_name']; ?>  </a>
+        <?php endif; ?>
+        
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][3])): ?>
+            <i class="fa fa-fw fa-check"></i>
+            <span> <?php echo $wo['lang']['ad_ur_workplace']; ?> </span>
+        <?php else: ?>
+            <i class="fa fa-fw fa-plus"></i>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"> <?php echo $wo['lang']['ad_ur_workplace']; ?> </a> 
+        <?php endif; ?>
+        
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][4])): ?>
+            <i class="fa fa-fw fa-check"></i>
+            <span><?php echo $wo['lang']['ad_ur_country']; ?></span>
+        <?php else: ?>
+            <i class="fa fa-fw fa-plus"></i>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=general-setting');?>" data-ajax="?link1=setting&page=general-setting"><?php echo $wo['lang']['ad_ur_country']; ?></a>
+        <?php endif; ?>
+        
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][5])): ?>
+            <i class="fa fa-fw fa-check"></i>
+            <span><?php echo $wo['lang']['ad_ur_address']; ?></span>
+        <?php else: ?>
+            <i class="fa fa-fw fa-plus"></i> 
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"><?php echo $wo['lang']['ad_ur_address']; ?></a>
+        <?php endif; ?>
+        
+    </li>
+</ul>
+
+<script>
+    jQuery(document).ready(function($) {
+        $("#add-profile-avatar").click(function(event) {
+            $('.profile-avatar-changer').find('input').trigger('click');
+        });
+    });
+</script>

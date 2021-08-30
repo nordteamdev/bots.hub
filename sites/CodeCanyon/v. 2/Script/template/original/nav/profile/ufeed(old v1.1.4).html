@@ -1,0 +1,520 @@
+{strip}
+{assign var="u_uname_header" value="1"}
+{assign var="mutual_friends" value=$this->getMutualFriends($user.id)}
+{assign var="_friends" value=$this->getUserFriends($user.id)}
+{assign var="_friends_count" value=$this->friendsCount($user.id)}
+{assign var="_photo_albums" value=$this->getUserPhotoAlbums($user.id)}
+{assign var="_videos" value=$this->getUserVideos($user.id)}
+{assign var="_tracks" value=$this->getUserTracks($user.id)}
+{assign var="relative_friends" value=$this->getUserRelativeFriends($user.id,6)}
+{assign var="user_relative_friends_count" value=$this->friendRelationship('relative',$user.id,1)}
+{assign var="user_photos_count" value=$this->userPhotosCount($user['id'],'all')}
+{assign var="user_posts_count" value=$this->postsCount($user.id)}
+{assign var="user_groups_count" value=$this->userGroupsCount($user.id)}
+{assign var="user_friends_count" value=$this->friendsCount($user.id)}
+{assign var="user_apps_count" value=$this->userAppsCount($user.id)}
+{assign var="user_gifts_count" value=$this->getUserGiftsCount($user.id,'')}
+{assign var="ad" value=$this->getAdMarkup('profile')}
+{assign var="user_is_online" value=$this->getUserStatus($user.id)}
+
+{assign var=clubid value=0}
+<div class="u_fd_prof">
+
+</div>
+<input type="hidden" id="wprofileid" value="{$user.id}"/>
+{if $this->USER['id'] === $user['id']}<div class="__none" id="_wall_itsme"></div>{/if}
+
+<div id="profile_redesign">
+
+
+
+ <div id="hook_Block_Leftcolumn">
+<div class="u_p_left_column">
+<div class="user_profile_photo">
+
+{if $user['profile_photo'] <= 0 && $this->USER['id'] === $user['id']}
+<div class="soh-s">
+<A href="javascript:;" class="user_add_avatar">
+
+
+        <form name="phform" id="phform" enctype="multipart/form-data"  method="post">
+          <input type="hidden" name="request" value="upload"/>
+          <input type="hidden" name="mode" value="feed"/>
+          <input accept="image/*" class="html5-upload-link" id="files" name="files[]" size="1" title="" type="file" value="">
+        </form>
+		<div class="image_ovr"></div>
+
+<img src="{$user_thumb_photo}&g={$user['gender']}" class="u_nphoto_med {$user['gender']} __nobgimg" />
+
+
+<div class="user_add_Avatar"></div>
+
+ </a>
+{if $this->USER.id == $user.id}
+<div class="user_change_profile_photo foh-s">
+<a href="/profile?cmd=change-profile-photo&tk={time()}" onclick="selectProfilePhoto(event,this);" class="u-menu_a">
+<span class="tico _underline"><i class="tico_img ic ic_make-main"></i>{$this->lang['change_profile_photo']}</span>
+</a>
+</div>
+{/if}
+</div>
+{else}
+<div class="profile_user_avatar_p soh-s">
+<a href="/photo?q={$user.id}&show=profileWall&from=medium&a=0&o={b_encode($user.profile_photo)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($user.profile_photo)}">
+<div class="u_profile_photo image-hover" style="background-image:url({$user_thumb_photo}&g={$user['gender']});"></div>
+ 
+
+</a>
+{$this->getGiftsMarkup($user.id)}
+
+{if $this->USER.id == $user.id}
+<div class="user_change_profile_photo foh-s">
+<a href="/profile?cmd=change-profile-photo&tk={time()}" onclick="selectProfilePhoto(event,this);" class="u-menu_a">
+<span class="tico _underline"><i class="tico_img ic ic_make-main"></i>{$this->lang['change_profile_photo']}</span>
+</a>
+</div>
+{/if}
+
+</div>
+{/if}
+
+{if $this->USER['id'] !== $user.id}
+<div>
+<ul class="u_profile_photo_control_btns">
+
+<li>
+<a href="javascript:void(0);" onclick="return new_chat_window(this,event);" id="y-{$user.id}" data-uch='{ldelim}"id":"{$user.id}","fullname":"{$user.fullname}","photo":"{$user.profile_photo}"{rdelim}' class="profile_redesign_subfoto_a">
+<span class="tico"><i class="tico_img ic ic_message"></i>{$this->lang['send_message']}</span>
+</a></li>
+
+<li>
+<a href="/gifts/u/{$user.id}" title="{$this->lang['Send_gift']}" hrefattr="true"  class="profile_redesign_subfoto_a">
+   <span class="tico">
+        <span class="tico_img ic ic_gift"></span>
+        <span class="profile_gift_text">{$this->lang['Send_gift']}</span>
+	</span>
+    </a>
+							
+</li>
+
+{if $this->frReqViewProf($user.id)}
+<li><a data-friend-btn="add_friend_btn_sub_photo" href="javascript:void(0);" class="__want profile_redesign_subfoto_a" id="action_menu_friendship_request_confirm" onclick="ga('.lf_men._notification>a').trigger('click');"><span class="tico"><i class="tico_img ic ic_ok-lg"></i>{$user['name']} wants to become friends with you</span></a></li>
+{else if $this->pendingFriendReq($user['id']) && !$this->isfriend($user.id)}
+<li class="add_friend_btn_sub_photo bbtn __request_sent"><span class="tico"><i class="tico_img ic ic_success"></i>{$this->lang['friend_request_has_been_sent']}</span></li>
+{else if $this->USER['id'] !== $user['id'] && $this->isfriend($user.id)}
+<li><a class="u-menu_a __relationship profile_redesign_subfoto_a" data-usnf='{ldelim}"uid":"{$user.id}","ufn":"{$user.name}","gender":"{$user.gender}","relationship":"{$this->getUserRelationShip($user['id'])}"{rdelim}' id="action_menu_set_relationship_a" href="/user/{$user['id']}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_relation"></i>{$this->lang['inidicate_friends_relationship']}</span></a></li>
+{else}
+<li><a data-friend-btn="add_friend_btn_sub_photo" class="profile_redesign_subfoto_a" href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$user['id']}" onclick="addFriend(this,event,'{b_encode($user['id'])}')" title="{$this->lang['friend_request']}"><span class="tico"><i class="tico_img ic ic_addfriend_999_16 "></i>{$this->lang['friend_request']}</span></a></li>
+{/if}
+
+</ul>
+</div>
+{/if}
+</div>
+
+
+
+<div class="sub_photo_udet">
+ 
+
+<ul>
+<!--<li class="u_info_under_avatar"><i class="ic ic_relationship"></i><span>{$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></li>-->
+ 
+<li class="u_info_under_avatar"><i class="ic ic_location"></i><span><span rel="getusercountry" id="buser_{$user.id}"></span></span></li>
+
+
+							{if $user.privacy_age === 'only_me' && $user.id === $this->USER['id']}
+							<li class="u_info_under_avatar">
+							<i class="ic ic_present"></i><span>{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+
+							{else if $user.privacy_age === 'friends' && $this->isfriend($user.id)}
+						    <li class="u_info_under_avatar">
+							<i class="ic ic_present"></i><span>{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+							
+							{else if $user.privacy_age === 'everyone'}
+						    <li class="u_info_under_avatar">
+							<i class="ic ic_present"></i><span>{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+							{/if}
+
+
+
+
+
+
+</ul>
+
+</div>
+{if !$this->isfriend($user.id) && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+<!--- Private Account -->
+{else}
+<!-- relative friends -->
+{if count($relative_friends)}
+<div class="block_subph">
+<div class="block_subph_title"><a data-navact="friends" href="/profile?q={$user.id}&cmd=friends&mode=relative&nav=friends" hrefattr="true">{$user_relative_friends_count} {if $user_relative_friends_count === 1}{$this->lang['relative_friend']}{else}{$this->lang['relative_friends']}{/if}</a></div>
+<ul class="mutual_friends_list">
+{foreach $relative_friends as $rf}
+<li class="m_friend_pr" title="{$rf.fullname}" rel="tipsy"><a class="mut_fr_hv __relationship" href="/user/{$rf.id}" hrefattr="true"><img src="/getPhoto?p={$rf.photo}&g={$rf.gender}&sz=small" class="u_ph_mutu"><div class="u_mutt_friend_name_rl">{$this->myFriendRelationName($rf.relationship,'relative')}</div></a></li>
+{/foreach}
+</ul>
+</div>
+{/if}
+
+<!-- mutual friends -->
+{if count($mutual_friends[1]) && $mutual_friends[0]}
+<div class="block_subph">
+<div class="block_subph_title">{$mutual_friends[0]} {if $mutual_friends[0] > 1}{$this->lang['mutual_friends']}{else}{$this->lang['mutual_friend']}{/if}</div>
+<ul class="mutual_friends_list">
+{foreach $mutual_friends[1] as $u}
+<li class="m_friend_pr" title="{$u.fullname}" rel="tipsy"><a class="mut_fr_hv" href="/user/{$u.id}" hrefattr="true"><img src="/getPhoto?p={$u.photo}&g={$u.gender}&sz=small" class="u_ph_mutu"><div class="u_mutt_friend_name ellip">{$u.name}<br/>{$u.surname}</div></a></li>
+{/foreach}
+</ul>
+</div>
+{/if}
+
+<!-- friends -->
+{if $_friends_count}
+<div class="block_subph">
+<div class="block_subph_title"><a data-navact="friends" href="/profile?q={$user.id}&cmd=friends&nav=friends" hrefattr="true">{$_friends_count} {if $_friends_count > 1}{$this->lang['friends']}{else}{$this->lang['friend']}{/if}</a></div>
+<ul class="mutual_friends_list">
+{foreach $_friends as $f}
+<li class="m_friend_pr"  title="{$f.fullname}" rel="tipsy"><a class="mut_fr_hv" href="/user/{$f.id}" hrefattr="true"><div class="u_prof_aa_avt"><img src="/getPhoto?p={$f.photo}&g={$f.gender}&sz=small" class="u_ph_mutu"></div><div class="u_mutt_friend_name ellip">{$f.name}<br/>{$f.surname}</div></a></li>
+{/foreach}
+</ul>
+</div>
+{/if}
+
+<!-- photo albums -->
+{if count($_photo_albums)}
+<div class="block_subph">
+<div class="block_subph_title"><a data-navact="photos" href="/photos/{$user.id}" hrefattr="true">{$_photo_albums.0.albums_count} {if $_photo_albums.0.albums_count > 1}{$this->lang['photo_albums']}{else}{$this->lang['photo_album']}{/if}</a></div>
+<ul class="photo_albums_pr_reds">
+
+{foreach $_photo_albums as $pb}
+<li class="photo_album_item col-card" title="{$this->getAlbumName($pb.name)}">
+<a href="/profile?q={$user.id}&cmd=album&i={$pb.id}&nav=photos" hrefattr="true">
+{if $pb.cover > 0}
+<div class="prof_album_has_cover" style="background-image:url(/getPhoto?p={$pb.cover}&sz=thumb&album=true);"></div>
+
+{else if $pb.default_cover > 0}
+<div class="prof_album_has_cover" style="background-image:url(/getPhoto?p={$pb.cover}&sz=thumb&album=true);"></div>
+
+{else}
+<div class="prof_album_no_cover"></div>
+{/if}
+<div class="album_bottom_ovr_title"><div class="album_bt_ovr_cnt"><span class="ellip alb_name_vve">{$this->getAlbumName($pb.name)}</span><span class="album_photos_count"><i class="ic_photo__album"></i>{$pb.c_photos}</span></div></div></a></li>
+{/foreach}
+</ul>
+</div>
+{/if}
+
+
+<!-- videos -->
+{if count($_videos)}
+<div class="block_subph">
+<div class="block_subph_title">{$_videos.0.vd_count} {if $_videos.0.vd_count > 1}{$this->lang['videos']}{else}{$this->lang['video']}{/if}</div>
+<ul class="videos_us_ul">
+
+{foreach $_videos as $vd}
+<li class="profile_redesign_video_item" title="{$vd.title}">
+<a href="/video?vid={$vd.id}&cmd=open&userplaylist=1" data-ivideo="1">
+
+<div class="vd_hpf_cover" style="background-image: url(/videoCover?v={$vd.id});"></div>
+<i class="vid-card_duration">{$vd.dur}</i>
+<i class="vid_play _m"></i>
+<div class="album_bottom_ovr_title"><div class="album_bt_ovr_cnt"><span class="ellip alb_name_vvd">{$vd.title}</span></div></div></a></li>
+{/foreach}
+</ul>
+</div>
+{/if}
+
+
+<!-- tracks -->
+{if count($_tracks)}
+<div class="block_subph">
+<div class="block_subph_title">{$_tracks.0.tr_count} {if $_tracks.0.tr_count > 1}{$this->lang['tracks']}{else}{$this->lang['track']}{/if}</div>
+
+<div class="m_portal_tracks profile_men_redesign">
+
+{foreach $_tracks as $tr}
+  
+	<div class="track js-track soh-s ">
+		<div class="track_hld "><span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$tr.filename}","cover":"{$tr.cover}","artist":"{$tr.artist}","songname":"{$tr.title}","albumname":"{$tr.album}"{rdelim}' title="Play" id="{$user.id}_{$tr.id}" class="track_play __play js-track_play __mus_out"></span>
+			<div class="track_cnt "><a class="track_artist" onclick="nobilMusicSearch('{$tr.artist}')">{$tr.artist}</a>&nbsp;–&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$tr.title}')">{$tr.title}</a><span class="foh-s track_info"> <span class="m_From_alb">{$this->lang['mus_from_album']}</span> <a class="track_album" onclick="nobilMusicSearch('{$tr.album}')">{$tr.album}</a></span></div>
+			<div class="track_ac foh-s" id="{$user.id}_{$tr.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['mus_add_to_my_music']}" class="track_add js-track_add "></span></div>
+		</div><div class="Track_time">{$tr.time}</div>
+	</div>
+            
+{/foreach}
+</div>
+
+</div>
+{/if}
+
+{/if}
+
+
+
+<!-- user footer -->
+{if $user.id !== $this->USER['id']}
+<div class="block_subph">
+<a id="return_to_blacklist_pg" style="display:none;" href="/profile?q={$this->USER['id']}&cmd=settings&tab=blacklist&nav=settings" hrefattr="true"></a>
+
+<div class="m_portal_tracks profile_men_redesign _u_action">
+
+  <ul>
+
+    
+	{if !$this->checkUserBlacklisted($user.id)}
+	<li class="u_footer"><a href="javascript:;" onclick="event.preventDefault();event.stopPropagation();toBlackList(this,'profile_blacklist','{$user.id}');return false;"><span class="tico"><i class="tico_img ic ic_block"></i>{$this->lang['Block_the_user']}</span></a></li>
+	{else}
+	<a id="unblock_this_user" style="display:none;" href="/profile?q={$user.id}&unblock=1" hrefattr="true"></a> 
+	<li class="u_footer"><a href="javascript:;" data-unblockui="{$user.id}" onclick="removeBlackList(event,this,function(){ setTimeout(function(){ ga('#unblock_this_user').trigger('click'); },500); });"><span class="tico"><i class="tico_img ic ic_block-off"></i>{$this->lang['Unblock']}</span></a></li>
+	{/if}
+	
+	{if $this->checkInBookmarks($user.id,'user')}
+	<li class="u_footer"><div class="u_profile_bookmarked"><a href="/bookmarks?categ=users" data-scrolltop="410" hrefattr="true"><span class="tico"><i class="tico_img ic ic-ok"></i>{$this->lang['is_in_your_bookmarks']}</span></a></div></li>
+	{else}
+    <li class="u_footer"><a href="javascript:;" data-bookmark='{ldelim}"categ":"user","itemid":"{$user.id}"{rdelim}' onclick="return bookmarkthis(this,event);"><span class="tico"><i class="tico_img ic ic_bookmark-g"></i>{$this->lang['Bookmark']}</span></a></li>
+	{/if}
+   {if $this->isfriend($user.id)}
+   <li class="u_footer" id="action_menu_sub_action_menu_delete_friend"><a class="u-menu_a" id="action_menu_sub_action_menu_delete_friend_a" href="/profile?q={$user['id']}" onclick="return deleteFriend(this,event);" data-fid="f_{$user.id}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_delete"></i>{$this->lang['Unfriend']}</span></a></li>
+   {/if}
+    <li class="u_footer"><a href="javascript:;" onclick='var _thissobj = {ldelim}"uid":"{$this->USER.id}","id":"{$user.id}","type":"user"{rdelim}; return windowsPopup("report",_thissobj);'><span class="tico"><i class="tico_img ic ic_warn"></i>{$this->lang['report']}</span></a></li>
+  </ul>
+            
+
+</div>
+
+</div>
+{/if}
+
+
+{if $ad}
+			<!-- AD -->
+				<div class="portlet" id="MediaTopicDisplayTypeFilter">
+					<div class="portlet_b">
+						<div class="ads-box"><div class="ads-box-title">{$this->lang['sponsored']}</div><div class="ads-box-cnt">
+						
+						{$ad}
+			</div>
+			</div>
+			</div>
+			</div>
+			<!-- end AD -->
+			{/if}
+
+
+</div>
+<div class="u_prof_redesign_cnt">
+<div class="u_profile_near_photo">
+
+<div class="u_prf_divider_blocks">
+<div class="user-image-mob"><img src="{$user_thumb_photo}&g={$user['gender']}"></div>
+<div class="u_top_n_st">
+			<div class="mctc_header">
+                            <div class="mctc_nameAndOnline"><span class="mctc_name textWrap __inline"><a class="mctc_nameLink bl" href="/profile?q={$user['id']}&gwl=m" hrefattr="true">{$user['fullname']}</a> 
+ 
+							</span> 
+							
+							<div class="__inline">
+							</div>
+                                
+								{if !$user_is_online}<div id="profile_time_lv">last seen {$this->time_elapsed($user['online'])}<b class="mob_onl profile_mob_onl"></b></div>{else}<div id="profile_time_lv"><span class="ic-online"></span></div>{/if}
+                            </div>
+							
+
+			</div>
+			
+			
+
+</div>
+
+
+
+ 
+<div class="profile_add_text_post">
+{if $this->USER.id == $user.id}
+<a href="javascript:void(0);" class="profile_add_text_post_msg_a" onclick="profile_add_text_status(this,event);">
+{/if}
+
+{if !empty(trim($user.text_post))} 
+<div class="ic_status_msg_div">
+<div class="ic_status_msg"></div>
+</div>
+<div class="status_msg_txt">{$this->str_smilies($user.text_post)}</div>
+{else if $this->USER.id == $user.id && empty(trim($user.text_post))}
+<div class="ic_status_msg_div">
+<div class="ic_status_msg"></div>
+</div>
+{$this->lang['profile_leave_status_msg']} 
+{/if}
+
+{if $this->USER.id == $user.id}</a>{/if}
+
+</div>
+ 
+
+</div>
+<div class="u_divider_m"></div>
+
+<div class="u_prf_divider_blocks">
+{if !$this->isfriend($user.id) && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+<div class="private_profile_no_pointer"></div>
+{/if}
+<div class="u_pr_menu">
+
+<ul class="pp_f_menu">
+<li class="mn_block __active">
+<a href="/user/{$user['id']}" hrefattr="true">
+<!--<div class="a03 ic"></div>-->
+<div class="ic_user_profile_header _home"></div>
+<div class="a02">timeline</div>
+<div class="a01">{$this->userFeedCount($user.id)}</div>
+</a></li>
+<li class="mn_block">
+<a href="/friends/{$user['id']}" data-navact="friends" hrefattr="true">
+<div class="ic_user_profile_header _friends"></div>
+<div class="a02">{$this->lang['friends']}</div>
+<div class="a01">{$user_friends_count}</div>
+</a>
+</li>
+<li class="mn_block"><a href="/photos/{$user['id']}" data-navact="photos" hrefattr="true">
+<div class="ic_user_profile_header _photos"></div>
+<div class="a02">{$this->lang['photos']}</div>
+<div class="a01">{$this->userPhotosCount($user['id'],'all')}</div>
+</a></li>
+
+<li class="mn_block"><a href="/posts/{$user.id}" data-navact="posts" hrefattr="true">
+<div class="ic_user_profile_header _posts"></div>
+<div class="a02">{$this->lang['posts']}</div>
+<div class="a01">{$user_posts_count}</div>
+</a></li>
+
+<li class="mn_block soh-s"><a href="javascript:void(0);">
+<div class="ic_user_profile_header _more"></div>
+<div class="a02">{$this->lang['more']}</div>
+<div class="a01">&nbsp;</div>
+</a>
+<div class="profile_menu_more_menu foh-s">
+
+<ul>
+
+<li class="p_m_more_li">
+<a href="/groups/{$user.id}" data-navact="groups" hrefattr="true">
+<i class="ic-profile-more-menu _groups"></i>
+{$this->lang['Communities']}
+<span class="profile-more-menu-count">({$user_groups_count})</span>
+</a></li>
+
+<li class="p_m_more_li">
+<a href="/user/gifts/{$user.id}" data-navact="gifts" hrefattr="true">
+<i class="ic-profile-more-menu _gifts"></i>
+{$this->lang['Gifts']}
+<span class="profile-more-menu-count">({$user_gifts_count})</span>
+</a></li>
+
+<li class="p_m_more_li">
+<a href="/apps/m/user/{$user.id}" data-navact="games" hrefattr="true">
+<i class="ic-profile-more-menu _apps"></i>
+{$this->lang['games']}
+<span class="profile-more-menu-count">({$user_apps_count})</span>
+</a></li>
+
+
+
+<li class="p_m_more_li">
+<a href="/user/about/{$user.id}" data-navact="about" hrefattr="true">
+<i class="ic-profile-more-menu _about"></i>
+{$this->lang['About_me']}
+</a></li>
+
+</ul>
+
+</div>
+
+</li>
+
+
+</ul>
+
+</div>
+
+</div>
+
+
+{if !$this->isfriend($user.id) && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+{if $user_photos_count}
+<div class="u_divider_m"></div>
+
+<div class="u_prf_divider_blocks">
+<div class="a04">{$user_photos_count}{if $user_photos_count > 1} {$this->lang['photos']} {else} {$this->lang['photo']}{/if}</div>
+<div class="a05"><a href="/profile?q={$user['id']}&cmd=photos&nav=photos" data-navact="photos" hrefattr="true">{$this->lang['see_photo_albums']}</a></div>
+
+<div class="a06">
+{foreach $this->getTopRatedFivePhotos($user.id) as $photo}
+
+<a class="image-hover" href="/photo?q={$user.id}&show=profileWall&from=medium&o={b_encode($photo.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($photo.id)}">
+<div class="a07"><img src="/getPhoto?p={$photo.id}&sz=thumb&g={$user.gender}"></div>
+</a>
+
+{/foreach}
+
+</div>
+
+</div>
+{/if}
+</div
+
+</div>
+
+<!-- shadow end </div>-->
+
+
+<div id="mainContentContentColumn">
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+        <div id="hook_Block_AfterLoginRedirector" class="hookBlock"></div>
+        <div id="hook_Block_MiddleColumnTopCard" class="hookBlock">
+            <div id="hook_Block_MiddleColumnTopCardUser" class="hookBlock">
+
+
+<!--
+<div class="feed-top-nav nopaddoing">
+    <div class="filter">
+	<a class="filter_i" href="javascript:;" onclick="return getWall(null,null,1);">{$this->lang['All']}</a>
+	<a href="javascript:;" onclick="return getWall(this,'popular',1);" class="filter_i">{$this->lang['Popular']}</a>
+	<a href="javascript:;" onclick="return getWall(this,'favorite',1);" class="filter_i">{$this->lang['Favorites']}</a>
+    <a href="javascript:;" onclick="return getWall(this,'friends',1);" class="filter_i">{$this->lang['Friends']}</a>
+
+		  
+	</div>
+</div>
+-->
+
+<div class="panelRounded_head _profilewall"><div class="panelRounded_head_header">Wall</div></div>
+<section id="hook_feed_wl_pg" data-feed-etp="1" data-uprofile="{$user.id}" class="u_prof_redesign_feed profileu"></section>
+
+
+<div class="link-show-more private loader-controls" id="uprofile_load_more_btn" onclick="return plusNFeed(this,event);" style="display: block;">{$this->lang['Load_more']}</div>
+
+<!--
+<div class="link-show-more loader-controls" data-friendsftlt="true" data-loadd='{ldelim}"cmd":"lProfWall","i":"{$user.id}","p":"1","alpha":"","appto":"hook_feed_wl_pg"{rdelim}'><span>View More</span></div>-->
+
+
+
+                        <div class="mctc_footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{/if}
+</div>
+</div>
+{/strip}
+

@@ -1,0 +1,78 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content-shadow fl_setting_header">
+				<div class="avatar">
+					<img src="<?php echo $fl['setting']['avatar']?>" alt="<?php echo $fl['setting']['username']?>" />
+				</div>
+				<div class="infp">
+					<h2><?php echo $fl['setting']['name']?></h2>
+					<p>@<?php echo $fl['setting']['username']?></p>
+				</div>
+				<div class="which_setting">
+					<?php if ($fl['setting_page'] == 'general') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"></path></svg> {{LANG general_settings}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'profile') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"></path></svg> {{LANG profile_settings}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'password') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg> {{LANG password_settings}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'avatar') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z"></path></svg> {{LANG avatar_and_cover}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'verification') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"></path></svg>{{LANG verification}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'wallet') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21,18V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5V6H12C10.89,6 10,6.9 10,8V16A2,2 0 0,0 12,18M12,16H22V8H12M16,13.5A1.5,1.5 0 0,1 14.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,12A1.5,1.5 0 0,1 16,13.5Z"></path></svg>{{LANG wallet}}
+					<?php } ?>
+					<?php if ($fl['setting_page'] == 'delete') {?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"></path></svg> {{LANG delete_account}}
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content-shadow fl_setting_body">
+				<div class="row">
+					<div class="col-md-4 no-padding-right">
+						<div class="settings-sidebar">
+							<ul class="list-group">
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'general') ? 'active': '';?>">
+									<a href="{{LINK settings/general/<?php echo $fl['setting']['username']?>}}">{{LANG general}}</a>
+								</li>
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'profile') ? 'active': '';?>">
+									<a href="{{LINK settings/profile/<?php echo $fl['setting']['username']?>}}">{{LANG profile}}</a>
+								</li>
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'password') ? 'active': '';?>">
+									<a href="{{LINK settings/password/<?php echo $fl['setting']['username']?>}}">{{LANG password}}</a>
+								</li>
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'avatar') ? 'active': '';?>">
+									<a href="{{LINK settings/avatar/<?php echo $fl['setting']['username']?>}}">{{LANG avatar_and_cover}}</a>
+								</li>
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'verification') ? 'active': '';?>">
+									<a href="{{LINK settings/verification/<?php echo $fl['setting']['username']?>}}">{{LANG verification}}</a>
+								</li>
+								<li class="list-group-item <?php echo ($fl['setting_page'] == 'wallet') ? 'active': '';?>">
+									<a href="{{LINK settings/wallet/<?php echo $fl['setting']['username']?>}}">{{LANG wallet}}</a>
+								</li>
+								<?php if ($fl['config']['delete_account'] == 1) { ?>
+									<li class="list-group-item <?php echo ($fl['setting_page'] == 'delete') ? 'active': '';?>">
+										<a href="{{LINK settings/delete/<?php echo $fl['setting']['username']?>}}">{{LANG delete_account}}</a>
+									</li>
+								<?php } ?>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-8 no-padding-left">
+						{{SETTINGS_PAGE}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

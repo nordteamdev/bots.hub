@@ -1,0 +1,300 @@
+<?php
+$unread_class = '';
+if ($wo['notification']['seen'] == 0) {
+    $unread_class = ' unread';
+}
+$wo['notification']['type_text'] = '';
+$wo['notification']['icon']      = '';
+$notificationText                = $wo['notification']['text'];
+if (isset($notificationText) && !empty($notificationText)) {
+    $notificationText = '"' . $wo['notification']['text'] . '"';
+}
+$notificationType2 = $wo['notification']['type2'];
+if (isset($notificationType2) && !empty($notificationType2)) {
+    if ($notificationType2 == 'post_image') {
+        $type2 = $wo['lang']['photo_n_label'];
+    } elseif ($notificationType2 == 'post_youtube' || $notificationType2 == 'post_video') {
+        $type2 = $wo['lang']['video_n_label'];
+    } elseif ($notificationType2 == 'post_file') {
+        $type2 = $wo['lang']['file_n_label'];
+    } elseif ($notificationType2 == 'post_vine') {
+        $type2 = $wo['lang']['vine_n_label'];
+    } elseif ($notificationType2 == 'post_soundFile') {
+        $type2 = $wo['lang']['sound_n_label'];
+    } elseif ($notificationType2 == 'post_avatar') {
+        $type2 = $wo['lang']['avatar_n_label'];
+    } elseif ($notificationType2 == 'post_cover') {
+        $type2 = $wo['lang']['cover_n_label'];
+    } else {
+        $type2 = '';
+    }
+} else {
+    $type2 = $wo['lang']['post_n_label'];
+}
+$orginal_txt  = array(
+    "{postType}",
+    "{post}"
+);
+$replaced_txt = array(
+    $type2,
+    $notificationText
+);
+if (!empty($wo['notification']['type'])) {
+    if ($wo['notification']['type'] == "reaction") {
+        
+        if( $wo['notification']['text'] == "post" ){
+            $wo['notification']['type_text'] .= $wo['lang']['reacted_to_your_post'];
+        }else if( $wo['notification']['text'] == "comment" ){
+            $wo['notification']['type_text'] .= $wo['lang']['reacted_to_your_comment'];
+        }else if( $wo['notification']['text'] == "replay" ){
+            $wo['notification']['type_text'] .= $wo['lang']['reacted_to_your_replay'];
+        }
+
+        switch (strtolower($notificationType2)) {
+			case 'like':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--like"><div class="emoji__hand"><div class="emoji__thumb"></div></div></div></div>';
+				break;
+			case 'love':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--love"><div class="emoji__heart"></div></div></div>';
+				break;
+			case 'haha':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--haha"><div class="emoji__face"><div class="emoji__eyes"></div><div class="emoji__mouth"><div class="emoji__tongue"></div></div></div></div></div>';
+				break;
+			case 'wow':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--wow"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+				break;
+			case 'sad':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--sad"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+				break;
+			case 'angry':
+				$wo['notification']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--angry"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+				break;
+			}
+    }
+    if ($wo['notification']['type'] == "gift") {
+        $wo['notification']['type_text'] .= $wo['lang']['send_gift_to_you'];
+        $wo['notification']['icon'] .= 'folder-star-alt';
+    }
+    if ($wo['notification']['type'] == "poke") {
+        $wo['notification']['type_text'] .= $wo['lang']['poked_you'];
+        $wo['notification']['icon'] .= 'account-o';
+    }
+    if ($wo['notification']['type'] == "following") {
+        $wo['notification']['type_text'] .= $wo['lang']['followed_you'];
+        $wo['notification']['icon'] .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'comment_mention') {
+        $wo['notification']['type_text'] .= $wo['lang']['comment_mention'];
+        $wo['notification']['icon'] .= 'edit';
+    }
+    if ($wo['notification']['type'] == 'post_mention') {
+        $wo['notification']['type_text'] .= $wo['lang']['post_mention'];
+        $wo['notification']['icon'] .= 'edit';
+    }
+    if ($wo['notification']['type'] == 'liked_post') {
+        $wo['notification']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['liked_post']);
+        $wo['notification']['icon'] .= 'thumb-up';
+    }
+    if ($wo['notification']['type'] == 'wondered_post') {
+        $lang_type = ($wo['config']['second_post_button'] == 'wonder') ? $wo['lang']['wondered_post'] : $wo['lang']['disliked_post'];
+        $wo['notification']['type_text'] = str_replace($orginal_txt, $replaced_txt, $lang_type);
+        $wo['notification']['icon'] .= $wo['second_post_button_icon'];
+    }
+    if ($wo['notification']['type'] == 'share_post') {
+        $wo['notification']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['share_post']);
+        $wo['notification']['icon'] .= 'share';
+    }
+    if ($wo['notification']['type'] == 'comment') {
+        $wo['notification']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['commented_on_post']);
+        $wo['notification']['icon'] .= 'comment-alt-text';
+    }
+    if ($wo['notification']['type'] == 'comment_reply') {
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $wo['lang']['replied_to_comment']);
+        $wo['notification']['icon'] .= 'comment-alt-text';
+    }
+    if ($wo['notification']['type'] == 'comment_reply_mention') {
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $wo['lang']['comment_reply_mention']);
+        $wo['notification']['icon'] .= 'comment-alt-text';
+    }
+    if ($wo['notification']['type'] == 'also_replied') {
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $wo['lang']['also_replied']);
+        $wo['notification']['icon'] .= 'comment-alt-text';
+    }
+    if ($wo['notification']['type'] == 'liked_comment') {
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $wo['lang']['liked_comment']);
+        $wo['notification']['icon'] .= 'thumb-up';
+    }
+    if ($wo['notification']['type'] == 'wondered_comment') {
+        $lang_type = ($wo['config']['second_post_button'] == 'wonder') ? $wo['lang']['wondered_comment'] : $wo['lang']['disliked_comment'];
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $lang_type);
+        $wo['notification']['icon'] .= $wo['second_post_button_icon'];
+    }
+    if ($wo['notification']['type'] == 'liked_reply_comment') {
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $wo['lang']['liked_reply_comment']);
+        $wo['notification']['icon'] .= 'thumb-up';
+    }
+    if ($wo['notification']['type'] == 'wondered_reply_comment') {
+        $lang_type = ($wo['config']['second_post_button'] == 'wonder') ? $wo['lang']['wondered_reply_comment'] : $wo['lang']['disliked_reply_comment'];
+        $wo['notification']['type_text'] = str_replace('{comment}', $wo['notification']['text'], $lang_type);
+        $wo['notification']['icon'] .= $wo['second_post_button_icon'];
+    }
+    if ($wo['notification']['type'] == 'profile_wall_post') {
+        $wo['notification']['type_text'] = $wo['lang']['posted_on_timeline'];
+        $wo['notification']['icon'] .= 'account';
+    }
+    if ($wo['notification']['type'] == 'visited_profile') {
+        $wo['notification']['type_text'] = $wo['lang']['profile_visted'];
+        $wo['notification']['icon'] .= 'eye';
+    }
+    if ($wo['notification']['type'] == 'liked_page') {
+        $page = Wo_PageData($wo['notification']['page_id']);
+        $wo['notification']['type_text'] = str_replace('{page_name}', $page['name'], $wo['lang']['liked_page']);
+        $wo['notification']['icon'] .= 'thumb-up';
+    }
+    if ($wo['notification']['type'] == 'joined_group') {
+        $group = Wo_GroupData($wo['notification']['group_id']);
+        $wo['notification']['type_text'] = str_replace('{group_name}', $group['name'], $wo['lang']['joined_group']);
+        $wo['notification']['icon'] .= 'accounts-add';
+    }
+    if ($wo['notification']['type'] == 'accepted_invite') {
+        $page_id = @end(explode('/', $wo['notification']['url']));
+        $page = Wo_PageData(Wo_PageIdFromPagename($page_id));
+        $wo['notification']['type_text'] = str_replace('{page_name}', $page['name'], $wo['lang']['accepted_invited_page']);
+        $wo['notification']['icon'] .= 'account-add';
+    }
+    
+    if ($wo['notification']['type'] == 'invited_page') {
+        $page_id = @end(explode('/', $wo['notification']['url']));
+        $page = Wo_PageData(Wo_PageIdFromPagename($page_id));
+        $wo['notification']['type_text'] = str_replace('{page_name}', $page['name'], $wo['lang']['invited_page']);
+        $wo['notification']['icon'] .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'accepted_join_request') {
+        $group_id = @end(explode('/', $wo['notification']['url']));
+        $group = Wo_GroupData(Wo_GroupIdFromGroupname($group_id));
+        $wo['notification']['type_text'] = str_replace('{group_name}', $group['name'], $wo['lang']['accepted_join_request']);
+        $wo['notification']['icon'] .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'added_you_to_group') {
+        $group_id = @end(explode('/', $wo['notification']['url']));
+        $group = Wo_GroupData(Wo_GroupIdFromGroupname($group_id));
+        $wo['notification']['type_text'] = str_replace('{group_name}', $group['name'], $wo['lang']['added_you_to_group']);
+        $wo['notification']['icon'] .= 'account-add';
+    }
+     if ($wo['notification']['type'] == 'requested_to_join_group') {
+        $wo['notification']['type_text'] = $wo['lang']['requested_to_join_group'];
+        $wo['notification']['icon'] .= 'account-add';
+    }
+
+    if ($wo['notification']['type'] == 'interested_event') {
+        $event_data = Wo_EventData($wo['notification']['event_id']);
+        $wo['notification']['type_text'] = str_replace('{event_name}', $event_data['name'], $wo['lang']['is_interested']);
+        $wo['notification']['icon'] .= 'eye';
+    }
+    if ($wo['notification']['type'] == 'going_event') {
+        $event_data = Wo_EventData($wo['notification']['event_id']);
+        $wo['notification']['type_text'] = str_replace('{event_name}', $event_data['name'], $wo['lang']['is_going']);
+        $wo['notification']['icon'] .= 'calendar';
+    }
+    if ($wo['notification']['type'] == 'invited_event') {
+        $event_data = Wo_EventData($wo['notification']['event_id']);
+        $wo['notification']['type_text'] = str_replace('{event_name}', $event_data['name'], $wo['lang']['invited_you_event']);
+        $wo['notification']['icon'] .= 'calendar';
+    }
+    if ($wo['notification']['type'] == 'forum_reply') {
+        $wo['notification']['type_text'] = $wo['lang']['replied_to_topic'];
+        $wo['notification']['icon'] .= 'comment-edit';
+    }
+    if ($wo['notification']['type'] == 'accepted_request') {
+        if ($wo['config']['connectivitySystem'] == 1) {
+            $wo['notification']['type_text'] = $wo['lang']['accepted_friend_request'];
+        } else {
+            $wo['notification']['type_text'] = $wo['lang']['accepted_follow_request'];
+        }
+        $wo['notification']['icon'] .= 'account-add';
+    }
+	if ($wo['notification']['type'] == 'admin_notification') {
+        $wo['notification']['type_text'] = $wo['notification']['text'];
+        $wo['notification']['url']       = $wo['notification']['full_link']; 
+        $wo['notification']['ajax_url']  = $wo['notification']['full_link']; 
+        $wo['notification']['wo_url']    = false; 
+        $wo['notification']['icon']     .= 'eye';
+    }
+    if ($wo['notification']['type'] == 'page_admin') {
+        $wo['notification']['type_text'] = $wo['lang']['added_page_admin'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'group_admin') {
+        $wo['notification']['type_text'] = $wo['lang']['added_group_admin'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'added_u_as') {
+        $wo['notification']['type_text'] = $wo['notification']['text'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'accept_u_as') {
+        $wo['notification']['type_text'] = $wo['notification']['text'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'account-add';
+    }
+    if ($wo['notification']['type'] == 'rejected_u_as') {
+        $wo['notification']['type_text'] = $wo['notification']['text'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'close';
+    }
+	if ($wo['notification']['type'] == 'sent_u_money') {
+        $wo['notification']['type_text'] = $wo['notification']['text'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'money';
+    }
+    if ($wo['notification']['type'] == 'viewed_story') {
+        $wo['notification']['type_text'] = $wo['lang']['viewed_your_story'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'book-image';
+    }
+    if ($wo['notification']['type'] == 'blog_commented') {
+        $wo['notification']['type_text'] = $wo['lang']['commented_on_blog'];
+        $wo['notification']['url']       = $wo['notification']['url']; 
+        $wo['notification']['icon']     .= 'comment-alt-text';
+    }
+}
+?>
+
+<li>
+   <div class="notification-list <?php echo $unread_class;?>">
+      <a 
+      href="<?php echo $wo['notification']['url']; ?>" 
+      title="<?php echo $wo['notification']['notifier']['name']; ?>"
+      <?php if (!isset($wo['notification']['wo_url'])): ?>
+          data-ajax="<?php echo $wo['notification']['ajax_url'];?>"
+      <?php endif; ?>
+      
+      >
+         <div class="notification-user-avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['notification']['notifier']['avatar']; ?>" alt="<?php echo $wo['notification']['notifier']['name']; ?> Profile picture">
+         </div>
+         <div class="notification-text">
+            <span class="main-color">
+            <?php echo $wo['notification']['notifier']['name']; ?>
+            </span>
+            <?php echo $wo['notification']['type_text']; ?>
+            <div class="notification-time active">
+            <?php if ($wo['notification']['type'] == "reaction") { ?>
+                <?php echo $wo['notification']['icon'];?>
+            <?php } else { ?>
+                <i class="zmdi zmdi-<?php echo $wo['notification']['icon'];?> active notification-mico"></i>
+            <?php } ?>
+			
+               <span class="ajax-time" title="<?php echo date('c',$wo['notification']['time']); ?>">
+               <?php echo Wo_Time_Elapsed_String($wo['notification']['time'])?>
+               </span>
+            </div>
+         </div>
+         <div class="clear"></div>
+      </a>
+   </div>
+</li>
+<li class="divider"></li>

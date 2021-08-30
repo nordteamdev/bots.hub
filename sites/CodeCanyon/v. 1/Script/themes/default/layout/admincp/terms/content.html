@@ -1,0 +1,50 @@
+<?php $fl['terms'] = FL_GetTerms(); ?>
+<div class="settings-header">
+  <h3><i class="fa fa-bars fa-fw "></i> {{LANG terms_pages}}</h3>
+</div>
+<form method="post" action="#" class="setting-panel setting-terms-container">
+  <h5>Terms of use <small>(HTML allowed)</small></h5>
+  <div class="send-errors"></div>
+  <div class="form-group">
+     <textarea name="terms_of_use" class="form-control" placeholder="Terms of use" rows="15" cols="30"><?php echo $fl['terms']['terms_of_use'];?></textarea>
+  </div>
+  <h5>Privacy Policy <small>(HTML allowed)</small></h5>
+  <div class="send-errors"></div>
+  <div class="form-group">
+     <textarea name="privacy_policy" class="form-control" placeholder="<?php echo $fl['lang']['privacy_policy'];?>" rows="15" cols="30"><?php echo $fl['terms']['privacy_policy'];?></textarea>
+  </div>
+  <h5>About page <small>(HTML allowed)</small></h5>
+  <div class="send-errors"></div>
+  <div class="form-group">
+     <textarea name="about" class="form-control" placeholder="About" rows="15" cols="30"><?php echo $fl['terms']['about'];?></textarea>
+  </div>
+  <input type="hidden" name="hash_id" value="<?php echo FL_CreateSession();?>">
+  <div class="row">
+     <div class="col-sm-3 pull-left">
+        <button type="submit" class="btn btn-main">
+        <i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}
+        </button>
+     </div>
+  </div>
+</form>
+<script>
+$(function() {
+    $('form.setting-terms-container').ajaxForm({
+      url: FL_Ajax_Requests_File() + '?f=admincp&s=terms_setting',
+      beforeSend: function() {
+        FL_progressIconLoader($('form.setting-terms-container').find('button'));
+      },
+      success: function(data) {
+        if (data.status == 200) {
+          $('form.setting-terms-container button').html('<i class="fa fa-check"></i> Saved');
+          setTimeout(function () {
+            $('form.setting-terms-container button').html('<i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i>  Save');
+          }, 2000);
+          
+          FL_progressIconLoader($('form.setting-terms-container').find('button'));
+
+        } 
+      }
+    });
+});
+</script>

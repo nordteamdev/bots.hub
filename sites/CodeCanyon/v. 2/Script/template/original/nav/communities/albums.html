@@ -1,0 +1,84 @@
+{strip}
+<section id="group_pg_details">
+{foreach $res as $r}
+{assign var=subscribed value=$this->isSubscribed($r.id)}
+{assign var=isadmin value=$this->checkAdmin($this->USER['id'],$r.admin)}
+{if $isadmin}<span id="isadm"></span>{/if}
+
+{include file="{$this->group_templates}/group-header.html"}
+	
+	<div class="comm_op_cover_cnt">
+
+<div class="community_pg_albums">
+
+
+{$this->headerMenu('albums',$r.id)}
+
+<div class="ul_album soh-s">
+    <div class="col-card ovr-menu_soh">
+        <div class="photo-sc_i_cover">
+            <div class="photo-sc_i_cnt __prw">
+			<a hrefattr="true" href="/community/{$r.id}/album-0" class="photo-sc_i_cnt_a"><span class="va"></span>
+              <img class="photo-sc_i_cnt_a_img va_target" src="{$this->getCommunityAlbumCover($r.id,'0')}" />
+			  <div class="comm_album_card_no_img"></div>
+			  <div class="col-card_ovr"></div>
+			  <div class="photo-album_collage foh-s"></div>
+                <div class="col-card_num">{$this->getCommunityAlbumsPicturesCount($r.id,'0')}</div></a></div>
+        </div>
+    </div>
+	
+    <div class="photo-sc_grid_abt ellip">
+	
+	<a class="o" hrefattr="true" href="/community/{$r.id}/album-0" title="{$this->lang['Community_Main_album']}">{$this->lang['Community_Main_album']}</a>
+	
+	</div>
+</div>
+
+
+
+
+
+
+{foreach $this->communityAlbums($r.id) as $album}
+
+<div class="ul_album soh-s" id="group_album_{$album.id}">
+    <div class="col-card ovr-menu_soh">
+        <div class="photo-sc_i_cover">
+            <div class="photo-sc_i_cnt __prw">
+			<a hrefattr="true" href="/community/{$r.id}/album-{$album.id}" class="photo-sc_i_cnt_a"><span class="va"></span>
+              <img class="photo-sc_i_cnt_a_img va_target" src="{$this->getCommunityAlbumCover($r.id,$album.id)}" />
+			  <div class="comm_album_card_no_img"></div>
+			  <div class="col-card_ovr"></div>
+			  <div class="photo-album_collage foh-s"></div>
+                <div class="col-card_num">{$this->getCommunityAlbumsPicturesCount($r.id,$album.id)}</div></a>
+	{if $isadmin}			
+<div class="col_card_slide_up">
+    <div class="card_sl_menu_it tico"><a href="javascript:void(0);" data-si='{ldelim}"albumid":"{$album.id}","clubid":"{$r.id}"{rdelim}' onclick="communityAlbumSettings(event,this);" class="ic_a_mn"><i class="tico_img ic ic_settings ic_mn"></i><span>Settings</span></a></div>
+</div>
+	{/if}			
+				
+				</div>
+        </div>
+    </div>
+	
+    <div class="photo-sc_grid_abt ellip">
+	
+	<a class="o" hrefattr="true" href="/community/{$r.id}/album-{$album.id}" title="{$album.title}">{$album.title}</a>
+	
+	</div>
+</div>
+
+{/foreach}
+
+
+</div>
+					
+	</div>
+
+
+   {/foreach}
+   
+
+   
+   </section>
+{/strip}

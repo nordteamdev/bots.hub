@@ -1,0 +1,118 @@
+{strip}
+{if !$load_more}
+<div class="toolbar-layer __grades __feedback __big">
+    <div class="toolbar-layer_h usel-off">
+        <div class="portlet_h3">{$this->lang['Marks']} {if $count_new_grades > 0} ({$count_new_grades}&nbsp;{$this->lang['new']}) {/if}</div>
+<span title="close" class="tico tico__n-t notifs_close"><i class="tico_img ic ic_close"></i></span></div>
+    <div class="toolbar-layer_cnt">
+
+        <div class="notifs_lst" onscroll="{literal}gradesOnscroll(this,event);{/literal}">
+
+            <div id="hook_Block_FeedbackLayerContent" class="notifs_wrap">
+               
+			   <div>
+                    <div class="data-loaddgr">
+					{/if}
+					{foreach $q as $res}
+					
+		            {assign var=clubid value=0}
+					
+				    {if $res.community == 'yes'}
+				    {assign var=clubid value=$this->getCommunityId($res.itemid,'post')}
+					{assign var=clubdetails value=$this->getCommunityDetails($clubid)}
+				    {/if}
+					
+					
+					{$this->upGrades($res.id)}
+                        <div id="hook_Block_{$res.id}" class="notif_w">
+                            <div  class="notif show-on-hover {if $res.viewed == 'yes'}__marked{/if}">
+                                <div class="notif_media clearfix">
+
+                                    <div class="ucard-v __s notif_subj">
+                                        <div class="section">
+                                            <a  class="dblock" href="/user/{$res.uid}" data-offpopup="1" hrefattr="true">
+                                                <div class="photo"><img class="" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.gender}" alt="{$res.fullname}" width="80" height="80"></div>
+                                            </a>
+ 
+                                        </div>
+                                    </div>
+                                    <div class="notif_obj">
+									 {if $res.type === 'like'}<div class="good_quality_grade"></div>{/if}
+									 {if $res.type === 'stars'}<div class="photo_rate_res"><div class="photo_rate_bg" style="width:{$res.data*20}%;"></div><div class="photo_rate_stars"></div></div>{/if}
+                                        <div class="ucard-v __s">
+                                            <div class="section">
+											{if $res.categ == 'photo'}
+                                                <a href="/photo?q={$this->USER['id']}&show=single&from=medium&o={b_encode($res.itemid)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($res.itemid)}" class="image-hover">
+                                                    <div class="photo"><img src="/getPhoto?p={$res.itemid}&sz=small" class="photo_img"></div>
+                                                </a>
+												
+											{else if $res.categ == 'video'}
+                                                <a href="/video?vid={$res.itemid}&cmd=open" data-ivideo="1" class="image-hover">
+                                                    <div class="grades_video_cover" style="background-image:url(/videoCover?v={$res.itemid});"></div>
+                                                </a>
+											{/if}
+											{if $res.categ === 'post'}
+											    <a href="/post?i={$res.itemid}{if $clubid > 0}&clubid={$clubid}{/if}" data-type-post="1" class="__opac_hv">
+                                                    <div class="grades_liked_status"></div>
+                                                </a>
+											{/if}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="notif_media_cnt">
+                                        <div class="notif_tx textWrap"><span class="shortcut-wrap"><a href="/user/{$res.uid}" class="o" data-offpopup="1" hrefattr="true">{$res.fullname}</a></span>
+                                            &nbsp;{if $res.type === 'like' && $res.categ === 'photo'}{$this->lang['gradesLikedThePhoto']}{/if}
+												{if $res.type === 'stars'}{$this->lang['ratedYourPhoto']}{/if}
+												{if $res.categ == 'video'}{$this->lang['gradesLikedTheVideo']}{/if}
+												{if $res.type === 'like' && $res.categ === 'post' && $res.community === 'yes'}
+												{$this->lang['gradesLikedStatusInClub']}&nbsp;<a href="/community/{$clubdetails.id}" class="ob" hrefattr="true">{$clubdetails.name}</a>
+												{else if $res.type === 'like' && $res.categ === 'post'}{$this->lang['gradesLikedStatus']}{/if}
+											</div>
+									
+										{if $res.type === 'like' && $res.categ === 'post'}
+										{assign var=post_val value=$this->gradesBuildPost($res.status)}
+										
+										{if $post_val != ''}
+										<div class="ust"><div class="ust_tx"><a class="ust_a" data-type-post="1" href="/post?i={$res.itemid}{if $clubid > 0}&clubid={$clubid}{/if}">{$post_val}</a></div></div>
+										{else}
+										<div class="media_more padding6"><a href="/post?i={$res.itemid}{if $clubid > 0}&clubid={$clubid}{/if}" data-type-post="1" class="media_more_a" hrefattr="true"><span class="media_more_ic">&#8226;&#8226;&#8226;&nbsp;<span class="post_view_more_txt">{$this->lang['View_post']}</span></span></a></div>
+										{/if}
+										
+										{/if}
+                                        {if $res.type === 'like'}<div class="notif_footer"><span>{$this->feedConvDate($res.added,1)}</span><span class="notif_footer_delim"></span><a href="javascript:void(0);" data-pplikt="ppo_{$res.itemid}" data-popup-people-likedphoto="1" class="lstp"><span class="h-mod"><span class="tico tico__12"><i title="{$this->lang['total_likes']}" alt="{$this->lang['total_likes']}" class="curDefault comment-like ic tico_img icon-comment-like"></i><span title="{$this->lang['total_likes']}" class="pleft4">{$res.ks_count}</span></span></span></a></div>
+										{/if}
+										{if $res.type === 'stars'}<div class="notif_footer"><span>{$this->feedConvDate($res.added,1)}</span><span class="notif_footer_delim"></span><a href="javascript:void(0);" data-pplikt="ppo_{$res.itemid}" data-popup-people-ratedphoto="1" class="lstp"><span class="h-mod"><span class="tico tico__12"><i title="{$this->lang['total_stars']}" alt="{$this->lang['total_stars']}" class="curDefault comment-like ic tico_img icon-stars-count"></i><span title="{$this->lang['total_stars']}" class="pleft4">{$res.ks_count}</span></span></span></a></div>
+										{/if}
+										
+
+										
+                                    </div>
+
+									
+                                </div>
+
+                            </div>
+                        </div>
+						{foreachelse}
+						{if !$load_more}
+				<div class="stub-empty __feedback">
+                <!--<div class="stub-empty_img"></div>-->
+                <div class="stub-empty_t">{$this->lang['youDosentHaveGrades']}</div>
+                <div class="stub-empty_tx">{$this->lang['nogradesdesc']}</div>
+            </div>{else} {/if}
+				{/foreach}
+				
+				{if !$load_more}</div>
+				 
+				{if count($q)}
+                <div data-loadd='{ldelim}"cmd":"more_grades","i":"{$this->USER.id}","p":"1","appto":".data-loaddgr"{rdelim}' class="loader-controls">
+                    <div class="link-show-more_loading"><span class="fetching-hor"><i class="fetching-hor_i"></i>&nbsp;</span></div></div>
+                <div>
+				{/if}
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+{/strip}

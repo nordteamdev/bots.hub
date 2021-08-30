@@ -1,0 +1,239 @@
+{strip}
+  {assign var=check_admin value=false}
+{if $clubid > 0}
+{assign var=feed_author value={$clubid}}
+{assign var=isclub value=true}
+{assign var=check_admin value=$this->checkGroupAdmin($res.byuser,$clubid)}
+{else}
+{assign var=isclub value=false}
+{assign var=feed_author value={$res.uid}}
+{/if}
+
+{if empty($pd)}
+
+
+<div class="feed h-mod small">
+
+	<header>
+	
+	
+		<div class="feed_ava">
+		{if $clubid > 0}
+		
+		
+			<a href="/community/{$clubid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+				</div>
+			</a>
+		
+		{else}
+			<a href="/profile?q={$res.uid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.ugender}" alt="{$res.fullname}" width="48" height="48">
+				</div>
+			</a>
+			
+		{/if}
+		</div>
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:void(0);" class="al feed_close"></a>
+		</div>
+		
+		
+		
+        <div class="feed_h">
+		
+		
+		{if $clubid > 0}
+		
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+		</span>
+		{/if}
+		
+		
+		
+		
+		
+	
+        </div>
+	
+	</header>
+
+
+
+
+
+    <div class="feed_cnt" data-feedid="{$postid}" id='{ldelim}"fid":"{$postid}","uid":"{$res.uid}"{rdelim}'>
+ 
+
+        <div class="feed_b">
+			{$this->corrFeed()}
+        </div>
+
+    </div>
+</div>
+
+{else}
+		{if $res.community == 'yes' && !$isclub}
+		{$clubid = $res.parent_id}
+		{assign var=check_admin value=$this->checkGroupAdmin($res.byuser,$clubid)}
+		{/if}
+
+<div class="feed h-mod">
+
+
+	<header>
+	
+	
+    <div class="feed_ava">
+
+	
+			{if $isclub || ($index_feed && $clubid > 0)}
+	
+	
+	{if $check_admin}
+        <a href="/community/{$clubid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+            </div>
+        </a>
+	{else}
+        <a href="/user/{$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.ugender}" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+	
+	{/if}
+	
+	
+	{else}
+	
+        <a href="/user/{$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.ugender}" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+		
+	{/if}
+		
+		
+		
+    </div>
+    <div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+        <a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+    </div>
+	
+        <div class="feed_h">
+		
+		{if $isclub || ($index_feed && $clubid > 0)}
+		
+		{if $check_admin}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"{$club_logo_path}/{$res.club_logo}","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		
+		
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+		</span>
+		<span class="glyphicon glyphicon-triangle-right feed-to-club"></span>
+		<a href="/community/{$clubid}" hrefattr="true" class="ob">{$res.club_name}</a>
+		{/if}
+		
+		
+		
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+		</span>
+		{/if}
+		
+			{if $res.community == 'yes' && !$isclub && !$index_feed}
+			{$clubid = $res.parent_id}
+				{$isclub = true}
+			
+		{assign var=group_details value=$this->getCommunityDetails($res.parent_id)}
+		&nbsp;{$this->lang['posted_to_community']}&nbsp;
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$group_details.id}","uname":"{$group_details.name}","uphoto":"{$group_details.logo_path}/{$group_details.logo}","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$group_details.id}">
+		</div>
+		<A class="feed_community_title" href="/community/{$group_details.id}" hrefattr="true">{$group_details.name}</a>
+		</span>		
+		{/if}
+
+        </div>
+	</header>
+
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$postid}","uid":"{$res.uid}"{rdelim}'>
+  
+
+        <div class="feed_b">
+            <div class="media-status __arw-t __accent">
+                <div class="media-status_cnt">
+		{if $p_song}
+<div class="track __media-status">
+    <div class="track_hld"><span id="pm_sec_outsite_track_{$p_song_id}" class="track_play" data-track-inf='{ldelim}"track":"{$p_song_fname}","cover":"{$p_song_cover}","artist":"{$p_song_artist}","songname":"{$p_song_name}","albumname":"{$p_song_album}"{rdelim}' onclick="nobilMusicPlayOutsideTrack(this,event)"></span>
+        <div class="track_cnt textWrap"><span onclick="nobilMusicSearch('{$p_song_artist} {$p_song_name}')" class="track_song">{$p_song_artist} - {$p_song_name}</span></div>
+    </div>
+</div>
+{else}
+                    <div class="h-mod media-block media-text NO__full " data-module="ProcessMoreInfo">
+                        <div class="media-text_cnt">
+                            <div class="media-text_cnt_tx textWrap">{$this->str_smilies($p_text,false,false,true)}
+                                <a href="/post?{if $clubid > 0}clubid={$clubid}&{/if}i={$res.itemid}&u={$res.uid}" data-type-post="1" class="media-text_a" hrefattr="true"></a>
+                            </div>
+                        </div>
+                    </div>
+					
+{/if}
+                    <div class="media_more invisible"><a href="/post?{if $clubid > 0}clubid={$clubid}&{/if}i={$res.itemid}&u={$res.uid}" class="media_more_a" hrefattr="true"><span class="media_more_ic">***</span></a></div>
+                </div>
+				
+            </div>
+			<div class="post_status_translate">{$this->checkForTranslating($p_text,true)}</div>
+        </div>
+        <div class="feed_f">
+
+ 
+				{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+var $feed_id = '{$res.id}', $feed_id = '{$res.id}', $itemid = '{$postid}', $author_id = '{$res.uid}', clubid = '{$clubid}';
+{literal}
+
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget'+(clubid ? ' incommunity' : '')).attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'post',
+						{'width':'75%','height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/if}
+{/strip}

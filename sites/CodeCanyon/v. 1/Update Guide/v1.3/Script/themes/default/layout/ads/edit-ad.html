@@ -1,0 +1,113 @@
+<style>.fl_cus_input label {min-width: 160px;}</style>
+<div class="manage-user-ads content-shadow manage-user-ads-form">
+	<div class="manage-ads-header">
+		<h3><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"></path></svg> {{LANG edit}} {{NAME}}</h3>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<form id="manage-ads-form" class="form form-horizontal setting-panel">
+		<div id="manage-ads-alert"></div>
+		<fieldset>
+		<div class="form-group">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 fl_cus_input">
+				<input type="text" class="form-control" name="name" id="cname" autofocus value="{{NAME}}">
+				<label for="cname">{{LANG cname}}</label>  
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 fl_cus_input">
+				<input type="url" class="form-control" name="url" id="dest_url" value="{{URL}}">
+				<label for="dest_url">{{LANG dest_url}}</label>  
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 fl_cus_input">
+				<select class="form-control" name="placement" id="placement">
+					<option value="1" {{PLM1}}>
+						{{LANG sidebar}}
+					</option>
+					<option value="2" {{PLM2}}>
+						{{LANG hpage}}
+					</option>
+					<option value="3" {{PLM3}}>
+						{{LANG spage}}
+					</option>
+				</select> 
+				<label for="placement">{{LANG placement}}</label>  
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 fl_cus_input">
+				<select class="form-control" name="status" id="status">
+					<option value="1" {{STAT1}}>
+						{{LANG active}}
+					</option>
+					<option value="2" {{STAT2}}>
+						{{LANG inactive}}
+					</option>
+				</select> 
+				<label for="status">{{LANG status}}</label> 
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 fl_cus_input">
+				<input type="file" class="form-control" id="ad-image-input" name="image" placeholder="{{IMG_NAME}}">
+				<label for="ad-image-input">{{LANG image}}</label> 
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<hr>
+		<button type="submit" class="btn btn-main">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M0.41,13.41L6,19L7.41,17.58L1.83,12M22.24,5.58L11.66,16.17L7.5,12L6.07,13.41L11.66,19L23.66,7M18,7L16.59,5.58L10.24,11.93L11.66,13.34L18,7Z"></path></svg> {{LANG save}}
+		</button>
+		<input type="file" class="hidden" id="ad-image-input" name="image">
+		</fieldset>
+	</form>
+	<div class="clear"></div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$("#manage-ads-form").ajaxForm({
+			url: FL_Ajax_Requests_File() + '?f=ads&s=edit',
+			dataType: 'json',
+			type: 'POST',
+			data: {id: '{{ID}}'},
+			beforeSend: function() {
+				$("#manage-ads-form").find("button[type='submit']").text("{{LANG please_wait}}");
+				$("#manage-ads-form").find("button[type='submit']").attr('disabled');
+			},
+			success: function(data) {
+				scrollToTop();
+				if (data.status == 200) {
+					var alert_msg = $("<div>",{
+						class: 'alert alert-success',
+						html: data.message
+					});
+					$("#manage-ads-alert").html(alert_msg);
+					FL_Delay(function(){
+						window.location.href = "{{LINK ads}}";
+					},1500);
+				} 
+
+				else {
+					var alert_msg = $("<div>",{
+						class: 'alert alert-danger',
+						html: data.message
+					});
+					$("#manage-ads-form").find("button[type='submit']").html('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M0.41,13.41L6,19L7.41,17.58L1.83,12M22.24,5.58L11.66,16.17L7.5,12L6.07,13.41L11.66,19L23.66,7M18,7L16.59,5.58L10.24,11.93L11.66,13.34L18,7Z"></path></svg> {{LANG save}}');
+					$("#manage-ads-alert").html(alert_msg);
+				}
+			}	
+		});
+	});
+</script>

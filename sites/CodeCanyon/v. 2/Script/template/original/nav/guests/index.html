@@ -1,0 +1,184 @@
+{strip}
+
+
+
+<div class="main-content-column" id="guests_page_shown">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['my_guests']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+                       <ul class="xbeGew">
+			{assign var=c_g value=0}
+			{foreach $query as $res}
+			{assign var=guest_status value=$res.text_post}
+			
+					
+					
+						<li class="vr32XYa">
+						<div class="fi5XCw">
+						<div class="ovr-menu_soh">
+										<a href="/user/{$res.id}" class="dblock" hrefattr="true">
+											<div class="photo"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=thumb&g={$res.gender}" width="80" height="80"> 
+											
+											</div>
+										</a>
+										{if $res.profile_photo > 0}
+										<div class="ovr-menu_w">
+											<div class="ovr-menu">
+												<div class="ovr-menu_tx"><a href="/photo?q={$res.id}&show=single&from=medium&o={b_encode($res.profile_photo)}&cmd=openPhotoViewer" data-vphopen="1" data-vphi="{b_encode($res.profile_photo)}" class="ovr-menu_a"><span class="search_bigph_label"></span></a></div>
+											</div>
+										</div>
+										{/if}
+									</div>
+						</div>
+						
+				
+						<div class="vr32XY1 ellip">
+
+					
+
+						<a href="/user/{$res.id}" class="o Xvsa32s" hrefattr="true">{$res.fullname} {if $this->getUserStatus($res.id)}<span class="ic-online"></span>{/if}
+						</a>
+						
+						
+						
+					{if !empty(trim($guest_status))}
+                                            <div class="ust list">
+                                                <div class="ust_tx"><a class="ust_a" href="/post?uid={$res.id}&userstatus=1" data-type-post="1">{$this->str_smilies($guest_status)}</a>
+                                                </div>
+                                            </div>
+
+					{/if}
+					{assign var=mutual_friends value=$this->getMutualFriends($res.id,0, 1)}
+					
+					{if $mutual_friends > 0}
+					<div class="x48Yg">
+					<a class="lp il lineheight-18" onclick="return popupMutualFriends(this,event);" data-mtforui='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}"{rdelim}' href="javascript:;">{$mutual_friends}&nbsp;{$this->lang['mutual_friends']}</a>
+					</div>
+					{else}
+					<div class="x48Yg">{$res.location}</div>
+					{/if}
+					<div class="tCardTime {if $res.new === 'yes'} __unview {/if}">{$this->time_elapsed($res.added)}</div>
+						
+					</div>
+					
+					<div class="ui_actions_menu_icons">
+										<span class="kn_shortcutmenu wh100">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","ulmen":{ldelim}"guest":"1","block":"1","unblock":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+					</div></span>
+					</div>
+						</li>
+					
+					
+			
+			
+			
+			
+		
+ 
+								
+											
+		{foreachelse}
+
+		<h3 class="n_guests">{$this->lang['no_guests']}</h3>
+	
+		{/foreach}
+
+
+                        </ul>
+                        </div>
+                  
+                </div>
+
+
+<div class="wide_friends_lf_cl">
+  <div id="mainContentLeftColumn">
+    <div id="hook_Block_LeftColumn" class="hookBlock">
+      <div id="leftColumn">
+        <div id="hook_Block_UserFriendsCatalogRB" class="hookBlock">
+         <!-- <div class="portlet" id="UserFriendsCatalogRB">
+           
+              
+			  
+			  
+			                  <div class="portlet __invisible taCenter">
+                    <div class="portlet-i_h portlet-i_h__sa">{$this->lang['invisible_mode']}</div>
+                    <div class="portlet_img"></div>
+                    <div class="portlet_tx mb-3x mt-3x">{$this->lang['invisible_descr']}</div>
+					<a href="#" class="button-pro">{$this->lang['enable_inv_mode']}</a></div>
+            </div>	-->		  
+			  
+			  {if $this->settings['private_user_account'] === 'true'}
+			  
+			    {if $this->USER['private'] === 'no'}
+	          <div class="portlet" id="UserFriendsCatalogRB">
+           
+              
+			  
+			
+			                  <div class="portlet __invisible taCenter">
+                    <div class="portlet-i_h portlet-i_h__sa">{$this->lang['private_account']}</div>
+                    <div class="turnon-private-account-ic"></div>
+                    <div class="portlet_tx mb-3x mt-3x">{$this->lang['private_account_descr']}</div>
+				
+<div class="private_acc_slider">
+<label>{$this->lang['enable_private_account']}<input data-mode="on" onclick="privateAccount(event);" type="checkbox" id="slideshow_enabled_cbox" class="ios-switch tinyswitch"><div><div></div></div></label></div>
+					
+					
+					</div>
+            </div>	
+{else}			
+
+
+	          <div class="portlet" id="UserFriendsCatalogRB">
+           
+              
+			  
+			
+			                  <div class="portlet __invisible taCenter">
+                    <div class="portlet-i_h portlet-i_h__sa">{$this->lang['private_account']}</div>
+                    <div class="private-account-ic"></div>
+                    <div class="portlet_tx mb-3x mt-3x">{$this->lang['o_private_account_descr']}</div>
+				
+<div class="private_acc_slider">
+<label>{$this->lang['disable_private_account']}<input data-mode="off" onclick="privateAccount(event);" type="checkbox" checked id="slideshow_enabled_cbox" class="ios-switch tinyswitch"><div><div></div></div></label></div>
+					
+					
+					</div>
+            </div>
+
+
+
+			{/if}
+			{/if}
+			
+			
+			
+{assign var=ad value=$this->getAdMarkup('guests')}
+{if $ad}
+<div class="ads-box">
+<div class="ads-box-title">{$this->lang['sponsored']}</div>
+<div class="ads-box-cnt">
+{$ad}
+</div>
+</div>	
+	{/if}		
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+
+{$this->updateGuestsPage()}
+
+{/strip}

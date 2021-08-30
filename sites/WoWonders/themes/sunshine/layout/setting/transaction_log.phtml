@@ -1,0 +1,11 @@
+<?php 
+$wo['trans'] = Wo_GetMytransactions();
+?>
+<div class="wo_settings_page sun_sett_page">
+	<h3><?php echo $wo['lang']['transaction_log']; ?></h3>
+	<div class="row neg_padd">
+		<div class="tabbable">
+			<?php echo Wo_LoadPage('setting/includes/latest_activities');?>
+		</div>
+	</div>
+</div>

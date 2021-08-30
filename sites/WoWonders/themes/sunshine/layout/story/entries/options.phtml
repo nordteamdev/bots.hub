@@ -1,0 +1,33 @@
+<?php 
+$is_voted = false;
+if ($wo['loggedin'] == true) {
+	$is_voted = Wo_IsPostVoted($wo['story']['id'], $wo['user']['user_id']); 
+}
+?>
+<div class="options" data-vote='<?php echo ($is_voted) ? 'true' : 'false'?>'>
+	<?php foreach ($wo['story']['options'] as $key => $value):
+	$is_option_voted = false;
+    if ($wo['loggedin'] == true) {
+    	$is_option_voted = Wo_IsOptionVoted($value['id'], $wo['user']['user_id']);
+    } 
+	?>
+	<div id="option-<?php echo $value['id']?>" class="wo_votes <?php echo ($is_option_voted) ? 'active':'';?>" onclick="Wo_VoteUp(<?php echo $value['id']?>);" data-post-id="<?php echo $wo['story']['id'];?>">
+		<div class="poll-option">
+			<div class="bold <?php echo Wo_RightToLeft('pull-left');?>">
+				<?php echo $value['text'];?>
+			</div>
+			<div class="<?php echo Wo_RightToLeft('pull-right');?>">
+				<span class="vote-icon"><?php echo ($is_option_voted) ? '<svg fill="#444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-user-plus"><path d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>' : '';?></span> 
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="answer-vote <?php echo Wo_RightToLeft('pull-right');?> <?php echo ($is_voted) ? '' : 'hidden'?>">
+			<?php echo ($is_voted) ? $value['percentage']:''?>
+		</div>
+		<div class="result-bar-parent <?php echo Wo_RightToLeft('pull-left');?> <?php echo ($is_voted) ? '' : 'hidden'?>">
+			<div class="result-bar <?php echo Wo_RightToLeft('pull-left');?>" style="width:<?php echo $value['percentage'];?>"><?php echo ($value['percentage_num'] > 0 && $is_voted) ? ' ' : '';?></div>
+		</div>
+	</div>
+	<?php endforeach ?>
+	<div class="total-votes"><span id="total-votes"><?php echo $value['all'];?></span> <?php echo $wo['lang']['total_votes'] ?></div>
+</div>

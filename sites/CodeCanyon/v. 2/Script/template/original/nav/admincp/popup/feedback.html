@@ -1,0 +1,56 @@
+{strip}
+{foreach $q as $r}
+<div class="feedback_p_reply">
+
+                                        <form name="feedbackForm" action="" method="post">
+                                            <div class="form form__gl-2-2" style="padding: 3px 20px 0 0;">
+
+                                                <div class="form_i" style=""><span class="input-l"><label for="field_name">From</label></span>
+                                                    <div class="it_w"><input type="text" name="m_feedback_field_name" value="{$r.sender}" id="field_name" class="it it_w__3gc" cols="35" maxlength="80" rows="3"></div><span class="input-e"></span></div>
+                                                <div class="form_i" style=""><span class="input-l"><label for="field_e-mail">Sender</label></span>
+                                                    <div class="it_w"><input type="text" name="m_feedback_u_email" value="{$r.sender_email}" id="field_e-mail" class="it it_w__3gc" cols="35" maxlength="80" rows="3"></div><span class="input-e"></span></div>
+                                                <div class="form_i"><span class="input-l"><label for="field_subject">Subject</label></span>
+                                                    <div class="it_w">{$r.subject}</div><span class="input-e"></span></div>
+                                                <div style="">
+                                                    <div class="form_i"><span class="input-l"><label for="field_message">Message</label></span>
+                                                        <div class="itx_w">{$r.message}</div>
+                                                    </div>
+                                                    <!--<form name="m_feedback_form" id="m_feedback_form" enctype="multipart/form-data" method="post">
+                                                        <div class="form form__gl-2-2">
+                                                            <div class="form_i"><span class="input-d">Maximum file size 1024Kb</span><span class="input-l"><label for="attachment">Attach a file</label></span>
+                                                                <div class="it_w"><input type="file" accept="image/*" name="feedback_file" value="" id="attachment"><input type="hidden" name="submit" value="submit"></div><span class="input-e"></span></div>
+                                                            <div class="form_i">
+                                                                <div id="fileTransferBar" align="left" style="display: none;">Loading. Please wait.<br><br><img src="http://localhost/music/css/images/filetransfer_220_orange.gif" alt=""></div>
+                                                                <div id="feedback_upload_output"></div>
+                                                            </div>
+                                                        </div>
+                                                    </form>-->
+													{if $r.attachment}
+												<div class="form_i">
+												<span class="input-l"><label for="field_subject">Attachment</label></span>
+												
+													<a href="javascript:void(0);" onclick="document.getElementById('fdb-attachment').style.display='';this.style.display='none';">Show attachment</a>
+                                                    <div style="display:none;" id="fdb-attachment" class="fdb-attachment"><a title="View full size" href="/stcmd/feedback_attachments/{$r.attachment}" target="_blank"><img src="/stcmd/feedback_attachments/{$r.attachment}"/></a></div>
+													</div>
+													{/if}
+													
+                                                <div class="form_i"><span class="input-l"><label for="field_subject">Reply</label></span>
+                                                    <div class="it_w">
+													<textarea id="field_message" name="m_feedback_u_message" class="itx" cols="35" maxlength="1000" style="overflow-y: auto;" rows="3"></textarea>
+													</div>
+													<span class="input-e"></span>
+													</div>
+													
+													
+													
+													<br/>
+                                                    <div class="formButtonContainer" style="padding: 0px;"><input type="button" name="button_send" send-m-feedback="true" value="Reply"><span class="lp vl_a-sw ml-15 curPointer">Cancel</span></div>
+                                                </div><input type="hidden" id="feedback_upl_file" value="">
+                                                <div class="hook hookInvisible"></div>
+                                                <div class="hook"></div>
+                                            </div>
+                                        </form>
+
+</div>
+{/foreach}
+{/strip}

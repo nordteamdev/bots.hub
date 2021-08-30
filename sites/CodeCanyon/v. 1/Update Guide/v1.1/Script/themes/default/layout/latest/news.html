@@ -1,0 +1,79 @@
+<nav class="navbar latest-news-nav">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-custom-collapse">
+       <ul class="nav navbar-nav">
+        <?php 
+        $category = 0;
+        foreach ($fl['news_categories'] as $key => $value) {
+            $category++;
+            if ($category < 8) {
+                 ?>
+            <li><a href="{{LINK latest-news/<?php echo $key ?>}}"><?php echo $value ?></a></li>
+            <?php
+            }
+        } ?>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<div class="">
+	<div class="row">
+        <div class="col-lg-6 no-padding-mobile no-padding-left">
+            {{TOP_4}}
+            <div class="clear"></div>
+        </div>
+        <div class="col-lg-6 no-padding-left">
+             {{TOP_BIG}}
+        </div> 
+    </div>
+    <div class="clear"></div>
+    <div class="custom-page">
+        <div class="col-md-9 no-padding-right">
+            <h4 class="news-color-text">
+                <i class="fa fa-fw fa-file-text"></i> {{LANG latest_news}}
+            </h4>
+            <div class="row">
+                <div id="news-wrapper">
+                <?php 
+                $len = count($fl['latest_page_news']);
+                foreach ($fl['latest_page_news'] as $key => $fl['latest_news_data']): 
+                    $fl['latest_news_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['latest_news_data']['last'] = true;
+                    } 
+                    echo FL_LoadPage('home/latest-news');
+                endforeach;
+                if($len == 0) {
+                 echo '<div class="center no-results">{{LANG no_posts_to_show}}</div>';
+                }
+                ?>
+                </div>
+                <?php
+                if($len > 2) {
+                ?>
+                <div class="load-more-button-wrapper">
+                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('news-wrapper', 'news', $('.latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>)">
+                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_news}}
+                    </button>
+                </div>
+                <?php } ?>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h4 class="lists-color-text"><i class="fa fa-fw fa-bars"></i> {{LANG categories}}</h4>
+            <ul class="list-group categories">
+                <li><a href="{{LINK latest-news}}">{{LANG all}}</a></li>
+                <?php 
+                foreach ($fl['news_categories'] as $key => $category): 
+                    echo '<li><a href="{{LINK latest-news/' . $key . '}}">' . $category . '</a></li>';
+                endforeach
+                ?>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<span class="pull-left rss-icon">
+    <a href="{{LINK latest-news}}/rss">RSS <i class="fa fa-rss" aria-hidden="true"></i></a>
+</span>

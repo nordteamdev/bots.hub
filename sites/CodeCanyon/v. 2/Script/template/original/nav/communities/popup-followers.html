@@ -1,0 +1,14 @@
+{strip}
+
+<ul class="comm_popup_followers">
+
+{foreach $res as $user}
+<li>
+<a href="/user/{$user.id}" class="closejbox" hrefattr="true"><img src="/getPhoto?p={$user.profile_photo}&sz=small"/><div>{$user.fullname}</div></a>
+</li>
+{foreachelse}
+<h3>{$this->lang['Community_no_followers']}</h3>
+{/foreach}
+</ul>
+
+{/strip}

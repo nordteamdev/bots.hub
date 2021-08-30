@@ -1,0 +1,18 @@
+<div class="wo_poke_users">
+	<?php //if( !Wo_IsPoked( $wo['poke']['user_id'] , $wo['user']['user_id'] ) ) { ?>
+		<button type="button" onclick="Wo_RegisterPokeBack(<?php echo $wo['poke']['user_id'];?>,this,<?php echo $wo['user']['user_id'];?>,<?php echo $wo['poke']['id'];?>)" class="btn btn-default btn-sm btn-main pull-right">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z" /></svg>
+			<span class="button-text"> <?php echo $wo['lang']['poke_back'];?> </span>
+		</button>
+	<?php //} ?>
+	<div class="poke_info">
+		<a href="<?php echo $wo['poke']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['poke']['username']?>">
+			<div class="avatar pull-left" style="background-image:url(<?php echo $wo['poke']['avatar']?>)"></div>
+		</a>
+		<span class="user-popover" data-id="<?php echo $wo['poke']['user_id'];?>" data-type="user">
+			<a href="<?php echo $wo['poke']['url'];?>" data-ajax="?link1=timeline&amp;u=<?php echo $wo['poke']['username']?>">
+				<span class="user-name"><?php echo $wo['poke']['username'];?></span>
+			</a>
+		</span>
+	</div>
+</div>

@@ -1,0 +1,99 @@
+<div class="login-con">
+	<div class="login-form content-shadow">
+		<form method="post" id="login-form">
+			<fieldset>
+				<div class="login_head_svg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M10,17.25V14H3V10H10V6.75L15.25,12L10,17.25M8,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H8A2,2 0 0,1 6,20V16H8V20H17V4H8V8H6V4A2,2 0 0,1 8,2Z" /></svg></div>
+				<h4>{{LANG login_to_account}}</h4>
+				<!-- Username input-->
+				<div class="errors hidden"></div>
+				<div class="form-group fl_cus_input">
+					<input id="username" name="username" type="username" class="form-control input-login" placeholder="" autofocus>
+					<label for="username">{{LANG username}}</label>
+				</div>
+				<!-- Password input-->
+				<div class="form-group fl_cus_input">
+					<input id="password" name="password" type="password" class="form-control input-login" placeholder="">
+					<label for="password">{{LANG password}}</label>
+				</div>
+				<div class="forgot_password">
+					<a href="{{LINK forgot_password}}">{{LANG forgot_password_mark}}</a>
+				</div>
+				<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession();?>">
+				<div class="login_signup_combo">
+					<div class="signup__">
+						<a class="dec" href="<?php echo FL_Link('register')?>">{{LANG create_account}}</a>
+					</div>
+					<div class="login__">
+						<button type="submit" class="btn btn-main">{{LANG login}}</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<?php if ($fl['login_with'] === true): ?>
+						<div class="col-md-12">
+							<p class="or-login">{{LANG or_connect_with}}</p>
+						</div>
+					<?php endif; ?>
+					<?php if ($fl['config']['facebook'] == 1): ?>
+						<div class="form-group login-with-button col-md-6">
+							<a href="<?php echo $fl['facebookLoginUrl'];?>" class="btn btn-main btn-facebook"><i class="fa fa-facebook"></i> {{LANG facebook}}</a>
+						</div>
+					<?php endif; ?>
+					<?php if ($fl['config']['twitter'] == 1): ?>
+						<div class="form-group login-with-button col-md-6">
+							<a href="<?php echo $fl['twitterLoginUrl'];?>" class="btn btn-main btn-twitter"><i class="fa fa-twitter"></i> {{LANG twitter}}</a>
+						</div>
+					<?php endif; ?>
+					<?php if ($fl['config']['google'] == 1): ?>
+						<div class="form-group login-with-button col-md-6">
+							<a href="<?php echo $fl['googleLoginUrl'];?>" class="btn btn-main btn-google"><i class="fa fa-google-plus"></i> {{LANG google_plus}}</a>
+						</div>
+					<?php endif ?>
+					<?php if ($fl['config']['vkontakte'] == 1): ?>
+						<div class="form-group login-with-button col-md-6">
+							<a href="<?php echo $fl['vkLoginUrl'];?>" class="btn btn-main btn-vk"><i class="fa fa-vk"></i> vk</a>
+						</div>
+					<?php endif ?>
+					<?php if ($fl['config']['wowonder'] == 1): ?>
+						<div class="form-group login-with-button col-md-12">
+							<a href="<?php echo $fl['wowonderLoginUrl'];?>" class="btn btn-main btn-wowonder">{{CONFIG wownder_site_name}}</a>
+						</div>
+					<?php endif; ?>
+				</div>
+			</fieldset>
+			
+			<div class="fl_loading_bar">
+				<svg width="120px" height="120px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(20 50)"> <circle cx="0" cy="0" r="7" fill="#f05125" transform="scale(0.59121 0.59121)"> <animateTransform attributeName="transform" type="scale" begin="-0.5625s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(40 50)"> <circle cx="0" cy="0" r="7" fill="#928efb" transform="scale(0.897436 0.897436)"> <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(60 50)"> <circle cx="0" cy="0" r="7" fill="#7fbb42" transform="scale(0.987321 0.987321)"> <animateTransform attributeName="transform" type="scale" begin="-0.1875s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(80 50)"> <circle cx="0" cy="0" r="7" fill="#32a0da" transform="scale(0.759663 0.759663)"> <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g></svg>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var login_form = $("form#login-form");
+	var login_button = login_form.find("button");
+    login_form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=login',
+    beforeSend: function() {
+      login_button.attr("disabled", true);
+      $('.fl_loading_bar').addClass('show');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+      	$(".errors").addClass('hidden');
+      	login_button.html('<i class="fa fa-check"></i> {{LANG redirecting}}');
+        setTimeout(function () {
+        	window.location.href = data.location;
+        }, 1000);
+      } else {
+        var errors = data.errors.join("<br>");
+        $(".errors").removeClass('hidden');
+        $(".errors").html(errors);
+        login_button.attr("disabled", false);
+      }
+      $('.fl_loading_bar').removeClass('show');
+    }
+  });
+});
+</script>

@@ -1,0 +1,47 @@
+<div class="media-link_cnt">
+    <div class="media-link_ic">
+        <div class="ic ic_reshare"></div>
+    </div>
+	
+    <div class="media-link_c va_target">
+		
+
+        <div class="media-shared_n">
+		
+            <div class="ucard-mini"><img class="ucard-mini_img _shared" src="/getPhoto?p={$author.profile_photo}&sz=small&g={$author.gender}" alt="{$author.fullname}" width="32" height="32">
+                <div class="ucard-mini_cnt _shared">
+                    <div class="ucard-mini_cnt_i ellip"><span><span class="shortcut-wrap kn_shortcutmenu">
+			<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}","uphoto":"{$author.profile_photo}","ugender":"{$author.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$author.id}">
+			</div>
+					
+					<a href="/user/{$author.id}" class="ob" hrefattr="true">{$author.fullname}</a></span>
+					{$post_mode}
+					
+		{assign var=post_details value=$this->getPostDetails($r.text)}
+	
+		{if $r.original_post_community == 'yes'}
+
+		{assign var=club_details value=$this->getCommunityDetails($clubid)}
+
+		<span class="glyphicon glyphicon-triangle-right feed-to-club"></span>
+		<a href="/community/{$club_details.id}" hrefattr="true" class="ob">{$club_details.name}</a>
+		
+		{/if}			
+		
+		{if isset($tagged_friends)}{$tagged_friends}{/if} {if isset($tagged_places[0]) && count($tagged_places)}{$tagged_places[0]}{/if}	
+		<div  class="h-mod sc-menu_w" data-module="ShortcutMenu"></div>
+                        </span>
+                        
+						
+                    </div>
+                    <div class="ucard-mini_cnt_i ellip"></div>
+                </div>
+            </div>
+			
+			</div>
+			
+		
+		
+    </div>
+	
+	</div>

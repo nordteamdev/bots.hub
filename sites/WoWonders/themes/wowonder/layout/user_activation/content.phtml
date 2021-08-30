@@ -1,0 +1,102 @@
+<div class="page-margin list-group">
+   <div class="center-container">
+      <h2><?php echo $wo['lang']['activation_oops'];?></h2>
+      <h4 class="icon" style="color: <?php echo $wo['config']['btn_background_color'];?>"><i class="fa fa-user-times"></i></h4>
+      <h4><?php echo $wo['lang']['activation_method'];?></h4><br>
+      <form action="#" method="post" class="activate-form">
+        <div id="activate-alerts"></div>
+        <h5><?php echo $wo['lang']['activation_email'];?></h5>
+      	<input type="text" class="form-control" name="email" placeholder="<?php echo $wo['lang']['email_address'];?>" value=""><br><br>
+      	<?php if ($wo['config']['sms_or_email'] == 'sms') { ?>
+      	<p><?php echo $wo['lang']['activation_or'];?></p><hr>
+        <h5><?php echo $wo['lang']['activation_phone'];?></h5>
+      	<input type="text" class="form-control" name="phone_number" placeholder="<?php echo $wo['lang']['phone_num_ex'];?>" value=""><br><br>
+      	<?php } ?>
+      	<button type="submit" class="btn btn-main btn" id="activate-submit">
+      		<i class="fa fa-paper-plane-o progress-icon" data-icon="paper-plane-o"></i> <?php echo $wo['lang']['activation_send_code'];?>
+      	</button>
+      </form>
+      <?php if ($wo['config']['sms_or_email'] == 'sms') { ?>
+      <form action="#" method="post" class="activate-code-form">
+        <div id="activate-code-alerts"></div>
+      	<input type="text" class="form-control" name="confirm_code" placeholder="Confirmation code">
+      	<input type="hidden" class="form-control" name="user_id" value="<?php echo $wo['user']['user_id'];?>"><br><br>
+      	<div class="form-group" id="re-send" style="display:none">
+            <div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCodeAc();"><i class="fa fa-repeat"></i> <?php echo $wo['lang']['activation_resend'];?></a>
+            </div>
+        </div>
+      	<div id="hideMsg" class="item">
+            <?php echo $wo['lang']['activation_should_receive'];?> <h2><span></span></h2>
+        </div>
+      	<button type="submit" class="btn btn-main btn" id="activate-code-submit">
+      		<i class="fa fa-check progress-icon" data-icon="check"></i> <?php echo $wo['lang']['confirm'];?>
+      	</button>
+      </form>
+      <?php } ?>
+   </div>
+</div>
+<script>
+$(function() {
+	$('.activate-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=resned_ac_email',
+    beforeSend: function() {
+      Wo_progressIconLoader($('.activate-form').find('button'));
+      $('#activate-submit').attr('disabled',true);
+    },
+    success: function(data) {
+      $('#activate-submit').attr('disabled',false);
+      if (data.status == 200) {
+        $('#activate-alerts').html('<div class="success-container">' + data.message + '</div>');
+        $('.success-container').fadeIn(300);
+      } else if(data.status == 600) {
+        $('#activate-alerts').html('<div class="success-container">' + data.message + '</div>');
+        $('.success-container').fadeIn(300).delay(2000).fadeOut(300, function () {
+        	$('.activate-form').fadeOut(300, function () {
+        		$('.activate-code-form').fadeIn(300);
+        	});
+        });
+        Wo_SetTimer();
+      } else {
+        var errors = data.errors.join("<br>");
+        $('#activate-alerts').html('<div class="error-container">' + errors + '</div>');
+        $('.error-container').fadeIn(300);
+      }
+      Wo_progressIconLoader($('.activate-form').find('button'));
+    }
+  });
+
+$('.activate-code-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+    beforeSend: function() {
+      Wo_progressIconLoader($('.activate-code-form').find('button'));
+      $('#activate-code-submit').attr('disabled',true);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+          window.location.href = data.location;
+      } else {
+        $('#activate-code-submit').attr('disabled',false);
+        var errors = data.errors.join("<br>");
+        $('#activate-code-alerts').html('<div class="error-container">' + errors + '</div>');
+        $('.error-container').fadeIn(300);
+      }
+      Wo_progressIconLoader($('.activate-code-form').find('button'));
+    }
+  });
+});
+function Wo_ResendCodeAc() {
+  $('#re-send').hide();
+  Wo_SetTimer();
+  $.post(Wo_Ajax_Requests_File() + '?f=resned_code_ac', function(data) {
+       if (data.status == 200) {
+          $('#activate-code-alerts').html('<div class="success-container">' + data.message + '</div>');
+          $('.success-container').fadeIn('fast');
+      } else {
+          $('#activate-code-submit').attr('disabled',false);
+          var errors = data.errors.join("<br>");
+          $('#activate-code-alerts').html('<div class="error-container">' + errors + '</div>');
+          $('.error-container').fadeIn(300);
+      }
+  });
+}
+</script>

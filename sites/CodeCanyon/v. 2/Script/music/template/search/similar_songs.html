@@ -1,0 +1,104 @@
+<!-------------------------------- SIMILAR SONGS (radio) [ template ] -------------------------->
+
+{strip}
+
+
+<div class="mus_content_w">
+  
+  
+  {foreach $query as $result}
+  {assign var=download value=''}
+  {if $result.language === $this->show_prch_icon}
+  {assign var=download value='__download'}
+  {/if}
+  
+  {if $c === 0}
+  <div class="mus_album">
+    <div class="mus_album_i__fixed">
+      <div class="mus_album_i_w">
+        <div class="mus_album_side_w curPointer">
+          <div class="mus_album_side mus_album_side__b">
+            
+            <img alt="" style="width:128px;height:128px;" class="mus_album_i" src="{$this->default_cover}">
+                  
+          </div>
+          <div class="mus_album_side mus_album_side__a">
+            <img alt="" style="width:128px;height:128px;" class="mus_album_i" src="{$result.cover}">
+            
+            <img alt="" style="width:128px;height:128px;" class="mus_album_i" src="{$this->default_cover}">
+          </div>
+           </div>
+              </div>
+              <div class="m_c_s_c_go_to mt-5">
+                {$result.artist}
+              </div>
+                </div>
+                <div>
+                  <div class="mus_h2 mb-5">
+                    <span class="mus_h2_tx ellip">
+                      Similar to {$this->
+                      keyword}
+                    </span>
+                  </div>
+                </div>
+                <div class="mus-tr_lst mus_scroll-overlay">
+                  <div class="mus_scroll-overlay_dummy">
+                  </div>
+                  <ol>
+                    {/if}
+                    
+                    <li target="#p99m_sec_artist_radio_{$result.id}">
+                      <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_m_sec_artist_radio_{$result.id}">
+                        <div class="mus-tr_hld">
+                          <span class="mus-tr_play __play js-mus-tr_play" id="p99m_sec_artist_radio_{$result.id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$result.path}","cover":"{$result.cover}"{literal}}{/literal}' >
+                          </span>
+                          {if $download !== ''}
+                          <span class="mus-tr_download js-mus-tr_download" title="Download">
+                          </span>
+                          {/if}
+                          <div class="mus-tr_cnt">
+                            <a class="mus-tr_a mus-tr_artist">
+                              {$result.artist}
+                            </a>
+                            &nbsp;&#8211;&nbsp;
+                            <a class="mus-tr_a mus-tr_song">
+                              {$result.title}
+                            </a>
+                            <span class="foh-s mus-tr_info">
+                              &nbsp;from&nbsp;
+                              <a class="mus-tr_a mus-tr_album">
+                                <span class="mus-tr_album-ic ic10_album">
+                                </span>
+                                {$result.album}
+                              </a>
+                            </span>
+                          </div>
+                          <div class="mus-tr_right-controls foh-s" id="rc_m_sec_artist_radio_{$result.id}">
+                            <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+                            </span>
+                            <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+                            </span>
+                          </div>
+                          <span class="mus-tr_time">
+                            {$result.time}
+                          </span>
+                        </div>
+                        {if $result.video > '0'}
+                        <div class="mus-tr_video" data-showVideo="true" data-video="{$result.video}">
+                        </div>
+                        {/if}            
+                      </div>
+                    </li>
+
+                    {assign $c $c++ nocache}
+
+           {/foreach}
+         </ol>
+                </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{/strip}

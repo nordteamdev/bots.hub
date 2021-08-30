@@ -1,0 +1,60 @@
+{strip}
+<section id="group_pg_details">
+{foreach $res as $r}
+{assign var=subscribed value=$this->isSubscribed($r.id)}
+{assign var=pictures_count value=$this->getCommunityAlbumsPicturesCount($r.id,$albumid)}
+{assign var=isadmin value=$this->checkAdmin($this->USER['id'],$r.admin)}
+{if $isadmin}<span id="isadm"></span>{/if}
+
+{include file="{$this->group_templates}/group-header.html"}
+
+	
+	<div class="comm_op_cover_cnt">
+
+<div class="community_pg_albums">
+
+
+{$this->headerMenu($album_title,$r.id)}
+
+<div class="photos_album_intro">
+    <h1 id="h1albumtitle">{$album_title}</h1>
+    <div class="photos_album_intro_desc" style="display: none"></div>
+    <div class="photos_album_intro_info"><span class="photos_album_info">{$pictures_count} {$this->lang['Items']}</span>
+	&nbsp;{if $albumid > 0 && $isadmin}<span class="divide">|</span>&nbsp;
+	<span class="photos_album_info"><a href="javascript:void(0);" data-si='{ldelim}"albumid":"{$albumid}","clubid":"{$r.id}"{rdelim}' onclick="communityAlbumSettings(event,this);">{$this->lang['Edit_album']}</a></span>
+	
+	{/if}</div>
+</div>
+
+
+
+
+{if $isadmin} 
+
+<div class="comm_album_add_pictures">
+
+<div class="comm_add_pic_txt">{$this->lang['Add_pictures_videos']}</div>
+<form enctype="multipart/form-data" method="post">
+<input accept="image/*,video/*" data-clubid="{$r.id}" data-albumid="{$albumid}" onchange="communityUploadFiles(event);" class="html5-upload-link _community_cover icommunity in-album" multiple="true" id="files" name="files[]" size="1" title="" type="file" value="">
+</form>
+
+</div>
+
+
+{/if}
+
+{include file="{$this->group_templates}/album-items.html"}
+
+
+
+</div>
+					
+	</div>
+
+
+   {/foreach}
+   
+
+   
+   </section>
+{/strip}

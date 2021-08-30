@@ -1,0 +1,51 @@
+<div class="sidebar-conatnier">
+  <ul class="list-group trending" >
+      <li class="list-group-item side-widget-name" contenteditable="false"><?php echo $wo['lang']['trending'];?></li>
+        <?php 
+        $hashtags = Wa_GetTrendingHashs('popular');
+        if (count($hashtags) > 0) {
+          foreach ($hashtags as $wo['hashtag']) { 
+        ?>
+        <li class="list-group-item" dir="auto">
+          <a href="<?php echo $wo['hashtag']['url'];?>"><i class="zmdi zmdi-trending-up zmdi-hc-fw" style="color:#03A9F4;font-weight: bold;font-size: 16px;"></i> #<?php echo $wo['hashtag']['tag'];?></a>
+        </li>
+        <?php
+          } 
+        }
+        ?>
+      <div class="clear"></div>
+    </ul>
+    <ul class="list-group" id="sidebar-user-list-container">
+      <li class="list-group-item text-muted side-widget-name" contenteditable="false">
+        <?php echo $wo['lang']['people_you_may_want_to_meet'];?>
+        </span>
+      </li>
+      <div class="sidebar-users-may-know-container">
+        <?php 
+        foreach (Wo_GetAllUsers(7, 'sidebar') as $wo['UsersList']) {
+           $wo['UsersList']['user_name'] = substr($wo['UsersList']['name'],0,10);
+           echo Wo_LoadPage('sidebar/sidebar-user-list');
+        } 
+        ?>
+      </div>
+      <div class="clear"></div>
+    </ul>
+    
+      <?php 
+      $sidebar_ad = Wo_GetAd('sidebar', false);
+      if (!empty($sidebar_ad)) {?>
+      <ul class="list-group sidebar-ad">
+         <?php echo $sidebar_ad; ?>
+      </ul>
+     <?php } ?>
+     <?php echo Wo_LoadPage('footer/sidebar-footer')?>
+</div>
+<style>
+.wonderful-user {padding-bottom: 10px;}
+.wonderful-user .avatar img{width: 50px !important;	height: 50px;}
+
+@media (max-width: 667px){
+.wonderful-user {width: 100% !important;display: table !important;text-align: inherit;border-radius: 0px;margin: 10px 0px !important;box-shadow: none;border-bottom: 1px solid #e8e8e8;padding: 0px 8px 8px;}
+.wonderful-user .avatar img {margin-right: 10px;border-radius: 50%;border-top-left-radius: 50%;border-top-right-radius: 50%;border: 1px solid #f3f3f3;}
+}
+</style>

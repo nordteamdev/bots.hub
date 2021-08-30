@@ -1,0 +1,20 @@
+<tr class="setting-blog" id="BlogID_<?php echo $wo['blog']['id']?>" data-blog-id="<?php echo $wo['blog']['id']?>">
+   <td><?php echo $wo['blog']['id']?></td>
+   <td>
+      <a href="<?php echo $wo['blog']['url']; ?>">LINK</a>
+   </td>
+   <td>
+      <a href="<?php echo $wo['blog']['author']['url']; ?>">
+        <img src="<?php echo $wo['blog']['author']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['blog']['author']['name']?> Avatar Picture">
+         <?php echo $wo['blog']['author']['name']; ?>
+      </a>
+   </td>
+   <td>
+     <div class="ajax-time" title="<?php echo date('c',$wo['blog']['posted']); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['blog']['posted']);?>
+     </div>
+   </td>
+   <td>
+      <button onclick="Wo_DeleteBlog(<?php echo $wo['blog']['id']?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

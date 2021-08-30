@@ -1,0 +1,191 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Manage Payments</h2>
+    </div>
+    <!-- Widgets -->
+    <div class="row clearfix">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-black hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL EARNINGS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllPayment(); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-black hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="content">
+                    <div class="text">EARNINGS THIS MONTH</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountThisMonthPayment(); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-green hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">stars</i>
+                </div>
+                <div class="content">
+                    <div class="text">STAR SALES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllPaymentData('weekly'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-orange hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">whatshot</i>
+                </div>
+                <div class="content">
+                    <div class="text">HOT SALES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllPaymentData('monthly'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-red hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">flash_on</i>
+                </div>
+                <div class="content">
+                    <div class="text">ULTIMA SALES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllPaymentData('yearly'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons"><svg style="width:90%;height:90%;" viewBox="0 0 24 24">
+    <path fill="#fff" d="M2.81,14.12L5.64,11.29L8.17,10.79C11.39,6.41 17.55,4.22 19.78,4.22C19.78,6.45 17.59,12.61 13.21,15.83L12.71,18.36L9.88,21.19L9.17,17.66C7.76,17.66 7.76,17.66 7.05,16.95C6.34,16.24 6.34,16.24 6.34,14.83L2.81,14.12M5.64,16.95L7.05,18.36L4.39,21.03H2.97V19.61L5.64,16.95M4.22,15.54L5.46,15.71L3,18.16V16.74L4.22,15.54M8.29,18.54L8.46,19.78L7.26,21H5.84L8.29,18.54M13,9.5A1.5,1.5 0 0,0 11.5,11A1.5,1.5 0 0,0 13,12.5A1.5,1.5 0 0,0 14.5,11A1.5,1.5 0 0,0 13,9.5Z" />
+</svg></i>
+                </div>
+                <div class="content">
+                    <div class="text">VIP SALES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllPaymentData('lifetime'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+        <!-- Bar Chart -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>STATICS</h2>
+                </div>
+                <div class="body">
+                    <div id="admin-chart-container" style="min-width: 100%; height: 400px; margin: 0 auto;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Bar Chart -->
+    </div>
+</div>
+<?php 
+$percentage = (30 / 58) * 100;
+//echo $percentage . "%";
+$user_statics = array();
+$page_statics = array();
+$groups_statics = array();
+$posts_statics = array();
+$months = array('1','2','3','4','5','6','7','8','9','10','11','12');
+// user_statics
+foreach ($months as $value) {
+   $user_statics[] = Wo_GetRegisteredPaymentsStatics($value, 'weekly');
+}
+$user_statics = implode(', ', $user_statics);
+
+// page_statics
+foreach ($months as $value) {
+   $page_statics[] = Wo_GetRegisteredPaymentsStatics($value, 'monthly');
+}
+$page_statics = implode(', ', $page_statics);
+
+// groups_statics
+foreach ($months as $value) {
+   $groups_statics[] = Wo_GetRegisteredPaymentsStatics($value, 'yearly');
+}
+$groups_statics = implode(', ', $groups_statics);
+
+foreach ($months as $value) {
+   $posts_statics[] = Wo_GetRegisteredPaymentsStatics($value, 'lifetime');
+}
+$posts_statics = implode(', ', $posts_statics);
+?>
+<script>
+   $(function () {
+    Highcharts.setOptions({
+      colors: ['#6abd46', '#f2b92b', '#ce3d3d', '#4c75a3']
+    });
+    $('#admin-chart-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '<?php echo date("Y");?>'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Star Sales',
+            data: [<?php echo $user_statics;?>]
+
+        }, {
+            name: 'Hot Sales',
+            data: [<?php echo $page_statics;?>]
+
+        }, {
+            name: 'Ultima Sales',
+            data: [<?php echo $groups_statics;?>]
+
+        }, {
+            name: 'Vip Sales',
+            data: [<?php echo $posts_statics;?>]
+
+        }]
+    });
+});
+</script>

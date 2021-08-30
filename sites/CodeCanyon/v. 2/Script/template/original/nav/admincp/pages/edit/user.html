@@ -1,0 +1,193 @@
+{strip}
+<div class="ad-rowcol">
+{foreach $q as $r}
+
+<h2>Edit user #{$r.id} <i>{$r.fullname}</i></h2>
+ 
+{assign var=bthday value=explode("-",$r.birthday)}
+{assign var=byear value=$bthday[0]}
+{assign var=bmonth value=$bthday[1]}
+{assign var=bday value=$bthday[2]}
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=takeuseredit" id="fform" method="post">
+    <fieldset>
+        <div class="setting-general-alert setting-update-alert"></div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-3" for="name">Name</label>
+            <div class="col-md-6">
+                <input id="name" name="name" type="text" class="form-control input-md" value="{$r.name}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="surname">Surname</label>
+            <div class="col-md-6">
+                <input id="surname" name="surname" type="text" class="form-control input-md" value="{$r.surname}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="email">E-mail</label>
+            <div class="col-md-6">
+                <input id="email" name="email" type="text" class="form-control input-md" value="{$r.email}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+            <!-- Select Basic -->
+			<div class="form-group">
+			<label class="col-md-3" for="birthday">Birthday</label>
+            <div class="col-md-6 no-padding-right">
+
+			
+                            <select id="day" class="isl __day" name="day">
+                                <option value="" disabled="">{$this->lang['sg_day']}</option>
+
+                                {for $i=1 to 31}
+                                <option value="0{$i}" {if $bday == $i}selected{/if}>{$i}</option>
+                                {/for}
+
+                            </select>
+							
+                            <select id="month" class="isl __month" name="month">
+                                <option value="" disabled="">{$this->lang['sg_month']}</option>
+                                <option value="01" {if $bmonth == '01'}selected{/if}>{$this->lang['january']}</option>
+                                <option value="02" {if $bmonth == '02'}selected{/if}>{$this->lang['february']}</option>
+                                <option value="03" {if $bmonth == '03'}selected{/if}>{$this->lang['march']}</option>
+                                <option value="04" {if $bmonth == '04'}selected{/if}>{$this->lang['aprill']}</option>
+                                <option value="05" {if $bmonth == '05'}selected{/if}>{$this->lang['may']}</option>
+                                <option value="06" {if $bmonth == '06'}selected{/if}>{$this->lang['june']}</option>
+                                <option value="07" {if $bmonth == '07'}selected{/if}>{$this->lang['july']}</option>
+                                <option value="08" {if $bmonth == '08'}selected{/if}>{$this->lang['august']}</option>
+                                <option value="09" {if $bmonth == '09'}selected{/if}>{$this->lang['september']}</option>
+                                <option value="10" {if $bmonth == '10'}selected{/if}>{$this->lang['octomber']}</option>
+                                <option value="11" {if $bmonth == '11'}selected{/if}>{$this->lang['november']}</option>
+                                <option value="12" {if $bmonth == '12'}selected{/if}>{$this->lang['december']}</option>
+                            </select>
+							
+                            <select id="year" class="isl __year" name="year">
+                                <option value="" disabled="">{$this->lang['sg_year']}</option>
+								{section name="yearLoop" loop=date('Y')-5 max=(date('Y')-5 - 1925) step=-1}
+								<option value="{$smarty.section.yearLoop.index}" {if $byear == $smarty.section.yearLoop.index}selected{/if}>{$smarty.section.yearLoop.index}</option>	
+								{/section}
+                            </select>
+			   
+            </div>
+		</div>
+		
+
+		
+<div class="form-group">
+                        <label class="col-md-3" for="gender">Gender</label>
+            <div class="col-md-5"> 
+               <label class="radio-inline" for="gender-0">
+               <input type="radio" name="gender" id="gender-0" value="male" {if $r.gender === "male"}checked{/if}>
+               Male               </label> 
+               <label class="radio-inline" for="gender-1">
+               <input type="radio" name="gender" id="gender-1" value="female" {if $r.gender === "female"}checked{/if}>
+               Female               </label>
+            </div>
+         </div>
+		 
+		 
+		 
+            <!-- Select Basic -->
+			<div class="form-group">
+			<label class="col-md-3" for="birthday">Location</label>
+            <div class="col-md-6 inline">
+			 
+					<input id="reg_country" name="country" value="{$r.location}"  class="form-control input-md" type="text">
+						<input type="hidden" name="ncountry" id="real_country" value="{$r.location}" />
+							
+			</div>
+ 
+			</div>
+			
+<div class="form-group">
+                        <label class="col-md-3" for="status">Status</label>
+            <div class="col-md-5"> 
+               <label class="radio-inline" for="status-0">
+               <input type="radio" name="status" id="status-0" value="confirmed" {if $r.status === "confirmed"}checked{/if}>
+               Confirmed               </label> 
+               <label class="radio-inline" for="status-1">
+               <input type="radio" name="status" id="status-1" value="pending" {if $r.status === "pending"}checked{/if}>
+               Pending               </label>
+            </div>
+         </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="balance">Balance</label>
+            <div class="col-md-6">
+                <input id="balance" name="balance" type="number" class="form-control input-md" value="{$r.balance}">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="username">@Username</label>
+            <div class="col-md-6">
+                <input id="username" name="username" type="text" class="form-control input-md" value="{$r.username}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+{if $this->USER['id'] == $r.id}
+<div class="form-group">
+			<label class="col-md-3" for="class">User Class</label>
+            <div class="col-md-6">
+
+		
+							
+                            <select id="class" class="isl" name="class">
+
+						<option value="UC_SYSOP" selected>SYSOP</option>
+</select>
+			   
+            </div>
+		</div>
+{else}
+	{if ($this->USER['class'] === "UC_SYSOP" || $this->USER['class'] === "UC_ADMINISTRATOR") && !($r.class === "UC_SYSOP")}
+
+ <!-- Select Basic -->
+			<div class="form-group">
+			<label class="col-md-3" for="class">User Class</label>
+            <div class="col-md-6">
+
+		
+							
+                            <select id="class" class="isl" name="class">
+                                <option value="" disabled="">class</option>
+
+						<option value="UC_USER" {if $r.class == "UC_USER"}selected{/if}>USER</option>
+						<option value="UC_MODERATOR" {if $r.class == "UC_MODERATOR"}selected{/if}>MODERATOR</option>
+						{if $this->USER['class'] === "UC_SYSOP"}<option value="UC_ADMINISTRATOR" {if $r.class == "UC_ADMINISTRATOR"}selected{/if}>ADMINISTRATOR</option>{/if}
+                            </select>
+			   
+            </div>
+		</div>
+{/if}{/if}	
+		
+        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{$r.id}">
+    </fieldset>
+</form>
+
+
+{foreachelse}
+<h2>User not found.</h2>
+{/foreach}
+</div>
+{/strip}

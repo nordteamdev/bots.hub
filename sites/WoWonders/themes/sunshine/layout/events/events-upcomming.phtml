@@ -1,0 +1,27 @@
+<?php echo Wo_LoadPage('events/includes/header'); ?>
+	
+	<?php if (count($wo['events']) > 0): ?>
+		<div id="events-upcomming">
+			<?php foreach ($wo['events'] as $wo['event']): ?>
+				<?php echo Wo_LoadPage('events/includes/events-list'); ?>
+			<?php endforeach; ?>
+			<div class="clear"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-sx-12">
+			 	<div class="posts_load">
+				    <?php if (count($wo['events']) > 9): ?>
+					<div class="load-more">
+	                    <button class="btn btn-default text-center pointer load-more-events" data-events-type="upcomming">
+	                    <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i>
+	                    	<?php echo $wo['lang']['load_more'] ?>
+	                    </button>
+	                </div>
+	                <?php endif ?>
+				</div>
+			</div>
+		</div>
+	<?php else: ?>
+		<?php echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> '. $wo['lang']['no_events_found'] .' </h5>';?>
+	<?php endif; ?>
+<?php echo Wo_LoadPage('events/includes/footer'); ?>

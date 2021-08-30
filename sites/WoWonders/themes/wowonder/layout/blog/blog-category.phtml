@@ -1,0 +1,109 @@
+<div class="page-margin products">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="latest-blogs" id="blog-list">
+				<?php
+					$pages = Wo_GetBlogs(array("category" => $_GET['id'],'limit' => 10));
+						if (count($pages) > 0) {
+		                	foreach ($pages as $wo['blog']) {
+		                    	echo Wo_LoadPage('blog/includes/card-horiz-list');
+		                	}
+		                } 
+		                else {
+		                	echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> ' . $wo['lang']['no_blogs_found'] . '</h5>';
+		                }
+				?>
+			</div> 
+			<div class="loading-alert"></div>
+ 
+			<div class="posts_load">
+			    <?php if (count($pages) >= 0): ?>
+				<div class="load-more">
+                    <button class="btn btn-default text-center pointer load-more-blogs" id="hren" >
+	                    <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> 
+	                    <?php echo $wo['lang']['load_more_blogs'] ?>
+                	</button>
+                </div>
+                <?php endif ?>
+			</div>	
+		</div>
+		<div class="col-md-4">
+			<div class="search-artiles-form">
+				<form>
+					<div class="inner-addon left-addon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="glyphicon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+						<input type="text" value="" class="form-control" placeholder="<?php echo $wo['lang']['search'] ?>" id="search-art">
+					</div>
+				</form>
+			</div>
+
+			<div class="main-blog-sidebar" id="category-page">
+				<!--Categories-->
+				<div class="widget">
+					<h4 class="recent-articles"><?php echo $wo['lang']['categories'] ?></h4>
+					<ul class="popular-categories">
+						<?php 
+							$category_id = (!empty($_GET['id'])) ? (int) $_GET['id'] : 0;
+							foreach ($wo['page_categories'] as $key => $category) {
+								$active = ($category_id == $key) ? 'active' : '';
+						?>
+						<li class="<?php echo $active?>">
+							<a href="<?php echo Wo_SeoLink('index.php?link1=blog-category&id=' . $key) ?>" data-ajax="?link1=blog-category&id=<?php echo $key?>"><?php echo $category;?></a>
+						</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+
+  var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    };
+  })();
+
+  $("#search-art").keyup(function() {
+      delay(function(){
+      if ($("#search-art").val().trim()) {
+	      $.ajax({
+	        url: Wo_Ajax_Requests_File(),
+	        type: 'GET',
+	        data: {f:"search-art",keyword:$("#search-art").val(),cat:'<?php echo $_GET['id']; ?>'},
+	        dataType: "json",
+	        success: function(data){
+	          if (data['status'] == 200) {
+	          	$(".latest-blogs").html(data['html'])
+	          }else{
+	          	$("#blog-list").html('<h5 class="search-filter-center-text"> ' + data['warning'] + '</h5>')
+	          }
+	        }
+	      })}
+      }, 1000 );
+  });
+
+   $(".load-more-blogs").click(function () {
+      $.ajax({
+         url: Wo_Ajax_Requests_File(),
+         type: 'GET',
+         dataType: 'json',
+         data: {f:"load-blogs",offset:($(".view-blog").length > 0) ? $(".view-blog:last").attr('id') : 0,id:<?php echo $_GET['id'] ?>},
+         success:function(data){
+            if (data['status'] == 200) {
+            	$(".latest-blogs h5.search-filter-center-text").remove();
+                $(".latest-blogs").append(data['html'])
+             }else{
+               $(".posts_load").remove()
+             }
+         }
+      })
+   });
+});
+</script>

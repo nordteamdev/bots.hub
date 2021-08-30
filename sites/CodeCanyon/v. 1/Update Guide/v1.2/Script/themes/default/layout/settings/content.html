@@ -1,0 +1,44 @@
+<div class="page-margin">
+   <div class="row">
+      <div class="col-md-9">
+        {{SETTINGS_PAGE}}
+      </div>
+      <div class="col-md-3 no-padding-left">
+        <div class="settings-sidebar content-shadow main-border-color">
+        	<ul class="list-group">
+    			  <li class="list-group-item <?php echo ($fl['setting_page'] == 'general') ? 'active': '';?>">
+              <a href="{{LINK settings/general/<?php echo $fl['setting']['username']?>}}">{{LANG general}}</a>
+            </li>
+    			  <li class="list-group-item <?php echo ($fl['setting_page'] == 'profile') ? 'active': '';?>">
+              <a href="{{LINK settings/profile/<?php echo $fl['setting']['username']?>}}">{{LANG profile}}</a>
+            </li>
+            <li class="list-group-item <?php echo ($fl['setting_page'] == 'password') ? 'active': '';?>">
+              <a href="{{LINK settings/password/<?php echo $fl['setting']['username']?>}}">{{LANG password}}</a>
+            </li>
+            <li class="list-group-item <?php echo ($fl['setting_page'] == 'avatar') ? 'active': '';?>">
+              <a href="{{LINK settings/avatar/<?php echo $fl['setting']['username']?>}}">{{LANG avatar_and_cover}}</a>
+            </li>
+
+            <li class="list-group-item <?php echo ($fl['setting_page'] == 'verification') ? 'active': '';?>">
+              <a href="{{LINK settings/verification/<?php echo $fl['setting']['username']?>}}">{{LANG verification}}</a>
+            </li>
+
+            <li class="list-group-item <?php echo ($fl['setting_page'] == 'wallet') ? 'active': '';?>">
+              <a href="{{LINK settings/wallet/<?php echo $fl['setting']['username']?>}}">
+                {{LANG wallet}}
+              </a>
+            </li>
+
+            <?php if ($fl['config']['delete_account'] == 1) { ?>
+            <li class="list-group-item <?php echo ($fl['setting_page'] == 'delete') ? 'active': '';?>">
+              <a href="{{LINK settings/delete/<?php echo $fl['setting']['username']?>}}">{{LANG delete_account}}</a>
+            </li>
+            <?php } ?>
+    			</ul>
+        </div>
+      </div>
+   </div>
+</div>
+<style>
+  .search-header input { width: 200px !important; }
+</style>

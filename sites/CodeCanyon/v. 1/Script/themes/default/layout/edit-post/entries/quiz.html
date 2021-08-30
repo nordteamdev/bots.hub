@@ -1,0 +1,22 @@
+<div id="create-quiz-results">
+	{{QUIZ_RESULTS}}
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-result-btn fl_btn" type="button" onclick="FL_CreateQuizResult(this);">
+	 <i class="fa fa-plus-square-o progress-icon" data-icon="plus-square-o"></i>
+	 {{LANG add_result}}
+	</button>
+</div>
+<hr style="border-color: #999;">
+<div class="quiz-questions-header">
+	<h5>{{LANG quiz_questions}}</h5>
+</div>
+<div id="create-quiz-questions">
+	{{QUIZ_QUESTIONS}}
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-question-btn fl_btn" type="button" onclick="FL_CreateQuizQuestion(this);">
+	 <i class="fa fa-question-circle progress-icon" data-icon="question-circle"></i>
+	 {{LANG add_question}}
+	</button>
+</div>

@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Languages > Add New Language & Key</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Add New Language</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="lang" name="lang" class="form-control">
+                                <label class="form-label">Language Name <small>Use only english letters, no spaces allowed. E.g: russian</small></label>
+                            </div>
+                        </div>
+                        <div>Note: This may take up to 5 minutes.</div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add Language</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Add New Key</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success key-settings-alert"></div>
+                    <form class="key-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="lang_key" name="lang_key" class="form-control">
+                                <label class="form-label">Key Name <small>Use only english letters, no spaces allowed, example: this_is_a_key</small></label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add Key</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_email_settings = $('form.email-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=add_new_lang',
+        beforeSend: function() {
+            form_email_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email-settings-alert').html('<i class="fa fa-check"></i> Language successfully added');
+                setTimeout(function () {
+		            window.location.href = '<?php echo Wo_LoadAdminLinkSettings('manage-languages'); ?>';
+		        }, 1000);
+            }
+            form_email_settings.find('button').text('Add Language');
+        }
+    });
+
+    var form_key_settings = $('form.key-settings');
+    form_key_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=add_new_lang_key',
+        beforeSend: function() {
+            form_key_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.key-settings-alert').html('<i class="fa fa-check"></i> Key successfully added');
+                 setTimeout(function () {
+                    window.location.href = data.url;
+                  }, 1000);
+            } else {
+                alert(data.message);
+            }
+            form_key_settings.find('button').text('Add Key');
+        }
+    });
+});
+</script>

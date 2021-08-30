@@ -1,0 +1,23 @@
+<div class="entry" data-type="facebook" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z"></path></svg>
+	   {{LANG facebook_post}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}"><br>
+	<input type="text" class="form-control" id="facebook-url" data-name="entry_facebook" placeholder="{{LANG fb_url}}"><br>
+	<input type="hidden" class="form-control" id="facebook-got-url">
+	<div class="fetched-facebook"></div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-blue fl_btn" type="button" onclick="FL_GetFacebookPost({{ENTRY_TIME}});">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG get_post}}
+	    </button>
+	</div>
+	<div class="clear"></div>
+</div>

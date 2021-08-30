@@ -1,0 +1,88 @@
+{strip}
+
+		{assign var=disable_share value=1}
+			
+				
+ 
+
+<div class="feed">
+	
+	<header>
+	
+		<div class="feed_ava"><img class="feed_ava_img" src="/getPhoto?p={$user_result.photo}&sz=small"></div>
+	    <div class="feed_ac">
+        <a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:void(0);" class="al feed_close"></a>
+		<span class="feed_date">{$this->feedConvDate($res.added)}</span>
+		</div>
+	
+		
+        <div class="feed_h">
+
+	
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user_result.id}","uname":"{$user_result.fullname}","uphoto":"{$user_result.photo}","ugender":"{$user_result.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$user_result.id}">
+		</div>
+		<a href="/user/{$user_result.id}" class="ob" hrefattr="true">{$user_result.fullname}</a>
+		</span>
+		
+
+        &nbsp;{$this->lang['shared_this']} 
+		
+		</div>
+	</header>
+
+ 
+
+
+	
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+
+		
+
+
+ 
+	
+        <div class="feed_b">
+			{include file="{$this->theme_dir}{$this->feed_templates}/shared-cnt.html"}
+		</div>
+	
+
+
+        <div class="feed_f">
+		{assign var=post_id value=$f_widget_id}
+		{assign var=res value=$w_res}
+
+		{assign var=item_type value="shared-content"}
+		{$res['itemid'] = $r.id}
+		
+		{include file="{$this->theme_dir}/feed/widget-list.html"}
+		
+        </div>
+
+    </div>
+</div>
+
+<script>
+var $feed_id = '{$res.id}', $shared_id = '{$id_shared_id}', $itemid = '{$r.share_id}', $author_id = '{$user_result.id}';
+
+{literal}
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget( $shared_id,
+						$after_app,
+						'shared-content',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+				
+				
+				
+				
+				
+				
+{/strip}
+				

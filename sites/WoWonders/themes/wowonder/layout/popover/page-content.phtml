@@ -1,0 +1,29 @@
+<div class="user-fetch">
+	<div class="user-cover" style="background: url(<?php echo $wo['popover']['cover']?>);"></div>
+	<div class="user-avatar">
+		<img src="<?php echo $wo['popover']['avatar']; ?>" alt="">
+	</div>
+	<div class="user-name">
+		<a href="<?php echo $wo['popover']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['popover']['username']?>"><?php echo $wo['popover']['name']; ?></a>
+		<?php if($wo['popover']['verified'] == 1) {   ?>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="verified-color feather feather-check-circle" title="<?php echo $wo['lang']['verified_page'];?>" data-toggle="tooltip"><path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z" /></svg>
+		<?php } ?>
+	</div>
+	<div class="user-footer">
+		<div class="user-buttons">
+			<div class="user-button user-follow-button"><?php echo Wo_GetLikeButton($wo['popover']['page_id']); ?></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<ul class="user-information">
+		<li>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+			<?php echo $wo['popover']['category'];?>
+		</li>
+		<li>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+			<?php echo Wo_CountPageLikes($wo['popover']['page_id']);?> <?php echo $wo['lang']['people_likes_this']; ?>
+		</li>
+	</ul>
+	<div class="clear"></div>
+</div>

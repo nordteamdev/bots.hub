@@ -1,0 +1,104 @@
+<div class="page-margin sun_oops user_not_active">
+	<div class="center-container">
+		<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 59 59" xml:space="preserve"> <g> <g> <path style="fill:#ECF0F1;" d="M18.613,42.552l-7.907,4.313c-0.464,0.253-0.881,0.564-1.269,0.903 C14.047,51.655,19.998,54,26.5,54c6.454,0,12.367-2.31,16.964-6.144c-0.424-0.358-0.884-0.68-1.394-0.934l-8.467-4.233 c-1.094-0.547-1.785-1.665-1.785-2.888v-3.322c0.238-0.271,0.51-0.619,0.801-1.03c1.154-1.63,2.027-3.423,2.632-5.304 c1.086-0.335,1.886-1.338,1.886-2.53v-3.546c0-0.78-0.347-1.477-0.886-1.965v-5.126c0,0,1.053-7.977-9.75-7.977 s-9.75,7.977-9.75,7.977v5.126c-0.54,0.488-0.886,1.185-0.886,1.965v3.546c0,0.934,0.491,1.756,1.226,2.231 c0.886,3.857,3.206,6.633,3.206,6.633v3.24C20.296,40.899,19.65,41.987,18.613,42.552z"/> <g> <path style="fill:#556080;" d="M26.953,1.004C12.32,0.754,0.254,12.414,0.004,27.047C-0.138,35.344,3.56,42.801,9.448,47.76 c0.385-0.336,0.798-0.644,1.257-0.894l7.907-4.313c1.037-0.566,1.683-1.653,1.683-2.835v-3.24c0,0-2.321-2.776-3.206-6.633 c-0.734-0.475-1.226-1.296-1.226-2.231v-3.546c0-0.78,0.347-1.477,0.886-1.965v-5.126c0,0-1.053-7.977,9.75-7.977 s9.75,7.977,9.75,7.977v5.126c0.54,0.488,0.886,1.185,0.886,1.965v3.546c0,1.192-0.8,2.195-1.886,2.53 c-0.605,1.881-1.478,3.674-2.632,5.304c-0.291,0.411-0.563,0.759-0.801,1.03V39.8c0,1.223,0.691,2.342,1.785,2.888l8.467,4.233 c0.508,0.254,0.967,0.575,1.39,0.932c5.71-4.762,9.399-11.882,9.536-19.9C53.246,13.32,41.587,1.254,26.953,1.004z"/> </g> </g> <g> <path style="fill:#EFC41A;" d="M57.761,58H34.07c-0.955,0-1.55-1.036-1.069-1.861l11.845-20.306c0.478-0.819,1.66-0.819,2.138,0 L58.83,56.139C59.311,56.964,58.716,58,57.761,58z"/> <path style="fill:#FFFFFF;" d="M46,51c-0.552,0-1-0.448-1-1v-8c0-0.552,0.448-1,1-1s1,0.448,1,1v8C47,50.552,46.553,51,46,51z"/> <path style="fill:#FFFFFF;" d="M46,55c-0.26,0-0.52-0.11-0.71-0.29C45.11,54.52,45,54.26,45,54c0-0.26,0.11-0.52,0.29-0.71 c0.38-0.37,1.04-0.37,1.42,0C46.89,53.48,47,53.74,47,54c0,0.26-0.11,0.52-0.29,0.71C46.52,54.89,46.27,55,46,55z"/> </g> </g> </svg>
+		<h2><?php echo $wo['lang']['activation_oops'];?></h2>
+		<p><?php echo $wo['lang']['activation_method'];?></p><br><br>
+		<form action="#" method="post" class="activate-form">
+			<div id="activate-alerts"></div>
+			<div class="sun_input">
+				<input id="email" name="email" type="email" class="form-control input-md" placeholder="<?php echo $wo['lang']['email_address']; ?>" value="" autocomplete="off"> 
+				<label for="email"><?php echo $wo['lang']['email_address']; ?></label>  
+			</div>
+			<?php if ($wo['config']['sms_or_email'] == 'sms') { ?>
+				<div class="ui horizontal divider"><?php echo $wo['lang']['or'];?>&nbsp;</div>
+				<div class="sun_input">
+					<input id="phone_number" name="phone_number" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['phone_num_ex']; ?>" value="" autocomplete="off"> 
+					<label for="phone_number"><?php echo $wo['lang']['phone_num_ex']; ?></label>  
+				</div>
+			<?php } ?>
+			<button type="submit" class="btn btn-main btn" id="activate-submit"><?php echo $wo['lang']['activation_send_code'];?></button>
+		</form>
+		<?php if ($wo['config']['sms_or_email'] == 'sms') { ?>
+			<form action="#" method="post" class="activate-code-form">
+				<div id="activate-code-alerts"></div>
+				<div class="sun_input">
+					<input id="confirm_code" name="confirm_code" type="text" class="form-control input-md" placeholder="Confirmation code" autocomplete="off"> 
+					<label for="confirm_code">Confirmation code</label>  
+				</div>
+				<input type="hidden" class="form-control" name="user_id" value="<?php echo $wo['user']['user_id'];?>">
+				<div class="form-group" id="re-send" style="display:none">
+					<div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCodeAc();"><i class="fa fa-repeat"></i> <?php echo $wo['lang']['activation_resend'];?></a></div>
+				</div>
+				<div id="hideMsg" class="item">
+					<?php echo $wo['lang']['activation_should_receive'];?> <h2><span></span></h2>
+				</div>
+				<button type="submit" class="btn btn-main btn" id="activate-code-submit"><?php echo $wo['lang']['confirm'];?></button>
+			</form>
+		<?php } ?>
+	</div>
+</div>
+<script>
+$(function() {
+	$('.activate-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=resned_ac_email',
+    beforeSend: function() {
+      Wo_progressIconLoader($('.activate-form').find('button'));
+      $('#activate-submit').attr('disabled',true);
+    },
+    success: function(data) {
+      $('#activate-submit').attr('disabled',false);
+      if (data.status == 200) {
+        $('#activate-alerts').html('<div class="success-container">' + data.message + '</div>');
+        $('.success-container').fadeIn(300);
+      } else if(data.status == 600) {
+        $('#activate-alerts').html('<div class="success-container">' + data.message + '</div>');
+        $('.success-container').fadeIn(300).delay(2000).fadeOut(300, function () {
+        	$('.activate-form').fadeOut(300, function () {
+        		$('.activate-code-form').fadeIn(300);
+        	});
+        });
+        Wo_SetTimer();
+      } else {
+        var errors = data.errors.join("<br>");
+        $('#activate-alerts').html('<div class="error-container">' + errors + '</div>');
+        $('.error-container').fadeIn(300);
+      }
+      Wo_progressIconLoader($('.activate-form').find('button'));
+    }
+  });
+
+$('.activate-code-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+    beforeSend: function() {
+      Wo_progressIconLoader($('.activate-code-form').find('button'));
+      $('#activate-code-submit').attr('disabled',true);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+          window.location.href = data.location;
+      } else {
+        $('#activate-code-submit').attr('disabled',false);
+        var errors = data.errors.join("<br>");
+        $('#activate-code-alerts').html('<div class="error-container">' + errors + '</div>');
+        $('.error-container').fadeIn(300);
+      }
+      Wo_progressIconLoader($('.activate-code-form').find('button'));
+    }
+  });
+});
+function Wo_ResendCodeAc() {
+  $('#re-send').hide();
+  Wo_SetTimer();
+  $.post(Wo_Ajax_Requests_File() + '?f=resned_code_ac', function(data) {
+       if (data.status == 200) {
+          $('#activate-code-alerts').html('<div class="success-container">' + data.message + '</div>');
+          $('.success-container').fadeIn('fast');
+      } else {
+          $('#activate-code-submit').attr('disabled',false);
+          var errors = data.errors.join("<br>");
+          $('#activate-code-alerts').html('<div class="error-container">' + errors + '</div>');
+          $('.error-container').fadeIn(300);
+      }
+  });
+}
+</script>

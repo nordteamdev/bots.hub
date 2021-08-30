@@ -1,0 +1,137 @@
+{strip}
+<!DOCTYPE html>
+<html class="{if $this->USER > 0}user{else}anonym_content{/if} chat webkit chrome nottouch fcofw">
+<head>
+<title>{$title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+<meta name="viewport" content="width=1024"></meta>
+<META CONTENT="SKYPE_TOOLBAR_PARSER_COMPATIBLE" name="SKYPE_TOOLBAR" />
+
+
+<link id="favicon" rel="shortcut icon" original-href="{if $uphoto}/getPhoto?p={$uphoto}&sz=small&g={$ugender}{else}{$this->settings['HOST']}/css/images/logo/favicon-redesign.ico?v=12{/if}" pm-href="/css/images/fav/fav_pm.ico" href="{if $uphoto}/getPhoto?p={$uphoto}&sz=small&g={$ugender}{else}{$this->settings['HOST']}/css/images/logo/favicon-redesign.ico?v=12{/if}" type="image/x-icon">
+
+<!-- css ---->
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans%3A400%2C700&ver=4.2.3" type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,|Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic," type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A300%7CUbuntu+Condensed%7CUbuntu%7CRaleway%3A300%2C500%2C400%7CPT+Sans+Narrow&amp;ver=4.3.1" type="text/css" media="all">
+<!--- static fonts -->
+<link rel="stylesheet" type="text/css" href="/css/fonts/g/fonts.css?v=4">
+
+<link rel="stylesheet" type="text/css" href="/css/pagination.css?v=4">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=4">
+<link rel="stylesheet" type="text/css" href="/css/profile_view_redesign.css">
+<link rel="stylesheet" type="text/css" href="/css/pg/guests.css?v=4">
+<link rel="stylesheet" type="text/css" href="/css/pg/notification-redesign.css">
+
+
+<link rel="stylesheet" type="text/css" href="/css/pg/friends_page.css?v=4">
+<link rel="stylesheet" type="text/css" href="/css/pg/postDetailsPopup.css?v=4">
+<link rel="stylesheet" type="text/css" href="/css/pg/posts.css">
+<link rel="stylesheet" type="text/css" href="/css/comments_widget.css">
+<link rel="stylesheet" type="text/css" href="/css/button.css">
+<link rel="stylesheet" type="text/css" href="/css/chat.css?v={time()}">
+
+<link rel="stylesheet" type="text/css" href="/css/animate.min.css?v=4">
+<link rel="stylesheet" type="text/css" href="/css/feed.css?v=3">
+<link rel="stylesheet" type="text/css" href="/css/nobleslider.css?v=3">
+<link rel="stylesheet" type="text/css" href="/css/slider_templates.css?v=3">
+<link rel="stylesheet" type="text/css" href="/css/privateMessages.css?v=3">
+<link rel="stylesheet" type="text/css" href="/css/pm-redesign.css?v=1">
+<link rel="stylesheet" type="text/css" href="/css/tipsy.css">
+<link rel="stylesheet" type="text/css" href="/css/emoji-b.css">
+<link rel="stylesheet" type="text/css" href="/css/share.css">
+<link rel="stylesheet" type="text/css" href="/css/search.css">
+<link rel="stylesheet" type="text/css" href="/js/cmd/awesomplete/awesomplete.css">
+
+
+<!-- Video css -->
+<link rel="stylesheet" type="text/css" href="/css/video.css">
+
+<!-- jquery ui --->
+<link rel="stylesheet" type="text/css" href="/css/cmd/ui/jquery-ui.min.css" />
+
+
+<link rel="stylesheet" type="text/css" href="/css/jquery.emojiarea.css">
+
+{if $this->USER > 0}
+<link rel="stylesheet" type="text/css" href="/music/css/style.css?v=2">
+{/if}
+
+{if isset($this->USER) && $this->USER > 0}
+<script>
+
+var _U = {
+
+	    i: '{$this->USER['id']}',
+	    n: '{$this->USER['fullname']}',
+	    p: '{$this->USER['profile_photo']}',
+	    o: '{$this->USER['online']}',
+	    g: '{$this->USER['gender']}',
+		fn: '{$this->USER['name']}',
+		sn: '{$this->USER['surname']}',
+		b: '{$this->USER['birthday']}',
+		cy: '{$this->USER['country']}',
+		ct: '{$this->USER['city']}',
+		nick: '{$this->USER['username']}'
+	},
+	pm__action = '/cmd/messages/pm_action',	recipientId = '{$recipient}',
+	 __g_lang = 'en',
+	 search_hints = [],
+	 cur_year = '{date('Y')}',
+     smilies_path = '{$this->settings['SMILIES_PATH']}',
+     meep_path = '{$this->settings['MEEP_PATH']}';
+
+</script>	
+{/if}
+<script>
+var up_href,
+    _act_emoji,
+    EMOJIOP,
+	stop_cl,
+	_nscroll = '__noScrollable',
+    _gl_filter_by_letter = 'NULL',
+    __SITENAME = '{$this->settings['SITENAME']}',
+    __SITEURL = '{$this->settings['HOST']}';
+	
+var _recipient_avatar = '/getPhoto?p={$uphoto}&sz=small&g={$ugender}';	
+</script>
+
+<script type="text/javascript" src="/js/jquery-v1.11.1.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/js/lang/en.js"></script>
+<script type="text/javascript" src="/js/settings/global-config.js"></script>
+<script rel="flocv" type="text/javascript" src="/js/__core_postponet.js"></script>
+<script type="text/javascript" src="/js/emoji/jquery.emojiarea.min.js"></script>
+<script type="text/javascript" src="/js/emoji/emojis.js"></script>
+<script rel="flocv" type="text/javascript" src="/js/chat.js"></script>
+<script src="/js/jquery.tipsy.js"></script>
+<!-- nanoScroll --><link rel="stylesheet" type="text/css" href="/cmd/nanoScroll/css/nanoscroller.css"><script type="text/javascript" src="/cmd/nanoScroll/javascripts/overthrow.min.js"></script><script type="text/javascript" src="/cmd/nanoScroll/javascripts/jquery.nanoscroller.min.js"></script>
+
+
+  <!-- check for loaded images -->
+  <script src="/js/imagesloaded.pkgd.min.js"></script>
+  
+<!-- venobox -->
+  <link rel="stylesheet" type="text/css" href="/js/cmd/venobox/css/venobox.css">
+  <script src="/js/cmd/venobox/js/venobox.min.js"></script>
+  
+  <!-- collage plus -->
+<script src="/js/jquery.collagePlus.js"></script>
+  
+
+{literal}
+<style>
+body {
+position:initial!important;
+}
+</style>
+{/literal}
+{/strip}

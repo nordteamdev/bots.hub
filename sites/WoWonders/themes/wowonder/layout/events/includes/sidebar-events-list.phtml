@@ -1,0 +1,28 @@
+<div class="sidebar-event-data" data-suggested-event="<?php echo $wo['event']['id']?>">
+	<a href="<?php echo $wo['event']['url']?>">
+		 <div class="sidebar-event-thumbnail pull-left">
+            <img src="<?php echo Wo_GetMedia($wo['event']['cover'])?>"   height="70" alt="<?php echo $wo['event']['name']?> Cover Image">
+        </div>
+    </a>
+    <div class="sidebar-event-name pull-right">
+    	<p>
+	    	<a href="<?php echo $wo['event']['url']?>" class="main bold">
+	    		<?php echo Wo_GetShortTitle($wo['event']['name'],false,20);?>
+	    	</a>
+    	</p>
+    	<span class="small">
+    		<i class="fa fa-clock-o" aria-hidden="true"></i>
+    		<?php echo $wo['event']['start_date'];?>
+    	</span>
+    	<div class="suggest-event-action-<?php echo $wo['event']['id']?>">
+	    	<span class="pointer  interested-in-event" data-event-ident="<?php echo $wo['event']['id']?>">
+	    		<strong class="link2"><?php echo $wo['lang']['interested']; ?></strong>
+	    	</span>
+	    	<span class="pointer  going-to-event" data-event-ident="<?php echo $wo['event']['id']?>">
+	    		<strong class="link2"><?php echo $wo['lang']['going']; ?></strong>
+	    	</span>
+    	</div>
+    </div>
+
+	<div class="clear"></div>
+</div>

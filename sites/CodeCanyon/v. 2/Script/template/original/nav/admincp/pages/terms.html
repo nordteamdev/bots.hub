@@ -1,0 +1,153 @@
+{strip}
+{assign var=terms value=$this->tpaMarkup('terms')}
+{assign var=policy value=$this->tpaMarkup('policy')}
+{assign var=about value=$this->tpaMarkup('about')}
+
+<div class="ad-rowcol">
+<h2>Terms/Privacy/About</h2>
+<label class="addgame lvpreviewhide" for="hide-previews">Hide previews <input type="checkbox" style="vertical-align:middle;" id="hide-previews" onclick="hidePreviews(event);" /></label>
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=saveterms" id="fform" method="post">
+
+
+
+
+					<fieldset>
+		<div class="v2_gs_filter __open __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Terms of Use</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		    <div class="form-group">
+            <label class="col-md-3" for="guests">Markup</label>
+
+            <div class="col-md-6">
+			
+			{if $terms.count}
+			<div class="ads-added">updated about {$this->time_elapsed($terms.q.0.added)}</div>
+			{/if}
+			
+				<textarea id="guests" name="terms" class="ads-textarea" resize="vertical">{if $terms.count}{$terms.q.0.markup}{/if}</textarea>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+
+					<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">About</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="friends">Markup</label>
+            <div class="col-md-6">
+			
+			{if $about.count}
+			<div class="ads-added">updated about {$this->time_elapsed($about.q.0.added)}</div>
+			
+			{/if}
+			
+				<textarea id="friends" name="about" class="ads-textarea" resize="vertical">{if $about.count}{$about.q.0.markup}{/if}</textarea>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+		
+		
+					<fieldset>
+		<div class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Privacy policy</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="messages">Markup</label>
+            <div class="col-md-6">
+			
+			{if $policy.count}
+			<div class="ads-added">updated about {$this->time_elapsed($policy.q.0.added)}</div>
+			
+			{/if}
+			
+				<textarea id="messages" name="policy" class="ads-textarea" resize="vertical">{if $policy.count}{$policy.q.0.markup}{/if}</textarea>
+				
+				<fieldset class="livepreview">
+				<legend>Live preview</legend>
+			<div class="live-preview">	
+           <div class="preview-txt"></div>
+			</div>
+</fieldset>
+		   </div>
+			
+        </div>
+		
+	
+		
+		</div>
+		</div>
+		</fieldset>
+
+		
+		
+		
+
+
+
+	
+		        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();ga('.livepreview').hide();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+		
+		
+
+</form>
+
+</div>
+
+<script>
+{literal}
+ga(document).ready(function(){
+formatCheckbox();
+filterBoxM();
+livepreview();
+});
+{/literal}
+</script>
+
+{/strip}

@@ -1,0 +1,65 @@
+
+<!-------------------- get the songs by radio station [ Template ]  --------------------->
+{strip}
+<ol>
+  {foreach $rows as $result}
+  {assign var=artist value={$result.artist}}
+  {assign var=track value={$result.title}}
+  {assign var=album value={$result.album}}
+  {assign var=track_length value={$result.time}}
+  {assign var=track_lang value={$result.language}}
+  {assign var=track_id value={$result.id}}
+  {assign var=track_pth  value={$result.path}}
+  {assign var=track_cover  value={$result.cover}}
+  {assign var=download  value=''}
+  {if $track_lang === $d_ic}
+  {assign var=download  value='__download'}
+  {/if}
+  
+  
+  <li target="#tri_m_sec_rd_{$track_id}">
+    <div class="mus-tr_i  soh-s {$download}" id="tri_m_sec_radio_{$track_id}">
+      
+      <div class="mus-tr_hld">
+        <span class="mus-tr_play __play js-mus-tr_play" id="p1m_sec_my_radio_{$track_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$track_pth}","cover":"{$track_cover}"{literal}}{/literal}' >
+        </span>
+        
+        {if $download !== ''}
+          <span class="mus-tr_download js-mus-tr_download" title="Download">
+          </span>
+          {/if}
+          
+          <div class="mus-tr_cnt">
+            <a class="mus-tr_a mus-tr_artist">
+              {$artist}
+            </a>
+           &nbsp;&#8211;&nbsp;
+            <a class="mus-tr_a mus-tr_song">
+              {$track}
+            </a>
+            <span class="foh-s mus-tr_info">
+              &nbsp;from&nbsp;
+              <a class="mus-tr_a mus-tr_album">
+                <span class="mus-tr_album-ic ic10_album">
+                </span>
+                {$album}
+              </a>
+            </span>
+          </div>
+          <div class="mus-tr_right-controls foh-s" id="rc_m_sec_radio_{$track_id}">
+            <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+            </span>
+            <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+            </span>
+          </div>
+          <span class="mus-tr_time">
+            {$track_length}
+          </span>
+  </div>
+          </div>
+  </li>
+  
+  {/foreach}
+  
+</ol>
+{/strip}

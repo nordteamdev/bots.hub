@@ -1,0 +1,11 @@
+<div class="blogs-related">
+	<h4 class="title"> <?php echo $wo['lang']['read_more'] ?></h4>
+	<ul>
+	<?php 
+	$blogs = Wo_GetBlogs(array('limit' => 4, 'order_by' => 'RAND', 'id' => $wo['article']['id']));
+	foreach ($blogs as $key => $wo['blog-style']) {
+		echo Wo_LoadPage('blog/blog-related');
+	}
+	?>
+	</ul>
+</div>

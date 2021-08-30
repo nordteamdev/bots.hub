@@ -1,0 +1,466 @@
+.css-480 .nav_tool_friends_online {
+display : none;
+}
+.css-480 .toolbar .nat_logo {
+width : 38px;
+background-image : url(../../images/logo_new/brand-transparent.png);
+background-position : 0;
+}
+.css-480 .user_menu_control {
+left : 0;
+margin-left : -14px;
+}
+.css-480 .toolbar_search .it {
+width : 120px;
+}
+.css-480 .toolbar .search_wrapp {
+margin-right : 3px;
+}
+
+.css-480 section#profile_left_side_bar .left_sd_b_wht {
+    /* display: none; */
+    z-index: 90;
+    background: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;top: 50px;
+    left: 2px;
+}
+
+.css-480 #profile_left_side_bar._hidden {
+    -webkit-transform: translate3d(-300px,0,0) translateZ(0);
+    transform: translate3d(-300px,0,0) translateZ(0);
+}
+ 
+.css-480 #profile_left_side_bar {
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.47,.13,.32,.24);
+    transition: transform .3s cubic-bezier(.47,.13,.32,.24);
+}
+.css-480 .topheader_submit_search_btn {
+width : 30px;
+}
+.css-480 .tophead_sugg {
+padding : 3px 8px;
+}
+.user .css-480 .ft.ftmin {
+margin-left : 0;
+}
+.css-480 .sug_us_photo {
+width : 29px;
+height : 29px;
+display : inline-block;
+vertical-align : middle;
+padding-right : 8px;
+position : relative;
+}
+.css-480 .sug_us_name {
+font-size : 12px;
+}
+.css-480 ._72gdz._73dsgg {
+display : none;
+}
+.css-480 section#profile_left_side_bar {
+z-index : 90;
+background : #f0f0f0;display:block!important;
+}
+.user .css-480 #mainContent.grid {
+width : 100%;
+float : none;
+}
+.css-480 .bif42 {
+width : 100%;
+}
+.css-480 .pf_feed_small_abs_img {
+display : none;
+}
+.user .css-480 #mainContent.grid {
+left : auto;
+}
+.css-480 .brdiu_my_unm, .css-480 .keep_100 {
+margin-left : 0;
+}
+.css-480 .brdiu_my_u {
+width : 100%;
+}
+.css-480 #mainContent.__wall .feed {
+width : 100%;
+}
+.css-480 .__two_columgap .collage_full_width {
+width : 108% !important ;
+}
+.css-480 .__two_columgap ._kngf1 {
+width : 106.6%;
+}
+.css-480 .ft {
+margin : 0 auto;
+width : 100%;
+text-align : center;
+}
+.css-480 .ff_copy {
+text-align : center;
+}
+.css-480 #mainContent.__wall .filter_i {
+padding : 7px 7px;
+font-size : 12px;
+}
+.css-480 #page_layout {
+width : 100%;
+padding : 69px 0;
+}
+.css-480 .__two_columgap#hook_feed_wl_pg {
+width : 100% !important ;
+}
+.css-480 #mainContentContentColumn {
+padding : 0 !important ;
+}
+.css-480 #mainContent {
+padding : 12px !important ;
+margin : auto;
+}
+.css-480 .compactProfile {
+top : -170px;
+}
+.css-480 .compactProfile_pht_cnt, .css-480 #mainContent.grid .compactProfile_pht {
+height : 118px;
+width : 118px;
+}
+.css-480 .compactProfile_info {
+max-width : 170px;
+}
+.css-480 .compactProfile_info span {
+color : #fff;
+font-size : 14px;
+}
+.css-480 .uprf_coll_abs_kn {
+height : 241px;
+}
+.css-480 #mainContent.grid .mctc_navMenu {
+margin : 00px;
+}
+.css-480 .p_tp_nav_menu_item {
+    margin-right: 10px;
+}
+.css-480 .mctc_navMenuSec.__active:after {
+margin-left : -9px;
+}
+.css-480 .wide_friends_lf_cl #hook_Block_LeftColumn, .css-480 .wide_friends_lf_cl #mainContentLeftColumn, .css-480 #mainContentLeftColumn.appsPage {
+width : 100% !important ;
+    margin: 16px auto;
+}
+.css-480 #mainContent.apppage {
+width : 100% !important ;
+}
+.css-480 #mainContent.grid #mainContentContentColumn {
+width : 100%!important;
+}
+.css-480 .covers_cat_preview img {
+width : auto;
+}
+.css-480 #mainContentContentColumn.inapps {
+width : 100% !important ;
+margin-left : 0 !important ;
+}
+.css-480 .ui_search {
+margin-left : 0;
+width : 100%;
+}
+.css-480 .ui_search_reset {
+top : -1px;
+}
+.css-480 input.ui_search_field {
+margin-top : -1px !important ;
+}
+.css-480 #panelFriendsId, .css-480 #listBlockPanelUserGuests {
+padding : 16px !important ;
+}
+.css-480 .u_p_left_column {
+position : absolute;
+float : left;
+width : 214px;
+margin-right : 0;
+min-height : 600px;
+min-width : 206px;
+z-index : 3;
+background : #fff;
+padding : 11px;
+left : 0;
+border-right : 1px solid #ccc;
+height : 100%;
+}
+.css-480 .user-image-mob {
+width : 92px;
+height : 141px;
+display : inline-block;
+}
+.css-480 .user-image-mob img {
+width : 100%;
+height : 100%;
+}
+.css-480 .u_p_left_column {
+display : none;
+}
+.css-480 .u_profile_near_photo {
+width : 100%;
+}
+.css-480 .u_top_n_st {
+float : right;
+height : 160px;
+width : 73%;
+}
+.css-480 .mn_block {
+    margin-left: 14px;
+    margin-right: 14px;
+}
+.css-480 #profile_redesign .posting-form_itx_w {
+width : 95.2%;
+}
+.css-480 .__redesign_prof .lf_map_cnt {
+width : 70%;
+}
+.css-480 .a_user_toolbar_logo {
+margin-right : 2px;
+}
+.css-480 .header_mus_player {
+padding : 2px;
+}
+.css-480 .ic_header_mus {
+margin-top : 6px;
+}
+.css-480 .leaflet-control-search.search-exp {
+width : 30% !important ;
+}
+.css-480 .u_profile_near_photo .emoji-wysiwyg-editor {
+width : 65% !important ;
+}
+.css-480 .feed-tip-map-loc {
+width : 100%;
+}
+.css-480 .media-block.media-video .vid-card__xl .vid-card_cnt {
+width : 100%;
+height : 208px;
+}
+.css-480 .vid-card {
+display : block;
+}
+.css-480 .leaflet-control-search .search-cancel {
+position : relative;
+top : -29px;
+right : 0;
+float : right;
+}
+.css-480 .leaflet-control-search .search-tooltip {
+min-width : 80px;
+}
+.css-480 .userAddPhoto.__square {
+height : 150px;
+width : 152px;
+}
+.css-480 .userAddPhoto.__square .html5-upload-link.__size {
+height : 150px;
+width : 152px;
+}
+.css-480 .userAddPhoto.__square .mtoCenter {
+margin : 0 auto;
+width : 152px;
+}
+.css-480 .ec_items .eg_gotph {
+min-width : 152px;
+min-height : 152px;
+}
+.css-480 .ec_items a[data-vphopen] > img {
+max-width : 152px;
+max-height : 152px;
+}
+.css-480 .sc-menu .u-menu {
+padding : 1px 0 0 2px;
+}
+.css-480 #sortUphotos img {
+width : 100%;
+height : 100%;
+}
+.css-480 .ec_items.ui-sortable-handle {
+width : 158px;
+height : 158px;
+}
+.css-480 .posts_pg .lf_map_cnt {
+width : 70%;
+}
+.css-480 .__settings #mainContentContentColumn {
+padding : 12px !important ;
+}
+.css-480 .st_pifo_upd {
+margin-left : 2px;
+}
+.css-480 .covers_cat_preview {
+width : 100%;
+}
+.css-480 .covers_cat_i, .css-480 .covers_cat_i_placeholder {
+width : 45%;
+}
+.css-480 .kn_popup_box {
+width : 100% !important ;
+}
+.css-480 .mejs__container {
+width : 100% !important ;
+}
+.css-480 video {
+width : 100% !important ;
+}
+.css-480 #hook_Block_PortalSearchFilters {
+float : none;
+width : 100%;
+}
+.css-480 .v2_gs_filter_column_w {
+float : none;
+}
+.css-480 .v2_gs_filter_column_w, .css-480 .v2_gs_filter_column {
+width : 100%;
+}
+.css-480 #searchResults._fon_alb {
+width : 100%;
+padding : 0;
+}
+.css-480 #searchResults #hook_Native {
+padding : 12px 20px 18px;
+}
+.css-480 .search-input .awesomplete {
+width : 100%;
+}
+.css-480 .v2_gs_left_column, .css-480 .search_header_pd {
+width : 100%;
+}
+.css-480 .search_header {
+float : none;
+display : block;
+}
+.css-480 .v2_gs_filter_column_w.fixed_always {
+position : relative !important ;
+top : 0 !important ;
+}
+.css-480 .v2_gs_filter_column_w {
+margin-bottom : 32px;
+}
+.css-480 .v2_gs_filter_t {
+background-color : #d1dce6;
+}
+.css-480 .toolbar-layer.__grades.__big {
+width : 97%;
+margin : 0 8px;
+left : 0;
+}
+.css-480 .toolbar-layer.__feedback.__big .toolbar-layer_cnt {
+width : 100%;
+}
+.css-480 .jBox-Modal.jBox-closeButton-box {
+width : 87% !important ;
+}
+.css-480 .jBox-content, .css-480 .inav_ul.inav__search_l {
+width : 100% !important ;
+}
+.css-480 .frp.ifCards {
+width : 100%;
+}
+.css-480 #mainContent.__wall .media-block.media-video .vid-card__xl .vid-card_cnt {
+width : 100%;
+}
+.css-480 .photo-layer {
+width : 100%;
+}
+.css-480 .photo-layer_bottom .photo-layer_bottom_cnt {
+width : auto;
+padding : 0 12px;
+}
+.css-480 .photo_layer_bottom_com {
+width : 100%;
+}
+.css-480 .widget_photoLayer {
+max-width : 35%;
+}
+.css-480 .photo_layer_bottom_com {
+width : 100%;
+}
+.css-480 .phlayer_emoji_input_sticky.__nocoms {
+width : 60%;
+float : left;
+}
+.css-480 #pp_photo_viewer .emoji-wysiwyg-editor {
+width : 62%;
+min-height : 12px;
+float : left;
+padding : 7px;
+}
+.css-480 .phlayer_emoji_input_sticky {
+width : 60%;
+}
+.css-480 .phlayer_emoji_input_sticky.__on:after, .phlayer_emoji_input_sticky.__bfon:after {
+width : 100%;
+}
+.css-480 #pp_photo_viewer .phlayer_ul_comms .comment {
+width : 55%;
+}
+.css-480 .bvkr {
+left : -12px;
+right : auto;
+margin-left : 1px;
+top : -2px;
+}
+.css-480 #mainContent.__wall .posting-form_itx_w {
+width : auto;
+}
+.css-480 #mainContent.__wall .mst {
+width : 387px;
+}
+.css-480 .header_play_scrubber {
+display : none !important ;
+}
+.css-480 #mainContent.__wall .posting-form_itx_dec {
+width : 361px;
+}
+.css-480 .track.__media-status {
+height : auto;
+}
+.css-480 .u_top_n_st .mctc_nameAndOnline .__inline {
+display : block;
+}
+.css-480 ._kngf5 {
+width : 92px;
+height : 92px;
+left : 11px;
+}
+.css-480 .emoji-wysiwyg-editor {
+width : 285px;
+}
+.css-480 .nb-arrows {
+display : none;
+}
+.css-480 .ft.ftmin{margin:auto!important;width:100%!important;}
+.css-480 #nav_right_side{
+	display:none;
+}
+.css-480 .mainContentDoubleColumn #mainContentLeftColumn{
+    width: 100%;
+    margin-left: 0;
+}.css-480 .comm_left_side {width:100%;}
+
+.css-480 .u_prof_redesign_cnt{float:none;}
+
+.css-480 .comm_left_side {width:100%;}
+.css-480 .commRightColumn{
+width: 100%;
+    float: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.css-480 .comm_fixed_right{
+float: none;
+    width: 100%!important;
+    height: auto!important;
+    position: relative!important;
+    left: 0!important;
+    right: 0!important;
+    top: inherit!important;
+    bottom: inherit;
+}
+.css-480 .dgroup_fixed_nano {
+	
+	position:relative!Important;
+}

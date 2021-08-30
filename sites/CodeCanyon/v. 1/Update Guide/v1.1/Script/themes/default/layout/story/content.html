@@ -1,0 +1,431 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="news-container">
+				<div class="news-title">
+					<h1>{{STORY_TITLE}}</h1>
+				</div>
+				<div class="news-desc">
+					<p>{{STORY_DESC}}</p>
+				</div>
+				{{STORY_ADMIN_OPTIONS}}
+				<div class="news-time">
+					<p>{{LANG posted}} {{STORY_POSTED_TIME}} {{LANG in}} <a href="{{CATEGORY_LINK}}">{{CATEGORY_NAME}}</a>, {{LANG updated}} {{STORY_UPDATED_TIME}}.</p>
+				</div>
+				<div class="news-publisher">
+					<div class="col-md-8 no-padding-left">
+						<div class="publisher-image">
+							<img src="{{PUBLISHER_AVATAR}}" alt="{{PUBLISHER_NAME}} image">
+						</div>
+						<div class="publisher-name">
+							<a href="{{PUBLISHER_URL}}">{{PUBLISHER_NAME}}</a>
+							{{PUBLISHER_VERIFIED}}
+						</div>
+						<div class="publisher-type">
+							{{PUBLISHER_GENDER}} {{PUBLISHER_COUNTRY}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="col-md-4 no-padding-right text-right">
+						<div class="views">{{STORY_VIEWS}} {{LANG views}}</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="news-share-buttons">
+				    <?php if ($fl['story']['is_active'] == 1) { ?>
+					<ul class="list-inline">
+						<li>
+							<a href="https://www.facebook.com/sharer.php?u={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}">
+								<div class="btn-share btn-facebook"><i class="fa fa-facebook"></i> {{LANG share}}</div>
+							</a>
+						</li>
+						<li>
+							<a href="https://plus.google.com/share?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}">
+								<div class="btn-share btn-google"><i class="fa fa-google-plus"></i> Google+</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://twitter.com/intent/tweet?text={{STORY_TITLE}}&url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_TWITTER}}">
+								<div class="btn-share btn-twitter"><i class="fa fa-twitter"></i> Tweet</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://www.reddit.com/submit?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}">
+								<div class="btn-share btn-reddit"><i class="fa fa-reddit"></i> Reddit</div>
+							</a>
+						</li>
+						<li>
+							<a href="http://pinterest.com/pin/create/button/?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}">
+								<div class="btn-share btn-pinterest"><i class="fa fa-pinterest"></i> Pin</div>
+							</a>
+						</li>
+						<li>
+							<div class="btn-shares"><b id="share-number">{{STORY_SHARES}}</b> {{LANG shares}}</div>
+						</li>
+					</ul>
+					<?php } ?>
+				</div>
+				<div class="news-entries" id="post-entries">
+					{{STORY_ENTRIES}}
+					{{STORY_AD}}
+				</div>
+				<div class="pages-link" id="pages-link">
+					<div class="pull-left">
+						{{BACK_LINK}}
+					</div>
+					<div class="pull-right">
+						{{NEXT_LINK}}
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+				<?php if ($fl['page'] == 'quiz'): ?>
+					<div id="display-quiz-result">
+						
+					</div>
+				<?php endif; ?>
+				<div class="news-tags">
+					{{STORY_TAGS}}
+				</div>
+				<?php if ($fl['loggedin'] && $fl['reported'] == true): ?>
+					<div class="fl-report-post" title="{{LANG cancel_report}}">
+						<div onclick="FL_ReportPost('{{STORY_ID}}','{{STORY_PAGE}}',this);">
+							<i class="fa fa-flag progress-icon" data-icon="flag"></i>
+							<span>{{LANG cancel_report}}</span> 
+						</div>
+					</div>
+				<?php elseif ($fl['loggedin'] && empty($fl['reported'])): ?>
+					<div class="fl-report-post" title="{{LANG report_post}}">
+						<div onclick="FL_ReportPost('{{STORY_ID}}','{{STORY_PAGE}}',this);">
+							<i class="fa fa-flag progress-icon" data-icon="flag"></i>
+							<span>{{LANG report_post}}</span>
+						</div>
+					</div>
+				<?php endif; ?>
+				
+				{{USER_REACTIONS}}
+
+				<?php if ($fl['loggedin'] || true): if ($fl['config']['comment_system'] == 'both' || $fl['config']['comment_system'] == 'default') { ?>
+					<div class="fl-comment-cont">
+						<div class="fl-comment-box">
+							<div class="fl-comment-box-form">
+								<form class="form" id="news-comment-form">
+									<div class="fl-comment-box-body">
+										<textarea name="text"  placeholder=" {{LANG write_comment}}"></textarea>
+									</div>
+									<input type="hidden" name="news_id" value="{{STORY_ID}}">
+									<input type="hidden" name="page" value="{{STORY_PAGE}}">
+									<div class="fl-comment-box-footer hidden">
+										<button type="submit" class="btn btn-main pull-right">
+											<i class="fa fa-edit progress-icon" data-icon="edit"></i>
+											<span id="postbutton">{{LANG post}}</span>
+										</button>
+									</div>
+								</form>
+							</div>
+							<div class="fl-comment-list-cont">
+								<div class="fl-comment-list-header">
+									<h5>{{LANG comments}} <strong>{{STORY_COMMENT_TOTAL}}</strong></h5>
+									<div><span></span></div>
+								</div>
+								<hr>
+								<div class="fl-comment-list-body">
+									{{STORY_COMMENTS}}
+								</div>
+								<div class="fl-comment-list-footer">
+									<div class="load-more-comments hidden">
+										<button onclick="FL_LoadComments(this);">
+											<i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more}}
+										</button>
+									</div>
+									<div id="fountainG" class="hidden">
+										<div id="fountainG_1" class="fountainG"></div>
+										<div id="fountainG_2" class="fountainG"></div>
+										<div id="fountainG_3" class="fountainG"></div>
+										<div id="fountainG_4" class="fountainG"></div>
+										<div id="fountainG_5" class="fountainG"></div>
+										<div id="fountainG_6" class="fountainG"></div>
+										<div id="fountainG_7" class="fountainG"></div>
+										<div id="fountainG_8" class="fountainG"></div>
+									</div>
+								</div>
+			
+							</div>
+							
+						</div>
+					</div>
+				<?php } endif;?>
+				<?php if ($fl['story']['is_active'] == 1 && ($fl['config']['comment_system'] == 'both' || $fl['config']['comment_system'] == 'fb')) { ?>
+				<div class="content-comment">
+					<div class="fb-comments" data-href="{{STORY_LINK}}" data-numposts="5" data-width="100%"></div>
+				</div>
+				<?php } ?>
+				
+			</div>
+		</div>
+		<div class="col-md-4">
+			{{SIDEBAR_HTML}}
+		</div>
+	</div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$(document).on('click', '.fl-reaction-emo', function(event) {
+			event.preventDefault();
+			var option_id = ($(this).index() + 1);
+			var page      = '{{STORY_PAGE}}';
+		    var post      = '{{STORY_ID}}';
+		    var option    = $(this);
+		    
+			$.ajax({
+				url: FL_Ajax_Requests_File() + "?f=reaction&s=insert",
+				type: 'POST',
+				dataType: 'json',
+				data: {id:option_id,post_id:post,page:page},
+			})
+			.done(function(data) {
+				if (data.status == 200) {
+					FL_StartBar();
+					$('.fl-reaction-emo').each(function(index, el) {
+						var index     = (index + 1);
+						var self      = $(el);
+						self.find('.pre-bar').find('span').find('small').text(data.data_option[index].num);
+					});
+					FL_Delay(function(){
+						FL_FinishBar();
+					},1000);
+					option.find('.reaction').css('background', 'rgb(216, 216, 216)');
+				}
+				else{
+					FL_FinishBar();
+				}
+			})
+			.fail(function() {
+				FL_FinishBar();
+				console.log("error");
+			})
+			
+		});
+        $('.fl-comment-item-reply-form input').focus(function(event) {
+			if (!FL_IsLoggedIn()) {
+				try{
+			      location.href =  "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+		});
+        $(".fl-comment-box-body").find('textarea').focus(function(event) {
+			if (!FL_IsLoggedIn()) {
+				try{
+			      location.href =  "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+			else{
+				$(this).css('height', 'unset');
+				$(".fl-comment-box-footer").removeClass('hidden');
+			}
+		});
+		$(window).scroll(function() {
+		   if($(window).scrollTop() + window.innerHeight == $(document).height()) {
+		       	var after_id = $('[data-comm-item]').last().attr('data-comm-item');
+		        after_id     = (after_id) ? after_id : 0;
+		        var page     = '{{STORY_PAGE}}';
+		        var post     = '{{STORY_ID}}';
+		        $(".fl-comment-list-footer").find('#fountainG').removeClass('hidden');
+		        $.ajax({
+		       	 url: FL_Ajax_Requests_File(),
+		       	 type: 'GET',
+		       	 dataType: 'json',
+		       	 data: {f: 'comments',s:'load',after_id:after_id,page:page,post:post},
+		        })
+		       .done(function(data) {
+		       	 if (data.status == 200) {
+		       		$(".fl-comment-list-body").append(data.html);
+		       		$(".fl-comment-list-footer").find('#fountainG').addClass('hidden');
+		       	 }
+		       	 else{
+		       		$(window).unbind('scroll');
+		       		$(".fl-comment-list-footer").find('#fountainG').addClass('hidden');
+		       		if (after_id && $('[data-comm-item]').length > 10) {
+		       			$(".fl-comment-list-footer").find('.load-more-comments').removeClass('hidden');
+		       		}
+		       		
+		       	 }
+		       })
+		       .fail(function() {
+		       	 console.log("error");
+		       })
+		   }
+		});
+
+		
+
+		$(".fl-comment-box-body").find('textarea').focus(function(event) {
+			$(this).css('height', 'unset');
+			$(".fl-comment-box-footer").removeClass('hidden');
+			
+		});
+
+		$("#news-comment-form").ajaxForm({
+	      url: FL_Ajax_Requests_File() + '?f=comments&s=insert',
+	      type:'POST',
+	      dataType:'json',
+	      beforeSend: function() {
+	        if($("#news-comment-form").find('textarea').val() == ''){
+	        	return false;
+	        }
+	        if (!FL_IsLoggedIn()) {
+				try{
+			      location.href = "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+	        FL_progressIconLoader($("#news-comment-form").find('button'));
+	      },
+	      success: function(data) {
+	        if (data['status'] == 200) {
+	          $(".fl-comment-list-body").prepend(data.html);
+	          $("#news-comment-form").find('textarea').val('');
+	        }                                                                                      
+	        else{
+	          alert('Something went wrong try later.')
+	        } 
+	        FL_progressIconLoader($("#news-comment-form").find('button'));
+	      }});
+	});
+
+	function FL_LoadComments(self){
+		var after_id = $('[data-comm-item]').last().attr('data-comm-item');
+        after_id     = (after_id) ? after_id : 0;
+        var page     = '{{STORY_PAGE}}';
+        var post     = '{{STORY_ID}}';
+        var self     = $(self);
+        $.ajax({
+       	 url: FL_Ajax_Requests_File(),
+       	 type: 'GET',
+       	 dataType: 'json',
+       	 data: {f: 'comments',s:'load',after_id:after_id,page:page,post:post},
+        })
+       .done(function(data) {
+       	 if (data.status == 200) {
+       		$(".fl-comment-list-body").append(data.html);
+       	 }
+       	 else{
+       		self.text('{{LANG no_more_comments}}')
+       	 }
+       })
+       .fail(function() {
+       	 console.log("error");
+       })
+	}
+
+	function FL_ReportPost(id,page,self){
+		if (!id || !page || !self) {
+			return false;
+		}
+		FL_progressIconLoader($(self));
+		$.ajax({
+			url: FL_Ajax_Requests_File(),
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'site',s:'report',id:id,page:page},
+		})
+		.done(function(data) {
+			if (data.status == 200 && data.code == 1) {
+				$(self).find('span').text('{{LANG cancel_report}}')
+				swal({
+					title:"{{LANG report_post}}",
+					text:"{{LANG report_received}}",
+					type:'success'
+				});
+			}
+			else if(data.status == 200 && data.code == 0){
+				$(self).find('span').text('{{LANG report_post}}');
+				swal({
+					text:"{{LANG cancel_report}}",
+					title:"{{LANG cancel}}!",
+					type:'error'
+				});
+			}
+			FL_Delay(function(){
+				swal.close();
+			},5000);
+			FL_progressIconLoader($(self));
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	}
+</script>
+<style>
+
+<?php 
+if ($fl['page'] == 'news') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #f33d4c;
+	}
+	<?php
+}
+
+if ($fl['page'] == 'polls') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #008484;
+	}
+	<?php
+}
+
+if ($fl['page'] == 'videos') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #2b87ce;
+	}
+	<?php
+}
+if ($fl['page'] == 'lists') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #ed9e6a;
+	}
+	<?php
+}
+if ($fl['page'] == 'music') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #5462a5;
+	}
+	<?php
+}
+
+if ($fl['page'] == 'quiz') {
+	?>
+	nav.navbar-findcond {
+		border-top: 2px solid #17B02F;
+	}
+	<?php
+}
+?>
+.search-header input { width: 200px !important; }
+body {background: #fff !important}
+</style>
+
+<?php if ($fl['page'] == 'quiz'): ?>
+<div id="img-uploading-wrapper" class="hidden">    
+	<div class="loader"></div>
+</div>
+<?php endif;?>

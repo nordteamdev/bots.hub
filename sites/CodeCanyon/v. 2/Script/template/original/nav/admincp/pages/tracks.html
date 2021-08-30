@@ -1,0 +1,47 @@
+{strip}
+
+<div class="ad-rowcol">
+<h2>{$count} tracks are on {$this->settings['SITENAME']}</h2>
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Cover</th>
+	
+	<th>Artist</th>
+	<th>Track</th>
+	<th>Album</th>
+	<th>Dur.</th>
+	<th>Genre</th>
+	<th>Year</th>
+	<th>By user</th>
+	<th>Uploaded</th>
+	<th>*</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="track{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url({$r.cover});"></div></td>
+	<td><div class="vd_title"><A target="_blank" href="/search?key={$r.artist}&c=m&filter=tracks">{$r.artist}</a></div></td>
+	<td><div class="vd_info f11">{$r.title}</div></td>
+	<td><div class="vdd_tags f11">{$r.album}</div></td>
+	<td><div class="vd_dur f11">{$r.time}</div></td>
+	<td><div class="vd_dur f11">{$r.genre}</div></td>
+		<td><div class="vd_dur f11">{$r.year}</div></td>
+	<td><div class="vd_uploader f11">{if $r.fullname}<a href="/user/{$r.uid}" target="_blank">{$r.fullname}</a>{else}{$this->settings['SITENAME']}{/if}</div></td>
+	<td><div class="vd_add_time f11">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="vd_add_time f11"><a target="_blank" href="/admin.php?cmd=trackedit&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deleteSong({$r.id});">D</a></div></td>
+	</tr><!-- Darker Table Row -->
+
+{/foreach}
+
+</table>
+{$pagination}
+</div>
+
+{/strip}

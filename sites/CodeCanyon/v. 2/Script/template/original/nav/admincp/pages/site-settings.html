@@ -1,0 +1,1267 @@
+{strip}
+<div class="ad-rowcol">
+<h2>Site settings</h2>
+
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=savesitesettings" id="fform" method="post">
+ 
+ 
+		<fieldset>
+		<div id="general" class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Real-Time App</span></div>
+
+<div class="v2_gs_filter_list">
+
+ 
+	  
+	  
+        <div class="form-group">
+            <label class="col-md-3" for="nodejs_enabled">Do you have real-time app ?</label>
+            <div class="col-md-6">
+				<div>By enabling this you should have the Social Plus real-time APP, if you haven't yet, please check <a href="https://codecanyon.net/user/dobrovolscki/portfolio" target="_blank" >dobrovolscki's protfolio,</a>  download it and install by reading instructions from download package.<br/><div style="color:red;">You will not be able to run this app if your host do not support NodeJS.</div> <br/></div>
+                <input id="nodejs_enabled" name="nodejs_enabled" type="checkbox" class="form-control input-md" {if $site.real_time.enabled == 'yes'}checked{/if} value="{$site.real_time.enabled}" autocomplete="off">
+            </div>
+        </div>
+
+	        <div class="form-group">
+            <label class="col-md-3" for="nodejs_host">Enter your nodeJS host (e.g. localhost, without https or http)</label>
+            <div class="col-md-6">
+                <input id="nodejs_host" name="nodejs_host" type="text" placeholder="ex. yoursite.com" class="form-control input-md" value="{$site.real_time.host}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+
+	        <div class="form-group">
+            <label class="col-md-3" for="nodejs_port">Enter your nodeJS port (e.g. 3000)</label>
+            <div class="col-md-6">
+                <input id="nodejs_port" name="nodejs_port" type="text" placeholder="ex. 3000" class="form-control input-md" value="{$site.real_time.port}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+		<div class="form-group">
+            <label class="col-md-3" for="iceserver_stun">IceServer (STUN)</label>
+            <div class="col-md-6">
+                <input id="iceserver_stun" name="iceserver_stun" type="text" placeholder="ex: stun:numb.viagenie.ca:3478" class="form-control input-md" value="{$site.real_time.iceservers.stun}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label class="col-md-3" for="iceserver_turn">IceServer (TURN)</label>
+            <div class="col-md-6">
+                <input id="iceserver_turn" name="iceserver_turn" type="text" placeholder="ex: turn:numb.viagenie.ca:3478" class="form-control input-md" value="{$site.real_time.iceservers.turn}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label class="col-md-3" for="iceserver_credential">IceServer Credential (password)</label>
+            <div class="col-md-6">
+                <input id="iceserver_credential" name="iceserver_credential" type="text" class="form-control input-md" value="{$site.real_time.iceservers.credential}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label class="col-md-3" for="iceserver_username">IceServer Username (e.g. johndoe or johndoe@mail.com)</label>
+            <div class="col-md-6">
+                <input id="iceserver_username" name="iceserver_username" type="text" class="form-control input-md" value="{$site.real_time.iceservers.username}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		<br/>
+		<div style="color:red;">You can find free iceserver credential on <a href="http://numb.viagenie.ca/" target="_blank">http://numb.viagenie.ca/</a> <span style="color:#333;">(just create an account and you will receive the credential on your email),</span> or you can buy from <a href="https://www.twilio.com/" target="_blank">https://www.twilio.com/</a>.</div>
+		
+</div>
+
+</div>
+
+</fieldset>	
+ 
+
+ 
+ 
+ 
+ 
+ 
+		<fieldset>
+		<div id="general" class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Mobile view</span></div>
+
+<div class="v2_gs_filter_list">
+
+ 
+	  
+	  
+        <div class="form-group">
+            <label class="col-md-3" for="mob_view_installed">Do you have installed mobile view?</label>
+            <div class="col-md-6">
+                <input id="mob_view_installed" name="mob_view_installed" type="checkbox" class="form-control input-md" {if $site.mobile.enabled == 'yes'}checked{/if} value="{$site.mobile.enabled}" autocomplete="off">
+            </div>
+        </div>
+
+	        <div class="form-group">
+            <label class="col-md-3" for="mob_host">Mobile site domain name</label>
+            <div class="col-md-6">
+                <input id="mob_host" name="mob_host" type="text" placeholder="ex. https://m.social-plus.org" class="form-control input-md" value="{$site.mobile.host}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+
+
+</div>
+
+</div>
+
+</fieldset>	
+
+
+
+
+
+
+ <fieldset>
+		<div id="general" class="v2_gs_filter __open __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">General</span></div>
+
+<div class="v2_gs_filter_list">
+	        <div class="form-group">
+            <label class="col-md-3" for="host">Host</label>
+            <div class="col-md-6">
+                <input id="host" name="host" type="text" class="form-control input-md" value="{$site.host}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+ 
+	
+	
+        <div class="form-group">
+            <label class="col-md-3" for="sitename">Sitename</label>
+            <div class="col-md-6">
+                <input id="sitename" name="sitename" type="text" class="form-control input-md" value="{$site.sitename}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="email">Site email</label>
+            <div class="col-md-6">
+                <input id="email" name="email" type="text" class="form-control input-md" value="{$site.email}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="sitename_lower">Sitename lowercase</label>
+            <div class="col-md-6">
+                <input id="sitename_lower" name="sitename_lower" type="text" class="form-control input-md" value="{$site.sitename_lower}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="site_slogan">Site slogan</label>
+            <div class="col-md-6">
+                <input id="site_slogan" name="site_slogan" type="text" class="form-control input-md" value="{$site.site_slogan}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="site_lang">Site default language</label>
+            <div class="col-md-6">				
+				<select id="site_lang" name="site_lang">
+				<option value="" disabled>site global language</option>
+				{foreach $languages as $lang}
+				<option value="{$lang}" {if $site.site_lang === $lang}selected{/if}>{strtoupper($lang)}</option>
+				{/foreach}
+				</select>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="site_ip_region">Ip location detector (host)</label>
+            <div class="col-md-6">
+                <input id="site_ip_region" name="site_ip_region" type="text" class="form-control input-md" value="{$site.detect_user_location}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="ip_stack_api">Ip location detector API Key</label>
+            <div class="col-md-6">
+                <input id="ip_stack_api" name="ip_stack_api" type="text" class="form-control input-md" value="{$ip_stack_api.api}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="time_zone">Time Zone</label>
+            <div class="col-md-6">
+				
+				<select id="time_zone" name="timezone">
+				<option value="" disabled>List of Supported Timezones</option>
+				{foreach $tzlist as $timezone}
+				<option value="{$timezone}" {if $site.time_zone == $timezone}selected{/if}>{$timezone}</option>
+				{/foreach}
+				</select>
+				
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+		</div>
+		
+		</div>
+		</fieldset>
+		
+		
+
+		
+		
+		
+		
+		
+<fieldset>
+		<div id="general" class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Server</span></div>
+
+<div class="v2_gs_filter_list">
+        <div class="form-group">
+            <label class="col-md-3" for="memory_limit">Memory Limit</label>
+            <div class="col-md-6">
+				<select id="memory_limit" name="memory_limit">
+				<option value="" disabled>select memory limit</option>
+				<option value="16M" {if $server.memory_limit == "16M"}selected{/if}>16M</option>
+<option value="32M" {if $server.memory_limit == "32M"}selected{/if}>32M</option>
+<option value="64M" {if $server.memory_limit == "64M"}selected{/if}>64M</option>
+<option value="128M" {if $server.memory_limit == "128M"}selected{/if}>128M</option>
+<option value="256M" {if $server.memory_limit == "256M"}selected{/if}>256M</option>
+<option value="512M" {if $server.memory_limit == "512M"}selected{/if}>512M</option>
+<option value="999999999M" {if $server.memory_limit == "999999999M"}selected{/if}>Max.</option>
+				</select>
+								<div class="input_info">Maximum amount of memory a script may consume.</div>
+            </div>
+        </div>
+		
+		
+		<div class="form-group">
+            <label class="col-md-3" for="max_exec_time">Max execution time</label>
+            <div class="col-md-6">
+                <input id="max_exec_time" name="max_exec_time" type="number" class="form-control input-md" value="{$server.max_exec_time}" autocomplete="off">
+                <div class="input_info">Set the number of seconds a script is allowed to run. If this is reached, the script returns a fatal error. The default limit is 30 seconds or, if it exists, the max_execution_time value defined in the php.ini.</div>
+            </div>
+        </div>
+		
+		
+</div>
+</div>
+		
+		</fieldset>
+		
+
+		
+		
+<fieldset>
+		<div id="general" class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Users</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+
+<div class="form-group"><label class="col-md-3" for="usstatus">Default user status</label>
+
+<div class="col-md-5">
+<label class="radio-inline" for="usstatus-0"><input {if $u_config.user_reg_status == "confirmed"}checked{/if} type="radio" name="user_status" id="usstatus-0" value="confirmed">Confirmed</label>
+<label class="radio-inline" for="usstatus-1"><input {if $u_config.user_reg_status == "pending"}checked{/if} type="radio" name="user_status" id="usstatus-1" value="pending">Pending</label>
+<div class="input_info">Define user status after registration. <b>Pending</b> mean that the user need to confirm his profile by email, confirmed is automatically active.</div>
+
+</div>
+</div>
+		
+		
+		<div class="form-group">
+            <label class="col-md-3" for="time_keep_user_logged">Time keeping user logged</label>
+            <div class="col-md-6">
+
+				<select id="time_keep_user_logged" name="time_keep_user_logged">
+				<option value="" disabled>select user online interval</option>
+				<option value="1" {if $u_config.time_keep_user_logged == "1"}selected{/if}>1 day</option>
+<option value="3" {if $u_config.time_keep_user_logged == "3"}selected{/if}>3 days</option>
+<option value="5" {if $u_config.time_keep_user_logged == "5"}selected{/if}>5 days</option>
+<option value="8" {if $u_config.time_keep_user_logged == "7"}selected{/if}>7 days</option>
+				</select>
+                <div class="input_info">Set the number of days that keep user logged.<br/>When a user try to login and will un-check the <b>remember me</b> checkbox.</div>
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label class="col-md-3" for="online_interval">Online interval</label>
+            <div class="col-md-6">
+                
+				
+				<select id="online_interval" name="online_interval">
+				<option value="" disabled>select user online interval</option>
+				<option value="1" {if $u_config.online_interval == "1"}selected{/if}>1 minute</option>
+<option value="3" {if $u_config.online_interval == "3"}selected{/if}>3 minutes</option>
+<option value="5" {if $u_config.online_interval == "5"}selected{/if}>5 minutes</option>
+<option value="8" {if $u_config.online_interval == "8"}selected{/if}>8 minutes</option>
+<option value="10" {if $u_config.online_interval == "10"}selected{/if}>10 minutes</option>
+<option value="15" {if $u_config.online_interval == "15"}selected{/if}>15 minutes</option>
+
+				</select>
+				
+                <div class="input_info">Interval of online user in minutes.</div>
+            </div>
+        </div>
+</div>
+</div>
+		
+		</fieldset>
+		
+		
+		
+		
+		<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Photos upload</span></div>
+
+<div class="v2_gs_filter_list">
+
+		<div class="form-group">
+            <label class="col-md-3" for="max_photo_upload">Max file upload size</label>
+            <div class="col-md-6">
+                
+				
+				<select id="max_photo_upload" name="max_photo_upload">
+				<option value="" disabled>0</option>
+								{for $i=1 to 10}
+								<option value="{$i}" {if $p_upload.max_file_upload == $i}selected{/if}>{$i} mb</option>
+                                {/for}
+								<option value="20" {if $p_upload.max_file_upload == "20"}selected{/if}>20 mb</option>
+								<option value="25" {if $p_upload.max_file_upload == "25"}selected{/if}>25 mb</option>
+								<option value="40" {if $p_upload.max_file_upload == "40"}selected{/if}>40 mb</option>
+								<option value="60" {if $p_upload.max_file_upload == "60"}selected{/if}>60 mb</option>
+								<option value="100" {if $p_upload.max_file_upload == "100"}selected{/if}>100 mb</option>
+								<option value="200" {if $p_upload.max_file_upload == "200"}selected{/if}>200 mb</option>
+								<option value="500" {if $p_upload.max_file_upload == "500"}selected{/if}>500 mb</option>
+				</select>
+				
+                <div class="input_info">Maximum upload size for a photo.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3" for="valid_formats">Valid formats</label>
+            <div class="col-md-6">
+                <input id="valid_formats" name="ph_vd_formats" type="text" class="form-control input-md" value="{implode (", ", $p_upload.valid_formats)}" autocomplete="off">
+                <div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("jpg", $p_upload.valid_formats)}checked{/if} value="jpg" />JPG</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("jpeg", $p_upload.valid_formats)}checked{/if} value="jpeg" />JPEG</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("png", $p_upload.valid_formats)}checked{/if} value="png" />PNG</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("gif", $p_upload.valid_formats)}checked{/if} value="gif" />GIF</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("tiff", $p_upload.valid_formats)}checked{/if} value="tiff" />Tiff</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("bmp", $p_upload.valid_formats)}checked{/if} value="bmp" />Bmp</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("jbg", $p_upload.valid_formats)}checked{/if} value="jbg" />Jbg</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("mac", $p_upload.valid_formats)}checked{/if} value="mac" />Mac</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("pbm", $p_upload.valid_formats)}checked{/if} value="pbm" />Pbm</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("ppm", $p_upload.valid_formats)}checked{/if} value="ppm" />Ppm</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("tga", $p_upload.valid_formats)}checked{/if} value="tga" />Tga</div>
+				<div class="chbox_group p"><input type="checkbox" name="valid_formats[]" {if in_array("wmf", $p_upload.valid_formats)}checked{/if} value="wmf" />Wmf</div>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="sitename_lower">Picture sizes</label>
+            <div class="col-md-6">
+			
+				<div class="input_group">
+                <span>Small:</span><input id="p_size_small" name="p_size_small" type="number" class="form-control input-md" value="{$p_upload.size.small}" autocomplete="off"><span class="input_group_ind_right">px</span>
+				</div>
+				
+				<div class="input_group">
+                <span>Medium:</span><input id="p_size_medium" name="p_size_medium" type="number" class="form-control input-md" value="{$p_upload.size.medium}" autocomplete="off"><span class="input_group_ind_right">px</span>
+				</div>
+				
+				<div class="input_group">
+                <span>Thumbnail:</span><input id="p_size_thumb" name="p_size_thumb" type="number" class="form-control input-md" value="{$p_upload.size.thumb}" autocomplete="off"><span class="input_group_ind_right">px</span>
+				</div>
+				
+				<div class="input_group">
+                <span>Exp:</span><input id="p_size_exp" name="p_size_exp" type="number" class="form-control input-md" value="{$p_upload.size.exp}" autocomplete="off"><span class="input_group_ind_right">px</span>
+				</div>
+				
+				<div class="input_group">
+                <span>Grid:</span><input id="p_size_grid" name="p_size_grid" type="number" class="form-control input-md" value="{$p_upload.size.grid}" autocomplete="off"><span class="input_group_ind_right">px</span>
+				</div>
+				
+            </div>
+        </div>
+		
+
+		
+<div class="form-group"><label class="col-md-3" for="watermark_url">Watermark</label>
+    <div class="col-md-5">
+	
+	 <div style="margin-bottom:6px;">Watermark path:<input id="watermark_url" name="watermark_url" type="text" class="form-control input-md" value="{$p_upload.watermark_url}" autocomplete="off"><div class="watermark_mid_ic"><img src="{$p_upload.watermark_url}" border="0"/></div></div>
+      <label class="checkbox-inline" for="watermark-0"><input {if $p_upload.watermark == "true"}checked{/if} type="checkbox" name="watermark" id="watermark-0" value="true">Enable watermark</label>
+        <div class="input_info">If is enabled, when a picture will be uploaded automatically watermark logo will be pasted on it.</div>
+    </div>
+</div>
+
+			
+			
+			
+			
+</div>
+</div>
+</fieldset>
+
+
+<!-- Gifts -->
+		
+<fieldset>
+			<div class="v2_gs_filter __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Gifts</span></div>
+
+					<div class="v2_gs_filter_list">
+
+
+						<div class="form-group">
+							<label class="col-md-3" for="gift_expires_time">Gift expire time</label>
+								<div class="col-md-6">
+						
+
+						<input id="gift_expires_time" name="gift_expires_time" type="text" class="form-control input-md" value="{$gifts.expires_time}" autocomplete="off">
+						<span class="help-block checking"></span>
+            </div>
+        </div>
+					
+					
+
+
+						<div class="form-group">
+							<label class="col-md-3" for="site_ip_region">Genres</label>
+								<div class="col-md-6">
+									{foreach $gifts.genres as $genre}
+
+
+										<div class="medadd_c_polla_wr soh-s"><input id="{$genre}" name="gifts_genre[]" value="{$genre}" type="text" class="poll_options_04a">
+											<div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+												<div class="page_media_x"></div>
+											</div>
+										</div>
+
+									{/foreach}
+
+
+
+
+
+<a href="javascript:;" class="bold" onclick="addInput(event,'gifts_genre',1);">+ Add</a>
+            </div>
+        </div>
+
+
+</div></div>
+</fieldset>	
+
+
+<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Apps</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="site_ip_region">Genres</label>
+            <div class="col-md-6">
+{foreach $apps.genres as $genre}
+
+
+<div class="medadd_c_polla_wr soh-s"><input id="{$genre}" name="apps_genre[]" value="{$genre}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+
+{/foreach}
+
+
+
+
+
+<a href="javascript:;" class="bold" onclick="addInput(event,'apps_genre',1);">+ Add</a>
+            </div>
+        </div>
+
+
+</div></div>
+</fieldset>	
+
+
+
+<!-- marketplace -->
+<fieldset>
+		<div class="v2_gs_filter __show" id="marketplace">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Marketplace</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+		<div class="form-group">
+            <label class="col-md-3" for="marketplace_Currency">Products currency</label>
+            <div class="col-md-6">
+                <input id="marketplace_Currency" placeholder="ex. EUR, USD, RUB" name="marketplace_Currency" type="text" class="form-control input-md" value="{$marketplace.currency}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="marketplace">Categories for Products</label>
+            <div class="col-md-6">
+
+
+{foreach from=$marketplace.products_categories item=label key=category}
+
+<div class="medadd_c_polla_wr soh-s">
+<input id="{$category}" name="marketplace_categories[]" value="{$category}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+
+{if in_array($category,array_keys($marketplace.products_categories.$category))}
+<section class="admin_comm_subcategories"><h3>Subcategories for </h3><div class="ob">{$category}</div>
+<input type="hidden" name="marketplace_subcategories_index[]" value="{$category}"/>
+{foreach $marketplace.products_categories.$category as $subcateg}
+
+            
+			   <div class="form-group">
+            <div class="col-md-6">
+
+
+<div class="medadd_c_polla_wr soh-s">
+<input id="{$subcateg}" name="marketplace_subcategories_{$category}[]" value="{$subcateg}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+</div>
+</div>
+
+{/foreach}
+<a href="javascript:;" class="bold" onclick="addInput(event,'marketplace_subcategories_{$category}',1);">+ Add</a>
+</section>
+{/if}
+
+
+
+{/foreach}
+
+
+
+
+
+<a href="javascript:;" class="bold" onclick="addInput(event,'marketplace_categories',1);">+ Add</a>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+</div>
+
+</div>
+
+</fieldset>
+
+
+<!--- communities -->
+<fieldset>
+		<div class="v2_gs_filter __show" id="communities">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Communities</span></div>
+
+<div class="v2_gs_filter_list">
+								        <div class="form-group">
+            <label class="col-md-3" for="comm_small_image_size">Community small image size</label>
+            <div class="col-md-6">
+                <input id="comm_small_image_size" name="comm_small_image_size" type="number" class="form-control input-md" value="{$communities.community_small_images_size}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+								        <div class="form-group">
+            <label class="col-md-3" for="comm_medium_image_size">Community medium image size</label>
+            <div class="col-md-6">
+                <input id="comm_medium_image_size" name="comm_medium_image_size" type="number" class="form-control input-md" value="{$communities.community_medium_images_size}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+
+								        <div class="form-group">
+            <label class="col-md-3" for="group_default_cover">Community default cover</label>
+            <div class="col-md-6">
+                <input id="group_default_cover" name="group_default_cover" type="text" class="form-control input-md" value="{$communities.group_default_cover}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="communities">Categories for <br/><i>{$this->lang['Community_Blog']}</i></label>
+            <div class="col-md-6">
+
+{foreach $communities.genres.0.categories as $genre}
+
+
+<div class="medadd_c_polla_wr soh-s">
+<input id="{$genre}" name="communities_categories_one[]" value="{$genre}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+
+{if in_array($genre,array_keys($communities.genres.0.subcategories))}
+<section class="admin_comm_subcategories"><h3>Subcategories for </h3><div class="ob">{$genre}</div>
+<input type="hidden" name="communities_subcategories_one_array_index[]" value="{$genre}"/>
+{foreach $communities.genres.0.subcategories.$genre as $subcateg}
+
+            
+			   <div class="form-group">
+            <div class="col-md-6">
+
+
+<div class="medadd_c_polla_wr soh-s">
+<input id="{$subcateg}" name="communities_subcategories_one_{$genre}[]" value="{$subcateg}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+</div>
+</div>
+
+{/foreach}
+<a href="javascript:;" class="bold" onclick="addInput(event,'communities_subcategories_one_{$genre}',1);">+ Add</a>
+</section>
+{/if}
+
+
+
+{/foreach}
+
+
+
+
+
+<a href="javascript:;" class="bold" onclick="addInput(event,'communities_categories_one',1);">+ Add</a>
+            </div>
+        </div>
+		
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="communities">Categories for <br/><i>{$this->lang['Company_Store_Celebrity']}</i></label>
+            <div class="col-md-6">
+			
+{foreach $communities.genres.1.categories as $genre}
+<div class="medadd_c_polla_wr soh-s"><input id="{$genre}" name="communities_categories_two[]" value="{$genre}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+
+
+
+{if in_array($genre,array_keys($communities.genres.1.subcategories))}
+<section class="admin_comm_subcategories"><h3>Subcategories for</h3><div class="ob">{$genre}</div>
+<input type="hidden" name="communities_subcategories_two_array_index[]" value="{$genre}"/>
+{foreach $communities.genres.1.subcategories.$genre as $subcateg}
+
+            
+			   <div class="form-group">
+            <div class="col-md-6">
+
+
+<div class="medadd_c_polla_wr soh-s">
+<input id="{$subcateg}" name="communities_subcategories_two_{$genre}[]" value="{$subcateg}" type="text" class="poll_options_04a">
+    <div class="foh-s page_media_x_wrap medadd_c_pollrem" title="Remove option" onclick="return removeInput(event);">
+        <div class="page_media_x"></div>
+    </div>
+</div>
+</div>
+</div>
+
+{/foreach}
+<a href="javascript:;" class="bold" onclick="addInput(event,'communities_subcategories_two_{$genre}',1);">+ Add</a>
+</section>
+{/if}
+
+{/foreach}
+
+
+
+
+
+<a href="javascript:;" class="bold" onclick="addInput(event,'communities_categories_two',1);">+ Add</a>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+
+
+
+</div></div>
+</fieldset>	
+
+
+
+<!-- videos -->
+
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Videos</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+		<div class="form-group">
+            <label class="col-md-3" for="max_video_upload">Max file upload size</label>
+            <div class="col-md-6">
+                
+				
+				<select id="max_video_upload" name="max_video_upload">
+				<option value="" disabled>0</option>
+								{for $i=10 to 100}
+								<option value="{$i}" {if $v_upload.vd_max_file_upload == $i}selected{/if}>{$i} mb</option>
+                                {/for}
+								<option value="200" {if $v_upload.vd_max_file_upload == "200"}selected{/if}>200 mb</option>
+								<option value="300" {if $v_upload.vd_max_file_upload == "300"}selected{/if}>300 mb</option>
+								<option value="400" {if $v_upload.vd_max_file_upload == "400"}selected{/if}>400 mb</option>
+								<option value="500" {if $v_upload.vd_max_file_upload == "500"}selected{/if}>500 mb</option>
+								<option value="1000" {if $v_upload.vd_max_file_upload == "1000"}selected{/if}>1000 mb</option>
+				</select>
+				
+                <div class="input_info">Maximum upload size for a video file.</div>
+            </div>
+        </div>
+
+		
+        <div class="form-group">
+            <label class="col-md-3" for="vd_valid_formats">Valid formats</label>
+            <div class="col-md-6">
+                <input id="vd_valid_formats" name="vd_valid_formats_codec" type="text" class="form-control input-md" value="{implode (", ", $v_upload.vd_valid_formats)}" autocomplete="off">
+                <div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("wmv", $v_upload.vd_valid_formats)}checked{/if} value="wmv" />WMV</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("mp4", $v_upload.vd_valid_formats)}checked{/if} value="mp4" />MP4</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("flv", $v_upload.vd_valid_formats)}checked{/if} value="flv" />FLV</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("avi", $v_upload.vd_valid_formats)}checked{/if} value="avi" />AVI</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("asf", $v_upload.vd_valid_formats)}checked{/if} value="asf" />ASF</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("mov", $v_upload.vd_valid_formats)}checked{/if} value="mov" />MOV</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("mpg", $v_upload.vd_valid_formats)}checked{/if} value="mpg" />MPEG</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("vob", $v_upload.vd_valid_formats)}checked{/if} value="vob" />VOB</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("yuv", $v_upload.vd_valid_formats)}checked{/if} value="yuv" />YUV</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("amv", $v_upload.vd_valid_formats)}checked{/if} value="amv" />AMV</div>
+				<div class="chbox_group vd"><input type="checkbox" name="vd_valid_formats[]" {if in_array("svi", $v_upload.vd_valid_formats)}checked{/if} value="svi" />SVI</div>
+            </div>
+        </div>
+		
+		
+		
+</div></div>
+</fieldset>
+
+
+
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Themes</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="themes_dir">Themes Directory name</label>
+            <div class="col-md-6">
+                <input id="themes_dir" name="themes_dir" type="text" class="form-control input-md" value="{$themes.themes_dir}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="default_theme">Default Theme</label>
+            <div class="col-md-6">
+                <input id="default_theme" name="default_theme" type="text" class="form-control input-md" value="{$themes.default_theme}" autocomplete="off">
+            </div>
+        </div>
+		
+
+</div></div>
+</fieldset>
+
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Smilies</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="smilies_path">Smilies path</label>
+            <div class="col-md-6">
+                <input id="smilies_path" name="smilies_path" type="text" class="form-control input-md" value="{$smilies.smilies}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="default_theme">Stickers path</label>
+            <div class="col-md-6">
+                <input id="meeps_path" name="meeps_path" type="text" class="form-control input-md" value="{$smilies.stickers}" autocomplete="off">
+            </div>
+        </div>
+		
+
+</div></div>
+</fieldset>
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">YouTube</span></div>
+
+<div class="v2_gs_filter_list">
+
+        <div class="form-group">
+            <label class="col-md-3" for="youtube_api_key">API KEY</label>
+            <div class="col-md-6">
+                <input id="youtube_api_key" name="youtube_api_key" type="text" class="form-control input-md" value="{$youtube.youtube_api_key}" autocomplete="off">
+            </div>
+        </div>
+
+</div></div>
+</fieldset>
+		
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Google API</span></div>
+
+<div class="v2_gs_filter_list">
+
+        <div class="form-group"> 
+            <label class="col-md-3" for="google_api_key">API KEY</label>
+            <div class="col-md-6">
+                <input id="google_api_key" name="google_api_key" type="text" class="form-control input-md" value="{$google.google_api_key}" autocomplete="off">
+            </div>
+        </div>
+
+</div></div>
+</fieldset>
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Gliphy API (GIF)</span></div>
+
+<div class="v2_gs_filter_list">
+<h3 style="color:#666">Get your Gliphy api key from <a href="https://giphy.com/" target="_blank">Gliphy (gifs api)</a></h3>
+        <div class="form-group">
+            <label class="col-md-3" for="gliphy_api_key">API KEY</label>
+            <div class="col-md-6">
+                <input id="gliphy_api_key" name="gliphy_api_key" type="text" class="form-control input-md" value="{$gliphy.gliphy_api_key}" autocomplete="off">
+            </div>
+        </div>
+
+</div></div>
+</fieldset>
+
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">MoviesDB API</span></div>
+
+<div class="v2_gs_filter_list">
+<h3 style="color:#666">Get your MoviesDB api key from <a href="https://www.themoviedb.org/" target="_blank">MoviesDB</a></h3>
+        <div class="form-group">
+            <label class="col-md-3" for="moviesdb_api_key">API KEY</label>
+            <div class="col-md-6">
+                <input id="moviesdb_api_key" name="moviesdb_api_key" type="text" class="form-control input-md" value="{$movies.moviesdb_api_key}" autocomplete="off">
+            </div>
+        </div>
+
+</div></div>
+</fieldset>
+
+
+
+
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">SMS Settings</span></div>
+
+<div class="v2_gs_filter_list">
+
+		<h3 style="color:#666">If you don't have an account, please signup to <a href="https://www.textlocal.com/signup/" target="_blank">Text Local</a></h3>
+        <div class="form-group">
+            <label class="col-md-3" for="sms_enable">Enable SMS gateway</label>
+            <div class="col-md-6">
+                <input id="sms_enable" name="sms_enable" type="checkbox" class="form-control input-md" {if $sms.enabled == 'true'}checked{/if} value="{$sms.enabled}" autocomplete="off">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="sms_sender">Sender Name</label>
+            <div class="col-md-6">
+                <input id="sms_sender" name="sms_sender" type="text" class="form-control input-md" value="{$sms.sms_sender}" autocomplete="off">
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="sms_telcode">Tel. code (eg. 00 or +)</label>
+            <div class="col-md-6">
+                <input id="sms_telcode" name="sms_telcode" type="text" class="form-control input-md" value="{$sms.sms_telcode}" autocomplete="off">
+            </div>
+        </div>
+		
+ 
+		
+        <div class="form-group">
+            <label class="col-md-3" for="sms_email">TXTLOCAL User Email</label>
+            <div class="col-md-6">
+
+                <input id="sms_email" name="sms_email" type="text" class="form-control input-md" value="{$sms.sms_email}" autocomplete="off">
+           
+
+		   </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3" for="sms_password">TXTLOCAL User Password</label>
+            <div class="col-md-6">
+
+                <input id="sms_password" name="sms_password" type="password" class="form-control input-md" value="{$sms.sms_password}" autocomplete="off">
+           
+
+		   </div>
+        </div>	
+		
+</div></div>
+</fieldset>	
+
+
+
+
+
+
+
+	
+			<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Amazon S3 Cloud storage</span></div>
+
+<div class="v2_gs_filter_list">
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="s3_enable">Enable s3 cloud</label>
+            <div class="col-md-6">
+                <input id="s3_enable" name="s3_enable" type="checkbox" class="form-control input-md" {if $s3.enabled == 'yes'}checked{/if} value="{$s3.enabled}" autocomplete="off">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-3" for="s3_awsAccessKey">AWS AccessKey ( awsAccessKey )</label>
+            <div class="col-md-6">
+                <input id="s3_awsAccessKey" name="s3_awsAccessKey" type="text" class="form-control input-md" value="{$s3.awsAccessKey}" autocomplete="off">
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="s3_awsSecretKey">AWS SecretKey ( awsSecretKey )</label>
+            <div class="col-md-6">
+                <input id="s3_awsAccessKey" name="s3_awsSecretKey" type="text" class="form-control input-md" value="{$s3.awsSecretKey}" autocomplete="off">
+            </div>
+        </div>
+		
+ 
+		
+        <div class="form-group">
+            <label class="col-md-3" for="s3_bucket_name">Bucket name</label>
+            <div class="col-md-6">
+			{if ! array_key_exists('bucket_name', $s3)}
+			
+                <input id="s3_bucket_name" name="s3_bucket_name" type="text" class="form-control input-md" value="{$s3_bucket_default_name}" autocomplete="off">
+           
+			{else if empty($s3.bucket_name)}
+	 <input id="s3_bucket_name" name="s3_bucket_name" type="text" class="form-control input-md" value="{$s3_bucket_default_name}" autocomplete="off">
+		{else}
+	 <input id="s3_bucket_name" name="s3_bucket_name" type="text" class="form-control input-md" value="{$s3.bucket_name}" autocomplete="off">
+ 
+		{/if}
+
+		   </div>
+        </div>
+		<!--
+		{foreach $s3.buckets as $bucket_type => $bucket_names}
+		<input type="hidden" name="s3_buckets_array_index[]" value="{$bucket_type}"/>
+		    <div class="form-group">
+            <label class="col-md-3" for="s3_buckets_{$bucket_type}">{$bucket_type}</label>
+			<div class="col-md-6">
+			
+			{foreach $bucket_names as $bucket_name}
+            <div style="margin-bottom:5px;">
+                <input id="s3_buckets_{$bucket_type}" name="s3_buckets_{$bucket_type}[]" type="text" class="form-control input-md" value="{$bucket_name}" autocomplete="off">
+            </div>
+			{/foreach}
+			
+			</div>
+        </div>
+		{/foreach}
+--->
+</div></div>
+</fieldset>	
+		
+					<fieldset>
+		<div class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Result limit per pages</span></div>
+
+<div class="v2_gs_filter_list">
+		
+		
+		        <div class="form-group">
+            <label class="col-md-3" for="personal_photos">Personal photos</label>
+            <div class="col-md-6">
+                <input id="personal_photos" name="personal_photos" type="number" class="form-control input-md" value="{$limit.personal_photos}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+				        <div class="form-group">
+            <label class="col-md-3" for="personal_photos">Photos in album</label>
+            <div class="col-md-6">
+                <input id="album_photos" name="album_photos" type="number" class="form-control input-md" value="{$limit.album_photos}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="pm_conversation_limit">Limit of conversations (in messages window)</label>
+            <div class="col-md-6">
+                <input id="pm_conversation_limit" name="pm_conversation_limit" type="number" class="form-control input-md" value="{$limit.pm_conversation_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="msg_limit">Limit of messages (in messages Window)</label>
+            <div class="col-md-6">
+                <input id="msg_limit" name="msg_limit" type="number" class="form-control input-md" value="{$limit.pm_messages_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="chat_messages_limit">Limit of messages (in chat Window)</label>
+            <div class="col-md-6">
+                <input id="chat_messages_limit" name="chat_messages_limit" type="number" class="form-control input-md" value="{$limit.chat_messages_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="friends_per_page">Friends per page</label>
+            <div class="col-md-6">
+                <input id="friends_per_page" name="friends_per_page" type="number" class="form-control input-md" value="{$limit.friends_per_page_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="friends_online_limit">Online friends (in online box)</label>
+            <div class="col-md-6">
+                <input id="friends_online_limit" name="friends_online_limit" type="number" class="form-control input-md" value="{$limit.friends_online_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="photoviewer_comments_limit">Comments in photoviewer</label>
+            <div class="col-md-6">
+                <input id="photoviewer_comments_limit" name="photoviewer_comments_limit" type="number" class="form-control input-md" value="{$limit.photoviewer_comments_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="photoviewer_comments_limit">Replies of comments in photoviewer</label>
+            <div class="col-md-6">
+                <input id="photo_viewer_comments_replies_limit" name="photo_viewer_comments_replies_limit" type="number" class="form-control input-md" value="{$limit.photo_viewer_comments_replies_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="grades_limit">Limit of grades in popup box</label>
+            <div class="col-md-6">
+                <input id="grades_limit" name="grades_limit" type="number" class="form-control input-md" value="{$limit.grades_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="post_comments_limit">Limit of comments in post details box</label>
+            <div class="col-md-6">
+                <input id="post_comments_limit" name="post_comments_limit" type="number" class="form-control input-md" value="{$limit.post_comments_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="feed_res">Wall</label>
+            <div class="col-md-6">
+                <input id="feed_res" name="feed_res" type="number" class="form-control input-md" value="{$limit.feed_res}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="user_feed_limit">User profile wall limit</label>
+            <div class="col-md-6">
+                <input id="user_feed_limit" name="user_feed_limit" type="number" class="form-control input-md" value="{$limit.user_feed_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="post_per_page_limit">Limit of posts (in posts page)</label>
+            <div class="col-md-6">
+                <input id="post_per_page_limit" name="post_per_page_limit" type="number" class="form-control input-md" value="{$limit.post_per_page_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="profile_wall_photos_limit">User profile wall photos limit</label>
+            <div class="col-md-6">
+                <input id="profile_wall_photos_limit" name="profile_wall_photos_limit" type="number" class="form-control input-md" value="{$limit.profile_wall_photos_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="vide_popup_similar_limit">Similar videos limit (in video popup)</label>
+            <div class="col-md-6">
+                <input id="vide_popup_similar_limit" name="vide_popup_similar_limit" type="number" class="form-control input-md" value="{$limit.vide_popup_similar_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="search_suggestions_limit">Search suggestions</label>
+            <div class="col-md-6">
+                <input id="search_suggestions_limit" name="search_suggestions_limit" type="number" class="form-control input-md" value="{$limit.search_suggestions_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+						        <div class="form-group">
+            <label class="col-md-3" for="search_content_limit">Search content</label>
+            <div class="col-md-6">
+                <input id="search_content_limit" name="search_content_limit" type="number" class="form-control input-md" value="{$limit.search_content_limit}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>	
+		
+		</div>
+		</div>
+		</fieldset>
+		
+		
+		        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+		
+
+</form>
+
+</div>
+<script>
+{literal}
+ga(document).ready(function(){
+formatCheckbox();
+filterBoxM();
+});
+{/literal}
+</script>
+{/strip}

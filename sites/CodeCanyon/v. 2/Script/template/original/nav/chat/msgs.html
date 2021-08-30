@@ -1,0 +1,87 @@
+{strip}
+{assign var=lby value=0}
+{assign var=b value=0}
+{assign var=d value=0}
+{assign var=t value=0}
+{assign var=l_t value=0}
+<section class="chat_w_msgs_cont nano">
+<div class="nano-content pd_chat_window">
+{foreach $q as $r}
+
+{$lby = $r.lastby}
+
+{assign var=dt value=$this->chatGnDate($r.time)}
+{if $l_t !== $dt[0]}
+<div class="cnt_w_chat_m">
+<div class="ch_f1_dt">
+<div class="chat_f2_dt">{$dt[1]}</div>
+</div>
+</div>
+{/if}
+
+{if $r.fromUser == $me}
+
+
+<div class="cnt_w_chat_m _me">
+<div>
+<!---<div class="chat_timestamp {if $d > 0}_ml{/if}">{$this->pm_time($r.time)}</div>----->
+<div title="{$this->pm_time($r.time)}" rel="tipsychat" class="chat_w_msg {if $d === 0 || $l_t !== $dt[0]}_ml{/if}">{$this->str_smilies($r.msg,false,false,false,true)}</div>
+
+{if $d === 0 || $l_t !== $dt[0]}
+<div class="w_chat_u_avatar"><img src="/getPhoto?p={$this->USER['profile_photo']}&sz=small&g={$this->USER['gender']}" /></div>
+{/if}
+
+</div>
+</div>
+
+{$b = 0}
+{$d = $d+1}
+
+{else}
+
+<div class="cnt_w_chat_m">
+<div>
+<div title="{$this->pm_time($r.time)}" rel="tipsychat" class="chat_w_msg {if $b === 0 || $l_t !== $dt[0]}_ml{/if}">{$this->str_smilies($r.msg,false,false,false,true)}</div>
+
+{if $b === 0 || $l_t !== $dt[0]}
+<div class="w_chat_u_avatar"><img src="/getPhoto?p={$u.photo}&sz=small&g={$u.gender}" /></div>
+{/if}
+<!---<div class="chat_timestamp {if $b > 0}_ml{/if}">{$this->pm_time($r.time)}</div>-->
+</div>
+</div>
+{$d = 0}
+{$b = $b+1}
+
+{/if}
+
+{$lby = $r.lastby}
+
+
+{$l_t = date('j',$r.time)}
+{foreachelse}
+{$this->empty_chat_conv()}
+{/foreach}
+</div>
+</section>
+
+{if $this->allowSendPm($u.id) == 'true'}
+<div class="w_ch_bt_txtarea"><textarea placeholder="Type message here..." id="w_ch_bt_txtarea"></textarea>
+
+
+<div class="chat_bottom_ics">
+<!-- smilies btn -->
+<a class="chat_sm_btn" href="javascript:;"></a>
+</div>
+{else}
+<Div class="chat_no_receive_pm"><span>{$this->lang['pm_not_allow_receive']}<br/><br/><div style=""><A href="javascript:window.close();">Close</a></div></span></div>
+{/if}
+</div>
+{/strip}
+
+<script>
+var _is_chat_verified = '{$verified}';
+var _chat_getVerify = '{$ver_link}';
+{literal}
+nanoScrollStart();
+{/literal}
+</script>

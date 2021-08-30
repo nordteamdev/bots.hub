@@ -1,0 +1,23 @@
+<div class="entry" data-type="instagram" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-instagram"></i> 
+	   {{LANG ig}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}"><br>
+	<input type="text" id="instagram-url" class="form-control" data-name="entry_instagram_url" placeholder="{{LANG ig_post_url}}"><br>
+	<input type="hidden" class="form-control" data-name="entry_instagram">
+	<div class="fetched-instagram"></div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-blue" type="button" onclick="FL_GetInstagramPost({{ENTRY_TIME}});">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG get_post}}
+	    </button>
+	</div>
+	<div class="clear"></div>
+</div>

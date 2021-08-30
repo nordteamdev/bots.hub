@@ -1,0 +1,16 @@
+<div class="wo_settings_page profile-lists sun_sett_page">
+	<h3><?php echo $wo['lang']['blocked_users'];?></h3>
+	<div class="setting-well">
+         <?php
+         $blocked_users = Wo_GetBlockedMembers($wo['setting']['user_id']);
+         if (count($blocked_users) > 0) {
+            foreach ($blocked_users as $wo['member']) {
+                echo Wo_LoadPage('setting/blocked-users-list');
+            }
+         } else {
+            echo '<h5 class="search-filter-center-text"> ' . $wo['lang']['no_members_found'] . '</h5>';
+         }
+         ?>
+      <div class="clear"></div>
+   </div>
+</div>

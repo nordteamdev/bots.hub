@@ -1,0 +1,39 @@
+<div class="add-photo sun_startup">
+	<div class="text-center">
+       	<h2><?php echo $wo['lang']['follow_head'];?></h2>
+        <h4><?php echo $wo['lang']['get_latest_activity'];?></h4>
+        <div class="row sun_find_friends">
+			<?php
+				$user_id = array();
+				foreach ($wo['users'] as $wo['result']) {
+					$user_id[] = $wo['result']['user_id'];
+					$wo['result']['no_btn'] = true;
+					echo Wo_LoadPage('search/user-result');
+				}
+				echo '<input type="hidden" name="users" id="users-id" value="' . implode(',' , $user_id) . '">';
+			?>
+		</div>
+	</div>
+	<div class="continue-button">
+       	<button class="con-button btn btn-main" onclick="Wo_SubmitFollow();">
+			<?php
+				$string = str_replace('{number}', count($wo['users']), $wo['lang']['follow_num']);
+				echo $string;
+			?>
+        </button>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+function Wo_SubmitFollow() {
+	$('.con-button').attr('disabled', true);
+	$('.con-button').text("<?php echo $wo['lang']['please_wait'];?>");
+	var users = $('#users-id').val();
+	$.post(Wo_Ajax_Requests_File() + '?f=follow_users', {user:users}, function (data) {
+		if (data.status == 200) {
+			window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+		}
+	});
+}
+</script>

@@ -1,0 +1,39 @@
+<div class="page-margin">
+   <div class="row">
+      <div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+      <div class="col-md-7 middlecol">
+         <div class="list-group">
+            <div class="list-group-item">
+               <i class="fa fa-bars"></i> 
+                <?php echo $wo['lang']['friends_stories'] ?>
+               <div class="clear"></div>
+            </div>
+            <div class="setting-well">
+              <div class="user-status-home">
+           <ul class="status-list">
+           <li>
+            <div class="user-avatar">
+              <a href="<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>"><img src="<?php echo $wo['user']['avatar'];?>"></a>
+            </div>  
+            <div class="plus" onclick="window.location.href='<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>'"><i class="fa fa-plus-circle"></i></div>
+          </li>
+           <?php
+           if ($wo['config']['user_status'] == 1) {
+              $get_user_status = Wo_GetFriendsStatus(array('limit' => 100000));
+              if (!empty($get_user_status)) {
+                 foreach ($get_user_status as $key => $wo['user_status']) {
+                    echo Wo_LoadPage('home/user-status');
+                 }
+              } 
+           } 
+           ?>
+           </ul>
+         </div>
+            </div>
+         </div>
+      </div>
+      <!-- .col-md-8 -->
+      <?php echo Wo_LoadPage('sidebar/content');?>
+   </div>
+   <!-- .row -->
+</div>

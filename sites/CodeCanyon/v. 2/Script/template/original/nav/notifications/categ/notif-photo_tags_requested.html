@@ -1,0 +1,37 @@
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		           <div id="ne-n" data-category="Other" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+						<a href="/photo?q={$this->USER['id']}&show=single&from=medium&o={b_encode($res.item)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($res.item)}" class="image-hover">
+                           <img class="photo_img" src="/getPhoto?p={$res.item}&sz=small" alt="{$res.fullname}" width="64" height="64">
+						 </a>  
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o bold" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a><span class="__frrpkc_txt">&nbsp;{$this->tagged_request($this->lang['tagged_request'],$res.json)}</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+<div class="notif_btn">
+<button onclick="return confirmTaggedRequest(event,this,{$res.nid},{$res.item});" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+<a href="javascript:;" data-freq="{$res.nid}-{$res.item}" onclick="$('#hook_FormButton_fri_{$res.nid}').trigger('click');" class="">{$this->lang['Decline']}</a>
+</div>
+
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.nid}" data-freq="{$res.time}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+
+          </div></div>
+                </div>
+
+{/foreach}                    </div></div>
+                </div>

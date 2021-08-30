@@ -1,0 +1,283 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Manage Features</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-7 col-md-7">
+            <div class="card">
+                <div class="header">
+                    <h2>Site Features</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <label for="point_level_system">Point & level system <span class="black" data-toggle="popover" data-trigger="hover" data-content="Users can earn points from liking / sharing / commenting...."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="point_level_system" id="point_level_system-enabled" value="1" <?php echo ($wo['config']['point_level_system'] == 1) ? 'checked': '';?>>
+                            <label for="point_level_system-enabled">Enabled</label>
+                            <input type="radio" name="point_level_system" id="point_level_system-disabled" value="0" <?php echo ($wo['config']['point_level_system'] == 0) ? 'checked': '';?>>
+                            <label for="point_level_system-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="games">Games System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to play games."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="games" id="games-enabled" value="1" <?php echo ($wo['config']['games'] == 1) ? 'checked': '';?>>
+                            <label for="games-enabled">Enabled</label>
+                            <input type="radio" name="games" id="games-disabled" value="0" <?php echo ($wo['config']['games'] == 0) ? 'checked': '';?>>
+                            <label for="games-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="pages">Pages System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create fan pages."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="pages" id="pages-enabled" value="1" <?php echo ($wo['config']['pages'] == 1) ? 'checked': '';?>>
+                            <label for="pages-enabled">Enabled</label>
+                            <input type="radio" name="pages" id="pages-disabled" value="0" <?php echo ($wo['config']['pages'] == 0) ? 'checked': '';?>>
+                            <label for="pages-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="classified">Classified (Market System) <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to sell products."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="classified" id="classified-enabled" value="1" <?php echo ($wo['config']['classified'] == 1) ? 'checked': '';?>>
+                            <label for="classified-enabled">Enabled</label>
+                            <input type="radio" name="classified" id="classified-disabled" value="0" <?php echo ($wo['config']['classified'] == 0) ? 'checked': '';?>>
+                            <label for="classified-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="groups">Groups System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create groups."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="groups" id="groups-enabled" value="1" <?php echo ($wo['config']['groups'] == 1) ? 'checked': '';?>>
+                            <label for="groups-enabled">Enabled</label>
+                            <input type="radio" name="groups" id="groups-disabled" value="0" <?php echo ($wo['config']['groups'] == 0) ? 'checked': '';?>>
+                            <label for="groups-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="blogs">Blogs System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create blogs."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="blogs" id="blogs-enabled" value="1" <?php echo ($wo['config']['blogs'] == 1) ? 'checked': '';?>>
+                            <label for="blogs-enabled">Enabled</label>
+                            <input type="radio" name="blogs" id="blogs-disabled" value="0" <?php echo ($wo['config']['blogs'] == 0) ? 'checked': '';?>>
+                            <label for="blogs-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="can_blogs">Who Can Post Blogs? </label>
+                        <div class="form-group">
+                            <input type="radio" name="can_blogs" id="can_blogs-enabled" value="0" <?php echo ($wo['config']['can_blogs'] == 0) ? 'checked': '';?>>
+                            <label for="can_blogs-enabled">Admins</label>
+                            <input type="radio" name="can_blogs" id="can_blogs-disabled" value="1" <?php echo ($wo['config']['can_blogs'] == 1) ? 'checked': '';?>>
+                            <label for="can_blogs-disabled" class="m-l-20">Users</label>
+                        </div>
+
+                        <label for="events">Events System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow Events System."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="events" id="events-enabled" value="1" <?php echo ($wo['config']['events'] == 1) ? 'checked': '';?>>
+                            <label for="events-enabled">Enabled</label>
+                            <input type="radio" name="events" id="events-disabled" value="0" <?php echo ($wo['config']['events'] == 0) ? 'checked': '';?>>
+                            <label for="events-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="forum">Forums System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow forum system."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="forum" id="forum-enabled" value="1" <?php echo ($wo['config']['forum'] == 1) ? 'checked': '';?>>
+                            <label for="forum-enabled">Enabled</label>
+                            <input type="radio" name="forum" id="forum-disabled" value="0" <?php echo ($wo['config']['forum'] == 0) ? 'checked': '';?>>
+                            <label for="forum-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="blogs">Movies System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to watch movies."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="movies" id="movies-enabled" value="1" <?php echo ($wo['config']['movies'] == 1) ? 'checked': '';?>>
+                            <label for="movies-enabled">Enabled</label>
+                            <input type="radio" name="movies" id="movies-disabled" value="0" <?php echo ($wo['config']['movies'] == 0) ? 'checked': '';?>>
+                            <label for="movies-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="user_ads">Advertisements System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create ads."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="user_ads" id="user_ads-enabled" value="1" <?php echo ($wo['config']['user_ads'] == 1) ? 'checked': '';?>>
+                            <label for="user_ads-enabled">Enabled</label>
+                            <input type="radio" name="user_ads" id="user_ads-disabled" value="0" <?php echo ($wo['config']['user_ads'] == 0) ? 'checked': '';?>>
+                            <label for="user_ads-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="user_status">Story / Status System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create stories & status."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="user_status" id="user_status-enabled" value="1" <?php echo ($wo['config']['user_status'] == 1) ? 'checked': '';?>>
+                            <label for="user_status-enabled">Enabled</label>
+                            <input type="radio" name="user_status" id="user_status-disabled" value="0" <?php echo ($wo['config']['user_status'] == 0) ? 'checked': '';?>>
+                            <label for="user_status-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="stickers">GIF System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to share gif images."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="stickers" id="stickers-enabled" value="1" <?php echo ($wo['config']['stickers'] == 1) ? 'checked': '';?>>
+                            <label for="stickers-enabled">Enabled</label>
+                            <input type="radio" name="stickers" id="stickers-disabled" value="0" <?php echo ($wo['config']['stickers'] == 0) ? 'checked': '';?>>
+                            <label for="stickers-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="find_friends">Friends Nearby System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to search nearby users."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="find_friends" id="find_friends-enabled" value="1" <?php echo ($wo['config']['find_friends'] == 1) ? 'checked': '';?>>
+                            <label for="find_friends-enabled">Enabled</label>
+                            <input type="radio" name="find_friends" id="find_friends-disabled" value="0" <?php echo ($wo['config']['find_friends'] == 0) ? 'checked': '';?>>
+                            <label for="find_friends-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="gift_system">GIFT System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to send gifts.You can manage gifts via ( Manage Features -> Gifts )"><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="gift_system" id="gift_system-enabled" value="1" <?php echo ($wo['config']['gift_system'] == 1) ? 'checked': '';?>>
+                            <label for="gift_system-enabled">Enabled</label>
+                            <input type="radio" name="gift_system" id="gift_system-disabled" value="0" <?php echo ($wo['config']['gift_system'] == 0) ? 'checked': '';?>>
+                            <label for="gift_system-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="stickers_system">Stickers System</label>
+                        <div class="form-group">
+                            <input type="radio" name="stickers_system" id="stickers_system-enabled" value="1" <?php echo ($wo['config']['stickers_system'] == 1) ? 'checked': '';?>>
+                            <label for="stickers_system-enabled">Enabled</label>
+                            <input type="radio" name="stickers_system" id="stickers_system-disabled" value="0" <?php echo ($wo['config']['stickers_system'] == 0) ? 'checked': '';?>>
+                            <label for="stickers_system-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="popular_posts">Popular Posts & Comments (Shows in header)</label>
+                        <div class="form-group">
+                            <input type="radio" name="popular_posts" id="popular_posts-enabled" value="1" <?php echo ($wo['config']['popular_posts'] == 1) ? 'checked': '';?>>
+                            <label for="popular_posts-enabled">Enabled</label>
+                            <input type="radio" name="popular_posts" id="popular_posts-disabled" value="0" <?php echo ($wo['config']['popular_posts'] == 0) ? 'checked': '';?>>
+                            <label for="popular_posts-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="google_map">Google Maps (Posts, Profile, Settings, Ads) <span class="black" data-toggle="popover" data-trigger="hover" data-content="Note: This doesn't disable the map system, it disables google auto complete API."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="google_map" id="google_map-enabled" value="1" <?php echo ($wo['config']['google_map'] == 1) ? 'checked': '';?>>
+                            <label for="google_map-enabled">Enabled</label>
+                            <input type="radio" name="google_map" id="google_map-disabled" value="0" <?php echo ($wo['config']['google_map'] == 0) ? 'checked': '';?>>
+                            <label for="google_map-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-3" id="point_level_system_div">
+            <div class="card">
+                <div class="header">
+                    <h2>Point & level system settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert2"></div>
+                    <form class="site-settings2" method="POST">
+                        <label for="point_allow_withdrawal">Allow user to withdrawal those money</label>
+                        <div class="form-group">
+                            <input type="radio" name="point_allow_withdrawal" id="point_allow_withdrawal-enabled" value="1" <?php echo ($wo['config']['point_allow_withdrawal'] == 1) ? 'checked': '';?>>
+                            <label for="point_allow_withdrawal-enabled">Enabled</label>
+                            <input type="radio" name="point_allow_withdrawal" id="point_allow_withdrawal-disabled" value="0" <?php echo ($wo['config']['point_allow_withdrawal'] == 0) ? 'checked': '';?>>
+                            <label for="point_allow_withdrawal-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="dollar_to_point_cost" class="form-control" value="<?php echo $wo['config']['dollar_to_point_cost']?>">
+                                <label class="form-label">$1.00 = ? Point</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="comments_point" class="form-control" value="<?php echo $wo['config']['comments_point']?>">
+                                <label class="form-label">Comments</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="likes_point" class="form-control" value="<?php echo $wo['config']['likes_point']?>">
+                                <label class="form-label">Likes</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="dislikes_point" class="form-control" value="<?php echo $wo['config']['dislikes_point']?>">
+                                <label class="form-label">DisLikes</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="wonders_point" class="form-control" value="<?php echo $wo['config']['wonders_point']?>">
+                                <label class="form-label">Wonders</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="reaction_point" class="form-control" value="<?php echo $wo['config']['reaction_point']?>">
+                                <label class="form-label">Reaction</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="createpost_point" class="form-control" value="<?php echo $wo['config']['createpost_point']?>">
+                                <label class="form-label">Create Post</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+
+    <?php if ($wo['config']['point_level_system'] == 0){?>
+        $( '#point_level_system_div' ).hide();
+    <?php } ?>
+    
+    $('input[type=radio][name=point_level_system]').change(function(){
+        var point_level_system_selected_option = $('#point_level_system option:selected').attr('value');
+
+        if( this.value == 1 ){
+            $( '#point_level_system_div' ).show();
+        }
+
+        if( this.value == 0 ){
+            $( '#point_level_system_div' ).hide();
+        }
+    });
+
+    var form_site_settings = $('form.site-settings');
+    form_site_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_site_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            	$('.site-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.site-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    var form_site_settings2 = $('form.site-settings2');
+
+    form_site_settings2.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSubmit : function(arr, $form, options){
+            arr.push({name:'point_level_system', value: 1});
+        },
+        beforeSend: function() {
+            form_site_settings2.find('#point_allow_withdrawal-disabled').removeAttr('checked');
+            form_site_settings2.find('#point_allow_withdrawal-enabled').attr('checked',true);
+            form_site_settings2.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings2.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            	$('.site-settings-alert2').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.site-settings-alert2').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+});
+
+</script>

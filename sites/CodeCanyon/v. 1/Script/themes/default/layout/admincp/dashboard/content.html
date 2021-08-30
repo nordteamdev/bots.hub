@@ -1,0 +1,208 @@
+<div class="settings-header">
+	<h3><i class="fa fa-bar-chart fa-fw "></i> {{LANG dashbaord}}</h3>
+</div>
+<div class="setting-panel no-padding">
+	 <div class="admin-panel-well">
+      <a href="{{LINK admincp/users}}" >
+      <div class="users-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-user"></i>
+         </div>
+         <div class="text">
+           {{COUNT_USERS}} {{LANG total_users}}
+         </div>
+      </div>
+      </a>
+      <a href="{{LINK admincp/news}}">
+      <div class="news-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-file"></i>
+         </div>
+         <div class="text">
+           {{COUNT_NEWS}} {{LANG news}}
+         </div>
+      </div>
+      </a>
+      <a href="{{LINK admincp/lists}}">
+      <div class="lists-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-bars"></i>
+         </div>
+         <div class="text">
+           {{COUNT_LISTS}} {{LANG lists}}
+         </div>
+      </div>
+      </a>
+      <a href="{{LINK admincp/videos}}">
+      <div class="videos-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-video-camera"></i>
+         </div>
+         <div class="text">
+           {{COUNT_VIDEOS}} {{LANG videos}}
+         </div>
+      </div>
+      </a>
+      <a href="{{LINK admincp/music}}">
+      <div class="music-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-volume-up"></i>
+         </div>
+         <div class="text">
+             {{COUNT_MUSIC}} {{LANG music}}
+         </div>
+      </div>
+      </a>
+      <a href="{{LINK admincp/polls}}">
+      <div class="polls-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-bar-chart"></i>
+         </div>
+         <div class="text">
+            {{COUNT_POLLS}} {{LANG polls}}
+         </div>
+      </div>
+      </a>
+      <div class="drafts-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-file-o"></i>
+         </div>
+         <div class="text">
+             {{COUNT_DRAFTS}} {{LANG drafts}}
+         </div>
+      </div>
+      <div class="online-count admin-static pull-left">
+         <div class="icon">
+            <i class="fa fa-users"></i>
+         </div>
+         <div class="text">
+             {{COUNT_ONLINE}} {{LANG online_users}}
+         </div>
+      </div>
+      <div class="clear"></div>
+   </div>
+   <div id="charts" style="min-width: 310px; width: 100%; height: 400px; margin: 0 auto"></div>
+</div>
+<script>
+<?php
+$percentage = (30 / 58) * 100;
+//echo $percentage . "%";
+$user_statics = array();
+$news_statics = array();
+$lists_statics = array();
+$videos_statics = array();
+$music_statics = array();
+$polls_statics = array();
+
+$months = array('1','2','3','4','5','6','7','8','9','10','11','12');
+
+// user_statics
+foreach ($months as $value) {
+   $user_statics[] = FL_GetRegisteredDataStatics($value, 'user');
+}
+$user_statics = implode(', ', $user_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $news_statics[] = FL_GetRegisteredDataStatics($value, 'news');
+}
+$news_statics = implode(', ', $news_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $lists_statics[] = FL_GetRegisteredDataStatics($value, 'lists');
+}
+$lists_statics = implode(', ', $lists_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $videos_statics[] = FL_GetRegisteredDataStatics($value, 'videos');
+}
+$videos_statics = implode(', ', $videos_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $music_statics[] = FL_GetRegisteredDataStatics($value, 'music');
+}
+$music_statics = implode(', ', $music_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $polls_statics[] = FL_GetRegisteredDataStatics($value, 'polls');
+}
+$polls_statics = implode(', ', $polls_statics);
+?>
+$(function () {
+    Highcharts.setOptions({
+      colors: ['#f7931a', '#f33d4c', '#ed9e6a', '#2b87ce', '#5462a5', '#008484']
+    });
+    $('#charts').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '<?php echo date("Y");?>'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+           name: '{{LANG users}}',
+           data: [<?php echo $user_statics;?>]
+       }, {
+           name: '{{LANG news}}',
+           data: [<?php echo $news_statics;?>]
+
+       }, {
+           name: '{{LANG lists}}',
+           data: [<?php echo $lists_statics;?>]
+
+       }, {
+           name: '{{LANG videos}}',
+           data: [<?php echo $videos_statics;?>]
+
+       }, {
+           name: '{{LANG music}}',
+           data: [<?php echo $music_statics;?>]
+
+       }, {
+           name: '{{LANG polls}}',
+           data: [<?php echo $polls_statics;?>]
+
+       }]
+    }); });
+</script>

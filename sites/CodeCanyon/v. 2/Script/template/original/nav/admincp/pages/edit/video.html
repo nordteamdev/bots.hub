@@ -1,0 +1,77 @@
+{strip}
+<div class="ad-rowcol">
+{foreach $q as $r}
+
+<h2>Edit video <i>{$r.title}</i></h2>
+
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=takevideoedit" id="fform" method="post">
+    <fieldset>
+        <div class="setting-general-alert setting-update-alert"></div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-3" for="title">Title</label>
+            <div class="col-md-6">
+                <input id="title" name="title" type="text" class="form-control input-md" value="{$r.title}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3" for="description">Info</label>
+            <div class="col-md-6">
+               <textarea name="description" id="description">{$r.description}</textarea>
+            </div>
+        </div>
+<div class="form-group">
+            <!-- Select Basic -->
+			<label class="col-md-3" for="tags">Tags</label>
+            <div class="col-md-6">
+				<textarea name="tags" id="tags">{$r.tags}</textarea>
+            </div>
+           </div>
+		   
+		   
+		   
+			<div class="form-group">
+
+			<label class="col-md-3" for="duration">Duration</label>
+            <div class="col-md-6">
+				<input type="text" name="duration" id="duration" value="{$r.dur}">
+            </div>
+           </div>
+               
+<div class="form-group">
+
+			<label class="col-md-3" for="views">Views</label>
+            <div class="col-md-6">
+				<input type="number" name="views" id="views" value="{$r.views}">
+            </div>
+           </div>
+		   
+		   
+		   <div class="form-group">
+
+			<label class="col-md-3" for="fn">URL / Filename</label>
+            <div class="col-md-6">
+				<input type="text" name="fn" class="form-control input-md" id="fn" value="{$r.filename}">
+            </div>
+           </div>
+        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{$r.id}">
+    </fieldset>
+</form>
+
+
+{foreachelse}
+<h2>Video not found.</h2>
+{/foreach}
+</div>
+{/strip}

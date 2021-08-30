@@ -1,0 +1,46 @@
+
+
+<div class="ad-rowcol">
+<h2>{$count} posts are on {$this->settings['SITENAME']}</h2>
+
+
+{assign var=i value=0}
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Type</th>
+	
+	<th>Info</th>
+	
+	<th>Active</th>
+	
+	<th>Added</th>
+
+	<th>By user</th>
+
+	<th>*</th>
+	
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="p{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td><A target="_blank" href="/post?i={$r.id}">{$r.id}</a></td>
+	<td><div class="p_type">{$r.type}</div></td>
+	<td><div class="p_info">{if $r.text}{pellipse($r.text,200)}{else}Post empty.{/if}</div></td>
+	<td><div class="p_available">{$r.available}</div></td>
+	<td><div class="vp_added">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="p_by">{if $r.fullname}<a href="/user/{$r.uid}" target="_blank">{$r.fullname}</a>{else}{$this->settings['SITENAME']}{/if}</div></td>
+	<td><div class="f11"><a target="_blank" href="/admin.php?cmd=editpost&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deletePost({$r.id});">D</a></div></td>
+	</tr>
+	<!-- Darker Table Row -->
+	{$i = $i+1}
+{/foreach}
+
+</table>
+{$pagination}
+</div>

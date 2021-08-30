@@ -1,0 +1,54 @@
+{strip}
+<section id="group_pg_details">
+{foreach $res as $r}
+{assign var=subscribed value=$this->isSubscribed($r.id)}
+{assign var=videos_count value=$this->getCommunityAlbumsVideosCount($r.id)}
+{assign var=isadmin value=$this->checkAdmin($this->USER['id'],$r.admin)}
+{if $isadmin}<span id="isadm"></span>{/if}
+
+{include file="{$this->group_templates}/group-header.html"}
+	
+	<div class="comm_op_cover_cnt">
+
+<div class="community_pg_albums">
+
+
+{$this->headerMenu($this->lang['Community_Album_videos'],$r.id)}
+
+<div class="photos_album_intro">
+    <h1 id="h1albumtitle">{$this->lang['Community_Album_videos']}</h1>
+
+	</div>
+
+
+
+
+{if $isadmin} 
+
+<div class="comm_album_add_pictures">
+
+<div class="comm_add_pic_txt">{$this->lang['Add_videos']}</div>
+<form name="commCover" id="commCover" enctype="multipart/form-data" method="post">
+<input type="hidden" name="cmd" value="addcover">
+<input multiple="multiple" accept="video/*" onchange="checkCommCoverSize(event);" class="html5-upload-link _community_cover" id="file" name="files[]" size="1" title="" type="file" value="">
+</form>
+
+</div>
+
+
+{/if}
+
+{include file="{$this->group_templates}/album-items-filter-videos.html"}
+
+
+</div>
+					
+	</div>
+
+
+   {/foreach}
+   
+
+   
+   </section>
+{/strip}

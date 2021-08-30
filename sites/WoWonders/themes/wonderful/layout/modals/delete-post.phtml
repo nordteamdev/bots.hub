@@ -1,0 +1,17 @@
+<div class="modal fade matdialog" id="delete-post" role="dialog">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><?php echo $wo['lang']['delete_post']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['confirm_delete_post']; ?></p>
+         </div>
+         <div class="modal-footer">
+			<button type="button" class="matbtn wabe btn btn-default" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+            <button id="delete-all-post" type="button" onclick="Wo_DeletePost(<?php echo $wo['story']['id'];?>);" class="matbtn wabe btn btn-main"><?php echo $wo['lang']['delete']; ?></button>
+            
+         </div>
+      </div>
+   </div>
+</div>

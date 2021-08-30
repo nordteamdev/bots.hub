@@ -1,0 +1,105 @@
+<?php 
+
+
+$json_static_dump   = array();
+$total_earnings_sum = 0;
+$total_earnings_tms = 0;
+$month              = date('n');
+$year               = date('Y');
+$total_earnings     = $db->get(T_PAYMENTS);
+$total_earnings_tm  = $db->where('date',"$month/$year")->get(T_PAYMENTS);
+$total_sales        = count($total_earnings);
+
+for($i=1; $i < 13; $i++) {
+    $pro_sales_static   = $db->where('date',"$i/$year")->getValue(T_PAYMENTS, 'count(*)');
+    $json_static_dump[] = array(
+        'month' => $fl['months'][$i],
+        'pro_sales' => $pro_sales_static
+    );
+}
+
+$json_static_dump = json_encode($json_static_dump);
+
+foreach ($total_earnings as $amount) {
+    $total_earnings_sum += $amount->amount;
+}
+
+foreach ($total_earnings_tm as $amount) {
+    $total_earnings_tms += $amount->amount;
+}
+
+?>
+
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Recent payments</h2>
+        
+    </div>
+    <!-- Widgets -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12">
+            <div class="info-box bg-black hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL EARNINGS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo($total_earnings_sum); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-cyan hover-expand-effect">
+                <div class="icon">
+                    <i class="fa fa-rocket"></i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL PAYMENTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo($total_sales); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="info-box bg-light-green hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <div class="content">
+                    <div class="text">EARNINGS THIS MONTH</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo($total_earnings_tms); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+        <!-- Bar Chart -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>STATICS</h2>
+                </div>
+                <div class="body">
+                    <div id="salse_static" class="graph"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>    
+$(function () {
+    Morris.Bar({
+        element: 'salse_static',
+        data:<?php echo $json_static_dump; ?>,
+
+            xkey: 'month',
+            ykeys: ['pro_sales'],
+            labels: ['Pro sales'],
+            pointSize: 1,
+            hideHover: 'auto',
+            resize: true,
+            barColors: ['#8BC34A']
+    });
+});
+</script>

@@ -1,0 +1,158 @@
+<?php echo Wo_LoadPage('forum/headers/header'); 
+$section = Wo_GetForumSec(array('id' => $wo['forum_data']['forum']['sections']));
+?>
+<div role="tabpanel" class="tab-pane active" id="forumdisplay">
+		<div class="w-100">
+			<div class="blocksubhead-forum-header"><i class="fa fa-home" aria-hidden="true"></i> 
+			<a href="<?php echo $wo['config']['site_url']; ?>"><?php echo $wo['config']['siteName']; ?></a> <i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo $section[0]['section_name']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo($wo['forum_data']['forum']['name']) ?></div>
+			<hr>
+		</div>
+		<div class="w-100">
+			<h4><?php echo($wo['forum_data']['forum']['name']) ?></h4>
+			<p class="product-description"><?php echo($wo['forum_data']['forum']['description']) ?></p>
+		</div>
+		<hr>
+		<div class="w-100">
+			<?php if (count($wo['forum_data']['threads']) > 0): ?>
+				  <table class="table threads-table">
+				    <thead class="bg-main">
+				      <tr>
+				        <th><?php echo $wo['lang']['topic']; ?></th>
+				        <th>
+					        <?php echo $wo['lang']['replies']; ?> 
+					        <?php echo $wo['lang']['views']; ?>
+				        </th>
+				        <th><?php echo $wo['lang']['last_post']; ?></th>
+				      </tr>
+				    </thead>
+				    <tbody id="forum-threads">
+				    <?php foreach ($wo['forum_data']['threads'] as $wo['thread']): ?>
+				    	<?php echo Wo_LoadPage("forum/includes/post-list"); ?>
+				    <?php endforeach; ?>
+
+				    </tbody>
+				  </table>
+		    <?php else: ?>
+				<?php echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_threads_found'] .  '</h5>'; ?>
+			<?php endif; ?>
+		</div>
+	    <div class="posts_load">
+	        <?php if (count($wo['forum_data']['threads']) >= 10): ?>
+	        <div class="load-more">
+	            <button class="btn btn-default text-center pointer forum-posts-load"  >
+	            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_posts'] ?></button>
+	        </div>
+	        <?php endif ?>
+	    </div>  
+	    <hr>
+		<div class="margin-b30">
+			<div class="btn-group ">
+				<a 
+					href="<?php echo Wo_SeoLink('index.php?link1=forumsadd&fid=' . $wo['forum_data']['forum']['id']) ?>"
+					class="btn btn-default"
+				>
+				<?php echo $wo['lang']['create_new_topic']; ?>
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				</a>
+			</div>
+			<div class="btn-group dropup">
+	          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> &nbsp;|&nbsp; <span class="caret"></span>
+	          </button>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads'); ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php echo $wo['lang']['my_threads']; ?></a></li>
+	            <li><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages'); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo $wo['lang']['my_messages']; ?></a></li>
+	          </ul>
+	        </div>
+
+	        <?php if ($wo['forum_data']['forums'] && count($wo['forum_data']['forums']) > 0): ?>
+	        		        
+	        <div class="btn-group dropup">
+	          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	            <?php echo $wo['lang']['jump_to']; ?> &nbsp;|&nbsp; <span class="caret"></span>
+	          </button>
+	          <ul class="dropdown-menu" role="menu">
+	          	<?php foreach ($wo['forum_data']['forums'] as $jump): ?>
+	          			          	
+	            	<li>
+						<a 
+						href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$jump['id']);?>"
+						class="main <?php if ($jump['name'] == $wo['forum_data']['forum']['name']) echo 'bold'; ?>">
+
+				        <?php echo $jump['name']; ?>
+				        </a>
+	            	</li>
+	            <?php endforeach ?>
+	            
+	          </ul>
+	        </div>
+	        <?php endif ?>
+		</div>
+
+	</div>
+	<div class="clear"></div>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<script>
+	$(".forum-posts-load").click(function () {
+		  
+	      $.ajax({
+	         url: Wo_Ajax_Requests_File(),
+	         type: 'GET',
+	         dataType: 'json',
+	         data: {
+	         	f:"forum-posts-load",
+
+	         	forum:<?php echo $_GET['fid']; ?>,
+
+	         	offset:($(".topic-list").length > 0) ? $(".topic-list:last").attr('data-forum') : 0,
+
+	         },
+	         success:function(data){
+	         	
+	            if (data['status'] == 200) {
+
+	                $(".threads-table tbody").append(data['html'])
+	             }else{
+
+	               $(".posts_load").remove()
+	               
+	             }
+
+	         }
+	      });
+	   	});
+
+	var delay = (function(){
+		var timer = 0;
+		return function(callback, ms){
+		  clearTimeout (timer);
+		  timer = setTimeout(callback, ms);
+		};
+	})();
+
+	$("#search-forum-threads").keyup(function(event) {
+
+      delay(function(){
+      if ($("#search-forum-threads").val().trim()) {
+	      $.ajax({
+	        url: Wo_Ajax_Requests_File(),
+	        type: 'GET',
+	        data: {	f:"forum-thread-search",
+	        		keyword:$("#search-forum-threads").val(),
+	        		fid:<?php echo($wo['forum_data']['forum']['id']) ?>
+	        	},
+	        dataType: "json",
+	        success: function(data){
+	          if (data['status'] == 200) {
+	          	$("#forum-threads").html(data['html']);
+	          }
+	          else if(data['status'] == 404){
+	          	
+	         	 $("#forum-threads").html('<tr> <td colspan="5" class="text-center" style="padding:40px 40px;" >' + data['html'] + '</td></tr>');
+	          }
+	        }
+	      })}
+
+      }, 1000 );
+  	});
+</script>

@@ -1,0 +1,98 @@
+{strip}
+<div class="ad-rowcol">
+{foreach $q as $r}
+
+<h2>Edit song <i>{$r.title}</i> by {$r.artist}</h2>
+
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=taketrackedit" id="fform" method="post">
+    <fieldset>
+        <div class="setting-general-alert setting-update-alert"></div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="artis">Artist</label>
+            <div class="col-md-6">
+                <input id="artist" name="artist" type="text" class="form-control input-md" value="{$r.artist}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-3" for="title">Track</label>
+            <div class="col-md-6">
+                <input id="title" name="title" type="text" class="form-control input-md" value="{$r.title}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="album">Album</label>
+            <div class="col-md-6">
+                <input id="album" name="album" type="text" class="form-control input-md" value="{$r.album}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="genre">Genre</label>
+            <div class="col-md-6">
+                <input id="genre" name="genre" type="text" class="form-control input-md" value="{$r.genre}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label class="col-md-3" for="year">Year</label>
+            <div class="col-md-6">
+                <input id="year" name="year" type="number" class="form-control input-md" value="{$r.year}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+        <div class="form-group">
+            <label class="col-md-3" for="length">Length</label>
+            <div class="col-md-6">
+                <input id="length" name="length" type="text" class="form-control input-md" value="{$r.time}" autocomplete="off">
+                <span class="help-block checking"></span>
+            </div>
+        </div>
+		
+		
+		   <div class="form-group">
+
+			<label class="col-md-3" for="fn">Filename</label>
+            <div class="col-md-6">
+				<input type="text" name="fn" class="form-control input-md" id="fn" value="{$r.path}">
+            </div>
+           </div>
+		   
+		   <div class="form-group">
+
+			<label class="col-md-3" for="cover">Cover</label>
+            <div class="col-md-6">
+				<input type="text" name="cover" class="form-control input-md" id="cover" value="{$r.cover}">
+            </div>
+           </div>
+		   
+        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{$r.id}">
+    </fieldset>
+</form>
+
+
+{foreachelse}
+<h2>Video not found.</h2>
+{/foreach}
+</div>
+{/strip}

@@ -1,0 +1,13 @@
+<div class="entry" data-type="text" data-id="{{ENTRY_ID}}" id="entry-{{ENTRY_ID}}">
+	<div class="entry-name pull-left">
+	   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3,3H16V6H11V18H8V6H3V3M12,7H14V9H12V7M15,7H17V9H15V7M18,7H20V9H18V7M12,10H14V12H12V10M12,13H14V15H12V13M12,16H14V18H12V16M12,19H14V21H12V19Z"></path></svg>
+	   {{LANG text}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons" onclick="FL_RemoveEntryByID({{ENTRY_ID}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}" value="{{ENTRY_TITLE}}" ><br>
+	<textarea id="news-{{ENTRY_ID}}" cols="25" rows="8" class="form-control" dir="auto" data-name="entry_text">{{ENTRY_TEXT}}</textarea>
+</div>

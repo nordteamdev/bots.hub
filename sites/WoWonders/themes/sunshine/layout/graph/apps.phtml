@@ -1,0 +1,32 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 profile-lists middlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row" style="margin: 0px 0px 20px;">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=apps'); ?>" data-ajax="?link1=apps">My Apps</a></li>
+					</ul>
+					<span class="btn btn-success <?php echo Wo_RightToLeft('pull-right'); ?>">
+						<a href="<?php echo Wo_SeoLink('index.php?link1=create-app');?>" data-ajax="?link1=create-app" title="<?php echo $wo['lang']['create'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+					</span>
+				</div>
+				
+				<div>
+					<?php
+						$apps = Wo_GetAppsData();
+						if (count($apps) > 0) {
+							foreach ($apps as $wo['app']) {
+								echo Wo_LoadPage('graph/app-list');
+							}
+						} else {
+							echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg> No applications found</h5>';
+						}
+					?>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+</div>

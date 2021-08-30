@@ -1,0 +1,103 @@
+{strip}
+
+<div id="hook_Block_PopLayerAddFriendsToRelationship" class="frp hookBlock">
+    <div style="margin: 0;" class="panelLayer layerPanelSimple"id="cfrmPopLayerAddFriendsToRelationship">
+
+        <div class="panelLayer_b">
+            <div class="hook" id="hook_Form_PopLayerAddFriendsToRelationshipForm">
+                    <div>
+                        <div class="ifContainer">
+
+                            <div class="inav gm-cl-aft">
+                                <div class="inav_search">
+                                    <div class="it_w search-input">
+                                        <label>
+                                            <input type="text" name="st.layer.addFrToRelQry" value="" id="ifSQtext" class="search-input_it it" maxlength="50" autocomplete="off" placeholder="Your friend's name or surname">
+                                            <input style="top: 0px;right: 8px;position: absolute;" class="js-search-input_ic search_ib ic ic_search" type="submit" name="button_invite_search" value="" id="hook_FormButton_button_invite_search">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inav_nav">
+                                    <ul class="inav_ul inav__search_l" style="width: 600px">
+                                        <li class="inav_ul_li floatRight"><a class="inav_a __disabled" disabled="disabled" style="min-width:70px" id="hook_InviteCardTabHook_invSelectedTab" href="javascript:;">Selected <span id="fpop_slc_count">0</span></a></li>
+                                        <li class="inav_ul_li floatRight"></li>
+                                        <li class="inav_ul_li inav_ul_li_ac"><a class="inav_a" id="allFriendsBtn" onclick="return false" href=""><span class="tico tico__simb-right"><i class="tico_img" style="left:auto;">&#x25BC;</i><em class="tico_simb_txt">All</em></span></a>
+                                            <ul class="inav-drop" style="display: none;" id="allFriendsPopup">
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="ifDcards" class="frp ifCards">
+                                <div id="hook_Loader" data-delimiter="10" data-max="5" data-block="PopLayerAddFriendsToRelationship" data-params="" data-dynamic="" data-page="2" data-updateparams="false" class="loader-container" data-scroller="ifDcards" data-pageparam="st.layer.addFrToRelPage" data-manualpagescount="1">
+                                    <div>
+                                        <table class="cardsTable __friends_popup">
+                                            <tbody>
+                                                <tr>
+						{foreach $query as $res}
+						{assign var="pending_request" value=$this->friendIsInRelation($this->getRelationInNotif($res.id),$getRelation)}
+                                                    <td class="ifCard _ppf {if $pending_request}_oh46{else}_ohh46{/if} {if $this->friendIsInRelation($res.relationship,$getRelation) || $pending_request}__disabled{/if}" data-fpoprelation="{$res.relationship}">
+
+                                                        <div id="hook_InviteChangeCardRel_{$res.id}" class="ifModern" data-ugen="{$res.gender}">
+                                                            <input id="userSelId{$res.id}" style="display:none" type="checkbox" name="st.layer.selid" value="{$res.id}">
+                                                            <div class="leftCardContainer">
+                                                                <div class="leftCardImage">
+                                                                    <div class="card avatar">
+                                                                        <div class="avatar user"><img width="50" height="50" src="{$this->settings['HOST']}/getPhoto?p={$res.photo}&sz=small&g={$res.gender}" alt=""></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="leftCard_rc">
+                                                                    <div class="leftCardName ellip">{$res.fullname}</div>
+                                                                    <div class="leftCardAddInfo">
+								{if $this->friendIsInRelation($res.relationship,$getRelation)}
+                                                                        <div class="ifInvited">{$this->friendIsInRelation($res.relationship,$getRelation)}</div>
+								{else}
+                                                                        <div class="ifChange">
+                                                                            <div class="ifSelectedT">Selected</div>
+                                                                            <div class="ifSelect">Select</div>
+                                                                            <div class="ifDeselect">Cancel</div>
+									{if $pending_request}
+									<div style="visibility: visible;position: absolute;color:#F29407;top: 16px;" class="ifSelectedRelatName">{$pending_request} <br/><i style="color:#333;">(pending)</i></div>
+									{/if}
+                                                                        </div>
+								{/if}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+						{/foreach}
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                                                            
+                                                                            
+                                </div>
+                            </div>
+                            <div class="taLeft"></div>
+                            <div class="taLeft"><span style="visibility:hidden"><a href="/vanea.young/friends" class="al" hrefattr="true">Show all</a></span></div>
+                        </div>
+                    </div>
+                    <div class="formButtonContainer">
+                        <input class="button-pro __disabled" type="submit" name="button_invite" value="Save" id="hook_FormButton_button_invite" disabled="disabled">
+<span><a class="lp" target="_self" href="javascript:;" onclick="document.getElementById('nohook_modal_close').click();">Cancel</a></span></div>
+                    <div class="hook hookInvisible" id="hook_InputFocus_focus_confirmationForm#hook_FormButton_button_invite"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{/strip}
+<script>
+var fd_ppup_rl = '{$getRelation}';
+{literal}
+$(function(){
+selectToIndicateRelation(fd_ppup_rl);
+});
+{/literal}
+</script>

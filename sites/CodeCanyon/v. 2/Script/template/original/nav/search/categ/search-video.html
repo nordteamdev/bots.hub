@@ -1,0 +1,94 @@
+
+{$header}
+<div id="search_hints"></div>
+<div class="__none" id="is_search_page"></div>
+
+
+<div class="v2_gs_main gm-cl-aft __search_result">
+
+
+<div id="hook_Block_PortalSearchFilters">
+	<div class="v2_gs_filter_column_w">
+		<div id="facets" class="v2_gs_filter_column">
+			<div id="gender" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Duration']}</span></div>
+				<ul class="v2_gs_filter_list __gender">
+					<li><a href="/search?key={$key}&c=v" hrefattr="true"><span class="v2_gs_filter_i {if !$filter}__active{/if} mcateg __default gs_it ellip">{$this->lang['dosent_matter']}</span></a></li>
+					<li><a href="/search?key={$key}&c=v&filter=short" hrefattr="true"><span class="v2_gs_filter_i {if $filter == 'short'}__active{/if} gs_it ellip" data-search-filter-mcateg="artist">{$this->lang['short_video']}</span></a></li>
+					<li><a href="/search?key={$key}&c=v&filter=long" hrefattr="true"><span class="v2_gs_filter_i {if $filter == 'long'}__active{/if} gs_it ellip" data-search-filter-mcateg="album">{$this->lang['long_video']}</span></a></li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div></div>
+
+
+
+<div id="hook_Block_PortalSearchResults" class="hookBlock">
+	<div id="searchResults" class="v2_gs_left_column">
+		<div id="hook_Native">
+			<div class="disabling-layer v1_gs_result_fader"></div>
+			
+
+			
+			<div class="loader-container" id="search_ajax_new_results">
+
+			<div class="portlet_h2"><span class="portlet_h2_tx">{$c} {$found}</span></div>
+
+			<div id="gs_result_list" class="v1_gs_result_list">
+		   {$pagination} 
+			<div class="mus_search_mt">
+
+			
+<div id="hook_Block_PortalSearchResults" class="artist_details hookBlock">
+	<div class="v2_gs_left_column v1_gs_result_videos" id="vd_searchResults">
+		<div>
+			<div class="disabling-layer v1_gs_result_fader"></div>
+			
+		{assign var=vd_c value=0}
+		{foreach $query as $r}	
+			{if $vd_c == 0} <div class="ar_sort2"> {/if}
+<div class="s_v_1" {if $r.tags}title="{$this->lang['Tags:']}{$r.tags}"{/if}>
+<a data-ivideo="1" class="image-hover" href="/video?cmd=open&vid={$r.id}">
+<div class="vd_search_cv_x2" style="background-image:url(/videoCover?v={$r.id}&empty=1)"></div>
+<div><i class="vid_play _m"></i><i class="vid-card_duration">{$r.dur}</i>{if $r.external}<i class="vid-card_extern">{$r.external}</i>{/if}</div>
+</a>
+<div class="s_v_2">
+<a data-ivideo="1" href="/video?cmd=open&vid={$r.id}"><div class="s_v_3 ellip">{pellipse($r.title,56)}</div></a>
+
+
+<div class="s_v_4 ellip">{$this->lang['video_uploaded_by']} {if $r.uid}<A href="/user/{$r.uid}" hrefattr="true">{$r.fullname}</a>{else}{$this->settings['SITENAME']}{/if}</div>
+
+
+<div class="video_row_info_vat">
+        <span class="video_row_info_views">{$r.views} {$this->lang['video_views']}</span>
+        <span class="video_row_info_bullet">&#8226;</span>
+        <span class="video_row_info_date rel_date_needs_update">{$this->time_elapsed($r.added)}</span>
+</div>
+
+</div>
+
+</div>
+{if $vd_c == 1} {$vd_c = 0}</div>{else}
+					{$vd_c = $vd_c +1} {/if}
+{foreachelse}
+{$this->searchEmpty($this->lang['no_videos_found'])}
+{/foreach}
+
+	</div>
+
+</div>
+
+			
+			</div>
+				
+
+				
+		 
+	
+			</div>
+			
+			  {$pagination} 
+			</div></div></div>
+

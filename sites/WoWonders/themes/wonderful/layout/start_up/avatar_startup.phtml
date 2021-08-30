@@ -1,0 +1,102 @@
+<div class="list-group page-margin" style="text-align:center">
+<div class="startSteps">
+	<span class="step stepped"><i class="zmdi zmdi-camera"></i></span>
+	<span class="step"><i class="zmdi zmdi-edit"></i></span>
+	<span class="step"><i class="zmdi zmdi-accounts-add"></i></span>
+</div>
+<div class="add-photo row">
+       <div class="col-lg-9" style="width:100%">
+       	<h2><?php echo $wo['lang']['add_photo'];?></h2>
+        <h4><?php echo $wo['lang']['add_photo_des'];?></h4>
+        <br>
+        <div class="upload-image" onclick="document.getElementById('avatar').click(); return false" style="margin: auto;overflow: visible;">
+           <div class="upload-image-content" style="position:relative">
+			<img src="<?php echo $wo['config']['site_url']; ?>/upload/photos/d-avatar.jpg" alt="Profile Picture" />
+        	<span style="position: absolute;bottom: 10px;background-color: #E91E63;color: #fff;border-radius: 50%;box-shadow: 0 1px 2px #00000052;right: 10px;padding: 8px 10px;">
+				<i class="zmdi zmdi-camera" data-toggle="tooltip" title="<?php echo $wo['lang']['upload_your_photo'];?>" style="font-size: 20px;"></i>
+			</span>
+        	</div>
+        </div>
+         <div id="progress" style="margin: auto;margin-top: 10px;">
+            <span id="percent">0%</span>
+            <div class="progress">
+             <div id="bar" class="progress-bar progress-bar-striped active"></div> 
+            </div>
+            <div class="clear"></div>
+         </div>
+       <br>
+       <div class="continue-button">
+       	<button class="mdbtn wabe btn con-button btn-main" disabled onclick="Wo_NextStep();"><?php echo $wo['lang']['start_up_continue'];?></button>
+		<br> <small class="skip-step" onclick="Wo_SkipStep('startup_image');"><?php echo $wo['lang']['start_up_skip'];?></small>
+       </div>
+	   </div>
+       <div class="clear"></div>
+    </div>
+</div>
+<form action="#" method="post" class="profile-avatar-changer" style="display:none">
+    <input type="file" id="avatar" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
+    <input type="hidden" name="user_id" id="user-id" value="<?php echo $wo['user']['user_id'];?>">
+</form>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<script type="text/javascript">
+var user_id = $('#user-id').val();
+$(function () {
+	var bar = $('#bar');
+  var percent = $('#percent');
+  var status = $('#status');
+	$('form.profile-avatar-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_avatar_picture&s=start',
+
+    beforeSend: function () {
+      var percentVal = '0%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+    },
+    uploadProgress: function (event, position, total, percentComplete) {
+      var percentVal = percentComplete + '%';
+      bar.width(percentVal);
+      $('#progress').slideDown(200);
+      if(percentComplete > 50) {
+        percent.addClass('white');
+      }
+      percent.html(percentVal);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+      	$('#progress').slideUp(200);
+        $('.upload-image').html('<img src="' + data.img + '">');
+        $('.upload-image').css({'border': '0'});
+        $('[id^=updateImage-' + user_id + ']').attr("src", data.img);
+        $('.upload-image img').css({'padding': '2px'});
+        $('.con-button').attr('disabled', false);
+        $('.skip-step').hide();
+		    Snackbar.show({text: 'Profile Picture Successfully Uploaded.'});
+      }
+    }
+  });
+});
+function Wo_UpdateProfileAvatar() {
+  $("form.profile-avatar-changer").submit();
+}
+function Wo_NextStep() {
+  $('.con-button').attr('disabled', true);
+  $('.con-button').text("<?php echo $wo['lang']['please_wait'];?>");
+  setTimeout(function() {
+    window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+  }, 1000);
+}
+</script>

@@ -1,0 +1,183 @@
+<div class="modal modal-left fade" id="sidebar-left-modal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body ps-container ps-theme-default">
+                <?php if ($wo['loggedin'] == true) { ?>
+				<div class="left-sidebar" style="display:block">
+					<div class="sidebar-conatnier">
+						<div class="home profile-style main sidebar-profile-style">
+							<div class="card hovercard">
+								<div class="cardheader" style="background-image:url(<?php echo $wo['user']['cover']?>)">
+									<div id="avatarm">
+										<img id="updateImage-<?php echo $wo['user']['user_id']?>" alt="<?php echo $wo['user']['name']?> Profile Picture" src="<?php echo $wo['user']['avatar']?>">
+									</div>
+									<a data-toggle="dropdown" class="wabe sidebar-brand" href="#settings-dropdown">
+										<div>
+											<p style="margin: 0px;overflow: hidden;text-overflow: ellipsis;">
+												<?php echo $wo['user']['name']?>
+												<?php if($wo['user']['verified'] == 1):?>
+													<i class="fa fa-check-circle verified-color"></i>
+												<?php endif;?>
+											</p>
+											<p style="margin: 0px;overflow: hidden;text-overflow: ellipsis;">
+												<?php echo $wo['user']['email']?>
+											</p>
+										</div>
+										<b class="caret"></b>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ul>
+						<li>
+							<ul id="settings-dropdown" class="dropdown-menu" style="display: none;">
+								<li>
+									<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=messages'); ?>">
+										<i class="zmdi zmdi-comment-text-alt zmdi-hc-fw"></i> <?php echo $wo['lang']['messages'];?>
+									</a>
+								</li>
+								<li>
+									<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=setting'); ?>">
+										<i class="zmdi zmdi-settings zmdi-hc-fw"></i> <?php echo $wo['lang']['setting'];?>
+									</a>
+								</li>
+								<li style="margin-bottom: 0px;">
+									<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=logout'); ?>">
+										<i class="zmdi zmdi-power zmdi-hc-fw"></i> <?php echo $wo['lang']['log_out'];?>
+									</a>
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=albums'); ?>">
+								<i class="zmdi zmdi-collection-image zmdi-hc-fw"></i>
+								<?php echo $wo['lang']['albums'];?>
+							</a>
+						</li>
+		
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=saved-posts');?>">
+				<i class="zmdi zmdi-bookmark-outline zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['saved_posts'];?>
+			</a>
+		</li>
+		
+		<?php if ($wo['config']['groups'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=groups'); ?>">
+				<i class="zmdi zmdi-group-work zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['groups'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['pages'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>">
+				<i class="zmdi zmdi-google-pages zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['pages'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['events'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=events'); ?>">
+				<i class="zmdi zmdi-calendar zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['events'] ?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['find_friends'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=friends-nearby'); ?>">
+				<i class="zmdi zmdi-pin zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['find_friends'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['blogs'] == 1) { ?>
+		<li><hr></li>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=blogs'); ?>">
+				<i class="zmdi zmdi-blogger zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['blog'] ?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if (Wo_CanBlog() == true) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=my-blogs'); ?>">
+				<i class="zmdi zmdi-receipt zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['my_articles'] ?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['classified'] == 1) { ?>
+		<li><hr></li>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=products'); ?>">
+				<i class="zmdi zmdi-store zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['market'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<?php if ($wo['config']['classified'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=my-products'); ?>">
+				<i class="zmdi zmdi-shopping-cart zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['my_products'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+        <li><hr></li>
+		
+		<?php if ($wo['config']['games'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=new-game'); ?>">
+				<i class="zmdi zmdi-gamepad zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['games'];?>
+			</a>
+		</li>
+		<?php } ?>
+        
+		<?php if ($wo['config']['forum'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=forum'); ?>">
+				<i class="zmdi zmdi-comments zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['forum'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=search?query='); ?>">
+				<i class="zmdi zmdi-widgets zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['explore'];?>
+			</a>
+		</li>
+		
+		<?php if ($wo['config']['movies'] == 1) { ?>
+		<li>
+			<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=movies'); ?>">
+				<i class="zmdi zmdi-movie-alt zmdi-hc-fw"></i>
+				<?php echo $wo['lang']['movies'];?>
+			</a>
+		</li>
+		<?php } ?>
+		
+	</ul>
+</div>
+<?php } ?>
+            </div>            
+		</div>
+	</div>
+</div>

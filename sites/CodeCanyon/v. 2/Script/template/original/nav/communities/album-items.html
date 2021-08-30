@@ -1,0 +1,120 @@
+{strip}
+{if $pictures_count}
+<div id="community_pictures_wall" data-pictures-count="{$pictures_count}">
+{/if}
+
+{if !isset($page)}
+{assign var=page value=1}
+{/if}
+
+
+{foreach $this->communityPicturesWall($r.id,$albumid,$page) as $item}
+{assign var=is_gif value=$this->is_gif($item.id,1)}
+{assign var=author value=$this->itemAuthor($item.userid)}
+
+{if $item.file == 'picture'}
+
+<a data-postshpid class="ce11 image-hover this_wall_family micro noclone soh-s" 
+href="/photo?q={$item.userid}&clubid={b_encode($r.id)}&show=album-community&from=medium&a={b_encode($albumid)}&o={b_encode($item.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}"
+ data-vphopen="1" data-vphi="{base64_encode($item.id)}">
+
+<img src="/clubpicture?i={$item.id}&size=medium&clubid={$r.id}&corr=1" 
+{if $is_gif}data-gif-id="gif-{$item.id}" data-gif="/clubpicture?i={$item.id}&size=large&clubid={$r.id}&corr=1" data-wait="true" data-playon="hover"{/if}
+class="{if $is_gif}gifplayer{/if} club-item" />
+{if $isadmin || $author}
+ <span rel="tipsy" href="/communities?userid={$this->USER['id']}&cmd=delete-pic&filename={$item.filename}&id={$r.id}&picid={$item.id}" 
+ class="ic10 ic10_close ic_delete_min foh-s tico_img icommunity" 
+ id="delete_recent_upload" title="{$this->lang['delete_photo']}" 
+ onclick="var txt = '{$this->lang['community_confirm_delete_picture']}';var evt = event,_that = this;{literal}event.preventDefault();event.stopPropagation();return confirm_act(txt,function(){deletePhoto(_that,evt)});{/literal}"></span>
+{/if}
+ 
+ {assign var="rates" value=$this->pwGetPhotoStars($item.id,1)}
+{if $rates}
+<div class="photo_rate_res">
+<div class="photo_rate_bg" style="width:{$rates}%;"></div>
+<div class="photo_rate_stars"></div>
+</div>
+{/if}
+
+<div class="profilephoto-wall widgets">
+
+
+<div class="klass_comm_wdg_p __{$item.id}" data-community="true">
+<div data-callback="phwallLikeClick" data-itemcateg="photo" data-photolikesdropdown="{$item.id}" data-appendtooltipto=".klass_comm_wdg_p" data-log-click='{ldelim}"community":"{$r.id}","type":"like","item":"photo","itemid":"{$item.id}"{rdelim}' class="ic ic_klass_wd {if $this->likedByMe($item.id,'photo',1)}__active{/if}"></div>
+<span data-pplikt="ppo_{$item.id}" data-itemcateg="photo" data-popup-people-likedphoto="1" data-photolikesdropdown="{$item.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$this->getLikesCount($item.id,'photo',1)}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$item.id}" data-categ="photo" data-community="true" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$this->getCommentsCount($item.id,'photo',1)}</span>
+</div>
+
+</div>
+
+
+
+</a>
+
+
+{else}
+<A class="ce11 image-hover this_wall_family micro noclone soh-s" data-ivideo="1" href="/video?cmd=open&clubid={$r.id}&vid={$item.id}">
+
+<img src="/videoCover?v={$item.id}&clubid={$r.id}" class="club-item video_img_err"/>
+
+{if $isadmin || $author}
+ <span rel="tipsy" href="/communities?userid={$this->USER['id']}&cmd=delete-video&filename={$item.filename}&id={$r.id}&videoid={$item.id}" 
+ class="ic10 ic10_close ic_delete_min foh-s tico_img icommunity" 
+ id="delete_recent_upload" title="{$this->lang['delete_video']}" 
+ onclick="var txt = '{$this->lang['community_confirm_delete_video']}';var evt = event,_that = this;{literal}event.preventDefault();event.stopPropagation();return confirm_act(txt,function(){deleteVideo(_that,evt,1)});{/literal}"></span>
+{/if}
+
+<div><i class="vid_play _m"></i><i class="vid-card_duration">{$item.vd_duration}</i>{if $item.vd_external}<i class="vid-card_extern">{$item.vd_external}</i>{/if}</div>
+<div class="vd_wll_prof_title ellip">{$item.vd_name}</div>
+
+
+<div class="profilephoto-wall widgets">
+
+
+<div class="klass_comm_wdg_p __{$item.id}" data-community="true">
+<div data-callback="phwallLikeClick" data-itemcateg="video" data-photolikesdropdown="{$item.id}" data-appendtooltipto=".klass_comm_wdg_p" data-log-click='{ldelim}"community":"{$r.id}","type":"like","item":"video","itemid":"{$item.id}"{rdelim}' class="ic ic_klass_wd {if $this->likedByMe($item.id,'video',1)}__active{/if}"></div>
+<span data-pplikt="ppo_{$item.id}" data-itemcateg="video" data-popup-people-likedphoto="1" data-photolikesdropdown="{$item.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$this->getLikesCount($item.id,'video',1)}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$item.id}" data-categ="video" data-community="true" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$this->getCommentsCount($item.id,'video',1)}</span>
+</div>
+
+</div>
+
+</a>
+{/if}
+
+{foreachelse}
+{if $pictures_count}
+<div class="photos_album_page">
+    <div class="photos_container_grid ">
+        <div id="photos_container_photos" class="photos_container">
+            <div class="photos_no_content">
+                {$this->lang['community_album_empty']}
+            </div>
+        </div>
+
+    </div>
+</div>
+{else}
+[END]
+{/if}
+
+{/foreach}
+{if $pictures_count}
+</div>
+{/if}
+{if $pictures_count}
+<div class="link-show-more loader-controls private _comm_feed_load_more" 
+data-loadcommmore='{ldelim}"cmd":"album-load-more-items","albumid":"{$albumid}","clubid":"{$r.id}","page":"1"{rdelim}' 
+onclick="return communityAlbumLoadMore(event);">{$this->lang['Load_more']}</div>
+{/if}
+
+
+{/strip}

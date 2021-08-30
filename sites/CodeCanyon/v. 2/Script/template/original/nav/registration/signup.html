@@ -1,0 +1,127 @@
+{strip}
+{if $this->settings['open_user_registration'] === "false"}
+{$this->message("info","Sorry, the registration is closed at the moment, please try again later.")}
+{else}
+
+<div class="thok_block">
+
+{if $sysop}
+<center><h4 style="color:red;">Your first account will be created as sysop, then you can go to <a href="/admin" target="_blank">admin panel.</a></h4>
+</center>
+{/if}
+
+    <div class="registration_thok_fff">
+    <div class="panelRounded_head_header signup_f_header">{$this->lang['lg_reg_btn']}</div>
+	<div class="separator_slv"></div>
+<div class="registration_thok">
+        <div class="reg_inline_b">
+
+
+            <div class="regir_form_i1">
+                <form accept-charset="UTF-8" action="/takesignup.php" class="new_user" id="new_user" method="post" novalidate="novalidate">
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_first_name">{$this->lang['sg_name']}</label>
+                        <input id="reg_first_name" name="first_name" class="it" type="text">
+                    </div>
+
+                    <div class="regist_form_1">
+                        <label for="reg_last_name" class="input-l">{$this->lang['sg_surname']}</label>
+                        <input id="reg_last_name" name="surname" class="it" type="text">
+                    </div>
+
+                    <div class="regist_form_1">
+                        <label for="date_of_birth" class="input-l">{$this->lang['birthDate']}</label>
+                        <div class="data_of_birth">
+
+                            <select id="day" class="isl __day" name="day">
+                                <option value="">{$this->lang['sg_day']}</option>
+
+                                {for $i=1 to 31}
+                                <option value="0{$i}">{$i}</option>
+                                {/for}
+
+                            </select>
+
+                            <select id="month" class="isl __month" name="month">
+
+                                <option value="">{$this->lang['sg_month']}</option>
+                                <option value="01">{$this->lang['january']}</option>
+                                <option value="02">{$this->lang['february']}</option>
+                                <option value="03">{$this->lang['march']}</option>
+                                <option value="04">{$this->lang['aprill']}</option>
+                                <option value="05">{$this->lang['may']}</option>
+                                <option value="06">{$this->lang['june']}</option>
+                                <option value="07">{$this->lang['july']}</option>
+                                <option value="08">{$this->lang['august']}</option>
+                                <option value="09">{$this->lang['september']}</option>
+                                <option value="10">{$this->lang['octomber']}</option>
+                                <option value="11">{$this->lang['november']}</option>
+                                <option value="12">{$this->lang['december']}</option>
+                            </select>
+
+                            <select id="year" class="isl __year" name="year">
+                                <option value="">{$this->lang['sg_year']}</option>
+								{section name="yearLoop" loop=date('Y')-5 max=(date('Y')-5 - 1925) step=-1}
+								<option value="{$smarty.section.yearLoop.index}">{$smarty.section.yearLoop.index}</option>	
+								{/section}
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="regist_form_1"> <span class="input-l">{$this->lang['im']}</span>
+
+                        <ul class="form_ul form_ul__inline">
+                            <li class="form_ul_li">
+                                <input class="irc" type="radio" name="fr.gender" value="1" id="field_gender_1" checked="checked"><span class="irc_l">
+<label for="field_gender_1">{$this->lang['g_male']}</label></span></li>
+                            <li class="form_ul_li">
+                                <input class="irc" type="radio" name="fr.gender" value="2" id="field_gender_2">
+                                <span class="irc_l">
+<label for="field_gender_2">{$this->lang['g_female']}</label></span></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="regist_form_1">
+                        <label for="reg_country" class="input-l">{$this->lang['reg_location']}</label>
+ 
+						<input id="reg_country" autocomplete="off" name="location_name" placeholder="{$this->lang['location_name_eg']}" class="it getuserlocation" type="text" value="" />
+						<input type="hidden" name="location_id" id="location_id" value="" />
+                    </div>
+					
+                    <div class="regist_form_1">
+                        <label for="reg_phone" class="input-l">{$this->lang['reg_phone']}</label>
+ 
+						<input id="reg_phone" autocomplete="off" data-user-country="{$this->getUserCountryCode()}" placeholder="{$this->lang['reg_phone_placeholder']}" class="it phone-input" type="text" value="" />
+						<input type="hidden" name="phone_number" id="js_phone_number" value="" />
+						<div class="signup_phone_descr">{$this->lang['phone_descr_no_share']}</div>
+                    </div>
+					
+ 
+ 
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_mail">{$this->lang['email']}</label>
+                        <input id="reg_mail" onfocus="reg_validateEmail(this,event);" name="reg_email" class="it" type="text">
+						<div class="reg_em_err __none"></div>
+                    </div>
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_pass">{$this->lang['password']}</label>
+                        <input id="reg_password" name="reg_pass" class="it" type="text">
+                    </div>
+                    <div class="regist_form_1">
+                        <div class="reg_disclamer">{$this->lang['sg_agree_text']} <a class="lp il" onclick="tpaPopup(event);" data-mm="terms" href="javascript:;">{$this->lang['sg_terms&condition']}</a>.</div>
+                    </div>
+
+                    <div class="regist_form_1">
+					
+					<button type="button" onclick="return takesignup(event);" name="button_continue" class="isubmit flat_button wd100">{$this->lang['sg_submit_btn']}</button></div>
+                </form>
+
+            </div>
+
+        </div>
+		</div></div>
+		{/if}
+		
+		{/strip}

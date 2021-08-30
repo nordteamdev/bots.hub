@@ -1,0 +1,83 @@
+				<div class="clear"></div>
+		    </div>
+        </div>
+      </div>
+   </div>
+   <!-- .row -->
+</div>
+<script>
+	jQuery(document).ready(function($) {
+		$(document).on("click",".going-to-event",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'going-to-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+ event_id +"]").find('.events-list-dropup-menu').html("<span class='main'>"+data['html'] +"</span>")
+					}
+				}
+			})
+			
+		});
+
+		$(document).on("click",".interested-in-event",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'interested-in-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+ event_id +"]").find('.events-list-dropup-menu').html("<span class='main'>"+data['html'] +"</span>")
+
+					}
+				}
+			})
+		});
+
+		$(document).on("click",".events-going-list-unset",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'notgoing-to-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+event_id+"]").slideUp('fast', function() {
+							$(this).remove()
+						});
+					}
+				}
+			})
+		});
+
+		$(".load-more-events").click(function(event) {
+			var last_id = ($(".events-list-wrapper").length > 0) ? $(".events-list-wrapper").last().attr('data-event') : 0;
+			var type    = $(this).attr('data-events-type');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'load-more-events',
+					   s:type,
+					   offset:last_id 
+					},
+
+				success:function(data){
+					if (data['status'] == 200) {
+						$("#events-" + type).append(data['html'])
+					}else{
+						$(".posts_load").find('.load-more').html(data['html'])
+					}
+				}
+			})
+		});
+
+
+	});
+</script>

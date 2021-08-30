@@ -1,0 +1,488 @@
+{strip}
+<div class="box_body" style="padding: 0px 0px 20px;">
+    <div class="groups_create_box">
+        <div id="community_hidden_inputs">
+				<input type="hidden" id="community_type" value="" />
+				
+				<input type="hidden" id="comm_general_category" value="" />
+				<input type="hidden" id="comm_category" value="" />
+				<input type="hidden" id="community_privacy" value="open" />
+				<input type="hidden" id="community_cover_url" value="" />
+				
+				<input type="hidden" id="community_bd_day" value="" />
+				<input type="hidden" id="community_bd_month" value="" />
+				<input type="hidden" id="community_bd_year" value="" />
+				
+				<input type="hidden" id="community_location_v" value="no" />
+				<input type="hidden" id="community_location_lat" value="" />
+				<input type="hidden" id="community_location_lon" value="" />
+				
+				<input type="hidden" id="community_location_data" value="" />
+			 
+				<A style="display:none;" id="community_go" hrefattr="true" href="javascript:void(0);"></a>
+		</div>
+		
+		
+		
+		
+        <h4 class="subheader">{$this->lang['Name']}</h4>
+        <input type="text" class="dark it" id="group_create_title">
+        <h4 class="subheader">{$this->lang['Community_type']}</h4>
+       
+		
+		<div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" id="groups_create_group" tabindex="0">
+              <label for="gr_type_group"> <input type="radio" id="gr_type_group" onclick="ga('#community_type').val(this.value);" value="group" name="community_type"/>{$this->lang['Group']}
+                <div class="groups_create_about">{$this->lang['group_descr']}</div></label>
+            </div>
+        </div>
+		
+        <div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" id="groups_create_public" tabindex="-1">
+               <label for="gr_type_public_page"> <input type="radio" onclick="ga('#community_type').val(this.value);" id="gr_type_public_page" value="public_page" name="community_type"/>{$this->lang['Public_page']}
+                <div class="groups_create_about">{$this->lang['page_descr']}</div></label>
+            </div>
+        </div>
+		
+       <!-- 
+	   <div class="groups_create_section clear_fix">
+            <div class="radiobtn" id="groups_create_event" tabindex="-1">
+                Event
+                <div class="groups_create_about">Convenient for organizing concerts and parties</div>
+            </div>
+        </div>
+		--->
+		
+        <h4 class="subheader generalcategory">{$this->lang['Select_category']}</h4>
+        <div class="groups_create_section clear_fix ">
+
+
+			<select name="group_general_categ" id="field_groups_select" class="v2_gs_sel-country isl">
+			<option>{$this->lang['Select_category']}</option>
+			<option value=".comm_hidden_select_1">{$this->lang['Community_Blog']}</option>
+			<option value=".comm_hidden_select_2">{$this->lang['Company_Store_Celebrity']}</option>
+			
+			</select>
+				
+
+			
+			
+			<select name="communities_blog_genres" class="comm_hidden_select_1" data-submenuselect="1">
+			<option>{$this->lang['Select_category']}</option>
+			
+			{foreach $this->settings['GROUPS_GENRES']['0']['categories'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+						
+			<select name="company_store_genres" class="comm_hidden_select_2" data-submenuselect="1">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['categories'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- Music subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_music" data-subcategb="comm_g_Music" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			
+			{foreach $this->settings['GROUPS_GENRES']['0']['subcategories']['comm_g_Music'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			
+			<!-- Relations,Family subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_family" data-subcategb="comm_g_Relations_Family" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['0']['subcategories']['comm_g_Relations_Family'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			
+			
+			
+			
+			
+			<!-- Beauty,Health subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_bhealth" data-subcategb="comm_g_beauty" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_beauty'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			<!-- Celebrity subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_celebrity" data-subcategb="comm_g_celebrity" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_celebrity'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			<!-- Communication Services subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_communication_services" data-subcategb="comm_g_Communication" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Communication'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			<!-- Culture,Art subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_culture_art" data-subcategb="comm_g_Culture" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Culture'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			<!-- Entertainment subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_entertainment" data-subcategb="comm_g_Entertainment" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Entertainment'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			<!-- Internet subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_internet" data-subcategb="comm_g_Internet" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Internet'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			<!-- Products, Stores subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_products_stores" data-subcategb="comm_g_Products" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Products'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			<!-- Restaurants subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_restaurants" data-subcategb="comm_g_Restaurants" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Restaurants'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+			
+			<!-- Sport subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_sport" data-subcategb="comm_g_Sport" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Sport'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+
+			
+			<!-- Transportation Services subcategories -->
+			<select name="comm_subcateg" class="comm_hidden_sub_select_transportation_services" data-subcategb="comm_g_Transportation_services" submenuselect="2">
+			<option>{$this->lang['Select_category']}</option>
+			{foreach $this->settings['GROUPS_GENRES']['1']['subcategories']['comm_g_Transportation_services'] as $category}
+			
+			<option value="{$category}">{$this->lang[$category]}</option>
+			
+			{/foreach}
+			</select>
+			
+				
+            </div>
+        </div>
+		
+		
+		
+		<div id="community_step_two">
+	   <h4 class="subheader">{$this->lang['Community_description']}</h4>
+       <textarea id="group_edit_desc" class="group_edit_textarea dark" maxlength="4000" style="overflow: hidden; resize: none;"></textarea>
+		
+		
+		
+	     <h4 class="subheader">{$this->lang['Website']}</h4>
+        <input type="text" class="dark it" id="group_create_website">
+		
+		
+		
+			<!-- Birthday -->
+
+                    <div>
+                         <h4 class="subheader">{$this->lang['Birthday']}</h4>
+                        <div class="data_of_birth">
+
+                            <select id="day" class="isl __day" name="day">
+                                <option value="">{$this->lang['sg_day']}</option>
+
+                                {for $i=1 to 31}
+                                <option value="0{$i}">{$i}</option>
+                                {/for}
+
+                            </select>
+
+                            <select id="month" class="isl __month" name="month">
+
+                                <option value="">{$this->lang['sg_month']}</option>
+                                <option value="01">{$this->lang['january']}</option>
+                                <option value="02">{$this->lang['february']}</option>
+                                <option value="03">{$this->lang['march']}</option>
+                                <option value="04">{$this->lang['aprill']}</option>
+                                <option value="05">{$this->lang['may']}</option>
+                                <option value="06">{$this->lang['june']}</option>
+                                <option value="07">{$this->lang['july']}</option>
+                                <option value="08">{$this->lang['august']}</option>
+                                <option value="09">{$this->lang['september']}</option>
+                                <option value="10">{$this->lang['octomber']}</option>
+                                <option value="11">{$this->lang['november']}</option>
+                                <option value="12">{$this->lang['december']}</option>
+                            </select>
+
+                            <select id="year" class="isl __year" name="year">
+                                <option value="">{$this->lang['sg_year']}</option>
+								{section name="yearLoop" loop=date('Y')+1 max=(date('Y') - 1900) step=-1}
+								<option value="{$smarty.section.yearLoop.index}">{$smarty.section.yearLoop.index}</option>	
+								{/section}
+                            </select>
+                        </div>
+
+                    </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 <h4 class="subheader">{$this->lang['Community_cover']}</h4>
+		 
+		 <div class="community_add_cover">
+		 <div class="community_add_cover_txt">+&nbsp;{$this->lang['Add_cover']}</div>
+		 <form name="commCover" id="commCover" enctype="multipart/form-data" method="post">
+          <input type="hidden" name="cmd" value="addcover">
+          <input accept="image/*" onchange="checkCommCoverSize(event);" class="html5-upload-link _community_cover" id="file" name="file" size="1" title="" type="file" value="">
+         </form>
+		 <div class="comm_upload_bar"></div>
+		 <div class="comm_cover_preview_succ"></div>
+		 <div class="comm_cover_error"></div>
+		 </div>
+
+		 
+		 
+		 
+		 <h4 class="subheader">{$this->lang['Community_location']}</h4>
+		 
+		 <div id="community_add_location" class="community_add_location">
+		 <span class="community_location_name_selected ob"></span>
+		 <a href="javascript:void(0);" class="ob" onclick="{literal}var _that = this; gLocation(event,this); setTimeout(function(){ga(_that).remove();},500);{/literal}">{$this->lang['community_popup_add_location']}</a>
+		 <div id="new_comm_location"></div>
+			<!--<section id="lf_map_i" class="community"><div class="map_loading">
+			<div class="map_load_ic tico_img"></div></div>
+			<div id="lf_map_findbox"></div>
+			<div id="lf_map_cnt_community" class="lf_map_cnt_community"></div></section>-->
+		 </div>
+		 
+		 
+		 
+		 
+		
+		<h4 class="subheader">{$this->lang['Community_privacy']}</h4>
+		<div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" tabindex="0">
+              <label for="gr_comm_privacy_open"> <input type="radio" id="gr_comm_privacy_open" checked onclick="ga('#community_privacy').val(this.value);" value="Open" name="community_privacy"/>{$this->lang['Open']}
+                </label>
+            </div>
+        </div>
+		
+        <div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" id="groups_create_public" tabindex="-1">
+               <label for="gr_comm_privacy_closed"> <input type="radio" onclick="ga('#community_privacy').val(this.value);" id="gr_comm_privacy_closed" value="Closed" name="community_privacy"/>{$this->lang['Closed']}
+                </label>
+            </div>
+        </div>
+		
+        <div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" id="groups_create_public" tabindex="-1">
+               <label for="gr_comm_privacy_privacy"> <input type="radio" onclick="ga('#community_privacy').val(this.value);" id="gr_comm_privacy_privacy" value="Private" name="community_privacy"/>{$this->lang['Private']}
+               </label>
+            </div>
+        </div>
+		
+		
+		</div>
+		
+    </div>
+	
+<div class="box_controls_wrap" style="display: block;">
+    <div class="box_controls">
+        <table cellspacing="0" cellpadding="0" class="fl_r">
+            <tbody>
+                <tr>
+                    <td><button id="new_comm_popup_close" onclick="ga('#nohook_modal_close').trigger('click');" class="flat_button secondary">{$this->lang['cancel']}</button></td>
+                    <td><button class="flat_button" onclick="return communitiesFirstStep(event);">{$this->lang['Create_community']}</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="box_controls_text _box_controls_text" id="group_ajax_msg"></div>
+    </div>
+</div>
+	
+	
+</div>
+
+<Script>
+{literal}
+
+	// general categories
+	ga(document).off('selectmenuchange.createGroup').on( "selectmenuchange.createGroup", '#field_groups_select', function( ev, ui ) { 
+
+    ga('[data-submenuselect="1"]').each(function(){ga(this).selectmenu( "widget" ).hide();});
+	ga('[submenuselect]').each(function(){ga(this).selectmenu( "widget" ).hide();});
+
+	ga('#comm_category,#comm_subcategory').val('');
+	ga(ui.item.value).selectmenu( "widget" ).show();
+	
+	 ga('#comm_general_category').val(ui.item.index);
+	
+	
+	});
+
+	
+	// categories
+	ga(document).off('selectmenuchange.createGroupGetSubcateg').on( "selectmenuchange.createGroupGetSubcateg", '.comm_hidden_select_1,.comm_hidden_select_2', function( ev, ui ) { 
+//community_add_location();
+    ga('[submenuselect]').each(function(){ga(this).selectmenu( "widget" ).hide();});
+
+	ga('[data-subcategb="'+ui.item.value+'"]').selectmenu( "widget" ).show();
+	ga('#comm_category').val(ui.item.value);
+	
+	if(ga('[data-subcategb="'+ui.item.value+'"]').length)
+	ga('#community_hidden_inputs').append('<input type="hidden" id="comm_subcategory" value="" />'); 
+	else ga('#comm_subcategory').remove();
+	
+	});
+	
+	// subcategories
+	
+	ga(document).off('selectmenuchange.createGroupGetSubcategs').on( "selectmenuchange.createGroupGetSubcategs", '[name="comm_subcateg"]', function( ev, ui ) { 
+
+	ga('#comm_subcategory').val(ui.item.value);
+	
+	});
+	
+	
+	/* birthday */
+	ga(document).off('selectmenuchange.createGroupBirthdayDay').on( "selectmenuchange.createGroupBirthdayDay", '[name="day"]', function( ev, ui ) { 
+
+	ga('#community_bd_day').val(ui.item.value);
+	
+	});
+	ga(document).off('selectmenuchange.createGroupBirthdayMonth').on( "selectmenuchange.createGroupBirthdayMonth", '[name="month"]', function( ev, ui ) { 
+
+	ga('#community_bd_month').val(ui.item.value);
+	
+	});
+	ga(document).off('selectmenuchange.createGroupBirthdayYear').on( "selectmenuchange.createGroupBirthdayYear", '[name="year"]', function( ev, ui ) { 
+
+	ga('#community_bd_year').val(ui.item.value);
+	
+	});
+	
+	
+	
+	
+ga('select').selectmenu();
+ga(".comm_hidden_select_1").selectmenu( "widget" ).hide();
+ga('.comm_hidden_select_2').selectmenu( "widget" ).hide();
+ga('.comm_hidden_sub_select_family').selectmenu( "widget" ).hide();
+ga('.comm_hidden_sub_select_music').selectmenu( "widget" ).hide();
+ga('.comm_hidden_sub_select_bhealth').selectmenu( "widget" ).hide();
+ga('.comm_hidden_sub_select_communication_services').selectmenu( "widget" ).hide();
+ga('.comm_hidden_sub_select_celebrity').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_culture_art').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_entertainment').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_internet').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_products_stores').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_restaurants').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_sport').selectmenu('widget').hide();
+ga('.comm_hidden_sub_select_transportation_services').selectmenu('widget').hide();
+
+/*
+function community_add_location() {
+	
+	var search_plugin_init,location_found;
+	var map = new L.Map('lf_map_cnt_community', { zoom: 17 }).whenReady(function(){ga('.map_loading').remove()});
+	map.addLayer(new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+		var markersLayer = new L.LayerGroup();	//layer contain searched elements
+
+	var marker;
+
+	var lcm = map.locate({ setView: true, maxZoom:13, enableHighAccuracy:true }).on('locationfound.CommunityAddLocation', function(e){
+		
+	marker = new L.marker([e.latitude, e.longitude]).bindPopup(lang.map_you_are_here);
+		map.addLayer(marker);
+		location_found = true;
+ search_plugin_init();
+	}).on('locationerror.CommunityAddLocation', function(e){
+
+			marker = new L.marker([44.4361414, 26.1027443]);
+		map.addLayer(marker);
+		location_found=false;
+	 search_plugin_init();
+	
+	});
+	
+	
+}
+*/
+
+{/literal}
+</script>
+
+{/strip}

@@ -1,0 +1,11 @@
+<div class="sun_pop_gam_list col-xs-12 col-sm-6 col-md-4" id="game_<?php echo $wo['game']['id'];?>">
+	<a href="<?php echo $wo['game']['url'];?>" data-ajax="?link1=game&id=<?php echo $wo['game']['id'];?>">
+		<div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+			<img src="<?php echo $wo['game']['game_avatar'];?>" alt="<?php echo $wo['game']['game_name']; ?> Profile Picture" />
+		</div>
+		<div class="game-name"><?php echo $wo['game']['game_name']; ?></div>
+		<div class="btn btn-link"><?php echo $wo['lang']['play'];?></div>
+		<hr>
+		<p><?php echo $wo['game']['players']; ?> <?php echo $wo['lang']['users_playing']; ?></p>
+	</a>
+</div>

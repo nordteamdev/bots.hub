@@ -1,0 +1,53 @@
+{strip}
+
+<section id="w8fullw_popup">
+<div class="layer_ovr"></div>
+
+<div class="w8_popup_style">
+<div class="close_x_right_btn" title="{$this->lang['close']}"></div>
+
+
+<!-- CONTENT IN POPUP --->
+<div class="mp_mm_cont">
+    <div class="panelLayer layerPanelSimple" id="cfrmPopLayerRegisterSpam">
+        <div class="panelLayer_h">
+            <div class="panelLayer_t-simple">{$this->lang['report']}</div>
+        </div>
+        <div class="panelLayer_b">
+
+                        <div style="text-align: left"></div>{str_replace('%sitename',$this->settings['sitename'],$this->lang['report_photo_top_descr'])} 
+                        <div>
+                            <br>{$this->lang['select_reason']}
+                            <ul class="form_ul" id="report_specify_reason">
+                                <li class="form_ul_li">
+                                    <input type="radio" name="st.layer.reason" value="erotics;pornography" class="irc" id="field_reason_1"><span class="irc_l"><label for="field_reason_1">{$this->lang['erotics;pornography']}</label></span></li>
+                                <li class="form_ul_li">
+                                    <input type="radio" name="st.layer.reason" value="spam;ads" class="irc" id="field_reason_2"><span class="irc_l"><label for="field_reason_2">{$this->lang['spam;ads']}</label></span></li>
+                                <li class="form_ul_li">
+                                    <input type="radio" name="st.layer.reason" value="content;offensive_for_other_users" class="irc" id="field_reason_3"><span class="irc_l"><label for="field_reason_3">{$this->lang['content;offensive_for_other_users']}</label></span></li>
+                            </ul>
+                        </div>
+                    </div>
+					<div id="defaultreason">not_specified</div>
+                    <div class="formButtonContainer">
+                        <input type="button" data-reportobj='{ldelim}"type" : "post", "id" : "{$postid}"{rdelim}' onclick="reportThis(event);" value="{$this->lang['report']}">
+                        <span><a class="lp w8_cancel_form" href="javascript:;">{$this->lang['cancel']}</a></span></div>
+                   
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- END CONTENT IN POPUP -->
+
+
+
+</div>
+
+
+</section>
+
+
+
+{/strip}

@@ -1,0 +1,86 @@
+{strip}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		           <div id="ne-n" data-category="Comments" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+
+ <!-- liked comments -->
+{if $res.categ === 'photo'}
+<div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+						<a href="/photo?q=19&show=single&from=medium&o={b_encode($res.item)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($res.item)}" class="image-hover">
+                           <img class="photo_img" src="/getPhoto?p={$res.item}&sz=small" width="64" height="64">
+						 </a>  
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o bold" data-clbk="removePopup" href="/user/{$res.user_id}" hrefattr="true">{$res.user_fullname}</a>
+{if $res.mentioned == 'yes'}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['mentioned_you_in_a_comment']}&nbsp;{$this->lang['in_one_of_your_pic']}</span>
+{else}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['commented']}&nbsp;{$this->lang['in_one_of_your_pic']}{if $res.clubid > 0}&nbsp;{$this->lang['from']} <a class="bold black" data-clbk="removePopup" href="/community/{$res.group_details.id}" hrefattr="true">{$res.group_details.name}</a>{/if}.<br/><span title="{$res.text}" class="notif_mini_comment_preview">{$this->str_smilies(pellipse($res.text,120))}</span></span>
+{/if}
+
+
+{else if $res.categ === 'post'}
+<div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+						<A href="/post?i={$res.item}{if $res.clubid > 0}&clubid={$res.clubid}{/if}" hrefattr="true" data-type-post="1">	<div class="grades_liked_status __notif"></div></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o bold" data-clbk="removePopup" href="/user/{$res.user_id}" hrefattr="true">{$res.user_fullname}</a>
+
+{if $res.mentioned == 'yes'}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['mentioned_you_in_a_comment']}&nbsp;<Br/>{$this->lang['click_to_see']}<A href="/post?i={$res.item}{if $res.clubid > 0}&clubid={$res.clubid}{/if}" hrefattr="true" data-type-post="1">{$this->lang['post']}</a> {if $res.clubid > 0}{$this->lang['from']} <a class="bold black" data-clbk="removePopup" href="/community/{$res.group_details.id}" hrefattr="true">{$res.group_details.name}</a>{/if}.</span>
+{else}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['commented_on_your']}&nbsp;<A href="/post?i={$res.item}{if $res.clubid > 0}&clubid={$res.clubid}{/if}" hrefattr="true" data-type-post="1">{$this->lang['post']}</a> {if $res.clubid > 0}{$this->lang['from']} <a class="bold black" data-clbk="removePopup" href="/community/{$res.group_details.id}" hrefattr="true">{$res.group_details.name}</a>{/if}.<br/><span title="{$res.text}" class="notif_mini_comment_preview">{$this->str_smilies(pellipse($res.text,120))}</span></span>
+{/if}
+
+
+{else if $res.categ === 'video'}
+<div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+						<a href="/video?cmd=open&vid={$res.item}&userplaylist=1" data-ivideo="1" class="image-hover">
+                           <img class="photo_img" src="/videoCover?v={$res.item}&empty=1" width="64" height="64">
+						 </a>  
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o bold" data-clbk="removePopup" href="/profile?q={$res.user_id}" hrefattr="true">{$res.user_fullname}</a>
+
+{if $res.mentioned == 'yes'}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['mentioned_you_in_a_comment']}&nbsp;<Br/>{$this->lang['click_to_see']}
+<a href="/video?cmd=open&vid={$res.item}{if $clubid > 0}&clubid={$clubid}{else}&userplaylist=1{/if}" data-ivideo="1">{$this->lang['video']}</a>{if $res.clubid > 0}&nbsp;{$this->lang['from']} <a class="bold black" data-clbk="removePopup" href="/community/{$res.group_details.id}" hrefattr="true">{$res.group_details.name}</a>{/if}
+
+{else}
+
+<span class="__frrpkc_txt">&nbsp;{$this->lang['commented_on_your']}&nbsp;<a href="/video?cmd=open&vid={$res.item}{if $clubid > 0}&clubid={$clubid}{else}&userplaylist=1{/if}" data-ivideo="1">{$this->lang['video']}</a>{if $res.clubid > 0}&nbsp;{$this->lang['from']} <a class="bold black" data-clbk="removePopup" href="/community/{$res.group_details.id}" hrefattr="true">{$res.group_details.name}</a>{/if}.<br/><span title="{$res.text}" class="notif_mini_comment_preview">{$this->str_smilies(pellipse($res.text,120))}</span></span>
+{/if}
+
+
+{/if}
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+
+		  
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event);" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+</div></div></div>
+{/foreach}
+                    </div></div>
+                </div> 
+				{/strip}

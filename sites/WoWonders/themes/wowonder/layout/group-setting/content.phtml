@@ -1,0 +1,38 @@
+<?php
+$wo['setting_page'] = 'general-setting';
+$pages_array = array(
+   'general-setting',
+   'privacy-setting',
+   'delete-group',
+   'avatar-setting',
+   'requests',
+   'group-members'
+   );
+if (!empty($_GET['link3'])) {
+   if (in_array($_GET['link3'], $pages_array)) {
+      $wo['setting_page'] = $_GET['link3'];
+   }
+}
+?>
+<style>.wo_setting_sidebar ul .list-group-item {background: #03A9F4 !important;}@media (max-width: 600px){.wo_setting_sidebar ul {background: #03A9F4 !important;}}
+<?php if($wo['language_type'] == 'rtl') { ?>
+.wo_setting_sidebar{left: 10px;right: auto;}
+.wo_setting_showpage {padding-right: 0px;padding-left: 45px;}
+.wo_settings_page{padding: 15px 15px 15px 55px;}
+.wo_settings_page .last-sett-btn {margin-right: -15px;margin-left: -55px;}
+@media (max-width: 600px){
+.wo_setting_sidebar {left: 0px;}
+.wo_setting_showpage {padding-right: 10px;padding-left: 10px;}
+.wo_settings_page{padding: 15px;}
+.wo_settings_page .last-sett-btn {margin-left: -15px;}
+}
+<?php } ?>
+</style>
+
+<div class="page-margin">
+	<div class="row setting-panel" style="position:relative;">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol wo_setting_showpage"><?php echo Wo_LoadPage("group-setting/" . $wo['setting_page']); ?></div>
+		<div class="wo_setting_sidebar"><?php echo Wo_LoadPage('group-setting/group-setting-sidebar');?></div>
+	</div>
+</div>

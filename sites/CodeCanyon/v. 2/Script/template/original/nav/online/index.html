@@ -1,0 +1,194 @@
+{strip}
+
+
+
+			 
+			  
+
+<div id="mainContentContentColumn">
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+        <div id="hook_Block_AfterLoginRedirector" class="hookBlock"></div>
+        <div id="hook_Block_MiddleColumn" class="hookBlock">
+            <div id="middleColumn">
+                <div id="hook_Block_UserGuests" class="hookBlock">
+                    <div class="panelRounded" id="listBlockPanelUserGuests">
+                        <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Online_now']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+                        <div class="panelRounded_body">
+                            <ul class="cardsListsd33 online-pg">
+			{assign var=c_g value=0}
+			{foreach $q as $res}
+			{assign var="guest_status" value=$this->getUserPost($res.id)}
+
+                                <li class="u_cardsList_li cardsList_li show-on-hover" data-shortcut-inf='{literal}{{/literal}"uid":"{$res.id}","fn":"{$res.fullname}","ph":"{$res.profile_photo}"{literal}}{/literal}' onmouseover="shortcutActv(this)" id="gu_{$res.id}">
+                                    <div class="userCard">
+                                        <div class="card_main">
+
+					{if $guest_status.type == 'text'}
+                                            <div class="ust">
+                                                <div class="ust_tx"><a title="{$guest_status.text}" class="ust_a" href="#">{$guest_status.text}</a>
+                                                </div>
+                                            </div>
+					{else if $guest_status.type == 'song'}
+			{assign var="status_song_info" value=$this->getPostSongInfo($guest_status.text)}
+
+					<div class="ust">
+    <div class="ust_tx ust_music">
+        <div class="ust_music-cntrl" id="dv_pm_out_post_{$status_song_info.id}" onclick="return false;">
+	<i onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{literal}{{/literal}"track":"{$status_song_info.path}","cover":"{$status_song_info.cover}","artist":"{$status_song_info.artist}","songname":"{$status_song_info.title}","albumname":"{$status_song_info.album}"{literal}}{/literal}' title="{$this->lang['play']}" id="pm_out_post_{$status_song_info.id}" class="ust_play"></i></div><a class="ust_a" href="/discussions/3/64546526877140" hrefattr="true" title="{$status_song_info.artist} - {$status_song_info.title}" rel="tipsy">{$status_song_info.artist} - {$status_song_info.title}</a>
+    </div>
+</div>
+
+					{/if}
+
+                                            <div class="card_wrp" data-show-shortcut="true">
+                                                <div class="photoWrapper">
+                                                    <a href="/user/{$res.id}" class="photoWrapper" hrefattr="true">
+                                                        <div><img src="/getPhoto?p={$res.profile_photo}&sz=thumb&g={$res.gender}" alt="" width="128" height="128">
+                                {if $this->getUserStatus($res.id)}<span class="ic-online"></span>{/if}
+								
+							
+								
+<span class="kn_shortcutmenu wh100">
+<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","ulmen":{ldelim}"guest":"0","block":"0","unblock":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+</div></span>
+								
+                                                       </div>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card_add">
+                                            <div class="ellip"><a href="/user/{$res.id}" class="o" hrefattr="true"><b>{$res.fullname}</b></a></div>
+											<div class="online-card-location"><span rel="getusercountry" id="user_{$res.id}"></span></div>
+											</div>
+                                    </div>
+                                </li>
+								
+								
+			
+		{foreachelse}
+
+		<h3 class="n_guests">{$this->lang['no_online_users_at_the_moment']}</h3>
+	
+		{/foreach}
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wide_friends_lf_cl">
+  <div id="mainContentLeftColumn">
+    <div id="hook_Block_LeftColumn" class="hookBlock">
+      <div id="leftColumn">
+        <div id="hook_Block_UserFriendsCatalogRB" class="hookBlock">
+          <div class="portlet" id="UserFriendsCatalogRB">
+
+			
+
+					
+					<div id="gender" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Gender</span></div>
+				<ul class="v2_gs_filter_list __gender">
+					<li><span data-o-filter-gender="any" class="v2_gs_filter_i gs_it ellip {if !$g}__active{/if}">{$this->lang['Any']}</span></li>
+					<li><span data-o-filter-gender="male" class="v2_gs_filter_i gs_it ellip {if $g == 'male'}__active{/if}">{$this->lang['g_male']}</span></li>
+					<li><span data-o-filter-gender="female" class="v2_gs_filter_i gs_it ellip {if $g == 'female'}__active{/if}">{$this->lang['g_female']}</span></li>
+				</ul>
+			</div>
+			<div id="age" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Age']}</span><span class="lwa-bef __close-l __by-date-i">{$this->lang['birthDate']}</span></div>
+				<ul class="v2_gs_filter_list">
+					<li>
+						<div id="customAge" class="v2_gs_filter_i v2_gs_adv-search_select">
+						<select id="o_field_fromage" class="isl isl__res">
+						 {for $age=15 to 80}
+							<option value="{$age}" {if (!$frage && $this->getUserAge($this->USER['birthday']) == $age) || ($frage == $age)}selected="selected"{/if}>{$this->lang['from']} {$age}</option>
+						 {/for}
+						 </select>
+						&#8212;
+						<select name="st.toAge" id="o_field_toage" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['to']}</option>
+						 {for $age=16 to 80}
+							<option value="{$age}" {if (!$toage && $this->getUserAge($this->USER['birthday'])+10 == $age) || ($toage == $age)}selected="selected"{/if}>{$this->lang['to']} {$age}</option>
+						 {/for}
+						 </select>
+						 </div>
+						</li>
+				</ul>
+			</div>			
+			
+<div id="location" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Location']}</span></div>
+				<input type="hidden" name="st.location" value="" id="field_location">
+				<input type="hidden" name="st.country" value="" id="field_country">
+				<ul id="locationItems" class="v2_gs_filter_list">
+					<li><span data-o-allc="1" class="v2_gs_filter_i {if $allc}__active{/if} __default gs_it ellip">{$this->lang['all_cities_and_countries']}</span></li>
+
+					<li><span id="customPlaceItemSpan" class="v2_gs_filter_i {if !$allc}__active{/if}">{$this->lang['specify_the_location']} <span class="adv-search_nav_arrow">?</span></span>
+						
+						<div id="customPlace" class="v2_gs_custom-place">
+							<div class="v2_gs_place-search">
+								<div class="v2_gs_sel-country_w">
+								
+								<input id="field_location_int" autocomplete="off" name="location_name" placeholder="{$this->lang['location_name_eg']}"  {if $c_location != ''}disabled="disabled"{/if} class="{if $c_location != ''}__disabled{/if} getuserlocation" type="text" {if $c_location != ''}value="{$u_location_name}"{/if} />
+								<input type="hidden" name="location_id" id="location_id" {if $c_location != ''}value="{$c_location}"{/if} />
+								
+								</div></div></div>
+ 
+						
+						
+						
+					</li>
+				</ul>
+			</div>
+					
+					
+            </div>			  
+			  
+
+			
+			
+			
+{assign var=ad value=$this->getAdMarkup('online')}
+{if $ad}
+<div class="ads-box">
+<div class="ads-box-title">{$this->lang['sponsored']}</div>
+<div class="ads-box-cnt">
+{$ad}
+</div>
+</div>	
+	{/if}		
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+
+{if !$allc}
+<div id="site_online_users"></div>
+{/if}
+
+<form accept-charset="UTF-8" action="/online?" class="submit_search" id="submit_search" method="post" novalidate="novalidate">
+<input type="hidden" name="gender" value="{$g}">
+<input type="hidden" name="fromage" value="{$frage}">
+<input type="hidden" name="toage" value="{$toage}">
+
+<input type="hidden" name="location" value="{$c_location}">
+
+<input type="hidden" name="allc" value="{$allc}">
+
+<a id="trigger_filter_query" href="/online" class="__none" hrefattr="true"></a>
+</form>
+
+
+
+{/strip}

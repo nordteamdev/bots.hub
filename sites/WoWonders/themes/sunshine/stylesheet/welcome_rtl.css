@@ -1,0 +1,84 @@
+body {direction: rtl}
+
+.login_left_combo, .login form, .login input, .login select, .login textarea {text-align: right;direction: rtl;}
+.forgot_password {text-align: left;}
+.spinner{margin-right: 0;margin-left: 15px;}
+.wo_r_features {margin-left: 80px;}
+.terms{padding-left: 0;}
+.terms label{padding-right: 30px;}
+.terms label::before{left: auto;right: 0;}
+.login > .col-md-7 {
+    padding-right: 15px;padding-left: 30px;
+}
+.login > .col-md-5 {
+    padding-left: 15px;padding-right: 60px;
+}
+.sun_input input, .sun_input textarea, .sun_input select {
+    padding: 15px 55px 0px 10px;
+}
+.sun_input label {
+    left: auto;right: 55px;
+}
+.sun_input svg {
+    left: auto;right: 15px;
+}
+.login_signup_combo .login__ .btn {
+    margin-right: 0;margin-left: 15px;
+}
+.social_btns a {
+    margin: 0 0 0 5px;
+}
+.sun_lang_select_menu li a .language_initial {
+	margin-right: 0;margin-left: 10px;
+}
+body .sun_lang_select_menu {
+	right: auto !important;
+    left: 0 !important;
+}
+body .sun_lang_select_menu:before {
+	right: auto;left: 30px;
+}
+body .logo {
+    margin-right: 0;margin-left: 55px;
+}
+body #welcomeheader .mdbtn {
+	min-width: auto;
+}
+
+
+
+@media (min-width: 800px) {
+body .wo_imagecombo_lbox.story_lightbox .comment-section .comment-section-inner {margin-right: 0;margin-left: -18px;}	
+}
+
+@media (max-width: 992px) {
+.login .col-md-5, .login .col-md-7 {float: right}
+body .login > .col-md-5 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+}
+
+@media (max-width: 880px) {
+.wo_r_features {margin: auto;}
+}
+
+@media (max-width: 800px) {
+.login .col-md-6 {margin-right: 40%;}
+}
+
+@media (max-width: 720px) {
+.login_left_combo_parent {float: none;height: 270px;}
+.login_left_combo {width: 100%;}
+.login .col-md-6 {margin-right: 0;}
+}
+
+@media (max-width: 670px) {
+.login_left_combo_parent {height: 250px;}
+.wo_regi_features {float:none;}
+.login .col-md-7 {margin-right: 0;}
+}
+
+@media (max-width: 440px) {
+.login_left_combo_parent {height: 160px;}
+}

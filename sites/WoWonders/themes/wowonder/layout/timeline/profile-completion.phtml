@@ -1,0 +1,75 @@
+<ul class="list-group profile-completion-bar" data-profile-completion="<?php echo array_sum($wo['pr_complition']); ?>">
+	<li class="percentage-bar">
+        <h4>
+            <span class="pull-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#a9ffe7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle" color="green"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>&nbsp;
+                <?php echo $wo['lang']['pr_completion']; ?>
+            </span>
+            <span class="pull-right">
+                <b class="completion-bar-percentage"><?php echo array_sum($wo['pr_complition']); ?></b>%
+            </span>
+        </h4>
+    </li>
+    <li class="completion-bar">
+        <div class="completion-bar-wrapper">
+            <div class="completion-bar-status" style="width: <?php echo array_sum($wo['pr_complition']); ?>%;">
+            </div>
+        </div>
+    </li>
+    <hr>
+    <?php if (empty($wo['pr_complition'][1])): ?>
+        <li class="completion-step" id="add-profile-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> 
+			<?php echo $wo['lang']['ad_pr_picture']; ?>   
+        </li>
+    <?php else: ?>
+        <li class="completion-step">
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+           <span> <?php echo $wo['lang']['ad_pr_picture']; ?>  </span>  
+        </li>
+    <?php endif; ?>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][2])): ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span> <?php echo $wo['lang']['add_ur_name']; ?> </span>
+        <?php else: ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"> <?php echo $wo['lang']['add_ur_name']; ?>  </a>
+        <?php endif; ?>
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][3])): ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span> <?php echo $wo['lang']['ad_ur_workplace']; ?> </span>
+        <?php else: ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"> <?php echo $wo['lang']['ad_ur_workplace']; ?> </a> 
+        <?php endif; ?>
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][4])): ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><?php echo $wo['lang']['ad_ur_country']; ?></span>
+        <?php else: ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=general-setting');?>" data-ajax="?link1=setting&page=general-setting"><?php echo $wo['lang']['ad_ur_country']; ?></a>
+        <?php endif; ?>
+    </li>
+    <li class="completion-step">
+        <?php if (!empty($wo['pr_complition'][5])): ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span><?php echo $wo['lang']['ad_ur_address']; ?></span>
+        <?php else: ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting');?>" data-ajax="?link1=setting&page=profile-setting"><?php echo $wo['lang']['ad_ur_address']; ?></a>
+        <?php endif; ?>
+    </li>
+</ul>
+
+<script>
+jQuery(document).ready(function($) {
+	$("#add-profile-avatar").click(function(event) {
+		$('.profile-avatar-changer').find('input').trigger('click');
+	});
+});
+</script>

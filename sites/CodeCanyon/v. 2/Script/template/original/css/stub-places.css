@@ -1,0 +1,338 @@
+.stub-place {
+    width: 48px;
+    height: 48px;
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -50px;
+    background-size: 50px 2350px
+}
+.stub-place-subway_station {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1150px;
+    background-size: 50px 2350px
+}
+.stub-place-railway_station {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -100px;
+    background-size: 50px 2350px
+}
+.stub-place-library {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -150px;
+    background-size: 50px 2350px
+}
+.stub-place-theatre {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -200px;
+    background-size: 50px 2350px
+}
+.stub-place-playground {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -250px;
+    background-size: 50px 2350px
+}
+.stub-place-nightclub {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -300px;
+    background-size: 50px 2350px
+}
+.stub-place-cinema {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -350px;
+    background-size: 50px 2350px
+}
+.stub-place-water_park {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -400px;
+    background-size: 50px 2350px
+}
+.stub-place-bar {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -450px;
+    background-size: 50px 2350px
+}
+.stub-place-pharmacy {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -500px;
+    background-size: 50px 2350px
+}
+.stub-place-massage {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -550px;
+    background-size: 50px 2350px
+}
+.stub-place-hairdresser {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -600px;
+    background-size: 50px 2350px
+}
+.stub-place-sauna {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -650px;
+    background-size: 50px 2350px
+}
+.stub-place-temple {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -700px;
+    background-size: 50px 2350px
+}
+.stub-place-sinagogue {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -750px;
+    background-size: 50px 2350px
+}
+.stub-place-aerodrome {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1050px;
+    background-size: 50px 2350px
+}
+.stub-place-mosque {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -800px;
+    background-size: 50px 2350px
+}
+.stub-place-golf_course {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -850px;
+    background-size: 50px 2350px
+}
+.stub-place-zoo {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -900px;
+    background-size: 50px 2350px
+}
+.stub-place-museum {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -950px;
+    background-size: 50px 2350px
+}
+.stub-place-viewpoint {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1000px;
+    background-size: 50px 2350px
+}
+.stub-place-airport {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1050px;
+    background-size: 50px 2350px
+}
+.stub-place-car_wash,
+.stub-place-car {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1100px;
+    background-size: 50px 2350px
+}
+.stub-place-fuel {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 0;
+    background-size: 50px 2350px
+}
+.stub-place-pedestrian_street {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1200px;
+    background-size: 50px 2350px
+}
+.stub-place-guest_house,
+.stub-place-hotel,
+.stub-place-apartments,
+.stub-place-house,
+.stub-place-residential {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1250px;
+    background-size: 50px 2350px
+}
+.stub-place-neighbourhood,
+.stub-place-town,
+.stub-place-city,
+.stub-place-village,
+.stub-place-hamlet {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1300px;
+    background-size: 50px 2350px
+}
+.stub-place-public_building,
+.stub-place-building {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1350px;
+    background-size: 50px 2350px
+}
+.stub-place-beauty,
+.stub-place-health_beauty {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1400px;
+    background-size: 50px 2350px
+}
+.stub-place-plaza,
+.stub-place-sport_and_vehicles,
+.stub-place-commercial,
+.stub-place-retail,
+.stub-place-household_goods,
+.stub-place-electronics,
+.stub-place-store,
+.stub-place-gift,
+.stub-place-marketplace,
+.stub-place-books,
+.stub-place-supermarket,
+.stub-place-mall,
+.stub-place-department_store,
+.stub-place-clothing,
+.stub-place-shop,
+.stub-place-furniture_interior {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1450px;
+    background-size: 50px 2350px
+}
+.stub-place-biergarten,
+.stub-place-pub {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1500px;
+    background-size: 50px 2350px
+}
+.stub-place-ice_cream,
+.stub-place-cafe {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1550px;
+    background-size: 50px 2350px
+}
+.stub-place-food,
+.stub-place-french_restaurant,
+.stub-place-vietnamese_restaurant,
+.stub-place-fish_restaurant,
+.stub-place-sandwich_restaurant,
+.stub-place-kebab_restaurant,
+.stub-place-mediterranean_restaurant,
+.stub-place-turkish_restaurant,
+.stub-place-japanese_restaurant,
+.stub-place-noodle_restaurant,
+.stub-place-bavarian_restaurant,
+.stub-place-chinese_restaurant,
+.stub-place-fast_food,
+.stub-place-german_restaurant,
+.stub-place-pizza_restaurant,
+.stub-place-korean_restaurant,
+.stub-place-steak_house_restaurant,
+.stub-place-restaurant,
+.stub-place-vegetarian_restaurant,
+.stub-place-thai_restaurant,
+.stub-place-greek_restaurant,
+.stub-place-burger_restaurant,
+.stub-place-bbq,
+.stub-place-asian_restaurant,
+.stub-place-food_court,
+.stub-place-mexican_restaurant,
+.stub-place-sushi_restaurant,
+.stub-place-indian_restaurant,
+.stub-place-chicken_restaurant,
+.stub-place-spanish_restaurant,
+.stub-place-seafood_restaurant,
+.stub-place-italian_restaurant,
+.stub-place-american_restaurant {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1600px;
+    background-size: 50px 2350px
+}
+.stub-place-school,
+.stub-place-university,
+.stub-place-kindergarten,
+.stub-place-college {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1650px;
+    background-size: 50px 2350px
+}
+.stub-place-arts_centre,
+.stub-place-artwork,
+.stub-place-gallery {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1700px;
+    background-size: 50px 2350px
+}
+.stub-place-studio,
+.stub-place-dance,
+.stub-place-art_music_hobbies {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1750px;
+    background-size: 50px 2350px
+}
+.stub-place-hospital,
+.stub-place-clinic {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1800px;
+    background-size: 50px 2350px
+}
+.stub-place-archaeological_site,
+.stub-place-castle,
+.stub-place-memorial,
+.stub-place-ruins,
+.stub-place-monument,
+.stub-place-attraction {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1850px;
+    background-size: 50px 2350px
+}
+.stub-place-common,
+.stub-place-nature_reserve,
+.stub-place-recreation_ground,
+.stub-place-park,
+.stub-place-garden,
+.stub-place-theme_park {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1900px;
+    background-size: 50px 2350px
+}
+.stub-place-beach,
+.stub-place-beach_resort {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -1950px;
+    background-size: 50px 2350px
+}
+.stub-place-cathedral,
+.stub-place-chapel,
+.stub-place-church {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2000px;
+    background-size: 50px 2350px
+}
+.stub-place-fitness_station,
+.stub-place-gym,
+.stub-place-fitness_centre,
+.stub-place-sports_centre {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2050px;
+    background-size: 50px 2350px
+}
+.stub-place-ice_rink,
+.stub-place-stadium,
+.stub-place-track,
+.stub-place-pitch {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2100px;
+    background-size: 50px 2350px
+}
+.stub-place-swimming_pool,
+.stub-place-marina {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2150px;
+    background-size: 50px 2350px
+}
+.stub-place-post_office,
+.stub-place-bank,
+.stub-place-it_office,
+.stub-place-office,
+.stub-place-government_office,
+.stub-place-company_office {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2200px;
+    background-size: 50px 2350px
+}
+.stub-place-police,
+.stub-place-fire_station {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2250px;
+    background-size: 50px 2350px
+}
+.stub-place-picnic_site,
+.stub-place-camp_site,
+.stub-place-chalet {
+    background-image: url(images/places/pl-type-ic.png);
+    background-position: 0 -2300px;
+    background-size: 50px 2350px
+}

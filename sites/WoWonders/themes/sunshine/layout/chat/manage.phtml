@@ -1,0 +1,48 @@
+ <?php if ($wo['group']['owner']): ?>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="<?php echo $wo['lang']['add_parts']; ?>" 
+      onkeydown="Wo_SearchGChatParticipants(this.value,<?php echo $wo['group']['group_id']; ?>)">
+    </div>
+  <?php endif;?>
+  <div class="form-group">
+      <div class="group_chat_mbr_list_<?php echo $wo['group']['group_id']; ?>">
+        <?php if (count($wo['group']['parts']) > 0): ?>
+          <?php foreach ($wo['group']['parts'] as $wo['part']): ?>
+            
+
+            <div class="home-sidebar profile-style" data-group-chat-part="<?php echo $wo['part']['id']; ?>">
+              <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+                      <img src="<?php echo $wo['part']['avatar'];?>" alt="<?php echo $wo['part']['name']; ?> Profile Picture" />
+               </div>
+               <span class="user-popover" data-id="<?php echo $wo['part']['id'];?>" data-type="<?php echo $wo['part']['type'];?>">
+              <a href="<?php echo $wo['part']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['part']['username']?>">
+                  <span class="user-name">
+                      <?php echo $wo['part']['name']; ?>
+                      <?php  if($wo['part']['verified'] == 1) {   ?>
+                      <span class="verified-color">
+                      <i class="fa fa-check-circle" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"></i>
+                      </span>
+                      <?php  } ?>
+                  </span>
+              </a>
+              <span class="<?php echo Wo_RightToLeft('pull-right');?> pointer status" style="margin-right: 10px;" onclick="Wo_AddGChatPart(<?php echo $wo['group']['group_id']; ?>,<?php echo $wo['part']['id']; ?>);">
+
+              <?php if (Wo_IsGChatMemeberExists($wo['group']['group_id'],$wo['part']['id'])): ?>
+                  <i class="fa fa-times main"></i>
+              <?php else: ?>
+                  <i class="fa fa-plus-square-o main"></i>
+              <?php endif; ?>
+              </span>
+              </span>
+              <?php if($wo['config']['user_lastseen'] == 1 && $wo['part']['showlastseen'] != 0) { ?>
+              <div class="user-lastseen">
+                  <?php echo Wo_UserStatus($wo['part']['user_id'],$wo['part']['lastseen']); ?>
+              </div>
+              <?php } ?>
+          </div>
+          <?php endforeach ?>
+        <?php else: ?>
+          <p class="no_message"> <?php echo $wo['lang']['no_members_found']; ?></p>
+        <?php endif;?>
+      </div>
+ </div>

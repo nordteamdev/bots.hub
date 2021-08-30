@@ -1,0 +1,32 @@
+<div class="form-group">
+	<?php $fid = '';
+      if (!empty($fl['user']['fields'][$fl['field']['fid']])) {
+        $fid  = $fl['user']['fields'][$fl['field']['fid']];
+      } 
+	?>
+	<div class="col-md-2"></div>
+	<div class="col-md-8 no-padding-both">
+		<div class="fl_cus_input">
+			<?php 
+				if ($fl['field']['select_type'] == 'yes') {  $options = @explode(',', $fl['field']['type']); ?>
+				<select name="<?php echo $fl['field']['fid'];?>" class="form-control">
+					<?php
+					foreach ($options as $key => $value) {
+						$selected = (($key + 1) == $fid) ? 'selected' : '';
+					?>
+						<option value="<?php echo $key + 1;?>" <?php echo $selected;?>><?php echo $value;?></option>
+					<?php } ?>
+				</select>
+			<?php } 
+				else {
+				if ($fl['field']['type'] == 'textbox') { ?>
+					<input id="<?php echo $fl['field']['fid'];?>" name="<?php echo $fl['field']['fid'];?>" type="text" class="form-control input-md" value="<?php echo $fid?>">
+			<?php } else if ($fl['field']['type'] == 'textarea') {?>
+				<textarea class="form-control" id="<?php echo $fl['field']['fid'];?>" name="<?php echo $fl['field']['fid'];?>" cols="20" rows="3"><?php echo $fid?></textarea>
+			<?php } } ?>
+			<label for="<?php echo $fl['field']['fid'];?>"><?php echo $fl['field']['name']; ?></label>
+		</div>
+		<span class="help-block"><?php echo $fl['field']['description'];?></span>
+	</div>
+	<div class="col-md-2"></div>
+</div>

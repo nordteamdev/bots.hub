@@ -1,0 +1,73 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+	<div role="tabpanel" class="tab-pane active list-group" id="threadreply">
+		<div class="w-100">
+			<div class="blocksubhead"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 
+			<?php echo $wo['lang']['threads']; ?> 
+			<i class="fa fa-angle-right" aria-hidden="true"></i> 
+			<?php echo $wo['lang']['reply']; ?> 
+			<i class="fa fa-angle-right" aria-hidden="true"></i> 
+			<?php echo $wo['thread']['headline']; ?>
+			</div>
+		</div>
+		<div class="col-md-12" id="newtopicreply-alert"></div>
+		<div class="col-md-12">
+			<form action="#" class="form" id="newtopicreply" method="post">
+				<div class="form-group">
+					<label for="subject" class="col-md-2"><?php echo $wo['lang']['subject']; ?>:</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="subject" id="subject" value="<?php echo $wo['thread']['headline']; ?>">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="replythread" class="col-md-2"><?php echo $wo['lang']['your_reply']; ?>:</label>
+					<div class="col-md-10">
+						<textarea id="replythread" name="content"></textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+		        <div class="form-group ">
+		          <label class="col-md-2"></label>
+		          <div class="col-sm-10">
+		             <button type="submit" class="btn btn-main">
+		                <i class="fa fa-reply fa-fw progress-icon" data-icon="reply"></i> <?php echo $wo['lang']['reply']; ?>
+		             </button>
+		          </div>
+		       </div>
+			</form>
+		</div>
+	</div>
+<?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']): ?>
+
+<script>
+	jQuery(document).ready(function($) {
+
+		$('#newtopicreply').ajaxForm({
+
+	      url: Wo_Ajax_Requests_File()  +  '?f=threadreply&tid=<?php echo $wo['thread']['id']; ?>&fid=<?php echo $wo['thread']['forum']; ?>&q=0&hash=' + $('.main_session').val(),
+	      dataType:'json',
+	      beforeSend: function() {
+	        Wo_progressIconLoader($('#newtopicreply').find('button'));
+	      },
+	      success: function(data) {
+	        scrollToTop();
+	        if (data['status'] == 200) {
+	        	
+	         	$("#newtopicreply-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	         	window.location = data.url;
+	          
+	        } else {
+	        	
+	         	$("#newtopicreply-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        } 
+	        Wo_progressIconLoader($('#newtopicreply').find('button'));
+	      }
+		});
+		
+		$('#replythread').bbcode();
+		$("#replythread").autogrow({vertical: true, horizontal: false});
+	});
+</script>
+	
+<?php endif ?>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

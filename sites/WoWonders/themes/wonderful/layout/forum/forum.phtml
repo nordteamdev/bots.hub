@@ -1,0 +1,69 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+
+<div role="tabpanel" class="tab-pane active" id="home">
+	<div class="row">
+		<div id="sections">
+			<?php 
+				if (count($wo['sections']) > 0) {
+					foreach ($wo['sections'] as $wo['section']) {
+						echo Wo_LoadPage("forum/includes/section-list");
+					}
+				}
+				else{
+					echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_forums_found'] .  '</h5>';
+				}
+
+			?>
+			<div class="clear"></div>
+		</div>
+		<div>
+			<div class="posts_load">
+			    <?php if (count($wo['sections']) >= 10): ?>
+				<div class="load-more">
+	                <button class="btn btn-default text-center pointer" id="hren" >
+	                <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_posts'] ?></button>
+	            </div>
+	            <?php endif ?>
+			</div>	
+		</div>
+	</div>
+</div>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<?php if (count($wo['sections']) > 0): ?>
+<script>
+	jQuery(document).ready(function($) {
+
+	  var delay = (function(){
+		var timer = 0;
+		return function(callback, ms){
+		  clearTimeout (timer);
+		  timer = setTimeout(callback, ms);
+		};
+	  })();
+
+
+	  $("#search-forums").keyup(function(event) {
+
+	      delay(function(){
+	      if ($("#search-forums").val().trim()) {
+		      $.ajax({
+		        url: Wo_Ajax_Requests_File(),
+		        type: 'GET',
+		        data: {f:"search-forums",keyword:$("#search-forums").val()},
+		        dataType: "json",
+		        success: function(data){
+		          if (data['status'] == 200) {
+		          	$("#sections").html(data['html'])
+		          }
+		          else if(data['status'] == 404){
+		          	
+		         	$("#sections").html('<h5 class="search-filter-center-text"> ' + data['html'] + '</h5>')
+		          }
+		        }
+		      })}
+
+	      }, 1000 );
+	  });
+ });
+</script>
+<?php endif ?>

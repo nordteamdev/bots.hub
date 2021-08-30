@@ -1,0 +1,324 @@
+<div class="sidebar-conatnier">
+	<div class="sidebar">
+		<?php if ($wo['page'] == 'home') { ?>
+		<?php if ($wo['config']['user_status'] == 1) { ?>
+			<div class="user-status-home user-status-pc cus_side_widget_border">
+				<div class="side-widget-name"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layer side_svg"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> <?php echo $wo['lang']['story'] ?></div>
+				<ul class="status-list">
+					<li>
+						<div class="user-avatar" onclick="window.location.href='<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>'">
+							<img src="<?php echo $wo['user']['avatar'];?>">
+							<div class="plus"><i class="fa fa-plus-circle"></i></div>
+						</div>  
+						<p><a href="<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>"><?php echo $wo['lang']['story'] ?></a></p>
+					</li>
+					<?php
+					if ($wo['config']['user_status'] == 1) {
+					$get_user_status = Wo_GetFriendsStatus(array('limit' => 6));
+					if (!empty($get_user_status)) {
+					?>
+					<?php
+					foreach ($get_user_status as $key => $wo['user_status']) {
+					echo Wo_LoadPage('home/user-status');
+					}
+					} 
+					if (Wo_CountStories() > 6) {
+					?>
+					<li class="view-more-stories" title="<?php echo $wo['lang']['see_all'] ?>">
+						<div class="user-avatar" onclick="window.location.href='<?php echo Wo_SeoLink('index.php?link1=more-status'); ?>'" title="<?php echo $wo['lang']['see_all'] ?>">
+							<i class="zmdi zmdi-view-carousel" style="font-size: 32px;margin-top: 10px;"></i>
+						</div>
+						<p><a href="<?php echo Wo_SeoLink('index.php?link1=more-status'); ?>"><?php echo $wo['lang']['see_all'] ?></a></p>
+					</li>
+					<div class="clear"></div>
+					<?php } } ?>
+				</ul>
+			</div>
+		<?php } ?>
+		<?php } ?>
+		
+		<?php
+        $birth = Wo_CheckBirthdays();
+        if (count($birth) > 0) { ?>
+        <ul class="list-group cus_side_widget_border" style="background-color: #d6d6d6;">
+            <div class="bdaybg-img" style="background-image: url(<?php echo $wo['config']['theme_url'] . '/img/balloons.png';?>);">
+                <span style="color: #ffffff;font-size: 18px;position: absolute;top: 20px;left: 80px;font-family: roboto;"><?php echo $wo['lang']['friends_birthdays'];?></span>
+            </div>
+            <div class="sidebar-users-may-know-container" style="padding: 0px 10px 10px;margin-top: -20px;">
+                <?php 
+                    foreach ($birth as $wo['UsersList']) {
+                        $wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+                        echo Wo_LoadPage('sidebar/sidebar-birthday-list');
+                    } 
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </ul>
+		<?php } ?>
+		
+        <ul class="list-group trending cus_side_widget_border">
+            <li class="list-group-item side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up side_svg"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg><?php echo $wo['lang']['trending']; ?></li>
+            <?php 
+                $hashtags = Wa_GetTrendingHashs('popular');
+                if (count($hashtags) > 0) {
+                   foreach ($hashtags as $wo['hashtag']) { 
+                ?>
+            <li class="list-group-item" dir="auto">
+                <a href="<?php echo $wo['hashtag']['url'];?>">#<?php echo $wo['hashtag']['tag'];?></a>
+            </li>
+            <?php } } ?>
+            <li>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <?php 
+        if ($wo['config']['pages'] == 1) {
+        $promoted_page = Wo_GetPromotedPage();
+        if (count($promoted_page) > 0) { ?>
+        <ul class="list-group cus_side_widget_border">
+            <li class="list-group-item text-muted side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star side_svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> <?php echo $wo['lang']['promoted'];?></li>
+            <li>
+            <?php 
+            foreach ($promoted_page as $wo['PageList']) {
+              $wo['PageList']['user_name'] = $wo['PageList']['name'];
+              echo Wo_LoadPage('sidebar/sidebar-home-page-list');
+            }
+            ?>
+            <div class="clear"></div>
+            </li>
+        </ul>
+        <?php } } ?>
+        <?php 
+            $users = Wo_UserSug(5);
+            if (count($users) != 0) {
+            ?>
+        <ul class="list-group cus_side_widget_border" id="sidebar-user-list-container">
+            <li class="list-group-item text-muted side-widget-name" contenteditable="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users side_svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> <?php echo $wo['lang']['people_you_may_know'];?> <span onclick="Wo_ReloadSideBarUsers();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+                <i class="fa fa-repeat progress-icon" data-icon="repeat"></i>
+                </span>
+            </li>
+            <li>
+                <div class="sidebar-users-may-know-container wonder-userz">
+                    <?php 
+                        foreach ($users as $wo['UsersList']) {
+                            $wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+                            echo Wo_LoadPage('sidebar/sidebar-user-list');
+                        } 
+                        ?>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <?php
+            }
+            if ($wo['config']['pages'] == 1) {
+            $pages = Wo_PageSug(3);
+            if (count($pages) != 0) {
+            ?>
+        <ul class="list-group cus_side_widget_border" id="sidebar-page-list-container">
+            <li class="list-group-item text-muted side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag side_svg"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                <?php echo $wo['lang']['pages_you_may_like']; ?>
+                <span onclick="Wo_ReloadSideBarPages();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+                <i class="fa fa-repeat progress-icon" data-icon="repeat"></i>
+                </span>
+            </li>
+            <li>
+                <div class="sidebar-pages-may-know-container">
+                    <?php 
+                        foreach ($pages as $wo['PageList']) {
+                            $wo['PageList']['user_name'] = $wo['PageList']['name'];
+                            echo Wo_LoadPage('sidebar/sidebar-home-page-list');
+                        } 
+                        ?>
+                </div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <?php } }  ?>
+        <?php
+        if ($wo['config']['groups'] == 1) {
+            $groups = Wo_GroupSug(5);
+            if (count($groups) > 0) {
+            ?>
+        <ul class="list-group cus_side_widget_border" id="sidebar-group-list-container">
+            <li class="list-group-item text-muted side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid side_svg"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <?php echo $wo['lang']['suggested_groups'];?> <span onclick="Wo_ReloadSideBarGroups();" class="<?php echo Wo_RightToLeft('pull-right');?>  refresh">
+                <i class="fa fa-repeat progress-icon" data-icon="repeat"></i>
+                </span>
+            </li>
+            <li>
+			<div style="overflow: hidden;position: relative;width: 100%;">
+                <div class="sidebar-groupz-may-know-container">
+                    <?php 
+                        foreach ($groups as $wo['GroupList']) {
+                            $wo['GroupList']['name'] = mb_substr($wo['GroupList']['name'],0,20, "utf-8");
+                            echo Wo_LoadPage('sidebar/sidebar-group-list');
+                        } 
+                        ?>
+                </div>
+				<span class="user-navigate scrollRight"><a id="scrollRight" href="javascript:;"><i class="zmdi zmdi-chevron-left bold"></i></a></span>
+				<span class="user-navigate scrollLeft"><a id="scrollLeft" href="javascript:;"><i class="zmdi zmdi-chevron-right bold"></i></a></span>
+			</div>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <?php } } ?>
+        <?php if ($wo['config']['online_sidebar'] == 1) { ?>
+        <ul class="list-group cus_side_widget_border">
+            <?php $online = Wo_CountOnlineData();?>
+            <li class="list-group-item side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye side_svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> <?php echo $wo['lang']['online_users'];?> <?php echo $online;?></li>
+            <li>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <?php
+            }
+            $sidebar_ad = Wo_GetAd('sidebar', false);
+            if (!empty($sidebar_ad)) {?>
+        <ul class="list-group sidebar-ad">
+            <li><?php echo $sidebar_ad; ?></li>
+        </ul>
+        <?php } ?>
+        <ul class="list-group cus_side_widget_border">
+            <li class="list-group-item side-widget-name" contenteditable="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox side_svg"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg> <?php echo $wo['lang']['invite_your_frineds_home']; ?></li>
+            <li>
+                <form action="#" style="margin:10px; margin-bottom: 0;" method="post" class="row invite-user-form">
+                    <input type="text" name="email" placeholder="<?php echo $wo['lang']['email']; ?>" class="form-control" onclick="Wo_ShowInviteButton()"><br>
+                    <button class="mdbtn wabe btn btn-main btn-sm" style="width:100%"><i class="fa fa-paper-plane-o progress-icon" data-icon="paper-plane-o"></i> <?php echo $wo['lang']['send_invitation']; ?></button>
+                    <div class="clear"></div>
+                </form>
+            </li>
+        </ul>
+        <?php if ($wo['config']['classified'] == 1): ?>
+        <div id="sidebar-latest-products" class="sidebar-latest-products">
+            <?php $get_latest_products = Wo_GetProducts(array('limit' => 9)); ?>
+            <ul class="list-group cus_side_widget_border">
+                <li id="sideproheader" class="list-group-item text-muted side-widget-name" contenteditable="false"><a href="<?php echo Wo_SeoLink('index.php?link1=products') ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag side_svg"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> <?php echo $wo['lang']['latest_products'] ?></a>
+                </li>
+                <li class="activities-wrapper customscrollhead" style="max-height: 315px;">
+                    <?php 
+                    foreach ($get_latest_products as $key => $wo['product']) {
+                         echo Wo_LoadPage('products/product-style');
+                    } 
+                    ?>
+					
+					<?php if (count($get_latest_products) > 0) { ?>
+					<div style="width:100%;text-align:center;"><a href="<?php echo Wo_SeoLink('index.php?link1=products') ?>" style="font-size: 14px;"><i class="zmdi zmdi-shopping-cart-plus view-all-products"></i><br>
+					<?php if($wo['language'] == "english") { ?>View All<?php } ?>
+							<?php if($wo['language'] == "arabic") { ?>عرض الكل<?php } ?>
+							<?php if($wo['language'] == "dutch") { ?>Bekijk alles<?php } ?>
+							<?php if($wo['language'] == "french") { ?>Voir tout<?php } ?>
+							<?php if($wo['language'] == "german") { ?>Alle anzeigen<?php } ?>
+							<?php if($wo['language'] == "italian") { ?>Guarda tutto<?php } ?>
+							<?php if($wo['language'] == "portuguese") { ?>Ver tudo<?php } ?>
+							<?php if($wo['language'] == "russian") { ?>Посмотреть все<?php } ?>
+							<?php if($wo['language'] == "spanish") { ?>Ver todo<?php } ?>
+							<?php if($wo['language'] == "turkish") { ?>Hepsini gör<?php } ?>
+					</a></div>
+					<?php } ?>
+                </li>
+            </ul>
+        </div>
+        <?php endif ?>
+        <div id="sidebar-sticky">
+            <?php $activities = Wo_GetActivities();?>
+            <ul class="list-group activity-container hideinactivity cus_side_widget_border">
+                <li class="list-group-item text-muted side-widget-name" contenteditable="false"><?php echo $wo['lang']['latest_activities']; ?>
+                    <?php if (count($activities) > 0) { ?> <span onclick="Wo_GetMoreActivities();" title= "<?php echo $wo['lang']['load_more_activities'];?>" class="<?php echo Wo_RightToLeft('pull-right');?>  refresh" >
+                    <i class="fa fa-repeat progress-icon" data-icon="repeat"></i>
+                    </span><?php } ?>
+                </li>
+                <li class="activities-wrapper" id="activities-wrapper">
+                    <?php
+                        if (count($activities) == 0) {
+                            echo '<h2><div class="no-activities text-center">' . $wo['lang']['no_activities'] . '</div><h2>';
+                        } else {
+                            foreach ($activities as $wo['activity']) {
+                                echo Wo_LoadPage('sidebar/activities-list');
+                            }
+                        }
+                        ?>
+                </li>
+                <li>
+                    <div class="no-activities center-text"></div>
+                </li>
+            </ul>
+            
+        </div>
+		
+		<?php if ($wo['config']['user_ads'] == 1): ?>
+        <div id="sidebar-sticky">
+            <?php 
+                foreach (Wo_GetSideBarAds() as $wo['sidebar-ad']) {
+                    echo Wo_LoadPage('ads/includes/sidebar-ad');
+                }
+            ?>
+
+            <div class="clear"></div>
+            <div>
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+        <?php endif; ?>
+		<?php echo Wo_LoadPage('footer/sidebar-footer')?>
+    </div>
+</div>
+<script>
+    function Wo_GetNewActivities() {
+      var before_activity_id = $('#activities-wrapper > .activity').attr('data-activity-id');
+      if (typeof before_activity_id === 'undefined') {
+           return false;
+      }
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_new_activities', {
+        before_activity_id: before_activity_id
+      }, function (data) {
+        if(data.status == 200) {
+          $('.activities-wrapper').prepend(data.html);
+        }
+      });
+    }
+    function Wo_GetMoreActivities() {
+      var activity_container = $('.activity-container');
+      var after_activity_id = $('#activities-wrapper .activity:last').attr('data-activity-id');
+      Wo_progressIconLoader(activity_container);
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_more_activities', {
+        after_activity_id: after_activity_id
+      }, function (data) {
+        if(data.status == 200) {
+          if(data.html.length == 0) {
+            $('.no-activities').html(data.message);
+          } else {
+            $('#activities-wrapper').append(data.html);
+          }
+          $("#activities-wrapper").animate({
+            scrollTop: $('#activities-wrapper')[0].scrollHeight
+          }, 100);
+          Wo_progressIconLoader(activity_container);
+        }
+      });
+    }
+   $(function() {
+     $('form.invite-user-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=invite_user',
+       beforeSend: function() {
+         Wo_progressIconLoader($('form.invite-user-form').find('button'));
+       },
+       success: function(data) {
+         if (data.status == 200) {
+			Snackbar.show({text: '<div>'+ data.message +'</div>'});
+         } else {
+             var errors = data.errors.join("<br>");
+			 Snackbar.show({text: '<div>'+ errors +'</div>'});
+         }
+         Wo_progressIconLoader($('form.invite-user-form').find('button'));
+       }
+     });
+   });
+function Wo_ShowInviteButton() {
+    $('.invite-user-form').css('margin-bottom', '10px');
+    $('.invite-user-form button').css('display', 'block');
+}
+  
+</script>

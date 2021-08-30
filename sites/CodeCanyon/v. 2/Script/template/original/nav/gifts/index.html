@@ -1,0 +1,95 @@
+{strip}
+{assign var=c_g value=0}
+
+
+			 
+			  
+
+
+<div class="main-content-column">
+
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Gifts']}</div></div></h2>
+
+
+ 
+<div class="main-content-panel">
+
+						<ul>
+						{foreach $this->getGifts($categ) as $gift}
+						
+							<li class="gift_item notooltip soh-s"><a class="gift-hv" href="javascript:void(0);" data-giftid="{$gift.id}" onclick="{if $u}return sendGiftTo({$touser.id},{$gift.id});{else}return sendGift(this,event);{/if}"><img class="gift_ic" src="/stcmd/gifts/{$gift.gift}" /></a><div class="gift-price foh-s"><span class="giftpricenb">{$gift.price}</span></div></li>
+							
+						{foreachelse}
+						<h3 class="n_guests">{$this->lang['no_gifts_in_this_category']}</h3>
+						{/foreach}
+						</ul>
+			
+			
+					</div>
+
+</div>
+
+
+
+<div class="nav-side-right transparent">
+
+
+		
+		{if $u}
+<div class="portlet">
+<div class="portlet __invisible taCenter">
+<a title="{$this->lang['close']}" hrefattr="true" href="/gifts" data-scrolltop="20" class="tico tico__n-t notifs_close"><i class="tico_img ic ic_close"></i></a><br/>
+<div class="portlet-i_h a64v">{$this->lang['Gift_for']}</div>
+
+<div class="gift-for">
+<div class="gfor-img"><img src="/getPhoto?p={$touser.profile_photo}&g={$touser.gender}&sz=thumb" /></div>
+<a href="/user/{$touser.id}" hrefattr="true" class="o f14">{$touser.fullname}</a>
+</div>
+
+</div></div>
+		{/if}	
+		
+
+		
+
+		
+          <div class="portlet" id="UserFriendsCatalogRB">
+           
+        <div class="portlet_b">
+            <div class="nav-side">
+
+                <div id="cppaste_injava">
+				
+						{foreach from=$this->settings['GIFTS_GENRES'] item=label key=key}
+                            <a href="/gifts/categ/{$key+1}{if $u}/u/{$touser.id}{/if}" data-scrolltop="20" class="nav-side_i {if ($categ == $key+1) || (!$categ && $key == 0)}__ac{/if}" hrefattr="true">
+                                <div class="nav-side_tx">{$label} <span class="capp">{$this->getGiftsCount($key+1)}</span></div>
+                            </a>
+						{/foreach}
+
+                </div>
+
+        </div></div>
+		   
+            </div>			  
+
+	<div class="portlet">
+<div class="portlet balanceup __invisible taCenter">
+<div class="portlet-i_h a64v">{$this->lang['Balance']}: <span class="balance_c">{$this->USER['balance']} {$this->lang['votes']}</span></div>
+<a href="javascript:void(0);" onclick="buyVotes(event);" class="flat_button">{$this->lang['Top_up_balance']}</a></div></div>		
+			
+			
+{assign var=ad value=$this->getAdMarkup('guests')}
+{if $ad}
+<div class="ads-box">
+<div class="ads-box-title">{$this->lang['sponsored']}</div>
+<div class="ads-box-cnt">
+{$ad}
+</div>
+</div>	
+	{/if}		
+
+			
+			  </div>
+			 
+{/strip}

@@ -1,0 +1,218 @@
+<div class="modal fade sun_modal" id="create-product-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> <?php echo $wo['lang']['sell_new_product'] ?></h4>
+			</div>
+			<div class="modal-body">
+				<div class="wo_settings_page">
+					<form class="create-album-form form-horizontal" method="post">
+						<div class="app-general-alert setting-update-alert"></div>
+						
+						<ul class="sun_cp_cats list-unstyled">
+							<?php 
+								foreach ($wo['products_categories'] as $key => $category) {
+									if ($key > 0) {
+							?>
+								<li>
+									<label title="<?php echo $category;?>">
+										<input type="radio" class="option-input radio" name="category" id="<?php echo $key;?>" value="<?php echo $key;?>">
+										<span class="sun_cp_c-<?php echo $key;?>"><span></span> <?php echo $category;?></span>
+									</label>
+								</li>
+							<?php } } ?>
+						</ul>
+						
+						<div class="setting-panel row">
+							<!-- Text input-->
+							<div class="col-lg-6">
+								<div class="sun_input">
+									<input id="name" name="name" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['name'] ?>" value="">
+									<label for="name"><?php echo $wo['lang']['name'] ?></label>  
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="sun_input">
+									<input id="location" name="location" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['location'] ?>" value="<?php echo $wo['user']['address'];?>">
+									<label for="location"><?php echo $wo['lang']['location'] ?></label>  
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="sun_input">
+									<select name="currency" id="currency" class="form-control">
+										<?php foreach ($wo['currencies'] as $key => $currency) { ?>
+										<option value="<?php echo $key; ?>"><?php echo  $currency['text'] ?> (<?php echo  $currency['symbol'] ?>)</option>
+										<?php } ?>
+									</select>
+									<label for="currency"><?php echo $wo['lang']['currency'] ?></label>  
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="sun_input">
+									<input id="price" name="price" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['price'] ?>" value="">
+									<label for="price"><?php echo $wo['lang']['price'] ?></label>  
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="sun_input">
+									<select class="form-control" name="type" id="type">
+										<option value="0"><?php echo $wo['lang']['new'] ?></option>
+										<option value="1"><?php echo $wo['lang']['used'] ?></option>
+									</select>
+									<label for="type"><?php echo $wo['lang']['type'] ?></label>  
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="sun_input">
+									<textarea class="form-control" name="description" rows="3" id="description" placeholder="<?php echo $wo['lang']['description'] ?>"></textarea>
+									<label for="description"><?php echo $wo['lang']['description'] ?></label>  
+									<span class="help-block"><?php echo $wo['lang']['please_describe_your_product'] ?></span>	
+								</div>
+							</div>
+							<div class="form-group col-lg-12">
+								<label class="col-md-12" for="photos" style="display: block;"><?php echo $wo['lang']['photos'];?></label>
+								<div class="upload-product-image <?php echo Wo_RightToLeft('pull-left');?>" onclick="document.getElementById('product-photos').click(); return false">
+									<div class="upload-image-content">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+									</div>
+								</div>
+								<div class="sun_scroll <?php echo Wo_RightToLeft('pull-left');?>">
+									<div id="productimage-holder"></div>
+								</div>
+								<div class="input-group hidden">
+									<span class="btn btn-default btn-file">
+										<i class="fa fa-camera" ></i><input type="file" id="product-photos" accept="image/x-png, image/gif, image/jpeg" name="postPhotos[]" multiple="multiple">
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="publisher-hidden-option">
+							<div id="progress" class="create-product-progress">
+								<span id="percent" class="create-product-percent <?php echo Wo_RightToLeft('pull-right');?>">0%</span>
+								<div class="progress">
+									<div id="bar" class="progress-bar active create-product-bar"></div> 
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						<input type="hidden" name="id" class="form-control input-md" value="">
+						<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+						<input type="hidden" name="lat-product" id="lat-product" class="form-control input-md" value="">
+						<input type="hidden" name="lng-product" id="lng-product" class="form-control input-md" value="">
+						<div class="form-group last-sett-btn modal-footer">
+							<div class="ball-pulse"><div></div><div></div><div></div></div>
+							<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['publish'] ?></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#product-photos").on('change', function() {
+	//Get count of selected files
+	var product_countFiles = $(this)[0].files.length;
+	var product_imgPath = $(this)[0].value;
+	var extn = product_imgPath.substring(product_imgPath.lastIndexOf('.') + 1).toLowerCase();
+	var product_image_holder = $("#productimage-holder");
+	product_image_holder.empty();
+	if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+		if (typeof(FileReader) != "undefined") {
+		//loop for each file selected for uploaded.
+		for (var i = 0; i < product_countFiles; i++) 
+		{
+			var product_reader = new FileReader();
+			product_reader.onload = function(e) {
+				$("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                  }).appendTo(product_image_holder);
+                }
+                product_image_holder.show();
+                product_reader.readAsDataURL($(this)[0].files[i]);
+              }
+            } else {
+              product_image_holder.html("<p>This browser does not support FileReader.</p>");
+            }
+         }
+	});
+});
+
+$(function() {
+   	if (navigator.geolocation) {
+        var location = navigator.geolocation.getCurrentPosition(function (position) {
+            $("#lng-product").val(position.coords.longitude);
+            $("#lat-product").val(position.coords.latitude);
+        });
+    }
+    var create_bar = $('.create-product-bar');
+    var create_percent = $('.create-product-percent');
+    var status = $('#status');
+     $('form.create-album-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=products&s=create',
+       beforeSend: function() {
+         var percentVal = '0%';
+         create_bar.width(percentVal);
+         create_percent.html(percentVal);
+         
+         
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+       },
+       uploadProgress: function (event, position, total, percentComplete) {
+           var percentVal = percentComplete + '%';
+           create_bar.width(percentVal);
+           $('.create-product-progress').slideDown(200);
+           create_percent.html(percentVal);
+      },
+       success: function(data) {
+         if (data.status == 200) {
+           window.location.href = data.href;
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.app-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+       }
+     });
+   });
+<?php if ($wo['config']['google_map'] == 1) { ?>
+var create_pac_input = document.getElementById('location');
+  (function pacSelectFirst(input) {
+    // store the original event binding function
+    var _addEventListenerProduct = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+    function addEventListenerWrapper(type, listener) {
+      // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+      // and then trigger the original listener.
+      if(type == "keydown") {
+        var orig_listener_product = listener;
+        listener = function (event) {
+          var suggestion_selected_product = $(".pac-item-selected").length > 0;
+          if(event.which == 13 && !suggestion_selected_product) {
+            var simulated_downarrow_product = $.Event("keydown", {
+              keyCode: 40,
+              which: 40
+            });
+            orig_listener_product.apply(input, [simulated_downarrow_product]);
+          }
+          orig_listener_product.apply(input, [event]);
+        };
+      }
+      // add the modified listener
+      _addEventListenerProduct.apply(input, [type, listener]);
+    }
+    if(input.addEventListener)
+      input.addEventListener = addEventListenerWrapper;
+    else if(input.attachEvent)
+      input.attachEvent = addEventListenerWrapper;
+  })(create_pac_input);
+
+  $(function () {
+     var autocompleteproduct = new google.maps.places.Autocomplete(create_pac_input);
+  });
+<?php } ?>
+</script>

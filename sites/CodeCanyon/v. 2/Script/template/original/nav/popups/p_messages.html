@@ -1,0 +1,246 @@
+<section id="messageHookBl" class="sec_rmsg topPanel_m">
+    <div class="popup_ovr __messages __mlight"></div>
+    <div class="dialogWrapper">
+        <div class="mdialog mdialog_m">
+            <div>
+                <div class="mdialog_m_preview" id="msg.preview.layer.id" uid="uidHidePromo"></div>
+                <div class="mdialog_list">
+                    <div class="mdialog_list_separator"></div>
+                    <div class="mdialog_list_tabs">
+                        <div class="toggle-span toggle-span-selected" uid="filterDialogs" onclick="switchToConversation()"> <div class="mdi_recent_conv"></div><a class="toggle-span-text">Conversation</a> </div>
+                        <div class="toggle-span" uid="filterOnline"><div class="mdi_on_usrs"></div> <a class="toggle-span-text"><span id="fOnCount"></span></a> </div>
+                    </div>
+                    <div></div>
+
+                    <div class="mdialog_list_conversations custom-scrolling inverted">
+                        <div class="msg-search-redesign">
+
+                                        <div class="gm-w100">
+                                            <div class="it_w">
+                                                <input id="msrch-input-0" type="text" placeholder="Search for friends" class="msg_search_input">
+                                            </div>
+                                        </div>
+                                        <div class="msg-search-icon-w">
+                                            <input id="msrch-act-1" type="button" class="msg-search-i msg-search-i_normal" value="">
+                                        </div>
+
+                            <!---<input type="text" class="skyp_lk_pad" placeholder="Search for friends">---->
+                        </div>
+
+
+                        <div id="hooKMsgkLoadingContactDLeft" style="color:#fff;"><span class="_55yn _55yo _55ym l_toCenter"></span></div>
+
+                        <div class="link-show-more m_hidden" uid="prevDialogs"><span>Previous dialogues</span></div>
+                    </div>
+
+                    <div class="mdialog_list_counter" uid="scrollDialogsTop" style="display: none;"> <span class="tico"> <i class="tico_img ic ic_arrow-u-w"></i> <span></span> </span>
+                    </div>
+                    <div class="mdialog_list_b">
+                        <div class="mdialog_list_counter_b" uid="scrollDialogsBottom" style="display: none;"> <span class="tico"> <i class="tico_img ic ic_arrow-d-w"></i> <span></span> </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdialog_chat __ll_init __pattern __narrow-bubble">
+				
+				
+											<div class="msg_window_no_user_selected">
+									<div class="w_empty_chat_w_overlay"></div>
+									<div class="msg_w_l_arrow"></div>
+									<div class="msg_w_nus_sel_txt">Please select a user from left side, to chat with it.</div>
+									</div>
+				
+				
+				
+                    <div class="mdialog_chat_info" id="id-m-subh-3">
+                        <div class="dsub_head">
+                            <!--                            <div class="mdialog_chat_info_controls" id="id-hd-info-ctrls"><span id="id-m-add-u-2" class="lp " uid="uidCAUTM"><span class="tico"><i class="tico_img ic ic_add"></i>Invite to the conversation</span>
+	
+
+
+                                </span>
+                            </div>
+				-->
+<!---
+<span class="tico" uid="callFromDialogItem"><i class="tico_img ic ic_call-o"></i>Call</span>-->
+                            <div class="mhead_name ellip">
+							<div data-tipsy-orientation="e" style="display:none;" rel="tipsy" id="chat_active_now" title="Active now" class="ic_msg_header_online"><i class="msg_online_ic"></i></div><a id="pm_header_dtl" href="#" onclick="return false"></a>
+
+                        <div class="mhead_more-ac" id="id-action-menu" onclick="md_enb_dropDown(event)"><span class="tico tico__simb-right lp" uid="uidOAM">
+<!--
+<em class="tico_simb_txt">More</em>
+-->
+<i class="tico_img __pm_redesign_bl_arr"></i></span>
+                            <div class="comments_smiles_popup">
+                                <ul class="u-menu">
+                                    <li class="u-menu_li"><span class="u-menu_a lp" uid="blockOpponent"><span class="tico"><i class="tico_img ic ic_block"></i><span class="u-menu_tx"><span id="block_u_txt"></span></span></span>
+                                        </span>
+                                    </li>
+                                    <li class="u-menu_li" style="display: none;"><span class="u-menu_a lp" uid="unBlockOpponent"><span class="tico"><i class="tico_img ic ic_block-off"></i><span class="u-menu_tx"><span id="unblock_u_txt"></span></span></span>
+                                        </span>
+                                    </li>
+                                    <li class="u-menu_li"><span class="u-menu_a lp" uid="uidHideDialog"><span class="tico"><i class="tico_img ic ic_hide"></i><span class="u-menu_tx"><span id="hide_u_txt"></span></span></span>
+                                        </span>
+                                    </li>
+                                    <li class="u-menu_li"><span class="u-menu_a lp" uid="retFromDialog"><span class="tico"><i class="tico_img ic ic_i_remove-g"></i><span class="u-menu_tx"><span id="del_u_txt"></span></span></span>
+                                        </span>
+                                    </li>
+                                    <li class="u-menu_li" style="display: none;"><span class="u-menu_a lp" uid="uidExitChat"><span class="tico"><i class="tico_img ic ic_exit_arrow"></i><span class="u-menu_tx">Leave conversation</span></span>
+                                        </span>
+                                    </li>
+                                    <li class="u-menu_li __divider"></li>
+                                    <!--<li class="u-menu_li"><span class="u-menu_a lp" uid="enDisNotification"><span class="tico"><i class="tico_img ic ic_notifications-on"></i><span class="u-menu_tx">Disable notifications in this browser</span></span>
+                                        </span>
+                                    </li>-->
+                                    <li class="u-menu_li"><span class="u-menu_a lp" uid="enDisSound"><span class="tico"><i class="tico_img ic ic_sound-on"></i><span class="u-menu_tx"><span id="s_u_txt"></span></span></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+			
+</div>
+</div>                        <div did="uchatw"></div><div class="close_x_right_btn mdialog_msg_close" uid="closePanel" title="hide message window"></div>
+                    </div>
+                    <div class="mdialog_chat_window">
+                        <div class="mdialog_chat_window_cnt">
+                            <div class="mdialog_chat_conversation">
+                                <div class="mdialog_chat_conversation_cnt_w">
+                                    <div></div>
+                                    <div class="mdialog_chat_conversation_cnt custom-scrolling fancy_scroll " uid="uidCommentsPanelClick">
+									
+		<div class="nano-contenta">
+									
+									
+                                        <div class="d_header_w">
+                                            <div class="mdialog_chat_subject">
+                                                <div class="disc_header show-on-hover" style="display: none;">
+                                                    <ul class="avatar-list_ul avatar-list_ul__compact mhead_added-list"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m_dialog_w_chat" id="prvmsg_nano">
+                                            <div class="mdialog_chat_conversation_cnt_message-list" id="__messagesList__">
+                                                <div class="disabling-layer disc-comment-highlighter"></div>
+
+                                                <div id="id-prev-comm-link-w-msg" class="d_comment_w_center d_comment_w" style="display: block;">
+                                                    <div class="link-show-more_loading"><span class="fetching-hor"><i class="fetching-hor_i"></i></span></div><a class="link-show-more" uid="uidPrevComments">Previous messages</a></div>
+
+
+                                                <div id="id-loading-w" class="d_comments_loading_w invisible">
+                                                    <div class="d_comments_loading" id="id-loading"></div>
+                                                </div>
+                                            </div>
+                                            <div class="gwt-shortcutMenu disc-repl">
+                                                <table class="collapse">
+                                                    <colgroup>
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div>
+                                                                    <div class="shortcutRoundedPanel">
+                                                                        <div class="srp_cnt">
+                                                                            <div class="gwt-shortcutMenu-content disc-repl-cnt-w">
+                                                                                <div class="disc-repl-cnt">
+                                                                                    <div class="disc-repl-loading"></div>
+                                                                                </div>
+                                                                                <div class="gwt-shortcutMenu-arrow_w gwt-shortcutMenu-arrow__bottom">
+                                                                                    <div class="gwt-shortcutMenu-arrow"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="gwt-HTML"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="mdialog_coment-added_w" style="display: none;">
+                                            <div class="mdialog_coment-added" uid="uidShowAddedComment">
+                                                <div class="d_comment_added_info_close" uid="uidHideAddedComment" style="display: none;"></div> <span class="mdialog_coment-t ic_ok-white">Message sent</span> <span class="mdialog_coment-show" uid="uidShowAddedComment">&nbsp;</span> </div>
+                                        </div>
+
+                                        <div class="mdialog_newdialogmsg invisible">There are no messages in this conversation.
+                                            <br>Make the first move!</div>
+											
+											</div>
+                                    </div>
+									
+                                </div>
+                            </div>
+							<div class="pm_not_allow __none"><span><i id="notAllowSendPm"></i></span></div>
+                            <div class="mdialog_chat_add-comment">
+                                <div class="mdialog_chat_seen iblock-cloud_show invisible">
+                                    <div class="iblock-cloud __light __left invisible"> <span></span> <span class="ic10 ic10_close-w iblock-cloud_close" uid="clPr"></span> </div>
+                                    <div class="iblock-cloud __light __left invisible"> <span></span> </div>
+                                </div>
+                                <div class="mdialog_chat_add-comment_overlay scroll-right-indent"></div>
+                                <div class="disc_add_comment_reply_w" style="display:none;"></div>
+                                <div class="disc_toolbar_w" style="margin-bottom: 0px;">
+                                    <div class="disc_toolbar">
+                                        <div class="disc_toolbar_i">
+                                            <a class="disc_toolbar_i_ic smiles_w __staple" href="javascript:;"></a>
+                                        </div>
+                                        <div class="disc_toolbar_i">
+                                            <a class="disc_toolbar_i_ic smiles_w __more" href="javascript:;"></a>
+                                        </div>
+                                    </div>
+                                </div>
+			 	<div class="mdialog_send_message_loader _55yn _55yo _55ym"></div>
+
+                                <textarea style="display:none;" placeholder="Type a message here..." id="emj" class="prmTextarea"></textarea>
+
+                                <div class="sendPrmBtn">
+                                    <div class="disc_input_btn" onclick="sendPM(this,event)" uid="uidTrigerSendMsg"></div>
+
+                                </div>
+								
+				<div id="WD_tracks_PM" class="WD_attached_tracks _PM"><ul></ul></div>
+
+				<!--- Attach files section -->
+				<section>
+				
+				<!---<div class="mdialog_entertm_ics">
+				<div onclick="attach_pPhoto(event)"><span class="tico"><i id="md_ics_photo" title="Photo" class="tico_img ic ic_photoattach"></i></span></div>  
+				<div onclick="attach_pPhoto(event,1)"><span class="tico"><i id="md_ics_photo_computer" title="Photo from computer" class="tico_img ic ic_photo"></i></span></div> 
+				</div>--->
+				
+				<div class="jb_attached_files __messages"></div>
+				</section>
+								
+                                <div class="d_header_layer_w scroll-right-indent invisible" style="height: 0px;">
+                                    <div class="d_header_layer_top">
+                                        <div class="mdialog_chat_subject_w"></div>
+                                        <div class="d_header_layer_bottom"> <span class="tico tico__simb"> <span></span> <i class="tico_img disc_header_arrow"></i> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+						
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+	
+	<section id="msg-ad-cnt">
+	
+	</section>
+	
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+</section>

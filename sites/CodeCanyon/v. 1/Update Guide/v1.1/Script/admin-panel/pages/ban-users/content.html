@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Ban Users</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage & Edit Banned Users</h2> 
+                </div>
+                <div class="body">
+                  <div class="ban-ip-alert"></div>
+                  <form class="setting-add-ip" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="ip" name="ip" class="form-control">
+                                <label class="form-label">IP Address</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ban IP</button>
+                   </form>
+                   <br>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                   <th>ID</th>
+					               <th>Banned</th>
+					               <th>IP Address</th>
+					               <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="banned-ip-list">
+                               <?php
+                               $fetch_banned_ip_data_array = array(
+							        'table' => T_BANNED_IPS,
+							        'column' => '*',
+							        'limit' => 500000,
+							        'order' => array(
+							            'type' => 'DESC',
+							            'column' => 'id'
+							        )
+							    );
+							    $fl['banned_ips']       = FL_FetchDataFromDB($fetch_banned_ip_data_array); 
+							    if (count($fl['banned_ips']) > 0) {
+							        foreach ($fl['banned_ips'] as $fl['banned_ip']) {     
+							           echo  FL_LoadAdminPage("ban-users/list",array(
+							                'BANNEDIP_ID'     => $fl['banned_ip']['id'],
+							                'BANNEDIP_TIME'   => FL_Time_Elapsed_String($fl['banned_ip']['time']),
+							                'BANNEDIP_ADDR'   => $fl['banned_ip']['ip_address'],
+							            ));
+							        }
+							    }
+							    ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function () {
+	$('table').DataTable();
+});
+
+jQuery(document).ready(function($) {
+  var form = $('form.setting-add-ip');
+  form.ajaxForm({
+      url: '{{LINK ajax_requests.php?f=admincp&s=ban&hash_id=}}' + $('.main_session').val(),
+      type:"POST",
+      dataType:"json",
+      beforeSend: function() {
+        form.find('button').attr('disabled', 'true');
+      },
+      success: function(data) {
+        if (data.status == 200) {
+          if ($("#banned-ip-list").find('.no-bannedip').length > 0) {
+            $('#banned-ip-list').html(data.html);
+          }
+          else{
+            $('#banned-ip-list').append(data.html);
+          }
+          
+          form.find('#ip').val('');
+        }
+        else if (data.status == 400) {
+          $('.ban-ip-alert').html('<div class="alert alert-danger">' + data.message + '</div>');
+        }
+        form.find('button').removeAttr('disabled');
+      }
+  });
+});
+
+function FL_UnbanIp(id) {
+  if (!id) { return false;}
+  if (!confirm('Are you sure you want to unban this IP?')) {
+  	return false;
+  }
+  $("#ipid-"+id).slideUp(function(){
+          $(this).remove();
+        });
+    $.ajax({
+      url: '{{LINK ajax_requests.php}}',
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'admincp',s:'unban',id:id,hash_id:$('.main_session').val()},
+    })
+    .done(function(data) {
+      if (data.status == 200) {
+        
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    });
+}
+</script>

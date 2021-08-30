@@ -1,0 +1,92 @@
+
+
+<div class="ad-rowcol">
+<h2>{$count} videos are on {$this->settings['SITENAME']}</h2>
+
+<a href="javascript:;" class="addgame" onclick="ga(this).remove();ga('#import_videos_container').slideDown();">+ Import Videos</a>
+
+<div id="import_videos_container" style="visibility:hidden;">
+<form id="form-import-videos" method="post" action="/admin.php">
+<input type="hidden" name="cmd" value="createnewapp">
+<input type="hidden" name="json" value="1">
+<input type="hidden" name="default_cover" value="">
+<input type="hidden" name="covers" value="">
+<div class="form form__gl-2-2">
+
+
+    <div class="form_i" data-type="text"><span class="input-l"><b>Keyword</b></span>
+        <div class="it_w it_w it_w__3gc">
+		<input style="display:inline-block;width:400px;" type="text" name="keyword" class="it" placeholder="For example, South Korea Documentary BBC" maxlength="280">
+		
+		<select name="vd_import_from">
+		<option value="youtube">YouTube</option>
+		</select>
+		
+        </div>
+    </div>
+	
+
+
+    <div class="form form__gl-2-2">
+        <div class="form_i mb-x">
+            <div class="form-actions">
+			<a href="javascript:;" name="button_send" onclick="createNewApp(event,ga('#form-import-videos'));" class="form-actions_yes button-pro js-submit">Search for videos</a>
+			<span onclick="ga('#form-import-videos')[0].reset();" class="form-actions_no button-pro __sec">Reset</span></div>
+        </div>
+    </div>
+
+	
+</div>
+</form>
+</div>
+
+
+{assign var=i value=0}
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Cover</th>
+	
+	<th>Title</th>
+	<th>Info</th>
+	<th>Tags</th>
+	<th>Dur.</th>
+	<th>Source</th>
+	<th>By user</th>
+	<th>Added</th>
+	<th>*</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="vd{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url(/videoCover?v={$r.id}&empty=1);"></div></td>
+	<td><div class="vd_title"><A target="_blank" href="/video?cmd=open&vid={$r.id}">{$r.title}</a></div></td>
+	<td><div class="vd_info f11">{if $r.description}{pellipse($r.description,200)}{else}No info available.{/if}</div></td>
+	<td><div class="vdd_tags f11">{if $r.tags}{pellipse($r.tags,200)}{else}No tags.{/if}</div></td>
+	<td><div class="vd_dur f11">{$r.dur}</div></td>
+	<td><div class="vd_dur f11">{if $r.external}{$r.external}{else}Local{/if}</div></td>
+	<td><div class="vd_uploader f11">{if $r.fullname}<a href="/user/{$r.uid}" target="_blank">{$r.fullname}</a>{else}{$this->settings['SITENAME']}{/if}</div></td>
+	<td><div class="vd_add_time f11">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="vd_add_time f11"><a target="_blank" href="/admin.php?cmd=videoedit&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deleteVideo({$r.id});">D</a></div></td>
+	</tr><!-- Darker Table Row -->
+	{$i = $i+1}
+{/foreach}
+
+</table>
+{$pagination}
+</div>
+
+<script>
+{literal}
+ga(document).ready(function(){
+ga('#import_videos_container').removeAttr('style').hide();
+			
+});
+{/literal}
+</script>

@@ -1,0 +1,132 @@
+{strip}
+
+<div class="messenger-shared-content">
+
+{if $post_type == 'market_product'}
+<div class="ms_shared_product">
+
+<a class="ms_shared-view-post_af" href="/market/product/{$post_id}" hrefattr="true" data-open-marketproduct="{$post_id}">
+
+
+
+<div class="ms_shared_product_cnt">
+
+	<div class="ms_shared_product_cov"><img src="/getMarketPictures?p={$r.product_cover}&product_id={$post_id}&sz=medium" /></div>
+	<div class="ms_shared_product_text">
+	<div class="ms_shared_product_name">{$r.product_name}<div class="ms_shared_product_price globalpriceformat">{$this->settings['MARKETPLACE_CURRENCY']}&nbsp;{$r.price}</div></div>
+	<div class="ms_post_shared_atp">{$this->lang['View_product']}</div>
+	</div>
+
+
+</div>
+
+
+
+</a>
+
+
+</div>
+
+
+{/if}
+
+{if $post_type == 'photo'}
+
+
+<div class="ms_picture_shared">
+{if !$clubid}
+<a href="/photo?q={$r.userid}&show=single&from=medium&o={b_encode($post_id)}&cmd=openPhotoViewer" data-vphopen="1" data-vphi="{base64_encode($post_id)}" class="image-hover">
+<img src="/getPhoto?p={$post_id}&sz=medium" />
+</a>
+{else}
+<a href="photo?q={$r.userid}&clubid={b_encode($clubid)}&show=community-single&from=medium&a={b_encode($r.albumid)}&o={b_encode($post_id)}&cmd=openPhotoViewer" data-vphopen="1" data-vphi="{base64_encode($post_id)}" class="image-hover">
+<img src="/clubpicture?i={$post_id}&size=medium&clubid={$clubid}&corr=1" />
+</a>
+{/if}
+</div>
+
+
+
+
+{/if}
+
+{if $post_type == 'post'}
+
+<div class="messenger_post_shared">
+<A class="ms_shared-view-post_af" href="/post?i={$post_id}{if $clubid > 0}&clubid={$clubid}{/if}" data-type-post="1" hrefattr="true">
+{assign var="p_text" value=$r.text}
+{assign var="str_text" value=$this->str_smilies($this->generateMediaPost($p_text,'text',0,$clubid))}
+
+<div class="ms_shared_post_author">
+
+{if $clubid > 0}
+<img src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" />
+{else}
+{assign var=u_details value=$this->getUserDetails($r.userid)}
+<img src="/getPhoto?p={$u_details.profile_photo}&sz=small" />
+{/if}
+
+</div>
+
+<div class="ms_shared_post_txt">
+<div>{if empty($str_text)} {$this->lang['messenger-shared-post-media']} {else} {pellipse($str_text, 100)} {/if}</div>
+<div class="ms_post_shared_atp">{$this->lang['View_post']}</div>
+</div>
+</a>
+</div>
+{/if}
+
+{if $post_type == 'video'}
+
+
+	{if !$clubid}
+				<div class="feed_videos_cnt"><div id="videojw_{$post_id}" style="display:none;"></div>
+					<div class="media-block media-video">
+					<div class="vid-card vid-card__xl">
+						<div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_s3_userid":"{$r.userid}","vd_s3":"{$r.s3}","s3_url":"{$this->s3_video_url}","vd_p":"{$smarty.const.__VD_DIR}","vd_title":"{urlencode($r.title)}","vd_fn":"{$r.filename}","vd_i":"{$r.id}","vd_ext":"{if $r.extension == "NULL"}{$r.external}{else}{$r.extension}{/if}"{rdelim}'>
+							<div class="vid-card_cnt_w"><div class="video-card-cover" style="background-image:url(/videoCover?v={$r.id});"></div><i class="vid_play"></i><i class="vid-card_duration">{$r.dur}</i></div>
+						</div>
+						<div class="ellip video-card_n-w"><a href="/video?vid={$r.id}cmd=open" data-ivideo="1" class="video-card_n ellip">{$r.title}</a>
+							
+						</div>
+					</div>
+				</div>
+				</div>
+	{else}
+	
+				<div class="feed_videos_cnt"><div id="videojw_{$post_id}" style="display:none;"></div>
+					<div class="media-block media-video">
+					<div class="vid-card vid-card__xl">
+						<div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_clubid":"{$clubid}","vd_s3_userid":"{$r.userid}","vd_s3":"{$r.s3}","s3_url":"{$this->s3_club_video_url}","vd_p":"{$smarty.const.__COMMUNITIES_VIDEOS_DIR}/{$clubid}/","vd_title":"{urlencode($r.vd_name)}","vd_fn":"{$r.filename}","vd_i":"{$r.id}","vd_ext":"{if $r.type == "NULL"}{$r.vd_external}{else}{$r.type}{/if}"{rdelim}'>
+							<div class="vid-card_cnt_w"><div class="video-card-cover" style="background-image:url(/videoCover?v={$r.id}&clubid={$clubid});"></div><i class="vid_play"></i><i class="vid-card_duration">{$r.vd_duration}</i></div>
+						</div>
+						<div class="ellip video-card_n-w"><a href="/video?vid={$r.id}cmd=open&clubid={$clubid}" data-ivideo="1" class="video-card_n ellip">{$r.vd_name}</a>
+							
+						</div>
+					</div>
+				</div>
+				</div>
+
+
+	{/if}
+
+
+{/if}
+
+
+
+
+
+
+</div>
+
+<script>
+{literal}priceFormat(){/literal}
+</script>
+
+
+
+
+
+
+{/strip}

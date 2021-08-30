@@ -1,0 +1,314 @@
+<div class="sidebar-conatnier col-md-3 rightcol sidebar_fixed no-padding-left">
+    <div class="sidebar">
+		<!-- Stories -->
+		<?php if ($wo['config']['user_status'] == 1 ) { ?>
+			<ul class="list-group sun_mobi_stories_hide">
+				<li class="sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['stories']; ?></li>
+				<div class="user-status-home">
+					<ul class="status-list" id="sun_status">
+						<li class="create_new">
+							<a href="<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>" data-ajax="?link1=create-status" title="<?php echo $wo['lang']['create_story'] ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+								<img src="<?php echo $wo['user']['avatar'];?>" alt="<?php echo $wo['user']['name'];?>">
+							</a>
+						</li>
+						<?php
+							if ($wo['config']['user_status'] == 1) {
+								$get_user_status = Wo_GetFriendsStatus(array('limit' => 8));
+								if (!empty($get_user_status)) {
+						?>
+						<?php
+							foreach ($get_user_status as $key => $wo['user_status']) {
+								echo Wo_LoadPage('home/user-status');
+							}
+							} 
+							if (Wo_CountStories() > 8) {
+						?>
+						<li class="view-more-stories">
+							<a href="<?php echo Wo_SeoLink('index.php?link1=more-status'); ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3D8CFA" d="M19.8521478,10 L21.2077346,10.7531038 C22.2640885,11.339967 22.2640885,12.660033 21.2077346,13.2468962 L19.8521478,14 L21.2077346,14.7531038 C22.2640885,15.339967 22.2640885,16.660033 21.2077346,17.2468962 L13.1565731,21.7197637 C12.484006,22.0934121 11.515994,22.0934121 10.8434269,21.7197637 L2.79226543,17.2468962 C1.73591152,16.660033 1.73591152,15.339967 2.79226543,14.7531038 L4.1478522,14 L2.79226543,13.2468962 C1.73591152,12.660033 1.73591152,11.339967 2.79226543,10.7531038 L4.1478522,10 L2.79226543,9.24689624 C1.73591152,8.66003296 1.73591152,7.33996704 2.79226543,6.75310376 L10.8434269,2.28023626 C11.515994,1.90658791 12.484006,1.90658791 13.1565731,2.28023626 L21.2077346,6.75310376 C22.2640885,7.33996704 22.2640885,8.66003296 21.2077346,9.24689624 L19.8521478,10 Z M17.7930218,11.1439589 L13.1565731,13.7197637 C12.484006,14.0934121 11.515994,14.0934121 10.8434269,13.7197637 L6.20697823,11.1439589 L4.66610426,12 L11.8147128,15.9714492 C11.8832347,16.0095169 12.1167653,16.0095169 12.1852872,15.9714492 L19.3338957,12 L17.7930218,11.1439589 Z M17.7930218,15.1439589 L13.1565731,17.7197637 C12.484006,18.0934121 11.515994,18.0934121 10.8434269,17.7197637 L6.20697823,15.1439589 L4.66610426,16 L11.8147128,19.9714492 C11.8832347,20.0095169 12.1167653,20.0095169 12.1852872,19.9714492 L19.3338957,16 L17.7930218,15.1439589 Z M12.1852872,4.02855081 C12.1167653,3.99048306 11.8832347,3.99048306 11.8147128,4.02855081 L4.66610426,8 L11.8147128,11.9714492 C11.8832347,12.0095169 12.1167653,12.0095169 12.1852872,11.9714492 L19.3338957,8 L12.1852872,4.02855081 Z" /></svg>
+								<?php echo $wo['lang']['see_all'] ?>
+							</a>
+						</li>
+						<div class="clear"></div>
+						<?php } } ?>
+					</ul>
+				</div>
+			</ul>
+		<?php } ?>
+			
+		<!-- Trending -->
+        <ul class="list-group trending">
+            <li class="sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['trending']; ?></li>
+            <?php 
+                $hashtags = Wa_GetTrendingHashs('popular');
+                if (count($hashtags) > 0) {
+                   foreach ($hashtags as $wo['hashtag']) { 
+			?>
+				<li class="list-group-item sun_htag" dir="auto">
+					<a href="<?php echo $wo['hashtag']['url'];?>" data-ajax="?link1=hashtag&hash=<?php echo $wo['hashtag']['tag'];?>">
+						<span class="htag_top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" /></svg> #<?php echo $wo['hashtag']['tag'];?></span>
+						<span class="htag_bottom"><?php echo $wo['hashtag']['trend_use_num']; ?> <?php echo $wo['lang']['posts'];?></span>
+					</a>
+				</li>
+            <?php } } ?>
+            <div class="clear"></div>
+        </ul>
+		
+		<!-- Pro Users -->
+		<?php if ($wo['config']['pro'] == 1) { ?>
+			<ul class="list-group">
+				<li class="text-muted sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['pro_members'];?></li>
+				<ul class="list-inline wo_pro_users">
+					<?php 
+						if ($wo['user']['is_pro'] == 0) {
+							$users = Wo_FeaturedUsers(5);
+						} else {
+							$users = Wo_FeaturedUsers(6);
+						}
+					?>
+					<?php 
+						foreach ($users as $wo['user-list']) {
+							echo Wo_LoadPage('home/user-list');
+						}
+					?>
+					<?php if ($wo['user']['is_pro'] == 0) { ?>
+						<li class="put_me_here">
+							<a class="user" href="<?php echo Wo_SeoLink('index.php?link1=go-pro');?>">
+								<span class="pmh_add"><svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg></span>
+								<span><?php echo $wo['lang']['put_me_here'];?></span>
+							</a>
+						</li>
+					<?php } ?>
+				</ul>
+			</ul>
+		<?php } ?>
+
+		<!-- Promoted Page -->
+        <?php 
+			if ($wo['config']['pages'] == 1) {
+			$promoted_page = Wo_GetPromotedPage();
+			if (count($promoted_page) > 0) {
+		?>
+			<ul class="list-group">
+				<li class="text-muted sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['promoted'];?></li>
+				<li>
+					<?php 
+						foreach ($promoted_page as $wo['PageList']) {
+							$wo['PageList']['user_name'] = $wo['PageList']['name'];
+							echo Wo_LoadPage('sidebar/sidebar-home-page-list');
+						}
+					?>
+					<div class="clear"></div>
+				</li>
+			</ul>
+        <?php } } ?>
+		
+		<!-- Birthday -->
+        <?php
+			$birth = Wo_CheckBirthdays();
+			if (count($birth) > 0) {
+		?>
+			<ul class="list-group">
+				<li class="text-muted sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['friends_birthdays'];?></li>
+				<div class="sidebar-users-may-know-containerr">
+					<?php 
+						foreach ($birth as $wo['UsersList']) {
+							$wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+							echo Wo_LoadPage('sidebar/sidebar-birthday-list');
+						} 
+                    ?>
+				</div>
+				<div class="clear"></div>
+			</ul>
+		<?php } ?>
+		
+		<!-- People You May Know -->
+        <?php 
+            $users = Wo_UserSug(5);
+            if (count($users) != 0) {
+		?>
+			<ul class="list-group" id="sidebar-user-list-container">
+				<li class="text-muted sidebar-title-back" contenteditable="false">
+					<?php echo $wo['lang']['people_you_may_know'];?>
+					<span onclick="Wo_ReloadSideBarUsers();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh"><i class="fa fa-repeat progress-icon" data-icon="repeat"></i></span>
+				</li>
+				<li>
+					<div class="sidebar-users-may-know-container">
+						<?php 
+							foreach ($users as $wo['UsersList']) {
+								$wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+								echo Wo_LoadPage('sidebar/sidebar-user-list');
+							} 
+                        ?>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</ul>
+		<?php } ?>
+		<ul class="list-group">
+            <li class="list-group-item sidebar-title-back" contenteditable="false"><?php echo $wo['lang']['invite_your_frineds_home']; ?></li>
+            <li>
+                <form action="#" method="post" class="invite-user-form">
+					<div class="invite-user-form-alert"></div>
+					<div class="invite-user-combine">
+                    <input type="text" name="email" placeholder="<?php echo $wo['lang']['email']; ?>" class="form-control">
+                    <button class="btn btn-main btn-sm" title="<?php echo $wo['lang']['send_invitation']; ?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+					</button>
+					</div>
+                    <div class="clear"></div>
+                </form>
+            </li>
+        </ul>
+		<!-- Pages You May Like -->
+        <?php
+            if ($wo['config']['pages'] == 1) {
+            $pages = Wo_PageSug(1);
+            if (count($pages) != 0) {
+		?>
+			<ul class="list-group" id="sidebar-page-list-container">
+				<li class="text-muted sidebar-title-back" contenteditable="false">
+					<?php echo $wo['lang']['pages_you_may_like']; ?>
+					<span onclick="Wo_ReloadSideBarPages();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh"><i class="fa fa-repeat progress-icon" data-icon="repeat"></i></span>
+				</li>
+                <div class="sidebar-pages-may-know-container">
+                    <?php 
+                        foreach ($pages as $wo['PageList']) {
+                            $wo['PageList']['user_name'] = $wo['PageList']['name'];
+                            echo Wo_LoadPage('sidebar/sidebar-home-page-list');
+                        } 
+					?>
+                </div>
+                <div class="clear"></div>
+			</ul>
+        <?php } }  ?>
+		
+		<!-- Group Suggestion -->
+        <?php
+			if ($wo['config']['groups'] == 1) {
+            $groups = Wo_GroupSug(5);
+            if (count($groups) > 0) {
+		?>
+			<ul class="list-group" id="sidebar-group-list-container">
+				<li class="text-muted sidebar-title-back" contenteditable="false">
+					<?php echo $wo['lang']['suggested_groups'];?>
+					<span onclick="Wo_ReloadSideBarGroups();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh"><i class="fa fa-repeat progress-icon" data-icon="repeat"></i></span>
+				</li>
+                <div class="sidebar_sugg_groups">
+                    <?php 
+                        foreach ($groups as $wo['GroupList']) {
+                            $wo['GroupList']['name'] = mb_substr($wo['GroupList']['name'],0,20, "utf-8");
+                            echo Wo_LoadPage('sidebar/sidebar-group-list');
+                        } 
+					?>
+                </div>
+			</ul>
+        <?php } } ?>
+		
+		<!-- Sidebar Ad -->
+        <?php
+            $sidebar_ad = Wo_GetAd('sidebar', false);
+            if (!empty($sidebar_ad)) {
+		?>
+			<ul class="list-group sidebar-ad">
+				<li><?php echo $sidebar_ad; ?></li>
+			</ul>
+        <?php } ?>
+        
+        <?php if ($wo['config']['user_ads'] == 1): ?>
+			<div id="sidebar-sticky">
+				<?php 
+					foreach (Wo_GetSideBarAds() as $wo['sidebar-ad']) {
+						echo Wo_LoadPage('ads/includes/sidebar-ad');
+					}
+				?>
+				<div class="clear"></div>
+			</div>
+        <?php endif; ?>
+		
+        <?php echo Wo_LoadPage('footer/sidebar-footer')?>
+    </div>
+</div>
+
+<script>
+function Wo_ReloadSideBarGroups() {
+  Wo_progressIconLoader($('#sidebar-group-list-container').find('.refresh'));
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'update_sidebar_groups'
+  }, function (data) {
+    if(data.status == 200) {
+      $('.sidebar_sugg_groups').removeClass().addClass('sidebar_sugg_groups').html(data.html);
+	  $('.sidebar_sugg_groups').slick({
+	  slidesToShow: 1,
+	  arrows: false,
+	  dots: true,
+	  draggable: false,
+	  infinite: false,
+	  variableWidth: true,
+	  <?php if($wo['language_type'] == 'rtl') { ?>
+  rtl: true,
+  <?php } ?>
+  });
+    }
+    Wo_progressIconLoader($('#sidebar-group-list-container').find('.refresh'));
+  });
+};
+
+(function() {
+	<?php if ($wo['config']['user_status'] == 1 && Wo_IsMobile() == false) { ?>
+    function scrollHorizontally(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        document.getElementById('sun_status').scrollLeft -= (delta*40); // Multiplied by 40
+        e.preventDefault();
+    }
+    if (document.getElementById('sun_status').addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        document.getElementById('sun_status').addEventListener("mousewheel", scrollHorizontally, false);
+        // Firefox
+        document.getElementById('sun_status').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        document.getElementById('sun_status').attachEvent("onmousewheel", scrollHorizontally);
+    }
+    <?php } ?>
+})();
+ 
+$(document).ready(function(){
+  $('.sidebar_sugg_groups').slick({
+	  slidesToShow: 1,
+	  arrows: false,
+	  dots: true,
+	  draggable: false,
+	  infinite: false,
+	  variableWidth: true,
+	  <?php if($wo['language_type'] == 'rtl') { ?>
+  rtl: true,
+  <?php } ?>
+  });
+});
+
+$(document).ready(function() {
+	$('.sidebar_fixed').theiaStickySidebar({additionalMarginTop: 65});
+});
+$(function() {
+     $('form.invite-user-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=invite_user',
+       beforeSend: function() {
+         Wo_progressIconLoader($('form.invite-user-form').find('button'));
+       },
+       success: function(data) {
+         if (data.status == 200) {
+            $('.invite-user-form-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+            $('.alert-success').fadeIn(300);
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.invite-user-form-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         Wo_progressIconLoader($('form.invite-user-form').find('button'));
+       }
+     });
+   });
+</script>

@@ -1,0 +1,41 @@
+<?php
+$wo['setting_page'] = 'general-setting';
+$pages_array = array(
+   'general-setting',
+   'privacy-setting',
+   'delete-group',
+   'avatar-setting',
+   'requests',
+   'group-members'
+   );
+if (!empty($_GET['link3'])) {
+   if (in_array($_GET['link3'], $pages_array)) {
+      $wo['setting_page'] = $_GET['link3'];
+   }
+}
+?>
+<div class="page-margin">
+	<div class="row setting-panel" style="position:relative;">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol">
+			<div class="sun_setting_header group">
+				<div class="ss_innr">
+					<h3><?php echo $wo['lang']['group_settings'];?></h3>
+					<div class="sun_set_avatr">
+						<a href="<?php echo $wo['setting']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['setting']['group_name'];?>">
+							<img src="<?php echo $wo['setting']['avatar'];?>" alt="<?php echo $wo['setting']['name'];?>" />
+							<?php echo $wo['setting']['name'];?>
+						</a>
+					</div>
+				</div>
+				<div class="sun_sett_circle-1"></div>
+				<div class="sun_sett_circle-2"></div>
+				<div class="sun_sett_circle-3"></div>
+			</div>
+			<div class="row sun_setting_body">
+				<div class="col-md-8 col-sm-8"><?php echo Wo_LoadPage("group-setting/" . $wo['setting_page']); ?></div>
+				<div class="col-md-4 col-sm-4"><?php echo Wo_LoadPage('group-setting/group-setting-sidebar');?></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,98 @@
+{strip}
+
+<section id="p_buy_votes">
+
+
+<div class="header_options">
+
+
+<a href="javascript:void(0);" id="paypal" class="pay_header_tab" onclick="paypalSelectVotesCount();"><i class="buy-votes-ic ic-paypal"></i><span>PayPal</span></a>
+<a href="javascript:void(0);" id="sms" class="pay_header_tab" onclick="openWindowToPay('sms');"onclick="buyVotesChangeTab('sms');"><i class="buy-votes-ic ic-sms"></i><span>SMS</span></a>
+
+
+</div>
+
+
+<div class="buy_votes_success" id="buy_votes_success" style="display:none;">
+
+<div id="error"><div class="msg valid"><div class="msg_text"><b>{$this->lang['Thank_you!']}</b><br>{$this->lang['you_have_received_votes']}</div></div>
+<button class="flat_button mt10 tocenter" style="width:100%;" onclick="ga('#nohook_modal_close,#reload_silent_page').trigger('click');">{$this->lang['lets_go']}</button>
+<a href="javascript:void(0);" id="reload_silent_page" style="display:none;" hrefattr="true"></a>
+</div>
+</div>
+
+<div class="buy_votes_sect" id="buy_votes_sect">
+
+
+<div class="section_opt_by" id="d_paypal" style="display:none;">
+<h3>{$this->lang['select_a_pack']}</h3>
+<select id="p_votes_count" style="width:212px;">
+
+
+</select>
+<br/>
+<button class="flat_button mt10" onclick="openWindowToPay('paypal');">Proceed to payment</button>
+
+</div>
+
+<div class="section_opt_by" id="sms" style="display:none;">
+
+
+<iframe height="200" width="300" src="{$this->settings['HOST']}/nav/popups/p_fortumo_sms_pay.html"></iframe>
+
+
+</div>
+
+
+
+</div>
+<script>
+var vote_price = '{$this->settings['VOTE_PRICE']}';
+var vote_currency = '{$this->settings['VOTE_CURRENCY']}';
+{literal}
+
+function paypalSelectVotesCount(){
+ 
+var votes_select = ga('#p_votes_count');
+ var vote_option = '<option value="%v">%s</option>';
+
+
+var votes_options = [25, 50, 75, 100, 150, 200, 300, 500, 999];
+
+ga('#replace_val_votes').text(25);
+for(var i =0; i< votes_options.length; i++){
+var val = votes_options[i];
+var txt = val * vote_price;
+votes_select.append( vote_option.replace('%v', val).replace('%s',val +'&nbsp;votes for&nbsp;'+ txt +'&nbsp;'+ vote_currency) );
+
+
+}
+
+ga('#d_paypal').show();
+votes_select.selectmenu().on( "selectmenuchange", function( ev, ui ) {   ga('#replace_val_votes').text(ga(this).val());  });
+}
+
+function openWindowToPay(opt){
+ajaxLoading();
+var send = jAjax('/cmd.php', 'post', {cmd:'buy-votes-window','option':opt,'count':ga('#p_votes_count').val()});
+send.done(function(url){
+removeAjaxLoad();
+ 
+ var w = 680;
+ var h = 668;
+ var left = (screen.width/2)-(w/2);
+ var top = (screen.height/2)-(h/2)-20;
+ ///document.getElementById('p_btn_text').classList.add('invisible');
+ ///document.getElementById('p_btn_wait').classList.add('active');
+ window.open(url,'_blank','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left,true);
+
+ });
+
+}
+{/literal}
+
+</script>
+
+</section>
+
+{/strip}

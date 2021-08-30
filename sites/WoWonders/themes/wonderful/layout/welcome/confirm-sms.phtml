@@ -1,0 +1,56 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+<div class="wrapper">
+  <?php echo Wo_LoadPage('welcome/welcome-header-logo');?>
+  <form class="login" id="confirm-form" method="post">
+    <p class="title">Confrim your phone</p>
+    <input name="phone_num" id="phone-num" type="text" value="<?php echo $wo['confirm_user']['phone_number'];?>" />
+    <i class="zmdi zmdi-phone"></i>
+    <input name="confirm_code" type="text" placeholder="Confirmation code" autofocus/>
+    <i class="zmdi zmdi-email"></i>
+    <input type="hidden" name="user_id" id="confirm-user-id" value="<?php echo $wo['confirm_user']['user_id'];?>" class="form-control"/>
+    <div id="hideMsg" class="item">
+      <h2><span>60</span></h2>
+    </div>
+    <div class="form-group" id="re-send" style="display:none">
+      <div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCode();"><i class="zmdi zmdi-refresh"></i> <?php echo $wo['lang']['activation_resend'];?></a>
+      </div>
+    </div>
+    <button>
+    <i class="spinner"></i>
+    <span class="state"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <?php echo $wo['lang']['confirm'];?></span>
+    </button>
+  </form>
+  <?php echo Wo_LoadPage('footer/welcome');?>
+</div>
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('button > .state');
+var confirm_button_text = "<i class='zmdi zmdi-check-all zmdi-hc-fw'></i> <?php echo $wo['lang']['confirm']?>";
+$(function() {
+  Wo_SetTimer();
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+    beforeSend: function() {
+      working = true;
+      $this.addClass('loading');
+      $state.html('Please wait..');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $this.addClass('ok');
+        $state.html('Welcome!');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $state.html(confirm_button_text);
+        $this.removeClass('ok loading', function () {
+         $state.html(data.errors);
+        });
+      }
+      working = false;
+    }
+  });
+});
+</script>

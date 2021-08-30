@@ -1,0 +1,47 @@
+<?php if (count($wo['section']['forums']) > 0): ?>
+<div class="col-md-12">
+	<div class="sun_forum_sections">
+		<div class="f_category">
+			<?php echo $wo['section']['section_name']; ?>
+			<span class="<?php echo Wo_RightToLeft('pull-right'); ?> show-forums pointer" id="<?php echo $wo['section']['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span>
+			<b class="<?php echo Wo_RightToLeft('pull-right'); ?>"><?php echo $wo['lang']['posts']; ?></b>
+			<b class="<?php echo Wo_RightToLeft('pull-right'); ?>"><?php echo $wo['lang']['topics']; ?></b>
+		</div>
+		<div class="f_topics" data-slide="<?php echo $wo['section']['id']; ?>">
+			<table class="table forum-table">
+				<?php foreach ($wo['section']['forums'] as $wo['forum']):?>
+					<tr class="section-list">
+						<td class="topic_icon text-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="<?php if ($wo['forum']['posts'] > 50) echo 'bg-main';?>" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V17L6,13H16A1,1 0 0,0 17,12M21,6H19V15H6V17A1,1 0 0,0 7,18H18L22,22V7A1,1 0 0,0 21,6Z" /></svg>
+						</td>
+						<td class="forum-meta-d titles">
+							<a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$wo['forum']['id']);?>" data-ajax="?link1=forums&fid=<?php echo $wo['forum']['id'];?>" class="ftitle"><?php echo $wo['forum']['name']; ?></a>
+							<div class="small fdesc"><?php echo $wo['forum']['description']; ?></div>
+						</td>
+						<td class="forum-meta-d small">
+							<?php 
+							$last_replay = Wo_GetForumThreads(array('forum' => $wo['forum']['id'] , 'limit' => 1));
+							$last_replay = $last_replay[0];
+							if (!empty($last_replay)) { ?>
+								<div>
+									<span class="avatar"><img src="<?php echo $last_replay['user_data']['avatar']?>" width="30" height="30" alt="User avatar"></span>
+									<a href="<?php echo $last_replay['url'];?>" class="reply_title" data-ajax="?link1=showthread&tid=<?php echo $last_replay['id'];?>"><?php echo (Wo_GetShortTitle($last_replay['headline'], false, 50))  ?></a>
+									<?php echo $wo['lang']['by']; ?> <a href="<?php echo $last_replay['user_data']['url']?>" class="reply_user" data-ajax="?link1=timeline&u=<?php echo $last_replay['user_data']['username']; ?>"><?php echo $last_replay['user_data']['name']?></a>
+									<br>
+									<time><?php echo Wo_Time_Elapsed_String($last_replay['posted']); ?></time>
+								</div>
+							<?php } ?>
+						</td>
+						<td class="forum-meta-d text-center topics">
+							<span><?php echo $wo['forum']['posts']; ?></span>
+						</td>
+						<td class="forum-meta-d text-center posts">
+							<span><?php echo $wo['forum']['posts']; ?></span>
+						</td>
+					</tr> 			
+				<?php endforeach;?>
+			</table>
+		</div>
+	</div>
+</div>	
+<?php endif; ?>

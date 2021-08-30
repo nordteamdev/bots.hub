@@ -1,0 +1,42 @@
+<?php 
+	$group_privacy = $wo['lang']['public'];
+	if ($wo['group']['privacy'] == 2) {
+		$group_privacy = $wo['lang']['private'];
+	}
+?>
+<div class="page_list row boosted_pages">
+	<div class="col-xs-2 col-md-2 no-padding-left">
+		<a href="<?php echo $wo['group']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['group']['group_name'];?>">
+			<div class="avatar">
+				<img src="<?php echo $wo['group']['avatar'];?>" alt="<?php echo $wo['group']['group_name']; ?> Profile Picture" />
+			</div>
+		</a>
+	</div>
+	<div class="<?php if( isset( $wo['group']['Wo_GroupSug'] ) ){ ?>col-xs-7 col-md-7<?php }else{ ?>col-xs-8 col-md-8<?php } ?>">
+		<a href="<?php echo $wo['group']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['group']['group_name'];?>">
+			<span class="page_title"><?php echo $wo['group']['group_title']; ?></span>
+		</a>
+		<div class="page_info">
+			<ul>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> <?php echo Wo_CountGroupMembers($wo['group']['id']);?> <?php echo $wo['lang']['members']; ?>
+				</li>
+				<?php if( isset( $wo['group']['Wo_GroupSug'] ) ){ ?>
+				<?php }else{ ?>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> <?php echo Wo_CountGroupPosts($wo['group']['id']);?> <?php echo $group_privacy; ?>
+				</li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+	<div class="<?php if( isset( $wo['group']['Wo_GroupSug'] ) ){ ?>col-xs-3 col-md-3<?php }else{ ?>col-xs-2 col-md-2<?php } ?>">
+		<div class="text-right">
+			<?php if( isset( $wo['group']['Wo_GroupSug'] ) ){ ?>
+				<?php echo Wo_GetJoinButton($wo['group']['id']);?>
+			<?php }else{ ?>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' .  $wo['group']['group_name']); ?>" data-ajax="?link1=group-setting&group=<?php echo $wo['group']['group_name'];?>" class="btn btn-info btn-sm " title=" <?php echo $wo['lang']['edit']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg></a>
+			<?php } ?>
+		</div>
+	</div>
+</div>

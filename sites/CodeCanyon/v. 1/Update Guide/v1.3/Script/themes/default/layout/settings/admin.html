@@ -1,0 +1,46 @@
+<!-- Multiple Radios -->
+<div class="form-group">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 fl_cus_input">
+		<select name="activeation" id="activeation" class="form-control">
+			<option value="1" <?php echo ($fl['setting']['active'] == 1) ? 'selected': ''?>>
+				{{LANG active}}
+			</option>
+			<option value="2" <?php echo ($fl['setting']['active'] == 2) ? 'selected': ''?>>
+				{{LANG inactive}}
+			</option>
+		</select>
+		<label for="activeation">{{LANG status}}</label>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+<div class="form-group">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 fl_cus_input">
+		<select name="type" id="type" class="form-control">
+			<option value="1" <?php echo ($fl['setting']['admin'] == 0) ? 'selected': ''?>>
+				{{LANG user}}
+			</option>
+			<option value="2" <?php echo ($fl['setting']['admin'] == 1) ? 'selected': ''?>>
+				{{LANG admin}}
+			</option>
+		</select>
+		<label for="type">{{LANG type}}</label>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+<div class="form-group">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 fl_cus_input">
+		<select name="verified" id="verified" class="form-control">
+			<option value="1" <?php echo ($fl['setting']['verified'] == 0) ? 'selected': ''?>>
+				{{LANG not_verified}}
+			</option>
+			<option value="2" <?php echo ($fl['setting']['verified'] == 1) ? 'selected': ''?>>
+				{{LANG verified}}
+			</option>
+		</select>
+		<label for="verified">{{LANG verification}}</label>
+	</div>
+	<div class="col-md-2"></div>
+</div>

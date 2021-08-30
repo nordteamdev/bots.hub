@@ -1,0 +1,514 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-12 fl_top_news_parent">
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_NEWS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetNews',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('story/top-news');
+			}
+			?>
+		</div>
+		
+		<div class="col-md-12 news-container content-shadow" itemscope itemtype="http://schema.org/BlogPosting">
+			<div class="news-title col-md-12">
+				<div class="header_options">
+					<a class="title_category" href="{{CATEGORY_LINK}}">{{CATEGORY_NAME}}</a>
+					{{STORY_ADMIN_OPTIONS}}
+				</div>
+				<h1 itemprop="headline">{{STORY_TITLE}}</h1>
+			</div>
+			<div class="col-md-8 no-padding-right">
+				<div class="news-desc">
+					<p itemprop="description">{{STORY_DESC}}</p>
+				</div>
+				
+				<div class="news-time">
+					<div>
+						<span class="user_card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg> <a href="{{PUBLISHER_URL}}" style="color: #222;" itemprop="name">{{PUBLISHER_NAME}}</a>
+							<div class="profile_card_parent">
+								<div class="profile_card">
+									<figure><img src="{{PUBLISHER_AVATAR}}" alt="{{PUBLISHER_NAME}}" itemprop="image"></figure>
+									<div class="card_title">
+										<h3>{{PUBLISHER_NAME}} {{PUBLISHER_VERIFIED}}</h3>
+										<p>{{PUBLISHER_GENDER}} {{PUBLISHER_COUNTRY}}</p>
+									</div>
+									<div class="card_btn">
+										<a href="{{PUBLISHER_URL}}">{{LANG view_profile}}</a>
+									</div>
+								</div>
+							</div>
+						</span>
+						<span class="circle"></span>
+						<span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> {{LANG posted}}&nbsp;<span itemprop="datePublished">{{STORY_POSTED_TIME}}</span>
+						</span>
+						<span class="circle"></span>
+						<span class="views">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg> {{STORY_VIEWS}} {{LANG views}}
+						</span>
+						<span class="last_update">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5,8H12V13L16.28,15.54L17,14.33L13.5,12.25V8M13,3A9,9 0 0,0 4,12H1L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3" /></svg> {{LANG updated}}&nbsp;<span itemprop="dateModified">{{STORY_UPDATED_TIME}}</span>
+						</span>
+					</div>
+				</div>	
+
+				<div class="news-share-buttons">
+				    <?php if ($fl['story']['is_active'] == 1) { ?>
+						<ul class="post_bottom_share">
+							<li><div class="btn-shares">{{LANG shares}}: <b id="share-number">{{STORY_SHARES}}</b></div></li>
+							<li class="facebook"><a href="https://www.facebook.com/sharer.php?u={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg> {{LANG facebook}}</a></li>
+							<li class="google"><a href="https://plus.google.com/share?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" /></svg> {{LANG google_plus}}</a></li>
+							<li class="twitter"><a href="http://twitter.com/intent/tweet?text={{STORY_TITLE}}&url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_TWITTER}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg> {{LANG twitter}}</a></li>
+							<li class="pinterest"><a href="http://pinterest.com/pin/create/button/?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M9.04,21.54C10,21.83 10.97,22 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2A10,10 0 0,0 2,12C2,16.25 4.67,19.9 8.44,21.34C8.35,20.56 8.26,19.27 8.44,18.38L9.59,13.44C9.59,13.44 9.3,12.86 9.3,11.94C9.3,10.56 10.16,9.53 11.14,9.53C12,9.53 12.4,10.16 12.4,10.97C12.4,11.83 11.83,13.06 11.54,14.24C11.37,15.22 12.06,16.08 13.06,16.08C14.84,16.08 16.22,14.18 16.22,11.5C16.22,9.1 14.5,7.46 12.03,7.46C9.21,7.46 7.55,9.56 7.55,11.77C7.55,12.63 7.83,13.5 8.29,14.07C8.38,14.13 8.38,14.21 8.35,14.36L8.06,15.45C8.06,15.62 7.95,15.68 7.78,15.56C6.5,15 5.76,13.18 5.76,11.71C5.76,8.55 8,5.68 12.32,5.68C15.76,5.68 18.44,8.15 18.44,11.43C18.44,14.87 16.31,17.63 13.26,17.63C12.29,17.63 11.34,17.11 11,16.5L10.33,18.87C10.1,19.73 9.47,20.88 9.04,21.57V21.54Z" /></svg> {{LANG pinterest}}</a></li>
+							<li class="reddit"><a href="http://www.reddit.com/submit?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22,11.5C22,10.1 20.9,9 19.5,9C18.9,9 18.3,9.2 17.9,9.6C16.4,8.7 14.6,8.1 12.5,8L13.6,4L17,5A2,2 0 0,0 19,7A2,2 0 0,0 21,5A2,2 0 0,0 19,3C18.3,3 17.6,3.4 17.3,4L13.3,3C13,2.9 12.8,3.1 12.7,3.4L11.5,8C9.5,8.1 7.6,8.7 6.1,9.6C5.7,9.2 5.1,9 4.5,9C3.1,9 2,10.1 2,11.5C2,12.4 2.4,13.1 3.1,13.6L3,14.5C3,18.1 7,21 12,21C17,21 21,18.1 21,14.5L20.9,13.6C21.6,13.1 22,12.4 22,11.5M9,11.8C9.7,11.8 10.2,12.4 10.2,13C10.2,13.6 9.7,14.2 9,14.2C8.3,14.2 7.8,13.7 7.8,13C7.8,12.3 8.3,11.8 9,11.8M15.8,17.2C14,18.3 10,18.3 8.2,17.2C8,17 7.9,16.7 8.1,16.5C8.3,16.3 8.6,16.2 8.8,16.4C10,17.3 14,17.3 15.2,16.4C15.4,16.2 15.7,16.3 15.9,16.5C16.1,16.7 16,17 15.8,17.2M15,14.2C14.3,14.2 13.8,13.6 13.8,13C13.8,12.3 14.4,11.8 15,11.8C15.7,11.8 16.2,12.4 16.2,13C16.2,13.7 15.7,14.2 15,14.2Z" /></svg> {{LANG reddit}}</a></li>
+						</ul>
+					<?php } ?>
+				</div>
+				
+				<!-- Additional schema meta -->
+				<div itemscope="" itemprop="publisher" itemtype="http://schema.org/Organization" class="hidden">
+					<meta itemprop="name" content="{{CONFIG title}}">
+					<div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject" class="hidden">
+						<meta itemprop="url" content="{{CONFIG theme_url}}/img/logo.{{CONFIG logo_extension}}">
+						<meta itemprop="width" content="290">
+						<meta itemprop="height" content="120">
+					</div>
+				</div>
+				<a itemprop="mainEntityOfPage" href="{{STORY_LINK}}" class="hidden"></a>
+				<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" class="read-blog-thumbnail hidden">
+					<img src="{{STORY_THUMB}}" alt="{{STORY_TITLE}}">
+					<meta itemprop="url" content="{{STORY_THUMB}}">
+					<meta itemprop="width" content="700">
+					<meta itemprop="height" content="250">
+				</div>
+				<!-- Additional schema meta -->
+				
+				<div class="news-entries" id="post-entries" itemprop="articleBody">
+					{{STORY_ENTRIES}}
+					{{STORY_AD}}
+				</div>
+				<div class="pages-link" id="pages-link">
+					<div class="pull-left">
+						{{BACK_LINK}}
+					</div>
+					<div class="pull-right">
+						{{NEXT_LINK}}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<hr>
+				{{SP_UAD_1}}
+				<?php if ($fl['page'] == 'quiz'): ?>
+					<div id="display-quiz-result">
+						
+					</div>
+				<?php endif; ?>
+				<div class="news-tags">
+					{{STORY_TAGS}}
+				</div>
+				
+				{{USER_REACTIONS}}
+
+				<div class="fl_related_news_container"><?php
+						$not_included = '';
+						if (!empty($fl['news']['id'])) {
+							$not_included = $fl['news']['id'];
+						}
+						$fetch_data_array_related = array(
+							'table' => T_NEWS,
+							'column' => 'id',
+							'limit' => 6,
+							'order' => array(
+								'type' => 'rand'
+							),
+							'where' => array(
+								array(
+									'column' => 'active',
+									'value' => '1',
+									'mark' => '='
+								)    
+							),
+							'final_data' => array(
+								array(
+									'function_name' => 'FL_GetNews',
+									'column' => 'id',
+									'name' => 'news'
+								)
+							)
+						);
+						if (is_numeric($not_included) && !empty($not_included)) {
+							$array = array(
+								'column' => 'id',
+								'value' => $not_included,
+								'mark' => '<>'
+							);
+							array_push($fetch_data_array_related['where'], $array);
+						}
+						$news_related = FL_FetchDataFromDB($fetch_data_array_related);
+					?><?php if (!empty($news_related)) { ?>
+						<h5>{{LANG related}}</h5>
+					<?php } ?><?php
+						if (!empty($news_related)) {
+							foreach ($news_related as $key => $fl['sidebar']) {
+							$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+								echo FL_LoadPage('story/related-news');
+							}
+						}
+					?></div>
+				
+				<?php if ($fl['loggedin'] || true): if ($fl['config']['comment_system'] == 'both' || $fl['config']['comment_system'] == 'default') { ?>
+					<div class="fl-comment-cont">
+						<div class="fl-comment-box">
+							<div class="fl-comment-list-cont">
+								<div class="fl-comment-list-header">
+									<h5><strong>{{STORY_COMMENT_TOTAL}}</strong> {{LANG comments}}</h5>
+								</div>
+								<div class="fl-comment-box-form">
+									<form class="form" id="news-comment-form">
+										<div class="fl-comment-box-body">
+											<textarea name="text" placeholder="{{LANG write_comment}}"></textarea>
+										</div>
+										<input type="hidden" name="news_id" value="{{STORY_ID}}">
+										<input type="hidden" name="page" value="{{STORY_PAGE}}">
+										<div class="fl-comment-box-footer hidden">
+											<button type="submit" class="btn btn-main pull-right">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M0.41,13.41L6,19L7.41,17.58L1.83,12M22.24,5.58L11.66,16.17L7.5,12L6.07,13.41L11.66,19L23.66,7M18,7L16.59,5.58L10.24,11.93L11.66,13.34L18,7Z" /></svg> <span id="postbutton">{{LANG post}}</span>
+											</button>
+										</div>
+									</form>
+								</div>
+								<hr>
+								<div class="fl-comment-list-body">
+									{{STORY_COMMENTS}}
+								</div>
+								<div class="fl-comment-list-footer">
+									<div class="load-more-comments hidden">
+										<button onclick="FL_LoadComments(this);">
+											<i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more}}
+										</button>
+									</div>
+									<div id="fountainG" class="hidden">
+										<div id="fountainG_1" class="fountainG"></div>
+										<div id="fountainG_2" class="fountainG"></div>
+										<div id="fountainG_3" class="fountainG"></div>
+										<div id="fountainG_4" class="fountainG"></div>
+										<div id="fountainG_5" class="fountainG"></div>
+										<div id="fountainG_6" class="fountainG"></div>
+										<div id="fountainG_7" class="fountainG"></div>
+										<div id="fountainG_8" class="fountainG"></div>
+									</div>
+								</div>
+			
+							</div>
+							
+						</div>
+					</div>
+				<?php } endif;?>
+
+				{{SP_UAD_2}}
+
+				<?php if ($fl['story']['is_active'] == 1 && ($fl['config']['comment_system'] == 'both' || $fl['config']['comment_system'] == 'fb')) { ?>
+				<div class="content-comment">
+					<div class="fb-comments" data-href="{{STORY_LINK}}" data-numposts="5" data-width="100%"></div>
+				</div>
+				<?php } ?>
+		</div>
+
+		<div class="col-md-4 no-padding-right">
+			{{SIDEBAR_HTML}}
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="fl_story_bottom_bar">
+	<div class="inner_content container-home">
+		<ul>
+			<li>
+				<span style="display: block;"><svg xmlns="http://www.w3.org/2000/svg" title="{{LANG reading}}" width="24" height="24" viewBox="0 0 24 24"><path fill="#444" d="M13,12H20V13.5H13M13,9.5H20V11H13M13,14.5H20V16H13M21,4H3A2,2 0 0,0 1,6V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V6A2,2 0 0,0 21,4M21,19H12V6H21" /></svg> {{STORY_TITLE}}</span>
+				<div class="scroll_line"></div>
+			</li>
+			<li>
+				<span><svg xmlns="http://www.w3.org/2000/svg" title="{{LANG by}}" width="24" height="24" viewBox="0 0 24 24"><path fill="#444" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg> {{PUBLISHER_NAME}}</span>
+			</li>
+			<?php if ($fl['story']['is_active'] == 1) { ?>
+			<li>
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" title="{{LANG share}}" width="22" height="22" viewBox="0 0 24 24"><path fill="#444" d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" /></svg> 
+					<ul class="post_bottom_share">
+						<li class="facebook"><a href="https://www.facebook.com/sharer.php?u={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z" /></svg> {{LANG facebook}}</a></li>
+						<li class="google"><a href="https://plus.google.com/share?url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_ONE}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z" /></svg> {{LANG google_plus}}</a></li>
+						<li class="twitter"><a href="http://twitter.com/intent/tweet?text={{STORY_TITLE}}&url={{STORY_ENCODED_URL}}" onclick="{{SHARE_BUTTON_TWITTER}}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg> {{LANG twitter}}</a></li>
+					</ul>
+				</span>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<script>
+var pxScrolled = 150;
+$(window).scroll(function() {
+	if ($(this).scrollTop() > pxScrolled) {
+		$('.fl_story_bottom_bar').css({'bottom': '0px', 'transition': '.3s'});
+	} else {
+		$('.fl_story_bottom_bar').css({'bottom': '-60px'});
+	} 
+});
+
+$(window).scroll(function(){
+	checkOffset();
+	
+	var wintop = $(window).scrollTop(), docheight = 
+    
+    $(document).height(), winheight = $(window).height();
+ 	var scrolled = (wintop/(docheight-winheight))*100;
+  	$('.scroll_line').css('width', (scrolled + '%'));
+});
+
+function checkOffset() {
+    if($('.fl_story_bottom_bar').offset().top + $('.fl_story_bottom_bar').height() 
+                                           >= $('footer').offset().top - 10)
+        $('.fl_story_bottom_bar').css({'bottom': '-60px'});
+    if($(document).scrollTop() + window.innerHeight < $('footer').offset())
+        $('.fl_story_bottom_bar').css({'bottom': '0px', 'transition': '.3s'}); // restore when you scroll up
+};
+
+	jQuery(document).ready(function($) {
+		$(document).on('click', '.fl-reaction-emo', function(event) {
+			event.preventDefault();
+			var option_id = ($(this).index() + 1);
+			var page      = '{{STORY_PAGE}}';
+		    var post      = '{{STORY_ID}}';
+		    var option    = $(this);
+		    
+			$.ajax({
+				url: FL_Ajax_Requests_File() + "?f=reaction&s=insert",
+				type: 'POST',
+				dataType: 'json',
+				data: {id:option_id,post_id:post,page:page},
+			})
+			.done(function(data) {
+				if (data.status == 200) {
+
+					$('.fl-reaction-emo').each(function(index, el) {
+						var index     = (index + 1);
+						var self      = $(el);
+						self.find('.pre-bar').find('span').find('small').text(data.data_option[index].num);
+					});
+
+					option.find('.reaction').css('background', 'rgb(216, 216, 216)');
+				}
+
+			})
+			.fail(function() {
+				FL_FinishBar();
+				console.log("error");
+			})
+			
+		});
+        $('.fl-comment-item-reply-form input').focus(function(event) {
+			if (!FL_IsLoggedIn()) {
+				try{
+			      location.href =  "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+		});
+        $(".fl-comment-box-body").find('textarea').focus(function(event) {
+			if (!FL_IsLoggedIn()) {
+				try{
+			      location.href =  "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+			else{
+				$(this).css('height', 'unset');
+				$(".fl-comment-box-footer").removeClass('hidden');
+			}
+		});
+		$(window).scroll(function() {
+		   if($(window).scrollTop() + window.innerHeight == $(document).height()) {
+		       	var after_id = $('[data-comm-item]').last().attr('data-comm-item');
+		        after_id     = (after_id) ? after_id : 0;
+		        var page     = '{{STORY_PAGE}}';
+		        var post     = '{{STORY_ID}}';
+		        $(".fl-comment-list-footer").find('#fountainG').removeClass('hidden');
+		        $.ajax({
+		       	 url: FL_Ajax_Requests_File(),
+		       	 type: 'GET',
+		       	 dataType: 'json',
+		       	 data: {f: 'comments',s:'load',after_id:after_id,page:page,post:post},
+		        })
+		       .done(function(data) {
+		       	 if (data.status == 200) {
+		       		$(".fl-comment-list-body").append(data.html);
+		       		$(".fl-comment-list-footer").find('#fountainG').addClass('hidden');
+		       	 }
+		       	 else{
+		       		$(window).unbind('scroll');
+		       		$(".fl-comment-list-footer").find('#fountainG').addClass('hidden');
+		       		if (after_id && $('[data-comm-item]').length > 10) {
+		       			$(".fl-comment-list-footer").find('.load-more-comments').removeClass('hidden');
+		       		}
+		       		
+		       	 }
+		       })
+		       .fail(function() {
+		       	 console.log("error");
+		       })
+		   }
+		});
+
+		$(".fl-comment-box-body").find('textarea').focus(function(event) {
+			$(this).css('height', 'unset');
+			$(".fl-comment-box-footer").removeClass('hidden');
+			
+		});
+
+		$("#news-comment-form").ajaxForm({
+	      url: FL_Ajax_Requests_File() + '?f=comments&s=insert',
+	      type:'POST',
+	      dataType:'json',
+	      beforeSend: function() {
+	        if($("#news-comment-form").find('textarea').val() == ''){
+	        	return false;
+	        }
+	        if (!FL_IsLoggedIn()) {
+				try{
+			      location.href = "{{LINK login}}";
+			      return false;
+			    }
+			    catch (e) {
+			      alert("Please login to continue!");
+			      return false;
+			    }
+			}
+	        FL_progressIconLoader($("#news-comment-form").find('button'));
+	      },
+	      success: function(data) {
+	        if (data['status'] == 200) {
+	          $(".fl-comment-list-body").prepend(data.html);
+	          $("#news-comment-form").find('textarea').val('');
+	        }                                                                                      
+	        else{
+	          alert('Something went wrong try later.')
+	        } 
+	        FL_progressIconLoader($("#news-comment-form").find('button'));
+	      }});
+	});
+
+	function FL_LoadComments(self){
+		var after_id = $('[data-comm-item]').last().attr('data-comm-item');
+        after_id     = (after_id) ? after_id : 0;
+        var page     = '{{STORY_PAGE}}';
+        var post     = '{{STORY_ID}}';
+        var self     = $(self);
+        $.ajax({
+       	 url: FL_Ajax_Requests_File(),
+       	 type: 'GET',
+       	 dataType: 'json',
+       	 data: {f: 'comments',s:'load',after_id:after_id,page:page,post:post},
+        })
+       .done(function(data) {
+       	 if (data.status == 200) {
+       		$(".fl-comment-list-body").append(data.html);
+       	 }
+       	 else{
+       		self.text('{{LANG no_more_comments}}')
+       	 }
+       })
+       .fail(function() {
+       	 console.log("error");
+       })
+	}
+
+	function FL_ReportPost(id,page,self){
+		if (!id || !page || !self) {
+			return false;
+		}
+		FL_progressIconLoader($(self));
+		$.ajax({
+			url: FL_Ajax_Requests_File(),
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'site',s:'report',id:id,page:page},
+		})
+		.done(function(data) {
+			if (data.status == 200 && data.code == 1) {
+				$(self).find('span').text('{{LANG cancel_report}}')
+				swal({
+					title:"{{LANG report_post}}",
+					text:"{{LANG report_received}}",
+					type:'success'
+				});
+			}
+			else if(data.status == 200 && data.code == 0){
+				$(self).find('span').text('{{LANG report_post}}');
+				swal({
+					text:"{{LANG cancel_report}}",
+					title:"{{LANG cancel}}!",
+					type:'error'
+				});
+			}
+			FL_Delay(function(){
+				swal.close();
+			},5000);
+			FL_progressIconLoader($(self));
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	}
+</script>
+
+<?php if ($fl['page'] == 'quiz'): ?>
+<div id="img-uploading-wrapper" class="hidden">    
+	<div class="loader"></div>
+</div>
+<?php endif;?>

@@ -1,0 +1,30 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div>
+	<i class="fa fa-bars"></i> 
+	<span><?php echo $wo['lang']['search']; ?> </span>
+	<i class="fa fa-angle-right" aria-hidden="true"></i>
+	<span><?php echo $wo['lang']['result']; ?> </span>
+	<i class="fa fa-angle-right" aria-hidden="true"></i>
+	<span class="main"><?php echo str_replace('<br>', ', ', $wo['search-qry']); ?></span>
+</div>
+<hr>
+<?php if (count($wo['threads']) > 0): ?>
+	  <table class="table threads-table">
+	    <thead class="bg-main">
+	      <tr>
+	        <th><?php echo $wo['lang']['topic']; ?></th>
+	        <th><?php echo $wo['lang']['replies']; ?> <?php echo $wo['lang']['views']; ?></th>
+	        <th><?php echo $wo['lang']['last_post']; ?></th>
+	      </tr>
+	    </thead>
+	    <tbody id="forum-threads">
+	    <?php foreach ($wo['threads'] as $wo['thread']): ?>
+	    	<?php echo Wo_LoadPage("forum/includes/post-list"); ?>
+	    <?php endforeach; ?>
+
+	    </tbody>
+	  </table>
+<?php else: ?>
+	<?php echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_threads_found'] .  '</h5>'; ?>
+<?php endif; ?>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

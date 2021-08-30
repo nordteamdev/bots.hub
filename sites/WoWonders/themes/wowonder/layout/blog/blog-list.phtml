@@ -1,0 +1,41 @@
+<div class="blog-ls-box" data-rm-blog="<?php echo $wo['blog']['id'];?>">
+  <div class="container-fluid">
+    <div class="row view-blog" id="<?php echo $wo['blog']['id']; ?>">
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 blog-ls-img">
+          <a href="<?php echo $wo['blog']['url']; ?>" data-ajax="?link1=read-blog&id=<?php echo $wo['blog']['id']; ?>">
+             <img src="<?php echo $wo['blog']['thumbnail']; ?>" alt="<?php echo $wo['blog']['title']; ?>">
+         </a>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+          <p class="<?php echo Wo_RightToLeft('pull-left');?> art-title">
+          <a class="main" href="<?php echo $wo['blog']['url']; ?>">
+          <?php if (strlen($wo['blog']['title']) > 30):?>
+            <?php echo mb_substr($wo['blog']['title'],0,30,"UTF-8") . ".."; ?>
+          <?php else:?>
+            <?php echo $wo['blog']['title']; ?>
+          <?php endif;?> 
+          </a>
+          </p>
+          <?php if ($wo['blog']['is_post_admin']):?>
+            <div class="dropdown <?php echo Wo_RightToLeft('pull-right');?> ">
+               <i class="dropdown-toggle blog-dd-menu fa fa-ellipsis-h" data-toggle="dropdown">
+               </i>
+              <ul class="dropdown-menu post-privacy-menu post-options <?php echo Wo_RightToLeft('pull-right');?>" role="menu">
+                <li class="pointer"><a class="delete-blog" id="<?php echo $wo['blog']['id'];?>"><i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> <?php echo $wo['lang']['delete']; ?></a></li>
+                <li><a href="<?php echo Wo_SeoLink('index.php?link1=edit-blog&id=' . $wo['blog']['id']) ?>" id="<?php echo $wo['blog']['id'];?>"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i> <?php echo $wo['lang']['edit']; ?></a></li>
+              </ul>
+            </div>
+          <?php endif;?>
+          <div class="clear"></div>
+          <p class="blog-meta-desc">
+            <span> 
+              <small><i class="fa fa-user fa-fw"" aria-hidden="true"></i> <a href="<?php echo $wo['blog']['author']['url']; ?>"> <?php echo $wo['blog']['author']['name']; ?></a></small>
+              <small><i class="fa fa-clock-o  fa-fw"" aria-hidden="true"></i> <?php echo Wo_Time_Elapsed_String($wo['blog']['posted']); ?></small>
+              <small><i class="fa fa-eye  fa-fw"" aria-hidden="true"></i> <?php echo $wo['blog']['view']; ?></small>
+            </span>
+          </p>
+          <p class="blog-desc"><?php  $desc = str_replace('<br>', '', $wo['blog']['description']); echo $desc = mb_substr($desc, 0, 100, "UTF-8");?></p>
+        </div>
+    </div>
+  </div>
+</div>

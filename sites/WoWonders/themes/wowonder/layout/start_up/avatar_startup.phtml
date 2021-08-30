@@ -1,0 +1,80 @@
+<div class="list-group page-margin">
+    <div class="add-photo row">
+       <div class="col-lg-9">
+       	<h2><?php echo $wo['lang']['add_photo'];?></h2>
+        <h4><?php echo $wo['lang']['add_photo_des'];?></h4>
+        <br>
+        <div class="upload-image" onclick="document.getElementById('avatar').click(); return false">
+           <div class="upload-image-content">
+        	<i class="fa fa-camera"></i><br>
+        	<?php echo $wo['lang']['upload_your_photo'];?>
+        	</div>
+        </div>
+         <div id="progress">
+            <span id="percent">0%</span>
+            <div class="progress">
+             <div id="bar" class="progress-bar progress-bar-striped active"></div> 
+            </div>
+            <div class="clear"></div>
+         </div>
+       </div>
+       <div class="col-lg-2 continue-button">
+       	<button class="btn con-button btn-main" disabled onclick="Wo_NextStep();"><?php echo $wo['lang']['start_up_continue'];?></button><br> <small class="skip-step" onclick="Wo_SkipStep('startup_image');"><?php echo $wo['lang']['start_up_skip'];?></small>
+       </div>
+       <div class="clear"></div>
+    </div>
+</div>
+<form action="#" method="post" class="profile-avatar-changer" style="display:none">
+    <input type="file" id="avatar" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
+    <input type="hidden" name="user_id" id="user-id" value="<?php echo $wo['user']['user_id'];?>">
+</form>
+<script type="text/javascript">
+var user_id = $('#user-id').val();
+$(function () {
+	var bar = $('#bar');
+  var percent = $('#percent');
+  var status = $('#status');
+	$('form.profile-avatar-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_avatar_picture&s=start',
+
+    beforeSend: function () {
+      var percentVal = '0%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+    },
+    uploadProgress: function (event, position, total, percentComplete) {
+      var percentVal = percentComplete + '%';
+      bar.width(percentVal);
+      $('#progress').slideDown(200);
+      if(percentComplete > 50) {
+        percent.addClass('white');
+      }
+      percent.html(percentVal);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+      	$('#progress').slideUp(200);
+        $('.upload-image').html('<img src="' + data.img + '">');
+        $('h2').text(data.big_text);
+        var Title = $('<textarea />').html(data.small_text).text();
+        $('h4').text(Title);
+        $('.upload-image').css({'border': '0'});
+        $('[id^=updateImage-' + user_id + ']').attr("src", data.img);
+        $('.upload-image img').css({'padding': '2px', 'border-radius':'6px'});
+        $('button').attr('disabled', false);
+        $('.skip-step').hide();
+      }
+    }
+  });
+});
+function Wo_UpdateProfileAvatar() {
+  $("form.profile-avatar-changer").submit();
+}
+function Wo_NextStep() {
+  $('button').attr('disabled', true);
+  $('button').text("<?php echo $wo['lang']['please_wait'];?>");
+  setTimeout(function() {
+    window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+  }, 1000);
+}
+</script>

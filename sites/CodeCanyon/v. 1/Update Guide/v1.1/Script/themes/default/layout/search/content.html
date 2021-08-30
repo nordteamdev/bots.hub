@@ -1,0 +1,129 @@
+<div class="custom-page" id="search-page">
+    <div class="row">
+    	<div class="col-md-4">
+		    <form  role="search" action="{{LINK search}}">
+		        <div class="form-group">
+		            <input type="text" class="form-control" name="keyword" id="keyword" value="{{SEARCH_KEYWORD}}">
+		        </div>
+		    </form>
+		    <div class="clear"></div>
+	    </div>
+	    <div class="clear"></div>
+    </div>
+	<div id="exTab2">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="#news" data-toggle="tab" class="nav-news">{{LANG news}} ({{NEWS_COUNT}})</a>
+			</li>
+			<li>
+				<a href="#lists" data-toggle="tab" class="nav-lists">{{LANG lists}} ({{LISTS_COUNT}})</a>
+			</li>
+			<li>
+				<a href="#videos" data-toggle="tab" class="nav-videos">{{LANG videos}} ({{VIDEOS_COUNT}})</a>
+			</li>
+			<li>
+				<a href="#music" data-toggle="tab" class="nav-music">{{LANG music}} ({{MUSIC_COUNT}})</a>
+			</li>
+			<li>
+				<a href="#polls" data-toggle="tab" class="nav-polls">{{LANG polls}} ({{POLLS_COUNT}})</a>
+			</li>
+			<li>
+				<a href="#quizzes-tab" data-toggle="tab" class="nav-quizzes">{{Quizzes}} ({{QUIZ_COUNT}})</a>
+			</li>
+		</ul>
+		<div class="tab-content ">
+		    <input type="hidden">
+			<div class="tab-pane active" id="news">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="news-wrapper">
+							{{NEWS_RESULTS}}
+						</div>
+						
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('news-wrapper', 'news', $('#news-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="tab-pane" id="lists">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="lists-wrapper">
+							{{LISTS_RESULTS}}
+						</div>
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('lists-wrapper', 'list', $('#lists-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="tab-pane" id="videos">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="video-wrapper">
+							{{VIDEOS_RESULTS}}
+						</div>
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('video-wrapper', 'video', $('#video-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="tab-pane" id="music">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="music-wrapper">
+							{{MUSIC_RESULTS}}
+						</div>
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('music-wrapper', 'music', $('#music-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="tab-pane" id="polls">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="polls-wrapper">
+							{{POLLS_RESULTS}}
+						</div>
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('polls-wrapper', 'poll', $('#polls-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+			<div class="tab-pane" id="quizzes-tab">
+				<div class="row">
+					<div class="col-md-12 no-padding-left">
+						<div id="quizzes-wrapper">
+							{{QUIZ_RESULTS}}
+						</div>
+						<div class="load-more-button-wrapper">
+		                    <button class="load-more-button btn btn-main" onclick="FL_LoadMore('quizzes-wrapper', 'quiz', $('#quizzes-wrapper .latest-news-list:last').attr('data-id'), 0, $(this), <?php echo (!empty($_GET['c_id'])) ? $_GET['c_id']: 0?>, $('#keyword').val())">
+		                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more_posts}}
+		                    </button>
+		                </div>
+				    </div>
+				    <div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

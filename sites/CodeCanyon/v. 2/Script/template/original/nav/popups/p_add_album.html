@@ -1,0 +1,227 @@
+
+
+{strip}
+<!---------------------
+<div id="layer_popup" class="hookBlock" style="display: block;">
+  <div id="hook_Block">
+    <div id="popLayerBodyWrapper" class="modal_wrap">
+      <div id="popLayer_cc" class="popupSimple">
+        <div class="mwt_cont">
+          <table cellpadding="20" cellspacing="0" class="mw_tbl">
+            <tbody>
+              <tr>
+                <td>
+                  <div id="mp_mm_cont" class="mp_mm_cont">
+                    <div class="panelLayer layerPanelSimple" id="cfrmPopLayerHelpFeedback">
+                      <div class="panelLayer_head">
+                        <div class="layerPanelCloseContainer">
+                          <a href="javascript:void(0)">
+                            <div class="layer_close ic ic_close">
+                            </div>
+                          </a>
+                        </div>
+                        <div class="panelLayer_head_headerSimple">
+                          Create photo album
+                        </div>
+                      </div>
+                      <div class="panelLayer_body">
+                        <div >
+                          <div>
+			  
+                            <div class="hook" id="hook_Form_PopLayerHelpFeedbackForm">
+                              <form name="feedbackForm" action="" method="post">
+
+                                <div class="form__gl-1-4 form photo-album-settings" style="padding: 3px 20px 0 0;">
+                                     <div class="form_i" style="">
+                                    <span class="input-l">
+                                      <label for="field_name">
+                                        Name
+                                      </label>
+                                    </span>
+                                    <div class="it_w">
+                                      <input style="width:220px;" type="text" name="m_feedback_field_name" value="" id="field_name" class="it " cols="35" maxlength="80" rows="3">
+                                      
+                                    </div>
+                                    <span class="input-e">
+                                    </span>
+                                    
+                                  </div>
+                                
+                               
+                                      
+                                    </div>
+                                  </form>
+<div class="form_i">
+    <label class="input-l">Visible to</label>
+    <div class="multicolumn">
+        <input id="policy_2" checked="checked" class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="2">
+        <label for="policy_2">everyone</label>
+        <br>
+        <input id="policy_1"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="1">
+        <label for="policy_1">all friends</label>
+        <br>
+        <input id="policy_4"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="4">
+        <label for="policy_4">relatives</label>
+        <br>
+        <input id="policy_128" class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="128">
+        <label for="policy_128">my partner</label>
+        <br>
+        <input id="policy_8"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="8">
+        <label for="policy_8">best friends</label>
+        <br>
+        <input id="policy_16"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="16">
+        <label for="policy_16">colleagues</label>
+        <br>
+        <input id="policy_32" class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="32">
+        <label for="policy_32">classmates</label>
+        <br>
+        <input id="policy_64"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="64">
+        <label for="policy_64">coursemates</label>
+        <br>
+        <input id="policy_512"  class="irc" type="checkbox" name="st.layer.photoAlbumPolicy" value="512">
+        <label for="policy_512">army friends</label>
+        <br>
+    </div>
+</div>
+
+	<div class="p_alb_checkbx">
+ 
+
+      <div class="squaredFour">
+      <input type="checkbox" value="None" id="squaredFour" name="check" checked />
+      <label for="squaredFour"></label>
+      <span class="nm_tx">colleague</span>
+    </div>
+
+</div>
+
+
+                                  <div class="formButtonContainer">
+                                    <input type="button" name="button_send" send-m-feedback="true" value="Save">
+                                    <div class="hookData">
+                                    </div>
+                                    <span class="lp txt_dec ml-15 curPointer">
+                                      Cancel
+                                    </span>
+                                    
+                                  </div>
+                                </div>
+
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+----------------->
+
+<div id="hook_Block" class="hookBool __addAlb __slide _toRight">
+<div class="close_ic_p_slide"><div class="js_popup_close ic"></div></div>
+<div class="header_til f22">{$this->lang['create_photo_album']}</div>
+
+<form name="doAlbum" action="/profile" method="post">
+<input type="hidden" name="cmd" value="addAlbum" />
+<input type="hidden" name="type" value="pos" />
+<input type="hidden" name="tip" value="alb" />
+<input type="hidden" name="q" value="{$this->USER['id']}" />
+<div class="mt30">
+<div class="form_i">
+ <span class="input-l f18">
+ <label for="albumNam">{$this->lang['sg_name']}</label>
+</span>
+   <div class="it_w pt5">
+       <input type="text" name="st.layer.alb.name" value="" id="albumNam" class="it it_w__3gc pl14 h40 f14" cols="35" maxlength="80" rows="3">
+        </div>
+
+
+        
+ 
+  	<div class="mt25">
+    <div class="p_me_nm f18">{$this->lang['visible_to']}</div>
+	
+	
+	<div>
+	<div class="addAlbumMakeOvrf" style="    height: calc(100% - 100px)!important;" >
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['everyone']}</div>
+      <input type="checkbox" value="1" album-square-ch id="sq1" name="st.layer.photoAlbumsPolicy[]" checked />
+      <label for="sq1"></label>
+      </div>
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['all_friends']}</div>
+      <input type="checkbox" value="2" album-square-ch id="sq2" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq2"></label>
+      </div>
+
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['relatives']}</div>
+      <input type="checkbox" value="3" album-square-ch id="sq3" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq3"></label>
+      </div>
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['my_partner']}</div>
+      <input type="checkbox" value="4" album-square-ch id="sq4" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq4"></label>
+      </div>
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['best_friends']}</div>
+      <input type="checkbox" value="5" album-square-ch id="sq5" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq5"></label>
+      </div>
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['colleagues']}</div>
+      <input type="checkbox" value="6" album-square-ch id="sq6" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq6"></label>
+      </div>
+
+	  
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['classmates']}</div>
+      <input type="checkbox" value="7" album-square-ch id="sq7" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq7"></label>
+      </div>
+
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['coursemates']}</div>
+      <input type="checkbox" value="8" album-square-ch id="sq8" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq8"></label>
+      </div>
+	  
+
+      <div class="squaredFour">
+      <div class="nm_tx">{$this->lang['army_friends']}</div>
+      <input type="checkbox" value="9" album-square-ch id="sq9" name="st.layer.photoAlbumsPolicy[]" />
+      <label for="sq9"></label>
+      </div>
+
+</div>
+</div>
+
+</div>
+        <div class="bott_btn">
+            <button name="button_plpscp_confirm" onclick="doNewAlbum(this.form,event)" type="submit" class="button-pro">{$this->lang['create']}</button>
+            <button type="button" class="js-cb ml-10 button-pro __sec __pealb custom_popup_close">{$this->lang['cancel']}</button>
+	</div>
+</div>
+    </form>
+<script>
+{literal}
+        albSquareCheck();
+{/literal}
+</script>
+{/strip}

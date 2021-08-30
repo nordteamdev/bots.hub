@@ -1,0 +1,327 @@
+<div class="content">
+    <div class="row">
+        <div class="col-lg-6 no-padding-right">
+            <div class="top-news">
+                <div class="news">
+                    {{TOP_NEWS_HTML}}
+                </div>
+            </div>
+        </div> 
+        <div class="col-lg-6 no-padding-mobile no-padding-right">
+            <div class="col-lg-6 no-padding-left">
+                <div class="top-news multi">
+                    {{TOP_POLLS_HTML}}
+                </div>
+            </div>
+            <div class="col-lg-6 no-padding-left">
+                <div class="top-news multi ">
+                    {{TOP_VIDEOS_HTML}}
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-lg-6 no-padding-left">
+                <div class="top-news multi ">
+                    {{TOP_MUSIC_HTML}}
+                </div>
+            </div>
+            <div class="col-lg-6 no-padding-left">
+                <div class="top-news multi">
+                   {{TOP_LISTS_HTML}}
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="next-col-home">
+        <div class="col-md-6">
+            <h4 class="news-color-text"><i class="fa fa-fw fa-file-text"></i> {{LANG latest_news}}</h4>
+            <div class="row">
+                <?php 
+                $len = count($fl['latest_news']);
+                foreach ($fl['latest_news'] as $key => $fl['latest_news_data']): 
+                    $fl['latest_news_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['latest_news_data']['last'] = true;
+                    } 
+                    echo FL_LoadPage('home/latest-news');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+                <div class="ads-contnet home-page-ads">{{LATEST_NEWS_AD}}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="lists-color-text"><i class="fa fa-fw fa-bars"></i> {{LANG latest_lists}}</h4>
+                    <div class="row">
+                    <?php 
+                        $len = count($fl['latest_lists']);
+                        foreach ($fl['latest_lists'] as $key => $fl['trending_data']): 
+                             $fl['trending_data']['last'] = false;
+                                if ($key == $len - 1) {
+                                   $fl['trending_data']['last'] = true;
+                                } 
+                                if (!empty($fl['trending_data']['news'])) {
+                                    $fl['trending_data']['news'] = $fl['trending_data']['news'];
+                                }
+                                if (!empty($fl['trending_data']['video'])) {
+                                    $fl['trending_data']['news'] = $fl['trending_data']['video'];
+                                }
+                                if (!empty($fl['trending_data']['list'])) {
+                                    $fl['trending_data']['news'] = $fl['trending_data']['list'];
+                                }
+                                if (!empty($fl['trending_data']['poll'])) {
+                                    $fl['trending_data']['news'] = $fl['trending_data']['poll'];
+                                }
+                                if (!empty($fl['trending_data']['music'])) {
+                                    $fl['trending_data']['news'] = $fl['trending_data']['music'];
+                                }
+                                echo FL_LoadPage('home/lists/trending');
+                        endforeach;
+                    ?>
+                       <div class="clear"></div>
+                       <div class="ads-contnet home-page-ads">{{LATEST_LISTS_AD}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /// RSS FEED /// -->
+            <?php if (count($fl['fl_rss_feed']) > 0): ?>
+                <h4 class="rssfeed-color-text"><i class="fa fa-fw fa-newspaper-o"></i> {{LANG read_more}}</h4>
+                <div class="row">   
+                    <?php 
+                    $len = count($fl['fl_rss_feed']);
+                    foreach ($fl['fl_rss_feed'] as $key => $fl['latest_news_data']): 
+                        $fl['latest_news_data']['last'] = false;
+                        if ($key == $len -1) {
+                           $fl['latest_news_data']['last'] = true;
+                        } 
+                        echo FL_LoadPage('home/rss-feed');
+                    endforeach;
+                    ?>    
+                    <div class="clear"></div>
+                </div>
+                <br>
+            <?php endif; ?>
+            <!-- /// END RSS_FEED /// -->
+            
+            <h4 class="news-color-text"><i class="fa fa-fw fa-file-text"></i> {{LANG top_news}}</h4>
+            <div class="row">
+                <div id="top_news_cont">
+                    <?php 
+                    $len = count($fl['top_news_multi']);
+                    foreach ($fl['top_news_multi'] as $key => $fl['latest_news_data']): 
+                        $fl['latest_news_data']['last'] = false;
+                        if ($key == $len - 1) {
+                           $fl['latest_news_data']['last'] = true;
+                        } 
+                        echo FL_LoadPage('home/latest-news');
+                    endforeach;
+                    ?>
+                </div>
+                
+                <div class="clear"></div>
+            </div>
+            <br>
+            <!-- /// -->
+            <div class="clear"></div>
+            <?php if (count($fl['top_news_multi']) > 10): ?>
+                <div class="fl-load-more-content">
+                    <button>
+                        <i class="fa progress-icon fa-arrow-down" data-icon="arrow-down"></i> {{LANG load_more}}
+                    </button>
+                </div>
+            <?php endif; ?>
+
+
+               
+            
+            
+        </div>
+        <div class="col-md-3">
+            <h4 class="polls-color-text"><i class="fa fa-pie-chart"></i> {{LANG latest_polls}}</h4>
+            <div class="row">
+               <?php 
+                $len = count($fl['polls']);
+                foreach ($fl['polls'] as $key => $fl['trending_data']): 
+                    $fl['trending_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['trending_data']['last'] = true;
+                    } 
+                    if (!empty($fl['trending_data']['news'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['news'];
+                    }
+                    if (!empty($fl['trending_data']['video'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['video'];
+                    }
+                    if (!empty($fl['trending_data']['list'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['list'];
+                    }
+                    if (!empty($fl['trending_data']['poll'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['poll'];
+                    }
+                    if (!empty($fl['trending_data']['music'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['music'];
+                    }
+                    echo FL_LoadPage('home/lists/trending');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+            </div>
+            <h4 class="music-color-text"><i class="fa fa-music"></i> {{LANG latest_music}}</h4>
+            <div class="row">
+               <?php 
+                $len = count($fl['music']);
+                foreach ($fl['music'] as $key => $fl['trending_data']): 
+                    $fl['trending_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['trending_data']['last'] = true;
+                    } 
+                    if (!empty($fl['trending_data']['news'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['news'];
+                    }
+                    if (!empty($fl['trending_data']['video'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['video'];
+                    }
+                    if (!empty($fl['trending_data']['list'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['list'];
+                    }
+                    if (!empty($fl['trending_data']['poll'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['poll'];
+                    }
+                    if (!empty($fl['trending_data']['music'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['music'];
+                    }
+                    echo FL_LoadPage('home/lists/trending');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+                <div class="ads-contnet home-page-ads">{{LATEST_MUSIC_AD}}</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h4 class="video-color-text"><i class="fa fa-fw fa-video-camera"></i> {{LANG latest_videos}}</h4>
+            <div class="row">
+                <?php 
+                $len = count($fl['latest_videos']);
+                foreach ($fl['latest_videos'] as $key => $fl['latest_videos_data']): 
+                    $fl['latest_videos_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['latest_videos_data']['last'] = true;
+                    } 
+                    echo FL_LoadPage('home/latest-videos');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+                <div class="ads-contnet home-page-ads">{{LATEST_VIDEOS_AD}}</div>
+            </div>
+            <h4 class="quizzes-color-text"><i class="fa fa-check-square-o"></i> {{LANG latest_quizzes}}</h4>
+            <div class="row">
+               <?php 
+                $len = count($fl['quizzes']);
+                foreach ($fl['quizzes'] as $key => $fl['trending_data']): 
+                    $fl['trending_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['trending_data']['last'] = true;
+                    } 
+                    if (!empty($fl['trending_data']['news'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['news'];
+                    }
+                    if (!empty($fl['trending_data']['video'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['video'];
+                    }
+                    if (!empty($fl['trending_data']['list'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['list'];
+                    }
+                    if (!empty($fl['trending_data']['poll'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['poll'];
+                    }
+                    if (!empty($fl['trending_data']['music'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['music'];
+                    }
+
+                    if (!empty($fl['trending_data']['quiz'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['quiz'];
+                    }
+
+                    echo FL_LoadPage('home/lists/trending');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+            </div>
+            <h4 class="trending-color-text"><i class="fa fa-fw fa-bolt"></i> {{LANG trending}}</h4>
+            <div class="row">
+               <?php 
+                $len = count($fl['trending']);
+                foreach ($fl['trending'] as $key => $fl['trending_data']): 
+                    $fl['trending_data']['last'] = false;
+                    if ($key == $len - 1) {
+                       $fl['trending_data']['last'] = true;
+                    } 
+                    if (!empty($fl['trending_data']['news'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['news'];
+                    }
+                    if (!empty($fl['trending_data']['video'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['video'];
+                    }
+                    if (!empty($fl['trending_data']['list'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['list'];
+                    }
+                    if (!empty($fl['trending_data']['poll'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['poll'];
+                    }
+                    if (!empty($fl['trending_data']['music'])) {
+                        $fl['trending_data']['news'] = $fl['trending_data']['music'];
+                    }
+                    echo FL_LoadPage('home/lists/trending');
+                endforeach;
+                ?>
+                <div class="clear"></div>
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+        
+    </div>
+</div>
+
+<script>
+    
+
+    jQuery(document).ready(function($) {
+        $('.fl-load-more-content').click(function(event) {
+            var top_news_ids = $("div.top-news-list[id]").map(function() {
+                return $(this).attr('id');
+            }).get();
+            if (!top_news_ids) {
+                return false;
+            }
+
+            var latest_news_before_id = Math.max.apply(Math,top_news_ids);
+            var latest_news_after_id  = Math.min.apply(Math,top_news_ids);
+            var self                  = $(this);
+            FL_progressIconLoader($('.fl-load-more-content').find('button'));
+            $.ajax({
+                url: FL_Ajax_Requests_File(),
+                type: 'GET',
+                dataType: 'json', 
+                data: {f:'home',s:'load',after_id:latest_news_after_id,before_id:latest_news_before_id},
+            })
+            .done(function(data) {
+                if (data.status == 200) {
+                   $("#top_news_cont").append(data.html);
+                   
+                }
+                else{ 
+                    $('.fl-load-more-content').find('button').text('{{LANG no_posts_to_show}}');
+                }
+
+                FL_progressIconLoader($('.fl-load-more-content').find('button'));
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        });
+    });
+</script>

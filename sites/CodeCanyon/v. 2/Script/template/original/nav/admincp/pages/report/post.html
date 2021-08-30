@@ -1,0 +1,71 @@
+{strip}
+
+<div class="adrowcol">
+<h2>Reported a post</h2>
+<hr>
+
+{assign var=rp_by_user value=$this->userdetails($rby)}
+<fieldset class="bgwhite">
+
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">Post Id</label>
+        <div class="col-md-6">#{$r.id}
+        </div>
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_message">Post</label>
+        <div class="col-md-6">
+		
+		
+		{if $r['type'] == 'song'}
+{$this->generatePostContent($r.id,"[postSong]{$r['text']}[/postSong]","tracks")}
+{else}
+{$this->generatePostContent($r.id,$r['text'],'text')}
+{$this->generatePostContent($r.id,$r['text'],'videos')}
+{$this->generatePostContent($r.id,$r['text'],'photos')}
+{$this->generatePostContent($r.id,$r['text'],'links')}
+{$this->generatePostContent($r.id,$r['text'],'tracks')}
+{$this->generatePostContent($r.id,$r['text'],'tagged_people')}
+{$this->generatePostContent($r.id,$r['text'],'places')}
+{$this->generatePostContent($r.id,$r['text'],'poll')}
+{/if}
+		
+		
+		
+        </div>
+    </div>
+	
+	    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">View post</label>
+        <div class="col-md-6"><A target="_blank" href="/post?i={$r.id}">View</a>
+        </div>
+    </div>
+	
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reason</label>
+        <div class="col-md-6">{$this->lang[$report_q.reason]}
+        </div>
+    </div>
+	
+	    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reported by</label>
+        <div class="col-md-6"><A target="_blank" href="/user/{$rp_by_user.id}">{$rp_by_user.fullname}</a>
+        </div>
+
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">Report about</label>
+        <div class="col-md-6">{$this->time_elapsed($report_q.added)}
+        </div>
+    </div>
+</fieldset>
+
+<hr>
+     <form class="setting-general-form form-horizontal" action="/admin.php" target="_blank" id="fform" method="get">
+	 <input type="hidden" name="id" value="{$r.id}" />
+	 <input type="hidden" name="returnto" value="/admin.php?cmd=viewreport&id={$id}&type=post&itemid={$r.id}&rby={$rby}"/>
+	 <input type="hidden" name="cmd" value="block-post" />
+	 <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" class="form-actions_yes button-pro js-submit">Block post</button>
+            </div>
+        </div>
+		</form>
+</div>
+
+{/strip}

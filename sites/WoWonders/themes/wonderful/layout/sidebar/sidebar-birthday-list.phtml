@@ -1,0 +1,23 @@
+<div class="home-sidebar profile-style bday-user-sidebar">
+	<div class="avatar pull-left">
+		<img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture"/>
+	</div>
+	<div class="bday-name">
+		<a href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username']?>" style="padding: 0px;background: #fff">
+			<span class="user-name" style="font-size: 17px;">
+				<?php echo $wo['UsersList']['name']; ?>
+				<?php  if($wo['UsersList']['verified'] == 1) { ?>
+				<span class="verified-color">
+					<i class="fa fa-check-circle" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"></i>
+				</span>
+				<?php } ?>
+			</span>
+		</a>
+		<div class="user-lastseen">
+			(<?php echo date_diff(date_create($wo['UsersList']['birthday']), date_create('today'))->y;?>) <?php echo $wo['lang']['years_old'];?>
+			<span class="contact btn" onclick="Wo_OpenChatTab(<?php echo $wo['UsersList']['id']?>)" style="float: right;padding: 0px;box-shadow: none;line-height: 14px;">
+				<i class="zmdi zmdi-comment-text-alt" style="font-size:18px;color:#3F51B5"></i> 
+			</span>
+		</div>
+	</div>	
+</div>

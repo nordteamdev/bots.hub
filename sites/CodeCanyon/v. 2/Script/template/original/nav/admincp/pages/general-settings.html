@@ -1,0 +1,130 @@
+{strip}
+<div class="ad-rowcol">
+<h2>General settings</h2>
+
+
+<form class="setting-general-form form-horizontal borderbetween" action="/admin.php?cmd=savegsettings" id="fform" method="post">
+
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="siteoffline">Site offline</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="siteoffline" id="siteoffline" {if $s.siteoffline === "true"}checked{/if} value="true">
+        <div class="input_info">Turn the whole site in offline mode. The site will be available only for administrators.</div>
+    </div>
+</div>
+</fieldset>
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="registration">User registration</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="registration" id="registration" {if $s.user_registration === "true"}checked{/if} value="true">
+        <div class="input_info">Enable/disable user registration form.</div>
+    </div>
+</div>
+</fieldset>
+
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="vdupload">Upload videos</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="vdupload" id="vdupload" {if $s.allow_videoupload === "true"}checked{/if} value="true">
+        <div class="input_info">Close the possibility to upload video files.</div>
+    </div>
+</div>
+</fieldset>
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="aupload">Upload tracks</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="aupload" id="aupload" {if $s.allow_audioupload === "true"}checked{/if} value="true">
+        <div class="input_info">Close the possibility to upload audio files.</div>
+    </div>
+</div>
+</fieldset>
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="daccount">Deleteing account</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="daccount" id="daccount" {if $s.delete_user_account === "true"}checked{/if} value="true">
+        <div class="input_info">Allow users to delete their account.</div>
+    </div>
+</div>
+</fieldset>
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="finvite">Invite friends</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="finvite" id="finvite" {if $s.invite_friends === "true"}checked{/if} value="true">
+        <div class="input_info">Allow users to invite friends from other social networks.</div>
+    </div>
+</div>
+</fieldset>
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="cmenu">Collapsed menu</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="cmenu" id="cmenu" {if $s.collapsed_menu === "true"}checked{/if} value="true">
+        <div class="input_info">Define how to be the left menu as default, for checked will be collapsed.</div>
+    </div>
+</div>
+</fieldset>
+
+
+<fieldset>
+<div class="form-group">
+
+<label class="col-md-3" for="caccount">Private accounts</label>
+    <div class="col-md-5">
+	
+      <input  type="checkbox" name="caccount" id="caccount" {if $s.private_user_account === "true"}checked{/if} value="true">
+        <div class="input_info">Allow users to close their accounts; to make available only to their friends.<br/>!IMPORTANT. If you disable this function, then automatically all private users accounts will be available.</div>
+    </div>
+</div>
+</fieldset>
+
+
+		
+		        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+		
+
+</form>
+
+</div>
+
+{/strip}

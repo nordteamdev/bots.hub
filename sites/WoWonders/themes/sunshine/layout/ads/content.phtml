@@ -1,0 +1,154 @@
+<div class="row">
+	<div class="col-md-3">
+		<?php echo Wo_LoadPage('ads/includes/header'); ?>
+	</div>
+	<div class="col-md-9">
+		<div class="page-margin wowonder-well ads-cont-wrapper ads-cont-wrapper-home">
+			<h3 class="mt0"><?php echo $wo['lang']['my_campaigns']; ?></h3>
+			<?php if (count($wo['ads']) > 0): ?>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th><?php echo $wo['lang']['id']; ?></th>
+							<th><?php echo $wo['lang']['status']; ?></th>
+							<th><?php echo $wo['lang']['company']; ?></th>
+							<th><?php echo $wo['lang']['bidding']; ?></th>
+							<th><?php echo $wo['lang']['clicks']; ?></th>
+							<th><?php echo $wo['lang']['views']; ?></th>
+							<th><?php echo $wo['lang']['status']; ?></th>
+							<th><?php echo $wo['lang']['action']; ?></th>
+						</tr>
+					</thead>
+					<tbody id="user-ads">
+						<?php foreach ($wo['ads'] as $wo['ad']): ?>
+							<?php echo Wo_LoadPage('ads/includes/ads-list');?>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php else: ?>
+				<div class="sun_empty_state">
+					<svg height="130px" viewBox="0 -15 408 407" width="130px" xmlns="http://www.w3.org/2000/svg"><path d="m115.328125 352.5h-19.328125v-16h19.328125c6.996094-.007812 12.664063-5.675781 12.671875-12.671875v-19.328125h16v19.328125c-.019531 15.828125-12.84375 28.652344-28.671875 28.671875zm0 0" fill="#dbdbdb"/><path d="m84 376.5c-11.046875 0-20-8.953125-20-20v-52h40v52c0 11.046875-8.953125 20-20 20zm0 0" fill="#b6534f"/><path d="m368 .5h-328c-22.089844 0-40 17.910156-40 40v64c0 22.089844 17.910156 40 40 40h216v44.6875c0 3.234375 1.949219 6.152344 4.9375 7.390625s6.429688.554687 8.71875-1.734375l50.34375-50.34375h48c22.089844 0 40-17.910156 40-40v-64c0-22.089844-17.910156-40-40-40zm0 0" fill="#fbedbf"/><path d="m80 112.5-25.238281-18.9375c-4.257813-3.183594-6.761719-8.191406-6.761719-13.511719v-4.222656c.003906-5.851563 3.035156-11.289063 8.015625-14.363281 4.980469-3.078125 11.195313-3.355469 16.433594-.742188 4.753906 2.375 10.347656 2.375 15.101562 0 5.238281-2.613281 11.453125-2.335937 16.433594.742188 4.980469 3.074218 8.011719 8.511718 8.015625 14.363281v4.222656c0 5.320313-2.503906 10.328125-6.761719 13.511719zm0 0" fill="#ea6b65"/><path d="m232 112.5h-72v-56h16l16-24h24v24h24zm0 0" fill="#fdc9a6"/><path d="m328 32.5 17.144531 27.609375 22.855469 5.710937-17.144531 17.144532 5.710937 28.566406-28.566406-11.421875-28.566406 11.421875 5.710937-28.566406-17.144531-17.144532 22.855469-5.710937zm0 0" fill="#fbb540"/><path d="m68 224.5h20v88h-20c-24.300781 0-44-19.699219-44-44s19.699219-44 44-44zm0 0" fill="#e06661"/><path d="m88 224.5h43.769531c2.796875 0 5.574219-.488281 8.207031-1.449219l84.023438-30.550781v152l-84-30.550781c-2.636719-.960938-5.425781-1.453125-8.230469-1.449219h-43.769531zm0 0" fill="#ebebeb"/><path d="m241.6875 295.652344-17.6875 8.847656v-64l17.6875 8.847656c8.769531 4.382813 14.3125 13.347656 14.3125 23.152344s-5.542969 18.769531-14.3125 23.152344zm0 0" fill="#e06661"/><g fill="#a24a46"><path d="m64 312.5h40v16h-40zm0 0"/><path d="m240 248.5-16-8v64l16-8zm0 0"/></g></svg>
+					<h3><?php echo $wo['lang']['no_ads_found']; ?></h3>
+					<?php if ($wo['config']['user_ads'] == 1) { ?>
+						<a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>" class="btn btn-main"><?php echo $wo['lang']['create']; ?> <?php echo $wo['lang']['new']; ?></a>
+					<?php } ?>
+				</div>
+			<?php endif; ?>
+		</div>
+		<div class="col-md-12 col-lg-12 col-sm-12 col-sx-12">
+			<div class="posts_load">
+				<?php if (count($wo['ads']) > 0): ?>
+					<div class="load-more">
+						<button class="btn text-center load-more-ads wo_load_more">
+							<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></span> <?php echo $wo['lang']['load_more'] ?>
+						</button>
+					</div>
+				<?php endif ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade sun_modal" id="delete-ad">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <h4 class="modal-title"><?php echo $wo['lang']['delete_ad']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['confirm_delete_ad']; ?></p>
+         </div>
+         <div class="modal-footer">
+            <button  type="button" onclick="Wo_DeleteAd($('#delete-ad').attr('data-userad-id'))" class="btn  btn-main"><?php echo $wo['lang']['delete']; ?></button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$(document).on('click', '.delete-ad', function(event) {
+			var self = $(this);	
+			$("#delete-ad").attr('data-userad-id',self.attr('id')).modal("show");
+
+		});
+
+		$(document).on('click', '.toggle-user-ad-status', function(event) {
+			var self      = $(this);
+			var ad_id     = self.attr('id');
+			var ad_status = self.attr('data-status');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'ads',s:'ts',ad_id:ad_id,status:ad_status},
+			})
+			.done(function(data) {
+				if (data.status == 200) {
+					$("[data-ad-status='"+ad_id+"']").find('span').text(data.ad);
+					if (ad_status == 0) {
+						self.html('<label class="ads_switch checked" role="switch"><span class="switch__label"></span></label>');
+						self.attr('data-status',1);
+					}
+					else{
+						self.html('<label class="ads_switch" role="switch"><span class="switch__label"></span></label>');
+						self.attr('data-status',0);
+					}
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+		
+		});
+
+		$(".load-more-ads").click(function(event) {
+			var last_ad = ($("tr[data-ad-id]").length > 0) ? $("tr[data-ad-id]").last().attr('data-ad-id') : 0;
+			var self    = $(this);
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'ads',s:'lm',ad_id:last_ad},
+			})
+			.done(function(data) {
+				if (data.status == 200) {
+					$("#user-ads").append(data.html);
+				}
+				else if(data.status == 404){
+					self.removeClass('load-more-ads').html(data.html);
+				}
+				else{
+					self.remove();
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			
+		});
+	});
+
+	function Wo_DeleteAd(id){
+		if (id && id > 0) {
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'wallet',s:'remove',id:id},
+			})
+			.done(function(data) {
+				if (data.status == 200) {
+					$("tr[data-ad-id="+id+"]").slideUp(function(){
+						$(this).remove();
+					})
+					$("#delete-ad").modal("hide");
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+		}
+	}
+</script>

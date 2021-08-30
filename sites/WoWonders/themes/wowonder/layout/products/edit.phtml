@@ -1,0 +1,238 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">
+			<h3 class="wo_create_form_cover product">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+				<?php echo $wo['lang']['edit_product'];?>
+				<span class="<?php echo Wo_RightToLeft('pull-right');?>">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=my-products'); ?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg><?php echo $wo['lang']['my_products'];?>
+					</a>
+				</span>
+				<div class="clear"></div>
+			</h3>
+			
+			<div class="wo_settings_page">
+				<form class="create-album-form form-horizontal" method="post">
+					<div class="setting-panel row">
+						<!-- Text input-->
+						<div class="form-group col-lg-8">
+							<label class="col-md-12" for="name"><?php echo $wo['lang']['name'] ?> *</label>  
+							<div class="col-md-12">
+								<input id="album_name" name="name" type="text" class="form-control input-md" value="<?php echo $wo['product']['name']?>">
+							</div>
+						</div>
+						<div class="form-group col-lg-4">
+							<label class="col-md-12" for="price"><?php echo $wo['lang']['price'] ?> *</label>  
+							<div class="col-md-12">
+								<input id="price" name="price" type="text" class="form-control input-md" value="<?php echo $wo['product']['price']?>">
+							</div>
+						</div>
+						<div class="form-group col-lg-8">
+							<label class="col-md-12" for="category"><?php echo $wo['lang']['category'] ?> *</label>  
+							<div class="col-md-12">
+								<select class="form-control" name="category">
+									<?php 
+										foreach ($wo['products_categories'] as $key => $category) {
+											$selected = ($key == $wo['product']['category']) ? 'selected' : '';
+											if ($key > 0) {
+									?>
+										<option value="<?php echo $key;?>" <?php echo $selected?>><?php echo $category;?></option>
+									<?php } } ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-lg-4">
+							<label class="col-md-12" for="type"><?php echo $wo['lang']['type'] ?> *</label>  
+							<div class="col-md-12">
+								<select class="form-control" name="type">
+									<option value="0" <?php echo ($wo['product']['type'] == 0) ? 'selected' : '';?>><?php echo $wo['lang']['new'] ?></option>
+									<option value="1" <?php echo ($wo['product']['type'] == 1) ? 'selected' : '';?>><?php echo $wo['lang']['used'] ?></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-lg-8">
+							<label class="col-md-12" for="location"><?php echo $wo['lang']['location'] ?> *</label>  
+							<div class="col-md-12">
+								<input id="address" name="location" type="text" class="form-control input-md" value="<?php echo $wo['product']['location']?>">
+							</div>
+						</div>
+						<div class="form-group col-lg-4">
+							<label class="col-md-12" for="price"><?php echo $wo['lang']['currency'] ?> *</label>  
+							<div class="col-md-12">
+								<select name="currency" id="currency" class="form-control">
+									<?php foreach ($wo['currencies'] as $key => $currency) { ?>
+										<option value="<?php echo $key; ?>" <?php echo ($wo['product']['currency'] == $key) ? 'selected' : ''; ?>><?php echo  $currency['text'] ?> (<?php echo  $currency['symbol'] ?>)</option>
+									<?php } ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="description"><?php echo $wo['lang']['description'] ?> *</label>  
+							<div class="col-md-12">
+								<textarea class="form-control" name="description" rows="5"><?php echo $wo['product']['edit_description']?></textarea>
+								<span class="help-block"><?php echo $wo['lang']['please_describe_your_product'] ?>.</span>	
+							</div>
+						</div>
+						<input type="hidden" name="product_id" value="<?php echo $wo['product']['id'];?>">
+						
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="photos"><?php echo $wo['lang']['photos'];?> *</label>
+							<div class="upload-product-image <?php echo Wo_RightToLeft('pull-left');?>" onclick="document.getElementById('publisher-photos').click(); return false">
+								<div class="upload-image-content">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+								</div>
+							</div>
+							<div style="overflow-x: auto;width: calc(100% - 112px);">
+								<div id="productimage-holder"></div>
+							</div>
+							<div class="input-group hidden">
+								<span class="btn btn-default btn-file">
+									<i class="fa fa-camera" ></i><input type="file" id="publisher-photos" accept="image/x-png, image/gif, image/jpeg" name="postPhotos[]" multiple="multiple">
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group hidden" id="photo-form">
+							<label class="col-md-3"></label>  
+							<div class="col-md-6">
+								<input type="text" class="form-control input-md" readonly>
+							</div>
+						</div>
+						<div class="publisher-hidden-option">
+							<div id="progress">
+								<span id="percent">0%</span>
+								<div class="progress">
+									<div id="bar" class="progress-bar progress-bar-striped active"></div> 
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="app-general-alert setting-update-alert"></div>
+
+					<input type="hidden" name="id" class="form-control input-md" value="">
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+					
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 
+							<?php echo $wo['lang']['save'] ?>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#publisher-photos").on('change', function() {
+	//Get count of selected files
+	var product_countFiles = $(this)[0].files.length;
+	var product_imgPath = $(this)[0].value;
+	var extn = product_imgPath.substring(product_imgPath.lastIndexOf('.') + 1).toLowerCase();
+	var product_image_holder = $("#productimage-holder");
+	product_image_holder.empty();
+	if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+		if (typeof(FileReader) != "undefined") {
+		//loop for each file selected for uploaded.
+		for (var i = 0; i < product_countFiles; i++) 
+		{
+			var product_reader = new FileReader();
+			product_reader.onload = function(e) {
+				$("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                  }).appendTo(product_image_holder);
+                }
+                product_image_holder.show();
+                product_reader.readAsDataURL($(this)[0].files[i]);
+              }
+            } else {
+              product_image_holder.html("<p>This browser does not support FileReader.</p>");
+            }
+         }
+	});
+});
+
+   $(function() {
+   	$("#publisher-photos").change(function () {
+        var numFiles = this.files.length;
+        $("#photo-form input").val(numFiles + ' photo(s) selected');
+        $("#photo-form").slideDown(200);
+    });
+    var bar = $('#bar');
+    var percent = $('#percent');
+    var status = $('#status');
+    var publisher_button = $('#publisher-button');
+     $('form.create-album-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=products&s=edit',
+       beforeSend: function() {
+         var percentVal = '0%';
+         bar.width(percentVal);
+         percent.html(percentVal);
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+       },
+       uploadProgress: function (event, position, total, percentComplete) {
+           var percentVal = percentComplete + '%';
+           bar.width(percentVal);
+           $('#progress').slideDown(200);
+           if(percentComplete > 50) {
+             percent.addClass('white');
+           }
+           percent.html(percentVal);
+      },
+       success: function(data) {
+         if (data.status == 200) {
+           window.location.href = data.href;
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.app-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+       }
+     });
+   });
+  var pac_input = document.getElementById('address');
+  (function pacSelectFirst(input) {
+    // store the original event binding function
+    var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+    function addEventListenerWrapper(type, listener) {
+      // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+      // and then trigger the original listener.
+      if(type == "keydown") {
+        var orig_listener = listener;
+        listener = function (event) {
+          var suggestion_selected = $(".pac-item-selected").length > 0;
+          if(event.which == 13 && !suggestion_selected) {
+            var simulated_downarrow = $.Event("keydown", {
+              keyCode: 40,
+              which: 40
+            });
+            orig_listener.apply(input, [simulated_downarrow]);
+          }
+          orig_listener.apply(input, [event]);
+        };
+      }
+      // add the modified listener
+      _addEventListener.apply(input, [type, listener]);
+    }
+    if(input.addEventListener)
+      input.addEventListener = addEventListenerWrapper;
+    else if(input.attachEvent)
+      input.attachEvent = addEventListenerWrapper;
+  })(pac_input);
+
+  $(function () {
+     var autocomplete = new google.maps.places.Autocomplete(pac_input);
+  });
+</script>

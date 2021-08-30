@@ -1,0 +1,484 @@
+{strip}
+{assign var="u_uname_header" value="1"}
+{assign var="mutual_friends" value=$this->getMutualFriends($user.id)}
+{assign var="_friends" value=$this->getUserFriends($user.id)}
+{assign var="_friends_count" value=$this->friendsCount($user.id)}
+{assign var="_photo_albums" value=$this->getUserPhotoAlbums($user.id)}
+{assign var="_videos" value=$this->getUserVideos($user.id)}
+{assign var="_tracks" value=$this->getUserTracks($user.id,5)}
+{assign var="relative_friends" value=$this->getUserRelativeFriends($user.id,6)}
+{assign var="user_relative_friends_count" value=$this->friendRelationship('relative',$user.id,1)}
+{assign var="user_photos_count" value=$this->userPhotosCount($user['id'],'all')}
+{assign var="user_posts_count" value=$this->postsCount($user.id)}
+{assign var="user_groups_count" value=$this->userGroupsCount($user.id)}
+{assign var="user_friends_count" value=$this->friendsCount($user.id)}
+{assign var="user_apps_count" value=$this->userAppsCount($user.id)}
+{assign var="user_gifts_count" value=$this->getUserGiftsCount($user.id,'')}
+{assign var="ad" value=$this->getAdMarkup('profile')}
+{assign var="user_is_online" value=$this->getUserStatus($user.id)}
+
+{assign var="books" value=$this->getUserBooks($user.id)}
+{assign var="movies" value=$this->getUserMovies($user.id)}
+
+
+
+
+{assign var=clubid value=0}
+
+<input type="hidden" id="wprofileid" value="{$user.id}"/>
+<div data-headername="{$user.fullname}" data-backhref="/user/{$user.id}" id="modifyheader"></div>
+<div class="__none" id="user-profile-view"></div>
+{if $this->USER['id'] === $user['id']}<div class="__none" id="_wall_itsme"></div>{/if}
+
+
+<div id="profile_user_homepage">
+{include file={$_usermenu}}
+
+
+<section class="p_redesign_v1-1-5">
+
+
+<div class="two_gaps_col">
+
+<div class="gap_item _wall">
+ <div class="user_profile_v115_filter">
+
+<span class="user_profile_v115_filter_a_title">{$this->lang['Wall']}&nbsp;<span class="navMenuCount">({$this->userFeedCount($user.id)})</span></span>
+
+</div>
+<!--
+<div class="user_profile_v115_filter">
+
+<span class="user_profile_v115_filter_a soh-s" hrefattr="true" href="/profile?q=1&amp;cmd=settings&amp;tab=basic-info&amp;nav=settings">Most recent<i class="icofont icofont-caret-down">&#xeb25;</i>
+
+<div class="user_profile_v115_filter_dropdown user_more_act foh-s textleft">
+
+<div class="U_more_tab"><a href="javascript:void(0);">Liked</a></div>
+<div class="U_more_tab"><a href="javascript:void(0);">Shared</a></div>
+</div>
+
+</span>
+
+</div>
+-->
+
+		<section id="hook_feed_wl_pg" data-feed-etp="1" data-uprofile="{$user.id}" class="u_prof_redesign_feed profileu"></section>
+		<div class="link-show-more private loader-controls" id="uprofile_load_more_btn" onclick="return plusNFeed(this,event);" style="display: block;">{$this->lang['Load_more']}</div>
+
+</div>
+
+ <div class="gap_i_divider"></div>
+ 
+ 
+<div class="gap_item _about">
+
+
+
+{if $this->USER['id'] !== $user.id}
+<div class="mt--10">
+
+<a id="return_to_blacklist_pg" style="display:none;" href="/profile?q={$this->USER['id']}&cmd=settings&tab=blacklist&nav=settings" hrefattr="true"></a>
+		
+		
+
+		<div class="v115-redesign-btnm">
+		{if $this->frReqViewProf($user.id)}
+		<button class="flat_button button_wide secondary" id="unjoin_button_1">{$user['name']} wants to become friends with you</button>
+		{else if $this->pendingFriendReq($user['id']) && !$this->isfriend($user.id)}
+		<button class="flat_button button_wide secondary __request_sent"><i class="icofont icofont-send-mail">&#xf0c5;</i>{$this->lang['friend_request_has_been_sent']}</button>
+		
+		{else if $this->USER['id'] !== $user['id'] && $this->isfriend($user.id)}
+		<button data-friend-btn="add_friend_btn_sub_photo" class="flat_button button_wide secondary indicate-relationship" data-usnf='{ldelim}"uid":"{$user.id}","ufn":"{$user.name}","gender":"{$user.gender}","relationship":"{$this->getUserRelationShip($user['id'])}"{rdelim}' id="action_menu_set_relationship_a" href="/user/{$user['id']}" hrefattr="true"><i class="icofont icofont-ui-user">&#xed6c;</i>{$this->lang['inidicate_friends_relationship']}</button>
+		
+		
+		
+		{else}
+		<button class="flat_button button_wide _send_request" href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$user['id']}" onclick="addFriend(this,event,'{b_encode($user['id'])}')" title="{$this->lang['friend_request']}" data-friend-btn="add_friend_btn_sub_photo"><i class="join_to_group_ic"></i>{$this->lang['friend_request']}</button>
+		
+		
+		
+		{/if}
+		</div>
+		
+		
+		<div class="v115-redesign-btnm">
+		
+		<button class="flat_button button_wide _send_message" onclick="return new_chat_window(this,event);" id="y-{$user.id}" data-uch='{ldelim}"id":"{$user.id}","fullname":"{$user.fullname}","photo":"{$user.profile_photo}"{rdelim}'><i class="icofont icofont-chat">&#xefaa;</i>{$this->lang['send_message']}</button>
+		<a class="flat_button button_wide secondary __send_gift" hrefattr="true" href="/gifts/u/{$user.id}"><i class="icofont icofont-gift">&#xf010;</i></a>
+	
+		<div class="soh-s fl_r">
+		
+			<div class="profile-v115-more-bg">
+			<div class="profile-v115-more"></div>
+			</div>
+			
+			
+
+			
+				<section class="user_more_act foh-s">
+					
+ 
+
+							  <ul>
+
+								
+								{if !$this->checkUserBlacklisted($user.id)}
+								<li class="u_footer U_more_tab"><a href="javascript:;" onclick="event.preventDefault();event.stopPropagation();toBlackList(this,'profile_blacklist','{$user.id}');return false;"><span class="tico"><i class="tico_img ic ic_block"></i>{$this->lang['Block_the_user']}</span></a></li>
+								{else}
+								<a id="unblock_this_user" style="display:none;" href="/profile?q={$user.id}&unblock=1" hrefattr="true"></a> 
+								<li class="u_footer U_more_tab"><a href="javascript:;" data-unblockui="{$user.id}" onclick="removeBlackList(event,this,function(){ setTimeout(function(){ ga('#unblock_this_user').trigger('click'); },500); });"><span class="tico"><i class="tico_img ic ic_block-off"></i>{$this->lang['Unblock']}</span></a></li>
+								{/if}
+								
+								{if $this->checkInBookmarks($user.id,'user')}
+								<li class="u_footer U_more_tab"><div class="u_profile_bookmarked"><a href="/bookmarks?categ=users" data-scrolltop="410" hrefattr="true"><span class="tico"><i class="tico_img ic ic-ok"></i>{$this->lang['is_in_your_bookmarks']}</span></a></div></li>
+								{else}
+								<li class="u_footer U_more_tab"><a href="javascript:;" data-bookmark='{ldelim}"categ":"user","itemid":"{$user.id}"{rdelim}' onclick="return bookmarkthis(this,event);"><span class="tico"><i class="tico_img ic ic_bookmark-g"></i>{$this->lang['Bookmark']}</span></a></li>
+								{/if}
+							   {if $this->isfriend($user.id)}
+							   <li class="u_footer U_more_tab" id="action_menu_sub_action_menu_delete_friend"><a class="u-menu_a" id="action_menu_sub_action_menu_delete_friend_a" href="/profile?q={$user['id']}" onclick="return deleteFriend(this,event);" data-fid="f_{$user.id}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_delete"></i>{$this->lang['Unfriend']}</span></a></li>
+							   {/if}
+								<li class="u_footer U_more_tab"><a href="javascript:;" onclick='var _thissobj = {ldelim}"uid":"{$this->USER.id}","id":"{$user.id}","type":"user"{rdelim}; return windowsPopup("report",_thissobj);'><span class="tico"><i class="tico_img ic ic_warn"></i>{$this->lang['report']}</span></a></li>
+							  </ul>
+          
+					
+					
+					
+				</section>
+		</div>
+
+
+
+		
+		
+		</div>
+		
+		
+		
+ 
+	
+</div>
+
+{/if}
+
+
+ 
+
+				<div class="v115-redesign-prof-col">
+				
+					<!--<div class="header-name-rprof">{$this->lang['About']}</div>-->
+				
+					<div class="v115-red-prof-cont">
+					
+					
+						<div class="red_prof_intro">
+						<div class="red_prof_intro_name">{$user['fullname']}</div>
+						{if !$user_is_online}<div id="profile_time_lv">last seen {$this->time_elapsed($user['online'])}<b class="mob_onl profile_mob_onl"></b></div>{else}<div id="profile_time_lv"><span class="ic-online"></span></div>{/if}
+						
+						
+									<div class="profile_add_text_post">
+									{if $this->USER.id == $user.id}
+									<a href="javascript:void(0);" class="profile_add_text_post_msg_a" onclick="profile_add_text_status(this,event);">
+									{/if}
+
+									{if !empty(trim($user.text_post))} 
+									<div class="ic_status_msg_div">
+									<div class="ic_status_msg"></div>
+									</div>
+									<div class="status_msg_txt">{$this->str_smilies($user.text_post)}</div>
+									{else if $this->USER.id == $user.id && empty(trim($user.text_post))}
+									<div class="ic_status_msg_div">
+									<div class="ic_status_msg"></div>
+									</div>
+									{$this->lang['profile_leave_status_msg']} 
+									{/if}
+
+									{if $this->USER.id == $user.id}</a>{/if}
+
+									</div>
+						</div>
+					
+						<ul class="uinfoabout-top">
+						
+							
+ 
+							<li class="u_info_about"><span><i class="icofont icofont-location-pin">&#xf051;</i></span><span class="u_info_about_str"><span rel="getusercountry" id="buser_{$user.id}"></span></span></li>
+
+
+
+							{if $user.privacy_age === 'only_me' && $user.id === $this->USER['id']}
+							<li class="u_info_about">
+							<span><i class="icofont icofont-gift">&#xf010;</i></span><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+
+							{else if $user.privacy_age === 'friends' && $this->isfriend($user.id)}
+						    <li class="u_info_about">
+							<span><i class="icofont icofont-gift">&#xf010;</i></span><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+							
+							{else if $user.privacy_age === 'everyone'}
+						    <li class="u_info_about">
+							<span><i class="icofont icofont-gift">&#xf010;</i></span><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></span>
+							</li>
+							{/if}
+
+
+
+
+
+
+ 
+						
+						
+						</ul>
+					
+					</div>
+				
+				</div>
+				
+				{if $_friends_count}
+				<div class="v115-redesign-prof-col">
+
+						<div class="header-name-rprof">
+						<a data-navact="friends" href="/profile?q={$user.id}&cmd=friends&nav=friends" hrefattr="true">{$_friends_count} {if $_friends_count > 1}{$this->lang['friends']}{else}{$this->lang['friend']}{/if}</a>
+						{if count($mutual_friends[1]) && $mutual_friends[0]}
+						<span class="mutual_friends_title">({$mutual_friends[0]} {if $mutual_friends[0] > 1}{$this->lang['mutual_friends']}{else}{$this->lang['mutual_friend']}{/if})</span>
+						
+						{/if}
+						
+						
+						
+						</div>
+						
+						
+						<div class="v115-red-prof-cont">
+						
+						<ul class="mutual_friends_list">
+								{foreach $_friends as $f}
+								<li class="m_friend_pr"  title="{$f.fullname}" rel="tipsy"><a class="mut_fr_hv" href="/user/{$f.id}" hrefattr="true"><div class="u_prof_aa_avt"><img src="/getPhoto?p={$f.photo}&g={$f.gender}&sz=small" class="u_ph_mutu"></div><div class="u_mutt_friend_name ellip">{$f.name}&nbsp;{$f.surname}</div></a></li>
+								{/foreach}
+						</ul>
+						
+						</div>
+						
+						
+				</div>
+				{/if}
+				
+				
+				{if $user_photos_count}
+				<div class="v115-redesign-prof-col">
+				
+					<div class="header-name-rprof">
+					<a href="/photos/{$user['id']}" data-navact="photos" hrefattr="true">{$user_photos_count}{if $user_photos_count > 1} {$this->lang['photos']} {else} {$this->lang['photo']}{/if}
+					</a>
+					 
+					</div>
+				
+				
+				
+					<div class="v115-red-prof-cont uslider">
+					<ul class="uslider_cnt uprof_photos_ul">
+					{assign var=w_photos value=$this->getProfileTopPhotos($user.id)}
+						{foreach $w_photos as $photo}
+						<li class="uprof-details-photos">
+						<a class="image-hover" href="/photo?q={$user.id}&show=profileWall&from=medium&o={b_encode($photo.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($photo.id)}">
+					    <img src="/getPhoto?p={$photo.id}&sz=thumb&g={$user.gender}" /> 
+						</a>
+						</li>
+						{/foreach}
+						
+						{if $user_photos_count > 10}
+						<li class="uprof-details-photos">
+						<a href="/photos/{$user['id']}" data-scrolltop="400" hrefattr="true">
+					    <div class="uprof_newv115_more_pictures">{str_replace('%count_p', ($user_photos_count - count($w_photos)), $this->lang['profile_view_more_pictures'])}</div>
+						</a>
+						</li>
+						{/if}
+					</ul>
+					<div class="uslider_ctrl __next" onclick="return feedFilterSlide(this,'forward');"></div>
+					<div class="uslider_ctrl __prev hidden" onclick="return feedFilterSlide(this,'back');"></div>
+					</div>
+					
+					
+					
+				</div>
+				{/if}
+				
+				
+				{if count($_tracks)}
+				<div class="v115-redesign-prof-col">
+				
+					<div class="header-name-rprof">
+					{$_tracks.0.tr_count} {if $_tracks.0.tr_count > 1}{$this->lang['tracks']}{else}{$this->lang['track']}{/if}
+					 
+					</div>
+				
+				
+				
+					<div class="v115-red-prof-cont">
+					<div class="p16">
+					{foreach $_tracks as $tr}
+  
+								<div class="track js-track soh-s ">
+									<div class="track_hld "><span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$tr.filename}","cover":"{$tr.cover}","artist":"{$tr.artist}","songname":"{$tr.title}","albumname":"{$tr.album}"{rdelim}' title="Play" id="{$user.id}_{$tr.id}" class="track_play __play js-track_play __mus_out"></span>
+										<div class="track_cnt "><a class="track_artist" onclick="nobilMusicSearch('{$tr.artist}')">{$tr.artist}</a>&nbsp;–&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$tr.title}')">{$tr.title}</a><span class="foh-s track_info"> <span class="m_From_alb">{$this->lang['mus_from_album']}</span> <a class="track_album" onclick="nobilMusicSearch('{$tr.album}')">{$tr.album}</a></span>
+										<div class="Track_time">{$tr.time}</div>
+										</div>
+										<div class="track_ac foh-s" id="{$user.id}_{$tr.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['mus_add_to_my_music']}" class="track_add js-track_add "></span></div>
+									</div>
+								</div>
+								
+					{/foreach}
+					
+					</div>
+					</div>
+				
+				
+				
+				
+				</div>
+				{/if}
+				
+				
+				{if count($_videos)}
+				<div class="v115-redesign-prof-col">
+				
+					<div class="header-name-rprof">{$_videos.0.vd_count} {if $_videos.0.vd_count > 1}{$this->lang['videos']}{else}{$this->lang['video']}{/if}</div>
+				
+					<div class="v115-red-prof-cont">
+					<ul class="videos_us_ul">
+						{foreach $_videos as $vd}
+						<li class="profile_redesign_video_item" title="{$vd.title}">
+						<a href="/video?vid={$vd.id}&cmd=open&userplaylist=1" data-ivideo="1">
+
+						<div class="vd_hpf_cover" style="background-image: url(/videoCover?v={$vd.id});"></div>
+						<i class="vid-card_duration">{$vd.dur}</i>
+						<i class="vid_play _m"></i>
+						<div class="album_bottom_ovr_title"><div class="album_bt_ovr_cnt"><span class="ellip alb_name_vvd">{$vd.title}</span></div></div></a></li>
+						{/foreach}
+					</ul>
+					</div>
+					
+					
+					
+				</div>
+				{/if}
+				
+				{if $books[0] > 0}
+				<div class="v115-redesign-prof-col">
+				<div class="hidden" id="feed-slider"></div>
+					<div class="header-name-rprof"><A href="/books/{$user.id}" hrefattr="true">{$books[0]} {if $books[0] > 1}{$this->lang['books']}{else}{$this->lang['book']}{/if}</a>
+					
+					
+					
+					
+					
+					<span class="soh-s relative"><a href="javascript:return false;" class="uprofile-redesign-media-add">{$this->lang['add_books']}</a>
+					
+					
+						<div class="profile-select-media-dropdown nano foh-s absolute">
+								<div class="nano-content"><div class="input_serch_ic">
+								<input type="text" class="uprof-search-media-inp" rel="input_search_books" search-callback="profileAddBooks" placeholder="ex. Borthers Grimm" value="" />
+								<i class="div-loader input-ic-loader __none"></i></div>
+								<ul id="books_list"></ul></div>
+						</div>
+					
+					
+					</span>
+					
+					
+					
+					
+					
+					
+					
+					</div>
+				
+					<div class="v115-red-prof-cont uslider __active">
+					<ul class="books_ul uslider_cnt _books">
+						{foreach $books[1] as $book}
+						<li class="prof_book_item">
+						<a href="/page/book/{$book.page_id}/" hrefattr="true">
+								<div class="book_cover" style="background-image:url(/bookGetPoster.php?p={urlencode($book.book_cover)})">
+								
+								</div>
+								<div class="book_title">{$book.book_title}</div>
+						
+						</a></li>
+						{/foreach}
+					</ul>
+					<div class="uslider_ctrl __next" onclick="return feedFilterSlide(this,'forward');"></div>
+					<div class="uslider_ctrl __prev hidden" onclick="return feedFilterSlide(this,'back');"></div>
+					</div>
+					
+					
+					
+				</div>
+				{/if}
+				
+				{if $movies[0] > 0}
+				<div class="v115-redesign-prof-col">
+				<div class="hidden" id="feed-slider"></div>
+					<div class="header-name-rprof"><A href="/movies/{$user.id}" hrefattr="true">{$movies[0]} {if $movies[0] > 1}{$this->lang['movies']}{else}{$this->lang['movie']}{/if}</a>
+					
+					
+					<span class="soh-s relative"><a href="javascript:return false;" class="uprofile-redesign-media-add">{$this->lang['add_movies']}</a>
+					
+					
+						<div class="profile-select-media-dropdown nano foh-s absolute">
+								<div class="nano-content"><div class="input_serch_ic">
+								<input type="text" class="uprof-search-media-inp" rel="input_search_movies" search-callback="profileAddMovies" placeholder="ex. 12 Angry Men" value="" />
+								<i class="div-loader input-ic-loader __none"></i></div>
+								<ul id="movie_list"></ul></div>
+						</div>
+					
+					
+					</span>
+					
+					
+					
+					
+					
+					
+					
+					</div>
+
+					<div class="v115-red-prof-cont uslider __active">
+					<ul class="books_ul uslider_cnt _movies">
+						{foreach $movies[1] as $movie}
+						<li class="prof_movie_item">
+						<a href="/page/movie/{$movie.page_id}/" hrefattr="true">
+								<div class="movie_cover" style="background-image:url(/movieGetPoster?p={urlencode($movie.movie_cover)})">
+								
+								</div>
+								<div class="movie_title">{$movie.movie_title}</div>
+						
+						</a></li>
+						{/foreach}
+					</ul>
+					<div class="uslider_ctrl __next" onclick="return feedFilterSlide(this,'forward');"></div>
+					<div class="uslider_ctrl __prev hidden" onclick="return feedFilterSlide(this,'back');"></div>
+					</div>
+					
+					
+					
+				</div>
+				{/if}	
+		
+				
+				
+				
+				
+				
+</div>
+ 
+
+</div>
+
+
+</section>
+ 
+ </div>
+
+{/strip}
+

@@ -1,0 +1,48 @@
+<?php if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])): ?>
+<ul class="list-group" id="sidebar-following-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['more_info']; ?></li>
+	<li class="list-group-item text-muted widget-heading" contenteditable="false">
+		<span onclick="Wo_GetFollowing(<?php echo $wo['user_profile']['user_id']?>);" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+			<i class="fa fa-refresh progress-icon" data-icon="refresh"></i>
+		</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" style="background:#009da0;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=following');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=following" class="pointer">
+         <?php echo $wo['lang']['following'];?></a>
+		 <h5><?php echo $wo['user_profile']['details']['following_count'];?></h5>
+	</li>
+	<li>
+		<div class="sidebar-following-users-container">
+            <?php
+            foreach (Wo_GetFollowing($wo['user_profile']['user_id'], 'profile', 9 , 0, array('in' => 'profile_sidebar', 'following_data' => $wo['user_profile']['following_data'])) as $wo['UsersList']) {
+               $wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+               echo Wo_LoadPage('sidebar/profile-sidebar-user-list');
+            } 
+            ?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>
+<ul class="list-group" id="sidebar-followers-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['more_info']; ?></li>
+	<li class="list-group-item text-muted widget-heading" contenteditable="false">
+		<span onclick="Wo_GetFollowers(<?php echo $wo['user_profile']['user_id']?>);" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+			<i class="fa fa-refresh progress-icon" data-icon="refresh"></i>
+		</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" style="background:#8d73cc;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers">
+         <?php echo $wo['lang']['followers'];?></a>
+		 <h5><?php echo $wo['user_profile']['details']['followers_count'];?></h5>
+	</li>
+	<li>
+		<div class="sidebar-followers-users-container">
+            <?php 
+            foreach (Wo_GetFollowers($wo['user_profile']['user_id'],'profile',9 , 0, array('in' => 'profile_sidebar', 'followers_data' => $wo['user_profile']['followers_data'])) as $wo['UsersList']) {
+               $wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+               echo Wo_LoadPage('sidebar/profile-sidebar-user-list');
+             } 
+             ?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>
+<?php endif; ?>

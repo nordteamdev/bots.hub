@@ -1,0 +1,176 @@
+{strip}
+{if $user.profile_photo > 0}
+{assign var=user_avatar value="/getPhoto?p={$user.profile_photo}&sz=large"}
+{else}
+{assign var=user_avatar value="{$this->settings['HOST']}{$smarty.const.__TRANS_BG}"}
+{/if}
+{assign var=connecting value="yes"}
+{include "{$this->theme_dir}/messenger/calls-header.html"}
+
+
+
+{if $call_type == 'video'}
+<video autoplay id="recipient-video-element"></video>
+<video autoplay id="my-video-element"></video>
+{else}
+<audio autoplay id="recipient-audio-element"></audio>
+<audio autoplay id="my-audio-element"></audio>
+{/if}
+
+ 
+</div>
+
+<script>
+var recipientId = '{$user.id}';
+var recipient_name = '{$user.fullname}';
+var my_id = '{$this->USER.id}';
+var my_name = '{$this->USER.fullname}';
+var avatar = '{$this->USER.profile_photo}';
+var set_media = {$type};
+var call_type = '{$call_type}';
+var _close = '{$close}';
+{literal}
+
+var localStream;
+var my_media_element = call_type == 'video' ? $('#my-video-element') : $('#my-audio-element');
+var recipient_media_element = call_type == 'video' ? $('#recipient-video-element') : $('#recipient-audio-element');
+
+var end_time;
+ 
+
+$(document).ready(function() {
+
+
+if(_close == 'yes')
+	return window.close();
+	
+ 
+	
+var timer = new Timer();
+   // Get audio/video stream
+    navigator.mediaDevices.getUserMedia(set_media).then(stream => {
+	
+        // Set my audio/video displays
+		my_media_element.srcObject = stream;
+		
+        window.localStream = stream;
+        // step2();
+    }, function(err) {
+ 
+		$('#my-video-element').replaceWith('<div id="calling-my-video-err">'+err+'</div>');
+		socket.emit("call_unavailable_stream", recipientId);
+    });
+ 
+    function receiveNotificationsFromRecipient(){
+		
+		
+		
+		// recipient hang up the call
+		socket.on("call_finished", function(uid){ 
+			if(uid != my_id) return;
+ 
+			callEnded();
+		});
+
+		
+		
+	}
+ 
+
+
+	redial = function(){
+		
+		window.location = '/messenger?view_as=json&cmd=call&action=call&type='+call_type+'&userid='+recipientId;
+	
+	}
+    callEnded = function() {  
+
+        if(existingCall) existingCall.close();
+		socket.emit("call_finished", recipientId);
+        $('#hangup').addClass('__none');
+        $('#redial').removeClass('__none');
+		$('#important').removeClass('connected');
+		$('#recipient-video-element').removeAttr('src');
+		setTimeout(function(){
+
+		timer.stop();
+		$('#calling_status').text(lang.call_ended);
+		if(end_time)
+			$('#end-time').text(end_time);
+		},1000);
+    }
+    hangUpCall = function() {
+
+        callEnded();
+        setTimeout(function(){window.close();},1500);
+ 
+    };
+ 
+			function startTimer(){
+			
+			timer.start();
+			timer.addEventListener('secondsUpdated', function (e) {
+				$('#calling_status').text(timer.getTimeValues().toString());
+				document.title=timer.getTimeValues().toString();
+				end_time = timer.getTimeValues().toString();
+			});
+			
+			}
+    function createAnswer(call) {
+
+		
+		
+        // Wait for stream on the call, then set peer video display
+        call.on('stream', function(stream) {
+		
+		
+
+			
+			
+            $('#important').addClass('connected');
+ 
+			
+            setTimeout(function(){
+			
+			
+					  
+					  recipient_media_element[0].srcObject = stream;
+					  recipient_media_element[0].onloadedmetadata = function(e) {
+						socket.emit("call_started", recipientId);
+						startTimer();
+					  };
+			 
+				
+				
+			
+			},100);
+        });
+        // UI stuff
+        call.on('close', callEnded);
+
+
+    }
+
+
+	
+	
+	
+	call.answer(localStream);
+	createAnswer(call);
+	// answer notification
+	socket.emit("call_answered", recipientId);
+	receiveNotificationsFromRecipient();
+	
+	
+});
+
+{/literal}
+
+</script>
+
+
+
+
+
+ 
+{/strip}

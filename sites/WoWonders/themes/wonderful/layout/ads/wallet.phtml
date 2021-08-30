@@ -1,0 +1,204 @@
+<?php echo Wo_LoadPage('ads/includes/header'); ?>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<div class="list-group wo_ads_wallet">
+	<?php if (isset($wo['replenishment_notif'])): ?>
+		<div class="col-md-12" id="replenish-user-account-alert">
+			<div class="alert alert-success">
+				<i class="fa fa-check" aria-hidden="true"></i>
+				<?php echo $wo['replenishment_notif'];?>
+			</div>
+		</div>
+	<?php endif; ?>
+	
+	<div class="col-md-12" id="replenish-user-account-alert-warning"></div>
+	
+	<div class="col-sm-6 col-md-6 my_wallet text-center"> 
+		<div class="form-group w100">
+			<svg xmlns="http://www.w3.org/2000/svg" class="feather feather-wallet" width="24" height="24" viewBox="0 0 24 24" fill="#77442B"><path d="M21,18V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5V6H12C10.89,6 10,6.9 10,8V16A2,2 0 0,0 12,18M12,16H22V8H12M16,13.5A1.5,1.5 0 0,1 14.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,12A1.5,1.5 0 0,1 16,13.5Z" /></svg>
+			<div class="col-md-12">
+				<label class="col-md-12 bold"><?php echo $wo['lang']['my_balance'];?></label>
+				<h5>
+					<span><?php echo Wo_GetCurrency($wo['config']['ads_currency']); ?></span>
+					<b><?php echo sprintf('%.2f',$wo['user']['wallet']);?></b>
+				</h5>
+			</div>
+    	</div>
+    	<div class="w100">
+    		<label class="col-md-12"></label>
+			<div class="col-md-12">
+				<button data-toggle="modal" data-target="#send_money_modal" class="btn btn-default">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg> 
+					<?php echo $wo['lang']['send_money'];?>
+				</button>
+			</div>
+    	</div>
+	</div>
+  
+	<div class="col-sm-6 col-md-6 text-center">
+		<form class="form" id="replenish-user-account">
+		<svg xmlns="http://www.w3.org/2000/svg" class="feather feather-wallet" width="24" height="24" viewBox="0 0 24 24"><path d="M20.667 13.984c1.782 0 3.333-.671 3.333-1.5s-1.552-1.5-3.333-1.5c-1.781 0-3.333.671-3.333 1.5s1.551 1.5 3.333 1.5zm.062-1.339c-.199-.06-.81-.111-.81-.45 0-.189.223-.358.639-.396v-.148h.214v.141c.156.004.33.021.523.06l-.078.229c-.147-.034-.311-.066-.472-.066l-.048.001c-.321.013-.347.191-.125.267.364.112.844.195.844.493 0 .238-.289.366-.645.397v.146h-.214v-.139c-.22-.002-.451-.038-.642-.102l.098-.229c.163.042.367.084.552.084l.139-.01c.247-.034.296-.2.025-.278zm-.062 5.339c1.261 0 2.57-.323 3.333-.934v.434c0 .829-1.552 1.516-3.333 1.516-1.781 0-3.333-.687-3.333-1.516v-.434c.763.612 2.071.934 3.333.934zm0-3.333c1.261 0 2.57-.323 3.333-.934v.434c0 .829-1.552 1.5-3.333 1.5-1.781 0-3.333-.671-3.333-1.5v-.434c.763.611 2.071.934 3.333.934zm0 1.667c1.261 0 2.57-.323 3.333-.935v.435c0 .828-1.552 1.5-3.333 1.5-1.781 0-3.333-.672-3.333-1.5v-.435c.763.612 2.071.935 3.333.935zm-8.441-3.089c0 .601-.47.922-1.05 1.002v.369h-.351v-.35c-.362-.006-.737-.092-1.05-.254l.16-.575c.334.129.78.267 1.128.189.402-.091.485-.505.041-.705-.326-.15-1.323-.281-1.323-1.134 0-.477.363-.904 1.044-.998v-.373h.351v.356c.253.006.538.051.855.147l-.127.576c-.269-.094-.566-.18-.855-.162-.521.031-.567.482-.204.671.599.282 1.381.491 1.381 1.241zm5.774-7.229h-17v10h-1v-11h18v1zm-16 1v11h14v-5.516c0-1.792 1.985-2.71 4-2.875v-2.609h-18zm9 9c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5z"/></svg>
+			<div class="w100">
+				<label class="col-md-12 bold"><?php echo $wo['lang']['replenish_my_balance'];?></label>
+			</div>
+			<div class="form-group w100 add-amount">
+				<h5>
+					<span><?php echo Wo_GetCurrency($wo['config']['ads_currency']); ?></span>
+					<b><input type="text" placeholder="0.00" min="1.00" max="1000" name="amount" id="amount" /></b>
+				</h5>
+			</div>
+			<div class="w100">
+				<label class="col-md-12"></label>
+				<div class="col-md-12">
+					<div class="ball-pulse"><div></div><div></div><div></div></div>
+					<button type="submit" class="btn btn-main">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+						<?php echo $wo['lang']['continue'];?>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="pay-modal"></div>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+.navbar-default {padding-right: 260px;}
+}
+
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<?php if($wo['loggedin'] == false) {  ?>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 0px;}
+.navbar-default {padding-right: 0px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+.hideinmenu {display: none;}
+}
+</style>
+<?php } ?>
+<script>
+	function Wo_GetPayPalLink(type) {
+		$('.btn-paypal').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+		$.get(Wo_Ajax_Requests_File() + '?f=wallet&s=replenish-user-account', {amount:$('#amount').val(), desc: '<?php echo $wo['lang']['replenish_my_balance'];?>'}, function(data) {
+			if (data.status == 200) {
+				window.location.href = data.url;
+			} else {
+				$('.btn-paypal').attr('disabled', false).html("PayPal App not set yet.");
+			}
+		});
+	}
+	function Wo_CheckOutCard(type, description, amount, payment_type) {
+		description = "Wallet replenishment";
+		amount = $('#amount').val() * 100;
+
+		if (payment_type == 'bitcoin') {
+			$('.btn-bitcoin').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+			$('#pay-go-pro').modal({
+				show: false
+			});
+		} else if (payment_type == 'credit_card') {
+			$('.btn-cart').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+		} else if (payment_type == 'alipay') {
+			$('.btn-alipay').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+		}
+		var img = 'star';
+		if (type == 1) {
+			img = 'star';
+		} else if (type == 2) {
+			img = 'hot';
+		} else if (type == 3) {
+			img = 'ultima';
+		} else if (type == 4) {
+			img = 'vip';
+		}
+		var handler = StripeCheckout.configure({
+			key: "<?php echo $wo['config']['stripe_id'];?>",
+			locale: 'english',
+			image: '<?php echo $wo['config']['theme_url']?>/img/' + img + '.png',
+			token: function(token) {
+			$('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['c_payment'] ?>');
+			$('#pay-go-pro').modal({
+				show: true
+				});
+				$.post(Wo_Ajax_Requests_File() + '?f=stripe_payment_wallet', {stripeToken:token.id, amount:$('#amount').val()}, function (data) {
+					if (data.status == 200) {
+						window.location.href = data.location;
+					} else {
+						$('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['payment_declined'] ?>');
+					}
+				});
+			}
+		});
+		if (payment_type == 'bitcoin') {
+			if( $('#amount').val() <= 0 ){
+				$('#pay-go-pro').modal('hide');
+				alert('You must enter value greater than ZERO');
+				return false;
+			}else{
+				$.get(Wo_Ajax_Requests_File() + '?f=pay_with_bitcoin&amount=' + $('#amount').val(), function (data) {
+					if (data.status == 200) {
+						$(data.html).appendTo('body').submit();
+					}
+				});
+			}
+
+		} else if (payment_type == 'credit_card') {
+			handler.open({
+			name: "<?php echo $wo['config']['siteName']?>",
+			description: description,
+			amount: amount,
+			currency: '<?php echo $wo['config']['currency']?>',
+			opened: function () {
+				$('#pay-go-pro').modal('hide');
+				$('.btn-cart').attr('disabled', false).html("<i class='fa fa-credit-card'></i> <?php echo $wo['lang']['credit_card'] ?>");
+			}
+			});
+		} else if (payment_type == 'alipay') {
+			handler.open({
+			name: "<?php echo $wo['config']['siteName']?>",
+			description: description,
+			amount: $('#amount').val(),
+			alipay: true,
+			currency: '<?php echo $wo['config']['currency']?>',
+			opened: function () {
+				$('#pay-go-pro').modal('hide');
+				$('.btn-alipay').attr('disabled', false).html("<i class='fa fa-credit-card'></i> Alipay");
+			}
+			});
+		}
+		$(window).on('popstate', function() {
+		handler.close();
+		});
+	}
+
+	jQuery(document).ready(function($) {
+		$("#replenish-user-account").submit(function(e) {
+			e.preventDefault();
+			var type = 1;
+			$.get(Wo_Ajax_Requests_File() + '?f=get_payment_method&type=' + type, function (data) {
+				if (data.status == 200) {
+					$('#pay-modal').html(data.html);
+					$('#pay-go-pro').modal({
+						show: true
+					});
+				}
+			});
+		});
+	});
+</script>

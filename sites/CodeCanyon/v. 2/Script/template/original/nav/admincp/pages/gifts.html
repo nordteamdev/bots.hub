@@ -1,0 +1,103 @@
+{strip}
+
+<div class="ad-rowcol">
+<h2>{$count} gifts are on {$this->settings['SITENAME']}</h2>
+
+
+<a href="javascript:;" class="addgame" onclick="ga(this).remove();ga('#new_gift_container').show();">+ Add gift</a>
+<div id="new_gift_container" style="display:none;">
+<h3 style="Color:red;">Try this site to find gifts, <A href="http://www.animatedimages.org" target="_blank">www.animatedimages.org</a></h3>
+
+<form id="new-gift" method="post" action="/admin.php">
+<input type="hidden" name="cmd" value="createnewgift">
+<input type="hidden" name="json" value="1">
+<input type="hidden" name="gift" value="">
+<div class="form form__gl-2-2">
+    <div data-type="select" class="form_i"><span class="input-l"><label for="gcateg">Category</label></span>
+        <div class="isl_w isl_w__3gc">
+		<select style="max-width:216px;" name="gift.categ" id="gcateg" class="isl gm-gl_3gc js-form-update">
+		<option value="0" selected disabled>Select category</option>
+		{assign var="categ_id" value=0}
+		{foreach $this->settings['GIFTS_GENRES'] as $categ}
+		{$categ_id = $categ_id+1}
+		<option value="{$categ_id}">{$categ}</option>
+		{/foreach}
+		</select>
+		</div>
+    </div>
+
+
+    <div class="form_i" data-type="text"><span class="input-l"><label for="files">Gift</label></span>
+        <div class="it_w it_w it_w__3gc">
+		
+	<form id="upload_form" enctype="multipart/form-data" method="post">
+    <input type="file" onchange="uploadGifts(event);" id="files" name="files[]" multiple="1" accept="image/*"><br>
+    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+    <h3 id="status"></h3>
+    <p id="loaded_n_total"></p>
+</form>
+		<ul id="covers"></ul>
+	
+		</div>
+    </div>
+	    <div class="form_i __txt-counter-active h-mod"><span class="input-l"><label for="gift_tags">Tags (eg: flowers, cars, birthday,give a smile), separated by blank</label></span>
+        <div class="itx_w __txt-counter-active">
+		<textarea name="gift.tags" id="gift_tags"></textarea></div>
+
+    </div>
+	
+	
+	
+		    <div class="form_i __txt-counter-active h-mod"><span class="input-l"><label for="gift_price">Price</label></span>
+        <div class="itx_w __txt-counter-active">
+		<input type="number" id="gift_price" name="gift.price" class="it" /></div>
+
+    </div>
+	
+<form method="post" class="js-buttonForm">
+    <div class="form form__gl-2-2">
+        <div class="form_i mb-x">
+            <div class="form-actions"><a href="javascript:;" name="button_send" onclick="addGift(event,ga('#new-gift'));" class="form-actions_yes button-pro js-submit">Submit gift</a><span onclick="ga('#new-gift')[0].reset();" class="form-actions_no button-pro __sec">Reset</span></div>
+        </div>
+    </div>
+</form>
+
+	
+</div>
+</form>
+</div>
+
+
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	<th>Gift</th>
+	<th>Categ</th>
+	<th>Tags</th>
+	<th>Price</th>
+	<th>Added</th>
+	<th>*</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="gift{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url(/stcmd/gifts/{$r.gift});"></div></td>
+	<td><div class="vd_info">{$this->settings['GIFTS_GENRES'][$r.categ-1]}</div></td>
+	<td><div class="vd_info f11">{$r.tags}</div></td>
+	<td><div class="vdd_tags">{$r.price}</div></td>
+	<td><div class="vd_add_time">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="vd_add_time f11"><a href="javascript:;" onclick="return deleteGift({$r.id});">Delete</a></div></td>
+	</tr><!-- Darker Table Row -->
+
+{/foreach}
+
+</table>
+{$pagination}
+</div>
+
+{/strip}

@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Movies > Manage Movies</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Movies</h2>
+                </div>
+                <div class="body">
+                   <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                   <div class="clearfix"></div>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Name</th>
+					                  <th>Release</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php 
+				                foreach (Wo_GetMovies(array('limit' => 600)) as $wo['film']) {
+				                  echo Wo_LoadAdminPage('manage-movies/list');
+				                }
+				               ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<div class="modal fade" id="delete-film">
+   <div class="modal-dialog">
+      <div class="modal-content modal-col-red">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> Delete Movie</h4>
+         </div>
+         <div class="modal-body">
+            <p>Are you sure that you want to delete tnis movie?</p>
+         </div>
+         <div class="modal-footer">
+            <button  type="button" onclick="Wo_DeleteFilm($('#delete-film').attr('data-film-ident'))" class="btn  btn-link">DELETE</button>
+            <button  type="button" class="btn btn-link" data-dismiss="modal">CLOSE</button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+$(function () {
+	$('table').DataTable();
+});
+
+$(document).on('click', '.delete-film', function(event) {
+    $("#delete-film").attr('data-film-ident', $(this).attr('id')).modal('show');
+});
+
+
+function Wo_DeleteFilm(id){
+    	if (!id) {
+    		return false;
+    	}
+    	$("#delete-film").modal('hide');
+		$("tr[data-film-id="+id+"]").slideUp(function(){
+			$(this).remove();
+		});
+    	$.ajax({
+    		url: Wo_Ajax_Requests_File(),
+    		type: 'GET',
+    		dataType: 'json',
+    		data: {f: 'movies',s:'delete',id:id},
+    	});
+    }
+</script>

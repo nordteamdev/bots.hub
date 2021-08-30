@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Backup SQL & Files</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Backup SQL & Files</h2> 
+                     <form id="backup"><button type="submit" class="btn btn-warning waves-effect waves-light m-t-20">Create New Full Backup</button></form>
+                     <br>
+                     <div>Please note that it may take several minutes.</div>
+                </div>
+                <div class="body">
+                  <h5>Last Backup: <span class="last_backup"><?php echo $wo['config']['last_backup'];?></span></h5>
+			      <h5>Backups directory: ./script_backups/</h5>
+			      <h5>Backup type: all files including ./upload folder and full backup of your database.</h5>
+			      <h5>It's recommended to download the backups via FTP.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    $('form#backup').ajaxForm({
+      url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=new_backup',
+      beforeSend: function() {
+      	$('form#backup').find('button').text('Please wait..');
+      },
+      success: function(data) {
+        if (data.status == 200) {
+         $('.last_backup').text(data.date);
+         $('form#backup').find('button').text('Backup Complete!');
+         setTimeout(function () {
+         	$('form#backup').find('button').text('Create New Full Backup');
+         }, 2000);
+        } 
+      }
+    });
+});
+</script>

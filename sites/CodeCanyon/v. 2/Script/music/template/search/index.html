@@ -1,0 +1,216 @@
+<!----------------------------------  search [template] --------------------------->
+{strip}
+
+{if $inx !== ''}
+{$this->search_build_header($key)}
+
+{else}
+
+<div class="m_c_s_alb" id="windowMusic_search_container">
+  <div class="m_c_s_header">
+    <div class="m_c_s_headerWrapper">
+      <div class="m_c_s_header_title">
+        Artist&nbsp;
+      </div>
+    </div>
+  </div>
+
+  {/if}
+
+
+  {if $count_rows > 0} 
+  {$_SESSION['rus_artist'] = 'pending'}
+  {$_SESSION['not_concr_artist'] = FALSE}
+  
+  
+  <div class="m_c_s_scrollable mus-custom-scrolling pl-mb-90" style="height: 590px">
+    <div class="mus_content_w">
+      <div class="mus_content_w" aria-hidden="false">
+        <div class="mus_album mb-10 mt-15">
+          
+          {foreach $query as $result}
+          {if $c === 0}
+          {assign var=artist value={$result.m_artist}}
+          {assign var=cover value={$result.m_cover}}
+          {assign var=id value={$result.m_id}}
+          
+          {if ! isset($_SESSION['song_genre']) || isset($_SESSION['song_genre']) !== $result.m_genre}
+          {$_SESSION['song_genre'] = $result.m_genre}
+          {$_SESSION['song_artist_searched'] = $artist}
+          {/if}
+          
+          <div class="mus_album_i__absolute" parent-for-cover="true">
+            <span class="gwt-InlineHTML">
+              <div class="mus_album_i_w">
+                <div class="mus_card_img_w mus_card_img_w__artist">
+                  <img uid="active" class="mus_card_img" src="{$cover}">
+                </div>
+              </div>
+            </span>
+            {if $inx}
+            <div class="m_c_a_go_to" data-search-result="artist_albums" mus-search-result="artist_albums" {$more_details}>
+              <span class="m_c_s_c_go_to mt-5">
+                More details
+              </span>
+            </div>
+            {/if}
+            <span class="m_c_col-data">
+              <div class="m_c_col-data_ac">
+                <a class="mtico mus-dl m_c_col-data_ac_i __14" id="aBM_s_{$id}" data-search-res-add="{$id}" data-search-res-name="{$artist}" data-search-res-count="{$count_rows}">
+                  <i class="mic14 mic14_add">
+                  </i>
+                  <span id="aBM_st">
+                    Add to My music
+                  </span>
+                  
+                </a>
+                
+              </div>
+            </span>
+          </div>
+          {if $play === '1'}
+          <div style="display:none;" id="this_playlist_active" data-collection-play="{$id}">
+          </div>
+          {/if}
+          
+          <div class="gwt-HTML">
+            <div class="mus_h2">
+              <span class="mus_h2_tx ellip" m_ppl_title="true" data-id="{$id}">
+                {$artist}
+              </span>
+            </div>
+          </div>
+          
+          <div class="mus_submenu">
+            <div class="mus_submenu_i">
+              <span class="mus_submenu_a {$this->sub_activeClass_hits}" {$sub_activeClass_href_hits}>Hits</span>
+    </div>
+    <div class="mus_submenu_i" {$sub_similar_tracks}><span class="mus_submenu_a">
+        <i class="mus_submenu_play">
+        </i>
+        <span>
+          Similar tracks
+        </span>
+      </span>
+    </div>
+    <div class="mus_submenu_i" data-search-result="artist_albums">
+      <span class="mus_submenu_a {$this->sub_activeClass_albums}" mus-search-result="artist_albums" data-href="search" data-action="true" data-query="?action=searchResult&method=artistalbums&key={urlencode($key)}">
+  <span>
+    Albums
+  </span>
+   </span>
+    </div>
+  </div>
+  <div class="mus-tr_lst">
+    <ol data-for-serialize="true">
+      
+      {/if}
+      
+      {if $c > 4 && (!isset($_SESSION['srch_display_tracks']) || $_SESSION['srch_display_tracks'] === FALSE)}
+      {assign var=display_tracks value='style="display:none"'}
+      {assign var=aria_hidden value='true'}
+      {/if}
+      
+      {assign var=song_id value={$result.m_id}}
+      {assign var=song_t value={$result.m_time}}
+      {assign var=song_p value={$result.m_path}}
+      {assign var=song value={$result.m_title}}
+      {assign var=arts value={$result.m_artist}}
+      {assign var=album value={$result.m_album}}
+      {assign var=video value={$result.m_video}}
+      {assign var=cover value={$result.m_cover}}
+      {assign var=s_lang value={$result.language}}
+      {assign var=download value=''}
+      {if $s_lang === $this->purchase_ic}
+      {assign var=download value='__download'}
+      {/if}
+      
+      <li {$display_tracks} aria-hidden="{$aria_hidden}" target="#windowMusic_searchresult_inx_{$song_id}">
+        <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_m_sec_search_result_{$song_id}">
+          <div class="mus-tr_hld">
+            <span class="mus-tr_play __play js-mus-tr_play" id="windowMusic_searchresult_inx_{$song_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$song_p}","cover":"{$cover}"{literal}}{/literal}' >
+            </span>
+            {if $download !== ''}
+  <span class="mus-tr_download js-mus-tr_download" title="Download">
+  </span>
+  {/if}
+  
+  <div class="mus-tr_cnt">
+    <a style="display:none;" class="mus-tr_a mus-tr_artist">
+      {$arts}
+    </a>
+    <a class="mus-tr_a mus-tr_song">
+      {$song}
+    </a>
+    <span class="foh-s mus-tr_info">
+      &nbsp;from&nbsp;
+      <a class="mus-tr_a mus-tr_album">
+        <span class="mus-tr_album-ic ic10_album">
+        </span>
+        {$album}
+      </a>
+    </span>
+  </div>
+  <div class="mus-tr_right-controls foh-s" id="rc_m_sec_search_result_{$song_id}">
+    <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+    </span>
+    <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+    </span>
+  </div>
+  <span class="mus-tr_time">
+    {$song_t}
+  </span>
+  </div>
+  {if $video > '0'}
+  <div class="mus-tr_video" data-showvideo="true" data-video="{$video}">
+  </div>
+  {/if}
+   </div>
+      </li>
+      
+      
+      
+      
+   {if $c === $v}
+   </ol>
+   {/if}
+   {if $c === 4 && (!isset($_SESSION['srch_display_tracks']) || $_SESSION['srch_display_tracks'] === FALSE)}
+   <div class="mt-10">
+     <span class="m_c_s_c_go_to" data-srch-rs-mr="true">
+       More songs
+     </span>
+   </div>
+
+   {/if}
+
+   {if $c === $v}
+
+   </div>
+   </div>
+
+   {/if}
+
+   {if $v < 3}
+   {assign var=mt value='mt-40'}
+   {/if}
+   
+   {if $c === $v && $inx}
+   {$this->getMoreArtists()}
+
+     {elseif $c === $v && !$inx}
+     {$this->get_artistAlbums($key,$mt,$album)}
+
+     {/if}
+     
+     {assign $c $c++ nocache} 
+
+     {/foreach}
+     
+     
+     {else}
+
+     {$this->empty_result('songs')}
+
+     {/if}
+     
+     {/strip}

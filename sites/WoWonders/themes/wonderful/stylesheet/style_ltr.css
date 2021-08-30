@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+b,
+strong {
+    margin-right: 7px;
+}
+
+.search-container .search-dropdown-result {
+    /* padding-left: 10px; */
+}
+.wowonder-well .profile-style {
+    float: left;
+}
+.wowonder-well img {
+    float: left;
+}
+.options-buttons {
+    right: 10px;
+}
+button, h2,h4,h5,a,input,textarea,select {
+    /*font-family: 'Open Sans', sans-serif !important;*/
+}
+.profile-container .card.hovercard .info .title {
+    left: 150px;
+}
+.sidebar-conatnier .profile-style .card.hovercard .info .title {
+    left: 65px;
+}
+
+.post .post-heading .avatar {
+    margin-right: 15px;
+}
+.pin-icon {
+    right: 11px;
+}
+.messages-wrapper .user-avatar {
+    margin-right: 10px;
+}
+.messages-recipients-list img {
+    margin-right: 5px;
+}
+.chat-container {
+    right: 0;
+}
+.chat-container input {
+    border-left: 0 !important;
+}
+.message p.white {
+    color: #fff !important;
+}
+.chat-tab {
+    right: 195px;
+}
+.chat-btns-w,#sendMessage{
+    background-color: #fff;    
+    border-right: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    border-top: none;
+    border-bottom: none;
+}
+.bg-main{
+    background-color: #a84849;
+}
+.chat-colos-cont{
+    width: 100%;
+    padding: 5px;
+}
+.chat-colors-cont a{
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+    width: 15%;
+}
+
+.chat-textarea .input-group-btn {
+    right: 30px;
+}
+.search-dropdown-result li {
+    padding-left: 10px;
+}
+.recipient-chat-user img {
+    margin-right: 5px;
+}
+.profile-container .card.hovercard .info .title {
+    top: -28px;
+}

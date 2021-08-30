@@ -1,0 +1,189 @@
+{strip}
+<div data-headername="{$this->lang['Marketplace']}" data-backhref="/market" id="modifyheader"></div>
+<div id="marketplace" class="market_view_product">
+
+{assign var=getpictures value=$this->getProductPictures($id)}
+    <div id="marketplace_gallery" class="nobleSlider">
+        <div class="nb-slides">
+		{foreach $getpictures as $picture}
+            <div class="nb-slide {if $picture.id == $q.0.product_cover}_active{/if}">
+
+                <img class="nb-image" src="{$smarty.const.__SLIDER_BLANK}"  
+				data-src="/getMarketPictures?p={$picture.id}&product_id={$id}&sz=large"
+				data-large="/getMarketPictures?p={$picture.id}&product_id={$id}&sz=large"
+				 
+				/>
+
+            </div>
+{/foreach}
+        </div>
+{if count($getpictures) > 1}
+        <div class="nb-thumbnails">
+{foreach $getpictures as $picture}
+            <img class="nb-thumbnail" src="/getMarketPictures?p={$picture.id}&product_id={$id}&sz=small" />
+{/foreach}
+
+        </div>
+{/if}
+        <!--<a class="baron_share" href="#" onclick="alert('You clicked on share button.')" title="Share photo"></a>-->
+        <a class="baron_download" target="_blank" id="baron_download_btn" download href="javascript:void(0);" title="Download this image"></a>
+
+
+    </div>
+
+
+	
+	<div class="product_footer">
+	{foreach $q as $r}
+	{assign var=author value=$this->getUserDetails($r.userid)}
+	
+	{assign var=is_favorite value=$this->itemIsFavorite($r.id)}
+	
+	
+	
+	
+	<div class="market_product_bottom_details">
+	
+	<div class="product-details_item">
+	
+		<div class="product-details-sides _bigitem">
+		
+		
+		
+		
+		{assign var=comm_count value=$this->getCommentsCount($r.id,'market_product')}
+		
+<ul class="widget-list redesv116 product_item">
+		
+                <li class="widget-list_i">
+                    <div class="widget "><button href="javascript:void(0);" onclick="foucsCommentInput(event,'#product-view-load-comments');" class="h-mod widget_cnt">
+					<span class="widget_ico ic12 ic12_comment"></span>
+					<span class="widget_tx">{$this->lang['feed_comment_widget']}</span>
+					<span class="widget_delim"></span>
+					<span class="widget_count js-count">{$comm_count}</span></button></div>
+                </li>
+		
+		
+		
+                <li class="widget-list_i">
+                    <div data-compact="true">
+                        <div id="sharebuttonwp" class="widget __compact">
+                            <button onclick="shareBox(this,event,'market_product','{$author.id}');" id="reshare_{$r.id}" class="h-mod widget_cnt share-market-product {if $this->cntSharedByMe($r.id)}__active{/if}">
+							<span class="widget_ico ic12 ic12_share"></span>
+							<span class="widget_tx">{$this->lang['Share']}</span>
+							<span class="widget_delim"></span>
+							<span class="widget_count js-count">{$this->getShareCount($r.id)}</span></button>
+                        </div>
+                    </div>
+                    <div class="h-mod sc-menu_w" data-module="ShortcutMenu">
+                        <div id="hook_Block_" class="posR"></div>
+                    </div>
+                </li>
+		
+                <li class="widget-list_i _aflvkl __{$r.id}"> 
+                    <div data-compact="true">
+                        <div data-itemcateg="market_product" data-pplikt="ppo_{$r.id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$r.id}" data-appendtooltipto="._aflvkl" class="widget _lightp {if $this->likedByMe($r.id,'market_product')}__active{/if}  __compact">
+                            <button data-log-click='{ldelim}"type":"like","item":"market_product","itemid":"{$r.id}"{rdelim}' class="h-mod widget_cnt controls-list_lk">
+							<span class="widget_ico ic12 ic12_klass"></span>
+							<span class="widget_tx">{$this->lang['Like']}</span>
+							<span class="widget_delim"></span>
+							<span class="widget_count js-count">{$this->getLikesCount($r.id,'market_product')}</span></button>
+                        </div>
+                    </div>
+                    <div class="h-mod sc-menu_w">
+                        <div id="hook_Block" class="posR"></div>
+                    </div>
+                </li>
+            </ul>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="product_details_item_name">{$r.product_name}</div>
+		<div class="product_item_description">{$r.product_description}</div>
+		
+		
+		
+	<div class="product-item-details-comments-section" id="product-item-details-comments-section">
+	<input type="hidden" id="id_product_for_comments" value="{$r.id}" />
+	<input type="hidden" id="author_id_product_for_comments" value="{$author.id}" />
+		<h2>Comments ({$comm_count})</h2>
+		<div id="product-view-load-comments"></div>
+		</div>
+		</div>
+		
+		
+		<div class="product-details-sides market-author-right">
+		
+		
+		
+	
+	<div class="product-details_author">
+	<Div class="market_product_bottom_author_i">
+	<a href="/user/{$author.id}" hrefattr="true"><img src="/getPhoto?p={$author.profile_photo}&sz=small" /></a>
+	
+	</div>
+	
+	
+
+	<div class="market_product_bottom_author_str">
+	
+	<div class="market_product_bottom_author_name"><a href="/user/{$author.id}" hrefattr="true">{$author.fullname}</a></div>
+	<div class="market_product_bottom_item_category"><a href="/market/category/{base64_encode($r.product_category)}" hrefattr="true">{$this->lang["market_subcateg_{$r.product_category}"]}</a></div>
+	</div>
+	
+		</div>
+		
+		
+ 
+		
+		<div class="market_item_stats">{$this->lang['Added']} {$this->time_elapsed($r.added)}</div>
+		<div class="market_item_param market_row_address_metro market_item_param_geo">{$r.product_location}</div>
+	<div class="market_item_price globalpriceformat">{$r.price} {$this->settings['MARKETPLACE_CURRENCY']}.</div>
+	{if $this->USER.id != $author.id}
+	<div class="market_item_controls">
+	
+
+            <div class="market_item_controls">
+                <button class="market_contact_btn flat_button button_wide" onclick="return new_chat_window(this,event);" id="y-{$author.id}" data-uch='{ldelim}"id":"{$author.id}","fullname":"{$author.fullname}","photo":"{$author.profile_photo}"{rdelim}'>{$this->lang['Contact_seller']}</button>
+                <button class="market_fav_btn flat_button secondary {if $is_favorite}selected{/if} button_wide" onclick="return market.addProductToFav(event,this,'{$id}');">
+                    <div class="market_fav_btn_icon"></div><span class="market_fav_btn_text _btn_text">{if $is_favorite}{$this->lang['product_is_in_fav']}{else}{$this->lang['Add_produt_to_fav']}{/if}</span>
+                </button>
+            </div>
+		
+	
+	</div>
+{/if}
+		</div>
+		
+		
+	</div>
+	
+
+		
+		</div>
+	
+	{/foreach}
+	
+	
+	
+	
+	
+	
+	</div>
+
+
+</div>
+
+ 
+
+
+{/strip}

@@ -1,0 +1,158 @@
+<?php if (FL_IsPRO() == false): ?>
+<div class="pro-packages-container fl-plus-box-shadow">
+	<div class="col-md-10 col-sm-12 col-xs-12 col-lg-10 col-md-offset-1 col-lg-offset-1">
+		<div class="pro-packages-header">
+			<h2>{{LANG pro_packages}}</h2>
+			<p>
+				<?php
+					$name    = $fl['config']['name'];
+					$subject = $fl['lang']['discover_features'];
+					echo str_replace('{{SITE_NAME}}',$name,$subject);
+				?>
+			</p>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+			<div class="pro-package free-mbr">
+				<h3>
+					<p><i class="material-icons">free_breakfast</i></p>
+					{{LANG free_mbr}}
+				</h3>
+				<div class="price">
+					<div>
+						<strong>
+							<i class="material-icons">monetization_on</i>
+							<span>0</span>
+							<small>
+								/mo
+							</small>
+						</strong>
+					</div>
+				</div>
+				<div class="features">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<?php
+								$posting_limit = $fl['config']['user_max_posts'];
+								$subject       = $fl['lang']['pkg_posting_limit'];
+								echo str_replace('{{LIMIT}}', $posting_limit, $subject);
+							?>
+						</li>
+						<li class="list-group-item">
+							{{LANG not_featured_posts}}
+						</li>
+						<li class="list-group-item">
+							{{LANG ads_show_up}}
+						</li>
+						<li class="list-group-item">
+							{{LANG no_verified_badge}}
+						</li>
+					</ul>
+				</div>
+				<div class="call-2action">
+					<a href="{{LINK }}">
+						<button class="btn btn-info">
+							{{LANG stay_free}}
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+			<div class="pro-package pro-mbr">
+				<h3>
+					<p><i class="material-icons">star_border</i></p>
+					{{LANG pro_mbr}}
+				</h3>
+				<div class="price">
+					<div>
+						<strong>
+							<i class="material-icons">monetization_on</i>
+							<span>{{CONFIG pro_pkg_price}}</span>
+							<small>
+								/mo
+							</small>
+						</strong>	
+					</div>
+				</div>
+				<div class="features">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<?php
+								$posting_limit = 1000;
+								$subject       = $fl['lang']['pkg_posting_limit'];
+								echo str_replace('{{LIMIT}}', $posting_limit, $subject);
+							?>
+						</li>
+						<li class="list-group-item">
+							{{LANG featured_posts}}
+						</li>
+						<li class="list-group-item">
+							{{LANG ads_wont_show_up}}
+						</li>
+						<li class="list-group-item">
+							{{LANG verified_badge}}
+						</li>
+					</ul>
+				</div>
+				<div class="call-2action">
+					<button class="btn btn-main" onclick="FL_PurchasePkg('pro',this);">
+						{{LANG upgrade}}
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<script>
+	function FL_PurchasePkg(pkg,self){
+		if (!pkg || pkg != 'pro' || !self) {
+			return false;
+		}
+
+		$(self).text("{{LANG please_wait}}").attr('disabled', 'true');
+
+		$.ajax({
+			url: FL_Ajax_Requests_File() +  '?f=go_pro&s=purchase&hash_id=' + $('.main_session').val(),
+			type: 'POST',
+			dataType: 'json',
+			data: {type: pkg},
+		})
+		.done(function(data) {
+
+			if (data.status == 200) {
+				document.location.href = data.url;
+			}
+
+			else{
+				swal({
+					title: "{{LANG error}}",
+					text: "{{LANG error_found_request}}",
+					type: "error"
+				});
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		});
+	}
+</script>
+
+<?php else: ?>
+<div class="pro-packages-container fl-plus-box-shadow">
+	<div class="go-pro-head-upgraded">
+		<h4>{{LANG congratulations}}</h4>
+		<p>{{LANG u_are_pro}}</p>
+	</div>
+	<div class="go-pro-footer-upgraded">
+		<a href="{{LINK }}">
+			<button class="btn-main btn btn-lg">		
+				{{LANG start_new_features}}
+			</button>
+		</a>
+	</div>
+</div>
+<?php endif; ?>
+<style>
+	.search-header input { width: 200px !important; }
+</style>

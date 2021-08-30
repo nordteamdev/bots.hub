@@ -1,0 +1,59 @@
+
+
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/js/cmd/jcrop/jcrop.css?v=3" />
+
+
+<div id="hook_Block" class="photo-layer_cnt_main">
+<div  class="cr_photo_bg">
+
+<div class="photo-layer_panel __crop __top"><span class="va"></span><span class="photo-layer_panel_tx va_target ">Selected area will be displayed on your page, in the messages and discussions</span></div>
+
+
+<img class="cropper_img" id="jcrop_img" src="{$gPhoto}?p={$photo}&sz=large" />
+
+
+<div id="__plpcte_buttons" class="photo-layer_panel __crop"><span class="va"></span>
+    <div id="hook_Form" class="va_target">
+        <form method="post" action="/profile">
+            <input id="js_crop_x" name="cr._x" type="hidden" value="">
+            <input id="js_crop_y" name="cr._y" type="hidden" value="">
+            <input id="js_crop_x2" name="cr._x2" type="hidden" value="">
+            <input id="js_crop_y2" name="cr._y2" type="hidden" value="">
+
+            <input id="js_crop_w" name="cr._w" type="hidden" value="">
+            <input id="js_crop_h" name="cr._h" type="hidden" value="">
+
+
+
+            <input id="js_crop_w2" name="cr._w2" type="hidden" value="">
+            <input id="js_crop_h2" name="cr._h2" type="hidden" value="">
+
+
+            <input id="js_crop_w3" name="cr._w3" type="hidden" value="">
+            <input id="js_crop_h3" name="cr._h3" type="hidden" value="">
+
+	    <input name="type" type="hidden" value="pos">
+            <input name="q" type="hidden" value="{$this->USER['id']}">
+            <input name="cmd" type="hidden" value="profpict">
+            <input name="ph" type="hidden" value="{$photo}">
+            <button name="button_plpscp_confirm" onclick="confirmCropPhoto(this.form,event)" id="hook_FormButton_button_plpscp_confirm" type="submit" class="js-doCrop button-pro">{$this->lang['set']}</button>
+            <button type="button" class="js-cancelCrop js-photoLayerClose ml-10 button-pro __sec __invert custom_popup_close">{$this->lang['cancel']}</button>
+        </form>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+  
+
+
+<script>
+    var pho = "{$gPhoto}?p={$photo}&sz=large";
+{literal}
+       
+	cropPhoto(pho);
+
+{/literal}
+</script>

@@ -1,0 +1,8 @@
+<div class="stub-empty __games">
+    <div class="stub-empty_img"></div>
+    <div class="stub-empty_t">{if $userid === $this->userid}{$this->lang['empty_user_apps_room']}{else}{$user_name} {$this->lang['empty_foreign_user_apps_room']}{/if}</div>
+    {if $userid === $this->userid}<div class="stub-empty_tx">{str_replace("%s","<a href=\"/apps/all\" hrefattr=\"true\" class=\"al\">{$this->lang['games']}</a>",$this->lang['empty_user_apps_room_sub'])}</div>
+	{else}
+	<div class="stub-empty_tx"><a href="javascript:;">{str_replace("%username", "{$user_name}", $this->lang['invite_user_to_play_games'])}</a></div>
+	{/if}
+</div>

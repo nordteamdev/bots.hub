@@ -1,0 +1,108 @@
+<?php
+$wo['activity']['type_text'] = '';
+$wo['activity']['icon']      = '';
+$post_publisher              = '<a class="second-user-color" data-ajax="?link1=timeline&u=' . $wo['activity']['postData']['publisher']['username'] . '" href="' . $wo['activity']['postData']['publisher']['url'] . '">' . $wo['activity']['postData']['publisher']['name'] . '</a>';
+$orginal_txt                 = array(
+    "{user}",
+    "{post}"
+);
+if ($wo['activity']['activity_type'] == 'following' || $wo['activity']['activity_type'] == 'friend') {
+   $wo['activity']['following']  = Wo_UserData($wo['activity']['follow_id']);
+   $post_publisher              = '<a class="second-user-color" data-ajax="?link1=timeline&u=' . $wo['activity']['following']['username'] . '" href="' . $wo['activity']['following']['url'] . '">' . $wo['activity']['following']['name'] . '</a>';
+}
+$replaced_txt                = array(
+    $post_publisher,
+    $wo['activity']['postData']['url']
+);
+if (!empty($wo['activity']['activity_type'])) {
+    if ( substr( $wo['activity']['activity_type'] , 0, 8) == "reaction") {
+        $txt = str_replace( "reaction|", "", $wo['activity']['activity_type'] );
+        $arr = explode( "|", $txt );
+
+        if( $arr[0] == "post" ){
+            $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_reacted_post']);
+        // }else if( $arr[0] == "comment" ){
+        //     $wo['activity']['type_text'] .= $wo['lang']['reacted_to_your_comment'];
+        // }else if( $arr[0] == "replay" ){
+        //     $wo['activity']['type_text'] .= $wo['lang']['reacted_to_your_replay'];
+        }
+
+        if( isset( $arr[1] ) ){
+            switch (strtolower($arr[1])) {
+             case 'like':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--like"><div class="emoji__hand"><div class="emoji__thumb"></div></div></div></div>';
+               break;
+             case 'love':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--love"><div class="emoji__heart"></div></div></div>';
+               break;
+             case 'haha':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--haha"><div class="emoji__face"><div class="emoji__eyes"></div><div class="emoji__mouth"><div class="emoji__tongue"></div></div></div></div></div>';
+               break;
+			 case 'wow':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--wow"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+			   break;
+			 case 'sad':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--sad"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+			   break;
+             case 'angry':
+               $wo['activity']['icon'] .= '<div class="inline_post_emoji inline_act_emoji no_anim"><div class="emoji emoji--angry"><div class="emoji__face"><div class="emoji__eyebrows"></div><div class="emoji__eyes"></div><div class="emoji__mouth"></div></div></div></div>';
+               break;
+           }
+        }else{
+            $wo['activity']['icon'] .= '';
+        }
+
+    }
+    if ($wo['activity']['activity_type'] == 'friend') {
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_is_friend']);
+        $wo['activity']['icon'] .= 'account-add';
+    }
+    if ($wo['activity']['activity_type'] == 'following') {
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_is_following']);
+        $wo['activity']['icon'] .= 'account-add';
+    }
+    if ($wo['activity']['activity_type'] == 'liked_post') {
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_liked_post']);
+        $wo['activity']['icon'] .= 'thumb-up';
+    }
+    if ($wo['activity']['activity_type'] == 'wondered_post') {
+        $lang_type = ($wo['config']['second_post_button'] == 'wonder') ? $wo['lang']['activity_wondered_post'] : $wo['lang']['activity_disliked_post'];
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $lang_type);
+        $wo['activity']['icon'] .= $wo['second_post_button_icon'];
+    }
+    if ($wo['activity']['activity_type'] == 'shared_post') {
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_share_post']);
+        $wo['activity']['icon'] .= 'share';
+    }
+    if ($wo['activity']['activity_type'] == 'commented_post') {
+        $wo['activity']['type_text'] = str_replace($orginal_txt, $replaced_txt, $wo['lang']['activity_commented_on_post']);
+        $wo['activity']['icon'] .= 'comment';
+    }
+}
+?>
+<div class="activity <?php echo (!empty($wo['activity']['unread'])) ? ' unread' : '' ;?>" data-activity-id="<?php echo $wo['activity']['id']; ?>">
+   <div class="notification-list">
+      <div class="notification-user-avatar <?php echo Wo_RightToLeft('pull-left');?>">
+         <a href="<?php echo $wo['activity']['activator']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['activity']['activator']['username']; ?>" title="#"><img src="<?php echo $wo['activity']['activator']['avatar']; ?>" alt="<?php echo $wo['user']['avatar']; ?>Profile picture"></a>
+      </div>
+      <div class="notification-text">
+         <span class="user-popover" data-id="<?php echo $wo['activity']['activator']['id'];?>" data-type="<?php echo $wo['activity']['activator']['type'];?>">
+         <a class="main-color" href="<?php echo $wo['activity']['activator']['url'];?> " data-ajax="?link1=timeline&u=<?php echo $wo['activity']['activator']['username']; ?>">
+         <?php echo $wo['activity']['activator']['name']; ?>
+         </a>
+         </span>
+         <?php echo $wo['activity']['type_text']; ?>
+         <div class="notification-time active">
+		        <?php if (empty($arr[0])) { ?>
+              <i class="zmdi zmdi-<?php echo $wo['activity']['icon'];?> active"></i>
+            <?php } else { ?>
+                <?php echo $wo['activity']['icon'];?>
+            <?php } ?>
+            <span class="ajax-time" title="<?php echo date('c',$wo['activity']['time']); ?>">
+            <?php echo Wo_Time_Elapsed_String($wo['activity']['time'])?>
+            </span>
+         </div>
+      </div>
+      <div class="clear"></div>
+   </div>
+</div>

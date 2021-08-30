@@ -1,0 +1,21 @@
+<div class="wo_sidebar_groups">
+	<div class="group-header">
+		<h3 class="user-name <?php echo Wo_RightToLeft('pull-left');?>" title="<?php echo $wo['GroupList']['name']; ?>">
+			<a href="<?php echo $wo['GroupList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['GroupList']['username']?>"><?php echo $wo['GroupList']['name']; ?></a>
+		</h3>
+		<div class="<?php echo Wo_RightToLeft('pull-right');?> group user-follow-btn">
+			<div class="user-follow-button">
+				<?php echo Wo_GetJoinButton($wo['GroupList']['id']);?>
+			</div>
+		</div>
+	</div>
+	<div class="group-middle">
+		<img src="<?php echo $wo['GroupList']['cover']?>" id="cover-image" alt="<?php echo $wo['GroupList']['name']?> Cover Image">
+	</div>
+	<div class="group-bottom">
+		<div class="user-lastseen"><?php echo Wo_CountGroupMembers($wo['GroupList']['id']);?> <?php echo $wo['lang']['members'];?></div>
+		<div class="avatar <?php echo Wo_RightToLeft('pull-right');?>">
+			<img src="<?php echo $wo['GroupList']['avatar'];?>" alt="<?php echo $wo['GroupList']['name']; ?> Profile Picture" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<tr data-id="{{POST_ID}}">
+	<td>{{POST_ID}}</td>
+	<td class="hidden">{{POST_TITLE}}</td>
+	<td><a href="{{POST_LINK}}" target="_blank">{{POST_TITLE_CROPPED}}</a></td>
+	<td><a href="{{POST_AUTHOR_URL}}" target="_blank">{{POST_AUTHOR}}</a></td>
+	<td>{{POST_CATEGORY}}</td>
+	<td class="pointer">
+		<div class="dropdown">
+		  <span type="button" data-toggle="dropdown" class="activation-layout"><span class="activation-text active-{{POST_ACTIVE}}">{{POST_STATUS}}</span>
+		  <span class="caret"></span></span>
+		  <ul class="dropdown-menu custom-dropdown">
+		    <li><a class="activate preventDefault" onclick="FL_ActiveAction('videos', {{POST_ID}}, 'activate')">{{LANG activate}}</a></li>
+		    <li><a class="deactivate preventDefault" onclick="FL_ActiveAction('videos', {{POST_ID}}, 'deactivate')">{{LANG deactivate}}</a></li>
+		  </ul>
+		</div>
+		
+	</td>
+	<td class="pointer">
+		<div class="dropdown">
+		  <span type="button" data-toggle="dropdown" class="activation-layout"><span class="featured-text active-{{POST_FEATURED}}">{{POST_FEATURED_TEXT}}</span>
+		  <span class="caret"></span></span>
+		  <ul class="dropdown-menu custom-dropdown">
+		    <li><a class="activate preventDefault" onclick="FL_FeaturedAction('videos', {{POST_ID}}, 'featured')">{{LANG yes}}</a></li>
+		    <li><a class="deactivate preventDefault" onclick="FL_FeaturedAction('videos', {{POST_ID}}, 'not-featured')">{{LANG no}}</a></li>
+		  </ul>
+		</div>
+	</td>
+	<td><i onclick="Fl_DeletePostFromAdmin('videos', {{POST_ID}})" class="fa fa-trash pointer"></i> | <a href="{{LINK edit-post/{{POST_ID}}?type=videos}}" target="_blank"><i class="fa fa-pencil pointer"></i></a></td>
+</tr>

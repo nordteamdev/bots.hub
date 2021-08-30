@@ -1,0 +1,35 @@
+<div class="blog-hcard-list col-md-6 col-sm-6" data-rm-blog="<?php echo $wo['blog']['id'];?>">
+	<div class="wo_my_articlez" id="<?php echo $wo['blog']['id']; ?>">
+        <div class="col-md-4 col-sm-4 blog-ls-img">
+			<a href="<?php echo $wo['blog']['url']; ?>" data-ajax="?link1=read-blog&id=<?php echo $wo['blog']['id']; ?>">
+				<img src="<?php echo $wo['blog']['thumbnail']; ?>" alt="<?php echo $wo['blog']['title']; ?>">
+			</a>
+        </div>
+		<div class="col-md-8 col-sm-8 no-padding-both">
+			<div>
+				<p class="art-title">
+					<a href="<?php echo $wo['blog']['url']; ?>" title="<?php echo $wo['blog']['title']; ?>"><?php echo $wo['blog']['title']; ?></a>
+				</p>
+				<div class="clear"></div>
+				<p class="blog-meta-desc">
+					<span>
+						<small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#787878" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" /></svg> <?php echo date("d M Y",$wo['blog']['posted']); ?></small>
+						<small><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#787878" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg> <?php echo $wo['blog']['view']; ?></small>
+					</span>
+				</p>
+			</div>
+			<ul class="post-options">
+				<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=edit-blog&id=' . $wo['blog']['id']) ?>" id="<?php echo $wo['blog']['id'];?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg> <?php echo $wo['lang']['edit']; ?>
+					</a>
+				</li>
+				<li class="pointer">
+					<a class="delete-blog" id="<?php echo $wo['blog']['id'];?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg> <?php echo $wo['lang']['delete']; ?>
+					</a>
+				</li>
+			</ul>
+		</div>
+    </div>
+</div>

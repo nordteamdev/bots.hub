@@ -1,0 +1,87 @@
+<div class="wo_settings_page">
+	<h3>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+		<?php echo $wo['lang']['social_links'];?>
+	</h3>
+
+	<form  method="post" class="form-horizontal setting-profile-form" enctype="multipart/form-data">
+		<div class="setting-profile-alert setting-update-alert"></div>
+		
+		<div class="setting-panel row">
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="facebook"><?php echo $wo['lang']['facebook'];?></label>  
+				<div class="col-md-12">
+					<input id="facebook" name="facebook" type="text" class="form-control input-md" value="<?php echo $wo['setting']['facebook'];?>" placeholder="<?php echo $wo['lang']['username'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="twitter"><?php echo $wo['lang']['twitter'];?></label>  
+				<div class="col-md-12">
+					<input id="twitter" name="twitter" type="text" class="form-control input-md" value="<?php echo $wo['setting']['twitter'];?>" placeholder="<?php echo $wo['lang']['username'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="google"><?php echo $wo['lang']['google'];?></label>
+				<div class="col-md-12">
+					<input id="google" name="google" type="text" class="form-control input-md" value="<?php echo $wo['setting']['google'];?>" placeholder="<?php echo $wo['lang']['username'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="vk"><?php echo $wo['lang']['vkontakte'];?></label>
+				<div class="col-md-12">
+					<input id="google" name="vk" type="text" class="form-control input-md" value="<?php echo $wo['setting']['vk'];?>" placeholder="<?php echo $wo['lang']['username'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="linkedin"><?php echo $wo['lang']['linkedin'];?></label>  
+				<div class="col-md-12">
+					<input id="linkedin" name="linkedin" type="text" class="form-control input-md" value="<?php echo $wo['setting']['linkedin'];?>" placeholder="<?php echo $wo['lang']['username'];?>"> 
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="youtube"><?php echo $wo['lang']['youtube'];?></label>  
+				<div class="col-md-12">
+					<input id="youtube" name="youtube" type="text" class="form-control input-md" value="<?php echo $wo['setting']['youtube'];?>" placeholder="<?php echo $wo['lang']['username'];?>"> 
+				</div>
+			</div>
+		</div>
+        <div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+				<?php echo $wo['lang']['save']; ?>
+			</button>
+		</div>
+        <input type="hidden" name="page_id" id="page-id" value="<?php echo $wo['setting']['page_id'];?>">
+       <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('form.setting-profile-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=pages&s=update_sociallink_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        scrollToTop();
+        $('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      } 
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

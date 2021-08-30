@@ -1,0 +1,8 @@
+Options -Indexes
+<Files ~ "\.(deb|phps|phtml|js|php|php5|php6|php4|php7)$">
+ Order Deny,Allow
+ Deny from all
+</Files>
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>

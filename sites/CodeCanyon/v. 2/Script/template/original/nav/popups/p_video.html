@@ -1,0 +1,177 @@
+{strip}
+{if !$nop}
+<div id="video_all">
+
+					<div class="h-mod grid">
+						<div id="vp_w" class="media-layer __active __redesign media-layer__video">
+							<div id="vp_cnt" class="media-layer_hld">
+{/if}
+								<div class="media-layer_c">
+
+									<div class="vp-layer {if !count($similar_query) && !$userplaylist && !$playlist}_mini{/if}">
+										<div data-circular="true" id="vp-sidebar" class="vp-layer_side">
+										
+										{if $playlist}
+										
+										<div class="vp-layer_video-list_w __playlist">
+												<div class="vp-layer_video-list_h">
+												
+												{if $clubid > 0} 
+												{str_replace("%s",$u_name,str_replace("%c",count($playlist_videos),$this->lang['more_comm_videos']))}
+												{else}
+												{str_replace("%s",$u_name,str_replace("%c",count($playlist_videos),$this->lang['more_user_videos']))}
+												 
+												{/if}
+													 
+												</div>
+												<div class="vp-layer_video-list">
+												{foreach $playlist_videos as $video_id}
+												
+												{assign var=rpl value=$this->getVideoDetails($video_id,$r.id)}
+											 
+												{if carray($rpl)}
+													<a id="nohook_recommended_movie" href="/video?vid={$rpl.id}&cmd=open{if $clubid > 0}&clubid={$clubid}{/if}&playlist={$playlist}{if $userplaylist}&userplaylist=1{/if}&nop=1" data-ivideo="1" class="vp-layer_video js-vp-layer_video">
+													
+														<div class="vp-layer_video_img {if $r.id == $rpl.id}__active{/if}">
+														{if $this->vdViewed($rpl.id)}<div class="video_pp_viewed">{$this->lang['video_viewed']}</div>{/if}
+															<div class="vp-layer_video_time">{$rpl.dur}</div><div class="vd_p_cover" style="background-image:url(/videoCover?v={$rpl.id}&empty_dark=1{if $clubid > 0}&clubid={$clubid}{/if});"></div></div>
+														<div class="vp-layer_video_n">{$rpl.title}</div>
+														<div class="vp-layer_video_au ellip">{$rpl.views}&nbsp;{$this->lang['video_views']}</div>
+													</a>
+													{/if}
+												{/foreach}
+												</div>
+											</div>
+										
+										
+										{else if $userplaylist}
+										
+											
+											<div class="vp-layer_video-list_w __playlist">
+												<div class="vp-layer_video-list_h">{str_replace("%s",$u_name,$this->lang['Playlist'])}
+												 
+												</div>
+												<div class="vp-layer_video-list">
+												{foreach $this->userVidPlaylist($r.userid,$r.id) as $rpl}
+													<a id="nohook_recommended_movie" href="/video?vid={$rpl.id}&cmd=open&userplaylist=1&nop=1" data-ivideo="1" class="vp-layer_video js-vp-layer_video">
+													
+														<div class="vp-layer_video_img {if $r.id == $rpl.id}__active{/if}">
+														{if $this->vdViewed($rpl.id)}<div class="video_pp_viewed">{$this->lang['video_viewed']}</div>{/if}
+															<div class="vp-layer_video_time">{$rpl.dur}</div><div class="vd_p_cover" style="background-image:url(/videoCover?v={$rpl.id}&empty_dark=1);"></div></div>
+														<div class="vp-layer_video_n">{$rpl.title}</div>
+														<div class="vp-layer_video_au ellip">{$rpl.views}&nbsp;{$this->lang['video_views']}</div>
+													</a>
+												{/foreach}
+												</div>
+											</div>
+										
+										{else}
+										<!--
+											<div class="vp-layer_video-list_w __accent">
+												<div class="vp-layer_video-list_h">{$this->lang['Next_video']}
+													<div class="vp-layer_video-list_h-ac __active"></div>
+												</div>
+												<div class="vp-layer_video-list">
+													<a id="nohook_recommended_movie" href="#" class="vp-layer_video js-vp-layer_video">
+														<div class="vp-layer_video_img">
+															<div class="vp-layer_video_time">5:44</div><div class="vd_p_cover" style="background-image:url(/videoCover?v=18&empty=1);"></div></div>
+														<div class="vp-layer_video_n">saffdsfsdf</div>
+														<div class="vp-layer_video_au ellip">32&nbsp;{$this->lang['video_views']}</div>
+													</a>
+												</div>
+											</div>-->
+											{/if}
+											{if count($similar_query)}
+											<div class="vp-layer_video-list_w">
+												<div class="vp-layer_video-list_h"><span class="vp-layer_video-list_h-tx">{$this->lang['similar_videos']}</span></div>
+												<div id="vp_rel_list" class="vp-layer_video-list">
+													<div>
+													{foreach $similar_query as $rs}
+														<a href="/video?vid={$rs.id}&cmd=open{if $clubid > 0}&clubid={$clubid}{/if}&nop=1" data-ivideo="1" class="vp-layer_video js-vp-layer_video">
+															<div class="vp-layer_video_img">
+															{if $this->vdViewed($rs.id)}<div class="video_pp_viewed">{$this->lang['video_viewed']}</div>{/if}
+														    <div class="vp-layer_video_time">{$rs.dur}</div><div class="vd_p_cover" style="background-image:url(/videoCover?v={$rs.id}&empty=1{if $clubid > 0}&clubid={$clubid}{/if});"></div></div>
+															<div class="vp-layer_video_n">{$rs.title}</div>
+															<div class="vp-layer_video_au ellip">{$rs.views}&nbsp;{$this->lang['video_views']}</div>
+														</a>														
+													{/foreach}
+													</div>
+												</div>
+											</div>
+											{/if}
+										</div>
+										<div class="vp-layer_cnt">
+										<div id="videojw_{$r.id}"></div>
+
+											<div class="vp_video" id="vd_auto_play" data-video-meta='{ldelim}{if $clubid > 0}"vd_clubid":"{$clubid}",{/if}"vd_s3_userid":"{$r.userid}","vd_s3":"{$r.s3}","s3_url":"{if $clubid > 0}{$this->s3_club_video_url}{else}{$this->s3_video_url}{/if}","vd_p":"{$video_dir}","vd_title":"{urlencode($r.title)}","vd_fn":"{$r.filename}","vd_i":"{$r.id}","vd_ext":"{if $r.extension == "NULL"}{$r.external}{else}{$r.extension}{/if}"{rdelim}'>
+
+													
+			
+												<div class="vid-card_cnt_w"><div class="video-card-cover" style="background-image:url(/videoCover?v={$r.id}&dm=120*70{if $clubid > 0}&clubid={$clubid}{/if});"></div><i class="vid_play"></i><i class="vid-card_duration">{$r.dur}</i></div>
+		
+													
+											
+											</div>
+											
+											<div class="vp-layer-info">
+												{assign var=comment_sticky value=1}
+												 
+												 
+											{include file="{$this->theme_dir}/feed/widget-list.html"}
+												
+												
+												<div class="portlet_h portlet_h__nb textWrap">{$r.title}</div>
+												<div class="vp-layer-info_cnt"><span class="vp-layer-info_date">{$this->feedConvDate($r.added)}</span><span class="vp-layer-info_views">{$r.views}&nbsp;{$this->lang['video_views']}</span>
+													<a href="javascript:void(0);" onclick='var _thissobj = {ldelim}"uid":"{$this->USER.id}","id":"{$r.id}","type":"video"{rdelim}; return windowsPopup("report",_thissobj);' class="vp-layer-info_warning ic12_warn" title="{$this->lang['Report']}"></a>
+												</div>
+											</div>
+											
+											<div class="vp-layer-description">
+											{if !empty($r.description)}
+											
+												<div class="media-block media-text js-vp-layer-description">
+													<div class="media-text_cnt textWrap js-vp-layer-description_tx"><span>{$r.description}</span></div>
+												</div>
+												
+
+											
+												<div class="media_more invisible js-vp-layer-description_more">
+												   <span class="media_more_a"><span class="media_more_ic">***</span></span>
+												</div>
+												{/if}
+												
+											{if $r.tags != ''}
+											
+											<div class="vd_pp_tags">{$this->lang['Tags']}: {createTags($r.tags)}</div>
+											
+											{/if}
+											</div>
+											
+											
+											<div id="movie-comments">
+											</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="media-layer_r">
+						 
+						<a id="vpl_close" class="media-layer_close">
+							<div class="media-layer_close_ovr scroll-right-indent"></div>
+							<div class="ic media-layer_close_ico"></div>
+						</a>
+						
+						<a id="vpl_minimize" class="vdmedia-layer_minimize">
+							
+							<div class="ic media-layer_minimize_ico"></div>
+						</a>
+					</div>
+					<div class="hookData __none" id="v_vid">{$r.id}</div>
+					<div class="hookData __none" id="v_author">{$r.userid}</div>
+	{if !$nop}
+				</div>
+			</div>
+		</div>
+	</div>
+	{/if}
+{/strip}

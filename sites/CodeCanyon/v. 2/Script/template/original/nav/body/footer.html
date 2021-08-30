@@ -1,0 +1,192 @@
+{strip}
+ 
+ </div>
+ </div>
+ 
+ <div id="hook_Block_Footer" class="hookBlock">
+    <div id="footer">
+      <div class="ft ftmin">
+		<p>
+		<a href="javascript:void(0);" id="gl_lang_set" onclick="globalLangSet(event);" class="ft_a">{$this->lang['Language']}</a>
+		{if $this->settings['mob_view_enabled']}<a href="{$this->settings['mob_HOST']}" target="_blank" class="ft_a">{$this->lang['Mobile_version']}</a>{/if}
+		<a href="javascript:void(0);" onclick="tpaPopup(event);" data-mm="terms" class="ft_a">{$this->lang['terms']}</a>
+		<a href="javascript:void(0);" onclick="tpaPopup(event);" data-mm="policy" class="ft_a">{$this->lang['privacy_policy']}</a>
+		<a href="javascript:void(0);" onclick="tpaPopup(event);" data-mm="about" class="ft_a">{$this->lang['About_Us']}</a>
+		{if $this->USER}<a href="javascript:void(0);" onclick="contactUs(event);" data-mm="contact" class="ft_a">{$this->lang['Contact']}</a>{/if}
+		</p>
+            <p class="ff_copy">{$this->settings['SITENAME']}. &copy; {date('Y')}</p>
+        </div>
+
+		</div>
+		
+</div>
+ 
+</div>
+{if $this->USER > 0}
+
+
+
+{$this->hookOnlineFriends()}
+
+</div>
+
+{/if}
+
+</div>
+
+	<div id="messenger_message_cookie" class="hookData"></div>
+ <div id="stories-openable"></div>
+<div class="hook_Block_ShortcutMenu"></div>
+
+
+		
+
+
+{if isset($this->USER) && $this->USER > 0}
+<div id="new-buc"></div>
+<script>
+{literal}
+
+
+ 
+ga('#music-module').MusicModule({ 
+
+// define the path of music files 
+	    music_path: '/music/', 
+
+// initialize file name 
+	    p_file: '/index.html', 
+
+// where append the popup box 
+	    append_to: 'body', 
+
+// choose your favorite open method, use 'default' or 'overlay' 
+	    open_method: 'overlay',
+
+// set left position of popup box in px 
+            p_left: (ga(window).width() - ga('#page_layout').width())/2,
+
+// set top position of popup box in px 
+            p_top: '0',
+
+// enable|disable window modal 
+            w_modal: true,
+
+// this is a callback before open the popup box 
+	    beforeOpen: function(){ }
+
+});
+ 
+ 
+{/literal}
+</script>
+
+
+<!-- horizontal mousewheel -->
+<script src="{$this->theme_url}/js/jquery.horizontal-mousewheel.js"></script>
+
+
+<!-- gif player -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/gifplayer.css">
+<script src="{$this->theme_url}/js/jquery.gifplayer.js"></script>
+
+<!-- emoji style-->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/jquery.emojiarea.css">
+
+<!-- jBox css -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/jBox/jBox.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/jBox/themes/TooltipDark.css">
+
+{if isset($this->USER) && $this->USER > 0}
+<!-- photo viewer -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/photo-viewer.css">
+
+
+<!-- photo rating -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/rate_stars.css">
+
+<!-- face detector -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/phpfacedetect/detector.css" />
+
+<!-- min comments for photo comments dropDown -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/local_minimum_comments.css" />
+
+<!-- min comments for photo comments dropDown -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/chat/chat.css" />
+
+
+<!-- grades -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/grades.css" />	
+
+
+<script type="text/javascript" src="{$this->theme_url}/js/emoji/jquery.emojiarea.min.js"></script>
+<script type="text/javascript" src="{$this->theme_url}/js/emoji/emojis.js"></script>
+<!-- jBox plugin -->
+<script type="text/javascript" src="{$this->theme_url}/js/cmd/jBox/jBox.js"></script>
+
+
+
+
+<!-- comments widget --> 
+<script src="{$this->theme_url}/js/comments_widget.js"></script>
+
+<!-- profile -->
+<script src="{$this->theme_url}/js/profile.js"></script>
+<!-- live search (filtering) -->
+<script src="{$this->theme_url}/js/jquery.fastLiveFilter.js"></script>
+
+<!-- wait for image -->
+<script type="text/javascript" src="{$this->theme_url}/js/waitForImages.js"></script>
+
+<!-- communities -->
+<script type="text/javascript" src="{$this->theme_url}/js/communities.js"></script>
+
+
+
+
+{if $this->settings['_NODE_ENABLED']}
+<!--------------------- Real time App --------------->
+<!-- peerjs -->
+<script src="{$this->theme_url}/js/cmd/real-time/peer.min.js"></script>
+
+<!-- messages -->
+<script src="{$this->theme_url}/js/cmd/real-time/messenger.js"></script>
+
+<!-- chat -->
+<script type="text/javascript" src="{$this->theme_url}/js/cmd/real-time/messenger-shortcut.js?v1"></script>  
+
+<!-- live notifications -->
+<script src="{$this->theme_url}/js/cmd/real-time/liveNotifications.js"></script>
+{else}
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/privateMessages.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pm-redesign.css">
+<!-- ajax queries -->
+<script src="{$this->theme_url}/js/alog.js"></script>
+<script src="{$this->theme_url}/js/privateMessages.js"></script>
+<script src="{$this->theme_url}/js/chat.js"></script>
+
+{/if}
+
+<!-- photo exif -->
+<script language="Javascript" type="text/javascript" src="{$this->theme_url}/js/exif.js"></script>
+
+<!-- photo rating -->
+<script language="Javascript" type="text/javascript" src="{$this->theme_url}/js/rating.js"></script>
+
+<!-- caret position -->
+<script language="Javascript" type="text/javascript" src="{$this->theme_url}/js/jquery.caret.js"></script>
+
+<!-- ddslick -->
+<script language="Javascript" type="text/javascript" src="{$this->theme_url}/js/jquery.ddslick.min.js"></script>
+
+<!-- games -->
+<script src="{$this->theme_url}/js/game-embed.js"></script>
+ 
+{/if}
+		{/if}
+
+</body>
+
+</html>
+
+{/strip}

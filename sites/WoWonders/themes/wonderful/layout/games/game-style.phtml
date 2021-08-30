@@ -1,0 +1,23 @@
+<div class="cool-style" id="game_<?php echo $wo['game']['id'];?>" onmouseover="Wo_HoverOnGame(<?php echo $wo['game']['id'];?>);" onmouseleave="Wo_LeaveOnGame(<?php echo $wo['game']['id'];?>);">
+	<a href="<?php echo $wo['game']['url'];?>" data-ajax="?link1=game&id=<?php echo $wo['game']['id'];?>">
+		<div class="avatar <?php echo Wo_RightToLeft('pull-left');?>" style="position: relative;">
+			<img src="<?php echo $wo['game']['game_avatar'];?>" alt="<?php echo $wo['game']['game_name']; ?> Profile Picture" />
+			<div id="overlay-black"></div>
+		</div>
+      
+		<div class="gamez-name" title="<?php echo $wo['game']['game_name']; ?>">
+			<?php echo $wo['game']['game_name']; ?>
+			<?php if(!isset($wo['game']['all'])) {?>
+			<div class="last-play">
+				<?php echo $wo['lang']['last_play'];?> <?php echo Wo_Time_Elapsed_String($wo['game']['last_play']);?>
+			</div>
+			<?php }?>
+		</div>
+	</a>
+	
+	<div style="margin: 0px 5px 6px;">
+		<a class="wabe btn btn-info playbtn" href="<?php echo $wo['game']['url'];?>">
+			<?php echo $wo['lang']['play'];?>
+		</a>
+	</div>
+</div>

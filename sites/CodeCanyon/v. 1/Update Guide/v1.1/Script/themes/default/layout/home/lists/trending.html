@@ -1,0 +1,43 @@
+<div class="news latest-news-list">
+    <div class="col-sm-12">
+        <div class="latest-news-img">
+            <a href="<?php echo $fl['trending_data']['news']['url'];?>"><img src="<?php echo $fl['trending_data']['news']['small_image'];?>" alt="<?php echo $fl['trending_data']['news']['title'];?> Image"></a>
+            <div class="share-button">
+                 <div class="dropdown">
+                 <a class="dropdown-toggle pointer" type="button" data-toggle="dropdown"><span class="fa fa-share-alt share-icon"></span></a>
+                 <ul class="dropdown-menu custom-dropdown">
+                    <li><a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-facebook"></i> {{LANG facebook}}</a></li>
+                    <li><a href="https://plus.google.com/share?url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-google"></i>  {{LANG google_plus}}</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?text=<?php echo $fl['trending_data']['news']['title']?>&url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-twitter"></i> {{LANG twitter}}</a></li>
+                    <li class="pointer"><a onclick="FL_ShareToEmail('<?php echo $fl['trending_data']['news']['url']?>');" target="_blank"><i class="fa fa-fw fa-envelope-o"></i> {{LANG email}}</a></li>
+                    <li><a href="http://www.reddit.com/submit?url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-reddit"></i> {{LANG reddit}}</a></li>
+                 </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <br>
+    <div class="col-sm-12">
+        <div class="latest-news-title">
+            <a href="<?php echo $fl['trending_data']['news']['url'];?>"><h4><?php echo $fl['trending_data']['news']['title'];?></h4></a>
+        </div>
+        <div class="latest-news-info">
+            <span class="latest-news-time">
+            <i class="fa fa-clock-o"></i> <?php echo $fl['trending_data']['news']['posted'];?> |
+            </span>
+            <span class="latest-news-time">
+            {{LANG by}} <i class="fa fa-user"></i> <a href="<?php echo $fl['trending_data']['news']['publisher']['url'];?>"><?php echo $fl['trending_data']['news']['publisher']['name'];?></a> 
+            </span>
+        </div>
+        <div class="latest-news-disc">
+            <?php echo mb_substr($fl['trending_data']['news']['description'], 0, 100, "UTF-8") . '..';?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <?php if ($fl['trending_data']['last'] == false): ?>
+         <hr class="margin-top-20">
+    <?php endif ?>
+</div>
+
+

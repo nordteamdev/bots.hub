@@ -1,0 +1,89 @@
+{strip}
+{assign var=rand_n value=mt_rand(11,9999)}
+<div class="feed h-mod slider">
+	
+	<header>
+	
+		<div class="feed_ava">
+			<a href="/profile?q={$res.uid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+				</div>
+			</a>
+		</div>
+		
+		
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+ 
+        <div class="feed_h">
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+           &nbsp;{$this->lang['posted_an_item_for_sale']} 
+        </div>
+
+	
+	</header>
+
+
+	
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+
+
+
+        <div class="feed_b ">
+
+			{assign var=product value=$market->getProductDetails($res.itemid)}
+		
+			
+			{assign var=getpictures value=$market->getProductPictures($res.itemid,2)}
+ 
+		<div class="feed-product-images-collage">
+		{foreach $getpictures as $picture}
+            <a href="/market/product/{$product.id}" data-open-marketproduct="{$res.itemid}" hrefattr="true">
+                <img src="/getMarketPictures?p={$picture.id}&product_id={$res.itemid}&sz=large" />
+            </a>
+		{/foreach}
+		</div>
+		
+		<div class="feed-product-bottom">
+		
+		<div class="feed-product-2gap _big">
+			<div class="feed-product-name"><A href="/market/product/{$product.id}" hrefattr="true">{$product.product_name}</a></div>
+			<div class="feed-product-descr">{pellipse($product.product_description,100)} {if strlen($product.product_description) > 180}<A data-open-marketproduct="{$res.itemid}" href="/market/product/{$product.id}" class="ob" hrefattr="true">{$this->lang['Read_more']}</a>{/if}</div>
+			<div class="market_item_param market_row_address_metro market_item_param_geo feed-product-location">{$product.product_location}</div>
+			
+		</div>
+		<div class="feed-product-2gap">
+			<div class="feed-product-price globalpriceformat">{$product.price} {$this->settings['MARKETPLACE_CURRENCY']}.</div>
+			<div class="feed-product-contact"><button class="market_contact_btn flat_button button_wide ij_button" onclick="return new_chat_window(this,event);" id="y-3" data-uch='{ldelim}"id":"{$res.uid}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{rdelim}'>Contact seller</button></div>
+		</div>
+		</div>
+		
+		</div>
+		<div class="feed_f">
+
+ 
+				{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+</div>
+</div>
+<script>
+var $feed_id = '{$res.id}', $itemid = '{$product.id}', $author_id = '{$res.uid}';
+{literal}
+
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'market_product',
+						{'width':'75%','height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/strip}

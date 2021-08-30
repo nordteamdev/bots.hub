@@ -1,0 +1,30 @@
+<div class="home-sidebar profile-style" data-group-chat-part="<?php echo $wo['part']['id']; ?>">
+    <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['part']['avatar'];?>" alt="<?php echo $wo['part']['name']; ?> Profile Picture" />
+     </div>
+     <span class="user-popover" data-id="<?php echo $wo['part']['id'];?>" data-type="<?php echo $wo['part']['type'];?>">
+    <a href="#" >
+        <span class="user-name">
+            <?php echo $wo['part']['name']; ?>
+            <?php  if($wo['part']['verified'] == 1) {   ?>
+            <span class="verified-color">
+            <i class="fa fa-check-circle" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"></i>
+            </span>
+            <?php  } ?>
+        </span>
+    </a>
+    <span class="<?php echo Wo_RightToLeft('pull-right');?> pointer status" style="margin-right: 10px;" onclick="Wo_AddGChatPart(<?php echo $wo['part']['group_id']; ?>,<?php echo $wo['part']['id']; ?>);">
+
+    <?php if (Wo_IsGChatMemeberExists($wo['part']['group_id'],$wo['part']['id'])): ?>
+        <i class="fa fa-times main"></i>
+    <?php else: ?>
+        <i class="fa fa-plus-square-o main"></i>
+    <?php endif; ?>
+    </span>
+    </span>
+    <?php if($wo['config']['user_lastseen'] == 1 && $wo['part']['showlastseen'] != 0) { ?>
+    <div class="user-lastseen">
+        <?php echo Wo_UserStatus($wo['part']['user_id'],$wo['part']['lastseen']); ?>
+    </div>
+    <?php } ?>
+</div>

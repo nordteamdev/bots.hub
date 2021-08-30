@@ -1,0 +1,22 @@
+<style>
+  body { text-align: center; padding: 150px; }
+  h1 { font-size: 50px;  }
+  body { font: 20px Helvetica, sans-serif; color: #333; }
+  article { display: block; text-align: center; width: 650px; margin: 0 auto; }
+  a { color: <?php echo $wo['config']['btn_background_color']; ?>; text-decoration: none; }
+  a:hover { color: #333; text-decoration: none; }
+  p {font-size: 16px;margin: 0 0 5px;}
+@media(max-width:990px){
+body{padding: 10px;	height: 100vh; width: 100%;display: table;}
+article{width: 100%;}
+footer .footer-wrapper{display:none !important;}
+.content-container {margin-top: 0px;vertical-align: middle;display: table-cell;}
+}
+</style>
+<article>
+    <h1>We’ll be back soon!</h1>
+    <div>
+        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need help you can always <a href="mailto:<?php echo $wo['config']['siteEmail']; ?>">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
+        <p>&mdash; <?php echo $wo['config']['siteName'];?></p>
+    </div>
+</article>

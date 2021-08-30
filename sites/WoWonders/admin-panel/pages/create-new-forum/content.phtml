@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Forums > Create New Forum</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Create New Forum</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success newforum-alert"></div>
+                    <div class="alert alert-danger newforum-error-alert"></div>
+                    <form class="newforum" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="name" name="name" class="form-control">
+                                <label class="form-label">Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="description" id="description" class="form-control" cols="30" rows="3"></textarea>
+                                <label class="form-label">Description</label>
+                            </div>
+                        </div>
+                        <label for="section">Section</label>
+                        <select class="form-control show-tick" id="section" name="section">
+                          <?php foreach (Wo_GetForumSec(array('forums'=>false,'limit'=>500)) as $section): ?>
+							<option value="<?php echo $section['id']; ?>">
+								<?php echo $section['section_name']; ?>
+							</option>
+						<?php endforeach ?>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Create Forum</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_new_forum = $('form.newforum');
+    form_new_forum.ajaxForm({
+        url: Wo_Ajax_Requests_File()  +  '?f=add-new-forum&hash=' + $('.main_session').val(),
+        beforeSend: function() {
+            form_new_forum.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.newforum-alert').html('<i class="fa fa-check"></i> Forum successfully added');
+                $('.newforum-error-alert').empty();
+            } else {
+                $('.newforum-alert').empty();
+                $(".newforum-error-alert").html(data['message']);
+            } 
+            form_new_forum.find('.waves-effect').text('Create');
+        }
+    });
+});
+</script>

@@ -1,0 +1,24 @@
+<div class="col-xs-6 col-sm-4 nearby_user_wrapper text-center user-data" id="invite-<?php echo $wo['UsersList']['user_id']?>" data-user-id="<?php echo $wo['UsersList']['user_id'];?>">
+   <div class="avatar">
+      <img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture" />
+   </div>
+   <span class="user-popover" data-id="<?php echo $wo['UsersList']['id'];?>" data-type="<?php echo $wo['UsersList']['type'];?>">
+   <a class="user_wrapper_link" href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username'];?>">
+   <?php echo $wo['UsersList']['name']; ?>
+   <?php if($wo['UsersList']['verified'] == 1) {   ?>
+   <span class="verified-color"><i class="fa fa-check-circle" title="<?php echo $wo['lang']['verified_user'];?>"></i></span>
+   <?php  } ?>
+   </a>
+   </span>
+   <?php if($wo['config']['user_lastseen'] == 1 && $wo['UsersList']['showlastseen'] != 0): ?>
+   <div class="user-lastseen">
+      <?php echo Wo_UserStatus($wo['UsersList']['user_id'],$wo['UsersList']['lastseen']); ?>
+   </div>
+   <?php endif; ?>
+   <div class="user-follow-button">
+      <button type="button" onclick="Wo_RegisterInvite(<?php echo $wo['UsersList']['user_id'];?>, <?php echo $wo['page_profile']['page_id'];?>)" class="btn btn-default btn-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+      <span class="button-text"> <?php echo $wo['lang']['invite'];?></span>
+      </button>
+   </div>   
+</div>

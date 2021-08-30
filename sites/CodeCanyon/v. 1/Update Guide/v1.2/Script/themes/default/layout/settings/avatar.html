@@ -1,0 +1,90 @@
+<div class="content-shadow fluid">
+  <div class="settings-header main-border-color">
+  	<h3><i class="fa fa-picture-o fa-fw"></i> {{LANG avatar_and_cover}}</h3>
+  </div>
+  <form class="form-horizontal setting-panel" id="avatar-settings" method="POST">
+      <div class="setting-avatar-alert"></div>
+  	<fieldset>
+  		<!-- Text input-->
+  		<div class="form-group">
+  			<label class="col-md-2" for="avatar">{{LANG avatar}}</label>  
+  			<div class="col-md-6">
+  				<span class="btn btn-default btn-file" onclick="$('#avatar').trigger('click'); return false;">
+                      <i class="fa fa-camera" ></i>
+                  </span>
+                  <input type="file" class="hidden" id="avatar" accept="image/x-png, image/gif, image/jpeg" name="avatar" multiple="multiple">
+  			</div>
+  		</div>
+  		<div class="form-group avatar-read" id="photo-form">
+  	           <label class="col-md-2"></label>  
+  	           <div class="col-md-6">
+  	               <input type="text" class="form-control input-md" readonly>
+  	           </div>
+          </div>
+  		<!-- Text input-->
+  		<div class="form-group">
+  			<label class="col-md-2" for="Cover">{{LANG cover}}</label>  
+  			<div class="col-md-6">
+  				<span class="btn btn-default btn-file" onclick="$('#cover').trigger('click'); return false;">
+                      <i class="fa fa-camera" ></i>
+                  </span>
+                  <input type="file" class="hidden" id="cover" accept="image/x-png, image/gif, image/jpeg" name="cover" multiple="multiple">
+  			</div>
+  		</div>
+  		<div class="form-group avatar-read" id="cover-form">
+  	           <label class="col-md-2"></label>  
+  	           <div class="col-md-6">
+  	               <input type="text" class="form-control input-md" readonly>
+  	           </div>
+          </div>
+  		<hr>
+  		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+  		<input type="hidden" name="user_id" value="{{USER user_id}}">
+  		<!-- Button (Double) -->
+  		<div class="form-group">
+  			<label class="col-md-2" for="button1id"></label>
+  			<div class="col-md-8">
+  				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+  			</div>
+  		</div>
+  	</fieldset>
+  </form>
+</div>
+
+<script>
+$(function() {
+	$("#avatar").change(function () {
+        var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+        $("#photo-form input").val(filename);
+        $("#photo-form").slideDown(200);
+    });
+    $("#cover").change(function () {
+        var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+        $("#cover-form input").val(filename);
+        $("#cover-form").slideDown(200);
+    });
+  var form = $('form#avatar-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=settings&s=avatar',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-avatar-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-avatar-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

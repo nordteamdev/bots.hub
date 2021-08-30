@@ -1,0 +1,258 @@
+{strip}
+
+{assign var="stories" value=$this->im_stories()}
+{assign var="json_story" value=json_encode($stories->getMyStory($user.id))}
+{assign var="story" value=json_decode($json_story,true)}
+
+
+
+	{if $story.exist == 'yes'}
+	{assign var="story_seen" value=$stories->seen($story.story_id,$this->USER.id)}
+	{else}
+	{assign var="story_seen" value=false}
+	{/if}
+
+
+
+
+{capture name=story}{$json_story}{/capture}
+{capture name=story_seen}{$story_seen}{/capture}
+
+<div class="pv117-twocol">
+			<section class="pv17_wide_menu">
+			
+	<div id="profile_time_lv">		
+{if !$user_is_online}
+last seen {$this->time_elapsed($user['online'])}<b class="mob_onl profile_mob_onl"></b>
+{else}
+<span class="ic-online"></span><span class="xvEEfg31">{$this->lang['Online']}</span>
+{/if}
+
+{if $user.id != $this->USER.id}
+<div class="YzWgs1Q soh-s">
+
+	<div class="user_more_act foh-s">
+ 
+								  <ul>
+
+								
+								{if !$this->checkUserBlacklisted($user.id)}
+								<li class="u_footer U_more_tab"><a href="javascript:;" onclick="event.preventDefault();event.stopPropagation();toBlackList(this,'profile_blacklist','{$user.id}');return false;"><span class="tico"><i class="tico_img ic ic_block"></i>{$this->lang['Block_the_user']}</span></a></li>
+								{else}
+								<a id="unblock_this_user" style="display:none;" href="/profile?q={$user.id}&unblock=1" hrefattr="true"></a> 
+								<li class="u_footer U_more_tab"><a href="javascript:;" data-unblockui="{$user.id}" onclick="removeBlackList(event,this,function(){ setTimeout(function(){ ga('#unblock_this_user').trigger('click'); },500); });"><span class="tico"><i class="tico_img ic ic_block-off"></i>{$this->lang['Unblock']}</span></a></li>
+								{/if}
+								
+								{if $this->checkInBookmarks($user.id,'user')}
+								<li class="u_footer U_more_tab"><div class="u_profile_bookmarked"><a href="/bookmarks?categ=users" data-scrolltop="410" hrefattr="true"><span class="tico"><i class="tico_img ic ic-ok"></i>{$this->lang['is_in_your_bookmarks']}</span></a></div></li>
+								{else}
+								<li class="u_footer U_more_tab"><a href="javascript:;" data-bookmark='{ldelim}"categ":"user","itemid":"{$user.id}"{rdelim}' onclick="return bookmarkthis(this,event);"><span class="tico"><i class="tico_img ic ic_bookmark-g"></i>{$this->lang['Bookmark']}</span></a></li>
+								{/if}
+							   {if $this->isfriend($user.id)}
+							   <li class="u_footer U_more_tab" id="action_menu_sub_action_menu_delete_friend"><a class="u-menu_a" id="action_menu_sub_action_menu_delete_friend_a" href="/profile?q={$user['id']}" onclick="return deleteFriend(this,event);" data-fid="f_{$user.id}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_delete"></i>{$this->lang['Unfriend']}</span></a></li>
+							   {/if}
+								<li class="u_footer U_more_tab"><a href="javascript:;" onclick='var _thissobj = {ldelim}"uid":"{$this->USER.id}","id":"{$user.id}","type":"user"{rdelim}; return windowsPopup("report",_thissobj);'><span class="tico"><i class="tico_img ic ic_warn"></i>{$this->lang['report']}</span></a></li>
+							  </ul>
+	</div>
+
+</div>
+{/if}
+		</div>	
+			
+			
+			
+			
+					<div class="pv17_wmenu_c">
+								<div class=" pv17_u_avatar ovr-menu_soh">
+					            {if $user['profile_photo'] > 0}
+								<a class="image-hover {if $story.exist == 'yes'}cntstory{/if}" href="/photo?q={$user.id}&show=single&from=medium&o={b_encode($user.profile_photo)}&cmd=openPhotoViewer" data-vphopen="1" data-vphi="{base64_encode($user.profile_photo)}" id="profile_change_main_photo">
+								{else}
+								<a href="javascript:void(0);" {if $user.id == $this->USER.id}onclick="ga('.yUsx2G').click();"{/if} class="default">
+								{/if}
+								
+
+                                <img src="/getPhoto?p={$user['profile_photo']}&sz=thumb&g={$user['gender']}" />
+								{if $story.exist == 'yes'}
+								<ul><li {if $user.id == $this->USER.id}class="my"{/if}><div class="hookData stories-hookData"><!-- {$stories->getMyStoryObject($story.story_id)} --></div>
+								<span href="javascript:void(0);" class="invisible-a-openstory" id="u-{$user.id}" onclick="event.preventDefault();event.stopImmediatePropagation();story.openStory(this,event,'{$story.story_id}');"></span>
+									{if $story_seen}
+									<div class="story_seen_bord"></div>
+									{else}
+								   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="stories" style="display:block;enable-background:new -580 439 577.9 194;"
+									 xml:space="preserve">  
+									<circle cx="50" cy="50" r="40" />
+								  </svg>
+								  {/if}
+								  </li></ul>
+								{/if}
+								</a>
+ 
+									{if $user.id === $this->USER.id}
+									<div class="ovr-menu_w">
+											<div class="ovr-menu">
+												<div class="ovr-menu_tx">
+											
+												<a href="/profile?cmd=change-profile-photo" onclick="selectProfilePhoto(event,this);" class="u-menu_a yUsx2G">{$this->lang['Edit']}</span></a>
+												</div>
+											</div>
+										</div>
+									{/if}
+								</div>
+								
+						<div class="pv17_head_menu_p16">
+								
+								<div class="pv17_u_name ellip" rel="tipsy" title="{$user.fullname}">
+								{$user.fullname}
+								</div>
+
+								<div class="u_info_about_str"><span rel="getusercountry" id="buser_{$user.id}"></span></div>		
+
+
+								
+		
+		{if $res.id === $this->USER['id']}
+			
+            <div class="covers_control_anim">
+            <a href="/themes?nav=themes" class="covers_control_cnt_w al" hrefattr="true">
+            <div class="covers_control_ic"></div><div class="covers_control_cnt">{$this->lang['change_theme']}</div></a>
+            </div>
+{/if}
+		
+		
+		{if $this->USER['id'] !== $user.id}
+<div class="pv17_head_separator"></div>
+<a id="return_to_blacklist_pg" style="display:none;" href="/profile?q={$this->USER['id']}&cmd=settings&tab=blacklist&nav=settings" hrefattr="true"></a>
+		
+		
+
+		<div class="v117-redesign-btnm">
+		<div class="v117-buttons-likea">
+		{if $this->frReqViewProf($user.id)}
+		<button class="flat_button button_wide secondary" data-id="1" onclick="confirmUnjoin(event);" id="unjoin_button_1">{$user['name']} wants to become friends with you</button>
+		{else if $this->pendingFriendReq($user['id']) && !$this->isfriend($user.id)}
+		<button class="flat_button button_wide secondary __request_sent">{$this->lang['friend_request_has_been_sent']}</button>
+		
+		{else if $this->USER['id'] !== $user['id'] && $this->isfriend($user.id)}
+		<button data-friend-btn="add_friend_btn_sub_photo" class="flat_button button_wide secondary indicate-relationship" data-usnf='{ldelim}"uid":"{$user.id}","ufn":"{$user.name}","gender":"{$user.gender}","relationship":"{$this->getUserRelationShip($user['id'])}"{rdelim}' id="action_menu_set_relationship_a" href="/user/{$user['id']}" hrefattr="true">{$this->lang['inidicate_friends_relationship']}</button>
+		
+		
+		
+		{else}
+		<button class="flat_button button_wide _send_request" href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$user['id']}" onclick="addFriend(this,event,'{b_encode($user['id'])}')" title="{$this->lang['friend_request']}" data-friend-btn="add_friend_btn_sub_photo"><i class="join_to_group_ic"></i>{$this->lang['friend_request']}</button>
+		
+		
+		
+		{/if}
+		</div>
+		
+		
+		
+			<div class="profile_action_btn profile_msg_split" id="profile_message_send">
+				<div class="clear_fix">
+					<a href="javascript:;" onclick="return new_chat_window(this,event);" id="y-{$user.id}" data-uch='{ldelim}"id":"{$user.id}","fullname":"{$user.fullname}","photo":"{$user.profile_photo}"{rdelim}' class="button_link cut_left"><button class="flat_button profile_btn_cut_left secondary">{$this->lang['send_message']}</button></a>
+					<a href="/gifts/u/{$user.id}" hrefattr="true" class="button_link cut_right">
+						<button class="flat_button profile_btn_cut_right">
+							<span class="profile_gift_icon"></span>
+						</button>
+					</a>
+				</div>
+			</div>
+		
+
+		</div>
+		
+		{/if}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+					</div>
+		
+		
+								
+
+									
+					</div>
+			
+			
+			
+			
+			</section>
+
+
+<section class="pv117-nav-menu">
+
+ <a href="/user/{$user.id}" hrefattr="true" data-navact="home"class="pv117-a-nav-menu-item">
+<div class="navMenuCount">{$this->userFeedCount($user.id)}</div>
+{$this->lang['Home']}
+</a>
+
+ <a href="/friends/{$user['id']}" hrefattr="true" data-navact="friends" class="pv117-a-nav-menu-item">
+<div class="navMenuCount">{$this->friendsCount($user.id)}</div>
+{$this->lang['friends']}
+</a>
+
+
+
+<a id="photosTab" href="/photos/{$user['id']}" hrefattr="true" data-navact="photos" class="pv117-a-nav-menu-item">
+<div class="navMenuCount _photos">{$this->userPhotosCount($user['id'],'all')}</div>
+{$this->lang['photos']}
+<div class="p_tp_nav_menu_item" style="display:none;">
+<a id="pphotosTab" data-clbk="assign_bfupl_img" href="/profile?q={$user['id']}&cmd=pphotos&nav=photos" data-navact="photos" hrefattr="true" class="mctc_navMenuSec"></a>
+</div>
+</a>
+
+
+
+<a href="/posts/{$user.id}" class="pv117-a-nav-menu-item" data-navact="posts" hrefattr="true">
+<div class="navMenuCount">{$this->postsCount($user.id)}</div>
+{$this->lang['posts']}
+</a>
+
+<a href="/groups/{$user.id}" data-navact="communities" class="pv117-a-nav-menu-item" hrefattr="true">
+<div class="navMenuCount">{$this->userGroupsCount($user.id)}</div>
+{$this->lang['Communities']}
+</a>
+
+<a href="javascript:void(0);" class="pv117-a-nav-menu-item last-child" id="mctc_navMenuDropdownSec_otherSections">
+<div class="navMenuCount">&#8226;&#8226;&#8226;</div>
+</a>
+
+
+
+      <div class="mctc_navMenuDDC">
+
+            <ul class="mctc_navMenuDDL">
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/apps/m/user/{$user.id}" hrefattr="true">{$this->lang['Games']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/user/about/{$user.id}" hrefattr="true">{$this->lang['About_me']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/user/gifts/{$user.id}" hrefattr="true">{$this->lang['Gifts']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/books/{$user.id}" hrefattr="true">{$this->lang['Books']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/movies/{$user.id}" hrefattr="true">{$this->lang['movies']}</a></li>
+				{if $user.id === $this->USER['id']}
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/bookmarks?nav=bookmarks" hrefattr="true" data-navact="bookmarks">{$this->lang['Bookmarks']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/profile?q={$user.id}&cmd=settings&tab=blacklist&nav=settings" hrefattr="true">{$this->lang['Black_list']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/profile?q={$user.id}&cmd=settings&nav=settings" hrefattr="true">{$this->lang['Settings']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/themes?nav=themes" hrefattr="true" data-navact="themes">{$this->lang['Themes']}</a></li>
+				{/if}
+				
+            </ul>
+        </div>
+
+</section>
+</div>
+{/strip}

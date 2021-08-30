@@ -1,0 +1,9 @@
+<div class="my_pages_header row">
+	<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+		<li class="<?php echo ($wo['active'] == 1) ? 'active': ''; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=developers') ?>"><?php echo $wo['lang']['developers'] ?></a></li>
+		<li class="<?php echo ($wo['active'] == 2) ? 'active': ''; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=developers?page=share') ?>">Share Plugin</a></li>
+	</ul>
+	<span class="btn btn-success <?php echo Wo_RightToLeft('pull-right'); ?>">
+		<a data-ajax="?link1=create-app" href="<?php echo Wo_SeoLink('index.php?link1=create-app');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+	</span>
+</div>

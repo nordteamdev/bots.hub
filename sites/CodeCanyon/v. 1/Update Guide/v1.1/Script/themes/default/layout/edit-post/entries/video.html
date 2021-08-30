@@ -1,0 +1,30 @@
+<div class="entry" data-type="video" data-id="{{ENTRY_ID}}" id="entry-{{ENTRY_ID}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-video-camera"></i> 
+	   {{LANG video}}
+	</div>
+	<div class="pull-right">
+	   <i class="entry-times fa-fw fa fa-arrow-down" onclick="FL_DownEntry({{ENTRY_ID}});"></i>
+	   <i class="entry-times fa-fw fa fa-arrow-up" onclick="FL_UpEntry({{ENTRY_ID}});"></i>
+	   <i class="entry-times fa-fw fa fa-trash" onclick="FL_RemoveEntryByID({{ENTRY_ID}});"></i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}" value="{{ENTRY_TITLE}}"><br>
+	<input type="text" id="video-url" class="form-control" placeholder="{{LANG video_url}}" value="{{ENTRY_VIDEO_URL}}" data-name="entry_video_url">
+	<input type="file" class="hidden" id="fl-upload-video-{{ENTRY_ID}}" onchange="FL_UploadVideo('{{ENTRY_ID}}',this);" accept="video/*">
+	<span class="help-block">{{LANG video_supported_sites}}</span><Br>
+	<div id="fetched-video">{{ENTRY_VIDEO_HTML}}</div>
+	<div class="form-group pull-right">
+		<button class="btn btn-main" type="button" onclick="$('#fl-upload-video-{{ENTRY_ID}}').trigger('click');">
+		  <i class="fa fa-cloud-upload progress-icon" data-icon="cloud-upload"></i> {{LANG upload}}
+	    </button>
+	    <button class="btn btn-blue" type="button" onclick="FL_FetchVideo({{ENTRY_ID}});">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	    </button>
+		<input type="hidden" id="entry_video_type" class="btn btn-blue" data-name="entry_video_type" value="{{ENTRY_VIDEO_TYPE}}">
+		<input type="hidden" id="entry_video_id" class="btn btn-blue" data-name="entry_video_id" value="{{ENTRY_VIDEO}}">
+		<input type="hidden" id="entry_video_src" class="btn btn-blue" data-name="entry_video_src" value="{{ENTRY_VIDEO_SRC}}">
+	</div>
+	<div class="clear"></div>
+</div>

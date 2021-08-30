@@ -1,0 +1,37 @@
+<!------------------------- Header (statistic of search result) [ template ] --------------------------->
+
+<div class="m_c_s" aria-hidden="false">
+  <div class="m_c_s_searchResult m_c_s_bestMatch_artist pl-mb-90" id="windowMusic_search_container">
+    <div class="m_c_s_header">
+      <div class="m_c_s_headerWrapper">
+        <div class="m_c_s_header_search_title">
+          Search results in:
+        </div>
+        <div class="mus_tabs">
+          <div class="mus_tabs_i {$song_active}">
+            <div class="mus_tabs_i_a" {$songs_href}>
+              Songs 
+              <span class="mus_tabs_i_a_count">
+                {$songs_count}
+              </span>
+            </div>
+          </div>
+          <div class="mus_tabs_i {$inx_active}">
+            <div class="mus_tabs_i_a" {$artis_href}>
+              Artists 
+              <span class="mus_tabs_i_a_count">
+                {$artists_count}
+              </span>
+            </div>
+          </div>
+          <div class="mus_tabs_i {$album_active}">
+            <div class="mus_tabs_i_a" {$album_href}>
+              Albums 
+              <span class="mus_tabs_i_a_count">
+                {$albums_count}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

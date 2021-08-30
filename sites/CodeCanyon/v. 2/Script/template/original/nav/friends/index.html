@@ -1,0 +1,427 @@
+{strip}
+
+
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+
+  {include file={$_usermenu}}
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+<div class="wide_friends_lf_cl">
+
+  <div id="mainContentContentColumn">
+ 
+        <div id="middleColumn">
+		
+					
+	   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Friends']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+		
+		
+          <div id="hook_Block_MyFriendsMRB" class="hookBlock">
+            <div class="portlet" id="panelFriendsId">
+              <div class="portlet_b">
+                {if !$this->friendsCount($user.id) && $this->USER['id'] == $user['id'] && !$mode}
+                {assign var="example_friend" value=$this->extractExampleFriend()}
+                <div id="hook_Block_MakeFriends" class="hookBlock">
+                  <div class="new-user_screen">
+                    <div class="new-user_screen_cnt">
+                      <div class="portlet_h portlet_h__nb">Find friends
+                      </div>
+                      <div>{$this->lang['more_friends_more_fun']}
+                      </div>
+                      <div class="new-user_screen_ac">
+                        <a href="/search" hrefattr="true" class="flat_button">{$this->lang['Find_friends']}
+                        </a>
+                      </div>
+                    </div>
+                    <div class="new-user_invite_w">
+                      <div class="new-user_invite new-user_invite__2">
+                        <div class="ucard new-user_fr new-user_fr__na new-user_fr__1">
+                          <a href="/profile?q={$example_friend.id}" title="{$this->lang['im']} {$example_friend.name}" hrefattr="true">
+                            <img src="/getPhoto?p={$example_friend.profile_photo}&sz=small" class="ucard_img">
+                          </a>
+                        </div>
+
+                      </div>
+                      <div> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="stub-empty __friends">
+                  <div class="stub-empty_img">
+                  </div>
+                  <div class="stub-empty_t">{$this->lang['all_your_friends_will_be_displayed_here']}
+                  </div>
+                  <div class="stub-empty_tx">{$this->lang['no_friends_empty']}
+                  </div>
+                </div>
+                {/if}
+                {if $this->friendsCount($user.id)}
+                <div class="hook" id="hook_Form_MyFriendsMRBFormForm">
+                  <form action="" onsubmit="return false;"  method="post">
+                    <input type="hidden" name="st.posted" value="set">
+                    <div class="form ">
+                      <div class="form_i">
+                        <input type="hidden" name="st.posted" value="set">
+                        <div class="search-wrapper __medium">
+                          <div class="it_w search-input">
+                            <label>
+                              <input type="text" autofocus name="st.query" value="" data-interfacemode="{$list}" data-euid="{$user['id']}" onkeyup="searchForFriends(this,event);" autocomplete="off" id="friends_search" class="it search-input_it" placeholder="Search for friends" maxlength="80" previoussearchvalue="">
+                              <div class="search-input_control search-input_process">
+                                <i class="search-input_ic ic18 ic18_anim-procces">
+                                </i>
+                              </div>
+                            </label>
+                            <span class="search-input_control search-input_search-ic">
+                              <i id="searchFriends_searchIconId" class="search-input_ic ic ic_search">
+                              </i>
+                            </span>
+                            <a class="search-input_control search-input_close">
+                              <i id="searchFriends_cancelId" class="search-input_ic ic curPointer ic_close-g">
+                              </i>
+                            </a>
+                          </div>
+                          <div class="showcase_switch">
+                            <div id="hook_Block_MyFriendsListModeToggleB" class="hookBlock">
+                              <div class="showcase_switch_tx">Type of the list
+                              </div>
+                              {if !$list}
+                              <a href="/profile?q={$user.id}&cmd=friends&list=true{$mdo}&nav=friends" class="ic ic_list-view showcase_switch_ic" hrefattr="true">
+                              </a>
+                              <span class="ic ic_grid-view-o showcase_switch_ic">
+                              </span>
+                              {else}
+                              <span class="ic ic_list-view-o showcase_switch_ic">
+                              </span>
+                              <a href="/profile?q={$user.id}&cmd=friends{$mdo}&_tok={time()}&nav=friends" hrefattr="true" class="ic ic_grid-view showcase_switch_ic">
+                              </a>
+                              {/if}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                {/if}
+                <div id="hook_friends_fr_srch_res">
+                  {if !$mode && $this->friendsCount($user.id)}
+                  <div id="hook_Block_MyFriendsNewPageMRB" class="hookBlock">
+                    <div class="showcase">
+                      <div class="showcase_favs">
+                        <div class="ugrid">
+                          <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Last_added']}
+                            </div>
+                            <div class="separator_slv">
+                            </div>
+                          </div>
+						  
+                          <div class="ugrid_cnt friends_last_added">
+                            {foreach $this->lastAddedFriends($user['id']) as $res}
+                            <div class="ugrid_i">
+                              <div class="ucard-v __xs">
+                                <a href="/user/{$res.id}" hrefattr="true">
+                                  <div class="section">
+                                    <div class="photo">
+                                      <img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.gender}" alt="{$res.fullname}" style="border-radius: 36px;" title="{$res.fullname}" width="64" height="64">
+                                    </div>												
+                                  </div>
+								  <span class="kn_shortcutmenu wh100">
+                                  <div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","pos":{ldelim}"left":"auto","top":"auto"{rdelim},"ulmen":{ldelim}"photos_friends":"1","send_gift":"1","guest":"0","block":"0","call":"1","unblock":"0","unfriend": {if $this->USER.id == $user.id}"1"{else}"0"{/if}{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+                                  </div>	
+								  </span>
+
+                                </a>
+                              </div>
+                            </div>
+                            {/foreach}
+                          </div>
+                        </div>
+                      </div>
+                      {if !$list}
+                      <div class="filter __alphabet">
+                        <a class="filter_i {if !$filter}__active{/if}" href="profile?q={$user.id}&cmd=friends&nav=friends" hrefattr="true">All
+                        </a>
+                        {foreach range('A', 'Z') as $char}
+                        <a class="filter_i {if $filter == $char}__active{/if} {if !count($this->fr_pg_Friends($user.id,$char))}__disabled{/if}" href="profile?q={$user.id}&cmd=friends&filter={$char}&nav=friends" hrefattr="true">{$char}
+                        </a>
+                        {/foreach}
+                       
+                      </div>
+					
+                      {/if}
+					  </div>
+						</div>
+                      {/if}
+                      {if $mode && $this->USER['id'] === $user['id'] && $mode !== 'online'}
+                      <a href="javascript:;" data-indicatorrel="{$mode}" data-jbst='{literal}{{/literal}"title":"{$this->lang['Indicate']} {$this->rewriteRelationships($mode)}","cmd":"popupFriendRelationShip","wd":"960"{literal}}{/literal}' onclick="jbPopup(event,this,1,200)" title="{$this->lang['Indicate']} {$this->rewriteRelationships($mode)}" class="add-stub al add-stub__hor">
+                        <i class="add-stub_img add-stub_img__ppl __wide">
+                        </i>
+                        <div class="add-stub_tx-w">
+                          <span class="add-stub_tx">{$this->lang['Indicate']} {$this->rewriteRelationships($mode)}
+                          </span>
+                        </div>
+                      </a>
+                      {/if}
+
+                      <div id="hook_Block_MyFriendsSquareCardPagingB" class="hookBlock __sktshowcase">
+                        <div class="portlet" id="listBlockPanelMyFriendsSquareCardPagingB">
+                          <div class="portlet_b">
+                            <div class="ugrid {if $list} __v __xl mt-8x mb-6x {else} __xxxl mt-8x {/if}">
+                              <div id="hook_Loader_MyFriendsSquareCardPagingBLoader" >
+                                {if $list}
+                                {assign var="pos_left" value="-40px"}
+                                <div class="ugrid_cnt _dsp_list" {if !$list}id="hook_friends_list"{/if}>
+                                  {else}
+                                  <ul class="ugrid_cnt" id="hook_friends_list">
+                                    {assign var="pos_left" value="auto"}
+                                    {/if}
+                                    {if $list && !$mode}
+                                    {assign var="userArr" value=$this->friendGroupAlphabetically($user.id,$filter,$mode)}
+                                    {assign var="firstLetter" value=""}
+                                    {assign var="previousLetter" value=""}
+                                    {else}
+                                    {assign var="userArr" value=$this->fr_pg_Friends($user['id'],$filter,$mode)}	
+                                    {/if}
+                                    {foreach $userArr as $res}
+                                    {if $list}
+                                    {$firstLetter=mb_substr($res.alpha, 0, 1)}
+                                    {if strtoupper($previousLetter) != strtoupper($firstLetter)}
+                                    <div class="letter_patern" data-ltn="{strtoupper($firstLetter)}">
+                                    </div>
+									
+                                    <div class="letter_header" data-ltn="{strtoupper($firstLetter)}" data-alphui="gbkrw){$user.id}" onclick="friendsAlphabetList(this,event);">{strtoupper($firstLetter)}
+                                    </div>
+                                    {$previousLetter=$firstLetter}
+                                    {/if}
+                                    {/if}	
+                                    {if $list}
+                                    <div id="friendCardId_{$res.id}" class="ugrid_i">
+                                      {else} 
+                                      <li id="friendCardId_{$res.id}" class="ugrid_i">
+                                        {/if}
+                                        <div class="ucard-v {if $list}__xs __h __list-view{/if}">
+                                          <div class="section">
+                                            {if !$list}
+											{assign var=friend_status value=$res.text_post}
+                                            {if !empty(trim($friend_status))}
+                                            <div class="ust">
+                                              <div class="ust_tx">
+                                                <a data-type-post="1" class="ust_a" href="/post?uid={$res.id}&userstatus=1">{$this->str_smilies($friend_status)}
+                                                </a>
+                                              </div>
+                                            </div>
+           
+                                            {/if}
+                                            {/if}
+                                            <a href="/user/{$res.id}" class="ob" hrefattr="true">
+                                              <div class="photo">
+                                          
+                                                <img src="/getPhoto?p={$res.profile_photo}&sz=thumb&g={$res.gender}" class="photo_img" width="128" height="128" alt="{$res.fullname}" />
+                                                {if $this->is_online($res.id)}
+                                                <span class="ic-online">
+                                                </span>{/if}
+                                              </div>
+								  <span class="kn_shortcutmenu wh100">
+                                  <div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","ulmen":{ldelim}"photos_friends":"1","send_gift":"1","guest":"0","block":"0","call":"1","unblock":"0","unfriend":{if $this->USER.id == $user.id}"1"{else}"0"{/if}{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+                                  </div>	
+								  </span>
+                                            </a>
+
+
+											
+                                          </div>
+                                          <div class="caption">
+                                            {if $list}
+                                            <div class="ucard-v_ac">
+                                              <a title="Send a gift" href="/gifts/u/{$res.id}" data-scrolltop="200" hrefattr="true" class="lp">
+                                                <span class="tico">
+                                                  <i class="tico_img ic ic_present">
+                                                  </i>{$this->lang['Send_a_gift']}
+                                                </span>
+                                              </a>
+                                              <a title="send a message" href="javascript:void(0);" onclick="new_chat_window(this,event);" id="y-{$res.id}" data-uch='{ldelim}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{rdelim}' class="lp">
+                                                <span class="tico">
+                                                  <i class="tico_img ic ic_message">
+                                                  </i>{$this->lang['send_message']}
+                                                </span>
+                                              </a>
+                                            </div>
+                                            {/if}
+                                            <div class="ellip">
+                                              <a class="ob" href="/user/{$res.id}" hrefattr="true">{$res.fullname}
+                                              </a>
+                                            </div>
+                                            <div class="timestamp">{if !$mode}{$this->friendsLastOnline($res.online)}{else}{$this->myFriendRelationName($res.relationship,$mode)}{/if}
+                                            </div>
+                                            {if $list}
+											{assign var=friend_status value=$res.text_post}
+											
+                                            {if !empty(trim($friend_status))}
+                                  
+                                           <div class="ust">
+                                              <div class="ust_tx">
+                                                <a data-type-post="1" class="ust_a" href="/post?uid={$res.id}&userstatus=1">{$this->str_smilies($friend_status)}
+                                                </a>
+                                              </div>
+                                            </div>
+ 
+                                            {/if}
+                                            {/if}
+                                          </div>
+                                        </div>
+                                        {if $list}
+                                    </div>{else} 
+                                    </li>{/if}
+                                  {foreachelse}NO DATA TO SHOW{/foreach}
+                                  {if $list}
+                                </div>
+                                {else}
+                                </ul>
+                              {/if}     
+                            </div>                                                  
+                            {if $this->friendsCount($user['id']) > $this->settings['FRIENDS_PER_PAGE_LIMIT'] && !$mode}
+                            <div class="link-show-more loader-controls" data-friendsftlt="true" data-loadd='{ldelim}"cmd":"friends_more","i":"{$user.id}","p":"1","alpha":"{$list}","appto":"hook_friends_list"{rdelim}'>
+                              {$this->lang['View_More']}
+                              
+                            </div>
+                            {/if}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  
+  </div>
+</div>
+ 
+ <div class="uprofile-nav-side-right">
+                 <a class="sfrtriggerclick m_hidden" href="/profile?q={$user['id']}{if $list}&list=1{/if}&token={time()}&cmd=friends&nav=friends" hrefattr="true">
+                </a>
+                <div id="cppaste_injava">
+                  <a class="nav-side_i {if !$mode}__ac{/if}" href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&nav=friends" data-scrolltop="20" hrefattr="true">
+                    <div data-defaultmdrelat="all" class="nav-side_tx ellip">{$this->lang['All']} 
+                      <span class="lstp-t">{$this->friendsCount($user.id)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=relative&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'relative'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="{$this->getRelativesub()}" class="nav-side_tx ellip">{$this->lang['Family_members']} 
+                      <span class="lstp-t">{$this->friendRelationship('relative',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=colleague&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'colleague'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="colleague" class="nav-side_tx ellip">{$this->lang['Colleagues']} 
+                      <span class="lstp-t">{$this->friendRelationship('colleague',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=best&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'best'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="best_friend" class="nav-side_tx ellip">{$this->lang['Best_friends']} 
+                      <span class="lstp-t">{$this->friendRelationship('best_friend',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=classmate&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'classmate'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="classmate" class="nav-side_tx ellip">{$this->lang['Classmates']} 
+                      <span class="lstp-t">{$this->friendRelationship('classmate',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=coursemate&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'coursemate'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="coursemate" class="nav-side_tx ellip">{$this->lang['Coursemates']} 
+                      <span class="lstp-t">{$this->friendRelationship('coursemate',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=army&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'army'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="army_friend" class="nav-side_tx ellip">{$this->lang['Army_friends']} 
+                      <span class="lstp-t">{$this->friendRelationship('army_friend',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                  <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=childhood&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'childhood'}__ac{/if}" hrefattr="true">
+                    <div data-defaultmdrelat="playing_together" class="nav-side_tx ellip">{$this->lang['Playing_together']} 
+                      <span class="lstp-t">{$this->friendRelationship('playing_together',$user.id,1)}
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              <div class="nav-side_delim">
+                </div>
+                <a href="/profile?q={$user['id']}{if $list}&list=1{/if}&cmd=friends&mode=online&nav=friends" data-scrolltop="20" class="nav-side_i {if $mode == 'online'}__ac{/if}" hrefattr="true">
+                  <span class="tico">
+                    <i class="tico_img ic ic_nav_online">
+                    </i>{$this->lang['Friends_online']} 
+                    <span class="lstp-t">{$this->onlineQuery(1,1)}
+                    </span>
+                  </span>
+                </a>
+				
+				
+		{if $this->settings['invite_friends'] === "true" && $user.id === $this->USER['id']}
+<!--<div class="portlet __invisible taCenter"><div class="portlet-i_h portlet-i_h__sa">Invite friends</div>
+<a href="javascript:;" onclick="FacebookInviteFriends();"><div class="ic-invite fb_invite_logo"></div></a>
+<a href="javascript:;" onclick="GooglePlusInviteFriends();"><div class="ic-invite g_invite_logo"></div></a>
+<a href="javascript:;" onclick="VKInviteFriends();"><div class="ic-invite vk_invite_logo"></div></a>
+<a href="javascript:;" onclick="TwitterInviteFriends();"><div class="ic-invite tw_invite_logo"></div></a>
+<div class="portlet_tx mb-3x mt-3x">Invite your friends to see what you have shared on {$this->settings['SITENAME']}.</div></div>-->
+	{/if}	
+	
+{assign var=ad value=$this->getAdMarkup('friends')}
+{if $ad}
+<div class="ads-box">
+<div class="ads-box-title">{$this->lang['sponsored']}</div>
+<div class="ads-box-cnt">
+{$ad}
+</div>
+</div>	
+		{/if}
+	
+ </div>
+
+ 
+
+
+
+</div>
+
+{if $key}
+<script>
+  var key = '{$key}';
+  {literal}
+  ga(function(){
+    ga('#friends_search').val(key).trigger('keyup');
+  }
+    );
+  {/literal}
+</script>
+{/if}
+<script>
+  {literal}
+  ga(function(){
+    ga(window).off('scroll.alpha_header').on('scroll.alpha_header',AlphaKeepVisible);
+    var fr_pg_list = "{php}$list{/php}";
+    if(fr_pg_list)
+      createCookie('K_fr_list','1');
+    else
+      createCookie('K_fr_list','0');
+  }
+    );
+  {/literal}
+</script>
+{/if}
+{/strip}

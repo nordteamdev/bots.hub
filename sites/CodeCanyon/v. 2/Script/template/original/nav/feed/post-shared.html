@@ -1,0 +1,103 @@
+{strip}
+ 
+ 
+
+
+ 
+{assign var="str_text" value=$this->generateMediaPost($p_text,'text',0,$clubid)}
+{assign var="track_cover" value=$this->generateMediaPost($p_text,'songs_cover',0,$clubid)}
+{assign var="tagged_friends" value=$this->generateMediaPost($p_text,'tagged_people',0,$clubid)}
+{assign var="tagged_places" value=$this->generateMediaPost($p_text,'places',0,$clubid)}
+{assign var="photos" value=$this->generateMediaPost($p_text,'photos',$pid,$clubid)}
+{assign var="video" value=$this->generateMediaPost($p_text,'videos',0,$clubid)}
+{assign var="tracks" value=$this->generateMediaPost($p_text,'tracks',0,$clubid)}
+{assign var="links" value=$this->generateMediaPost($p_text,'links',0,$clubid)}
+{assign var="poll" value=$this->generateMediaPost($p_text,'poll',0,$clubid)}
+{assign var="item_type" value="post"}
+{assign var="k_it_type" value=""}
+{assign var="more" value=0}
+{assign var="c_more" value=0}
+
+ 
+
+       
+            <div class=" __arw-t __accent">
+                <div class="media-statuss_cnt">
+
+				{$this->str_smilies($str_text)}
+				{if empty($video[0]) && empty($photos[0]) && !$links && count($tagged_places)}
+				<!-- Show Map Location -->
+				<div class="feed_map_cnt_f">{$tagged_places[1]}</div>
+				{/if}
+				
+			
+				{if $video[0] != '' && $video[1] != ''}
+				{if $c_more < 2}
+				<div class="feed_videos_cnt">{$video[0]}</div>
+				{/if}
+				{if $video[1] == 1} {$k_it_type = 'video'}{/if}
+				{$c_more = $c_more+1}
+				{if $video[1] > 3}
+				{$more = 1}
+				{/if}
+				{else if $pd.type == 'videos'}
+				{$this->unv_feed('video',$res.id)}
+				{/if}
+				
+				{if $photos[0] != '' && $photos[1] != ''}
+				{if $photos[1] == 1 && $k_it_type == ''} {$k_it_type = 'photos'}
+				{else if $photos[1] >= 1 && $k_it_type != ''} {$k_it_type = ''}
+				{/if}
+				{if $c_more < 2}
+				<div class="feed_image_collage __{$photos[1]}">{$photos[0]}</div>
+				{/if}
+				{$c_more = $c_more+1}
+				{if $photos[1] && $video[0] != '' || $photos[1] > 2}
+				{$more = 1}
+				{/if}
+				{else if $pd.type === 'photo'}
+				Photo is not available
+				{/if}
+				
+				{if $poll}
+				<div class="feed_poll_cnt">{$poll}</div>
+				
+				{/if}
+				
+				
+				{if $links && $c_more < 2}
+				<div class="feed_links_cnt">{$links}</div>
+				{$k_it_type = ''}
+				{$c_more = $c_more+1}
+				{/if}
+				
+				
+				{if !empty($tracks[0]) && !empty($tracks[1]) && $c_more < 2}
+				{$k_it_type = ''}
+				
+				{if !$photos && !$video[0] && !$tagged_places && !$links}
+				{if $track_cover}{assign var="song_use_cv" value="1"}<div class="feed_media_post_muz_av"><img src="{$track_cover}"></div>{/if}
+				{/if}
+				
+				
+				<div class="feed_songs_cnt {if isset($song_use_cv)}__is_cover{/if}">{$tracks[0]}</div>
+				{$c_more = $c_more+1}
+				{if $tracks[1] > 4 || ($tracks[1] && $tagged_places) }
+				{$more = 1}
+				
+				{/if}
+				{/if}
+			
+				
+                    <div class="media_more {if !$more}invisible{/if}"><a href="/post?i={$pid}{if $clubid > 0}&clubid={$clubid}{/if}" data-type-post="1" class="media_more_a scrollbottom" hrefattr="true"><span class="media_more_ic">&#8226;&#8226;&#8226;</span></a></div>
+                </div>
+            </div>
+      
+
+
+
+
+	
+
+
+{/strip}

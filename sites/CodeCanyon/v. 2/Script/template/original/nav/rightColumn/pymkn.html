@@ -1,0 +1,38 @@
+{strip}
+{assign var=knownPeople value=$this->knownPeople()}
+
+<!-- people you may know -->
+{if $knownPeople}
+<section id="posibil_cunoscuti" class="sp_right_col">
+<div class="psbc_header_title">{$this->lang['People_you_may_know']}&nbsp;<a title="{$this->lang['more_detailed']}" href="javascript:;" onclick="return knownPeopleReorder(this,event);" class="media_more_a"><span class="media_more_ic">&#8226;&#8226;&#8226;</span></a></div>
+
+<div class="psbc_cnt">
+<ul>
+
+{foreach $knownPeople as $knw}
+{assign var="mutual_friends_c" value=$this->getMutualFriends($knw.id,1,1)}
+<li class="psb_item" data-list-title="{str_replace("%years",$this->getUserAge($knw.birthday),str_replace("%loc", "{$this->getUserCityAndCountry($knw)}", str_replace("%uname",$knw.fullname,$this->lang['known_people_tipsy_title_listed'])))}" rel="tipsy" title="{$knw.mutual_count} {if $knw.mutual_count == 1}{$this->lang['mutual_friend']}{else}{$this->lang['mutual_friends']}{/if}"><A href="/user/{$knw.id}" hrefattr="true"><img src="/getPhoto?p={$knw.photo}&sz=small&g={$knw.gender}">
+<div class="plsb_uname _nolist u_mutt_friend_name ellip">{$knw.name}<br/>{$knw.surname}</div>
+<div class="list_dt_a02">
+<div class="plsb_uname u_mutt_friend_name_list ellip">{$knw.fullname}</div>
+
+{if $mutual_friends_c > 0}
+<div class="list_scris_mutual"><A class="lp il lineheight-18" onclick="return popupMutualFriends(this,event);" data-mtforui='{ldelim}"uid":"{$knw.id}","uname":"{$knw.fullname}"{rdelim}' href="javascript:;">{$mutual_friends_c} {if $mutual_friends_c == 1}{$this->lang['mutual_friend']}{else}{$this->lang['mutual_friends']}{/if}</a></div>
+{/if}
+
+{if !empty($knw.status) && $knw.status == 'pending'}
+<span class="lineheight-18 add-friend-sugg-btn __disabled">{$this->lang['friend_req_sent']}</span>
+{else}
+<a href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$knw.id}" onclick="addFriend(this,event,''+o_krypt({$knw.id})+'','knownpeople')" class="lineheight-18 add-friend-sugg-btn">{$this->lang['add_friend']}</a>
+{/if}
+<br/>
+</div>
+</a></li>
+{/foreach}
+</ul>
+
+</div>
+
+</section>
+{/if}
+{/strip}

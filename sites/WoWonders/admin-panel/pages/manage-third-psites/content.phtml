@@ -1,0 +1,47 @@
+<div class="col-lg-6 col-md-6">
+    <div class="card">
+        <div class="header">
+            <h2>Mobile & API Settings > Third party sites</h2>
+        </div>
+        <div class="body">
+            <div class="alert alert-success third-party-sites-alert"></div>
+            <form class="third-party-sites-settings" method="POST">
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <input type="text" name="playtube_url" class="form-control" value="<?php echo $wo['config']['playtube_url'];?>">
+                        <label class="form-label">Site that uses PlayTube script, e.g. https://playtubescript.com</label>
+                    </div>
+                </div>
+                <p>This feature allows you to integrate PlayTube script with your site, so videos will be embedded in the post box if someone shares a link from your site.</p>
+                <p>What is <a href="https://goo.gl/KvoSwz" target="_blank">PlayTube</a>?</p>
+                <div class="clearfix"></div>
+                <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+$(function() {
+    var form_email_settings = $('form.third-party-sites-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.third-party-sites-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.third-party-sites-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

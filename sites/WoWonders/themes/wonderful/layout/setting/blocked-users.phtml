@@ -1,0 +1,19 @@
+<div class="wo_settings_page profile-lists">
+	<h3>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-slash"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+		<?php echo $wo['lang']['blocked_users'];?>
+	</h3>
+	<div class="setting-well">
+         <?php
+         $blocked_users = Wo_GetBlockedMembers($wo['setting']['user_id']);
+         if (count($blocked_users) > 0) {
+            foreach ($blocked_users as $wo['member']) {
+                echo Wo_LoadPage('setting/blocked-users-list');
+            }
+         } else {
+            echo '<h5 class="search-filter-center-text"> ' . $wo['lang']['no_members_found'] . '</h5>';
+         }
+         ?>
+      <div class="clear"></div>
+   </div>
+</div>

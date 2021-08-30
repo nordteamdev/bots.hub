@@ -1,0 +1,56 @@
+<div class="list-group profile-lists sun_side_widget">
+	<h3 class="sun_side_widget_title mainpage">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3d8cfa" d="M3,13H5.79L10.1,4.79L11.28,13.75L14.5,9.66L17.83,13H21V15H17L14.67,12.67L9.92,18.73L8.94,11.31L7,15H3V13Z"></path></svg> <?php echo $wo['lang']['activities'];?>
+	</h3>
+    <div class="sun_profile_page_padd">
+        <?php $activities = Wo_GetActivities(array('me' => true, 'limit' => 20));?>
+        <ul class="activity-container no-padding-left-list">
+            <li >
+                <?php
+                    if (count($activities) == 0) {
+                        echo '<h2><div class="no-activities-profile text-center">' . $wo['lang']['no_activities'] . '</div><h2>';
+                    } else {
+                        foreach ($activities as $wo['activity']) {
+                            echo Wo_LoadPage('timeline/activities-list');
+                        }
+                    }
+                    ?>
+            </li>
+            <li>
+                <div class="no-activities center-text"></div>
+            </li>
+        </ul>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+<?php if (count($activities) > 19) { ?>
+	<div class="load-more">
+	<button class="btn btn-default text-center wo_load_more" onclick="Wo_GetMoreActivities(<?php echo $wo['user_profile']['user_id'];?>);">
+		<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></span> <?php echo $wo['lang']['load_more_activities']; ?>
+	</button>
+	</div>
+<?php } ?>
+
+<script>
+function Wo_GetMoreActivities(user_id) {
+      var activity_container = $('.activity-container');
+      var after_activity_id = $('.activity-container .activity:last').attr('data-activity-id');
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_more_activities', {
+        after_activity_id: after_activity_id,
+        user_id: user_id
+      }, function (data) {
+        if(data.status == 200) {
+          if(data.html.length == 0) {
+            $('.load-more').hide();
+          } else {
+            $('.activity-container').append(data.html);
+          }
+          $(".activity-container").animate({
+            scrollTop: $('.activity-container')[0].scrollHeight
+          }, 100);
+          Wo_progressIconLoader(activity_container);
+        }
+      });
+    }
+</script>

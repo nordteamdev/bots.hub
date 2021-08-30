@@ -1,0 +1,164 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Mobile & Verify Applications</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+    	 <div class="col-md-12">
+        	<div class="card">
+                <div class="header">
+                    <h2>Use The Applications</h2><br>
+                    <div>If you use one of those products listed below, you need to verify them before you can use them.</div>
+                </div>
+                <div class="body">
+                   <div class="alert alert-info">
+			        	You can get the native Windows Messenger from <a href="http://www.wowonder.com/windows_app.php" style="color: #fff; text-decoration: underline;">Here</a>.
+			        </div>
+			        <div class="alert alert-info">
+			          You can get the native Android Messenger from <a href="http://www.wowonder.com/windows_app.php?app=android" style="color: #fff; text-decoration: underline;">Here</a>.
+			        </div>
+			        <div class="alert alert-info">
+			          You can get the native IOS Messenger from <a href="http://www.wowonder.com/windows_app.php?app=ios" style="color: #fff; text-decoration: underline;">Here</a>.
+			        </div>
+			        <div class="alert alert-info">
+			        	You can get the native Android Timeline Application from <a href="http://www.wowonder.com/windows_app.php?app=native_android" style="color: #fff; text-decoration: underline;">Here</a>.
+			        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Verify Android Messenger</h2>
+                </div>
+                <div class="body">
+                    <form class="form_android_purchase_code" method="POST">
+                    	<?php if ($wo['decode_android_v'] != $wo['decode_android_value']): ?>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="android_purchase_code" name="android_purchase_code" class="form-control">
+                                <label class="form-label">Android Messenger Verification Code</label>
+                            </div>
+                        </div>
+                        <a href="https://api.envato.com/authorization?response_type=code&client_id=wowonder-verification-78ngohfi&redirect_uri=http://www.wowonder.com/purchase_android_app.php?checked=true" target="_blank">Get Verification Code</a><br>
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_Verify('android_purchase_code')">Verify</button>
+                        <?php else: ?>
+                        <div><i class="fa fa-check"></i> Application Verified</div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Verify IOS Messenger</h2>
+                </div>
+                <div class="body">
+                    <form class="form_ios_purchase_code" method="POST">
+                    	<?php if ($wo['decode_ios_v'] != $wo['decode_ios_value']): ?>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="ios_purchase_code" name="ios_purchase_code" class="form-control">
+                                <label class="form-label">IOS Messenger Verification Code</label>
+                            </div>
+                        </div>
+                        <a href="https://api.envato.com/authorization?response_type=code&client_id=wowonder-ios-u2dki0b1&redirect_uri=http://www.wowonder.com/purchase_ios_app.php?checked=true" target="_blank">Get Verification Code</a><br>
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_Verify('ios_purchase_code')">Verify</button>
+                        <?php else: ?>
+                        <div><i class="fa fa-check"></i> Application Verified</div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Windows Desktop Messenger</h2>
+                </div>
+                <div class="body">
+                    <form class="form_windows_purchase_code" method="POST">
+                    	<?php if ($wo['decode_windwos_v'] != $wo['decode_windwos_value']): ?>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="windows_purchase_code" name="windows_purchase_code" class="form-control">
+                                <label class="form-label">Windows Desktop Verification Code</label>
+                            </div>
+                        </div>
+                        <a href="https://api.envato.com/authorization?response_type=code&client_id=wowonder-windows-rdp0492u&redirect_uri=http://www.wowonder.com/purchase_windows_app.php?checked=true" target="_blank">Get Verification Code</a><br>
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_Verify('windows_purchase_code')">Verify</button>
+                        <?php else: ?>
+                        <div><i class="fa fa-check"></i> Application Verified</div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Android Timeline Application</h2>
+                </div>
+                <div class="body">
+                    <form class="form_android_native_purchase_code" method="POST">
+                    	<?php if ($wo['decode_android_n_v'] != $wo['decode_android_n_value']): ?>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="android_native_purchase_code" name="android_native_purchase_code" class="form-control">
+                                <label class="form-label">Android Timeline Verification Code</label>
+                            </div>
+                        </div>
+                        <a href="https://api.envato.com/authorization?response_type=code&client_id=android-timeline-kssuxhdu&redirect_uri=http://www.wowonder.com/purchase_android_native_app.php?checked=true" target="_blank">Get Verification Code</a><br>
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_Verify('android_native_purchase_code')">Verify</button>
+                        <?php else: ?>
+                        <div><i class="fa fa-check"></i> Application Verified</div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+function Wo_Verify(type) {
+	var code = $('#' + type).val();
+	if (!code) {
+		alert('Verification code is required');
+		return false;
+	}
+	var form = $('.form_' + type);
+	form.find('button').text('Please wait..');
+	data = {};
+	data[type] = code;
+    $.post(Wo_Ajax_Requests_File() + '?f=admin_setting&s=verfiy_apps', data, function (data) {
+        if (data.android_status == 200) {
+           form.html('<div><i class="fa fa-check"></i> Application Verified</div>');
+        } else if (data.android_status == 400) {
+           alert(data.android_text);
+        }
+
+        if (data.ios_status == 200) {
+           form.html('<div><i class="fa fa-check"></i> Application Verified</div>');
+        } else if (data.ios_status == 400) {
+           alert(data.ios_text);
+        }
+
+        if (data.windows_status == 200) {
+           form.html('<div><i class="fa fa-check"></i> Application Verified</div>');
+        } else if (data.windows_status == 400) {
+           alert(data.windows_text);
+        }
+
+        if (data.android_native_status == 200) {
+           form.html('<div><i class="fa fa-check"></i> Application Verified</div>');
+        } else if (data.android_native_status == 400) {
+           alert(data.android_text);
+        }
+
+    	form.find('button').text('Verify');
+    });
+}
+</script>

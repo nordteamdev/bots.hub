@@ -1,0 +1,32 @@
+<div class="profile-style" id="member-<?php echo $wo['member']['user_id'] ?>">
+   <a href="<?php echo $wo['member']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['member']['username']?>">
+      <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+         <img src="<?php echo $wo['member']['avatar'];?>" alt="<?php echo $wo['member']['name']; ?> Profile Picture" />
+      </div>
+      <?php echo $wo['member']['name']; ?>
+   </a>
+   <div class="page-website">
+      <?php echo Wo_UserStatus($wo['member']['user_id'],$wo['member']['lastseen']); ?>
+   </div>
+   <div>
+   <?php if ($wo['setting']['user_id'] == $wo['user']['user_id']): ?>
+      <span onclick="Wo_DeleteJoinedUser(<?php echo $wo['member']['user_id']?>, <?php echo $wo['setting']['id']?>);" class="btn btn-default btn-sm"><i class="fa fa-remove"></i> 
+      <?php echo $wo['lang']['remove']; ?></span>
+   <?php elseif($wo['setting']['user_id'] != $wo['member']['user_id']): ?>
+      <span onclick="Wo_DeleteJoinedUser(<?php echo $wo['member']['user_id']?>, <?php echo $wo['setting']['id']?>);" class="btn btn-default btn-sm"><i class="fa fa-remove"></i> 
+      <?php echo $wo['lang']['remove']; ?></span>
+   <?php endif; ?>
+
+   <?php if ($wo['setting']['user_id'] != $wo['member']['user_id']): ?> 
+      
+      <span onclick="Wo_AddGroupUserAdmin(<?php echo $wo['member']['user_id']?>, <?php echo $wo['setting']['id']?>,this);" class="btn btn-default btn-sm">
+      <?php if (Wo_IsGroupUserExists($wo['member']['user_id'],$wo['setting']['id'])): ?>
+         <span><i class="fa fa-times-circle-o"></i></span> 
+      <?php else: ?>
+         <span><i class="fa fa-plus-square-o"></i></span>
+      <?php endif; ?>
+      <?php echo $wo['lang']['admin']; ?>
+      </span>
+   <?php endif;?>
+   </div>
+</div>

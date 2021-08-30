@@ -1,0 +1,11 @@
+{include file="{$this->group_templates}/group-header.html"}
+<A style="display:none;" id="private_community" href="/community/{$r.id}?tk={time()}" hrefattr="true"></a>
+<div class="portlet" id="frFriendsPanel">
+    <div class="portlet_b">
+        <div class="stub-empty __lock ">
+            <div class="stub-empty_img"></div>
+            <div class="stub-empty_t">{if $r.privacy == 'Private'}{$this->lang['private_group_text']}{else if $r.privacy == 'Closed'}{$this->lang['closed_group_text']}{/if}</div>
+            <div class="stub-empty_tx"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<nav class="navbar ads-navbar-wrapper bg-main hidden-xs" role="navigation" style="padding-right: 0px;">
+  <div id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav ads-nav w100">
+      <?php if ($wo['config']['user_ads'] == 1) { ?>
+      <li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=ads'); ?>" class="<?php echo ($wo['ap'] == 'ads') ? 'active' : ''; ?>">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          &nbsp;
+          <span>
+            <?php echo $wo['lang']['ads']; ?>
+          </span>
+        </a>
+      </li>
+      <?php } ?>
+      <li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=wallet'); ?>" class="<?php echo ($wo['ap'] == 'wallet') ? 'active' : ''; ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          &nbsp;
+          <span>
+            <?php echo $wo['lang']['wallet']; ?>
+          </span>
+        </a>
+      </li>
+      <!--<li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=send_money'); ?>" class="<?php echo ($wo['ap'] == 'send') ? 'active' : ''; ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+          &nbsp;
+          <span>
+            <?php echo $wo['lang']['send_money']; ?>
+          </span>
+        </a>
+      </li>-->
+      <?php if ($wo['config']['user_ads'] == 1) { ?>
+      <li class="pull-right">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>" class="<?php echo ($wo['ap'] == 'create') ? 'active' : ''; ?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+		  &nbsp; 
+          <?php echo $wo['lang']['create']; ?>
+          <?php echo $wo['lang']['new']; ?>
+        </a>
+      </li>
+      <?php } ?>
+    </ul>
+
+  </div>
+  <div class="clear"></div>
+</nav>
+
+<nav class="navbar ads-navbar-wrapper ads-navbar-mobile-wrapper bg-main hidden-sm hidden-md hidden-lg" role="navigation">
+  <div  id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav ads-nav w100">
+
+      <li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=ads'); ?>" class="<?php echo ($wo['ap'] == 'ads') ? 'active' : ''; ?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </a>
+      </li>
+      <li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=wallet'); ?>" class="<?php echo ($wo['ap'] == 'wallet') ? 'active' : ''; ?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        </a>
+      </li>
+      <!--<li class="pull-left">
+        <a href="<?php echo Wo_SeoLink('index.php?link1=send_money'); ?>" class="<?php echo ($wo['ap'] == 'send') ? 'active' : ''; ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-repeat"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+        </a>
+      </li>-->
+
+      <li class="pull-right">
+      	<a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>" class="<?php echo ($wo['ap'] == 'create') ? 'active' : ''; ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="clear"></div>
+</nav>

@@ -1,0 +1,90 @@
+
+{strip}
+
+
+
+{assign var=comm_count value=$this->myClubsCount()}
+
+
+<div class="main-content-column">
+
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{if $active} {$this->lang['My_communities']} <span>{$comm_count}</span>{else} {$this->lang['Popular_communities']} {/if}</div></div></h2>
+
+
+ 
+<div class="main-content-panel">
+
+<div id="group_u_search_input_wrap" class="search_query_wrap cui_search_field_empty">
+<div id="comm_clear_search_input" class="cui_search_reset" onclick="return clearCommSearchInput(event);"><span class="blind_label">{$this->lang['cancel']}</span></div>
+                <input type="text" id="community_search_query" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="{$this->lang['Search_by_communities']}">
+<button class="searching_ic_right_wrap"><span class="searching_ic_right"></span></button>
+</div>
+
+
+
+
+        
+           
+              
+                    <div class="portlet search_communities_results" id="results">
+                        
+		
+						
+<section id="each_group_def">
+					{include file={$each_groups}}
+					{$pagination}
+						</section>
+						
+						<section id="search_app_groups"></section>
+                    </div>
+					
+				</div>	
+					
+          
+     
+      
+  
+</div>
+
+
+
+
+<div class="nav-side-right">
+  <div class="fixed_always">
+       
+            
+               
+                  
+
+                            <div class="nav-side">
+							
+							
+							 <a class="nav-side_i" href="javascript:void(0);" onclick="createGroup(event);">
+                                    <div data-defaultmdrelat="all" class="nav-side_tx ellip">{$this->lang['Create_new_community']} +</div>
+                                </a>
+								
+							 
+
+								<a class="nav-side_i {if !$active}__ac{/if}" href="/communities" data-scrolltop="20" hrefattr="true">
+                                    <div data-defaultmdrelat="comm_popular" class="nav-side_tx ellip">{$this->lang['Popular_communities']}</div>
+                                </a>
+								
+								
+								<a class="nav-side_i {if $active}__ac{/if}" href="/communities/my" data-scrolltop="20" hrefattr="true">
+                                    <div data-defaultmdrelat="comm_popular" class="nav-side_tx ellip">{$this->lang['My_communities']} <span>{$comm_count}</div>
+                                </a>	
+								
+                            </div>
+                            
+                   
+               
+            
+
+     
+  
+</div>
+
+</div>
+
+{/strip}

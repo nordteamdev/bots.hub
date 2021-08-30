@@ -1,0 +1,111 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div role="tabpanel" class="tab-pane active" id="showthread">
+	<div class="w-100">
+		<h5>
+		<i class="fa fa-home" aria-hidden="true"></i>  <a href="<?php echo $wo['config']['site_url']; ?>"><?php echo $wo['config']['siteName']; ?></a> <i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo $wo['lang']['threads']; ?> <i class="fa fa-angle-right" aria-hidden="true"></i> 
+		<?php echo ($wo['user']['username']); ?> (<?php echo count($wo['threads']);?>)
+		</h5>
+	</div>
+	<div class="w-100">
+		<?php if (count($wo['threads']) > 0): ?>
+			  <table class="table threads-table table-striped">
+			    <thead class="bg-main">
+			      <tr>
+			        <th>
+				        <?php echo $wo['lang']['topic']; ?>
+			        </th>
+			        <th><?php echo $wo['lang']['views']; ?></th>
+			        <th><?php echo $wo['lang']['last_post']; ?></th>
+			        <th><?php echo $wo['lang']['action']; ?></th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			    <?php foreach ($wo['threads'] as $wo['thread']): ?>
+			    	<?php echo Wo_LoadPage("forum/includes/mythread-list"); ?>
+			    <?php endforeach; ?>
+
+			    </tbody>
+			  </table>
+	    <?php else: ?>
+			<?php echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_threads_found'] .  '</h5>'; ?>
+		<?php endif; ?>	
+	</div>
+    <div class="posts_load">
+        <?php if (count($wo['threads']) > 5): ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer forum-posts-load">
+            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_posts'] ?></button>
+        </div>
+        <?php endif ?>
+    </div>  
+
+	<div class="margin-b30">
+			<div class="btn-group dropup">
+	          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> &nbsp;|&nbsp; <span class="caret"></span>
+	          </button>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads'); ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php echo $wo['lang']['my_threads']; ?></a></li>
+	            <li><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages'); ?>"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo $wo['lang']['my_messages']; ?></a></li>
+	          </ul>
+	        </div>
+
+	        <?php if ($wo['forums'] && count($wo['forums']) > 0): ?>
+	        		        
+	        <div class="btn-group dropup">
+	          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	            <?php echo $wo['lang']['jump_to']; ?> &nbsp;|&nbsp; <span class="caret"></span>
+	          </button>
+	          <ul class="dropdown-menu" role="menu">
+	          	<?php foreach ($wo['forums'] as $jump): ?>
+	          			          	
+	            	<li>
+						<a 
+						href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$jump['id']);?>"
+						class="main <?php if ($jump['name'] == $wo['forums']['name']) echo 'bold'; ?>">
+
+				        <?php echo $jump['name']; ?>
+				        </a>
+	            	</li>
+	            <?php endforeach ?>
+	          </ul>
+	        </div>
+	        <?php endif ?>
+		</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<?php echo Wo_LoadPage('forum/includes/delete-thread'); ?>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<?php if (count($wo['threads']) >= 0): ?>
+	<script>
+		$(".forum-posts-load").click(function () {
+			  
+		      $.ajax({
+		         url: Wo_Ajax_Requests_File(),
+		         type: 'GET',
+		         dataType: 'json',
+		         data: {
+		         	f:"load-my-forum-posts",
+
+		         	offset:($(".mythread-list").length > 0) ? $(".mythread-list:last").attr('data-thread-ident') : 0,
+
+		         },
+		         success:function(data){
+		         	
+		            if (data['status'] == 200) {
+
+		                $(".threads-table tbody").append(data['html'])
+		             }else{
+
+		               $(".posts_load").remove()
+		               
+		             }
+
+		         }
+		      });
+		   	});
+	</script>
+<?php endif ?>
+
+

@@ -1,0 +1,85 @@
+<div class="wo_about_wrapper_parent">
+	<div class="wo_about_wrapper"> 
+		<div class="hero hero-overlay"> 
+			<div class="container">
+				<h1 class="text-center"><?php echo $wo['lang']['contact_us']; ?></h1>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<div class="page-margin wo_about_page_margin">
+	<div class="row">
+		<label class="col-md-3"></label>
+		<div class="col-md-6">
+			<div class="red-list">
+				<div class="wo_settings_page">
+					<form class="contact-us-form form-horizontal" method="post">
+						<div class="setting-panel row">
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-12" for="first_name"><?php echo $wo['lang']['first_name'];?> *</label>  
+								<div class="col-md-12">
+									<input id="first_name" name="first_name" type="text" class="form-control input-md">
+								</div>
+							</div>
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="col-md-12" for="last_name"><?php echo $wo['lang']['last_name'];?> *</label>  
+								<div class="col-md-12">
+									<input id="last_name" name="last_name" type="text" class="form-control input-md">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-12" for="email"><?php echo $wo['lang']['email'];?> *</label>  
+								<div class="col-md-12">
+									<input name="email" id="email" type="text" class="form-control input-md">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-12" for="message"><?php echo $wo['lang']['message'];?> *</label>  
+								<div class="col-md-12">
+									<textarea name="message" id="message" rows="5" class="form-control input-md"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="contact-us-alert setting-update-alert"></div>
+						<div class="form-group last-sett-btn modal-footer">
+							<div class="ball-pulse"><div></div><div></div><div></div></div>
+							<button type="submit" name="send" id="send" tabindex="4" class="btn btn-main setting-panel-mdbtn">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 
+								<?php echo $wo['lang']['send'];?>
+                           </button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<label class="col-md-3"></label>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script>
+   $(function() {
+     $('form.contact-us-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=contact_us',
+       beforeSend: function() {
+		 $('form.contact-us-form').find('.ball-pulse').fadeIn(100);
+       },
+       success: function(data) {
+         if (data.status == 200) {
+            $('.contact-us-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+            $('.alert-success').fadeIn(300);
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.contact-us-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('form.contact-us-form').find('.ball-pulse').fadeOut(100);
+       }
+     });
+   });
+</script>
+<style>.wo_about_wrapper, .wo_about_wrapper_parent {min-height: 160px;}.wo_about_wrapper, .wo_about_wrapper .full-width-picture{height: 160px;}.hero-overlay {padding-top: 10px;}.wo_about_page_margin {margin-top: 130px;}.wo_settings_page{padding: 15px;}.wo_settings_page .last-sett-btn {margin-right: -15px;}.wo_settings_page .setting-panel-mdbtn {margin: 2px 10px;}@media (max-width:600px){.wo_about_page_margin {margin-top: 110px;}}</style>

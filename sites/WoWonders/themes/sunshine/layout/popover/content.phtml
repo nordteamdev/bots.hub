@@ -1,0 +1,46 @@
+<div class="user-fetch sun_popover">
+	<div class="hover_offset">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="100" viewBox="0 0 600 200">
+			<defs><clipPath id="clipping"><polygon points="50,10 60,0 70,10 50,10"></polygon></clipPath></defs>
+			<image xlink:href="<?php echo $wo['popover']['cover']?>" width="600" height="200" clip-path="url(#clipping)"></image>
+		</svg>
+	</div>
+	<div class="user-cover" style="background-image: url(<?php echo $wo['popover']['cover']?>);"></div>
+	<div class="upop_mid">
+		<div class="user-avatar">
+			<img src="<?php echo $wo['popover']['avatar']; ?>" alt="user avatar">
+		</div>
+		<div class="upop_mid_innr">
+			<div class="user-name">
+				<a href="<?php echo $wo['popover']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['popover']['username']?>"><?php echo $wo['popover']['name']; ?></a>
+				<?php if($wo['popover']['verified'] == 1) {   ?>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="verified-color feather feather-check-circle" title="<?php echo $wo['lang']['verified_user'];?>" data-toggle="tooltip"><path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z" /></svg>
+				<?php } ?>
+			</div>
+			<ul class="user-information">
+				<?php $gender = ucfirst(strtolower($wo['popover']['gender']));?>
+				<?php if($wo['config']['user_lastseen'] == 1 && $wo['popover']['showlastseen'] != 0) {  ?>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg> <?php echo Wo_UserStatus($wo['popover']['user_id'], $wo['popover']['lastseen']);?>
+					</li>
+				<?php } ?>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.58,4H14V2H21V9H19V5.41L15.17,9.24C15.69,10.03 16,11 16,12C16,14.42 14.28,16.44 12,16.9V19H14V21H12V23H10V21H8V19H10V16.9C7.72,16.44 6,14.42 6,12A5,5 0 0,1 11,7C12,7 12.96,7.3 13.75,7.83L17.58,4M11,9A3,3 0 0,0 8,12A3,3 0 0,0 11,15A3,3 0 0,0 14,12A3,3 0 0,0 11,9Z" /></svg> <?php echo ($gender == 'Male') ? $wo['lang']['male'] : $wo['lang']['female'];?>
+				</li>
+				<?php if ($wo['popover']['country_id'] > 0) { ?>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg> <?php echo $wo['countries_name'][$wo['popover']['country_id']];?>
+					</li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="user-footer">
+		<div class="user-buttons text-center">
+			<div class="user-button user-follow-button"><?php echo Wo_GetFollowButton($wo['popover']['user_id']); ?></div>
+			<div class="user-button message-button"><?php echo Wo_GetMessageButton($wo['popover']['user_id']); ?></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

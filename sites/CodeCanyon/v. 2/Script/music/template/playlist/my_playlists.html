@@ -1,0 +1,531 @@
+
+<!------------------- Playlist details [ Template ] ------------>
+
+{strip}
+<div id="my_active_playlist"></div>
+{if ! isset($get_playlist_id)}
+<div class="pplmus_stub">
+  <div class="mus_content_w">
+    
+    <div class="noMusic_c">
+      <div class="ppl_empty_layer_hld">
+        <div class="ppl_empty_layer_cnt">
+          <div class="portlet-i_h">
+            The playlist doesn't exist.
+          </div>
+        </div>
+      </div>
+      {$this->smarty_exit()}
+      
+      
+      {elseif $count <= 0}        
+      <div class="pplmus_stub">
+        <div class="mus_content_w">
+          <div class="noMusic_c">
+            <div class="ppl_empty_layer_hld">
+              <div class="ppl_empty_layer_cnt">
+                <div class="portlet-i_h">
+                  This playlist is empty.
+                </div>
+                {if $get_playlist_owner === $this->USER['id']}
+                <div class="mus_stub_cnt">
+                  <div class="mus_stub_line">
+                    <a class="mtico mus-dl" data-playlist-id="{$get_playlist_id}" data-playlist-name="{$get_playlist_name}">
+                      <i class="mic14 mic14_add">
+                      </i>
+                      &nbsp;
+                      <span>
+                        Add music
+                      </span>
+                    </a>
+                  </div>
+                  <br>
+                  <div class="mus_stub_line" data-pl-upload="{$get_playlist_id}">
+                    <a class="mtico mus-dl">
+                      <i class="mic14 mic14_upload">
+                      </i>
+                      &nbsp;
+                      <span>
+                        Upload music
+                      </span>
+                    </a>
+                  </div>
+                  <br>
+                  <div aria-hidden="true" class="mb-10 mus_upload_prg_bar" style="display: none;">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress __dark" role="progressbar">
+                      <div class="progress_bar" style="width: 0%;">
+                      </div>
+                      <div aria-hidden="false" class="progress_tx ellip">
+                        0 from 0
+                      </div>
+                      
+                      <span class="progress_ac">
+                        <span class="progress_ac_ic ic10 ic10_close-w m_hidden" role="button" title="Cancel">
+                        </span>
+                        
+                      </span>
+                    </div>
+                  </div>
+                  <div class="mus_stub_line">
+                    <a class="mtico mus-dl" data-playlist-id="{$get_playlist_id}">
+                      <i class="mic14 ic14_remove">
+                      </i>
+                      &nbsp;
+                      <span id="dl_ply">
+                        Delete the playlist
+                      </span>
+                    </a>
+                    
+                  </div>
+                  {/if}
+                </div>
+                
+              </div>
+              
+              
+              {else}
+              
+              <!--- if click play on this playlist ---->
+              {if $play !== ''}
+              <div style="display:none;" id="this_playlist_active" data-collection-play="{$get_playlist_id}">
+              </div>
+              {/if}
+              
+              <div data-playlist-scroll-event="{$pl_songs_limit}" data-this-pl-id="{$get_playlist_id}" d-more-songs="true">
+                <div class="mus_content_w" style="margin-bottom: -28px;">
+                  <div class="m_hidden">
+                    <div class="layer mml_popup mus_stub __s">
+                      <div class="layer_hld">
+                        <div class="layer_cnt">
+                          <div class="portlet-i_h">
+                          </div>
+                          <div class="mus_stub_cnt">
+                            <div class="mus_stub_line">
+                              
+                              <a class="mtico mus-dl">
+                                <i class="mic14 mic14_add">
+                                </i>
+                                &nbsp;
+                                <span>
+                                  Add music
+                                </span>
+                              </a>
+                              
+                            </div>
+                            <br>
+                            <div class="mus_stub_line" data-pl-upload="{$get_playlist_id}">
+                              
+                              <a class="mtico mus-dl">
+                                <i class="mic14 mic14_upload">
+                                </i>
+                                &nbsp;
+                                <span>
+                                  Upload music
+                                </span>
+                              </a>
+                              
+                            </div>
+                            <div aria-hidden="true" class="mb-10 mus_upload_prg_bar" style="display: none;">
+                              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress __dark" role="progressbar">
+                                <div class="progress_bar" style="width: 0%;">
+                                </div>
+                                <div aria-hidden="false" class="progress_tx ellip">
+                                  0 from 0
+                                </div>
+                                
+                                <span class="progress_ac">
+                                  <span class="progress_ac_ic ic10 ic10_close-w m_hidden" role="button" title="Cancel">
+                                  </span>
+                                  
+                                </span>
+                              </div>
+                            </div>
+                            
+                            <br>
+                            <div class="mus_stub_line">
+                              
+                              <a class="mtico mus-dl">
+                                <i class="mic14 ic14_remove">
+                                </i>
+                                &nbsp;
+                                <span id="dl_ply">
+                                  Delete the playlist
+                                </span>
+                              </a>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mus_album mus_subinfo" data-edit-playlist-id="{$get_playlist_id}">
+                    <div class="mus_album_i__fixed">
+                      <div class="mus_album_i_w">
+                        <div class="mus_card_img_w">
+                          
+                          <img alt="" class="mus_card_img" src="{$get_playlist_cover}">
+                          <div class="mus_card_edit_controls m_hidden">
+                            <div class="data-with-image_i_h data-with-image_i_h__top curDefault">
+                              <div>
+                              </div>
+                              <div class="data-with-image_i_nav data-with-image_i_nav__left">
+                              </div>
+                              <div class="data-with-image_i_nav data-with-image_i_nav__right">
+                              </div>
+                            </div>
+                            <div id="pl_no_covers" class="data-with-image_i_h data-with-image_i_h__bottom data-with-image_i_h__no-img m_hidden">
+                              <div class="data-with-image_i_h__no-img_text">
+                                There are no songs
+                                <br>
+                                with covers
+                                <br>
+                                in this playlist.
+                              </div>
+                            </div>
+                            <div class="data-with-image_i_h data-with-image_i_h__bottom data-with-image_i_h__no-img __waiting m_hidden">
+                              <div class="data-with-image_i_h__no-img_text" style="margin-top:50px;">
+                                <img src="../css/images/waiting_transp.gif" />
+                              </div>
+                            </div>
+                            <div class="data-with-image_i_h data-with-image_i_h__bottom curPointer">
+                              <div>
+                                Return cover
+                              </div>
+                              
+                            </div>
+                            <div class="data-with-image_i_h data-with-image_i_h__bottom curPointer">
+                              <div data-pl-edit-rm-cv="{$get_playlist_id}">
+                                Remove cover
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="m_c_col-data">
+                        
+                        {if $get_playlist_plcount !== '-0'}
+                        <div class="m_c_col-data_counter">
+                          
+                          <span class="m_c_col-data_amount">
+                          &nbsp;{$get_playlist_plcount}
+                          </span>
+                          &nbsp;
+                          <span class="m_c_col-data_tx">
+                            Play counts
+                          </span>
+                        
+                        </div>
+                         {/if}
+                        
+                        {if $get_playlist_owner === $this->USER['id'] && $get_playlist_plcount !== '-0'}
+                        <div class="m_c_col-data_ac" id="playlist_nemp_manip">
+                          
+                          <a class="mtico mus-dl m_c_col-data_ac_i __14 m_hidden">
+                            <i class="mic14 mic14_add">
+                            </i>
+                            <span>
+                            </span>
+                          </a>
+                          
+                          <a class="mtico mus-dl m_c_col-data_ac_i __14 js-hide-in-edit" data-playlist-id="{$get_playlist_id}" data-playlist-name="{$get_playlist_name}">
+                            <i class="mic14 mic14_add">
+                            </i>
+                            <span>
+                              Add music
+                            </span>
+                          </a>
+                          
+                          <a class="mtico mus-dl m_c_col-data_ac_i __14 js-hide-in-edit" data-pl-upload="{$get_playlist_id}">
+                            <i class="mic14 mic14_upload">
+                            </i>
+                            <span>
+                              Upload music
+                            </span>
+                          </a>
+                          <div aria-hidden="true" class="mb-10 mus_upload_prg_bar" style="display: none;">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress __dark" role="progressbar">
+                              <div class="progress_bar" style="width: 0%;">
+                              </div>
+                              <div aria-hidden="false" class="progress_tx ellip">
+                              </div>
+                              
+                              <span class="progress_ac">
+                                
+                                <span class="progress_ac_ic ic10 ic10_close-w m_hidden" role="button" title="Cancel">
+                                </span>
+                                
+                              </span>
+                            </div>
+                          </div>
+                          <div class="mtico m_c_col-data_ac_i __14" id="upload_succ" style="display:{$display};" aria-hidden="false">
+                            <div class="tico">
+                              <i class="tico_img ic ic_ok">
+                              </i>
+                              <span class="mus-text __success">
+                                Uploaded {$count_upl_songs} song{$more_s}
+                              </span>
+                            </div>
+                          </div>
+                          <div class="mtico m_c_col-data_ac_i __14" aria-hidden="true" style="display: none;">
+                            <div class="tico">
+                              <i class="tico_img ic">
+                              </i>
+                              <span class="mus-text">
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <a class="mtico mus-dl m_c_col-data_ac_i __14 js-hide-in-edit js-pl-edit" data-pl-edit="{$get_playlist_id}">
+                            <i class="mic14 ic14_edit">
+                            </i>
+                            <span>
+                              Edit
+                            </span>
+                          </a>
+                          
+                          <a class="mtico mus-dl m_c_col-data_ac_i __14 js-hide-in-edit" data-playlist-id="{$get_playlist_id}">
+                            <i class="mic14 ic14_remove">
+                            </i>
+                            <span id="dl_ply">
+                              Delete the playlist
+                            </span>
+                          </a>
+                          
+                          <a class="vl_btn m_c_col-data_finish m_hidden js-pl-edit-finish">
+                            Ready
+                          </a>
+                          
+                        </div>
+                        {elseif $run_update === 1} 
+                        
+                        <div class="m_c_col-data_ac" id="playlist_nemp_manip">
+                          
+                          <a class="mtico mus-dl" data-playlist-id="{$smarty_original_pl_id}" data-original-playlist-id="{$get_playlist_id}">
+                            <i class="mic14 ic14_remove">
+                            </i>
+                            &nbsp;
+                            <span id="dl_ply">
+                              Delete the playlist
+                            </span>
+                          </a>
+                          
+                        </div>
+                        
+                        {else}
+                        <div class="m_c_col-data_ac" id="add_collection" data-collection='{literal}{{/literal}"collection_id":"{$get_playlist_id}","collection_name":"{$get_playlist_name}","collection_cover":"{$get_playlist_cover}","collection_count":"{$get_playlist_trcount}"{literal}}{/literal}'>
+                          
+                          <span class="mtico mus-dl m_c_col-data_ac_i">
+                            <i class="mic14 mic14_add">
+                            </i>
+                            <span>
+                              Add to My music
+                            </span>
+                          </span>
+                          
+                        </div>
+                        
+                        {/if}
+                        {if $get_playlist_owner === $this->USER['id'] && $get_playlist_plcount !== '-0'}
+                        {assign var=sortable value='id="mus_sort"'}
+                        {/if}
+                        
+                      </div>
+                    </div>
+                    <div class="mus_h2 mb-5">
+                      <div class="m_ppl_title" m_ppl_title="true" data-id="{$get_playlist_id}">
+                        {$get_playlist_name}
+                      </div>
+                    </div>
+                    <div>
+                    </div>
+                    <div {$sortable} data-act="playlist" data-plid="{$this->id}">  
+     
+
+                   <ol>
+    
+    
+    {foreach $query as $result}
+    {assign var=artist value={$result.artist}}
+    {assign var=title value={$result.title}}
+    {assign var=album value={$result.album}}
+    {assign var=pid value={$result.id}}
+    {assign var=trackPth value={$result.path}}
+    {assign var=trackCover value={$result.cover}}
+    {assign var=time value={$result.time}}
+    {assign var=tadded value={$result.added}}
+    {assign var=tpos value={$result.position}}
+    {assign var=midI value={$result.trackid}}
+    {assign var=track_video value={$result.video}}
+    {assign var=track_lang value={$result.language}}
+    {assign var=download value=''}
+    {if $track_lang === $this->show_prch_icon}
+    {assign var=download value='__download'}
+    {/if}
+    
+    {if $c === 0}
+    {assign var=c value={$pid}}
+    {/if}
+    
+    <li target="#p0m_sec_personal_pl{$pid}_{$midI}" id="tracks_{$midI}">
+      
+      <span style="display:block;" class="mus-tr_lst">
+        <span class="mus_scroll-overlay_dummy">
+        </span>
+        <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_m_sec_personal_pl{$pid}_{$midI}" edit-track-id="{$midI}" data-position="{$tpos}" data-added="{$tadded}">
+          <div class="mus-tr_hld">
+            <span class="mus-tr_restore">
+              <span class="mus-tr_restore_tx">
+                <span class="mus-tr_il js-mus-tr_restore js_restore_in_pl" data-action="restore" trackId="track_{$midI}" data-dl-pl-id="{$get_playlist_id}">
+                  Restore?
+                </span>
+                &nbsp;{$artist}&nbsp;&#8211;&nbsp;{$title}
+              </span>
+              
+            </span>
+            <span class="mus-tr_play __play js-mus-tr_play" id="p0m_sec_personal_pl{$pid}_{$midI}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$trackPth}","cover":"{$trackCover}"{literal}}{/literal}'>
+            </span>
+            {if $download !== ''}
+               <span class="mus-tr_download js-mus-tr_download" title="Download">
+               </span>
+               {/if}
+               <div class="mus-tr_cnt">
+                 <a class="mus-tr_a mus-tr_artist">
+                   {$artist}
+                 </a>
+                &nbsp;&#8211;&nbsp;
+                 <a class="mus-tr_a mus-tr_song">
+                   {$title}
+                 </a>
+                 <span class="foh-s mus-tr_info">
+                   &nbsp;from&nbsp;
+                   <a class="mus-tr_a mus-tr_album">
+                     <span class="mus-tr_album-ic ic10_album">
+                     </span>
+                     {$album}
+                   </a>
+                 </span>
+               </div>
+               
+               
+               {if $get_playlist_owner === $this->USER['id'] && $get_playlist_plcount !== '-0'}
+               <div class="mus-tr_right-controls foh-s" id="rc_m_sec_personal_pl">
+                 <span class="mus-tr_edit js-mus-tr_edit" trackid="track_{$midI}" title="Edit" data-action="edit">
+                 </span>
+                 <span class="mus-tr_delete js-mus-tr_delete js_remove_pl" title="Remove from my playlist" trackId="track_{$midI}" data-action="delete" data-dl-pl-id="{$get_playlist_id}">
+                 </span>
+                 
+               </div>
+               {else}
+               <div class="mus-tr_right-controls foh-s" id="rc_m_sec_collection_{$midI}">
+                 <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+                 </span>
+                 <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+                 </span>
+               </div>
+               {/if}
+               
+               <span class="mus-tr_time">
+                 {$time}
+               </span>
+             </div>
+             {if $track_video > '0'}
+             <div class="mus-tr_video" data-showVideo="true" data-video="{$track_video}">
+               
+             </div>
+             {/if}
+  </div>
+             </span>
+  </li>
+  {/foreach}
+  
+  </ol>
+  </div>
+  
+  <div id="pl_scroll_event" style="padding:20px;">
+  </div>
+  <div class="m_hidden">
+    <div class="m_add_ppl">
+      
+      <span class="m_add_ppl_ico">
+      </span>
+      
+      <span>
+        Add music
+      </span>
+      
+    </div>
+  </div>
+           </div>
+           <div class="mt-20">
+             <div class="mus_h2 m_other_ppl_offset m_hidden">
+               Other playlists
+             </div>
+             <div class="mus_album-list" aria-hidden="true" style="display: none;">
+               <div>
+                 <div class="mus_card_i">
+                   <div class="m_c_ppl_create">
+                     <i id="myMusicPPLCreateIco" class="m_c_ppl_create_ico">
+                     </i>
+                     <div id="myMusicPPLCreateText" class="m_c_create_text">
+                       Add a playlist
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+  </div>
+  </div>
+  
+  
+  <!---- recommendation section -------->
+  {if $get_playlist_owner === $this->USER['id'] && $get_playlist_plcount !== '-0'}
+  <div data-mus-my-playlist="{$c}">
+  </div>
+  <div class="m_recommendations_w js-hide-in-edit js-m_recommendations_w __visible-teaser">
+    <div class="m_recommendations">
+      <div class="m_recommendations_cnt">
+        
+        <span class="ic ic_close m_recommendations_close" title="OK">
+        </span>
+        <div class="mus_h2 m_recommendations_h">
+          Similar to your songs
+        </div>
+        <div class="m_recommendations_track-list">
+          <div class="mus-tr_lst mus_scroll-overlay">
+          </div>
+        </div>
+        <div class="m_recommendations_more">
+          
+          <span class="m_c_s_c_go_to">
+            Show more songs
+          </span>
+          
+        </div>
+      </div>
+      <div class="m_recommendations_teaser">
+        
+        <span>
+          We have found songs that will suit you.
+        </span>
+        
+        <span class="m_c_s_c_go_to">
+          &nbsp;Show.
+        </span>
+        
+      </div>
+    </div>
+  </div>
+  {/if}
+  
+  {/if}
+  
+  </div>
+  
+          </div>
+          
+  </div>
+  
+  {/strip}

@@ -1,0 +1,350 @@
+/*******************************
+	Table of Contents
+
+	1.0 Typography
+	2.0 Global Reset
+    3.0 General Styles	
+	4.0 Content Styles 
+	5.0 Footer
+	6.0 Canvas
+	7.0 SignIn Dialog
+
+*******************************/
+
+/*----------------------------------------------*/
+/* 1.0 Typography */
+/*----------------------------------------------*/
+@font-face{font-family:'MuseoSans-700';src:url("../fonts/museo.eot");
+src:url("../fonts/museo.eot") format("embedded-opentype"),
+	url("../fonts/museo.woff") format("woff"),
+	url("../fonts/museo.ttf") format("truetype")}
+@font-face {
+  font-family: 'MarkPro-Heavy';
+  src: url('../fonts/MarkPro-Heavy-LF.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/MarkPro-Heavy-LF.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/MarkPro-Heavy-LF.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/MarkPro-Heavy-LF.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/MarkPro-Heavy-LF.svg') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+/*----------------------------------------------*/
+/* 2.0 Global Reset */
+/*----------------------------------------------*/
+
+body, html  { height: 100%}
+html, body, div, span, applet, object, iframe,
+blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	}
+body { line-height: 1}
+ol, ul { list-style: none}
+blockquote, q { quotes: none}
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none}
+:focus { outline: 0}
+del { text-decoration: line-through}
+
+/*----------------------------------------------*/
+/* 3.0 General Styles */
+/*----------------------------------------------*/
+html{-webkit-text-size-adjust: none;}
+body {
+  font-family: "MuseoSans-700",Helvetica,Arial,Verdana,sans-serif;
+  font-smoothing: antialiased;
+  font-weight: normal;
+  background: #151618;
+  color: #FFF;
+  margin: 0;
+  text-align:center;
+  overflow: hidden; 
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-size: 22px;
+}
+
+h2 {
+  font-family: MarkPro-Heavy;
+  text-transform: uppercase;
+  letter-spacing: 20px;
+  font-size: 200px;
+  margin:-30px 0 20px 0;
+}
+
+p {
+  line-height: 1.6em;
+  text-align: center;
+  font-size: 16px;
+}
+
+a {
+  transition: color 0.2s ease-out;
+  text-decoration: none;
+  color: #fff;
+  text-decoration:underline;
+}
+
+a:hover {
+  color: #444;
+}
+
+h2 span{margin:0px;}
+
+/*----------------------------------------------*/
+/* 4.0 Content Styles */
+/*----------------------------------------------*/
+.logo {
+    margin: 50px;
+    /* width: 300px; */
+    border: 0px solid #fff;
+    border-radius: 12px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  z-index:9;
+}
+
+.button-white{
+  padding:15px 35px;
+  margin:30px 10px;
+  border:solid 1px #ffffff;
+  text-decoration:none;
+  display:inline-block;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/*----------------------------------------------*/
+/* 5.0 Footer */
+/*----------------------------------------------*/
+.footer {padding:20px 10px 0px;}
+.footer .handle {
+  font-style: italic;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/*----------------------------------------------*/
+/* 6.0 Canvas */
+/*----------------------------------------------*/
+  #background { display: none; }
+  #canvas { position: absolute; top: 0px; left: 0px; }
+  #sound { position: absolute; width: 30%; height: 30%; overflow-y: auto; margin-left: 35%; -moz-border-radius: 15px; border-radius: 15px; background-color: #C4C4C4; opacity: 0.3; margin-top: 5%; }
+  .video { position: absolute; width: 90%; height: 80%; margin-left: 5%; margin-top: 5%; }
+ 
+/*----------------------------------------------*/
+/* 7.0 Search Dialog */
+/*----------------------------------------------*/
+
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+}
+
+.login {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -184px 0px 0px -150px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 14px rgba(0,0,0,0.6);
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-name: bounceInDown;
+  border-radius: 3px;
+  z-index:999999999999999999
+}
+
+.user, .pw{
+  border-left: 5px solid transparent;
+  transition: all 0.3s linear;
+}
+
+.user:hover, .pw:hover{
+  background: #F0F0F0;
+    border-left: 5px solid #8FB252;
+    
+}
+
+input[type="text"], input[type="password"] {
+  width: 290px;
+  padding: 20px 0px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #222;
+  margin: 0 auto;
+  text-indent: 20px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+label {
+  display: block;
+  position: absolute;
+  margin-top: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  content: "";
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0px 0px 0px 2px #ccc;
+}
+
+#remember:checked ~ label[for=remember] {
+  background: #b5cd60;
+  border: 3px solid white;
+  box-shadow: 0px 0px 0px 2px #b5cd60;
+}
+
+input[type="submit"] {
+  background: #b5cd60;
+  border: 0;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  padding: 0px 25px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-left: 50px;
+}
+input[type="submit"]:hover {
+  background: #a4bc4f;
+}
+
+.forgot {
+  margin-top: 25px;
+  display: block;
+  font-size: 13px;
+  text-align: left;
+  font-weight: normal;
+  color: #777;
+  padding: 0px 0px 25px 25px;
+}
+
+
+::-webkit-input-placeholder {
+  color: #777;
+  font-weight: bold;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: all 0.4s linear;
+  transform: translate(200px, 0);
+  opacity: 0;
+}
+
+.remlog{
+  border-bottom: 1px solid #ddd;
+}
+
+.remember {
+  padding: 30px 0px;
+  font-size: 12px;
+  text-indent: 20px;
+  line-height: 15px;
+  margin-left: 25px;
+  display: inline-block;
+  color:#777;
+}
+
+.top  h3{color: #a4bc4f;}
+
+.forgot h3{
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.forgot a{
+  color: #222;
+}
+
+.close{
+  width: 32px;
+  height: 32px;
+  display: block;
+  border: 0;
+  border-radius: 0px 3px 0px 0px;
+  position: absolute;
+  right: 0px;
+  padding: 0px;
+  background: #fff;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.close:after{
+  content:'';
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 16px;
+  transform: rotate(45deg);
+  background: #ccc;
+  margin: -8px 0px 0px 14px
+}
+.close:before{
+  content:'';
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 16px;
+  transform: rotate(-45deg);
+  background: #ccc;
+  margin: -8px 0px 0px 14px
+}
+
+.close:hover:before,.close:hover:after{
+  background: #777;
+  transition: all 0.2s linear;
+}
+
+#SignIn{
+  border: 2px solid white;
+  background: transparent;
+  padding: 10px 35px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  position:absolute;
+  top: 5%;
+  right: 2%;
+  z-index:99999999
+}
+
+@keyframes bounceInDown{
+0% {opacity: 0;	transform: translateY(-2000px);}
+60% {opacity: 1;transform: translateY(30px);}
+80% {transform: translateY(-10px);}
+100% {transform: translateY(0);}

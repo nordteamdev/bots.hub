@@ -1,0 +1,21 @@
+<tr class="setting-pagelist" id="PageID_<?php echo $wo['pagelist']['page_id']?>" data-page-id="<?php echo $wo['pagelist']['page_id']?>">
+   <td><?php echo $wo['pagelist']['page_id']?></td>
+   <td>
+      <a href="<?php echo $wo['pagelist']['url']; ?>">
+      <img src="<?php echo $wo['pagelist']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['pagelist']['avatar']?> Page Picture">
+      <?php echo $wo['pagelist']['name']; ?>
+      </a>
+   </td>
+   <td>
+    <a href="<?php echo $wo['pagelist']['owner']['url']; ?>">
+      <img src="<?php echo $wo['pagelist']['owner']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['pagelist']['owner']['avatar']?> Profile Picture">
+      <?php echo $wo['pagelist']['owner']['name'];?>
+      </a>
+    
+   </td>
+   <td><?php echo $wo['pagelist']['category'];?></td>
+   <td>
+      <a target = "_blank" class="btn btn-info waves-effect waves-light" href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['pagelist']['page_name']) ?>">EDIT</a>
+      <button onclick="Wo_DeletePage(<?php echo $wo['pagelist']['page_id']?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

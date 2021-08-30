@@ -1,0 +1,54 @@
+<div class="fl-plus-trending-news-list-wrapper">
+	<div class="col-md-11 no-padding-both">
+		<div class="col-md-5 no-padding-both">
+			<div class="fl-plus-trending-news-list-thumb">
+				<img src="<?php echo $fl['trending_data']['news']['small_image']; ?>" alt="Picture" class="image">
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div class="fl-plus-trending-news-list-info">
+				<div class="fl-plus-trending-news-list-title">
+					<a href="<?php echo $fl['trending_data']['news']['url']; ?>">
+						<h4>
+							<?php echo $fl['trending_data']['news']['title']; ?>
+						</h4>
+					</a>
+				</div>
+				<div class="fl-plus-trending-news-list-desc">
+					<article>
+						<?php echo $fl['trending_data']['news']['description']; ?>
+					</article>
+				</div>
+				<div class="fl-plus-trending-news-list-meta">
+					<a href="#">
+						<?php echo $fl['trending_data']['news']['publisher']['name']; ?>
+						<?php if ($fl['trending_data']['news']['publisher']['verified'] == 1): ?>
+							<span class="verified-icon"><i class="fa fa-check-circle"></i></span>
+						<?php endif; ?>
+					</a>
+					<time>
+						<i class="fa fa-clock-o"></i>
+						<?php echo $fl['trending_data']['news']['posted']; ?>
+					</time>	
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="col-md-1 col-xs-3 col-sm-3 pull-right">
+      <div class="dropdown">
+         <a class="pull-right dropdown-toggle pointer" type="button" data-toggle="dropdown">
+            <i class="material-icons">more_vert</i>
+         </a>
+         <ul class="dropdown-menu custom-dropdown">
+            <li><a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-facebook"></i> {{LANG facebook}}</a></li>
+            <li><a href="https://plus.google.com/share?url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-google"></i> {{LANG google_plus}}</a></li>
+            <li><a href="http://twitter.com/intent/tweet?text=<?php echo $fl['trending_data']['news']['title']?>&url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-twitter"></i> {{LANG twitter}}</a></li>
+           <li class="pointer"><a onclick="FL_ShareToEmail('<?php echo $fl['trending_data']['news']['url']?>');" target="_blank"><i class="fa fa-fw fa-envelope-o"></i> {{LANG email}}</a></li>
+            <li><a href="http://www.reddit.com/submit?url=<?php echo urlencode($fl['trending_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-reddit"></i> {{LANG reddit}}</a></li>
+         </ul>
+      </div>
+      <div class="clear"></div>
+   	</div>
+	<div class="clear"></div>
+</div>

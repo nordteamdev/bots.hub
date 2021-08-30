@@ -1,0 +1,90 @@
+<div class="reply reply-container" id="comment_reply_<?php echo $wo['reply']['id'];?>" data-reply-id="<?php echo $wo['reply']['id'];?>">
+   <a class="<?php echo Wo_RightToLeft('pull-left'); ?>" href="<?php echo $wo['reply']['publisher']['url']?>">
+   <img class="avatar <?php echo Wo_RightToLeft('pull-left'); ?>" src="<?php echo $wo['reply']['publisher']['avatar']?>" alt="avatar">
+   </a>
+   <div class="comment-body">
+      <div class="comment-heading reply-heading">
+         <span class="user-popover" data-id="<?php echo $wo['reply']['publisher']['id'];?>" data-type="<?php echo $wo['reply']['publisher']['type'];?>">
+         <a href="<?php echo $wo['reply']['publisher']['url']?>" data-ajax="?link1=timeline&u=<?php echo $wo['reply']['publisher']['username'];?>">
+            <h4 class="user">
+               <?php echo $wo['reply']['publisher']['name']?>
+            </h4>
+         </a>
+         </span>
+         <?php  if($wo['reply']['publisher']['verified'] == 1) {   ?>
+         <span class="verified-color" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"><i class="fa fa-check-circle"></i></span>
+         <?php } ?>
+         <div class="<?php echo Wo_RightToLeft('pull-right');?> comment-options">
+            <?php if ($wo['reply']['post_onwer'] === true|| $wo['reply']['onwer'] === true) {?>
+            <span class="pointer" id="deleteComment" onclick="Wo_DeleteReplyComment(<?php echo $wo['reply']['id']?>);">
+            <i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i>
+            </span>
+            <?php } ?>
+         </div>
+         <span class="time ajax-time" title="<?php echo date('c',$wo['reply']['time']);?>"><?php echo $wo['reply']['time']?></span>
+         <div class="reply-text"><?php echo $wo['reply']['text']?></div>
+         
+         <div class="clear"></div>   
+      </div>
+
+      <?php if ($wo['config']['second_post_button'] == 'reaction') { ?>
+            <!-- reaction -->
+
+            <div class="like-stat  stat-item post-like-status" style="float: left;margin: -2px 10px 0px 0px;">
+              <span class="like-emo reply-reactions-icons-<?php echo $wo['reply']['id']; ?>">
+              <?php echo Wo_GetPostReactions($wo['reply']['id'],"replay");?>
+              </span>
+              <!-- <span class="like-details">Arkaprava Majumder and 1k others</span> -->
+            </div>
+
+            <div class="wo-reaction stat-item" style="max-width: 100%;padding: inherit;float: left;font-size: 13px;margin-top: 3px;position: relative;">
+                <span class="like-btn" >
+                    <?php
+                    if (Wo_IsReacted($wo['reply']['id'], $wo['reply']['user_id'],"replay") === true) {    
+                    echo '<span class="rstatus-reaction-'.$wo['reply']['id'].' active-like"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="r_likes-'.$wo['reply']['id'].'">' . $wo['lang']['liked'] . '</span></span>';   
+                    } else {   
+                    echo '<span class="rstatus-reaction-'.$wo['reply']['id'].'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="r_likes-'.$wo['reply']['id'].'">' . $wo['lang']['like'] . '</span></span>';   
+                    }    
+                    ?>
+                    <ul class="reactions-box">
+                        <li class="reaction reaction-like" data-reaction="Like" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Like');"></li>
+                        <li class="reaction reaction-love" data-reaction="Love" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Love');"></li>
+                        <li class="reaction reaction-haha" data-reaction="HaHa" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'HaHa');"></li>
+                        <li class="reaction reaction-wow" data-reaction="Wow" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Wow');"></li>
+                        <li class="reaction reaction-sad" data-reaction="Sad" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Sad');"></li>
+                        <li class="reaction reaction-angry" data-reaction="Angry" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Angry');"></li>
+                    </ul>
+                </span>
+            </div>
+        <?php } else { ?>
+
+      <span class="comment-options">
+            <span class="comment-icons">
+            <span class="pointer" id="LikeReplyComment" onclick="Wo_RegisterCommentReplyLike(<?php echo $wo['reply']['id']; ?>);">
+            <?php if($wo['reply']['is_comment_liked'] !== true) { ?>
+            <i class="fa fa-thumbs-up progress-icon" data-icon="thumbs-up"></i>
+            <?php } else { ?>
+            <i class="fa fa-thumbs-up progress-icon active-like" data-icon="thumbs-up"></i>
+            <?php } ?>
+            </span> 
+            <span id="comment-reply-likes">
+            <?php echo $wo['reply']['comment_likes'];?>
+            </span> · 
+            </span>
+            <span class="pointer" id="WonderReplyComment" onclick="Wo_RegisterCommentReplyWonder(<?php echo $wo['reply']['id']; ?>);">
+            <?php if($wo['reply']['is_comment_wondered'] !== true) { ?>
+            <i class="fa fa-<?php echo $wo['second_post_button_icon'];?> progress-icon" data-icon="<?php echo $wo['second_post_button_icon'];?>"></i>
+            <?php } else {  ?>
+            <i class="fa fa-<?php echo $wo['second_post_button_icon'];?> progress-icon active-wonder" data-icon="<?php echo $wo['second_post_button_icon'];?>"></i>
+            <?php } ?>
+            </span>
+            <span id="comment-reply-wonders">
+            <?php echo $wo['reply']['comment_wonders'];?>
+            </span> · 
+      </span>
+
+       <?php } ?>
+       
+   </div>
+   <?php echo Wo_LoadPage('modals/delete-comment-reply');?>
+</div>

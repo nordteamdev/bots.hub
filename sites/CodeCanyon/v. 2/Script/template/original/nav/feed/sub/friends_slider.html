@@ -1,0 +1,49 @@
+{strip}
+{assign var="c" value="0"}
+<section class="w_slider _friends">
+ 
+{if !$c_fq}
+{$this->empty_feed()}
+{else}
+<div id="hook_Block_FeedsNavigationJS" class="hookBlock">
+
+    <div id="feedSlider" data-type="feedSlider" class="uslider __active feed-nav h-mod" data-module="uslider">
+        <div class="uslider_cnt">
+			
+	{foreach $gl_rs as $rs}
+         <div class="nb-carousel {if $rs.uid == $faktive_us}__active{/if} _clickitem" style="display:inline-block;">
+	    <a href="javascript:void(0)" {if $c == 0 && !$th_ii}data-autoclicktrig="true"{/if} onclick="return getWall(this,'certain2',1);" class="uslider_i" data-fvid="hook_{$rs.uid}">
+                <div class="feed-nav_i">
+				<div class="nozoom">
+				<img alt="{$rs.fullname}" title="{$rs.fullname}" src="/getPhoto?p={$rs.profile_photo}&sz=small" width="80" class="uslider_img" height="80">
+				</div>
+				<div class="uslider_ufn_ovr"><div class="uslider_u_fname ellip">{$rs.fullname}</div></div>
+				</div>
+            </a></div>
+	{assign $c $c++ nocache}
+	{/foreach}
+
+
+</div>
+        <div class="uslider_ctrl __next" onclick="return feedFilterSlide(this,'forward');"></div>
+        <div class="uslider_ctrl __prev hidden" onclick="return feedFilterSlide(this,'back');"></div>
+    </div>
+</div>
+
+{/if}
+
+<script>
+{literal}
+$(function(){
+		ga('.uslider_cnt').mousewheel(function(event, delta) {
+			this.scrollLeft -= (delta * 30);
+			event.preventDefault();
+		});
+feedFilterSlideByArrws();
+
+});
+{/literal}
+</script>
+
+</section>
+{/strip}

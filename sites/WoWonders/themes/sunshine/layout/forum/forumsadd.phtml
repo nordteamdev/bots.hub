@@ -1,0 +1,62 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div class="w-100 text-center sun_forum_dis_head">
+		<h4><?php echo($wo['forum_data']['name']) ?></h4>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=forumsadd&fid=' . $wo['forum_data']['id']) ?>" class="btn btn-main" data-ajax="?link1=forumaddthred&fid=<?php echo $wo['forum_data']['id'];?>"><?php echo $wo['lang']['create_new_topic']; ?></a>
+		<p><?php echo($wo['forum_data']['description']) ?></p>
+	</div>
+<div class="row">
+	<label class="col-md-3"></label>
+	<div class="col-md-6">
+		<div class="red-list">
+			<div class="wo_settings_page">
+				<h3><?php echo $wo['lang']['create_new_topic']; ?></h3>
+				<form action="#" class="form" id="newtopic" method="post">
+					<div class="setting-panel row">
+						<div class="sun_input">
+							<textarea id="topicpost" name="topicpost" placeholder="<?php echo $wo['lang']['your_post']?>"></textarea>
+							<label for="topicpost"><?php echo $wo['lang']['your_post']?></label>
+						</div>
+						<!-- Text input-->
+						<div class="sun_input">
+							<input type="text" class="form-control" name="headline" id="headline" placeholder="<?php echo $wo['lang']['headline']?>">
+							<label for="headline"><?php echo $wo['lang']['headline']?></label>
+						</div>
+					</div>
+					<div id="newpost-alert"></div>
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['publish'];?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- .col-md-8 -->
+	<label class="col-md-3"></label>
+</div>
+<div class="clear"></div>
+<script>
+jQuery(document).ready(function($) {
+	$('#newtopic').ajaxForm({
+	      url: Wo_Ajax_Requests_File()  +  '?f=addtopic&fid=<?php echo $wo['forum_data']['id']; ?>&hash=' + $('.main_session').val(),
+	      beforeSend: function() {
+	        Wo_progressIconLoader($('#newtopic').find('button'));
+	      },
+	      success: function(data) {
+	        scrollToTop();
+	        if (data['status'] == 200) {
+	         	$("#newpost-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	          	window.location = data['url'];
+	        } else {
+	         	$("#newpost-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        } 
+	        Wo_progressIconLoader($('#newtopic').find('button'));
+	      }
+	});
+
+	$("#topicpost").bbcode()
+	$("#topicpost").autogrow({vertical: true, horizontal: false});
+});
+</script>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

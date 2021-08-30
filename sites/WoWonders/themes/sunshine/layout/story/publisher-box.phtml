@@ -1,0 +1,1072 @@
+<?php
+$hashtag = '';
+$url = '';
+if (isset($_GET['link1']) && $_GET['link1'] == 'hashtag' && !empty($_GET['hash'])) {
+  $hashtag = '#' . $_GET['hash'];
+}
+if (!empty($_GET['url'])) {
+  $url = urldecode($_REQUEST['url']);
+}
+?>
+<form action="#" method="post" class="post publisher-box" id="publisher-box-focus">
+	<div class="panel post panel-shadow sun_pub_box">
+		<div id="post-textarea"  onclick="Wo_ShowPosInfo();">
+			<?php //if ($wo['page'] != 'events') { ?>
+				<img class="post-avatar" src="<?php echo (empty($wo['page_profile']['avatar'])) ? $wo['user']['avatar'] : $wo['page_profile']['avatar'];?>">
+				<div class="sun_pub_name">
+					<span><?php echo (empty($wo['page_profile']['name'])) ? $wo['user']['name'] : $wo['page_profile']['name'];?></span>
+				</div>
+			<?php //} ?>
+			<i class="fa fa-spinner fa-spin" id="loading_indicator"></i>
+			<textarea onkeyup="textAreaAdjust(this, 70)" name="postText" class="form-control postText" cols="10" rows="3" placeholder="<?php echo $wo['lang']['publisher_box_placeholder']; ?>" dir="auto"><?php echo $hashtag;?><?php echo $url; ?></textarea>
+			<!--Add Emojis-->
+			<div class="dropdown add-emoticons">
+				<a href="#" class="dropdown-toggle" type="button" id="dropdownEmo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 24 24" class="feather feather-emoticons"><path d="M12,23 C5.92486775,23 1,18.0751322 1,12 C1,5.92486775 5.92486775,1 12,1 C18.0751322,1 23,5.92486775 23,12 C23,18.0751322 18.0751322,23 12,23 Z M12,21 C16.9705627,21 21,16.9705627 21,12 C21,7.02943725 16.9705627,3 12,3 C7.02943725,3 3,7.02943725 3,12 C3,16.9705627 7.02943725,21 12,21 Z M15.2746538,14.2978292 L16.9105622,15.4483958 C15.7945475,17.0351773 13.9775544,18 12,18 C10.0224456,18 8.20545254,17.0351773 7.08943782,15.4483958 L8.72534624,14.2978292 C9.4707028,15.3575983 10.6804996,16 12,16 C13.3195004,16 14.5292972,15.3575983 15.2746538,14.2978292 Z M14,11 L14,9 L16,9 L16,11 L14,11 Z M8,11 L8,9 L10,9 L10,11 L8,11 Z" /></svg>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownEmo">
+					<div>
+						<?php  
+							foreach ($wo['emo'] as $code => $name) {
+								$code   = $code;
+								echo  '<span onclick="Wo_AddEmo(\'' . $code . '\',\'#post-textarea textarea\'), Wo_ShowPosInfo();"><i class="pointer twa-lg twa twa-' . $name . '"></i></span>';
+							} 
+						?>
+					</div>
+				</ul>
+			</div>
+		</div>
+		
+		<!--Uploaded Video-->
+		<?php if ($wo['config']['video_upload'] == 1) { ?>
+		<div class="publisher-hidden-option" id="video-form">
+			<div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+				<span class="pull-left">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+					<input name="videocount" type="text" class="form-control bg_read_input" readonly>
+				</span>
+				<span class="pull-right pointer video-custom-thumb">
+					<?php echo $wo['lang']['custom_thumbnail']; ?>&nbsp;<i class="fa fa-caret-down"></i>
+				</span>
+			</div>
+			<div class="video-poster-image">
+				<div class="thumb-renderer pointer" onclick="$('#custom-video-thumb').trigger('click');">
+					<div id="post_vthumb_droparea">
+						<div class="preview">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload-cloud" color="#384047"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path><polyline points="16 16 12 12 8 16"></polyline></svg>
+							<div class="error-text-renderer"></div>
+							<div>
+								<p><?php echo $wo['lang']['drop_img_here']; ?> <?php echo $wo['lang']['or']; ?> <?php echo $wo['lang']['browse_to_upload']; ?></p>
+							</div>
+						</div>
+						<div class="image"></div>
+					</div>
+				</div>
+			</div>
+			<input type="file" class="hidden" name="video_thumb" id="custom-video-thumb" accept="image/*">
+		</div>
+		<?php } ?>
+		<!--Uploaded Audio-->
+		<?php if ($wo['config']['audio_upload'] == 1) { ?>
+		<div class="publisher-hidden-option" id="music-form">
+			<div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-music"><path d="M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm12-2h-4a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2z"></path><polyline points="9 17 9 5 21 3 21 15"></polyline></svg>
+				<input name="musiccount" type="text" class="form-control bg_read_input" readonly>
+			</div>
+		</div>
+		<?php } ?>
+		<!--Poll Options-->
+		<div id="poll-form">
+			<div class="publisher-hidden-option answers">
+				<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> 1">
+				<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> 2">
+			</div>
+			<div class="create-poll" onclick="Wo_AddAnswer();" id="add_answer">
+				<div class="create-text"><?php echo $wo['lang']['add_answer'] ?></div>
+			</div>
+		</div>
+		<!--Create Album-->
+		<div style="position:relative;">
+			<div id="album-form">
+				<div class="publisher-hidden-option">
+					<input name="album_name" type="text" class="form-control" placeholder="<?php echo $wo['lang']['album_name'];?>">
+				</div>
+			</div>
+			<div class="publisher-hidden-option" id="photo-form">
+				<div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+					<input name="phtoscount" type="text" class="form-control bg_read_input" readonly>
+				</div>
+				<div class="create-album <?php echo Wo_RightToLeft('pull-right');?>" onclick="Wo_OpenAlbum();">
+					<div class="create-text"><?php echo $wo['lang']['create_album'];?></div>
+				</div>
+				<div class="clear"></div>
+				<div style="overflow-x: auto;"><div id="image-holder"></div></div>
+			</div>
+		</div>
+		<!--Uploaded File-->
+		<div class="publisher-hidden-option" id="file-form">
+			<div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+				<input name="filename" type="text" class="form-control bg_read_input" readonly>
+			</div>
+		</div>
+		<!--Set Location-->
+		<div class="publisher-hidden-option" id="map-form">
+			<div class="inner-addon <?php echo Wo_RightToLeft('left-addon');?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+				<input name="postMap" id="searchTextField" type="text" class="form-control" placeholder="<?php echo $wo['lang']['maps_placeholder']?>">
+			</div>
+		</div>
+		<!--Add Emojis-->
+		<div id="emo-form">
+			<div class="publisher-hidden-option" style="border-top: 1px dashed #ededed;">
+				<div class="feelings-type-to <?php echo Wo_RightToLeft('pull-left');?> pointer" onclick="Wo_RestFeelings();"></div>
+				<span class="feelings-value"></span>
+				<input name="feeling" id="feelings-text" type="text" class="form-control bg_read_input" placeholder="<?php echo html_entity_decode($wo["lang"]["feel_d"])?>" onclick="Wo_ShowFeelings();" autocomplete="no">
+				<input name="feeling_type" type="hidden" id="feeling-type" value="">
+				<div class="clear"></div>
+			</div>
+			<div class="feeling-type feeling-types">
+				<ul>
+					<li class="pointer" onclick='Wo_ShowFeelingType("feelings", "<?php echo $wo['lang']['feeling'];?>", "<?php echo $wo['lang']['feeling_q'];?>");'>
+						<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-user-plus"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"></path></svg> <span><?php echo $wo['lang']['feeling'];?></span>
+					</li>
+					<li class="pointer" onclick='Wo_ShowFeelingType("traveling", "<?php echo $wo['lang']['traveling'];?>" , "<?php echo $wo['lang']['traveling_q'];?>");'>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase" color="#3F51B5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> <span><?php echo $wo['lang']['traveling'];?></span>
+					</li>
+					<li class="pointer" onclick='Wo_ShowFeelingType("watching", "<?php echo $wo['lang']['watching'];?>", "<?php echo $wo['lang']['watching_q'];?>");'>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tv" color="#E91E63"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> <span><?php echo $wo['lang']['watching'];?></span>
+					</li>
+					<li class="pointer" onclick='Wo_ShowFeelingType("playing", "<?php echo $wo['lang']['playing'];?>", "<?php echo $wo['lang']['playing_q'];?>");'>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target" color="#FF9800"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span><?php echo $wo['lang']['playing'];?></span>
+					</li>
+					<li class="pointer" onclick='Wo_ShowFeelingType("listening", "<?php echo addslashes($wo['lang']['listening']);?>", "<?php echo addslashes($wo['lang']['listening_q']);?>");'>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-headphones" color="#03A9F4"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg> <span><?php echo $wo['lang']['listening'];?></span>
+					</li>
+				</ul>
+			</div>
+			<div class="feeling-type feelings">
+				<ul>
+					<?php foreach ($wo['feelingIcons'] as $icon_name => $icon_code) { ?>
+					<li class="pointer" onclick="Wo_AddFeeling('<?php echo $icon_name;?>', '<?php echo $wo['lang'][$icon_name]; ?>', '<?php echo $icon_code;?>');"><i class="twa-lg twa twa-<?php echo $icon_code; ?>"></i> <?php echo $wo['lang'][$icon_name]; ?></li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
+		<!--Add Stickers-->
+		<?php if ($wo['config']['stickers'] == 1): ?>
+		<div id="gif-form">
+			<div class="w100" id="publisher-box-stickers">
+				<input type="text" class="form-control" style="border: none;" placeholder="<?php echo $wo['lang']['search'] ?> GIFs" onkeyup="Wo_GetPostStickers(this.value)">
+				<div class="ball-pulse <?php echo Wo_RightToLeft('pull-right');?>" style="margin: -33px 10px 0px 0px;"><div></div><div></div><div></div></div>
+				<div id="publisher-box-stickers-cont"></div>
+			</div>
+		</div>
+		<?php endif ?>
+		
+		<div id="results"></div>
+		
+		<!--Progress Bar-->
+		<div class="publisher-hidden-option">
+			<div id="progress">
+				<span id="percent" class="<?php echo Wo_RightToLeft('pull-right');?>">0%</span>
+				<div class="progress">
+					<div id="bar" class="progress-bar active"></div> 
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<!--Publisher Box Footer-->
+		<div class="sun_pub_mid_foot">
+			<!--Uploaded Image-->
+			<div class="poster-left-buttons" onclick="Wo_ShowPosInfo();">
+				<span class="btn btn-file img">
+					<img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-img.svg" alt="<?php echo $wo['lang']['upload_images'] ?>" /> <?php echo $wo['lang']['upload_images']; ?>
+					<input type="file" id="publisher-photos" accept="image/x-png, image/gif, image/jpeg" name="postPhotos[]" multiple="multiple">
+				</span>
+			</div>
+			<!--Create Poll-->
+			<div class="poster-left-buttons" onclick="Wo_ShowPosInfo();">
+				<span class="btn btn-file poll-form pol">
+					<img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-poll.svg" alt="<?php echo $wo['lang']['create_poll'] ?>" /> <?php echo $wo['lang']['create_poll']; ?>
+				</span>
+			</div>
+			<!--Uploaded Video-->
+			<?php if ($wo['config']['video_upload'] == 1) { ?>
+				<div class="poster-left-buttons" onclick="Wo_ShowPosInfo();">
+					<span class="btn btn-file vid">
+						<img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-vid.svg" alt="<?php echo $wo['lang']['upload_video'] ?>" /> <?php echo $wo['lang']['upload_video']; ?>
+						<input type="file" id="publisher-video" name="postVideo" accept="video/*">
+					</span>
+				</div>
+			<?php } ?>
+			<div class="poster-left-buttons" onclick="Wo_ShowPosInfo();">
+				<span class="btn mor">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> <span><?php echo $wo['lang']['more']; ?></span>
+				</span>
+			</div>
+		</div>
+		
+		
+		<!--Publisher Box Footer-->
+		<div class="publisher-box-footer">
+			<div class="sun_pub_more">
+			<!--Add GIFs-->
+			<?php if ($wo['config']['stickers'] == 1): ?>
+			<div class="sun_pub_more_items gif-form">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file btngif gif" style="padding: 0px;">
+						<span><img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-gif.svg" alt="<?php echo $wo['lang']['gif'] ?>" /></span> <?php echo $wo['lang']['gif']; ?>
+					</span>
+				</div>
+			</div>
+			<?php endif ?>
+			<!--Record Audio-->
+			<?php if ($wo['config']['audio_upload'] == 1) { ?>
+			<div class="sun_pub_more_items" id="recordPostAudioWrapper">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file rec">
+						<span id="recordPostAudio" data-record="0"><img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-rec.svg" alt="<?php echo $wo['lang']['record_voice'] ?>" /></span> <?php echo $wo['lang']['record_voice']; ?>
+					</span>
+					<span id="postRecordingTime" class="hidden">00:00</span>
+				</div>
+			</div>
+			<?php } ?>
+			<!--Add Feeling-->
+			<div class="sun_pub_more_items emo-form">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file fel">
+						<span><img src="<?php echo $wo['config']['theme_url'];?>/img/1f600.png" alt="<?php echo $wo['lang']['feelings'] ?>" /></span>
+						<?php echo $wo['lang']['feelings']; ?>
+					</span>
+				</div>
+			</div>
+			<!--Uploaded File-->
+			<?php if($wo['config']['fileSharing'] == 1) { ?>
+			<div class="sun_pub_more_items">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file fil">
+						<span><img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-file.svg" alt="<?php echo $wo['lang']['upload_files'] ?>" /></span> <?php echo $wo['lang']['upload_files']; ?>
+						<input type="file" id="publisher-file" name="postFile">
+					</span>
+				</div>
+			</div>
+			<?php } ?>
+			<!--Create Product-->
+			<?php if (($wo['page'] == 'home' || $wo['page'] == 'timeline') && $wo['config']['classified'] == 1) { ?>
+			<div class="sun_pub_more_items">
+				<div class="poster-left-buttons">
+					<a href="#" data-toggle="modal" data-target="#create-product-modal" class="btn btn-file sel">
+						<span><img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-product.svg" alt="<?php echo $wo['lang']['sell_product'] ?>" /></span> <?php echo $wo['lang']['sell_product']; ?>
+					</a>
+				</div>
+			</div>
+			<?php } ?>
+			<!--Add Location-->
+			<div class="sun_pub_more_items">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file map-form loc">
+						<span><img src="<?php echo $wo['config']['theme_url'];?>/img/icons/pub-map.svg" alt="<?php echo $wo['lang']['location'] ?>" /></span> <?php echo $wo['lang']['location']; ?>
+					</span>
+				</div>
+			</div>
+			<!--Uploaded Music-->
+			<?php if ($wo['config']['audio_upload'] == 1) { ?>
+			<div class="sun_pub_more_items">
+				<div class="poster-left-buttons">
+					<span class="btn btn-file aud">
+						<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3f51b5" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z"></svg></span> <?php echo $wo['lang']['audio_upload']; ?>
+						<input type="file" id="publisher-music" name="postMusic" accept="audio/*">
+					</span>
+				</div>
+			</div>
+			<?php } ?>
+			</div>
+
+		 <div class="pub-footer-bottom">
+			<div class="<?php echo Wo_RightToLeft('pull-right');?>">
+				<button type="button" onclick="Wo_GetPRecordLink($('#postRecord'))" id="publisher-button" class="btn btn-main">
+					<span><?php echo $wo['lang']['share']; ?></span>
+				</button>
+			</div>
+			
+			<div class="<?php echo Wo_RightToLeft('pull-right');?>"><div class="ball-pulse"><div></div><div></div><div></div></div></div>
+			
+			<div id="status"></div>
+			
+			<?php if (!isset($wo['input']['recipient']) && $wo['page'] != 'group') { ?>
+			<div class="<?php echo Wo_RightToLeft('pull-left');?>">
+				<div class="poster-left-select">
+					<div class="publisher-hidden-option inputsm">
+						<?php $postprivacyCookie = (!empty($_COOKIE['post_privacy'])) ? $_COOKIE['post_privacy'] : 0;?>
+						<div class="sun_pub_privacy">
+							<div class="sun_pub_privacy_dropdown">
+								<?php if (empty($_GET['p'])) {?>
+									<?php if ($postprivacyCookie == 3) {?>
+										<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" /></svg> <?php echo $wo['lang']['only_me'];?></p>
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+									<?php } ?>
+									<?php if ($postprivacyCookie == 0) {?>
+										<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> <?php echo $wo['lang']['everyone'];?></p>
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+									<?php } ?>
+
+									<?php if ($wo['config']['connectivitySystem'] == 0) { ?>
+										<?php if ($postprivacyCookie == 1) {?>
+											<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg> <?php echo $wo['lang']['people_i_follow'];?></p>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+										<?php } ?>
+										<?php if ($postprivacyCookie == 2) {?>
+											<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> <?php echo $wo['lang']['people_follow_me'];?></p>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+										<?php } ?>
+									<?php } else {?>
+										<?php if ($postprivacyCookie == 1) {?>
+											<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> <?php echo $wo['lang']['my_friends'];?></p>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+										<?php } ?>
+									<?php }?>
+								<?php } else { ?>
+									<?php if ($postprivacyCookie == 0) {?>
+										<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> <?php echo $wo['lang']['everyone'];?></p>
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+									<?php } ?>
+									<?php if ($postprivacyCookie == 2) {?>
+										<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" /></svg> <?php echo $wo['lang']['liked_my_page'];?></p>
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+									<?php } ?>
+								<?php } ?>
+							</div>
+							<ul class="sun_pub_privacy_menu">
+								<?php if (empty($_GET['p'])) {?>
+									<li>
+										<label>
+											<input type="radio" class="option-input radio" name="postPrivacy" id="3" value="3" <?php echo ($postprivacyCookie == 3) ? ' checked': ''?>>
+											<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" /></svg> <?php echo $wo['lang']['only_me'];?></span>
+										</label>
+									</li>
+									<li>
+										<label>
+											<input type="radio" class="option-input radio" name="postPrivacy" id="0" value="0" <?php echo ($postprivacyCookie == 0) ? ' checked': ''?>>
+											<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> <?php echo $wo['lang']['everyone'];?></span>
+										</label>
+									</li>
+									<?php if ($wo['config']['connectivitySystem'] == 0) { ?>
+										<li>
+											<label>
+												<input type="radio" class="option-input radio" name="postPrivacy" id="1" value="1" <?php echo ($postprivacyCookie == 1) ? ' checked': ''?>>
+												<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg> <?php echo $wo['lang']['people_i_follow'];?></span>
+											</label>
+										</li>
+										<li>
+											<label>
+												<input type="radio" class="option-input radio" name="postPrivacy" id="2" value="2" <?php echo ($postprivacyCookie == 2) ? ' checked': ''?>>
+												<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> <?php echo $wo['lang']['people_follow_me'];?></span>
+											</label>
+										</li>
+									<?php } else {?>
+										<li>
+											<label>
+												<input type="radio" class="option-input radio" name="postPrivacy" id="1" value="1" <?php echo ($postprivacyCookie == 1) ? ' checked': ''?>>
+												<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg> <?php echo $wo['lang']['my_friends'];?></span>
+											</label>
+										</li>
+									<?php }?>
+								<?php } else { ?>
+									<li>
+										<label>
+											<input type="radio" class="option-input radio" name="postPrivacy" id="0" value="0" <?php echo ($postprivacyCookie == 0) ? ' checked': ''?>>
+											<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> <?php echo $wo['lang']['everyone'];?></span>
+										</label>
+									</li>
+									<li>
+										<label>
+											<input type="radio" class="option-input radio" name="postPrivacy" id="2" value="2" <?php echo ($postprivacyCookie == 2) ? ' checked': ''?>>
+											<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" /></svg> <?php echo $wo['lang']['liked_my_page'];?></span>
+										</label>
+									</li>
+								<?php } ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
+			
+			<div class="<?php echo Wo_RightToLeft('pull-left');?> charsLeft-post"><span id="charsLeft"></span></div>
+			
+			<div class="clear"></div>
+		 </div>
+      </div>
+   </div>
+   <?php if (isset($wo['input']['recipient'])) { ?>
+   <input type="hidden" name="recipient_id" value="<?php echo $wo['user_profile']['user_id']; ?>">
+   <?php } ?>
+   <?php if ($wo['page'] == 'page') {?>
+   <input type="hidden" name="page_id" value="<?php echo $wo['page_profile']['page_id']; ?>">
+   <?php } else if ($wo['page'] == 'group') {?>
+   <input type="hidden" name="group_id" value="<?php echo $wo['group_profile']['id']; ?>">
+   <?php } else if ($wo['page'] == 'events') { ?>
+   <input type="hidden" name="event_id" value="<?php echo $wo['event']['id']; ?>">
+   <?php } ?>
+   <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+   <input type="hidden" name="postRecord" value="" id="postRecord">
+   <input type="hidden" name="postSticker" value="" id="postSticker" onchange="alert(this.value)">
+</form>
+<div id="hidden_inputbox"></div>
+<?php echo Wo_LoadPage('products/create'); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".sun_pub_privacy_dropdown").click(function(){
+		$(".sun_pub_privacy").toggleClass("showMenu");
+		$(".sun_pub_privacy_menu > li").click(function(){
+			$(".sun_pub_privacy_dropdown > p").html($(this).find('span').html());
+			$(".sun_pub_privacy").removeClass("showMenu");
+		});
+	});
+});
+
+jQuery(document).click(function(event){
+    if (!(jQuery(event.target).closest(".sun_pub_privacy").length)) {
+        jQuery('.sun_pub_privacy').removeClass('showMenu');
+    }
+});
+
+$(document).ready(function() {
+	$("#publisher-photos").on('change', function() {
+	//Get count of selected files
+	var countFiles = $(this)[0].files.length;
+	var imgPath = $(this)[0].value;
+	var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+	var image_holder = $("#image-holder");
+	image_holder.empty();
+	if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+		if (typeof(FileReader) != "undefined") {
+		//loop for each file selected for uploaded.
+		for (var i = 0; i < countFiles; i++) 
+		{
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                  }).appendTo(image_holder);
+                }
+                image_holder.show();
+                reader.readAsDataURL($(this)[0].files[i]);
+              }
+            } else {
+              image_holder.html("<p>This browser does not support FileReader.</p>");
+            }
+         }
+	});
+});
+var fetch_url = 1;
+$(function () {
+   var allowed = "<?php echo $wo['config']['allowedExtenstion']?>";
+  <?php if (!empty($url)) { ?>
+    $('textarea').trigger('click');
+    setTimeout(function () {
+      $('textarea').trigger('keyup')
+    }, 1000);
+  <?php } ?>
+  $('.postText').triggeredAutocomplete({
+     hidden: '#hidden_inputbox',
+     source: Wo_Ajax_Requests_File() + "?f=mention",
+     trigger: "@" 
+  });
+  <?php if ($wo['config']['maxCharacters'] != 10000) { ?>
+  $('.postText').limit("<?php echo $wo['config']['maxCharacters']?>", '#charsLeft');
+  <?php } ?>
+  $('.emo-form').click(function () {
+    $('#emo-form').slideToggle(200);
+    Wo_RestFeelings();
+  });
+  
+  $('.gif-form').click(function () {
+    $('#gif-form').slideToggle(200);
+  });
+
+  $('.map-form').click(function () {
+    $('#map-form').slideToggle(200);
+	$('#map-form input').focus();
+  });
+  $('.poll-form').click(function () {
+    $('#poll-form').slideToggle(200);
+     $('.answers').find('input').each(function (index_id) {
+       $(this).val('');
+    });
+  });
+  $("#publisher-file").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#file-form input").val(filename);
+    $("#file-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-file").val('');
+      $("#file-form input").val('');
+      $("#file-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $("#publisher-photos").change(function () {
+    var numFiles = this.files.length;
+    $("#photo-form input").val(numFiles + ' photo(s) selected');
+    $("#photo-form").slideDown(200);
+  });
+
+  $("#publisher-video").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#video-form input[type='text']").val(filename);
+    $("#video-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-video").val('');
+      $("#video-form input[type='text']").val('');
+      $("#video-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $("#publisher-music").change(function () {
+    var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+    $("#music-form input").val(filename);
+    $("#music-form").slideDown(200);
+    if (Wo_IsFileAllowedToUpload(filename, allowed) == false) {
+      $("#file_not_supported").modal('show');
+      Wo_Delay(function(){
+        $("#file_not_supported").modal('hide');
+      },3000);
+      $("#publisher-music").val('');
+      $("#music-form input").val('');
+      $("#music-form").slideUp(200);
+      return false;
+    }
+  });
+
+  $(document).on("click",".read-ads-description",function(event) {
+    var self = $(this);
+    self.toggleClass('unsetheight');
+  });
+
+  $(document).on('click', '.rads-clicks', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    var url   = self.find('a').attr('href');
+    window.open(url, '_blank');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-c',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+
+  $(document).on('click', '.rvad-clicks', function(event) {
+    var self  = $(this);
+    self.off("click").removeClass('rvad-clicks');
+    var ad_id = self.parent().attr('id');
+    var url   = self.find('a').attr('href');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-c',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+
+  $(document).on('click', '.rvad-views', function(event) {
+    var self  = $(this);
+    self.off("click").removeClass('rvad-views');
+    var ad_id = self.parent().attr('id');
+    var url   = self.find('a').attr('href');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-v',ad_id:ad_id},
+      })
+      .done(function(data) {/*pass*/})
+      .fail(function() {/*pass*/});
+    }
+    event.preventDefault();
+  });
+
+
+
+  <?php if ($wo['config']['video_upload'] == 1) { ?>  
+  var thumb_drop_block = $(".thumb-renderer");
+
+  if (typeof(window.FileReader) == 'undefined') {
+    thumb_drop_block.find('.preview').text('Drag drop is not supported in your browser!');
+  }
+
+  else{
+    thumb_drop_block[0].ondragover = function() {
+        thumb_drop_block.addClass('hover');
+        return false;
+    };
+        
+    thumb_drop_block[0].ondragleave = function() {
+        thumb_drop_block.removeClass('hover');
+        return false;
+    };
+
+    thumb_drop_block[0].ondrop = function(event) {
+        event.preventDefault();
+        thumb_drop_block.removeClass('hover');
+        var file = event.dataTransfer.files;
+        $("#custom-video-thumb").prop('files', file);
+    };
+  }
+  <?php } ?>
+
+  $("#custom-video-thumb").change(function(event) {
+    $("#post_vthumb_droparea").find('.preview').hide(5, function() {
+      $("#post_vthumb_droparea").find('.image').html($("<img>",{
+        src:window.URL.createObjectURL(event.target.files[0])
+      })).show(5);
+    });;
+  });
+
+  $(".video-custom-thumb").click(function(event) {
+    $(this).find('i').toggleClass('rotate-90d');
+
+    $('.video-poster-image').slideToggle(100,function () {
+      var display_stat = $(this).css('display');
+
+      if (display_stat == 'none') {
+        $(".video-poster-image").find('.preview').show(10);
+        $(".video-poster-image").find('.image').empty().hide(10);
+        $("#custom-video-thumb").val('');
+      }
+
+    });
+  });
+
+  $(document).on('click', '.rads-views', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    var url   = self.find('a').attr('href');
+    window.open(url, '_blank');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-v',ad_id:ad_id},
+      })
+      .done(/* pass */)
+      .fail(/* pass */)
+    }
+    event.preventDefault();
+  });
+
+  var bar = $('#bar');
+  var percent = $('#percent');
+  var status = $('#status');
+  var publisher_button = $('#publisher-button');
+
+  $('form.post').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=posts&s=insert_new_post',
+    beforeSend: function () {
+      var percentVal = '0%';
+      bar.width(percentVal);
+      percent.html(percentVal);
+      publisher_button.attr('disabled', true);
+      publisher_button.css('color', '#333');
+	  $('#publisher-box-focus .pub-footer-bottom').find('.ball-pulse').fadeIn(100);
+    },
+    uploadProgress: function (event, position, total, percentComplete) {
+      var percentVal = percentComplete + '%';
+      bar.width(percentVal);
+      $('#progress').slideDown(200);
+      percent.html(percentVal);
+    },
+    success: function (data) {
+      $('#progress').slideUp(200);
+      publisher_button.attr('disabled', false);
+      publisher_button.css('color', '#fff');
+      percent.removeClass('white');
+      $('.postText').css('height', 'auto');
+      $("#postRecord").val('');
+      $("#postSticker").val('');
+      if(data.status == 200) {
+      	$('#user_post_count').text(data.post_count);
+
+        if(data.html.length > 0) {
+          $('#posts, #posts_hashtag').find('.posts-container').remove();
+        }
+        $('#posts, #posts_hashtag').prepend(data.html);
+        $('#video-form, #emo-form, #music-form, #map-form, #file-form, #photo-form, #album-form, .feeling-type, #poll-form, #gif-form').slideUp(200);
+        $(".video-poster-image").hide(10, function() {
+          $(this).find('.preview').show(10);
+          $(this).find('.image').empty().hide(10);
+          $(".video-custom-thumb").find('i').removeClass('rotate-90d');
+        });
+		$("body").removeClass('pub-focus');
+        Wo_RemoveFetchedUrl();
+		Wo_HidePosInfo();
+        $('form.post').clearForm();
+        $('.feelings-value').html('');
+        $('#postSticker').html('');
+        $('select').prop('selectedIndex', 1);
+        <?php if ($wo['config']['maxCharacters'] != 10000) { ?>
+        $('#charsLeft').text("<?php echo $wo['config']['maxCharacters']?>");
+        <?php } ?>
+        <?php if (!empty($url)) { ?>
+        window.close();
+        <?php } ?>
+        if (data.invalid_file == 1) {
+          $("#invalid_file").modal('show');
+          Wo_Delay(function(){
+            $("#invalid_file").modal('hide');
+          },3000);
+        }
+        else if(data.invalid_file == 2){
+          $("#file_not_supported").modal('show');
+          Wo_Delay(function(){
+            $("#file_not_supported").modal('hide');
+          },3000);
+        }
+      } 
+      else if (data.status == 400) {
+        if (data.invalid_file == 1) {
+          $("#invalid_file").modal('show');
+          Wo_Delay(function(){
+            $("#invalid_file").modal('hide');
+          },3000);
+        }
+        else if(data.invalid_file == 2){
+          $("#file_not_supported").modal('show');
+          Wo_Delay(function(){
+            $("#file_not_supported").modal('hide');
+          },3000);
+        }
+        else{
+         // alert('Foramt is not supported, please try again later');
+        }
+      } 
+      fetch_url = 1;
+      $('#publisher-box-focus .pub-footer-bottom').find('.ball-pulse').fadeOut(100);
+    }
+  });
+
+  <?php if ($wo['config']['google_map']) { ?>
+  var pac_input = document.getElementById('searchTextField');
+  (function pacSelectFirst(input) {
+    // store the original event binding function
+    var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+    function addEventListenerWrapper(type, listener) {
+      // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+      // and then trigger the original listener.
+      if(type == "keydown") {
+        var orig_listener = listener;
+        listener = function (event) {
+          var suggestion_selected = $(".pac-item-selected").length > 0;
+          if(event.which == 13 && !suggestion_selected) {
+            var simulated_downarrow = $.Event("keydown", {
+              keyCode: 40,
+              which: 40
+            });
+            orig_listener.apply(input, [simulated_downarrow]);
+          }
+          orig_listener.apply(input, [event]);
+        };
+      }
+      // add the modified listener
+      _addEventListener.apply(input, [type, listener]);
+    }
+    if(input.addEventListener)
+      input.addEventListener = addEventListenerWrapper;
+    else if(input.attachEvent)
+      input.attachEvent = addEventListenerWrapper;
+  })(pac_input);
+
+  $(function () {
+     var autocomplete = new google.maps.places.Autocomplete(pac_input);
+  });
+  <?php } ?>
+
+  var getUrl  = $('.form-control.postText'); //url to extract from text field
+  var sent = 0;
+  $('.form-control.postText').bind("paste keyup input propertychange", function(e) {    
+    // if ($(this).val() == '') {
+    //     fetch_url = 1;
+    //  }
+    if (($(".extracted_url").length > 0)){
+      return false;
+    }
+
+    else if (/(https?:\/\/(?:.*)\.(?:png|jpg|gif|jpeg))/ig.test(getUrl.val())) {
+      /* pass */
+    }
+
+    else{
+    	
+      var match_url = /(https?:\/\/[^\s]+)/g;
+      if (match_url.test(getUrl.val()) && sent == 0 && fetch_url == 1) {
+
+      	  sent = 1;
+
+          $("#results").hide();
+          $("#loading_indicator").show(); 
+          var extracted_url = getUrl.val().match(match_url)[0];
+
+          $.post(Wo_Ajax_Requests_File() + '?f=posts&s=fetch_url',{'url': extracted_url}, function(data){         
+            extracted_images = data.images;
+            total_images     = parseInt(data.images.length-1);
+            img_arr_pos      = total_images;
+            if(extracted_images != ''){
+              inc_image   = '<div class="extracted_thumb" id="extracted_thumb"><img src="'+data.images[img_arr_pos]+'"></div>';
+              input_image = data.images[img_arr_pos];
+            } 
+
+            else {
+              inc_image   = '';
+              input_image = '';
+            }
+            
+            var img_content = '';
+            if (total_images > 1) {
+              img_content = '<div class="thumb_select"><div class="thumb_sel"><span class="prev_thumb" id="thumb_next"><i class="fa fa-arrow-circle-right"></i></span><span class="next_thumb" id="thumb_prev"><i class="fa fa-arrow-circle-left"></i></span> </div><span class="small_text" id="total_imgs">'+img_arr_pos+' of '+total_images+'</span></div></div></div>';
+            }
+
+            var content = '<div class="extracted_url"><span class="remove-fetched-url" onclick="Wo_RemoveFetchedUrl();"><i class="fa fa-remove"></i></span>'+ inc_image +'<div class="extracted_content"><input class="form-control url-input" type="text" name="url_title" value="'+data.title+'" dir="auto"><br><textarea onkeyup="textAreaAdjust(this, 70)" class="form-control url-input-textarea url-input" name="url_content" placeholder="<?php echo $wo['lang']['description']?>" dir="auto">' + data.content + '</textarea><input type="hidden" id="url_image" name="url_image" value="'+ input_image +'"><input type="hidden" id="url_link" name="url_link" value="'+data.url+'"><div class="clear"></div>' + img_content;
+
+            $("#results").html(content); 
+            $("#results").fadeIn(); 
+            $("#loading_indicator").hide();
+            sent = 0;
+
+          },'json');
+      }
+    }
+  });
+
+
+  
+  $("body").on("click","#thumb_prev", function(e){    
+    if(img_arr_pos>0) 
+    {
+      img_arr_pos--; 
+      
+      $("#extracted_thumb").html('<img src="'+extracted_images[img_arr_pos]+'">');
+
+      $("#url_image").attr('value', extracted_images[img_arr_pos]);
+      
+      $("#total_imgs").html((img_arr_pos) +' of '+ total_images);
+    }
+  });
+  
+  $("body").on("click","#thumb_next", function(e){    
+    if(img_arr_pos<total_images)
+    {
+      img_arr_pos++;
+      
+      $("#extracted_thumb").html('<img src="'+extracted_images[img_arr_pos]+'">');
+
+      $("#url_image").attr('value', extracted_images[img_arr_pos]);
+      
+      $("#total_imgs").html((img_arr_pos) +' of '+ total_images);
+    }
+  });
+
+});
+
+
+
+function Wo_RemoveFetchedUrl() {
+  fetch_url = 0;
+  var content = $('form.publisher-box').find('.extracted_url');
+  content.slideUp(function () {
+    $(this).remove();
+    if ($('.form-control.postText').val() != '') {
+    	$('.form-control.postText').focus();
+    }
+    
+    
+  });
+}
+
+function Wo_OpenAlbum() {
+  $('#album-form').slideToggle(100);
+  $('#album-form input').focus();
+}
+function Wo_ShowFeelings() {
+  if ($('.feelings-type-to').is(':empty')) {
+    $('.feeling-types').slideToggle(200);
+  }
+}
+var pac_input2 = document.getElementById('feelings-text');
+function Wo_ShowFeelingType(type, text, placeholder, icon) {
+  $('.feeling-types').slideUp(200, function () {
+    $('.feelings-type-to').html(text);
+    $('#feelings-text').attr('placeholder', decodeHtml(placeholder)).focus();
+    $('#feeling-type').val(type);
+    if (type != 'feelings') {
+      $('#feelings-text').attr('readonly', false);
+    }
+    <?php if ($wo['config']['google_map']) { ?>
+    if (type == 'traveling') {
+      var autocomplete = new google.maps.places.Autocomplete(pac_input2);
+    } else {
+      google.maps.event.clearInstanceListeners(pac_input2);
+    }
+    <?php } ?>
+    $('.' + type).slideToggle(200);
+  });
+}
+function Wo_RestFeelings() {
+  $('.feelings-type-to, .feelings-value').empty();
+  $('#feelings-text').val('');
+  $('#feelings-text').attr('readonly', true);
+  $('#feelings-text').attr('placeholder', decodeHtml("<?php echo $wo["lang"]["feel_d"]?>"));
+  $('.feeling-type, .feelings-type').slideUp(200);
+  <?php if ($wo['config']['google_map']) { ?>
+  google.maps.event.clearInstanceListeners(pac_input2);
+  <?php } ?>
+  Wo_ShowFeelings();
+}
+
+function Wo_AddFeeling(type, text, icon) {
+  $('#feelings-text').val(type);
+  $('.feelings-value').html('<span><i class="twa-lg twa twa-' + icon + '"></i> ' + text + '</span>')
+  Wo_ShowFeelingType('feelings', 'Feeling', 'What are you feeling ?', 'smile-o');
+}
+function smokeTheAt(str) {
+  var n = str.search("@");
+  if(n != "-1"){
+    alert('sd');
+  }
+}
+
+function Wo_AddAnswer() {
+  answer_id = 0;
+  $('.answers').find('input').each(function (index_id) {
+     answer_id = Number(index_id) + 1;
+  });
+  var last_answer_id = (Number(answer_id) + 1);
+  if (last_answer_id < 9) {
+     $('.answers').append('<input name="answer[]" type="text" class="form-control" placeholder="<?php echo $wo['lang']['answer'] ?> ' + last_answer_id + '">');
+     if (last_answer_id == 8) {
+      $('#add_answer').hide();
+     }
+     $('.answers').find('input:last').focus();
+  } else {
+     $('#add_answer').hide();
+  }
+  
+}
+
+function Wo_HidePosInfo() {
+  $(".postText").attr('opened', '0');
+  $(".postText").css('height', '112px');
+  $("body").removeClass('pub-focus');
+  $(".publisher-box-footer").slideUp(100);
+  $(".add-emoticons").removeClass('show_emo');
+  fetch_url = 1;
+}
+function Wo_ShowPosInfo() {
+  $(".postText").attr('opened', '1');
+  $(".postText").css('height', '112px').focus();
+  $("body").addClass('pub-focus');
+  $(".publisher-box-footer").slideDown(100);
+  $(".add-emoticons").addClass('show_emo');
+}
+$(document).on('focus', '#publisher-box-focus',function(){
+	$("body").addClass('pub-focus');
+	if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+	    $(".publisher-box-footer").slideDown(100);
+		$(".add-emoticons").addClass('show_emo');
+  		$(".postText").attr('opened', '1');
+	}
+});
+$('#focus-overlay').on('click',function (){
+	Wo_HidePosInfo();
+});
+$(function() {
+  $(window).scroll(function() {
+    var scrollfocus = $(window).scrollTop();
+    if (scrollfocus >= <?php if($wo['page'] == 'timeline') { ?>2200<?php } else { ?>1000<?php } ?>) {
+      Wo_HidePosInfo();
+    }
+  });
+});
+function Wo_ResetAnswers() {
+  $('.answers').find('input').each(function (index_id) {
+     $(this).val('');
+  });
+  $('#poll-form').slideUp(200);
+}
+function Wo_PostSticker(self){
+  if (!self) {
+    return false;
+  }
+  $('#postSticker').val($(self).attr('data-gif'));
+  Wo_Delay(function(){
+     Wo_GetPRecordLink();
+  },500)
+}
+function Wo_GetPostStickers(keyword){
+  if (!keyword) {
+    //return false;
+  }
+  $('#publisher-box-stickers').find('.ball-pulse').fadeIn(100);
+  Wo_Delay(function(){
+    $.ajax({
+      url: 'https://api.giphy.com/v1/gifs/search?',
+      type: 'GET',
+      dataType: 'json',
+      data: {q:keyword,api_key:'<?php echo $wo['config']['giphy_api'];?>', limit: 20},
+    })
+    .done(function(data) {
+      if (data.meta.status == 200 && data.data.length > 0) {
+        $('#publisher-box-stickers-cont').empty();
+        var appended = false;
+        for (var i = 0; i < data.data.length; i++) {
+            appended = true;
+            if (appended == true) {
+              appended = false;
+              $('#publisher-box-stickers-cont').append($('<img alt="gif" src="'+data.data[i].images.fixed_height_small.url+'" data-gif="' + data.data[i].images.fixed_height.url + '" onclick="Wo_PostSticker(this)" autoplay loop>'));
+              appended = true;
+            }
+        }
+        var images = 0;
+        Wo_ElementLoad($('img[alt=gif]'), function(){
+          images++;
+        });
+        if (data.data.length == images || images >= 5) {
+          $('#publisher-box-stickers').find('.ball-pulse').fadeOut(100);
+        }
+      }
+      else{
+        $('#publisher-box-stickers-cont').html('<p class="no_gifs_found"><i class="fa fa-frown-o"></i> <?php echo $wo['lang']['no_result']; ?></p>');
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  },100);
+}
+</script>

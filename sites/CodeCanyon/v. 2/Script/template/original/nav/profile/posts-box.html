@@ -1,0 +1,58 @@
+{strip}
+
+{assign 'res' ['itemid' => $st.id, 'uid' => $user.id, 'clubid' => 0, 'byuser' => $st.userid]}
+{assign var=wd_comm_count value=$this->getCommentsCount($st.id,'post')}
+{assign var=wd_comm_href value="/post?i={$st.id}"}
+{assign var=wd_comm_data value='data-type-post="1" data-scrollto="comments"'}
+{assign var=item_type value='post'}
+{assign var=kl_count value=$this->getLikesCount($st.id,'post')}
+{assign var=kl_eu value=$this->likedByMe($st.id,'post')}	
+{assign var=clubid value=0}
+
+					
+<div id="hook_Block_MiddleColumnTopCard_StatusNew" class="hookBlock">
+
+    <div class="mst_w">
+        <div class="mst mst__current __has-widgets">
+            <div class="hook delete-stub">
+                <div class="delete-stub_i __deleted">
+                    <div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>{$this->lang['post_removed']}.</span><a href="javascript:void(0);" class="delete-stub_cancel il lp">{$this->lang['restore']}</a></div>
+                </div>
+            </div>
+            <div class="mst_cnt _curPointer">
+                <div class="mst_ac">
+				<a title="{$this->lang['View_post']}" href="/post?i={$p_id}" data-type-post="1" hrefattr="true"><span class="mst_view_post ic_view_post_st"></span></a>
+			<span class="mst_date">{$this->gDateYear($p_added)}</span>
+                 {if $res.byuser === $this->USER['id']}   <a href="javascript:return false;" class="mst_close ic10 ic10_close" onclick="hideCurStatus(this,event)" id="st.{$p_id}"></a>{/if}
+                </div>
+
+		{if $p_song}
+<div class="track __media-status ellip">
+    <div class="track_hld"><span id="pm_sec_outsite_track_{$p_song_id}" class="track_play" data-track-inf='{ldelim}"track":"{$p_song_fname}","cover":"{$p_song_cover}","artist":"{$p_song_artist}","songname":"{$p_song_name}","albumname":"{$p_song_album}"{rdelim}' onclick="nobilMusicPlayOutsideTrack(this,event)"></span>
+        <div class="track_cnt textWrap"><span onclick="nobilMusicSearch('{$p_song_artist} {$p_song_name}')" class="track_song">{$p_song_artist} - {$p_song_name}</span></div>
+    </div>
+</div>
+{else}
+
+                <div class="media-text ">
+                    <div class="media-text_cnt">
+                        <div id="nohook__id" class="rev rev__auto show-on-hover">
+                            <div class="rev_cnt">
+                                <div id="hook_ActivateLinks" link-class="rev_cnt_a-in-txt" class="media-text_cnt_tx"><span>{$p_text}</span></div>
+                               <!-- <a href="/post?i={$p_id}" data-type-post="1" class="rev_cnt_a" hrefattr="true"></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{/if}
+            </div>
+            <div class="mst_controls">
+                <div class="feed_f">
+
+					{include file=$this->widget_list}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/strip}

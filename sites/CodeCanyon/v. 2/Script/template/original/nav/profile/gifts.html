@@ -1,0 +1,14 @@
+{strip}
+
+<div class="up_gifts" id="gifts-slider">
+<ul class="p_giftslist">
+
+{foreach $q as $gift}
+
+<li class="gift-item" id="gift_{$gift.gift_id}" data-gift-tooltip='{ldelim}"giftid":"{$gift.gift_id}","gift":"{$gift.gift}","user_fullname":"{if !$gift.private && !$gift.anonym}{$gift.fullname}{/if}","user_id":"{if !$gift.private && !$gift.anonym}{$gift.uid}{/if}","private":"{$gift.private}","anonym":"{$gift.anonym}"{rdelim}'><img src="/stcmd/gifts/{$gift.gift}" /></li>
+
+{/foreach}
+</ul>
+</div>
+
+{/strip}

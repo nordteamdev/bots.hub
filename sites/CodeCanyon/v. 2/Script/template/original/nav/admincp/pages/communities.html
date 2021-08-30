@@ -1,0 +1,49 @@
+{strip}
+
+<div class="ad-rowcol">
+<h2>{$count} communities are on {$this->settings['SITENAME']}</h2>
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Logo</th>
+	
+	<th>Name</th>
+	<th>Type</th>
+	<th>Category</th>
+	<th>Verified</th>
+	<th>Created</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="group{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url(/clubpicture?i={$r.id}&size=small&clubid={$r.id}&corr=1&logo=true);"></div></td>
+	<td><div class="vd_title"><A target="_blank" href="/community/{$r.id}">{$r.name}</a></div></td>
+	<td><div class="vd_info f11">{$r.type}</div></td>
+	<td><div class="vdd_tags f11">{$this->lang[$r.category]} {if !empty($r.subcategory)}<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$r.subcategory]}{/if}</div></td>
+	<td><div class="vd_dur f11 soh-s">
+	
+	{if $r.verified == 'yes'}
+	
+	<span class="verified-ic"></span>
+	<div class="foh-s verify-group"><button onclick="unverifyGroup(event,'{$r.id}');" class="flat_button button_small button_wide secondary">Un-verify this group</button></div>
+	{else}
+	<div class="foh-s verify-group"><button onclick="verifyGroup(event,'{$r.id}');" class="flat_button button_small button_wide">Verify this group</button></div>
+	NO
+	{/if}
+	</div></td>
+	<td><div class="vd_dur f11">{$this->time_elapsed($r.created)}</div></td>
+	</tr><!-- Darker Table Row -->
+
+{/foreach}
+
+</table>
+{$pagination}
+</div>
+
+{/strip}

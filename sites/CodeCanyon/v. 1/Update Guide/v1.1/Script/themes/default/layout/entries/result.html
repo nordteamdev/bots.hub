@@ -1,0 +1,44 @@
+<div class="display-quiz-result">
+	<div class="news-title result-header">
+		<h3>{{LANG you_got}} {{RESULT_TITLE}}</h3>
+		<p>{{RESULT_TEXT}}</p>
+	</div>
+	<div class="result-body">
+		<div class="result-gif">
+			<img src="{{RESULT_IMG}}" class="responsive-img">
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="result-share">
+		<ul class="list-inline">
+		    <li>
+		      <a href="https://www.facebook.com/sharer.php?u={{RESULT_ENCODED_URL}}">
+		        <div class="btn-share btn-facebook"><i class="fa fa-facebook"></i> {{LANG share}}</div>
+		      </a>
+		    </li>
+		    <li>
+		      <a href="https://plus.google.com/share?url={{RESULT_ENCODED_URL}}">
+		        <div class="btn-share btn-google"><i class="fa fa-google-plus"></i> Google+</div>
+		      </a>
+		    </li>
+		    <li>
+		      <a href="http://twitter.com/intent/tweet?text={{STORY_TITLE}}&url={{RESULT_ENCODED_URL}}" onclick="{{SHARE_BUTTON_TWITTER}}">
+		        <div class="btn-share btn-twitter"><i class="fa fa-twitter"></i> Tweet</div>
+		      </a>
+		    </li>
+		    <li>
+		      <a href="http://www.reddit.com/submit?url={{RESULT_ENCODED_URL}}">
+		        <div class="btn-share btn-reddit"><i class="fa fa-reddit"></i> Reddit</div>
+		      </a>
+		    </li>
+		    <li>
+		      <a href="http://pinterest.com/pin/create/button/?url={{RESULT_ENCODED_URL}}">
+		        <div class="btn-share btn-pinterest"><i class="fa fa-pinterest"></i> Pin</div>
+		      </a>
+		    </li>
+		    <li>
+		    </li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>

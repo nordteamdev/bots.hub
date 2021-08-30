@@ -1,0 +1,79 @@
+{strip}
+{include file={$_usermenu}}
+<div class="profile-photos-gallery">
+<div class="photo-sc_h2 portlet-i_h2 photo-sc_h2__alb-page show-on-hover"><span title="{$this->lang['tagged_album']}" class="portlet-i_h2_tx ellip">
+  <span class="photo-sc_h2_alb-title" id="alb_detail_title">{$this->lang['trash_album']}</span></span><span class="photo-sc_h2_alb-count portlet-i_h2_tx">{$pCount} {$this->lang['Items']}</span>
+</div>
+
+
+
+<div class="photos_content">
+
+
+{if $query != ''}
+
+
+{foreach $query as $result}
+
+
+
+{if isset($result.vd_id)}
+
+<div class="ec_items image-hover dlalb">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.id}"></span>
+
+	
+<div class="ph disabling-layer __on"><span class="photo-sc_i_utility_delete-status">{str_replace('.','',$this->lang['video_deleted'])}&nbsp;{$this->time_elapsed($result.time)}.</span>
+<div class="photo-sc_i_utility_undo-delete"><a onclick="restoreVideo(this,event);" href="/cmd.php?q={$this->USER.id}&cmd=restoreVideo&vid={$result.vd_id}" class="il">{$this->lang['restore']}</a></div></div>
+ 
+<div class="dl_img"><a href="javascript:;" id="df_vd_i|{$result.vd_id}" onclick="deleteVideoDefinitive(event);" class="delete_photo_txt il">Delete Video</a></div>
+
+ 
+
+ 
+
+<div class="deleted_video">
+<div class="album_cover" style="background-image:url({$smarty.const.__TRASH_}/videos/thumbs/{$result.vd_id}.png)"></div>
+<i class="vid_play _m"></i>
+<i class="vid-card_duration">{$result.dur}</i>
+{if !empty($result.external)}
+<i class="vid-card_extern">{$result.external}</i>
+{/if}
+<div class="vd_wll_prof_title ellip">{$result.title}</div>
+</div>
+
+</div></div>
+
+
+{else}
+{assign var=is_gif value=$this->is_gif($result.photoid)}
+
+
+
+
+<div class="ec_items image-hover dlalb">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.id}"></span>
+
+	
+<div class="ph disabling-layer __on"><span class="photo-sc_i_utility_delete-status">{str_replace('.','',$this->lang['photo_deleted'])}&nbsp;{$this->time_elapsed($result.time)}.</span>
+<div class="photo-sc_i_utility_undo-delete"><a onclick="restorePhoto(this,event,0,1)" href="/profile?pid={$result.photoid}&q={$this->USER['id']}&cmd=phreturn&phf={$result.filename}&ex={$result.extension}&fsz={$result.size}&pos={$result.position}&ad={$result.padded}&info={$result.info}&albid={$result.albumid}" class="il">{$this->lang['restore']}</a></div></div>
+
+<div class="dl_img"><a href="javascript:;" id="df_img_i|{$result.photoid}" onclick="deleteImgDefinitive(event);" class="delete_photo_txt il">Delete Photo</a></div>
+<div class="deleted_photo">
+
+<img class="{if $is_gif}gifplayer{/if}" src="{$gPhoto}?p={$result.photoid}&fn={$result.filename}&sz=grid&delalbum=1" 
+{if $is_gif}data-gif-id="gif-{$result.photoid}" data-gif="/getPhoto?p={$result.photoid}&fn={$result.filename}&delalbum=1&sz=large&corr=1" data-wait="true" data-playon="hover"{/if}
+/>
+
+</div>
+
+</div></div>
+{/if}
+{/foreach}
+
+{/if}
+</div>
+</div>
+{/strip}

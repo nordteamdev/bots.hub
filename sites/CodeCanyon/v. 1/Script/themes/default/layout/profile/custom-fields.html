@@ -1,0 +1,11 @@
+<li class="list-group-item list-more-info">
+    <?php 
+    echo '<span>' . $fl['field']['name'] . '</span>: ';
+    if ($fl['field']['select_type'] == 'yes') {
+      	$options = @explode(',', $fl['field']['type']); 
+      	echo $options[$fl['user_fields'][$fl['field']['fid']] - 1];
+    } else {
+      	echo $fl['user_fields'][$fl['field']['fid']];
+    }
+    ?>
+</li>

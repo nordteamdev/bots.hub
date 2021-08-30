@@ -1,0 +1,75 @@
+{strip}
+
+
+
+				{foreach $query as $product}
+				{assign var="author" value=$this->getUserDetails($product.userid)}
+				{assign var=is_favorite value=$market->itemIsFavorite($product.id)}
+				{assign var="mutual_friends_c" value=$this->getMutualFriends($author.id,1,1)}
+				{assign var="edit_product" value=0}
+				
+				{if $product.userid === $this->USER['id']}
+				{assign var="edit_product" value=1}
+				{/if}
+				<div id="market_item{$product.id}" data-id="{$product.id}" class="{if readCookie('market_products_list_view') == '10'}market_row_line{else}market_row{/if}  {if $is_favorite}_isfav{/if}">
+    <div class="market_row_inner_cont">
+        <div class="market_row_photo">
+				{if $this->USER.id != $author.id}
+					<div id="market_row_fav{$product.id}" onclick="market.addProductToFav(event,this,'{$product.id}',1);" class="market_edit_actions {if $is_favorite}selected{/if}">
+						<div class="fav"><div class="icon"></div></div>
+					</div>
+				{/if}
+            <a href="/market/product/{$product.id}" hrefattr="true" data-open-marketproduct="{$product.id}">
+				<img class="market_row_img" src="/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=medium">
+ 
+ 
+	 
+			<span class="kn_shortcutmenu wh100">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$product.id}","product_author_avatar":"{$author.profile_photo}","product_author_name":"{$author.fullname}","product_author_id":"{$author.id}","uname":"{$product.product_name}","uphoto":"/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=small","ugender":"","ulmen":{ldelim}"product":"1","delete_product":"{$edit_product}","edit_product":"{$edit_product}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$product.id}">
+			</div></span>
+				
+				
+			</a>
+		<div class="market_product_loc_abs">{$product.product_location}</div>
+        </div>
+        <div class="market_row_info">
+            <div class="market_row_name"><a class="link" hrefattr="true" data-open-marketproduct="{$product.id}" href="/market/product/{$product.id}">{if isset($key)}{str_highlight($product.product_name,$key,null,'<span class="search_highlight_key">\1</span>')}{else}{$product.product_name}{/if}</a></div>
+            
+			<div class="marketplace_icons fav_row">
+				  <div id="market_row_fav{$product.id}" onclick="market.addProductToFav(event,this,'{$product.id}',1);" class="market_favourite marketplace-icon {if $is_favorite}selected{/if}"></div>
+				</div>
+			<div class="market_row_price globalpriceformat">{$product.price}&nbsp;{$this->settings['MARKETPLACE_CURRENCY']}</div>
+            <div class="market_row_address">
+
+                <div class="market_row_address_metro metro_color_F07E24">{$product.product_location}</div>
+            </div>
+			<div class="market_row_usrtm">
+				<span class="market_row_time">{$this->time_elapsed($product.added)}</span>
+				<span class="market_row_user"><a hrefattr="true" href="/{if !empty($author.username)}{$author.username}{else}user/{$author.id}{/if}" class="mem_link">{$author.fullname}</a>
+				{if $mutual_friends_c > 0}
+				&nbsp;(<a href="javascript:void(0);" data-mtforui='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}"{rdelim}' onclick="return popupMutualFriends(this,event);" class="mem_link">{if $mutual_friends_c == 1}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friend']}{else}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friends']}{/if}</a>)
+				{/if}
+				</span>
+			</div>
+			<div class="market_row_for_grid">
+            <div class="market_row_user"><a hrefattr="true" href="/{if !empty($author.username)}{$author.username}{else}user/{$author.id}{/if}" class="market_row_user_link with_friends">{$author.fullname}</a>
+              <span class="market_row_user_ban"></span>
+                {if $mutual_friends_c > 0}<a href="javascript:void(0);" data-mtforui='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}"{rdelim}' onclick="return popupMutualFriends(this,event);" rel="tipsy" title="{if $mutual_friends_c == 1}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friend']}{else}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friends']}{/if}" class="market_place_common_friend_badge _badge"></a>{/if}
+            </div>
+            <div class="market_row_time">{$this->time_elapsed($product.added)}</div>
+			</div>
+			<div class="ui_actions_menu_icons">
+					<span class="kn_shortcutmenu wh100">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$product.id}","product_author_avatar":"{$author.profile_photo}","product_author_name":"{$author.fullname}","product_author_id":"{$author.id}","uname":"{$product.product_name}","uphoto":"/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=small","ugender":"","ulmen":{ldelim}"product":"1","edit_product":"{$edit_product}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$product.id}">
+			</div></span>
+			</div>
+        </div>
+    </div>
+</div>
+{/foreach}
+
+
+
+
+
+{/strip}

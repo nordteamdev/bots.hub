@@ -1,0 +1,19 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="news-container">
+				<div class="news-title">
+					<h3>{{LANG delete_confirm}}</h3>
+					<p>"{{DELETE_DATA__TITLE}}".</p><br>
+				</div>
+				<div class="delete-buttons">
+					<button class="btn btn-red" id="delete-button" onclick="FL_DeletePost({{DELETE_DATA__ID}}, '{{DELETE_DATA__TYPE}}');"><i class="fa fa-trash progress-icon" data-icon="trash"></i> {{LANG delete_yes}}</button>
+					<a class="btn btn-gray" href="{{DELETE_DATA__URL}}"><i class="fa fa-arrow-left"></i> {{LANG delete_no}}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			{{SIDEBAR_HTML}}
+		</div>
+	</div>
+</div>

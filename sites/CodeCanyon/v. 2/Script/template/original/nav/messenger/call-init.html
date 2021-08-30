@@ -1,0 +1,496 @@
+{strip}
+{if $user.profile_photo > 0}
+{assign var=user_avatar value="/getPhoto?p={$user.profile_photo}&sz=large"}
+{else}
+{assign var=user_avatar value="{$this->settings['HOST']}{$smarty.const.__TRANS_BG}"}
+{/if}
+{assign var=connecting value="no"}
+{include "{$this->theme_dir}/messenger/calls-header.html"}
+
+
+{if $call_type == 'video'}
+<video autoplay id="recipient-video-element"></video>
+<video autoplay id="my-video-element"></video>
+{else}
+<audio autoplay id="recipient-audio-element"></audio>
+<audio autoplay id="my-audio-element"></audio>
+{/if}
+ 
+</div>
+
+<script>
+var recipientId = '{$user.id}';
+var recipient_name = '{$user.fullname}';
+var my_id = '{$this->USER.id}';
+var my_name = '{$this->USER.fullname}';
+var avatar = '{$this->USER.profile_photo}';
+var set_media = {$type};
+var _close = '{$close}';
+var call_type = '{$call_type}';
+var _self = this;
+var calling_timeout = 1;
+var j_call_ended = false;
+{literal}
+ 
+ 
+$(document).ready(function() {
+
+
+if(_close == 'yes')
+	return window.close();
+	
+	
+var timer = new Timer();
+
+
+var call_ended;
+var recipient_media_element = call_type == 'video' ? $('#recipient-video-element') : $('#recipient-audio-element');
+var my_media_element = call_type == 'video' ? $('#my-video-element') : $('#my-audio-element');
+	function callStatus(c,seconds){
+	 
+		var changeTitle = function(title){
+		
+			document.title = title+' '+recipient_name;
+			$('#calling_status').text(title);
+		
+		}
+		
+		switch(c){
+		
+		
+			case 'connecting':
+			changeTitle(lang['Call_Contacting...']);
+			break;
+		
+			case 'rejected':
+			//clearTimeout(calling_timeout);
+			changeTitle(lang['Call_rejected']);
+			callEnded('reject');
+			break;
+		
+			case 'started':
+			changeTitle(seconds);
+			//clearTimeout(calling_timeout);
+			break;
+			
+			case 'ringing':
+
+			
+			changeTitle(lang['Call_Ringing...']);
+			break;
+			
+			case 'answered':
+			changeTitle(lang['Call_Connecting...']);
+			break;
+		
+		
+		}
+		
+	
+	
+	}
+	
+	
+    function initiateCall() {
+	
+	
+    var options = {
+		'metadata': {
+
+                'user_name': my_name,
+                'user_avatar': avatar,
+                'user_id': my_id,
+				'call_type':call_type
+
+		},
+        'constraints': {
+            'mandatory': {
+                'OfferToReceiveAudio': true,
+                'OfferToReceiveVideo': true
+            }
+        }
+    }
+	
+	
+	
+	
+        // initiate call
+        var call = peer.call(recipientId, window.localStream, options);
+		
+
+		
+		setTimeout(function(){
+		//$('#my-video-element').prop('src', window.URL.revokeObjectURL(window.localStream));
+		my_media_element[0].srcObject = window.localStream;
+		},100);
+        //callUser(call);
+		// receive notifications
+		receiveNotificationsFromRecipient();
+    }
+    redial = function() {
+         
+        //window.location.reload();
+		//window.peer = peer;
+
+		 self.opener.reloadCallingPopup(_self,call_type,recipientId,peer,socket);
+		 
+    }
+	
+	function getRecipientStream(stream,err){
+	
+	if(err){
+    $('#recipient-media-element-err').replaceWith('<div class="recipient-remote-video-err">'+lang.call_recipient_err_stream.replace('%uname',recipient_name).replace('%calltype',call_type)+'<div class="calling-video-err-msg">'+err+'</div></div>');
+	
+	} else {
+	
+	
+	
+	recipient_media_element[0].srcObject = stream;
+	
+ 
+	
+	
+	}
+	
+	}
+	function timeoutCall(){
+	
+ 
+				stopSounds();
+				// send notification to the caller to stop calling
+				socket.emit("call_stopped", recipientId);
+				callEnded('no_answer');
+			
+ 
+			
+	
+	}
+	
+    function receiveNotificationsFromRecipient(){
+ 
+		
+		
+		// user is connected, call him
+		socket.on("call_user_connected", function(uid){
+	
+			if(uid != my_id) return;
+ 
+
+			stopContactingSound();
+		
+		
+			playRingingSound();
+
+			
+			callStatus('ringing');
+
+
+
+		});
+		
+		// user rejected the call
+		socket.on("call_rejected", function(uid){
+
+ 
+
+			callStatus('rejected');
+		});
+		
+		// user accepted the call
+		socket.on("call_answered", function(uid){
+
+			stopSounds();
+			call_user_answered = true;
+			callStatus('answered');
+		});
+		
+		// user accepted the call
+		socket.on("call_unavailable_stream", function(uid){
+			if(uid != my_id) return;
+			streamUnavailableErr('unavailable_stream');
+		});
+		
+		// user accepted the call
+		socket.on("call_started", function(uid){
+
+			stopSounds();
+			callInitiated();
+		});
+
+
+		// recipient hang up the call
+		socket.on("call_finished", function(uid){ 
+ 
+			callEnded('',1);
+		});
+		
+	}
+	
+		
+	function streamUnavailableErr(){
+		
+			$('#calling_error').html(lang.call_recipient_err_stream.replace('%uname',recipient_name).replace('%calltype',call_type));
+ 
+	}
+ 
+	function callInitiated(){
+	
+			timer.start();
+			timer.addEventListener('secondsUpdated', function (e) {
+ 
+				callStatus('started',timer.getTimeValues().toString());
+				end_time = timer.getTimeValues().toString();
+			});
+	
+	}
+    function callUser(call) {
+
+        // Hang up on an existing call if present
+        if(existingCall) {
+            existingCall.close();
+        }
+		
+		
+        // Wait for stream on the call, then set peer video display
+        call.on('stream', function(stream) {
+
+
+			getRecipientStream(stream);
+            
+        });
+        // UI stuff
+        existingCall = call;
+
+        call.on('close', callEnded('',1));
+
+
+
+
+    }
+function stopRingingSound(){
+
+ soundManager.stop('call-ringing');
+		}
+	function playRingingSound(){
+ 
+ soundManager.play('call-ringing');
+	}
+			
+function playContactingSound(){
+
+ soundManager.play('call-contacting');
+
+
+}
+function stopSounds(){
+stopRingingSound();stopContactingSound();
+}
+
+function stopContactingSound(){
+
+ soundManager.stop('call-contacting');
+}
+ function sendMessage(c,time){
+	var t;
+	switch(c){
+
+		case 'missed':
+		t = '[missedcall]'+my_id+'-'+recipientId+'-'+call_type+'[/missedcall]';
+		break;
+		case 'ended':
+		t = '[callended]'+my_id+'-'+recipientId+'-'+call_type+'-'+time+'[/callended]';
+		break;
+
+	}
+	
+	if(t)
+		$.post( "/messenger.php", { cmd: "sendMessage", userid: escape(recipientId), text:t})
+		  .done(function( data ) {
+		  
+			//alert( "Data Loaded: " + data );
+			
+		  });
+	
+	
+ 
+ }
+	hangUpCall = function(el,ev){
+		callEnded('stopped');
+		setTimeout(function(){window.close();},1500);
+	}
+    callEnded = function(  response, n  ) { 
+	if(j_call_ended) return;
+	call_ended=true;
+	stopSounds();
+
+		var r = lang.call_ended;
+		
+ 
+		switch(response){
+			
+			case 'no_answer':
+			r = lang.call_no_answer;
+			sendMessage('missed');
+	 
+			break;
+		
+			case 'reject':
+			r = lang.Call_rejected;
+			sendMessage('missed');
+		 
+			break;
+			
+			case 'stopped':
+			if(!end_time){
+			r = lang.call_stopped;
+			sendMessage('missed');
+			}
+			break;
+		
+		
+		}
+
+ 
+		timer.stop();
+		
+ 
+		
+       if(existingCall) existingCall.close();
+
+        $('#calling_status').text( r ).removeAttr('id');
+	
+        $('#hangup').addClass('__none');
+        $('#redial').removeClass('__none');
+		
+ 
+		
+		
+		if(end_time){
+			j_call_ended = true;
+			socket.emit("call_finished", recipientId);
+			$('#end-time').text(end_time);
+			sendMessage('ended',end_time);
+		} else if(!n && response != 'error_media')
+		socket.emit("call_stopped", recipientId);
+
+    }
+
+
+    function fgetUserMedia() {
+		// Compatibility shim
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+        var r = true;
+        // Get audio/video stream
+
+		navigator.mediaDevices.getUserMedia(set_media).then(stream => {
+ 
+            // Set your video displays
+            window.localStream = stream;
+			
+
+			initiateCall();
+		
+        }).catch(function(err){
+ 
+ 
+		   
+		setTimeout(function(){stopSounds();},50);
+	  callEnded('error_media');
+	  $('#calling_status').text(lang.call_stopped);
+	  $('#calling_error').text(err);
+		r = false;
+	 
+        });
+
+
+
+
+        return r;
+    }
+
+ // initialize sounds notif
+soundManager.setup({
+  url: __SITEURL + 'swf/soundmanager',
+  flashVersion: 9,
+   autoLoad: true,
+debugMode:false,
+  preferFlash: true, // prefer 100% HTML5 mode, where both supported
+  onready: function() {
+  
+  
+  
+  
+			 ringing_sound = soundManager.createSound({
+			 // optional id, for getSoundById() look-ups etc. If omitted, an id will be generated.
+			 id: 'call-ringing',
+			 url: __SITEURL + "/cmd/sounds/call-waiting-25s.mp3",
+			 // optional sound parameters here, see Sound Properties for full list
+			 volume: 100,
+			 autoPlay: false,
+ 
+			 whileloading: function() { console.log(this.id + ' is loading'); },
+			   onfinish:function(){  
+			   
+				if(calling_timeout >= 2){
+	 
+				timeoutCall();
+				
+				} else {
+				 
+				if(!call_ended)
+				playRingingSound();
+				}
+			   
+	 
+					
+					calling_timeout++;
+				 
+				
+			   }
+			});
+
+			 contacting_sound = soundManager.createSound({
+			 // optional id, for getSoundById() look-ups etc. If omitted, an id will be generated.
+			 id: 'call-contacting',
+			 url: __SITEURL + "/cmd/sounds/call-connecting.mp3",
+			 // optional sound parameters here, see Sound Properties for full list
+			 volume: 100,
+			 autoPlay: true, 
+			 onfinish:function(){ soundManager.play('call-contacting');},
+			 whileloading: function() { console.log(this.id + ' is loading'); }
+			});
+
+
+
+  },
+  ontimeout: function() {
+    // console.log('SM2 init failed!');
+  },
+
+  defaultOptions: {
+    // set global default volume for all sound objects
+    volume: 100
+  }
+});
+	
+ 
+	playContactingSound();
+	
+	fgetUserMedia();
+
+
+
+
+});
+
+{/literal}
+
+</script>
+
+
+
+
+
+ 
+{/strip}

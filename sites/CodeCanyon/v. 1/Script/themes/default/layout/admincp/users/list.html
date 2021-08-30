@@ -1,0 +1,17 @@
+<tr data-id="{{USER user_id}}">
+	<td>{{USER user_id}}</td>
+	<td><a href="{{USER url}}" target="_blank">{{USER username}}</td>
+	<td>{{USER email}}</td>
+	<td>{{USER ip_address}}</td>
+	<td class="pointer">
+		<div class="dropdown">
+		  <span type="button" data-toggle="dropdown" class="activation-layout"><span class="activation-text active-{{USER active}}">{{USER_STATUS}}</span>
+		  <span class="caret"></span></span>
+		  <ul class="dropdown-menu custom-dropdown">
+		    <li><a class="activate preventDefault" onclick="FL_ActiveUserAction({{USER user_id}}, 'activate')">{{LANG activate}}</a></li>
+		    <li><a class="deactivate preventDefault" onclick="FL_ActiveUserAction({{USER user_id}}, 'deactivate')">{{LANG deactivate}}</a></li>
+		  </ul>
+		</div>
+	</td>
+	<td><i onclick="Fl_DeleteUserFromAdmin({{USER user_id}})" class="fa fa-trash pointer"></i> | <a href="{{LINK settings/general/{{USER username}}}}" target="_blank"><i class="fa fa-pencil pointer"></i></a></td>
+</tr>

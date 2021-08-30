@@ -1,0 +1,21 @@
+<tr class="setting-grouplist" id="GroupID_<?php echo $wo['grouplist']['id']?>" data-group-id="<?php echo $wo['grouplist']['id']?>">
+   <td><?php echo $wo['grouplist']['id']?></td>
+   <td>
+      <a href="<?php echo $wo['grouplist']['url']; ?>">
+      <img src="<?php echo $wo['grouplist']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['grouplist']['avatar']?> Page Picture">
+      <?php echo $wo['grouplist']['group_name']; ?>
+      </a>
+   </td>
+   <td>
+      <a href="<?php echo $wo['grouplist']['owner']['url']; ?>">
+      <img src="<?php echo $wo['grouplist']['owner']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['grouplist']['owner']['avatar']?> Profile Picture">
+      <?php echo $wo['grouplist']['owner']['name'];?>
+      </a>
+   </td>
+   <td><?php echo $wo['grouplist']['category'];?></td>
+   <td><?php echo $wo['grouplist']['members'];?></td>
+   <td>
+      <a target = "_blank" class="btn btn-info waves-effect waves-light" href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['grouplist']['group_name']) ?>">EDIT</a>
+      <button onclick="Wo_DeleteGroup(<?php echo $wo['grouplist']['id']?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

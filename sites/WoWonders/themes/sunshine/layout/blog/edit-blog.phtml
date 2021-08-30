@@ -1,0 +1,181 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol wo-create-forms">
+			<div class="wo_settings_page">
+				<div class="sun_head_onboard shortpwidth blog">
+					<img class="sho_img" src="<?php echo $wo['config']['theme_url'];?>/img/cads/blog.svg" alt="<?php echo $wo['lang']['blog'] ?>" />
+					<span class="go_back_link">
+						<a data-ajax="?link1=my-blogs" href="<?php echo Wo_SeoLink('index.php?link1=my-blogs');?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg><?php echo $wo['lang']['my_articles'];?>
+						</a>
+					</span>
+					<div class="sun_head_onboard_innr">
+						<h2><?php echo $wo['lang']['edit'];?></h2>
+					</div>
+				</div>
+				
+				<form class="form form-horizontal create-article-form" method="post" id="update-blog" action="#">
+					<div class="setting-panel row">
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="new-blog-title"><?php echo $wo['lang']['title'] ?></label>
+							<div class="col-md-12">
+								<input id="blog_title" name="blog_title" value="<?php echo $wo['article']['title']?>" id="new-blog-title" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['title'] ?>"> 
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="new-blog-desc"><?php echo $wo['lang']['description'] ?></label>
+							<div class="col-md-12">
+								<input name="blog_description" id="new-blog-desc" value="<?php echo $wo['article']['description']?>" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['description'] ?>">
+							</div>
+						</div>
+						
+						<div class="create_blog_area_acombo">
+						<div class="form-group th-alert col-sm-7">
+							<div class="col-md-12">
+								<div class="main prv-img pointer" id="select-img" data-block="thumdrop-zone">
+									<img src="<?php echo $wo['article']['thumbnail']; ?>" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-5 no-padding-right">
+							<div class="form-group">
+							<label class="col-md-12" for="blog_category"><?php echo $wo['lang']['category'] ?></label>
+							<div class="col-md-12">
+								<select name="blog_category" id="blog_category" class="form-control">
+									<option value="0">
+										<?php echo $wo['lang']['category'];?>
+									</option>
+									<?php foreach ($wo['page_categories'] as $category_id => $category_name):?>
+										<option value="<?php echo $category_id?>" <?php if($category_id == $wo['article']['category']) echo "selected='selected'" ;?> ><?php echo $category_name;?></option>
+									<?php endforeach;?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-12" for="blog_tags"><?php echo $wo['lang']['tags'] ?></label>
+							<div class="col-md-12">
+								<input data-role="tagsinput" value="<?php echo $wo['article']['tags']?>" id="blog_tags" name="blog_tags" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['tags'] ?>"> 
+							</div>
+						</div>
+						</div>
+						</div>
+						
+						<div class="form-group">  
+							<div class="col-md-12">
+								<textarea name="blog_content" id="blog"><?php echo $wo['article']['content']?></textarea> 
+							</div>
+						</div>
+						
+						<input type="file" class="hidden" id="thumbnail" name="thumbnail" accept="image/*">
+						<input name="image" type="file" id="upload" class="hidden" onchange="">
+					</div>
+					
+					<div class="create-article-alerts" id="blog-alert"></div>
+				
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+					</div>
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
+
+<script>
+ jQuery(document).ready(function($) {
+
+    var thumb_drop_block = $("[data-block='thumdrop-zone']");
+
+    if (typeof(window.FileReader) == 'undefined') {
+      thumb_drop_block.find('.error-text-renderer').text('Drag drop is not supported in your browsers!');
+    }
+
+    else{
+      thumb_drop_block[0].ondragover = function() {
+          thumb_drop_block.addClass('hover');
+          return false;
+      };
+          
+      thumb_drop_block[0].ondragleave = function() {
+          thumb_drop_block.removeClass('hover');
+          return false;
+      };
+
+      thumb_drop_block[0].ondrop = function(event) {
+          event.preventDefault();
+          thumb_drop_block.removeClass('hover');
+          var file = event.dataTransfer.files;
+          $("#thumbnail").prop('files', file);
+      };
+    }
+
+    $("#select-img").click(function(event) {
+ 
+      $("#thumbnail").click()
+    });
+
+    $("#thumbnail").change(function(event) {
+      $(".prv-img").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture'>")
+    });
+
+    $("#blog_tags").tagsinput({
+      maxTags: 15,
+    })
+
+
+    $('#update-blog').ajaxForm({
+      url: Wo_Ajax_Requests_File() + '?f=update-blog&blog_id=<?php echo $wo['article']['id'];?>',
+      beforeSend: function() {
+        $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+      },
+      success: function(data) {
+        scrollToTop();
+        if (data['status'] == 200) {
+          $("#blog-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+          window.location = data.url;
+        } else if (data['message']) {
+          $("#blog-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+        } 
+        $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+      }
+    });
+
+ });
+
+tinymce.init({
+  selector: '#blog',
+  height: 400,
+  images_upload_credentials: true,
+  paste_data_images: true,
+  image_advtab: true,
+  entity_encoding : "raw",
+  images_upload_url: Wo_Ajax_Requests_File() + '?f=upload-blog-image',
+  toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+  toolbar2: "print preview media | forecolor backcolor emoticons",
+  plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    file_picker_callback: function(callback, value, meta) {
+      if (meta.filetype == 'image') {
+        $('#upload').trigger('click');
+        $('#upload').on('change', function() {
+          var file = this.files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            callback(e.target.result, {
+              alt: ''
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    },
+});
+</script> 

@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Advertisements > Manage User Advertisements</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage User Advertisements</h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Website</th>
+					                  <th>User</th>
+					                  <th>Added</th>
+					                  <th>Clicks</th>
+					                  <th>Views</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+				                foreach (Wo_GetAds() as $wo['user_ad']) {
+				                    echo Wo_LoadAdminPage('manage-user-ads/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+<div class="modal fade" id="delete-ad" >
+   <div class="modal-dialog">
+      <div class="modal-content modal-col-red">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> Delete Ad</h4>
+         </div>
+         <div class="modal-body">
+            <p>Are you sure you want to delete this ad?</p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" onclick="Wo_DeleteAd($('#delete-ad').attr('data-ad-id'))" class="btn btn-link">DELETE</button>
+            <button type="button" class="btn btn-link " data-dismiss="modal">CLOSE</button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+jQuery(document).ready(function($) {
+  $(document).on('click', '.delete-ad', function(event) {
+    var self = $(this); 
+    $("#delete-ad").attr('data-ad-id',self.attr('id')).modal("show");
+
+  });
+});
+$(function () {
+  $('table').DataTable();
+});
+function Wo_DeleteAd(id){
+  if (id && id > 0) {
+  	$("tr[data-userad-id="+id+"]").slideUp(function(){
+      $(this).remove();
+    });
+    $("#delete-ad").modal("hide");
+    $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'wallet',s:'remove',id:id}
+    });
+  }
+}
+</script>

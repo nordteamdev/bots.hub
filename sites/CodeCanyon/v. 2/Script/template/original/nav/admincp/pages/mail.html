@@ -1,0 +1,46 @@
+{strip}
+<div class="ad-rowcol">
+<h2>Mailing list</h2>
+
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=sendmail" id="fform" method="post">
+<fieldset>
+
+
+      
+            <div class="form-group">
+			<label class="col-md-3" for="mail_subject">Subject</label>
+                <div class="col-md-6"><input id="mail_subject" name="subject" class="poll_options_04a" placeholder="Enter subject" autocomplete="off" />
+                    <div class="input_info"></div>
+                </div>
+            </div>
+			
+            <div class="form-group">
+			<label class="col-md-3" for="mail_message">Message</label>
+                <div class="col-md-6">
+				 <textarea id="mail_message" name="message" class="ads-textarea" resize="vertical"></textarea>
+                    <div class="input_info">HTML allowed.</div>
+                </div>
+            </div>
+			
+            <div class="form-group">
+			<label class="col-md-3" for="mail_to">Send to</label>
+                <div class="col-md-6">
+				 <select id="mail_to" name="filter">
+				 <option value="">---</option>
+				 <option value="all">all users</option>
+				 <option value="pending">pending users</option>
+				 <option value="confirmed">confirmed users</option>
+				 </select>
+                    
+                </div>
+            </div>
+
+</fieldset>
+<hr>
+<div class="form-group last-btn tcenter">
+    <div class="col-sm-3"><button type="submit" onclick="mailFormCheckEmptyInp(event);" name="button_send" class="form-actions_yes button-pro js-submit">Send</button><span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span></div>
+</div>
+</form>
+</div>
+
+{/strip}

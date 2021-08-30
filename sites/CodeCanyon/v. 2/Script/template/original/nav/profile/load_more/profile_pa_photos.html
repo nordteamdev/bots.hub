@@ -1,0 +1,31 @@
+
+{foreach $q as $result}
+
+<div class="ec_items image-hover">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.id}"></span>
+{if $user['id'] === $this->USER['id']}
+<div class="ph disabling-layer"><span class="photo-sc_i_utility_delete-status">{$this->lang['photo_deleted']}</span>
+<div class="photo-sc_i_utility_undo-delete"><a onclick="restorePhoto(this,event)" href="/profile?pid={$result['id']}&q={$user['id']}&cmd=phreturn&i={$albid}&phf={$result['filename']}&ex={$result['extension']}&fsz={$result['size']}&pos={$result['position']}&ad={$result['added']}" class="il">{$this->lang['restore']}</a></div></div>
+<a class="x_delete_pp" title="{$this->lang['delete_photo']}" onclick="deletePhoto(this,event)" href="/profile?q={$user['id']}&cmd=deletephoto&ph={$result['id']}"></a>
+{/if}
+<a href="/photo?q={$user.id}&show=album&from=medium&a={b_encode($album_res.id)}&o={b_encode($result.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($result.id)}">
+<img src="/getPhoto?p={$result['id']}&sz=grid&g={$user.gender}&corr=1" />
+</a>
+{if $user['id'] === $this->USER['id']}
+<div class="sc-menu grid ">
+    <ul class="u-menu u-menu__photo">
+        <li class="u-menu_li"><a href="/profile?q={$user['id']}&ph={$result['id']}&i={$albid}&cmd=setAlbumCover" onclick="setAlbumCover(this,event)" class="u-menu_a">
+<span class="tico _underline __default_album_cover"><i class="tico_img ic ic_make-main"></i>{$this->lang['set_album_cover']}</span>
+<span class="tico _underline __album_cover_succ"><i class="tico_img ic ic_success"></i>{$this->lang['settedAlbumCover']}</span>
+
+</a></li>
+        <li class="u-menu_li"><a href="javascript:;" onclick="movePhotos(this,event)" class="u-menu_a"><span class="tico _underline"><i class="tico_img ic ic_move"></i>{$this->lang['move']}</span></a></li>
+    </ul>
+
+</div>
+{else}
+{include file={$_notes}}
+{/if}
+</div></div>
+{/foreach}

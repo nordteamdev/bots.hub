@@ -1,0 +1,247 @@
+<div class="settings-header">
+   <h3><i class="fa fa-usd fa-fw"></i> {{LANG advertisement}}</h3>
+</div>
+<div class="setting-panel table-polls">
+   <div class="ads-placement-container">
+      <div class="placement-header">
+         <div class="pull-left">
+            <h5>Header <small>(Appears on all pages right under the nav bar)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('header') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('header');">
+               <i class="fa <?php echo (FL_IsAdActive('header') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('header');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-header hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('header', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('header');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="header">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-footer">
+         <div class="pull-left">
+            <h5>Footer <small>(Appears on all pages right before the footer)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('footer') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('footer');">
+               <i class="fa <?php echo (FL_IsAdActive('footer') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('footer');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-footer hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('footer', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('footer');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="footer">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-sidebar">
+         <div class="pull-left">
+            <h5>Sidebar <small>(Appears on the bottom of home/article sidebar)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('sidebar') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('sidebar');">
+               <i class="fa <?php echo (FL_IsAdActive('sidebar') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('sidebar');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-sidebar hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('sidebar', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('sidebar');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="sidebar">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-home_latest_news">
+         <div class="pull-left">
+            <h5>Latest news <small>(Appears between the lastest news section in the home page)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('home_latest_news') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('home_latest_news');">
+               <i class="fa <?php echo (FL_IsAdActive('home_latest_news') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('home_latest_news');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-home_latest_news hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('home_latest_news', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('home_latest_news');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="home_latest_news">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+       <div class="placement-home_latest_lists">
+         <div class="pull-left">
+            <h5>Latest lists <small>(Appears between the lastest lists section in the home page)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('home_latest_lists') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('home_latest_lists');">
+               <i class="fa <?php echo (FL_IsAdActive('home_latest_lists') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('home_latest_lists');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-home_latest_lists hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('home_latest_lists', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('home_latest_lists');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="home_latest_lists">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-home_latest_videos">
+         <div class="pull-left">
+            <h5>Latest videos <small>(Appears between the lastest videos section in the home page)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('home_latest_videos') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('home_latest_videos');">
+               <i class="fa <?php echo (FL_IsAdActive('home_latest_videos') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('home_latest_videos');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-home_latest_videos hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('home_latest_videos', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('home_latest_videos');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="home_latest_videos">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-home_latest_music">
+         <div class="pull-left">
+            <h5>Latest music <small>(Appears between the lastest music section in the home page)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('home_latest_music') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('home_latest_music');">
+               <i class="fa <?php echo (FL_IsAdActive('home_latest_music') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('home_latest_music');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-home_latest_music hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('home_latest_music', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('home_latest_music');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="home_latest_music">
+         </form>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <div class="placement-between">
+         <div class="pull-left">
+            <h5>Between articles <small>(Appears between the entries in the article page)</small></h5>
+         </div>
+         <div class="pull-right">
+            <h5>
+               <span class="pointer ads-activation" title="<?php echo (FL_IsAdActive('between') == 1) ? 'Deactivate' : 'Activate';?>" onclick = "FL_UpdateAdsStatus('between');">
+               <i class="fa <?php echo (FL_IsAdActive('between') == 1) ? 'fa-times-circle active' : 'fa-check-circle';?> progress-icon"></i>
+               </span> | 
+               <span class="pointer" onclick="FL_ShowAdsForm('between');">
+               <i class="fa fa-pencil"></i>
+               </span>
+            </h5>
+         </div>
+         <form action="#" method="post" class="ads-form-between hidden">
+            <div class="form-group">
+               <textarea name="code" cols="10" rows="5" class="form-control"><?php echo FL_GetAd('between', true);?></textarea>
+            </div>
+            <div class="form-group pull-right">
+               <button onclick="FL_SaveAdCode('between');" type="submit" class="btn btn-main "><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> Save</button>
+            </div>
+            <input type="hidden" name="type" value="between">
+         </form>
+      </div>
+      <div class="clear"></div>
+   </div>
+</div>
+<script>
+   function FL_ShowAdsForm(type) {
+    $('.ads-form-' + type).toggleClass('hidden');
+   }
+        
+   function FL_SaveAdCode(type) {
+    var ad_type  = $('.ads-form-' + type);
+    ad_type.ajaxForm({
+      url: FL_Ajax_Requests_File() + '?f=admincp&s=update_ads&hash_id=' + $('.main_session').val() ,
+      beforeSend: function() {
+        FL_progressIconLoader(ad_type.find('button'));
+      },
+      success: function(data) {
+        if (data.status == 200) {
+          FL_ShowAdsForm(type);
+        } 
+          FL_progressIconLoader(ad_type.find('button'));
+        } 
+    });  
+   }
+     
+   function FL_UpdateAdsStatus(type) {  
+    var ad_placement = $('.placement-' + type);  
+    FL_progressIconLoader(ad_placement.find('.ads-activation'));
+    $.get(FL_Ajax_Requests_File(), {f:'admincp', s:'update_ads_status', type:type},function(data) {
+      if (data.status == 200) {
+        ad_placement.find('.ads-activation').html('<i class="fa fa-times-circle active progress-icon"></i>');
+      } else { 
+        ad_placement.find('.ads-activation').html('<i class="fa fa-check-circle progress-icon"></i>');  
+      }  
+    });
+   }
+</script>

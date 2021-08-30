@@ -1,0 +1,91 @@
+<div class="wo_settings_page sun_sett_page">
+  <h3><?php echo $wo['lang']['avatar_and_cover']; ?></h3>
+
+   <form  method="post" class="form-horizontal setting-profile-form" enctype="multipart/form-data">
+     <div class="setting-profile-alert setting-update-alert"></div>
+
+     <div class="setting-panel row">
+         <!-- Text input-->
+         <div class="form-group col-lg-6">
+            <label class="col-md-12" for="avatar"><?php echo $wo['lang']['avatar']; ?></label> 
+            <div class="col-md-12">
+                  <span class="btn btn-file wo_design_button">
+                     <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span>
+                     <input type="file" id="avatar" accept="image/x-png, image/gif, image/jpeg" name="avatar" multiple="multiple">
+                  </span>
+            </div> 
+            <div class="avatar-read" id="photo-form">
+          <label class="col-md-12"></label>  
+          <div class="col-md-12">
+            <input type="text" class="form-control input-md" readonly>
+          </div>
+        </div>
+         </div>
+
+         <!-- Text input-->
+         <div class="form-group col-lg-6">
+            <label class="col-md-12" for="cover"><?php echo $wo['lang']['cover']; ?></label>
+            <div class="col-md-12">
+                  <span class="btn btn-file wo_design_button">
+                     <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></span>
+                     <input type="file" id="cover" accept="image/x-png, image/gif, image/jpeg" name="cover" multiple="multiple">
+                  </span>
+            </div>
+            <div class="cover-read" id="photo-form">
+          <label class="col-md-12"></label>  
+          <div class="col-md-12">
+            <input type="text" class="form-control input-md" readonly>
+          </div>
+        </div>
+         </div>
+      </div>
+         <div class="form-group last-sett-btn modal-footer">  
+      <div class="ball-pulse"><div></div><div></div><div></div></div>
+      <button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+    </div>
+         <input type="hidden" name="page_id" id="page-id" value="<?php echo $wo['setting']['page_id'];?>">
+         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+
+   </form>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $("#avatar").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $(".avatar-read input").val(filename);
+         $(".avatar-read").slideDown(200);
+    });
+  $("#cover").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $(".cover-read input").val(filename);
+         $(".cover-read").slideDown(200);
+    });
+  $('form.setting-profile-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=pages&s=update_images_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        scrollToTop();
+        if (data.avatar) {
+          var page_id = $('form.setting-profile-form').find('#page-id').val();
+          $('[id^=updatepageImage-' + page_id + ']').fadeOut(300, function () { $('[id^=updatepageImage-' + page_id + ']').attr("src", data.avatar)}).fadeIn(300);
+        }
+        if (data.cover) {
+          $('[id^=cover-image]').fadeOut(300, function () { $('[id^=cover-image]').attr("src", data.cover)}).fadeIn(300);
+        }
+        $('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      } 
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Users > Affiliates System > Payment Requests</h2>
+    </div>
+    <div class="row">
+    	<div class="col-lg-3 col-md-3">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">storage</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL REQUESTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPaymentHistory(0); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">check</i>
+                </div>
+                <div class="content">
+                    <div class="text">PAID REQUESTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPaymentHistory(1); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">av_timer</i>
+                </div>
+                <div class="content">
+                    <div class="text">DECLINED REQUESTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPaymentHistory(2); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">mail_outline</i>
+                </div>
+                <div class="content">
+                    <div class="text">PENDING REQUESTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPaymentHistory(0); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Payment Requests</h2>
+                    <h5>Payments are made from your paypal account, after the payment is made, mark the request as paid.</h5>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Username</th>
+					                  <th>PayPal E-mail</th>
+					                  <th>Amount</th>
+					                  <th>Referrals</th>
+					                  <th>Status</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+				                foreach (Wo_GetAllPaymentsHistory('all') as $wo['userlist']) {
+				                    echo Wo_LoadAdminPage('payment-reqeuests/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function () {
+  $('table').DataTable();
+});
+function Wo_DeclinePayment(id) {
+  if (confirm("Are you sure you want to decline this request?") == false) {
+    return false;
+  }
+  hash_id = $('#hash_id').val();
+  $('#UserID_' + id).fadeOut(300, function() {
+    $(this).remove();
+  });
+  $.get(Wo_Ajax_Requests_File(),{f:'admin_setting', s:'decline_payment', id: id, hash_id: hash_id});
+}
+function Wo_MarkPaid(id) {
+  if (confirm("Are you sure you want to mark the request as paid ?") == false) {
+    return false;
+  }
+  $('#UserID_' + id).fadeOut(300, function() {
+    $(this).remove();
+  });
+  hash_id = $('#hash_id').val();
+  $.get(Wo_Ajax_Requests_File(),{f:'admin_setting', s:'mark_as_paid', id: id, hash_id: hash_id});
+}
+</script>

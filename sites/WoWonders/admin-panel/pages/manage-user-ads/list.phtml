@@ -1,0 +1,27 @@
+<tr class="setting-userads" id="userad_<?php echo $wo['user_ad']['id']?>" data-userad-id="<?php echo $wo['user_ad']['id']?>">
+   <td><?php echo $wo['user_ad']['id']?></td>
+   <td>
+      <a href="<?php echo $wo['user_ad']['url']; ?>"> <?php echo Wo_UrlDomain($wo['user_ad']['url']); ?></a>
+   </td>
+   <td>
+      <a href="<?php echo $wo['user_ad']['user_data']['url']; ?>">
+        <img src="<?php echo $wo['user_ad']['user_data']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['user_ad']['user_data']['name']?> Avatar Picture">
+         <?php echo $wo['user_ad']['user_data']['name']; ?>
+      </a>
+   </td>
+   <td>
+     <div class="ajax-time" title="<?php echo date('c',$wo['user_ad']['posted']); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['user_ad']['posted']);?>
+     </div>
+   </td>
+   <td>
+     <?php echo $wo['user_ad']['clicks']?>
+   </td>
+   <td>
+     <?php echo $wo['user_ad']['views']?>
+   </td>
+   <td>
+      <?php if (Wo_IsAdmin() == true) { ?><!-- <a href="<?php echo $wo['user_ad']['edit-url']?>" class="btn btn-info waves-effect waves-light" target="_blank">EDIT</a><?php } ?> -->
+      <button type="button" class="btn btn-danger waves-effect waves-light delete-ad" id="<?php echo $wo['user_ad']['id']?>">DELETE</button>
+   </td>
+</tr>

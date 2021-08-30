@@ -1,0 +1,77 @@
+<?php 
+Wo_UpdateSeenReports();
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Reports > Manage Reports</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Reports</h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Type</th>
+					                  <th>Reporter</th>
+					                  <th>Link</th>
+					                  <th>Time</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+				                foreach (Wo_GetReports() as $wo['report']) {
+				                    echo Wo_LoadAdminPage('manage-reports/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+<div class="modal fade" id="read_report" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> VIEW REPORT</h4>
+         </div>
+         <div class="modal-body">
+            <p class="report_text"></p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+$(function () {
+  $('table').DataTable();
+});
+function Wo_DeleteReportedContent(id,report_id,type  = '') {
+  if (confirm("With the confirmation, the content will be deleted?") == false || !type) {
+    return false;
+  }
+  $('#ReportID_' + report_id).fadeOut(300, function() {
+    $(this).remove();
+  });
+  $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s:'delete_reported_content', id:id, report_id:report_id,type:type});
+}
+
+function Wo_MarkSafeReportedPost(report_id) {
+	$('#ReportID_' + report_id).fadeOut(300, function() {
+      $(this).remove();
+    });
+    $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s:'mark_as_safe', report_id:report_id});
+}
+</script>

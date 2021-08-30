@@ -1,0 +1,20 @@
+<div class="page-margin">
+  <div class="row">
+    <div class="col-md-2 offnavmenu"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+    <div class="col-md-7 cushomewider" style="padding-left: 0px;padding-right: 0px;">
+      <div class="saved-posts">
+        <?php
+        $stories = Wo_GetSavedPosts($wo['user']['user_id']);
+        if (count($stories) <= 0) {
+            echo Wo_LoadPage('saved-posts/no-posts');
+        } else {
+            foreach ($stories as $wo['story']) {
+               echo Wo_LoadPage('story/content');
+            }
+        }
+       ?>
+      </div>
+    </div>
+    <div class="col-md-3 cushomesmaller"><?php echo Wo_LoadPage('sidebar/content');?></div>
+  </div>
+</div>

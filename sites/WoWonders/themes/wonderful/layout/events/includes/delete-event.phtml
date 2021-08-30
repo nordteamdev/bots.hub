@@ -1,0 +1,18 @@
+<div class="modal matdialog fade" id="delete-event">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">
+				<?php echo $wo['lang']['delete']; ?>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<p><?php echo $wo['lang']['confirm_delete_event']; ?></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="wabe btn btn-default matbtn" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+				<button type="button" onclick="Wo_DeleteEvent($('#delete-event').attr('data-event-ident'))" class="wabe btn matbtn btn-main"><?php echo $wo['lang']['delete']; ?></button>
+			</div>
+		</div>
+	</div>
+</div>

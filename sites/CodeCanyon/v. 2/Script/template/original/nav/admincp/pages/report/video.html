@@ -1,0 +1,72 @@
+{strip}
+
+<div class="adrowcol">
+<h2>Reported video</h2>
+<hr>
+
+{assign var=rp_by_user value=$this->userdetails($rby)}
+<fieldset class="bgwhite">
+
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">Video id</label>
+        <div class="col-md-6">#{$r.id}
+        </div>
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_message">Video</label>
+        <div class="col-md-6">
+		{if $r.id > 0}
+<div class="feed_videos_cnt"><div id="videojw_{$r.id}" style="display:none;"></div>
+	<div class="media-block media-video">
+	<div class="vid-card vid-card__xl">
+		<div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_p":"/stcmd/uvideo/{$r.userid}/videos/","vd_title":"{$r.title}","vd_fn":"{$r.filename}","vd_i":"{$r.id}","vd_ext":"{$r.extension}"{rdelim}'>
+			<div class="vid-card_cnt_w"><div class="video-card-cover" style="background-image:url(/videoCover?v={$r.id});"></div><i class="vid_play"></i><i class="vid-card_duration">{$r.dur}</i></div>
+		</div>
+		<div class="video-card_n-w"><a href="/video?vid={$r.id}&cmd=open" data-ivideo="1" class="video-card_n ellip">{$r.title}</a>
+			<div class="video-card_info"><span class="video-card_info_i">{$r.views}&nbsp;views</span></div>
+		</div>
+	</div>
+</div>
+</div>
+		{else}
+				The video has been deleted.
+		{/if}
+		
+        </div>
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Uploaded by</label>
+        <div class="col-md-6"><A href="/user/{$uid}" target="_blank">{$ufn}</a>
+        </div>
+    </div>
+	
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reason</label>
+        <div class="col-md-6">{$this->lang[$report_q.reason]}
+        </div>
+    </div>
+	
+	    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reported by</label>
+        <div class="col-md-6"><A target="_blank" href="/user/{$rp_by_user.id}">{$rp_by_user.fullname}</a>
+        </div>
+
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">about</label>
+        <div class="col-md-6">{$this->time_elapsed($report_q.added)}
+        </div>
+    </div>
+</fieldset>
+
+<hr>
+
+     <form class="setting-general-form form-horizontal" action="/admin.php" target="_blank" id="fform" method="get">
+	 <input type="hidden" name="id" value="{$r.id}" />
+	 <input type="hidden" name="rid" value="{$id}" />
+	 <input type="hidden" name="returnto" value="/admin.php?cmd=viewreport&id={$id}&type=video&itemid={$r.id}&rby={$rby}"/>
+	 <input type="hidden" name="cmd" value="rdeletevideo" />
+	 <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" class="form-actions_yes button-pro js-submit">Delete video</button>
+            </div>
+        </div>
+		</form>
+</div>
+
+{/strip}

@@ -1,0 +1,46 @@
+<div class="wo_settings_page sun_sett_page">
+	<h3><?php echo $wo['lang']['delete_page'];?></h3>
+
+	<form action="#" method="post" class="form-horizontal setting-delete-page-form">
+		<div class="setting-delete-page-alert setting-update-alert"></div>
+		<div class="setting-panel row">
+			<div class="sun_input col-lg-12">
+				<input id="password" name="password" type="password" class="form-control input-md" placeholder="<?php echo $wo['lang']['password']; ?>">
+				<label class="plr15" for="password"><?php echo $wo['lang']['password']; ?></label>
+			</div>
+		</div>
+		<input type="hidden" name="page_id" value="<?php echo $wo['setting']['page_id'];?>">
+		<div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['delete']; ?></button>
+		</div>
+
+		<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+
+</div>
+<script type="text/javascript">
+$(function() {
+  $('form.setting-delete-page-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=pages&s=delete_page',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $('.setting-delete-page-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          window.setTimeout(function() {
+            window.location.href = data.location;
+          },2000);
+        });
+      } else {
+        var errors = data.errors.join("<br>");
+        $('.setting-delete-page-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+        $('.alert-danger').fadeIn(300);
+      }
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

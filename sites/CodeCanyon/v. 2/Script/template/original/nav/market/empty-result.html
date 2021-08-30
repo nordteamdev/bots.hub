@@ -1,0 +1,4 @@
+{strip}
+{assign var=str value=str_replace('%s',$key,$this->lang['market_search_res_empty'])}
+<a href="javascript:void(0);" onclick="return market.addProduct(this,event);">{$this->info_msg($str)}</a>
+{/strip}

@@ -1,0 +1,129 @@
+<div class="entry" data-type="question" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-question-circle"></i> 
+	    {{LANG question}}
+	</div>
+	<div class="pull-right">
+	   <i class="entry-times fa-fw fa fa-arrow-down" onclick="FL_DownEntry({{ENTRY_TIME}});"></i>
+	   <i class="entry-times fa-fw fa fa-arrow-up" onclick="FL_UpEntry({{ENTRY_TIME}});"></i>
+	   <i class="entry-times fa-fw fa fa-trash" onclick="FL_RemoveEntry({{ENTRY_TIME}});"></i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<div class="form-group">
+	    <input type="text" class="form-control" data-name="entry_question_name" placeholder="{{LANG question}}">
+	    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadImage('{{ENTRY_TIME}}', '{{LANG set_as_p_image}}');">
+	    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+	</div>
+	<div class="img-content">
+		<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+		    <div class="content">
+			    <i class="fa fa-upload"></i> {{LANG choose_img}}
+		    </div>
+	    </div>
+	    <div class="img-set-as"></div>
+	</div>
+	<div class="image-link">
+	    <div class="form-group">
+		    <input type="text" class="form-control" id="entry-image-link" placeholder="{{LANG img_link}}">
+		</div>
+		<div class="form-group pull-right">
+	        <button class="btn btn-blue" type="button" onclick="FL_FetchQuestionImage({{ENTRY_TIME}}, '{{LANG set_as_p_image}}');">
+		      <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	        </button>
+	    </div>
+	    <div class="clear"></div>
+	</div>
+
+	<span href="#" class="fetch-image-link" onclick="FL_OpenFetchImageInput({{ENTRY_TIME}});"><i class="fa fa-link"></i> {{LANG fetch_url_from_image}}</span>
+
+	<div class="answers">
+		<div id="question-answers">
+			<div class="col-xs-12 answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="1">
+
+						<div class="preview">
+							<h5 id="preview-image-{{ENTRY_TIME}}-1"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="1" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="1" type="text" placeholder="{{LANG option}} 1">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="col-xs-12 answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="2">
+
+						<div class="preview">
+							<h5 id="preview-image-{{ENTRY_TIME}}-2"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="2" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="1" type="text" placeholder="{{LANG option}} 2">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="col-xs-12 answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="3">
+
+						<div class="preview">
+							<h5 id="preview-image-{{ENTRY_TIME}}-3"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="3" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="3" type="text" placeholder="{{LANG option}} 3">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+			</div>
+			<div class="col-xs-12 answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="4">
+
+						<div class="preview">
+							<h5 id="preview-image-{{ENTRY_TIME}}-4"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+							
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="4" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="4" type="text" placeholder="{{LANG option}} 4">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+			</div>
+		</div>
+		
+
+
+		<div class="clear"></div>
+		<hr>
+		<button class="btn btn-main" onclick="FL_AddQuizAnswer({{ENTRY_TIME}}, '{{LANG choose_img}}');" type="button">
+		<i class="fa fa-plus progress-icon" data-icon="plus"></i> {{LANG add_answer}}
+		</button>
+	</div>	
+	<input type="file" id="questionans-img-{{ENTRY_TIME}}" class="hidden" onchange="FL_UploadQuestionImg({{ENTRY_TIME}},this);">	
+</div>

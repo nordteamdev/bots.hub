@@ -1,0 +1,53 @@
+<?php
+$page_name = '';
+$page_icon = '';
+switch ($wo['active']) {
+		case 1:
+			$page_name = $wo['lang']['events'];
+			break;
+		case 2:
+			$page_name = $wo['lang']['going'];
+			break;
+		case 3:
+			$page_name = $wo['lang']['invited'];
+			break;
+		case 4:
+			$page_name = $wo['lang']['interested'];
+			break;
+		case 5:
+			$page_name = $wo['lang']['past'];
+			break;
+		case 6:
+			$page_name = $wo['lang']['create'];
+			break;
+		case 7:
+			$page_name = $wo['lang']['my_events'];
+			break;
+		default:
+	}
+?>
+<style>@media (max-width: 570px){.my_pages_header ul.pull-left {white-space: nowrap;overflow: hidden;width: 100%;overflow-x: auto;}}</style>
+<?php if($wo['language_type'] == 'rtl') { ?>
+<style>@media (max-width: 570px){.my_pages_header ul.pull-right {white-space: nowrap;overflow: hidden;width: 100%;overflow-x: auto;}.my_pages_header ul.pull-left{width:auto;}}</style>
+<?php } ?>
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 profile-lists singlecol">
+			<div class="wo_my_pages events-content-wrapper">
+				<div class="my_pages_header row">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="<?php echo ($wo['active'] == "1" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=events'); ?>"  data-ajax="?link1=events"><?php echo $wo['lang']['events'] ?></a></li>
+						<li class="<?php echo ($wo['active'] == "2" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=events-going'); ?>" data-ajax="?link1=events-going"><?php echo $wo['lang']['going']; ?>	</a></li>
+						<li class="<?php echo ($wo['active'] == "3" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=events-invited'); ?>" data-ajax="?link1=events-invited"><?php echo $wo['lang']['invited']; ?></a></li>
+						<li class="<?php echo ($wo['active'] == "4" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=events-interested'); ?>" data-ajax="?link1=events-interested"><?php echo $wo['lang']['interested']; ?></a></li>
+						<li class="<?php echo ($wo['active'] == "5" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=events-past'); ?>" data-ajax="?link1=events-past"><?php echo $wo['lang']['past']; ?></a></li>
+					</ul>
+					<span class="btn btn-success <?php echo Wo_RightToLeft('pull-right'); ?>">
+						<a href="<?php echo Wo_SeoLink('index.php?link1=create-event');?>" title="<?php echo $wo['lang']['create'] ?>" data-ajax="?link1=create-event"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+					</span>
+					<ul class="<?php echo Wo_RightToLeft('pull-right'); ?>">
+						<li class="<?php echo ($wo['active'] == "7" ? "active" : "")?>"><a href="<?php echo Wo_SeoLink('index.php?link1=my-events'); ?>"  data-ajax="?link1=my-events" style="margin-right: 8px;"><?php echo $wo['lang']['my_events']; ?></a></li>
+					</ul>
+				</div>
+				<div class="row">

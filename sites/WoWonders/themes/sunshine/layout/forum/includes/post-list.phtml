@@ -1,0 +1,46 @@
+<tr tabindex="1" class="topic-list" data-forum="<?php echo $wo['thread']['id']; ?>">
+	<td style="width: 66%;">
+		<div class="threadcont-inner">
+	    	<div>
+	    		<a class="sun_ftitle" href="<?php echo $wo['thread']['url'];?>" data-ajax="?link1=showthread&tid=<?php echo $wo['thread']['id'];?>">
+		        	<?php 
+		        		
+		        		if(strlen($wo['thread']['headline']) > 55){
+		        			echo Wo_GetShortTitle($wo['thread']['headline'], false, 50);
+		        		}
+		      			else {
+		      				echo $wo['thread']['headline'];
+		      			}
+		        	?>	
+	        	</a>
+	    	</div>
+	    	<div class="thread-info">
+		    	<span class="blog-meta-desc"><i><?php echo $wo['lang']['by']; ?></i> <a href="<?php echo $wo['thread']['author_url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['thread']['user_data']['username']; ?>"><?php echo $wo['thread']['user_data']['username']; ?></a></span>
+		    	<span><?php echo Wo_Time_Elapsed_String($wo['thread']['posted']); ?></span>
+	    	</div>
+	    </div>
+	</td>
+	<td style="width: 20%;" class="small blod">
+		<span>
+		<?php if ($wo['thread']['last_post'] > 0): ?>
+			<?php echo Wo_Time_Elapsed_String($wo['thread']['last_post']); ?>
+		<?php else: ?>	
+			<?php echo $wo['lang']['never']; ?>
+		<?php endif; ?>	
+		</span>
+	</td>
+	<td class="text-center" style="width: 7%;">
+		<div>
+			<h6 class="small" style="display: inline-block;">
+				<span style="display:block;"><?php echo $wo['thread']['replies']; ?></span>
+			</h6>	
+		</div>
+	</td>
+	<td class="text-center" style="width:7%;">
+		<div>
+			<h6 class="small" style="display: inline-block;">
+				<span style="display:block;"><?php echo $wo['thread']['views']; ?></span> 
+			</h6>
+		</div>
+	</td>
+</tr>

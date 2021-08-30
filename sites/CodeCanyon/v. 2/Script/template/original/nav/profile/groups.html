@@ -1,0 +1,105 @@
+{strip}
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+{include file={$_usermenu}}
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+
+<div class="wide_friends_lf_cl">
+<div id="mainContentContentColumn" class="groups_pg">
+
+
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+        
+        <div id="hook_Block_MiddleColumn" class="hookBlock">
+            <div id="middleColumn">
+			
+	
+	   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Communities']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+ 
+<section id="user_groups">
+ {foreach $query as $r}
+ 
+ 
+{assign var="community_src_logo" value="{$r.logo}"}
+{assign var="checks3pictLogo" value=$this->CheckS3Pictures($community_src_logo)}
+
+
+{if $this->CheckS3Pictures($community_src_logo)}
+
+{assign var="community_src_logo" value={$checks3pictLogo}}
+{else}
+{assign var="community_src_logo" value="{$group_small_logo_path}/{$r.id}/{$r.logo}"}
+{/if}
+
+
+{assign var=subscribed value=$com->isSubscribed($r.id)}
+{assign var=followers value=$com->getCommunityFollowers($r.id,'9999',1)}
+<div class="groups_row search_row clear_fix">
+    <div class="img">
+        <a href="/community/{$r.id}" hrefattr="true"><img onerror="var default_cv = '{$community_default_image}';this.setAttribute('src',default_cv);" class="search_item_img" src="/clubpicture?i={$r.id}&size=small&clubid={$r.id}&corr=1&logo=true" alt="{$r.name}"></a>
+    </div>
+    <div class="controls">
+        <button data-id="{$r.id}" onclick="joinThisGroup(event);" id="join_button_{$r.id}" class="flat_button button_small button_wide btn_f_unf_group {if !$subscribed}show{/if}">{$this->lang['Subscribe']}</button>
+        <button id="unjoin_button_{$r.id}" class="flat_button button_small button_wide secondary btn_f_unf_group {if $subscribed}show{/if}" data-id="{$r.id}" onclick="confirmUnjoin(event);" id="unjoin_button">{$this->lang['Group_following']}</button>
+    </div>
+    <div class="info">
+        <div class="labeled title"><a href="/community/{$r.id}" hrefattr="true">{if isset($highlight)} {str_highlight($r.name,$key,null,'<span class="search_highlight_key">\1</span>')} {else}{$r.name}{/if}</a>{if $r.verified == 'yes'}<i title="{$this->lang['verified_community']}" rel="tipsy" class="community verified-ic"></i>{/if}
+            <div class="page_verified "></div>
+        </div>
+        <div class="labeled ">{$this->lang[$r.category]} {if !empty($r.subcategory)}<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$r.subcategory]}{/if}</div>
+        {if $followers > 0}<div class="labeled">{$followers} {$this->lang['Followers']}</div>{/if}
+    </div>
+</div>
+
+{foreachelse}
+
+{$this->info_msg(sprintf($this->lang['u_has_no_follow_groups'],$user.fullname))}
+
+{/foreach}
+</section>
+
+</div>
+
+</div></div>
+{$pagination}
+
+</div>
+
+
+
+ <div class="uprofile-nav-side-right">
+			
+				
+					
+					
+						<div class="nav-side">
+						<a class="nav-side_i" href="javascript:void(0);" onclick="createGroup(event);"><div data-defaultmdrelat="all" class="nav-side_tx ellip">{$this->lang['Create_new_community']} +</div></a>
+						<div class="nav-side_delim"></div>
+						
+							<a class="nav-side_i {if !$filter || $filter == ''}__ac{/if}" data-scrolltop="10" href="/groups/{$user.id}" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['All']} {$g_count}</div>
+							</a>
+						
+
+						</div>
+				
+			
+			
+
+			
+			
+			
+			
+
+</div>
+ </div>
+
+{/if}
+{/strip}

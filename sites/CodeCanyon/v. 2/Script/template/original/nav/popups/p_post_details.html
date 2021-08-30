@@ -1,0 +1,213 @@
+{strip}
+
+{if !$nop}
+<section id="pp_post_viewer">
+<div class="modal-new-phly __post_vvw __b9"></div>
+<div id="pp_post_viewer_html_cnt">
+{/if}
+
+
+<div onclick="rReshareBox();" class="media-layer_hld">
+<div onclick="rReshareBox();" class="media-layer_l">
+{if $next_id}
+<a href="/post?i={$next_id}{if $clubid > 0}&clubid={$clubid}{/if}&nop=1" onclick="return postPopupNextPrev(event,this);" hrefattr="true">
+<div id="mtLayerBack" class="media-layer_arw arw arw__prev __active">
+<span class="arw_ic"></span>
+</div>
+</a>
+{/if}
+</div>
+
+<div onclick="rReshareBox();" class="media-layer_c">
+<div onclick="rReshareBox();" id="mtLayerMain" class="mlr">
+<div onclick="rReshareBox();" class="mlr_cnts">
+
+<div  class="mlr_top">
+    <div class="mlr_top_l">
+        <div class="ucard">
+		
+		
+		{if $clubid > 0}
+            <div class="ucard_img">
+                <a class="ucard_img_a" href="/community/{$clubid}" hrefattr="true">
+				<img class="ucard_img_cnt" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res['c_name']}">
+				</a>
+            </div>
+		{else}
+            <div class="ucard_img">
+                <a class="ucard_img_a" href="/user/{$res['uid']}" hrefattr="true">
+				<img class="ucard_img_cnt" src="/getPhoto?p={$res.uphoto}&sz=small&g={$res.ugender}" alt="{$res['uname']}">
+					{if $this->is_online($res.uid)}<span class="ic-offline ic-online"></span>{/if}
+				</a>
+            </div>
+			{/if}
+			
+			
+			
+			
+			{if $clubid > 0}
+            <div class="ucard_info">
+                <div class="ucard_info_name"><span class="mlr_user_n"><span class="shortcut-wrap"><a href="/community/{$clubid}" class="o ellip-i" hrefattr="true">{$res['c_name']}</a></span>
+
+                    </span>
+                </div>
+                <div class="ucard_add-info">{$this->lang[$res.c_category]}{if !empty($res.c_subcategory)}<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$res.c_subcategory]}{/if}</div>
+                <div class="hook delete-stub">
+                    <div class="delete-stub_i __deleted">
+                        <div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>{$this->lang['post_removed']}</span>
+						<a href="javascript:;" data-post-d='{ldelim}"i":"{b_encode($res.id)}","clubid":"{$clubid}","community":"{if $clubid > 0}yes{else}no{/if}","added":"{$res.added}","type":"{$res.type}","available":"{$res.available}","cnt":"{$res.text}"{rdelim}' onclick="return restoreMyPost(event,this);" class="delete-stub_cancel il lp">{$this->lang['restore']}</a></div>
+                    </div>
+                    <div class="delete-stub_i __spam"></div>
+                    <div class="delete-stub_i __spam-success">
+                        <div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>Report sent</span></div>
+                    </div>
+                </div>
+            </div>
+			{else}
+            <div class="ucard_info">
+                <div class="ucard_info_name"><span class="mlr_user_n"><span class="shortcut-wrap"><a href="/user/{$res['uid']}" class="o ellip-i" hrefattr="true">{$res['uname']}</a></span>
+
+                    </span>
+                </div>
+                <div class="ucard_add-info"><span>{$this->getUserAge($res.ubirthday)} {$this->lang['years_old']}</span>, <span><span rel="getusercountry" id="briend_{$res.uid}"></span></span></div>
+                <div class="hook delete-stub">
+                    <div class="delete-stub_i __deleted">
+                        <div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>{$this->lang['post_removed']}</span><a href="javascript:;" data-post-d='{ldelim}"i":"{b_encode($res.id)}","clubid":"{$clubid}","community":"{if $clubid > 0}yes{else}no{/if}","added":"{$res.added}","type":"{$res.type}","available":"{$res.available}","cnt":"{$res.text}"{rdelim}' onclick="return restoreMyPost(event,this);" class="delete-stub_cancel il lp">{$this->lang['restore']}</a></div>
+                    </div>
+                    <div class="delete-stub_i __spam"></div>
+                    <div class="delete-stub_i __spam-success">
+                        <div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>Report sent</span></div>
+                    </div>
+                </div>
+            </div>
+			<script>
+			{literal}
+			getUserLocation();
+			{/literal}
+			
+			</script>
+			{/if}
+			
+			
+        </div>
+    </div>
+    <div class="mlr_top_r">
+        <div class="mlr_date">{$this->addedConv($res.added)}</div>
+        <div class="mlr_top_ac">
+		{if $res.userid !== $this->USER['id']}
+		
+		
+		{if $this->checkInBookmarks($res.id,'post')}
+		<a href="javascript:;" class="bookmark_post_ic active" data-deletebookmark="{$this->getBookmarkId($res.id,'post')}" onclick="{literal}var evt = event, that = this;return confirm_act('{/literal}{$this->lang.remove_bookmark} ?{literal}',function(e){deleteBookmark(evt,that,'post');});{/literal}"><span class="tico"><i class="tico_img ic ic_bookmark-g"></i></span></a>
+		{else}
+		<a href="javascript:;" class="bookmark_post_ic" data-bookmark='{ldelim}"categ":"post","itemid":"{$res.id}"{rdelim}' onclick="return bookmarkthis(this,event,'post');"><span class="tico"><i class="tico_img ic ic_bookmark-g"></i></span></a>
+		{/if}
+		
+		
+		{/if}
+		
+		
+		{if $res.userid == $this->USER['id']}
+            <a title="{$this->lang['Delete']}" href="javascript:;" data-post-d='{ldelim}"i":"{b_encode($res.id)}"{rdelim}' onclick="return deleteMyPost(event,this);" class="u-menu_a mlr_top_ac_i ic10 ic10_remove"></a>
+		{else}
+		 <a title="{$this->lang['Report']}" href="javascript:;" onclick="return reportCnt(event,{$res.id},'post');" class="u-menu_a mlr_top_ac_i ic12 ic12_warn"></a>
+		{/if}
+        </div>
+    </div>
+</div>
+
+<div class="mlr_cnt">
+ 
+{if $res['type'] == 'song'}
+{$this->generatePostContent("[postSong]{$res['text']}[/postSong]","tracks",0,$clubid)}
+{else if $res.type == 'bgcolor'}
+{$this->generatePostContent($res.text,'bgcolor',0,$clubid)}
+{else}
+{$this->generatePostContent($res['text'],'text',0,$clubid)}
+{$this->generatePostContent($res['text'],'videos',0,$clubid)}
+{$this->generatePostContent($res['text'],'photos',0,$clubid)}
+{$this->generatePostContent($res['text'],'links',0,$clubid)}
+{$this->generatePostContent($res['text'],'tracks',0,$clubid)}
+{$this->generatePostContent($res['text'],'tagged_people',0,$clubid)}
+{$this->generatePostContent($res['text'],'places',0,$clubid)}
+{$this->generatePostContent($res['text'],'poll',0,$clubid)}
+
+{/if}
+</div>
+
+<div class="mlr_bot">
+
+<!--- Widget List --->
+<div class="feed_f _fl_right">
+    <ul class="widget-list">
+        <li class="widget-list_i ">
+            <div class="widget "><a href="javascript:void(0);" data-scron="post" onclick="return WD_scroll_to_comments(this,event);" class="h-mod widget_cnt"><span class="widget_ico ic12 ic12_comment"></span><span class="widget_tx">{$this->lang['feed_comment_widget']}</span><span class="widget_delim"></span><span class="widget_count js-count">{$this->getCommentsCount($res.id,'post')}</span></a></div>
+        </li>
+        <li class="widget-list_i">
+            <div>
+                <div class="widget" id="sharebuttonwp"><button onclick="shareBox(this,event,'post','{$res.uid}');" id="reshare_{$res.id}" class="h-mod widget_cnt {if $this->cntSharedByMe($res.id)}__active{/if}"><span class="widget_ico ic12 ic12_share"></span><span class="widget_tx">{$this->lang['Share']}</span><span class="widget_delim"></span><span class="widget_count js-count">{$this->getShareCount($res.id)}</span></button></div>
+            </div>
+            <div class="h-mod sc-menu_w">
+                <div class="posR"></div>
+            </div>
+        </li>
+        <li class="widget-list_i _aflvkl __{$res.id}">
+            <div data-itemcateg="post" data-pplikt="ppo_{$res.id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.id}" data-appendtooltipto="._aflvkl" class="widget _lightp {if $this->likedByMe($res.id,'post')}__active{/if}">
+                <div class="widget"><button onclick="return likeClick(this,event);" data-log-click='{ldelim}{if $clubid}"clubid":"{$clubid}",{/if}"type":"like","item":"post","itemid":"{$res.id}"{rdelim}' class="h-mod widget_cnt controls-list_lk"><span class="widget_ico ic12 ic12_klass"></span><span class="widget_tx">{$this->lang['Like']}</span><span class="widget_delim"></span><span class="widget_count js-count">{$this->getLikesCount($res.id,'post')}</span></button></div>
+            </div>
+            <div class="h-mod sc-menu_w">
+                <div id="hook_Block" class="posR"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+</div>
+
+<div class="mlr_disc">
+<div class="mlr_ovr"></div>
+<div class="comments_cnt" id="postViewerCommentsSection"></div>
+</div>
+
+
+
+
+</div>
+
+</div>
+</div>
+
+<div class="media-layer_r">
+
+    <div class="media-layer_close">
+        <div class="media-layer_close_ovr scroll-right-indent"></div>
+        <div class="ic media-layer_close_ico "></div>
+    </div>
+
+    <div data-container="mtLayer" data-height="50" id="scrollToTopMtLayer" class="scroll-arrow h-mod" data-module="scrollToTop">
+      <span class="scroll-arrow_cnt __top">Up</span><span class="scroll-arrow_cnt __bottom">Down</span></div>
+	{if $prev_id}
+    <a href="/post?i={$prev_id}{if $clubid > 0}&clubid={$clubid}{/if}&nop=1" onclick="return postPopupNextPrev(event,this);" hrefattr="true"> <div id="mtLayerForward" class="media-layer_arw arw arw__next scroll-right-margin __active"><span class="arw_ic"></span></div></a>
+	{/if}
+    
+</div>
+
+
+</div>
+
+
+
+<div class="media-layer_va"></div>
+<div class="post_author_i __none">{$res['uid']}</div>
+{if !$nop}
+
+</div>
+</section>
+{/if}
+<script>
+{literal}
+function rReshareBox(){ga('.shareboxsection').remove();}
+{/literal}
+</script>
+{/strip}

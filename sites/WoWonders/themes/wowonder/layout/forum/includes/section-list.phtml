@@ -1,0 +1,45 @@
+<?php if (count($wo['section']['forums']) > 0): ?>
+	<div class="col-md-12" >
+		<div class="f_category"> <?php echo $wo['section']['section_name']; ?> <span class="<?php echo Wo_RightToLeft('pull-right'); ?> show-forums pointer" id="<?php echo $wo['section']['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></span></div>
+
+		<div class="f_topics" data-slide="<?php echo $wo['section']['id']; ?>">
+			<table class="table forum-table table-striped">
+			<?php foreach ($wo['section']['forums'] as $wo['forum']):?>
+				
+				 <tr class="section-list">
+					<td class="topic_icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text <?php if ($wo['forum']['posts'] > 50) echo 'img-circle bg-main fff';?>"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></td>
+			        <td class="forum-meta-d">
+				        <a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$wo['forum']['id']);?>" data-ajax="?link1=forums&fid=<?php echo $wo['forum']['id'];?>" class="flink">
+				        	<?php echo $wo['forum']['name']; ?>
+				        </a>
+			        	<div class="small"><?php echo $wo['forum']['description']; ?></div>
+			        </td>
+
+			        <td class="forum-meta-d text-center">
+			       	
+			        	<div>
+			        	    <span style="font-size:17px;"><?php echo $wo['forum']['posts']; ?></span>
+			        	</div>
+			        	<div>
+			        		<span class="small"><?php echo $wo['lang']['posts']; ?></span>
+			        	</div>
+				        
+			        </td>
+
+			        <td class="forum-meta-d text-center small bold">
+			        
+			        	<?php if ($wo['forum']['last_post'] > 0): ?>
+			        		<?php echo Wo_Time_Elapsed_String($wo['forum']['last_post']) ?>
+			        	<?php else: ?>
+			        		<?php echo $wo['lang']['never']; ?>
+			        	<?php endif; ?>
+			        	
+			        </td>
+			      </tr> 
+			  
+		    					
+			<?php endforeach;?>
+			</table>
+		</div>
+	</div>	
+<?php endif; ?>

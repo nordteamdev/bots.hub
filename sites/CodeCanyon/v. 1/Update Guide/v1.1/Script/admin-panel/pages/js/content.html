@@ -1,0 +1,34 @@
+<script>
+$(function () {
+    $('.delete-button').on('click', function(event) {
+        event.preventDefault();
+        var ajax_type = $(this).attr('data-type');
+        var id = $('#delete-modal').attr('data-id');
+        $('#list-' + id).remove();
+        $.post('{{LINK ajax_requests.php?f=admincp&s=delete-' + ajax_type + '&hash_id=}}' + $('.main_session').val(), {id: id});
+    });
+});
+function FL_ActiveAction(type, id, activation, layout) {
+  if (!id) { return false; }
+  if (!type) {return false;}
+  if (!activation) { return false; }
+  if (activation == 'activate') {
+    $('tr[data-id="' + id + '"]').find('.activation-text').removeClass('active-0').addClass('active-1').text('Active');
+  } else {
+    $('tr[data-id="' + id + '"]').find('.activation-text').removeClass('active-1').addClass('active-0').text('Pending');
+  }
+  $.get('{{LINK ajax_requests.php?f=admincp&s=activation&hash_id=}}' + $('.main_session').val(), {id:id, type:type, activation:activation});
+}
+
+function FL_FeaturedAction(type, id, featured) {
+  if (!id) { return false; }
+  if (!type) {return false;}
+  if (!featured) { return false; }
+  if (featured == 'featured') {
+    $('tr[data-id="' + id + '"]').find('.featured-text').removeClass('active-0').addClass('active-1').text('Yes');
+  } else {
+    $('tr[data-id="' + id + '"]').find('.featured-text').removeClass('active-1').addClass('active-0').text('No');
+  }
+  $.get('{{LINK ajax_requests.php?f=admincp&s=featured&hash_id=}}' + $('.main_session').val(), {id:id, type:type, featured:featured});
+}
+</script>

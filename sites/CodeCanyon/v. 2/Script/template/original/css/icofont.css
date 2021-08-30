@@ -1,0 +1,264 @@
+/**
+ * @package IcoFont by ThemeHunt - https://themehunt.com
+ * @version 1.0.0 Beta
+ * @author IcoFont http://icofont.com
+ * @copyright Copyright (c) 2018 IcoFont
+ * @license - http://icofont.com/license/
+*/
+
+@font-face {
+    font-family: 'icofont';
+    src: url('fonts/icofont/icofont.eot?v=1.0.0-beta');
+    src: url('fonts/icofont/icofont.eot?v=1.0.0-beta#iefix') format('embedded-opentype'),
+    url('fonts/icofont/icofont.ttf?v=1.0.0-beta') format('truetype'),
+    url('fonts/icofont/icofont.woff?v=1.0.0-beta') format('woff'),
+    url('fonts/icofont/icofont.svg?v=1.0.0-beta#icofont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icofont {
+    font-family: 'IcoFont' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icofont-angry-monster:before {
+	content: "\e901";
+}
+.icofont-bathtub:before {
+	content: "\e902";
+}
+.icofont-bird-wings:before {
+	content: "\e903";
+}
+.icofont-bow:before {
+	content: "\e904";
+}
+.icofont-brain-alt:before {
+	content: "\e905";
+}
+.icofont-butterfly-alt:before {
+	content: "\e906";
+}
+.icofont-castle:before {
+	content: "\e907";
+}
+.icofont-circuit:before {
+	content: "\e908";
+}
+.icofont-dart:before {
+	content: "\e909";
+}
+.icofont-dice-alt:before {
+	content: "\e90a";
+}
+.icofont-disability-race:before {
+	content: "\e90b";
+}
+.icofont-diving-goggle:before {
+	content: "\e90c";
+}
+.icofont-fire-alt:before {
+	content: "\e90d";
+}
+.icofont-flame-torch:before {
+	content: "\e90e";
+}
+.icofont-flora-flower:before {
+	content: "\e90f";
+}
+.icofont-flora:before {
+	content: "\e910";
+}
+.icofont-gift-box:before {
+	content: "\e911";
+}
+.icofont-halloween-pumpkin:before {
+	content: "\e912";
+}
+.icofont-hand-power:before {
+	content: "\e913";
+}
+.icofont-hand-thunder:before {
+	content: "\e914";
+}
+.icofont-king-crown:before {
+	content: "\e915";
+}
+.icofont-king-monster:before {
+	content: "\e916";
+}
+.icofont-love:before {
+	content: "\e917";
+}
+.icofont-magician-hat:before {
+	content: "\e918";
+}
+.icofont-native-american:before {
+	content: "\e919";
+}
+.icofont-open-eye:before {
+	content: "\e91a";
+}
+.icofont-owl-look:before {
+	content: "\e91b";
+}
+.icofont-phoenix:before {
+	content: "\e91c";
+}
+.icofont-queen-crown:before {
+	content: "\e91d";
+}
+.icofont-robot-face:before {
+	content: "\e91e";
+}
+.icofont-sand-clock:before {
+	content: "\e91f";
+}
+.icofont-shield-alt:before {
+	content: "\e920";
+}
+.icofont-ship-wheel:before {
+	content: "\e921";
+}
+.icofont-skull-danger:before {
+	content: "\e922";
+}
+.icofont-skull-face:before {
+	content: "\e923";
+}
+.icofont-snail:before {
+	content: "\e924";
+}
+.icofont-snow-alt:before {
+	content: "\e925";
+}
+.icofont-snow-flake:before {
+	content: "\e926";
+}
+.icofont-snowmobile:before {
+	content: "\e927";
+}
+.icofont-space-shuttle:before {
+	content: "\e928";
+}
+.icofont-star-shape:before {
+	content: "\e929";
+}
+.icofont-swirl:before {
+	content: "\e92a";
+}
+.icofont-tattoo-wing:before {
+	content: "\e92b";
+}
+.icofont-throne:before {
+	content: "\e92c";
+}
+.icofont-touch:before {
+	content: "\e92d";
+}
+.icofont-tree-alt:before {
+	content: "\e92e";
+}
+.icofont-triangle:before {
+	content: "\e92f";
+}
+.icofont-unity-hand:before {
+	content: "\e930";
+}
+.icofont-weed:before {
+	content: "\e931";
+}
+.icofont-woman-bird:before {
+	content: "\e932";
+}
+
+/*Font size*/
+.icofont-lg {
+    font-size: 1.33333333em;
+    line-height: .75em;
+    vertical-align: -15%
+}
+
+.icofont-2x {
+    font-size: 2em
+}
+
+.icofont-3x {
+    font-size: 3em
+}
+
+.icofont-4x {
+    font-size: 4em
+}
+
+.icofont-5x {
+    font-size: 5em
+}
+
+.icofont-fw {
+    display: inline-block;
+    width: 1.28571429em;
+    text-align: center
+}
+
+/*Fixed Width Icons*/
+.icofont-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+
+/*Custom list icons*/
+.icofont-ul {
+    padding-left: 0;
+    margin-left: 2.14285714em;
+    list-style-type: none;
+}
+.icofont-ul>li {
+    position: relative;
+}
+.icofont-li {
+    position: absolute;
+    left: -2.14285714em;
+    width: 2.14285714em;
+    top: .14285714em;
+    text-align: center;
+}
+
+/*Animation*/
+.icofont-rotate {
+    display: inline-block;
+    -webkit-animation: icofont-rotate 2s infinite linear;
+    animation: icofont-rotate 2s infinite linear
+}
+
+@-webkit-keyframes icofont-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+@keyframes icofont-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}

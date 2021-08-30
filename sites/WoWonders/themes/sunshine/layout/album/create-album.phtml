@@ -1,0 +1,153 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">
+            <div class="wo_settings_page">
+				<div class="sun_head_onboard shortpwidth album">
+					<img class="sho_img" src="<?php echo $wo['config']['theme_url'];?>/img/cads/album.svg" alt="<?php echo $wo['lang']['albums'] ?>" />
+					<span class="go_back_link">
+						<a data-ajax="?link1=albums" href="<?php echo Wo_SeoLink('index.php?link1=albums');?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg><?php echo $wo['lang']['my_albums'];?>
+						</a>
+					</span>
+					<div class="sun_head_onboard_innr">
+						<h2><?php echo $wo['album']['title'];?></h2>
+					</div>
+				</div>
+			
+				<form class="create-album-form form-horizontal" method="post">
+					<div class="setting-panel no-padding-both row">
+						<!-- Text input-->
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="album_name"><?php echo $wo['lang']['album_name'];?></label>  
+							<div class="col-md-12">
+								<input id="album_name" name="album_name" type="text" class="form-control input-md" value="<?php echo $wo['album']['album_name'];?>">
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="album_name"><?php echo $wo['lang']['photos'];?></label>  
+							<div class="col-md-12 create_album_images">
+								<div id="productimage-holder">
+									<div class="upload-product-image" onclick="document.getElementById('publisher-photos').click(); return false">
+										<div class="upload-image-content">
+											<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="currentColor" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z" /></svg>
+										</div>
+									</div>
+								</div>
+								<div class="input-group hidden">
+									<span class="btn btn-default btn-file">
+										<i class="fa fa-camera" ></i><input type="file" id="publisher-photos" accept="image/x-png, image/gif, image/jpeg" name="postPhotos[]" multiple="multiple">
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-lg-12 hidden" id="photo-form">
+							<label class="col-md-3"></label>  
+							<div class="col-md-6">
+								<input type="text" class="form-control input-md" readonly>
+							</div>
+						</div>
+						<div class="publisher-hidden-option">
+							<div id="progress">
+								<span id="percent">0%</span>
+								<div class="progress">
+									<div id="bar" class="progress-bar progress-bar-striped active"></div> 
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="app-general-alert setting-update-alert"></div>
+					
+					<input type="hidden" name="id" class="form-control input-md" value="<?php echo $wo['album']['id'];?>">
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+					
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['upload'];?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#publisher-photos").on('change', function() {
+	//Get count of selected files
+	var product_countFiles = $(this)[0].files.length;
+	var product_imgPath = $(this)[0].value;
+	var extn = product_imgPath.substring(product_imgPath.lastIndexOf('.') + 1).toLowerCase();
+	var product_image_holder = $("#productimage-holder");
+	product_image_holder.find('img').remove();
+	if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+		if (typeof(FileReader) != "undefined") {
+		//loop for each file selected for uploaded.
+		for (var i = 0; i < product_countFiles; i++) 
+		{
+			var product_reader = new FileReader();
+			product_reader.onload = function(e) {
+				$("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                  }).appendTo(product_image_holder);
+                }
+                product_image_holder.show();
+                product_reader.readAsDataURL($(this)[0].files[i]);
+              }
+            } else {
+              product_image_holder.html("<p>This browser does not support FileReader.</p>");
+            }
+         }
+	});
+});
+
+   $(function() {
+
+   	$("#publisher-photos").change(function () {
+        var numFiles = this.files.length;
+        $("#photo-form input").val(numFiles + ' photo(s) selected');
+        $("#photo-form").slideDown(200);
+    });
+
+    var bar = $('#bar');
+    var percent = $('#percent');
+    var status = $('#status');
+    var publisher_button = $('#publisher-button');
+   
+     $('form.create-album-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=album&s=create_album',
+       beforeSend: function() {
+         var percentVal = '0%';
+         bar.width(percentVal);
+         percent.html(percentVal);
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+   
+       },
+       uploadProgress: function (event, position, total, percentComplete) {
+           var percentVal = percentComplete + '%';
+           bar.width(percentVal);
+           $('#progress').slideDown(200);
+           if(percentComplete > 50) {
+             percent.addClass('white');
+           }
+           percent.html(percentVal);
+      },
+       success: function(data) {
+         if (data.status == 200) {
+           window.location.href = data.href;
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.app-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+       }
+     });
+   });
+</script>

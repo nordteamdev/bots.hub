@@ -1,0 +1,17 @@
+{strip}
+<ul>
+    {foreach $query as $result}
+    <li>
+        <div class="mus-tr_i __selectable soh-s">
+            <div class="mus-tr_hld">
+                <span class="mus-tr_play __play js-mus-tr_play" id="_pm_sec_{$result.id}" data-quest='{literal}{{/literal}"song":"{$result.path}","cover":"{$result.cover}"{literal}}{/literal}' title="Play"></span>
+                <div class="mus-tr_cnt">
+                    <span class="mus-tr_artist">{$result.artist}</span>&nbsp;&#8211;&nbsp; <span class="mus-tr_song">{$result.title}</span> 
+                </div>
+                <div class="mus-tr_right-controls foh-s"> <span class="mus-tr_add"></span> </div>
+            </div>
+        </div>
+    </li>
+    {/foreach}
+</ul>
+{/strip}

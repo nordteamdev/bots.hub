@@ -1,0 +1,116 @@
+{strip}
+<div class="ad-rowcol">
+<h2>Languages</h2>
+<p>*HTML allowed</p><br/><br/>
+
+
+      <div class="addgame">
+            <label for="site_lang">Select language</label>
+            			
+				<select id="site_lang" name="site_lang">
+				<option value="" disabled>available languages</option>
+				{foreach $av_lang_files as $lang}
+				<option value="{$lang}" {if strtolower($l) === strtolower($lang)}selected{else if strtolower($lang) === 'en'}selected{/if}>{strtoupper($lang)}</option>
+				{/foreach}
+				</select>
+          
+        </div>
+{if !$lang_exist}		
+		{$this->msg('Sorry, the language file for PHP was not found, please check manual the path "/inc/lang/".','error')}
+		{else}
+<form class="setting-general-form form-horizontal" action="/admin.php?cmd=savelang" id="fform" method="post">
+
+    <fieldset id="php_lang">
+		<div id="general" class="v2_gs_filter __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Edit language file</span></div>
+
+<div class="v2_gs_filter_list">
+
+		
+{foreach from=$php_arr item=label key=key}
+       
+	        <div class="form-group soh-s">
+            <label class="col-md-3" for="{$key}"><span title="{$key}">{$key}</span></label>
+            <div class="col-md-6">
+			{if strlen($label) >= 70}
+		   <textarea id="{$key}" name="{$key}" type="text" class="form-control input-md">{$label}</textarea>
+		   <div class="foh-s lang_remove_inp" title="Remove option" onclick="return removeInput(event);"><div class="page_media_x"></div></div>
+		   {else}
+                <input id="{$key}" name="{$key}" type="text" class="poll_options_04a" value="{$label}" autocomplete="off">
+				<div class="foh-s lang_remove_inp" title="Remove option" onclick="return removeInput(event);"><div class="page_media_x"></div></div>
+            {/if}
+			</div>
+		</div>
+		{/foreach}
+		<a href="javascript:;" class="bold" style="font-size:13px;color: #3491ff;" onclick="LangaddInput(event);">+ Add</a>
+		
+		</div>
+		
+		</div>
+		</fieldset>
+	
+	   <!-- <fieldset id="js_lang">
+		<div id="general" class="v2_gs_filter  __show">
+<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Used in JavaScript</span></div>
+
+<div class="v2_gs_filter_list">
+
+			<div id="js_lang_html_markup"></div>
+		
+		</div>
+		
+		</div>
+		</fieldset>	--->
+		        <hr>
+
+        <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button onclick="return saveSiteLang(event,this.form,'{$l}');" name="button_send" class="form-actions_yes button-pro js-submit">Save</button>
+			<span onclick="ga('#fform')[0].reset();" class="form-actions_no button-pro __sec">Reset</span>
+            </div>
+        </div>
+		
+
+</form>
+<div id="err_ll4f" style="display:none;">{$this->msg("Sorry, the language file for JavaScript was not found, please check manual the path \"/js/lang/\".","error")}</div>
+</div>
+{/if}
+<script>var lang = !1;</script>
+
+<script>
+
+{literal}
+
+ga(document).ready(function(){
+filterBoxM();
+/*
+if( !(lang instanceof Object) ) {
+
+ga('#fform').replaceWith(ga('#err_ll4f').html());
+} else {
+
+for(var a in lang)
+ga('#js_lang_html_markup').append(
+	       '<div class="form-group soh-s">\
+            <label class="col-md-3" for="'+a+'"><span title="'+a+'">'+a+'</span></label>\
+            <div class="col-md-6">'+( lang[a].length >= 70 ? 
+			'<textarea id="'+a+'" name="'+a+'" type="text" class="form-control input-md">'+lang[a]+'</textarea><div class="foh-s lang_remove_inp" title="Remove option" onclick="return removeInput(event);"><div class="page_media_x"></div></div>' 
+			: '<input id="'+a+'" name="'+a+'" type="text" class="form-control input-md" value="'+lang[a]+'" autocomplete="off"><div class="foh-s lang_remove_inp" title="Remove option" onclick="return removeInput(event);"><div class="page_media_x"></div></div>')+
+            '</div>\
+		</div>');
+}
+*/
+ga('#js_lang_html_markup .form-group:last').after('<a href="javascript:;" class="bold" style="font-size:13px;color: #3491ff;" onclick="LangaddInput(event);">+ Add</a>');
+
+
+ga( "#site_lang" ).on( "selectmenuselect", function( event, l ) {
+
+window.location='/admin?cmd=lang&l='+l.item.value;
+
+});
+
+});
+{/literal}
+</script>
+{/strip}

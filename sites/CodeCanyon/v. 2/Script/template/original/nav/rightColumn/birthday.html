@@ -1,0 +1,29 @@
+{strip}
+{if sizeof($r)}
+<section id="birthday_col" class="sp_right_col portlet __holiday __birth taCenter">
+<div id="hook_Block_HolidaysPortlet" class="hookBlock">
+    <div class="">
+        <div class="portlet_h portlet_h__sa">{$this->lang['Birthday']}</div>
+        <div class="holiday_date {if $r_day == $this->lang['Today']}__red{/if}">{$r_day}</div>
+        <div class="holiday_card">
+            <div class="ucard-v holiday">
+                <a href="/user/{$r.id}" hrefattr="true">
+                    <div class="photo">{if $online}<span class="ic-online"></span>{/if}<img class="photo_img" src="/getPhoto?p={$r.profile_photo}&sz=small&g={$r.gender}" alt="{$r.fullname}" width="60" height="60"></div>
+                </a>
+            </div>
+        </div>
+        <div class="caption">
+            <div class="ellip"><a href="/user/{$r.id}" class="ob" hrefattr="true">{$r.fullname}</a></div>
+        </div><a href="/gifts/u/{$r.id}" hrefattr="true" class="flat_button">{$this->lang['Send_a_gift']}</a>
+		
+		</div>
+    <!--<div class="mt-2x mb-6x">
+        <div class="jcol-l"><a href="/holidays/my" class="lp" hrefattr="true">{$this->lang['My_Holidays']}</a></div>
+        <div class="jcol-r"><a href="/holidays" class="lp nowrap" hrefattr="true"><span class="lp va">{$this->lang['All_Holidays']}</span></a></div>
+    </div>-->
+</div>
+</section>
+{/if}
+
+
+{/strip}

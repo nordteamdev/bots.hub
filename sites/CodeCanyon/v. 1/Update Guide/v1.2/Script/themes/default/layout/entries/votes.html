@@ -1,0 +1,38 @@
+<?php if ($fl['vote_type'] == 'text'): ?>
+<div id="answer-{{OPTION_ID}}">
+	<div class="answer {{IS_OPTION_VOTED_ACTIVE}}" onclick="FL_Vote({{ENTRY_ID}}, {{OPTION_ID}});" >
+		
+			<div class="answer-info pull-left">
+				<span>{{IS_OPTION_VOTED_ICON}}</span> {{OPTION_TEXT}}
+			</div>
+			<div class="answer-vote pull-right">
+				{{IS_OPTION_VOTED_PRERCENTAGE}}
+			</div>
+			<div class="clear"></div>
+	
+	</div>
+	<div class="percentage-border" style="width:{{OPTION_PRERCENTAGE}};">{{IS_OPTION_VOTED_PRERCENTAGE_BIGGER_THAN_ZERO}}</div>
+</div>
+
+<?php else:?>
+
+<div id="answer-{{OPTION_ID}}" class="vote-image-wrapper" style="opacity: {{OPTION_OPACITY}};">
+	<div class="answer {{IS_OPTION_VOTED_ACTIVE}}" onclick="FL_VoteImg({{ENTRY_ID}}, {{OPTION_ID}});" >
+			<div class="answer-info pull-left">
+				<div>
+					<img src="{{OPTION_IMAGE}}" alt="Image" class="responsive-img">
+				</div> 
+			</div>
+			<br>
+			<div class="answer-vote-wrapper">
+				<span class="pull-left">{{IS_OPTION_VOTED_ICON}}</span> <span class="answer-vote pull-right">{{IS_OPTION_VOTED_PRERCENTAGE}}</span>
+			</div>
+			<div class="clear"></div>
+			<div class="percentage-border-wrapper" style="color: #222;">
+				<div class="percentage-border" style="width:{{OPTION_PRERCENTAGE}};">{{IS_OPTION_VOTED_PRERCENTAGE_BIGGER_THAN_ZERO}}</div>
+			</div>
+			
+	</div>
+	
+</div>
+<?php endif; ?>

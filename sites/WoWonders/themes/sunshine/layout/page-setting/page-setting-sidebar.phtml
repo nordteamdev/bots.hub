@@ -1,0 +1,39 @@
+<div class="sun_sett_sidebar page">
+	<ul class="list-unstyled">
+		<li class="<?php echo ($wo['setting_page'] == 'general-setting') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=general-setting');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=general-setting">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span> <?php echo $wo['lang']['general'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'profile-setting') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=profile-setting');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=profile-setting">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></span> <?php echo $wo['lang']['page_information'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'social-links') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=social-links');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=social-links">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></span> <?php echo $wo['lang']['social_links'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'avatar-setting') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=avatar-setting');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=avatar-setting">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></span> <?php echo $wo['lang']['avatar_and_cover'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'design-setting') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=design-setting');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=design-setting">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-brush"><path d="M20.71,4.63L19.37,3.29C19,2.9 18.35,2.9 17.96,3.29L9,12.25L11.75,15L20.71,6.04C21.1,5.65 21.1,5 20.71,4.63M7,14A3,3 0 0,0 4,17C4,18.31 2.84,19 2,19C2.92,20.22 4.5,21 6,21A4,4 0 0,0 10,17A3,3 0 0,0 7,14Z"></path></svg></span> <?php echo $wo['lang']['design'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'admins') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=admins');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=admins">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg></span> <?php echo $wo['lang']['admin'];?>
+			</a>
+		</li>
+		<li class="<?php echo ($wo['setting_page'] == 'delete-page') ? 'active': '';?>">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=page-setting&page=' . $wo['setting']['page_name'] . '&link3=delete-page');?>" data-ajax="?link1=page-setting&page=<?php echo $wo['setting']['page_name'];?>&link3=delete-page">
+				<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></span> <?php echo $wo['lang']['delete_page'];?>
+			</a>
+		</li>
+	</ul>
+</div>

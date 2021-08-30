@@ -1,0 +1,12 @@
+<div id="ImageModal-<?php echo $wo['message']['id'];?>" class="modal fade image-modal" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-body">
+            <img src="<?php echo $wo['media']['filename'];?>" class="img-responsive">
+         </div>
+         <div class="modal-footer">         
+            <a href="<?php echo $wo['media']['filename'];?>" id="delete-all-post" type="button" class="btn  btn-main"><i class="fa fa-download progress-icon" data-icon="download" download="<?php echo $wo['media']['filename'];?>"></i> <?php echo $wo['lang']['download'];?></a>
+         </div>
+      </div>
+   </div>
+</div>

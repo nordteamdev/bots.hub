@@ -1,0 +1,91 @@
+IndexIgnore * # prevent directory listing
+
+Order deny,allow
+Allow from *
+
+# ------------------------------------------
+# Rewrite so that php extentions are not shown
+RewriteEngine on
+
+
+ 
+
+
+Header set Access-Control-Allow-Origin "https://m.social-plus.org"
+Header set Access-Control-Allow-Origin "http://192.168.1.106"
+ 
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteRule ^([a-zA-Z0-9_]+)$ profile.php?q=$1
+
+
+
+RewriteRule ^communities/my communities.php?cmd=my [NC,QSA]
+RewriteRule ^community/([^/]+)/album-videos communities.php?cmd=album-videos&id=$1 [NC,QSA]
+RewriteRule ^community/([^/]+)/album-([^/]+) communities.php?cmd=album-details&albumid=$2&id=$1 [NC,QSA]
+RewriteRule ^community/album-main/(.*)$ communities.php?cmd=album-main&id=$1 [NC,QSA]
+RewriteRule ^community/([^/]+)/albums communities.php?cmd=albums&id=$1 [NC,QSA]
+RewriteRule ^community/(.*)$ communities.php?cmd=details&id=$1 [NC,QSA]
+RewriteRule ^gifts/categ/([^/]+)/u/([^/]+) gifts.php?categ=$1&u=$2 [NC,QSA]
+RewriteRule ^gifts/categ/(.*)$ gifts.php?categ=$1 [NC,QSA]
+RewriteRule ^gifts/u/(.*)$ gifts.php?u=$1 [NC,QSA]
+
+
+RewriteRule ^page/([^/]+)/([^/]+) page.php?categ=$1&id=$2 [NC,QSA]
+
+RewriteRule ^all-online-friends/(.*)$ profile.php?q=$1&cmd=friends&mode=online&nav=friends [NC,QSA]
+
+RewriteRule ^user/gifts/([^/]+)/private profile.php?q=$1&filter=private&cmd=gifts&nav=gifts [NC,QSA]
+RewriteRule ^user/gifts/([^/]+)/anonym profile.php?q=$1&filter=anonym&cmd=gifts&nav=gifts [NC,QSA]
+RewriteRule ^user/gifts/(.*)$ profile.php?q=$1&cmd=gifts&nav=gifts [NC,QSA]
+
+RewriteRule ^user/about/(.*)$ profile.php?q=$1&cmd=about&nav=about [NC,QSA]
+RewriteRule ^groups/([^/]+)/page/([^/]+) profile.php?q=$1&cmd=groups&nav=groups&page=$2 [NC,QSA]
+RewriteRule ^mark/(.*)$ profile.php?cmd=grades&_token=$1 [NC,QSA]
+RewriteRule ^groups/(.*)$ profile.php?q=$1&cmd=groups&nav=groups [NC,QSA]
+
+RewriteRule ^friends/(.*)$ profile.php?q=$1&cmd=friends&om=1&nav=friends [NC,QSA]
+RewriteRule ^friends/([^/]+)/key/([^/]+) profile.php?q=$1&cmd=friends&key=$2&nav=friends [NC,QSA]
+ 
+RewriteRule ^photos/(.*)$ profile.php?q=$1&cmd=photos&om=1&nav=photos [NC,QSA]
+RewriteRule ^posts/(.*)$ profile.php?q=$1&cmd=posts&nav=posts [NC,QSA]
+RewriteRule ^apps/genre/(.*)$ apps.php?c=genre&nav=apps&genre=$1 [NC,QSA]
+RewriteRule ^apps/user/(.*)$ apps.php?c=uapps&nav=apps&u=$1 [NC,QSA]
+RewriteRule ^apps/m/user/(.*)$ apps.php?c=uapps&mheader=true&nav=apps&u=$1 [NC,QSA]
+RewriteRule ^apps/(.*)$ apps.php?c=all&nav=apps [NC,QSA]
+RewriteRule ^app/id/([a-zA-Z0-9_]+)$ apps.php?play=true&id=$1 [NC,QSA]
+RewriteRule ^mmusic/popular(.*)$ mmusic.php?cmd=popular [NC,QSA]
+RewriteRule ^mmusic/mytracks(.*)$ mmusic.php?cmd=mytracks [NC,QSA]
+RewriteRule ^mmusic/collection/(.*)$ mmusic.php?cmd=collectiondetails&id=$1 [NC,QSA]
+
+RewriteRule ^settings/([^/]+)/pview profile.php?q=$1&cmd=settings&tab=personal-views&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/notifications profile.php?q=$1&cmd=settings&tab=notifications&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/binfo profile.php?q=$1&cmd=settings&tab=basic-info&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/privacy profile.php?q=$1&cmd=settings&tab=privacy&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/lhistory profile.php?q=$1&cmd=settings&tab=locHistory&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/media profile.php?q=$1&cmd=settings&tab=media&nav=settings [NC,QSA]
+RewriteRule ^settings/([^/]+)/blacklist profile.php?q=$1&cmd=settings&tab=blacklist&nav=settings [NC,QSA]
+
+RewriteRule ^settings/(.*)$ profile.php?q=$1&cmd=settings [NC,QSA]
+
+RewriteRule ^books/(.*)$ profile.php?q=$1&cmd=books [NC,QSA]
+RewriteRule ^movies/(.*) profile.php?q=$1&cmd=movies [NC,QSA]
+
+
+RewriteRule ^market/products/search/([^/]+) market.php?k=$1&cmd=search-products [NC,QSA]
+RewriteRule ^market/products/my market.php?cmd=myproducts [NC,QSA]
+RewriteRule ^market/products/favorites market.php?cmd=favorite-products [NC,QSA]
+RewriteRule ^market/product/(.*)$ market.php?id=$1&cmd=view-product [NC,QSA]
+RewriteRule ^market/category/([^/]+) market.php?category=$1 [NC,QSA]
+
+
+RewriteRule ^changepass/([^/]+)/(.*)$ forgot.php?cmd=changepass&code=$2&email=$1 [NC,QSA]
+ 
+RewriteRule ^getcode/([^/]+)/([^/]+)/(.*)$ getSecretCode.php?case=$1&by=$2&k=$3 [NC,QSA]
+RewriteRule ^getsecretcode/([^/]+) getSecretCode.php?case=$1 [NC,QSA]
+RewriteRule ^confirmcode/([^/]+)/(.*)$ enterSecretCode.php?case=$1&u=$2 [NC,QSA]
+RewriteRule ^user/(.*)$ profile.php?q=$1 [L,QSA]

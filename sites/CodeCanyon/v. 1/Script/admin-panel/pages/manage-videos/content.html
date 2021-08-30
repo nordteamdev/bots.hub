@@ -1,0 +1,159 @@
+<?php 
+$page = !empty($_GET['page-id']) ? $_GET['page-id'] : 1;
+$filter_keyword = (!empty($_GET['query'])) ? FL_Secure($_GET['query']) : '';
+$db->pageLimit = 50;
+if (!empty($filter_keyword)) {
+	$videos = $db->where("title LIKE '%$filter_keyword%' OR short_title LIKE '%$filter_keyword%' OR id = '$filter_keyword'")->orderBy('id', 'DESC')->arraybuilder()->paginate(T_VIDEOS, $page);
+} else {
+	$videos = $db->arraybuilder()->orderBy('id', 'DESC')->paginate(T_VIDEOS, $page);
+}
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+	header("Location: " . FL_LoadAdminLinkSettings('manage-videos'));
+	exit();
+}
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Videos > Manage Videos</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage & Edit Videos</h2>
+                </div>
+                <div class="body">
+                   <div class="row">
+                       <div class="col-md-6" style="margin-bottom:0;">
+                            <form method="get" action="<?php echo FL_LoadAdminLinkSettings('manage-videos'); ?>">
+                              <div class="row">
+                              	<div class="col-md-9">
+	                              	<div class="form-group form-float">
+	                                    <div class="form-line">
+	                                        <input type="text" name="query" id="query" class="form-control" value="<?php echo (!empty($_GET['query'])) ? $_GET['query'] : ''; ?>">
+	                                        <label class="form-label search-form">Search for ID, Title</label>
+	                                    </div>
+	                                </div>
+	                              </div>
+	                              <div class="col-md-3">
+	                              	 <button class="btn btn-primary">Search</button>
+	                              </div>
+                              </div>
+                              <div class="clearfix"></div>
+                           </form>
+                       </div>
+                   </div>
+                   <div class="clearfix"></div>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Title</th>
+					                  <th>Auhtor</th>
+					                  <th>Category</th>
+					                  <th>Status</th>
+					                  <th>Featured</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                foreach ($videos as $key => $fl['news']) {
+                                	$fl['news'] = FL_GetVideos($fl['news']['id']);
+                                	echo FL_LoadAdminPage("manage-videos/list", array(
+							            'POST_ID' => $fl['news']['id'],
+							            'POST_LINK' => $fl['news']['url'],
+							            'POST_TITLE' => $fl['news']['title'],
+							            'POST_TITLE_CROPPED' => mb_substr($fl['news']['title'], 0, 40, "UTF-8") . '...',
+							            'POST_CATEGORY' => (!empty($fl['news_categories'][$fl['news']['category']])) ? $fl['news_categories'][$fl['news']['category']] : 0,
+							            'POST_AUTHOR' => $fl['news']['publisher']['name'],
+							            'POST_AUTHOR_URL' => $fl['news']['publisher']['url'],
+							            'POST_STATUS' => ($fl['news']['active'] == 0) ? 'Pending' : 'Active',
+							            'POST_ACTIVE' => $fl['news']['active'],
+							            'POST_FEATURED_TEXT' => ($fl['news']['featured'] == 1) ? 'Yes' : 'No',
+							            'POST_FEATURED' => $fl['news']['featured'],
+							        ));
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pull-left">
+                    	<?php echo "Showing $page out of " . $db->totalPages; ?>
+                    </div>
+                    <div class="pull-right">
+                    	<nav>
+                            <ul class="pagination">
+                            	<li>
+                                    <a href="<?php echo FL_LoadAdminLinkSettings('manage-videos?page-id=1'); ?>" class="waves-effect" title='First Page'>
+                                        <i class="material-icons">first_page</i>
+                                    </a>
+                                </li>
+                                <?php if ($page > 1) {  ?>
+                                <li>
+                                    <a href="<?php echo FL_LoadAdminLinkSettings('manage-videos?page-id=' . ($page - 1)); ?>" class="waves-effect" title='Previous Page'>
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <?php  } ?>
+                                <?php 
+                                $nums = 0;
+                                $nums_pages = ($page > 4) ? ($page - 4) : $page;
+                                for ($i=$nums_pages; $i <= $db->totalPages; $i++) { 
+                                	if ($nums < 20) {
+                                	?>
+                                	<li class="<?php echo ($page == $i) ? 'active' : ''; ?>"><a href="<?php echo FL_LoadAdminLinkSettings('manage-videos?page-id=' . ($i)); ?>" class="waves-effect"><?php echo $i ?></a></li>
+                                	<?php
+                                	}
+                                	$nums++;
+                                }
+                                ?>
+                                <?php if ($db->totalPages > $page) { ?>
+                                <li>
+                                    <a href="<?php echo FL_LoadAdminLinkSettings('manage-videos?page-id=' . ($page + 1)); ?>" class="waves-effect" title="Next Page">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                                <?php } ?>
+                                <li>
+                                    <a href="<?php echo FL_LoadAdminLinkSettings('manage-videos?page-id=' . ($db->totalPages)); ?>" class="waves-effect" title='Last Page'>
+                                        <i class="material-icons">last_page</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<div id="delete-modal" class="modal fade" role="dialog" data-id="">
+  <div class="modal-dialog">
+    <div class="modal-content modal-col-red">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">DELETE LIST</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to continue? this action can't be undo</p>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-link waves-effect delete-button" data-dismiss="modal" data-type="videos">DELETE</button>
+        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(function () {
+	$('.delete-content').on('click', function(event) {
+		event.preventDefault();
+		$('#delete-modal').attr('data-id', $(this).attr('data-id')).modal('show');
+	});
+});
+</script>

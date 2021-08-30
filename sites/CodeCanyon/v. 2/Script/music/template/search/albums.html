@@ -1,0 +1,65 @@
+
+<!------------------ Albums [template] ----------------------->
+{strip}
+
+<div class="m_c_s_scrollable mus-custom-scrolling pl-mb-90" style="height: 590px;">
+  <div class="mus_content_w">
+    <div class="mus_content_w" aria-hidden="false">
+      
+      
+      
+      {foreach $query as $result}
+      {assign var=alb_id value={$result.id}}
+      {assign var=alb_cv value={$this->defaultCover}}
+      {if $result.cover !== $this->defaultCover}
+      {assign var=alb_cv value={$result.cover}}
+      {/if}
+      {assign var=alb_nm value={$result.album}}
+      {assign var=alb_ar value={$result.artist}}
+      
+      
+      
+      
+      <div class="mus_card_i">
+        <div class="mus_card" uid="card" id="crdI_{$alb_id}">
+          
+          <div class="mus_card_img_w mus_card_img_w__album">
+            <img src="{$alb_cv}" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($alb_ar)}&alb={urlencode($alb_nm)}" class="mus_card_img">
+            <div class="mus_card_ac_lst">
+              <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($alb_ar)}&alb={urlencode($alb_nm)}&play=true">
+                <span class="mus_card_play">
+                </span>
+                Play
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause">
+                <span class="mus_card_play __pause">
+                </span>
+                pause
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__more" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($alb_ar)}&alb={urlencode($alb_nm)}">
+                <span class="mus_card_more">
+                </span>
+                More
+              </span>
+            </div>
+          </div>
+          <div class="mus_card_n_w">
+            <div class="mus_card_n textWrap" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($alb_ar)}&alb={urlencode($alb_nm)}">
+              <span class="mus_card_n_a" title="{$alb_nm}">
+                {$alb_nm}
+              </span>
+            </div>
+            <div class="mus_card_n_artist ellip">
+              <span class="mus_card_n_artist_a" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($alb_ar)}" title="{$alb_ar}" uid="art">
+                {$alb_ar}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/foreach}
+    </div>
+  </div>
+</div>
+
+{/strip}

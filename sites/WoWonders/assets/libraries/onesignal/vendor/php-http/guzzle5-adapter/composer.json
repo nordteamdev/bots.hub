@@ -1,0 +1,50 @@
+{
+    "name": "php-http/guzzle5-adapter",
+    "description": "Guzzle 5 HTTP Adapter",
+    "license": "MIT",
+    "keywords": ["guzzle", "http"],
+    "homepage": "http://httplug.io",
+    "authors": [
+        {
+            "name": "Eric GELOEN",
+            "email": "geloen.eric@gmail.com"
+        },
+        {
+            "name": "Márk Sági-Kazár",
+            "email": "mark.sagikazar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "php-http/httplug": "^1.0",
+        "guzzlehttp/guzzle": "^5.1",
+        "php-http/discovery": "^1.0"
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "php-http/client-integration-tests": "^0.5.1",
+        "guzzlehttp/ringphp": "^1.1"
+    },
+    "provide": {
+        "php-http/client-implementation": "1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Http\\Adapter\\Guzzle5\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Http\\Adapter\\Guzzle5\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

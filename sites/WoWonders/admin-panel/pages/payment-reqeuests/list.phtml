@@ -1,0 +1,28 @@
+<tr id="UserID_<?php echo $wo['userlist']['id']?>" data-user-id="<?php echo $wo['userlist']['user']['user_id']?>">
+   <td><?php echo $wo['userlist']['user']['user_id']?></td>
+   <td>
+      <a href="<?php echo $wo['userlist']['user']['url']; ?>">
+      <img src="<?php echo $wo['userlist']['user']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['userlist']['user']['avatar']?> Profile Picture">
+      <?php echo $wo['userlist']['user']['name']; ?>
+      </a>
+   </td>
+   <td><?php echo $wo['userlist']['user']['paypal_email'];?></td>
+   <td>$<?php echo $wo['userlist']['amount'];?></td>
+   <td><a href="<?php echo Wo_LoadAdminLinkSettings('referrals-list?id=' . $wo['userlist']['user_id']); ?>">Show</a></td>
+   <td>
+   <?php 
+   if ($wo['userlist']['status'] == 0) {
+      echo '<span class="label label-warning">Pending</span>';
+   } else 
+   if ($wo['userlist']['status'] == 1) {
+      echo '<span class="label label-success">Approved</span>';
+   } else
+   if ($wo['userlist']['status'] == 2) {
+      echo '<span class="label label-danger">Declined</span>';
+   }
+   ?></td>
+   <td>
+      <button onclick="Wo_MarkPaid(<?php echo $wo['userlist']['id']?>);" type="button" class="btn btn-success waves-effect waves-light">PAID</button>
+      <button onclick="Wo_DeclinePayment(<?php echo $wo['userlist']['id']?>);" type="button" class="btn btn-danger waves-effect waves-light">DECLINE</button>
+   </td>
+</tr>

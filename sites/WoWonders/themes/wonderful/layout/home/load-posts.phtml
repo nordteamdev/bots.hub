@@ -1,0 +1,34 @@
+<div id="posts">
+<?php
+          if ($wo['config']['pro'] == 1) {
+          $promoted = $wo['story'] = Wo_GetPromotedPost();
+          if (count($promoted) > 0) {
+          $wo['story']['post_is_promoted'] = 1;
+         ?>
+         <div class="promoted-post">
+           <img  class="promoted-icon" src="<?php echo $wo['config']['theme_url'] . '/img/promote.png';?>" alt="Promoted" data-toggle="tooltip" title="<?php echo $wo['lang']['promoted'];?>">
+           <?php echo Wo_LoadPage('story/content'); ?>
+         </div>
+         <?php } } ?>
+            <?php
+            $stories = Wo_GetPosts(array('limit' => 10, 'publisher_id' => 0));
+            if (count($stories) <= 0) {
+              echo Wo_LoadPage('story/no-stories');
+            } else {
+              foreach ($stories as $wo['story']) {
+                echo Wo_LoadPage('story/content');
+              }
+            }
+            ?>
+            </div>
+             <?php if (count($stories) > 0) { ?>
+         <div class="load-more pointer" id="load-more-posts" onclick="Wo_GetMorePosts();">
+            <span class="btn btn-default">
+            <i class="fa fa-chevron-circle-down progress-icon" data-icon="chevron-circle-down"></i> <?php echo $wo['lang']['load_more_posts'];?><span>
+         </div>
+         <?php } ?>
+         <!-- .load-more pointer -->
+         <div id="load-more-filter">
+            <span class="filter-by-more hidden" data-filter-by="all"></span>
+         </div>
+         <!-- #load-more-filter -->

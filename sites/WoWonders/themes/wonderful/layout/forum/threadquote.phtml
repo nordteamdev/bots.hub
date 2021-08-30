@@ -1,0 +1,77 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+
+	<div role="tabpanel" class="tab-pane active list-group" id="threadreply">
+		<div class="">
+			<div class="blocksubhead"><i class="fa fa-thumb-tack" aria-hidden="true"></i> 
+			<?php echo $wo['lang']['posts']; ?> 
+			<i class="fa fa-angle-right" aria-hidden="true"></i> 
+			<?php echo $wo['lang']['reply']; ?>
+			<i class="fa fa-angle-right" aria-hidden="true"></i> 
+			<?php echo $wo['reply']['post_subject']; ?>
+			</div>
+		</div>
+		<div class="col-md-12" id="quotereply-alert"></div>
+		<div class="">
+			<form action="#" class="form" id="quotereply" method="post">
+				<div class="form-group">
+					<label for="subject" class="col-md-2"><?php echo $wo['lang']['subject']; ?>:</label>
+					<div class="col-md-10">
+						<div class="form-group">
+							<input type="text" name="subject" class="form-control" value="<?php echo($wo['reply']['post_subject']); ?>">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="replythread" class="col-md-2"><?php echo $wo['lang']['your_reply']; ?>:</label>
+					<div class="col-md-10">
+						<textarea id="newquotereply" name="content">[quote][b]<?php echo $wo['reply']['user_data']["username"]; ?> <?php echo $wo['lang']['wrote']; ?>:[/b][nl]<?php echo $wo['reply']['post_text']; ?>[/quote]</textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+		        <div class="form-group">
+		          <label class="col-md-2"></label>
+		          <div class="col-sm-10">
+		             <button type="submit" class="btn btn-main">
+		                <i class="fa fa-reply fa-fw progress-icon" data-icon="reply"></i> <?php echo $wo['lang']['reply']; ?>
+		             </button>
+		          </div>
+		          <div class="clear"></div>
+		       </div>
+			</form>
+		</div>
+	</div>
+<?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']): ?>
+<script>
+	jQuery(document).ready(function($) {
+
+
+		$('#quotereply').ajaxForm({
+
+	      url: Wo_Ajax_Requests_File()  +  '?f=threadreply&tid=<?php echo $wo['reply']['thread_id']; ?>&fid=<?php echo $wo['reply']['forum_id']; ?>&q=1&hash=' + $('.main_session').val(),
+	      beforeSend: function() {
+	        Wo_progressIconLoader($('#quotereply').find('button'));
+	      },
+	      success: function(data) {
+	        scrollToTop();
+	        if (data['status'] == 200) {
+	        	
+	         	$("#quotereply-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	         	window.location = data.url;
+	          
+	        } else {
+	        	
+	         	$("#quotereply-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        } 
+	        Wo_progressIconLoader($('#quotereply').find('button'));
+	      }
+		});
+		$('#newquotereply').bbcode();
+		$("#newquotereply").autogrow({vertical: true, horizontal: false});
+
+	});
+
+</script>
+	
+<?php endif ?>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

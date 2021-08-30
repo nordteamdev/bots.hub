@@ -1,0 +1,69 @@
+<div class="content-shadow fluid">
+	<div class="settings-header main-border-color">
+		<h3><i class="fa fa-university" aria-hidden="true"></i> {{LANG wallet}} </h3>
+	</div>
+	<form class="form-horizontal setting-panel" id="wallet-settings" method="POST">
+		<?php if (isset($fl['refilled_balance'])): ?>
+			<div class="alert-info alert">
+				<i class="fa fa-check-circle-o"></i>
+				<?php 
+					$subject = $fl['lang']['ur_balance_refilled'];
+					echo str_replace('{{AMOUNT}}', $fl['refilled_balance'],$subject);
+				?>
+			</div>
+		<?php endif; ?>
+	    <div class="setting-wallet-alert"></div>
+		<fieldset>
+			<!-- password input-->
+			<div class="form-group">
+				<label class="col-md-3">{{LANG balance}}</label>  
+				<div class="col-md-6">
+					<input class="form-control input-md" readonly value="{{USER wallet}} USD">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-3" for="amount">{{LANG add_money}}</label>  
+				<div class="col-md-6">
+					<input type="number" step="any" class="form-control input-md" name="amount" required="required" id="amount" placeholder="{{LANG enter_amount}}..">
+				</div>
+			</div>
+			<hr>
+			<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+			<input type="hidden" name="user_id" value="{{USER user_id}}">
+			<!-- Button (Double) -->
+			<div class="form-group">
+				<label class="col-md-3" for="button1id"></label>
+				<div class="col-md-8">
+					<button id="submit" name="submit" class="btn btn-main">
+						<i class="fa fa-paypal"></i> {{LANG replenish_balance}}
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<script>
+$(function() {
+  var form = $('form#wallet-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=wallet&s=upto',
+    dataType:'json',
+    beforeSend: function() {
+      form.find('button').text("{{LANG please_wait}}").attr('disabled', 'true');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+      	window.location.href = data.url;
+      } 
+
+      else if (data.status == 500) {
+        swal({
+			title: "{{LANG error}}",
+			text: "{{LANG error_found_request}}",
+			type: "error"
+		});
+      }
+    }
+  });
+});
+</script>

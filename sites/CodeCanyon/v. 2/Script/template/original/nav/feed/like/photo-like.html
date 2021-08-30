@@ -1,0 +1,224 @@
+{strip}
+  {assign var=c_tr_w value=''}
+  {assign var=c_tr_h value=''}
+ {assign var=condition_split_users value=0}
+  {assign var=visible_photos value=0}
+  {assign var=widget_enabled value=0}
+  {assign var=kl_count value=$res_u_photo.kl_count}
+
+  {if $corrupted_feed}
+  {$this->unv_feed('photo',$res.id)}
+  
+  {else}
+  
+  
+<div class="feed __like">
+
+
+	<header class="feed-like-header-top">
+	
+	
+
+	
+		<div class="feed_ac">
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+			<span class="feed_date">{$this->feedConvDate($res.added)}</span>
+		</div>
+	
+        <div class="feed_ha"><span>
+
+		{foreach $l_users as $user_result}
+ 
+		{if $condition_split_users > 2}
+			{break}
+		{/if}
+		
+		{if $condition_split_users === 0}
+		<div class="feed_ava_like"><img src="/getPhoto?p={$user_result.photo}&sz=small"></div>
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user_result.id}","uname":"{$user_result.name}","uphoto":"{$user_result.photo}","ugender":"{$user_result.gender}","pos":{ldelim}"left":"-40px","top":"auto"{rdelim},"ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$user_result.id}">
+		</div>
+		<a href="/user/{$user_result.id}" class="ob" hrefattr="true">{$user_result.name}
+		</a>
+		</span>
+		{else if $condition_split_users === 1}
+
+		{if count($l_users) - 2 === 0}&nbsp;{$this->lang['and']}&nbsp;{else},&nbsp;{/if}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user_result.id}","uname":"{$user_result.name}","uphoto":"{$user_result.photo}","ugender":"{$user_result.gender}","pos":{ldelim}"left":"-40px","top":"auto"{rdelim},"ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"1"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$user_result.id}">
+		</div>
+		<a href="/user/{$user_result.id}" class="ob" hrefattr="true">{$user_result.name}
+		</a>
+		</span>
+		{else if $condition_split_users > 1} 
+		
+		
+		&nbsp;{$this->lang['and_other']}&nbsp;<a class="lp il feed_lk_oth_fr" data-feedid="{$res.id}" {if $tooltip_more}data-tooltipmore="{$total_u_lk_count}"{/if} data-getjs='{$tooltip_data}' href="javascript:;" onclick="return feed_liked_popup(this,{$res.id});">{if count($l_users) - 2 == 1} {$total_u_lk_count-2} {$this->lang['friend']} {else} {$total_u_lk_count-2} {$this->lang['friends']}{/if}</a> 
+		{/if}
+		
+		
+		{$condition_split_users = $condition_split_users+1}
+		{foreachelse}
+
+		<span class="kn_shortcutmenu">
+		
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+		</div>
+		
+		
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a>
+
+
+	
+	
+        </span>
+		{/foreach}
+		
+          
+            </span>&nbsp;{$this->lang['liked_this']} 
+			
+	</div>
+	
+	</header>
+
+
+
+
+	<div class="divider_feed_like"></div>
+
+
+
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+ 
+
+	<header>
+	
+    <div class="feed_ava">
+        
+		{if $clubid > 0}
+		
+		<a href="/community/{$clubid}" hrefattr="true">
+            <div><img class="feed_ava_img" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+            </div>
+        </a>
+		
+		{else}
+		
+		<a href="/user/{$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+		
+		{/if}
+    </div>
+	
+	
+	
+		<div class="feed_h">	
+
+		
+		{if $clubid > 0}
+		
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+		{/if}
+		
+		
+		&nbsp;{$this->lang['added_a_photo']} 
+		
+		</div>
+	</header>
+	
+
+	
+
+			
+        <div class="feed_b">
+
+
+            <div class="media-block media-photos">
+
+			
+			
+			
+			<div class="feed_photos_collage_justified __1">
+
+ 				{if $clubid > 0}
+				
+				{assign var=is_gif value={$this->is_gif($photo_id,1)}}
+				
+				{else}
+				
+				{assign var=is_gif value={$this->is_gif($photo_id)}}
+				
+				{/if}
+				
+        {if $res_u_photo.info} 
+		{assign var=photo_description value=$this->str_smilies(pellipse($res_u_photo.info,100))}
+	 <div class="image_txt_ovr">
+     <div class="feed_photo_descr ellip">{$photo_description}{$this->checkForTranslating($photo_description)}</div>   
+	 </div>
+	 {/if}
+		<div class="feed_image_fullsize">
+		<div class=" feed_collage_single_item_p">
+			{if $clubid > 0}
+		
+			<a href="/photo?q={$this->USER['id']}&clubid={b_encode($clubid)}&show=community-single&from=medium&o={b_encode($photo_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($photo_id)}" class="image-hover">
+				<img class="feed_single_img {if $is_gif}gifplayer{/if}" {if $is_gif}data-gif-id="gif-{$photo_id}" data-gif="/clubpicture?i={$photo_id}&size=large&clubid={$clubid}&corr=1" data-wait="true" data-playon="hover"{/if}  src="/clubpicture?i={$photo_id}&size=medium&clubid={$clubid}&corr=1">
+			
+			</a>
+		
+		{else}
+			
+			<a href="/photo?q={$res_u_photo.uid}&show=single&from=medium&o={b_encode($photo_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($photo_id)}" class="image-hover">
+				<img class="feed_single_img" src="/getPhoto?p={$photo_id}&sz=medium&feed=1">
+			</a>
+			
+			{/if}
+			
+	</div>
+	</div>
+            </div>
+		
+			
+			</div>
+        </div>
+	
+
+
+        <div class="feed_f">
+			{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+
+    </div>
+</div>
+
+<script>
+var $feed_id = '{$res.id}', $itemid = '{$photo_id}', $author_id = '{$res_u_photo.uid}', clubid = '{$clubid}';
+{literal}
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget ' + ( clubid ? 'incommunity' : '')).attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'photo',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+
+{/if}
+{/strip}

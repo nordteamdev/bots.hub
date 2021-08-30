@@ -1,0 +1,39 @@
+        <div class="hook jbox_wall_alb_photos" id="hook_Form_AttachDialogFormForm">
+            <form data-module="AttachPicker" data-attach-type="PHOTOODKL" data-object-id="" data-single="false" data-use-local-storage="true" action="/feed?st.cmd=userMain&amp;cmd=AttachDialog" method="post">
+                <div id="hook_PhotosBatchOp_1990872576" data-submit-name="button_attach" data-photos-count="0" data-limit="12" class="photo-sc">
+                    <div id="hook_Block_AttachDialogPhotoPicker" class="hookBlock">
+                        <div class="photo-sc_w">
+                            <div id="photosBatchOpLoaderContent">
+							
+{if !$opa}
+<div class="jbox_alb_nam_hd">{$query.0.name}</div>
+{else}
+<div class="jbox_alb_nam_hd">{$this->lang['p_photos']}</div>
+{/if}
+							
+                                <ul class="photo-sc_grid photo-sc_grid__remove-action">
+
+				{foreach $query as $res}
+{if $c == 0}
+
+
+{/if}
+                                    <li uid="jbx_attch_ph_sel" id="photosBatchOpLi_{$res.id}" class="photo-sc_grid_i show-on-hover">
+                                        <div class="ucard-b __l">
+                                            <div class="ucard-b_img">
+                                                <div class="photo-crop">
+                                                    <div class="photo-crop_cnt selectable-card" data-pid="{$res.id}">
+							<img src="/getPhoto?p={$res.id}&sz=thumb" class="photo-crop_img"><span class="selectable-card_ovr"></span><span class="selectable-card_ic"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+{assign $c $c++ nocache}
+				  {/foreach}
+
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>

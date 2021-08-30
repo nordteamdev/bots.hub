@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Video & Audio Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Video & Audio Chat Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <label for="video_chat">Video Call</label>
+                        <div class="form-group">
+                            <input type="radio" name="video_chat" id="video_chat-enabled" value="1" <?php echo ($wo['config']['video_chat'] == 1) ? 'checked': '';?>>
+                            <label for="video_chat-enabled">Enabled</label>
+                            <input type="radio" name="video_chat" id="video_chat-disabled" value="0" <?php echo ($wo['config']['video_chat'] == 0) ? 'checked': '';?>>
+                            <label for="video_chat-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="audio_chat">Audio Call</label>
+                        <div class="form-group">
+                            <input type="radio" name="audio_chat" id="audio_chat-enabled" value="1" <?php echo ($wo['config']['audio_chat'] == 1) ? 'checked': '';?>>
+                            <label for="audio_chat-enabled">Enabled</label>
+                            <input type="radio" name="audio_chat" id="audio_chat-disabled" value="0" <?php echo ($wo['config']['audio_chat'] == 0) ? 'checked': '';?>>
+                            <label for="audio_chat-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <div>
+                        	To start using this feature, you'll need to create an account in Twilio and buy "Programmable Video" product.
+                        </div>
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="video_accountSid" name="video_accountSid" class="form-control" value="<?php echo $wo['config']['video_accountSid'];?>">
+                                <label class="form-label">Live accountSid</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="video_apiKeySid" name="video_apiKeySid" class="form-control" value="<?php echo $wo['config']['video_apiKeySid'];?>">
+                                <label class="form-label">apiKeySid</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="password" id="video_apiKeySecret" name="video_apiKeySecret" class="form-control" value="<?php echo $wo['config']['video_apiKeySecret'];?>">
+                                <label class="form-label">apiKeySecret</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_email_settings = $('form.email-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.email-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

@@ -1,0 +1,46 @@
+<div class="container {{CONTAINER_SIZE}} {{CONTENT_CONTAINER}}">
+  <div class="footer-container {{CONTAINER_SIZE}}">
+    <div class="footer-links pull-left">
+      <ul>
+        <li class="footer-link">
+          <a href="{{LINK terms/terms}}">{{LANG terms_of_use}}</a>
+        </li>
+        <li class="footer-link">
+          <a href="{{LINK terms/privacy-policy}}">{{LANG privacy_policy}}</a>
+        </li>
+        <li class="footer-link">
+          <a href="{{LINK terms/about-us}}">{{LANG about_us}}</a>
+        </li>
+
+        <?php if (!empty($fl['page']) && $fl['page'] == 'home'): ?>
+        <li class="footer-link">
+          <a href="{{LINK feeds}}/rss" class="rss-home">
+              RSS <i class="fa fa-rss"></i>
+          </a>
+        </li>
+        <?php endif ?> 
+        <li class="dropdown dropup ">
+           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{LANG language}} <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu" role="menu">
+               <?php
+                   $langs = FL_GetLanguages();
+                   if (count($langs) > 0) {
+                       foreach ($langs as $key => $fl['langs']) {
+                         $lang_file = explode('.php', $fl['langs']);
+                         $language = $lang_file[0];
+                         $languages_name = ucfirst($language);
+                         $link = '?lang=' . $language;
+                    ?>
+                   <li><a href="<?php echo $link;?>" rel="nofollow"><?php echo $languages_name;?></a></li>
+                   <?php } } ?>
+           </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-copyright pull-right footer-link">
+      <p>{{LANG copyright}} <a href="{{CONFIG site_url}}">{{CONFIG name}}</a> {{LANG all_right}}</p> 
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

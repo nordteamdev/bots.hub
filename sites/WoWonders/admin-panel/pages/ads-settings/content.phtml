@@ -1,0 +1,123 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Advertisements > Advertisements System Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Advertisements Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success ads-settings-alert"></div>
+                    <form class="ads-settings" method="POST">
+                        <label for="user_ads">Advertisements System <span class="black" data-toggle="popover" data-trigger="hover" data-content="Allow users to create ads."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="user_ads" id="user_ads-enabled" value="1" <?php echo ($wo['config']['user_ads'] == 1) ? 'checked': '';?>>
+                            <label for="user_ads-enabled">Enabled</label>
+                            <input type="radio" name="user_ads" id="user_ads-disabled" value="0" <?php echo ($wo['config']['user_ads'] == 0) ? 'checked': '';?>>
+                            <label for="user_ads-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="ad_v_price" name="ad_v_price" class="form-control" value="<?php echo $wo['config']['ad_v_price'];?>">
+                                <label class="form-label">Cost by View (Per Ad)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="ad_c_price" name="ad_c_price" class="form-control" value="<?php echo $wo['config']['ad_c_price'];?>">
+                                <label class="form-label">Cost by Click (Per Ad)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="video_ad_skip" name="video_ad_skip" class="form-control" value="<?php echo $wo['config']['video_ad_skip'];?>">
+                                <label class="form-label">Video ads skip button seconds</label>
+                            </div>
+                        </div>
+                        <label for="ads_currency">Currency</label>
+                        <select class="form-control show-tick" id="ads_currency" name="ads_currency">
+                          <option value="USD" <?php echo ($wo['config']['ads_currency'] == 'USD')  ? ' selected': '';?>>USD</option>
+                          <option value="EUR" <?php echo ($wo['config']['ads_currency'] == 'EUR')  ? ' selected': '';?>>EUR</option>
+                          <option value="JPY" <?php echo ($wo['config']['ads_currency'] == 'JPY')  ? ' selected': '';?>>JPY</option>
+                          <option value="TRY" <?php echo ($wo['config']['ads_currency'] == 'TRY')  ? ' selected': '';?>>TRY</option>
+                          <option value="GBP" <?php echo ($wo['config']['ads_currency'] == 'GBP')  ? ' selected': '';?>>GBP</option>
+                          <option value="RUB" <?php echo ($wo['config']['ads_currency'] == 'RUB')  ? ' selected': '';?>>RUB</option>
+                          <option value="PLN" <?php echo ($wo['config']['ads_currency'] == 'PLN')  ? ' selected': '';?>>PLN</option>
+                          <option value="ILS" <?php echo ($wo['config']['ads_currency'] == 'ILS')  ? ' selected': '';?>>ILS</option>
+                          <option value="BRL" <?php echo ($wo['config']['ads_currency'] == 'BRL')  ? ' selected': '';?>>BRL</option>
+                          <option value="INR" <?php echo ($wo['config']['ads_currency'] == 'INR')  ? ' selected': '';?>>INR</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Top Up <?php echo $wo['user']['name'] ?>'s Wallet</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success top-up-settings-alert"></div>
+                    <form class="top-up-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="amount" name="amount" class="form-control" value="<?php echo $wo['user']['wallet'];?>">
+                                <label class="form-label">Amount</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Top Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_ads_settings = $('form.ads-settings');
+    form_ads_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_ads_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_ads_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.ads-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.ads-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_top_settings = $('form.top-up-settings');
+    form_top_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=top_up_wallet',
+        beforeSend: function() {
+            form_top_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.top-up-settings-alert').html('<i class="fa fa-check"></i> Amount added to your wallet successfully');
+                setTimeout(function () {
+                    $('.top-up-settings-alert').empty();
+                }, 2000);
+            }
+            form_top_settings.find('.waves-effect').text('Save');
+        }
+    });
+});
+</script>

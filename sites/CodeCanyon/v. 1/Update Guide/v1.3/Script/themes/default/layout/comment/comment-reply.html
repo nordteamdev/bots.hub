@@ -1,0 +1,20 @@
+<div class="fl-comment-item" data-reply-item="{{REPLY_ID}}">
+	<div class="fl-comment-item-img"> 
+		<img src="{{REPLY_USER_AVATAR}}" alt="" class="responsive-img">
+	</div>
+	<div class="comment_right_part">
+		<div class="fl-comment-item-cont">
+			<div>
+				<a href="{{REPLY_USER_URL}}">{{REPLY_USER_NAME}} {{USER_VERIFIED}}</a><span class="dot">•</span><time>{{REPLY_TIME}}</time>
+				<?php if ($fl['reply']['owner']): ?>
+					<span class="pull-right pointer delete-comment" onclick="FL_DeleteReply('{{REPLY_ID}}');">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+					</span>
+				<?php endif ?>
+			</div>
+			<p>{{REPLY_TEXT}}</p>
+			<span class="pointer comms-reply" onclick="$('#comm-reply-{{COMM_ID}}').removeClass('hidden').find('input').val('@{{REPLY_USER_NAME}}: ').focus().scrollTo();"><small><i class="fa fa-fw fa-reply"></i>  {{LANG reply}}</small></span>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,45 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("movies/includes/header"); ?></div>
+		<div class="col-md-10 singlecol">
+			<div class="nav navbar-nav pull-right movies-search hidden-xs">
+				<div class="w100">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search" color="#384047"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+					<input type="text" placeholder="<?php echo $wo['lang']['search']; ?>" id="search-movies">
+				</div>
+				<ul class="search-result" id="search-movies-result">
+				</ul>
+			</div>
+			<div>
+				<ul class="breadcrumb movies-top-breadcrumb hidden-xs">
+					<li class="movies-subheadnav" data-movies="rec"><?php echo $wo['lang']['recommended']; ?></li>
+					<li class="movies-subheadnav" data-movies="new"><?php echo $wo['lang']['new']; ?></li>
+					<li class="movies-subheadnav" data-movies="mtw"><?php echo $wo['lang']['most_watched']; ?></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="movies row">
+				<div class="w100 movies-inner">
+					<?php if (count($wo['movies']) > 0): ?>
+						<?php foreach ($wo['movies'] as $wo['film']): ?>
+							<?php echo Wo_LoadPage("movies/includes/films-list"); ?>
+						<?php endforeach ?>
+					<?php else: ?>
+						<?php echo '<h5 class="search-filter-center-text"> '. $wo['lang']['no_movies_found'] .' </h5>';?>
+					<?php endif; ?>
+				</div>
+				<div class="col-md-12 col-lg-12 col-sm-12 col-sx-12">
+					<div class="posts_load">
+						<?php if (count($wo['movies']) > 26): ?>
+						<div class="load-more">
+							<button class="btn btn-default text-center pointer load-more-movies" data-movies-type="all">
+							<i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more'] ?></button>
+						</div>
+						<?php endif ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php echo Wo_LoadPage("movies/includes/footer"); ?>
+</div>

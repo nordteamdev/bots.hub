@@ -1,0 +1,299 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Site Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 float-left">
+            <div class="card">
+                <div class="header">
+                    <h2>Website Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="siteTitle" name="siteTitle" class="form-control" value="<?php echo $wo['config']['siteTitle']; ?>">
+                                <label class="form-label">Site Title</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="siteName" name="siteName" class="form-control" value="<?php echo $wo['config']['siteName']; ?>">
+                                <label class="form-label">Site Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="siteEmail" name="siteEmail" class="form-control" value="<?php echo $wo['config']['siteEmail']; ?>">
+                                <label class="form-label">Site E-mail</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="siteKeywords" name="siteKeywords" class="form-control" value="<?php echo $wo['config']['siteKeywords']; ?>">
+                                <label class="form-label">Site Keywords</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="siteDesc" id="siteDesc" class="form-control" cols="30" rows="5"><?php echo $wo['config']['siteDesc']; ?></textarea>
+                                <label class="form-label">Site Description</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 float-right">
+            <div class="card">
+                <div class="header">
+                    <h2>Other Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success other-settings-alert"></div>
+                    <form class="other-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="censored_words" name="censored_words" class="form-control" value="<?php echo $wo['config']['censored_words']?>">
+                                <label class="form-label">Censored Words <small>(Words to be censored, separated by a comma)</small></label>
+                            </div>
+                        </div><br>
+                        <label for="defualtLang">Default Language</label>
+                        <select class="form-control show-tick" id="defualtLang" name="defualtLang">
+                        	<?php
+                             foreach (Wo_LangsNamesFromDB() as $lang) {
+                                
+                               $languages = $lang;
+                                
+                               $languages_name = ucfirst(strtolower($languages));
+                                
+                               $selected_lang = ($languages == $wo['config']['defualtLang']) ? ' selected' : '';
+                                
+                             ?>
+                          <option value="<?php echo $languages;?>"<?php echo $selected_lang;?> ><?php echo $languages_name;?></option>
+                          <?php } ?>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="connectivitySystem">Connectivity System</label>
+                        <div class="form-group">
+                            <input type="radio" name="connectivitySystem" id="connectivitySystem-enabled" value="1" <?php echo ($wo['config']['connectivitySystem'] == 1) ? 'checked': '';?>>
+                            <label for="connectivitySystem-enabled">Friends System</label>
+                            <input type="radio" name="connectivitySystem" id="connectivitySystem-disabled" value="0" <?php echo ($wo['config']['connectivitySystem'] == 0) ? 'checked': '';?>>
+                            <label for="connectivitySystem-disabled" class="m-l-20">Follow System</label>
+                            <span class="help-block">
+                                <span style="color:red">Note</span>: If you change the system to another one, all existing followings, followers, friends will be deleted.
+                            </span>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" name="connectivitySystemLimit" class="form-control" value="<?php echo $wo['config']['connectivitySystemLimit']?>">
+                                <label class="form-label">Connectivity System Limit</label>
+                            </div>
+                        </div>
+                        <label for="update_user_profile">Update User Profile Sidebar Data (counts, followers, following..)</label>
+                        <select class="form-control show-tick" id="update_user_profile" name="update_user_profile">
+                          <option value="30" <?php echo ($wo['config']['update_user_profile'] == 30)   ? ' selected' : '';?> >Every 30 seconds</option>
+                          <option value="120" <?php echo ($wo['config']['update_user_profile'] == 120)   ? ' selected' : '';?> >Every 2 minutes</option>
+                          <option value="3600" <?php echo ($wo['config']['update_user_profile'] == 3600)   ? ' selected' : '';?> >Every 1 hour</option>
+                          <option value="7200" <?php echo ($wo['config']['update_user_profile'] == 7200)   ? ' selected' : '';?> >Every 2 hours</option>
+                          <option value="43200" <?php echo ($wo['config']['update_user_profile'] == 43200)   ? ' selected' : '';?> >Every 12 hours</option>
+                          <option value="86400" <?php echo ($wo['config']['update_user_profile'] == 86400)   ? ' selected' : '';?> >Every 24 hours</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="cache_sidebar">Cache home page sidebar</label>
+                        <select class="form-control show-tick" id="cache_sidebar" name="cache_sidebar">
+                          <option value="1" <?php echo ($wo['config']['cache_sidebar'] == 1)   ? ' selected' : '';?> >Update home page sidebar data every 2 minutes (faster load)</option>
+                          <option value="0" <?php echo ($wo['config']['cache_sidebar'] == 0)   ? ' selected' : '';?> >Never cache, always fetch new data</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="second_post_button">Second Post Reaction</label>
+                        <select class="form-control show-tick" id="second_post_button" name="second_post_button">
+                          <option value="wonder" <?php echo ($wo['config']['second_post_button'] == 'wonder')   ? ' selected' : '';?> >Wonder</option>
+                          <option value="dislike" <?php echo ($wo['config']['second_post_button'] == 'dislike')   ? ' selected' : '';?> >Dislike</option>
+                          <option value="reaction" <?php echo ($wo['config']['second_post_button'] == 'reaction')   ? ' selected' : '';?> >Reaction System</option>
+                          <option value="disabled" <?php echo ($wo['config']['second_post_button'] == 'disabled')   ? ' selected' : '';?> >Disable Button (just Like)</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="date_style">Date Style</label>
+                        <select class="form-control show-tick" id="date_style" name="date_style">
+                          <option value="m/d/y" <?php if($wo['config']['date_style'] == 'm/d/y'){echo 'selected';};?> >mm/dd/yy</option>
+                          <option value="d/m/y" <?php if($wo['config']['date_style'] == 'd/m/y'){echo 'selected';};?> >dd/mm/yy</option>
+                          <option value="y/m/d" <?php if($wo['config']['date_style'] == 'y/m/d'){echo 'selected';};?> >yy/mm/dd</option>
+                          <option value="M-d-y" <?php if($wo['config']['date_style'] == 'M-d-y'){echo 'selected';};?> >mmm-dd-yy</option>      
+                          <option value="d-F-y" <?php if($wo['config']['date_style'] == 'd-F-y'){echo 'selected';};?> >dd-mmmm-yy</option>
+                          <option value="Y/m/d" <?php if($wo['config']['date_style'] == 'Y/m/d'){echo 'selected';};?> >yyyy/mm/dd</option> 
+                          <option value="d-M-Y" <?php if($wo['config']['date_style'] == 'd-M-Y'){echo 'selected';};?> >dd-mmm-yyyy</option>
+                          <option value="d-F-Y" <?php if($wo['config']['date_style'] == 'd-F-Y'){echo 'selected';};?> >dd-mmmm-yyyy</option>
+                        </select>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 float-left">
+            <div class="card">
+                <div class="header">
+                    <h2>API Keys & Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success api-settings-alert"></div>
+                    <form class="api-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="google_map_api" name="google_map_api" class="form-control" value="<?php echo $wo['config']['google_map_api']?>">
+                                <label class="form-label">Google Map API</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="yandex_translation_api" name="yandex_translation_api" class="form-control" value="<?php echo $wo['config']['yandex_translation_api']?>">
+                                <label class="form-label">Yandex Translation API</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="giphy_api" name="giphy_api" class="form-control" value="<?php echo $wo['config']['giphy_api']?>">
+                                <label class="form-label">Giphy API</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="googleAnalytics" id="googleAnalytics" class="form-control" cols="30" rows="5"><?php echo $wo['config']['googleAnalytics']; ?></textarea>
+                                <label class="form-label">Google Analytics Code</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+         <div class="col-lg-6 col-md-6 float-left">
+            <div class="card">
+                <div class="header">
+                    <h2>Post Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success post-settings-alert"></div>
+                    <form class="post-settings" method="POST">
+                        <label for="maxCharacters">Max Allowed Characters Length</label>
+                        <select class="form-control show-tick" id="maxCharacters" name="maxCharacters">
+                          <option value="80"   <?php echo ($wo['config']['maxCharacters'] == 80) ? ' selected': '';?>>80 Characters</option>
+                          <option value="160"  <?php echo ($wo['config']['maxCharacters'] == 160) ? ' selected': '';?>>160 Characters</option>
+                          <option value="320"  <?php echo ($wo['config']['maxCharacters'] == 320) ? ' selected': '';?>>320 Characters</option>
+                          <option value="640"  <?php echo ($wo['config']['maxCharacters'] == 640) ? ' selected': '';?>>640 Characters</option>
+                          <option value="1280" <?php echo ($wo['config']['maxCharacters'] == 1280) ? ' selected': '';?>>1280 Characters</option>
+                          <option value="5000" <?php echo ($wo['config']['maxCharacters'] == 5000) ? ' selected': '';?>>5000 Characters</option>
+                          <option value="10000" <?php echo ($wo['config']['maxCharacters'] == 10000) ? ' selected': '';?>>Unlimited</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="order_posts_by">View Home Page Posts</label>
+                        <select class="form-control show-tick" id="order_posts_by" name="order_posts_by">
+                            <option value="1" <?php echo ($wo['config']['order_posts_by'] == 1)   ? ' selected' : '';?> >Default (Show what user is following)</option>
+                            <option value="0" <?php echo ($wo['config']['order_posts_by'] == 0)   ? ' selected' : '';?> >All posts</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="post_limit" name="post_limit" class="form-control" value="<?php echo $wo['config']['post_limit']?>">
+                                <label class="form-label">Post Limit For Per User p/hour</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_site_settings = $('form.site-settings');
+    form_site_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_site_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_site_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.site-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.site-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_post_settings = $('form.post-settings');
+    form_post_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_post_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_post_settings.find('.waves-effect').text('Save');
+                $('.post-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.post-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_other_settings = $('form.other-settings');
+    form_other_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_other_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_other_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.other-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.other-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_api_settings = $('form.api-settings');
+    form_api_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_api_settings.find('.waves-effect').text('Please wait..');
+
+        },
+        beforeSubmit : function(arr, $form, options){
+          arr.splice(3, 1);
+          arr.push({name:'googleAnalytics_en', value:btoa($('#googleAnalytics').val())})
+       },
+        success: function(data) {
+            if (data.status == 200) {
+                form_api_settings.find('.waves-effect').text('Save');
+                $('.api-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.api-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

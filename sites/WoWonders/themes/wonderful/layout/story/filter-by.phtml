@@ -1,0 +1,12 @@
+<ul class="list-group filterbyz" style="margin-bottom: 10px;">
+<li class="list-group-item" style="display:none"></li>
+<li class="list-group-item avtive filter-by-li" onclick="Wo_FilterPostBy('all');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['all']; ?>"><span class="zmdi zmdi-apps"></span></li>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('text');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['text']; ?>"><span class="zmdi zmdi-text-format" style="color: #2196F3;"></span></li>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('photos');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['photos']; ?>"><span class="zmdi zmdi-image" style="color: #FF9800;"></span></li>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('video');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['videos']; ?>"><span class="zmdi zmdi-videocam" style="color: #673AB7;"></span></li>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('music');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['sounds']; ?>"><span class="zmdi zmdi-audio" style="color: #E91E63;"></span></li>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('files');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['files']; ?>"><span class="zmdi zmdi-file" style="color: #607D8B;"></span></li>
+<?php if ($wo['config']['google_map'] == 1) { ?>
+<li class="list-group-item filter-by-li" onclick="Wo_FilterPostBy('maps');" dir="auto" data-toggle="tooltip" title="<?php echo $wo['lang']['maps']; ?>"><span class="zmdi zmdi-pin" style="color: #FF5722;"></span></li>
+<?php } ?>
+</ul>

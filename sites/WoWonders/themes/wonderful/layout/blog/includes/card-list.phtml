@@ -1,0 +1,27 @@
+<div class="col-md-6 col-lg-6 col-sm-6 col-sx-12 wo_h_padd" data-blog-id="<?php echo $wo['article']['id']; ?>">
+	<div class="blog-h-list">
+		<a href="<?php echo $wo['article']['url']; ?>" data-ajax="?link1=read-blog&id=<?php echo $wo['article']['id']; ?>">
+			<img src="<?php echo $wo['article']['thumbnail']; ?>" alt="<?php echo $wo['article']['title']; ?>">
+		</a>
+		<div class="blog-h-desc">
+			<h5><a class="main postCategory" href="<?php echo $wo['article']['category_link']; ?>" data-ajax="?link1=blog-category&id=<?php echo $wo['article']['category']; ?>"><?php echo $wo['page_categories'][$wo['article']['category']]; ?></a></h5>
+			<h4 class="art-title" >
+				<a href="<?php echo $wo['article']['url']; ?>" title="<?php echo $wo['article']['title']; ?>"><?php echo $wo['article']['title']; ?></a>
+			</h4>
+			<p class="desc">
+				<?php 
+				$desc = str_replace('<br>', '', $wo['article']['description']);
+				echo $desc = mb_substr($desc, 0, 200, "UTF-8") . ".."; ?>
+			</p>
+			<br>
+			<p class="blog-meta-desc">
+				<span class="<?php echo Wo_RightToLeft('pull-left');?>">
+					<i><?php echo $wo['lang']['by'] ?></i> <a href="<?php echo $wo['article']['author']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['article']['author']['username']; ?>"><?php echo $wo['article']['author']['name']; ?></a>
+				</span>
+				<span class="<?php echo Wo_RightToLeft('pull-right');?>">
+					<?php echo date("d M Y",$wo['article']['posted']); ?>
+				</span>
+			</p>
+		</div>
+	</div>
+ </div>

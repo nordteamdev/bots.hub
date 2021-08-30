@@ -1,0 +1,164 @@
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/tinymce/js/tinymce/tinymce.min.js"></script>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Announcements</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Announcements</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success announcement-settings-alert"></div>
+                    <form class="announcement-settings" method="POST">
+                      <label class="form-label">Create New Announcement (HTML Allowed)</label>
+                    	<div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="announcement_text" id="announcement_text" class="form-control" cols="30" rows="10"></textarea>
+                                
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Create</button>
+                    </form>
+                    <div class="page-margin">
+			            <hr>
+			            <h5>Active Announcements</h5>
+			            <div class="active-announcements announcements">
+			               <?php
+			                  $activeAnnouncements = Wo_GetActiveAnnouncements();
+			                  
+			                  if (count($activeAnnouncements) < 1) {
+			                    
+			                    echo '<h5 class="no-active-announcements"><small>There are no active announcements.</small></h5>';
+			                  } else {
+			                  foreach ($activeAnnouncements as $wo['activeAnnouncement']) {
+			                  
+			                     echo Wo_LoadAdminPage('manage-announcements/active-list');
+			                     
+			                  }
+			                  }
+			                  ?>
+			            </div>
+			         </div>
+			         <div class="page-margin">
+			            <hr>
+			            <h5>Inactive Announcements</h5>
+			            <div class="inactive-announcements announcements">
+			               <?php 
+			                  $inactiveAnnouncements = Wo_GetInactiveAnnouncements();
+			                  
+			                   if (count($inactiveAnnouncements) < 1) {
+			                    
+			                    echo '<h5 class="no-inactive-announcements"><small>There are no inactive announcements.</small></h5>';
+			                  } else {
+			                  foreach ($inactiveAnnouncements as $wo['inactiveAnnouncement']) {
+			                  
+			                     echo Wo_LoadAdminPage('manage-announcements/inactive-list');
+			                     
+			                  } 
+			                  }
+			                  ?>
+			            </div>
+			         </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_announcement_settings = $('form.announcement-settings');
+    form_announcement_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=add_new_announcement',
+        beforeSend: function() {
+            form_announcement_settings.find('.waves-effect').text('Please wait..');
+        },
+        beforeSubmit : function(arr, $form, options){
+          arr.splice(0, 1);
+          tinymce.get("announcement_text").setContent(tinymce.activeEditor.getContent());
+          document.getElementById("announcement_text").value=tinymce.activeEditor.getContent();
+          arr.push({name:'announcement_text', value:btoa(unescape(encodeURIComponent($('#announcement_text').val())))})
+        },
+        success: function(data) {
+        	if (data.status == 200) {
+	            $('.no-active-announcements').hide(100);
+	            $('.active-announcements').prepend(data.text);
+	            form_announcement_settings.find('.waves-effect').text('Create');
+	        }
+        }
+    });
+    tinymce.init({
+      selector: '#announcement_text',
+      height: 270,
+      entity_encoding : "raw",
+      paste_data_images: true,
+      image_advtab: true,
+      toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+      toolbar2: "print preview media | forecolor backcolor",
+      plugins: [
+          "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+          "searchreplace wordcount visualblocks visualchars code fullscreen",
+          "insertdatetime media nonbreaking save table contextmenu directionality",
+          "template paste textcolor colorpicker textpattern"
+        ],
+  });
+});
+
+function Wo_DeleteAnnouncement(id) {
+   var announcement_container = $('.announcements').find('.announcement-' + id);
+   $.get(Wo_Ajax_Requests_File(), {
+      f: 'admin_setting',
+      s: 'delete_announcement',
+      id: id
+   }, function (data) {
+      if (data.status == 200) {
+         announcement_container.slideUp(200, function () {
+            $(this).remove();
+         });
+      }
+   });
+}
+
+function Wo_DisableAnnouncement(id) {
+   var announcement_container = $('.active-announcements').find('.announcement-' + id);
+   var inactiveannouncement_container = $('.inactive-announcements');
+   $.get(Wo_Ajax_Requests_File(), {
+      f: 'admin_setting',
+      s: 'disable_announcement',
+      id: id
+   }, function (data) {
+      if (data.status == 200) {
+         announcement_container.slideUp(200, function () {
+            $(this).remove();
+         });
+         if (data.html.length != 0) {
+            $('.no-inactive-announcements').hide(100);
+            inactiveannouncement_container.prepend(data.html);
+         }
+      }
+   });
+}
+
+function Wo_ActivateAnnouncement(id) {
+   var announcement_container = $('.inactive-announcements').find('.announcement-' + id);
+   var activeannouncement_container = $('.active-announcements');
+   $.get(Wo_Ajax_Requests_File(), {
+      f: 'admin_setting',
+      s: 'activate_announcement',
+      id: id
+   }, function (data) {
+      if (data.status == 200) {
+         announcement_container.slideUp(200, function () {
+            $(this).remove();
+         });
+         if (data.html.length != 0) {
+            activeannouncement_container.prepend(data.html);
+         }
+      }
+   });
+}
+</script>

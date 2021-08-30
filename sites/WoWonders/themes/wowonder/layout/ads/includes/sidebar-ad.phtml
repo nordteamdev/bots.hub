@@ -1,0 +1,21 @@
+<ul class="list-group sidebar-ad-wrapper pointer rads-<?php echo $wo['sidebar-ad']['bidding']; ?>" id="<?php echo $wo['sidebar-ad']['id']; ?>">
+    <li class="sidebar-ad-header sidebar-title-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #FF9800;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><?php echo $wo['lang']['sponsored'] ?>
+    </li>
+    <div class="sidebar-ad-body">
+        <img src="<?php echo $wo['sidebar-ad']['ad_media']; ?>" alt="Picture">
+    </div>
+    <div class="sidebar-ad-footer">
+        <p class="ad-title">
+            <?php echo $wo['sidebar-ad']['headline']; ?>
+        </p>
+        <p class="small ad-descrition ">
+            <?php echo $wo['sidebar-ad']['description']; ?>
+        </p>
+        <time>
+            <a href="<?php  echo $wo['sidebar-ad']['url'];?>" class="main" target="_blank">
+                <?php echo Wo_UrlDomain($wo['sidebar-ad']['url']); ?>
+            </a>
+        </time>
+    </div>
+</ul>

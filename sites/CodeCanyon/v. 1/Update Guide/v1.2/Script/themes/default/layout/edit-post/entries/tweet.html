@@ -1,0 +1,23 @@
+<div class="entry" data-type="tweet" data-id="{{ENTRY_ID}}" id="entry-{{ENTRY_ID}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-twitter"></i> 
+	   {{LANG tweet}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_ID}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_ID}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntryByID({{ENTRY_ID}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}" value="{{ENTRY_TITLE}}"><br>
+	<input type="text" id="tweet-url" class="form-control" data-name="entry_tweet_url" placeholder="{{LANG tweet_url}}" value="{{ENTRY_TWEET_URL}}"><br>
+	<input type="hidden" class="form-control" data-name="entry_tweet" value="{{ENTRY_TWEET_URL}}">
+	<div class="fetched-tweet" style="margin-left: 8px !important;">{{ENTRY_TWEET}}</div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-blue" type="button" onclick="FL_GetTweet({{ENTRY_ID}});">
+		  <i class="fa fa-twitter progress-icon" data-icon="twitter"></i> {{LANG get_tweet}}
+	    </button>
+	</div>
+	<div class="clear"></div>
+</div>

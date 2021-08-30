@@ -1,0 +1,122 @@
+{strip}
+ 
+<div id="hide_left_menu" class="__none"></div>
+ 
+
+
+
+
+<div id="mainContentContentColumn" class="full">
+
+<div id="middleColumn">
+
+<div class="pgdetails_item_name"><span class="page_details_ic">{$ic}</span><h1>{$r.title}</h1>
+
+<div class="fl_r">
+{if $type == 'movie'}
+<div class="page_num_count_liked"><strong>{$this->getUserCountLikedPage($r.id,$type,false)}</strong>&nbsp;{$this->lang['count_people_watched_movie']}.</div>
+{else if $type == 'book'}
+<div class="page_num_count_liked"><strong>{$this->getUserCountLikedPage($r.id,$type,false)}</strong>&nbsp;{$this->lang['count_people_read_book']}.</div>
+{/if}
+
+<div class="ratings_ul_sys">
+<ul class="page_rating_stars" rel="start-rating" data-rating='{ldelim}"item_id":"{$r.id}","stars":"5","static":"{$this->checkItemIsRatedByMe($r.id,$type)}","current_stars":"{$this->getItemStars($r.id,$type)}","item_type":"{$type}"{rdelim}'></ul>
+<div class="rating_sys_count div-loader"></div>
+</div>
+
+</div>
+</div>
+
+<div class="pgdetails_cover_left fl_l">
+<img src="{$cover}" onload="ga('.btnaddremovepage').width(ga(this).width());" border="1"/>
+
+<div>
+<button title="{$this->lang['delete_from_my_collection']}" {if !$is_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-remove" rel="{$r.id}" rel-categ="{$type}" data-send='{ldelim}"id":"{$r.id}","type":"{$type}","cover":"{$r.cover}","title":"{urlencode($r.title)}","page_id":"{$r.page_id}"{rdelim}' onclick="removeItemPgFromMyColl(this,event);" class="block btnaddremovepage ellip mt10 flat_button button_wide secondary"><i class="icofont icofont-ui-remove">&#xed5c;</i>&nbsp;{$this->lang['delete_from_my_collection']}</button>
+ 
+<button title="{$this->lang['add_to_my_collection']}" {if $is_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-add" rel="{$r.id}" rel-categ="{$type}" data-send='{ldelim}"id":"{$r.id}","type":"{$type}","cover":"{$r.cover}","title":"{urlencode($r.title)}","page_id":"{$r.page_id}"{rdelim}' onclick="addItemPgToMyColl(this,event);" class="block btnaddremovepage ellip mt10 flat_button button_wide"><i class="icofont icofont-plus">&#xf0a5;</i>&nbsp;{$this->lang['add_to_my_collection']}</button>
+</div>
+
+</div>
+
+
+
+<div class="pgdetails_info_left">
+
+
+{if $type == 'book'}
+<ul>
+
+{if $page_data.authors != ''}
+<li><a class="book_author_bold" href="//{$this->USER['language']}.wikipedia.org/wiki/{$page_data.authors}" target="_blank">{$page_data.authors}</a></li>
+{/if}
+
+
+{if $page_data.publisher != ''}
+<li><span class="pgdetails_about_label">{$this->lang['book_published_by']}:</span><span class="pgdetails_about_label_str">{$page_data.publisher}</span></li>
+{/if}
+
+
+{if $page_data.publish_date != ''}
+<li><span class="pgdetails_about_label">{$this->lang['book_published_date']}:</span><span class="pgdetails_about_label_str">{$page_data.publish_date}</span></li>
+{/if}
+
+
+{if $page_data.pageCount != ''}
+<li><span class="pgdetails_about_label">{$this->lang['book_page_count']}:</span><span class="pgdetails_about_label_str">{$page_data.pageCount}&nbsp;<span>{$this->lang['book_pages']}</span></span></li>
+{/if}
+
+
+{if $page_data.categories != ''}
+<li><span class="pgdetails_about_label">{$this->lang['book_categories']}:</span><span class="pgdetails_about_label_str">{$page_data.categories}</span></li>
+{/if}
+
+
+
+{if $page_data.textSnippet != ''}
+{if $page_data.description != ''}
+<li id="show_book_description" class="__none"><span class="pgdetails_about_label_str book_descr _replies__highlight">{$page_data.description}</span></li>
+{/if}
+<li id="book_textSnippet"><span class="pgdetails_about_label_str book_descr">{$page_data.textSnippet} {if $page_data.description != ''}&nbsp;<a class="bold f12" onclick="document.getElementById('show_book_description').classList.remove('__none');document.getElementById('book_textSnippet').style.display='none';" href="javascript:void(0);">{$this->lang['Read_more']}</a>{/if}</span></li>
+{/if}
+
+</ul>
+{else if $type == 'movie'}
+<ul>
+
+{if $page_data.release_date != ''}
+<li><span class="pgdetails_about_label">{$this->lang['movie_released_date']}:</span><span class="pgdetails_about_label_str">{$page_data.release_date}</span></li>
+
+{/if}
+
+{if $page_data.overview != ''}
+<li id="book_textSnippet"><span class="pgdetails_about_label_str book_descr">{$page_data.overview}</span></li>
+{/if}
+
+</ul>
+{/if}
+
+
+</div> 
+ 
+ 
+
+</div>
+
+
+
+
+ 
+
+
+
+</div>
+
+
+
+
+ 
+
+
+
+
+{/strip}

@@ -1,0 +1,211 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    <!-- Widgets -->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-light-green hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL USERS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('user'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-cyan hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">border_color</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL POSTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('posts'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-pink hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">flag</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL PAGES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('page'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-orange hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">supervisor_account</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL GROUPS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('group'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-purple hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="content">
+                    <div class="text">ONLINE USERS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountOnlineData(); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">comment</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL COMMENTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('comments'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-red hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">videogame_asset</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL GAMES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('games'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-indigo hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">message</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL MESSAGES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('messages'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+        <!-- Bar Chart -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>STATICS</h2>
+                </div>
+                <div class="body">
+                    <div id="admin-chart-container" style="min-width: 100%; height: 400px; margin: 0 auto;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Bar Chart -->
+    </div>
+</div>
+<?php 
+$percentage = (30 / 58) * 100;
+//echo $percentage . "%";
+$user_statics = array();
+$page_statics = array();
+$groups_statics = array();
+$posts_statics = array();
+$months = array('1','2','3','4','5','6','7','8','9','10','11','12');
+// user_statics
+foreach ($months as $value) {
+   $user_statics[] = Wo_GetRegisteredDataStatics($value, 'user');
+}
+$user_statics = implode(', ', $user_statics);
+
+// page_statics
+foreach ($months as $value) {
+   $page_statics[] = Wo_GetRegisteredDataStatics($value, 'page');
+}
+$page_statics = implode(', ', $page_statics);
+
+// groups_statics
+foreach ($months as $value) {
+   $groups_statics[] = Wo_GetRegisteredDataStatics($value, 'group');
+}
+$groups_statics = implode(', ', $groups_statics);
+
+foreach ($months as $value) {
+   $posts_statics[] = Wo_GetRegisteredDataStatics($value, 'posts');
+}
+$posts_statics = implode(', ', $posts_statics);
+?>
+<script>
+   $(function () {
+    Highcharts.setOptions({
+      colors: ['#4c75a3', '#ce3d3d', '#f2b92b', '#6abd46']
+    });
+    $('#admin-chart-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '<?php echo date("Y");?>'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '<?php echo $wo["lang"]["users"]?>',
+            data: [<?php echo $user_statics;?>]
+
+        }, {
+            name: '<?php echo $wo["lang"]["pages"]?>',
+            data: [<?php echo $page_statics;?>]
+
+        }, {
+            name: '<?php echo $wo["lang"]["groups"]?>',
+            data: [<?php echo $groups_statics;?>]
+
+        }, {
+            name: '<?php echo $wo["lang"]["posts"]?>',
+            data: [<?php echo $posts_statics;?>]
+
+        }]
+    });
+});
+</script>

@@ -1,0 +1,22 @@
+<nav class="ads-navbar-wrapper" role="navigation" style="padding-right: 0px;">
+	<ul class="ads-nav list-unstyled">
+		<?php if ($wo['config']['user_ads'] == 1) { ?>
+			<li>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=ads'); ?>" data-ajax="?link1=ads" class="<?php echo ($wo['ap'] == 'ads') ? 'active' : ''; ?>"><?php echo $wo['lang']['my_campaigns']; ?></a>
+			</li>
+		<?php } ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=wallet'); ?>" data-ajax="?link1=wallet" class="<?php echo ($wo['ap'] == 'wallet') ? 'active' : ''; ?>"><?php echo $wo['lang']['my_wallet']; ?></a>
+		</li>
+		<!-- <li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=send_money'); ?>" data-ajax="?link1=send_money" class="<?php echo ($wo['ap'] == 'send') ? 'active' : ''; ?>"><?php echo $wo['lang']['send_money']; ?></a>
+		</li> -->
+		<li><hr></li>
+		<?php if ($wo['config']['user_ads'] == 1) { ?>
+			<li>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>" data-ajax="?link1=create-ads" class="<?php echo ($wo['ap'] == 'create') ? 'active' : ''; ?>"><?php echo $wo['lang']['create']; ?> <?php echo $wo['lang']['new']; ?></a>
+			</li>
+		<?php } ?>
+	</ul>
+	<div class="clear"></div>
+</nav>

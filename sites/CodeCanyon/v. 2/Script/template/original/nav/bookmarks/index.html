@@ -1,0 +1,276 @@
+{strip}
+{assign var=c_g value=0}
+
+
+			 
+			  
+
+<div id="mainContentContentColumn">
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+        <div id="hook_Block_AfterLoginRedirector" class="hookBlock"></div>
+        <div id="hook_Block_MiddleColumn" class="hookBlock">
+            <div id="middleColumn">
+			
+			
+			{if !$categ || $categ === 'users'}
+                <div  class="hookBlock">
+                    <div class="panelRounded">
+                        <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Bookmark_users']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+                        <div class="panelRounded_body">
+                            <ul class="cardsListsd33">
+			
+			{foreach $this->getBookmarkedItems('users') as $res}
+			{assign var="bku_status" value=$this->getUserPost($res.id)}
+			{if $c_g == 0} <div class="ar_sort3 bookmarkuser"> {/if}
+                                <li class="u_cardsList_li cardsList_li show-on-hover" data-bookmark="{$res.bid}" data-shortcut-inf='{ldelim}"uid":"{$res.id}","fn":"{$res.fullname}","ph":"{$res.profile_photo}"{rdelim}' onmouseover="shortcutActv(this)" id="gu_{$res.id}">
+                                    <div class="userCard">
+                                        <div class="card_main">
+
+					{if $bku_status.type == 'text'}
+                                            <div class="ust">
+                                                <div class="ust_tx"><a title="{$bku_status.text}" class="ust_a" data-post="1" href="/post?i={$bku_status.id}">{$bku_status.text}</a>
+                                                </div>
+                                            </div>
+					{else if $bku_status.type == 'song'}
+			{assign var="status_song_info" value=$this->getPostSongInfo($bku_status.text)}
+
+					<div class="ust">
+    <div class="ust_tx ust_music">
+        <div class="ust_music-cntrl" id="dv_pm_out_post_{$status_song_info.id}" onclick="return false;">
+	<i onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$status_song_info.path}","cover":"{$status_song_info.cover}","artist":"{$status_song_info.artist}","songname":"{$status_song_info.title}","albumname":"{$status_song_info.album}"{rdelim}' title="{$this->lang['play']}" id="pm_out_post_{$status_song_info.id}" class="ust_play"></i></div><a class="ust_a" href="/discussions/3/64546526877140" hrefattr="true" title="{$status_song_info.artist} - {$status_song_info.title}" rel="tipsy">{$status_song_info.artist} - {$status_song_info.title}</a>
+    </div>
+</div>
+
+					{/if}
+
+                                            <div class="card_wrp" data-show-shortcut="true">
+                                                <div class="photoWrapper">
+                                                    <a href="/user/{$res.id}" class="photoWrapper" hrefattr="true">
+                                                        <div><img src="/getPhoto?p={$res.profile_photo}&sz=thumb&g={$res.gender}" alt="" width="128" height="128">
+                                {if $this->getUserStatus($res.id)}<span class="ic-online"></span>{/if}
+								
+							
+								
+<span class="kn_shortcutmenu wh100">
+<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","bookmarkid":"{$res.bid}","ugender":"{$res.gender}","ulmen":{ldelim}"guest":"0","block":"1","unblock":"0","delete_bookmark":"1"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+</div></span>
+								
+                                                       </div>
+                                                    </a>
+							<!--
+                                                    <div class="gift-slider h-mod js-PresentPlay_place" data-place="GiftPresentHook" data-module="PresentSlider">
+                                                        <div style="background-image: url(http://dp.mycdn.me/getImage?photoId=804507620469&amp;type=1);" class="gift  __s">
+                                                            <a href="#" class="gift_a"></a><span class="gift_ico"></span></div>
+                                                    </div>-->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card_add">
+                                            <div class="ellip"><a href="/user/{$res.id}" class="ob" hrefattr="true">{$res.fullname}</a></div>
+											<span class="tCardTime">{$this->lang['added']}&nbsp;{$this->time_elapsed($res.badded)}</span></div>
+                                    </div>
+                                </li>
+								
+								
+			{if $c_g == 2} {$c_g = 0}</div>{else}
+					{$c_g = $c_g +1} {/if}				
+		{foreachelse}
+
+		<h3 class="n_guests">{$this->lang['no_bookmarked_users']}</h3>
+	
+		{/foreach}
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				{else if $categ === 'photos'}
+				
+				
+				
+				<div id="hook_Block_UserGuests" class="hookBlock">
+                    <div class="panelRounded">
+                        <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Bookmark_photos']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+                        <div class="panelRounded_body b_images">
+                            <ul class="cardsListsd33">
+							
+				{foreach $this->getBookmarkedItems('photos') as $res}
+				{if $c_g == 0} <div class="ar_sort3"> {/if}
+				<div class="bpitem" id="bpitem_{$res.bid}">
+				<li class="u_cardsList_li cardsList_li show-on-hover bookmarks_ph" data-bookmark="{$res.bid}" id="bk_{$res.bid}">
+				
+				<a class="image-hover" href="/photo?q={$res.powner_id}&show=single&from=medium&o={b_encode($res.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($res.id)}">
+				<img src="/getPhoto?p={$res.id}&sz=thumb" class="b_p_img" />
+				</a>
+				
+				<ul class="b_p_submenu">
+				<div class="p9">
+				<li class="b_p_li">
+				<A class="al" href="javascript:;" data-deletebookmark="{$res.bid}" onclick="{literal}var evt = event,that = this, bpitemid = '{/literal}{$res.bid}{literal}';confirm_act('{/literal}{$this->lang.remove_bookmark}{literal}?', function (e){deleteBookmark(evt,that,false,function(){ga('#bpitem_'+bpitemid).remove();});});{/literal}"><i class="vbl ic ic_delete"></i>
+				<span>{$this->lang.remove_bookmark}</span></a>
+				</li>
+				</div>
+				</ul>
+				</li>
+				<div class="b_p_subinfo">
+				
+
+				
+				<div class="b_p_subinfo_by">{$this->lang.photo_by} <span class="kn_shortcutmenu">
+				<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.powner_id}","uname":"{$res.powner_fn}","uphoto":"{$res.powner_p}","ugender":"{$res.powner_g}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.powner_id}"></div>
+				<a href="/user/{$res.powner_id}" class="ob" hrefattr="true">{$res.powner_fn}</a></span></div>
+				<div class="b_p_subinfo_added">{$this->lang.added} {$this->time_elapsed($res.badded)}</div>
+				</div>
+				</div>
+				{if $c_g == 2} {$c_g = 0}</div>{else}
+					{$c_g = $c_g +1} {/if}	
+				
+				{foreachelse}
+				<h3 class="n_guests">{$this->lang['no_bookmarked_photos']}</h3>
+				{/foreach}	
+				
+				</ul>
+				
+				</div>
+				</div></div>
+
+				{else if $categ === 'posts'}
+				
+				
+								<div id="hook_Block_UserGuests" class="hookBlock">
+                    <div class="panelRounded">
+                        <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Bookmark_posts']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+                        <div class="panelRounded_body b_images">
+                            <ul class="cardsListsd33">
+							
+			    {foreach $this->getBookmarkedItems('posts') as $res}
+				{if $c_g == 0} <div class="ar_sort3"> {/if}
+				
+				
+				<div class="bpitem" id="bpitem_{$res.bid}">
+				<li class="u_cardsList_li cardsList_li show-on-hover bookmarks_ph" data-bookmark="{$res.bid}" id="bk_{$res.bid}">
+				
+				<a href="/post?i={$res.id}" data-type-post="1">
+				<div class="b_post_img"><div class="b_post_ic"></div></div>
+				</a>
+				
+				<ul class="b_p_submenu">
+				<div class="p9">
+				<li class="b_p_li">
+				<a class="al" href="/post?i={$res.id}" data-type-post="1"><i class="search_bigph_label _faphoto fleft vbl mbright"></i><span>View post</span></a>
+				</li>
+				
+				<li class="b_p_li">
+				<A class="al" href="javascript:;" data-deletebookmark="{$res.bid}" onclick="{literal}var evt = event,that = this, bpitemid = '{/literal}{$res.bid}{literal}';confirm_act('{/literal}{$this->lang.remove_bookmark}{literal}?', function (e){deleteBookmark(evt,that,false,function(){ga('#bpitem_'+bpitemid).remove();});});{/literal}"><i class="vbl ic ic_delete"></i>
+				<span>{$this->lang.remove_bookmark}</span></a>
+				</li>
+				</div>
+				</ul>
+				</li>
+				<div class="b_p_subinfo">
+				
+
+				
+				<div class="b_p_subinfo_by">{$this->lang.post_by} <span class="kn_shortcutmenu">
+				<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.ufullname}","uphoto":"{$res.uphoto}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}"></div>
+				<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.ufullname}</a></span></div>
+				<div class="b_p_subinfo_added">{$this->lang.added} {$this->time_elapsed($res.badded)}</div>
+				</div>
+				</div>
+				
+				
+				
+				
+				{if $c_g == 2} 
+				{$c_g = 0}
+				</div>
+				{else}
+					{$c_g = $c_g +1} 
+				{/if}	
+				
+				{foreachelse}
+				
+				<h3 class="n_guests">{$this->lang['no_bookmarked_posts']}</h3>
+				{/foreach}
+				
+				</ul>
+				
+				</div>
+				</div></div>
+				
+				
+				{/if}
+				
+				
+				
+				
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wide_friends_lf_cl">
+  <div id="mainContentLeftColumn">
+    <div id="hook_Block_LeftColumn" class="hookBlock">
+      <div id="leftColumn">
+        <div id="hook_Block_UserFriendsCatalogRB" class="hookBlock">
+          <div class="portlet" id="UserFriendsCatalogRB">
+           
+		   
+		   
+        <div class="portlet_b">
+            <div class="nav-side">
+
+                <div id="cppaste_injava">
+				
+                    <a class="nav-side_i {if !$categ || $categ == 'users'}__ac{/if}" href="/bookmarks?categ=users" data-scrolltop="20" hrefattr="true">
+                        <div data-defaultmdrelat="all" class="nav-side_tx ellip">{$this->lang['Bookmark_users']}<span class="lstp-t">{$b_users_c}</span></div>
+                    </a>
+					
+                    <a href="/bookmarks?categ=photos" data-scrolltop="20" class="nav-side_i {if $categ == 'photos'}__ac{/if}" hrefattr="true">
+                        <div class="nav-side_tx ellip">{$this->lang['Bookmark_photos']}<span class="lstp-t">{$b_photos_c}</span></div>
+                    </a>
+					
+                    <a href="/bookmarks?categ=posts" data-scrolltop="20" class="nav-side_i {if $categ == 'posts'}__ac{/if}" hrefattr="true">
+                        <div class="nav-side_tx ellip">{$this->lang['Bookmark_posts']}<span class="lstp-t">{$b_posts_c}</span></div>
+                    </a>
+
+                </div>
+
+        </div></div>
+		   
+            </div>			  
+
+			
+			
+			
+{assign var=ad value=$this->getAdMarkup('guests')}
+{if $ad}
+<div class="ads-box">
+<div class="ads-box-title">{$this->lang['sponsored']}</div>
+<div class="ads-box-cnt">
+{$ad}
+</div>
+</div>	
+	{/if}		
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+			  </div>
+
+{$this->updateGuestsPage()}
+
+{/strip}

@@ -1,0 +1,22 @@
+<div class="welcome-footer <?php echo Wo_RightToLeft('pull-left');?>">
+	<a data-ajax="?link1=terms&type=terms" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=terms');?>"><?php echo $wo['lang']['terms_of_use'];?></a>
+	<a data-ajax="?link1=terms&type=privacy-policy" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=privacy-policy');?>"><?php echo $wo['lang']['privacy_policy'];?></a>
+	<a data-ajax="?link1=contact-us" href="<?php echo Wo_SeoLink('index.php?link1=contact-us');?>"><?php echo $wo['lang']['contact_us'];?></a>
+	<a data-ajax="?link1=terms&type=about-us" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=about-us');?>"><?php echo $wo['lang']['about'];?></a>
+	<?php  if ($wo['config']['blogs'] == 1) { ?>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=blogs');?>"><?php echo $wo['lang']['blog'];?></a>
+	<?php } ?>
+	<?php
+		$pages = Wo_GetCustomPages();
+		if (count($pages) > 0) {
+		foreach ($pages as $key => $page) {
+	?>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=site-pages&page_name=' . $page['page_name']);?>"><?php echo $page['page_title'];?></a>
+	<?php } } ?>
+</div>
+<div class="welcome-footer-right <?php echo Wo_RightToLeft('pull-right');?>">
+	<?php 
+		$copy = str_replace('{site_name}', $wo['config']['siteName'], $wo['lang']['copyrights']);
+		echo $copy = str_replace('{date}', date('Y'), $copy);
+	?>
+</div>

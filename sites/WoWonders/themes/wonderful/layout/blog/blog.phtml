@@ -1,0 +1,110 @@
+<div class="page-margin">
+	<div class="container">
+	
+		<div class="row">
+		<div class="col-md-8">
+			<h3 class="recent-articles"><?php echo $wo['lang']['most_recent_art'] ?></h3>
+			<div id="recent-blogs" class="row">
+				<?php
+						$pages = Wo_GetBlogs(array("limit" => 9));
+			               
+		                if (count($pages) > 0) {
+		                    foreach ($pages as $key => $wo['article']){
+
+		                    	$wo['article']['first'] = ($key == 0) ? true : false;
+		                        echo Wo_LoadPage('blog/includes/card-list');
+
+		                    }
+		                } 
+
+		                else {
+		                   echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> ' . $wo['lang']['no_blogs_found'] . '</h5>';
+		                }
+		               
+		         ?>
+			</div>
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-sx-12">
+			 	<div class="posts_load">
+				    <?php if (count($pages) >= 9): ?>
+					<div class="load-more">
+	                    <button class="btn btn-default text-center pointer load-more-blogs" id="hren" >
+	                    <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_blogs'] ?></button>
+	                </div>
+	                <?php endif ?>
+				</div>
+			</div>
+			</div>
+			
+			<div class="col-md-4 custom-fixed-element"><?php echo Wo_LoadPage('blog/main-sidebar') ?></div>
+		</div>
+	</div>
+</div>
+
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+.navbar-default {padding-right: 260px;}
+}
+
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<?php if($wo['loggedin'] == false) {  ?>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 0px;}
+.navbar-default {padding-right: 0px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+.hideinmenu {display: none;}
+}
+</style>
+<?php } ?>
+
+<script>
+jQuery(document).ready(function($) {
+
+	$('.blog-h-list').equalHeights();
+
+    $(".load-more-blogs").click(function () {
+  		var last_id = (($("div[data-blog-id]").length > 0) ? $("div[data-blog-id]:last").attr('data-blog-id') : 0);
+		$.ajax({	  
+		     url: Wo_Ajax_Requests_File(),
+		     type: 'GET',
+		     dataType: 'json',
+		     data: {f:"load-recent-blogs",offset:last_id,total:9},
+		     success:function(data){
+		        if (data['status'] == 200) {
+		            $("#recent-blogs").append(data['html']);
+		            $('.blog-h-list').equalHeights();
+		        }
+
+		        else{
+		           $(".posts_load").remove()
+		        }
+		     }
+		});
+	});
+});
+
+function ShareWindow(url, windowName) {
+   newwindow = window.open('<?php echo $wo['config']['site_url']; ?>/sharer?url=' + url, windowName, 'height=600,width=800');
+   if (window.focus) {
+      newwindow.focus();
+   }
+   return false;
+}
+</script>

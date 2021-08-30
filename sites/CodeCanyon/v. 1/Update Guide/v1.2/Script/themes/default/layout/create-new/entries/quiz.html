@@ -1,0 +1,55 @@
+<div id="create-quiz-results">
+
+	<div class="entry" data-type="result" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+
+		<div class="entry-name pull-left">
+		   <i class="fa fa-check-square"></i> 
+		   <span style="vertical-align: middle;">{{LANG quiz_result}}</span>  
+		</div>
+		<div class="pull-right manage-entries">
+		   <i class="entry-times material-icons" onclick="FL_RemoveResultEntry({{ENTRY_TIME}});">delete</i>
+		</div>
+		<div class="clear"></div>
+		<div class="error-con"></div>
+		<div class="form-group">
+
+		    <input type="text" class="form-control" data-name="entry_result_titile" placeholder="{{LANG result}}">
+		    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadResultCover('{{ENTRY_TIME}}');">
+		    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+		</div>
+		<div class="form-group">
+		    <textarea class="form-control" data-name="entry_result_description" rows="4" placeholder="{{LANG add_desc}}"></textarea>
+		</div>
+		<div class="form-group">
+		    <div class="img-content">
+				<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+				    <div class="content">
+					    <i class="fa fa-upload"></i> {{LANG choose_img}}
+				    </div>
+			    </div>
+			    
+			</div>
+
+		</div>
+	</div>	
+
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-result-btn" type="button" onclick="FL_CreateQuizResult(this);">
+	 <i class="fa fa-plus-square-o progress-icon" data-icon="plus-square-o"></i>
+	 {{LANG add_result}}
+	</button>
+</div>
+<hr style="border-color: #999;">
+<div class="quiz-questions-header">
+	<h5>{{LANG quiz_questions}}</h5>
+</div>
+<div id="create-quiz-questions">
+	{{QUESTION}}
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-question-btn" type="button" onclick="FL_CreateQuizQuestion(this);">
+	 <i class="fa fa-question-circle progress-icon" data-icon="question-circle"></i>
+	 {{LANG add_question}}
+	</button>
+</div>

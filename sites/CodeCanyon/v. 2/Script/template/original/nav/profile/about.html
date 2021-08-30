@@ -1,0 +1,230 @@
+{strip}
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+ 
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+
+ <div data-headername="{$user.fullname}" data-backhref="/user/{$user.id}" id="modifyheader"></div>
+<div class="main-content-column about_pg">
+
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['About_me']}</div></div></h2>
+ 
+ 
+
+
+
+            <div class="main-content-panel">
+									
+
+<section id="about_me_page">
+
+<div class="profile_info_block clear_fix soh-s">
+
+
+    <div class="profile_info_header_wrap">
+        {if $user.id === $this->USER['id']}<a class="profile_info_edit foh-s" hrefattr="true" href="/settings/{$user.id}">{$this->lang['Edit']}</a>{/if}
+        <span class="profile_info_header ob">{$user.fullname}</span>
+    </div>
+
+	{assign var=user_status value=$user.text_post}
+    {if !empty(trim($user_status))}<div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            
+              <div class="label fl_l"><div class="ic_status_msg_div"><div class="ic_status_msg"></div></div></div>
+
+		<div class="labeled">{$this->str_smilies($user_status)}</div>
+		</div>
+		
+    </div>	
+	{/if}
+	
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['From']}:</div>
+            <div class="labeled"><span rel="getusercountry" id="buser_{$user.id}"></span></div>
+        </div>
+		
+    </div>	
+	
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['Birthday']}:</div>
+            <div class="labeled">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</div>
+        </div>
+		
+    </div>
+	{if count($relative_friends)}
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['relative_friends']}:</div>
+            <div class="labeled">
+
+				<ul class="mutual_friends_list">
+				{foreach $relative_friends as $rf}
+				<li class="m_friend_pr" title="{$rf.fullname}" rel="tipsy"><a class="mut_fr_hv __relationship" href="/user/{$rf.id}" hrefattr="true"><img src="/getPhoto?p={$rf.photo}&g={$rf.gender}&sz=small" class="u_ph_mutu"><div class="u_mutt_friend_name_rl">{$this->myFriendRelationName($rf.relationship,'relative')}</div></a></li>
+				{/foreach}
+				</ul>
+			
+			</div>
+        </div>
+		
+    </div>
+	{/if}
+
+	
+	
+	
+</div>
+
+
+
+
+<div class="profile_info_block clear_fix soh-s">
+
+
+    <div class="profile_info_header_wrap">
+        {if $user.id === $this->USER['id']}<a class="profile_info_edit foh-s" hrefattr="true" href="/profile?q={$user.id}&cmd=settings&tab=basic-info&nav=settings">{$this->lang['Edit']}</a>{/if}
+        <span class="profile_info_header bold">{$this->lang['basic_info']}</span>
+    </div>
+
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['interests']}:</div>
+            <div class="labeled">{if !empty($user.interests)} {$this->str_smilies($user.interests)} {else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+    </div>	
+
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['favorite_quotes']}:</div>
+            <div class="labeled">{if !empty($user.quotes)}{$this->str_smilies($user.quotes)}{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+    </div>	
+	
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['My_Hobbies']}:</div>
+            <div class="labeled">{if !empty($user.hobby)}{$this->str_smilies($user.hobby)}{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+    </div>
+	
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['About_me']}:</div>
+            <div class="labeled">{if !empty($user.aboutme)}{$this->str_smilies($user.aboutme)}{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+    </div>
+	
+	
+</div>
+
+
+
+
+
+		
+
+<div class="profile_info_block clear_fix soh-s">
+
+
+    <div class="profile_info_header_wrap">
+        {if $user.id === $this->USER['id']}<a class="profile_info_edit foh-s" hrefattr="true" href="/profile?q={$user.id}&cmd=settings&tab=personal-views&nav=settings">{$this->lang['Edit']}</a>{/if}
+        <span class="profile_info_header bold">{$this->lang['Beliefs']}</span>
+    </div>
+	
+	
+    <div class="profile_info">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['political_views']}:</div>
+            <div class="labeled">{if !empty($user.political_views)}{$this->lang[$user.political_views]}{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['world_view']}:</div>
+            <div class="labeled">{if !empty($user.world_view)}<a hrefattr="true" href="/search?beliefs=world_view:{$user.world_view}">{$this->lang[$user.world_view]}</a>{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['personal_priority']}:</div>
+            <div class="labeled">{if !empty($user.personal_priority)}<a hrefattr="true" href="/search?beliefs=personal_priority:{$user.personal_priority}">{$this->lang[$user.personal_priority]}</a>{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['important_in_others']}:</div>
+            <div class="labeled">{if !empty($user.important_in_others)}<a hrefattr="true" href="/search?beliefs=important_in_others:{$user.important_in_others}">{$this->lang[$user.important_in_others]}</a>{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['views_on_smoking']}:</div>
+            <div class="labeled">{if !empty($user.views_on_smoking)}<a hrefattr="true" href="/search?beliefs=views_on_smoking:{$user.views_on_smoking}">{$this->lang[$user.views_on_smoking]}</a>{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">{$this->lang['views_on_alcohol']}:</div>
+            <div class="labeled">{if !empty($user.views_on_alcohol)}<a hrefattr="true" href="/search?beliefs=views_on_alcohol:{$user.views_on_alcohol}">{$this->lang[$user.views_on_alcohol]}</a>{else} {$this->lang['NOT_SPECIFIED']} {/if}</div>
+        </div>
+		
+		
+    </div>
+	
+	
+</div>
+
+
+
+
+
+
+</section>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+<div class="nav-side-right">
+  <div class="fixed_always">
+
+
+						<div class="nav-side">
+	
+						
+							<a class="nav-side_i" data-scrolltop="10" href="/user/{$user.id}" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['view_profile']} </div>
+							</a>
+						
+
+						</div>
+		
+
+			
+			
+	</div></div>		
+			
+
+
+
+
+</div>
+
+{/if}
+{/strip}

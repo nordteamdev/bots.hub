@@ -1,0 +1,453 @@
+{strip}
+<!DOCTYPE html>
+<html class="{if $this->USER > 0}user{else}anonym_content{/if} webkit chrome nottouch fcofw v117-load-more {if readCookie('user_menu_on') == 'yes' || $this->settings['collapsed_menu'] === 'true'}/*_min*/{/if} {if isset($is_admin)}admincp{/if}">
+<head>
+<title>{$SITENAME} {$title}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta content="{$SITENAME} is a good framework with all the features to build a successful social network!" name="description">
+<meta name="keywords" content="php social network, php social platform, php social plus, platform, social, social network, social network platform, social network script, social networking, social platform, social script, kontackt, socialplus social network, social plus social platform">  
+<meta name="author" content="Alex Dobrovolscki">
+
+
+<meta property="og:title" content="{$SITENAME} {$title}">
+<meta property="og:description" content="{$SITENAME} is a good framework with all the features to build a successful social network!">
+<meta property="og:image" content="{$this->theme_url}/css/images/fav/logo256-blue.png">
+<meta property="og:url" content="{$this->settings['HOST']}">
+
+<link id="favicon" rel="shortcut icon" href="{$this->theme_url}/css/images/fav/favicon.ico?V2" type="image/x-icon">
+
+<!-- css ---->
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans%3A400%2C700&ver=4.2.3" type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,|Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic," type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A300%7CUbuntu+Condensed%7CUbuntu%7CRaleway%3A300%2C500%2C400%7CPT+Sans+Narrow&amp;ver=4.3.1" type="text/css" media="all">
+<!--- static fonts -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/fonts/g/fonts.css?v=4">
+
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pagination.css?v=4">
+
+<link rel="stylesheet" scomm="common-global-style" type="text/css" href="{$this->theme_url}/css/style.css?v=63434">
+
+ 
+
+
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/profile-view-redesign-v1.1.7.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/guests.css?v=4">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/notification-redesign.css">
+
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/friends_page.css?v=4">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/postDetailsPopup.css?v=4">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/posts.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/comments_widget.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/button.css">
+
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/icofont.css?v=4">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/animate.min.css?v=4">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/feed.css?v=43343">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/gslider.css?v=3">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/slider_templates.css?v=3">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/messenger.css?v=3">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/tipsy.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/emoji-b.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/share.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/search.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/awesomplete.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/intlTelInput.css">
+
+
+
+<!-- left menu collapsed design -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/left-menu-collapsed.css">
+
+<!-- Video css -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/video.css">
+<!-- tagit-->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/tagit/css/tagit.css">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/tagit/css/tagit.ui.css">
+
+<!-- jquery ui --->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/ui/jquery-ui.min.css" />
+{if isset($is_admin)}
+<!-- admin cp css -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/admincp/style.css" />
+{/if}
+
+
+{if $this->USER > 0}
+<link rel="stylesheet" type="text/css" href="{$this->settings['HOST']}/music/css/style.css?v=2">
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/header-mini-player.css">
+
+{/if}
+{if isset($this->USER) && $this->USER > 0 && (!isset($is_admin) || !$is_admin)}
+ 
+<!-- responsive css -->
+<!-- mobile phone -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-320.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-400.css?v=312" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-480.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-640.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-960.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-1024.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-1200.css?v=12" />
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/responsive/phone-1320.css?v=12" />
+<!--<link rel="stylesheet" type="text/css" href="{$this->settings['HOST']}/mobile-music/css/music.css?v=3" />-->
+
+<!-- stories -->
+<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/stories/css/zuck.min.css">
+<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/stories/skins/snapgram.css">
+{assign var=searchClass value=$this->buildSearchClass()}
+<script>
+var _U = {
+	    i: "{$this->USER['id']}",
+	    n: "{$this->USER['fullname']}",
+	    p: "{$this->USER['profile_photo']}",
+	    o: "{$this->USER['online']}",
+	    g: "{$this->USER['gender']}",
+		fn: "{$this->USER['name']}",
+		sn: "{$this->USER['surname']}",
+		b: "{$this->USER['birthday']}",
+		phone: "{$this->USER['phone']}",
+		country_code: "",
+		loc_name: "{$this->USER['location']}",
+		loc_id: "{$this->USER['location_id']}",
+		cy_n: "{$this->USER['location']}",
+		ct_n: "{$this->USER['location_id']}",
+		nick: "{$this->USER['username']}",
+		notif_settings: "{$this->getUserNotifSettings()}"
+	},
+	NODE_HOST_NAME = '{$this->settings['NODE_HOSTNAME']}',
+	NODE_PORT = '{$this->settings['NODE_PORT']}',
+	NODE_HOST = '{$this->settings['NODE_HOST']}',
+	anonym_content = false,
+	mus_module_hidden = false,
+	sio,
+	 search_hints = [],	_target_evt = {}, my_contacts = [], xhrPool = [], saved_location = {},
+	 search_history = '{$searchClass->getSearchHistory()}',
+	 cur_year = '{date('Y')}',
+	 
+     smilies_path = '{$this->settings['SMILIES_PATH']}',
+     meep_path = '{$this->settings['STICKERS_PATH']}',
+	 stickers_path = '{$this->settings['STICKERS_PATH']}',
+     pm__action = '/pm_action',
+	 messenger_limit = {$this->settings['PM_MESSAGES_LIMIT']},
+	 _all_fr = "{$this->getAllFriends()}";
+</script>
+{else}
+<script>
+var anonym_content = true,xhrPool = [];
+</script>
+{/if}
+<script>
+var up_href, 
+_HTTP = "{$smarty.const.IS_HTTPS}",
+    _THEME = "{$this->theme_url}/",
+	_BLANK = "{$smarty.const.__TRANS_BG}",
+	_STORY_VIEW_PLUGIN = "/cmd/stories/",
+	chat_default_color = '{$this->settings['MESSENGER_DEFAULT_COLOR']}',
+	 NODEJS_ENABLED = {$this->settings['_NODE_ENABLED']},	
+    _act_emoji,
+    recipientId,
+    EMOJIOP,
+	stop_cl,
+    window_tab_active=true,
+	_theme_delay = {},
+	mus_start_invisible,
+		 __g_lang = '{$this->_lang_prefix}',
+    _gl_filter_by_letter = 'NULL',
+	_nscroll = '__noScrollable',
+    acvm = '{$acvm}',
+	__STORIES_STICKERS = '{$smarty.const.__STORIES_STICKERS}',
+    online_hook_limit = '{$this->settings['FRIENDS_ONLINE_LIMIT']}',
+    __SITENAME = '{$this->settings['SITENAME']}',
+    __SITEURL = '{$this->settings['HOST']}',
+	MOB_HOST = '{$this->settings['mob_HOST']}',
+	MOB_VIEW_ENABLED = '{$this->settings['mob_view_enabled']}',
+	  lang = {$this->getJSLang()};
+	  
+ 
+
+</script>
+
+<!-- zuck plugin -->
+<script type="text/javascript" src="{$this->settings['HOST']}/cmd/stories/js/zuck.js"></script>
+ 
+   
+
+<!-- js core-->
+<script type="text/javascript" src="{$this->theme_url}/js/jquery-v1.11.1.js"></script>
+ 
+<script type="text/javascript" src="{$this->theme_url}/js/jquery.form.js"></script>
+ 
+<script type="text/javascript" src="{$this->theme_url}/js/settings/global-config.js"></script>
+
+<script>
+_st.videoTypes = {json_encode($this->settings['VD_VALID_FORMATS'])};
+_st.maxVideoFilesUpload = {$this->settings['VD_MAX_FILE_UPLOAD']};
+_st.photoTypes = {json_encode($this->settings['VALID_FORMATS'])};
+_st.maxFilesUpload = {$this->settings['MAX_FILE_UPLOAD']};
+</script>
+
+<!-- restive.js -->
+<script type="text/javascript" src="{$this->theme_url}/js/restive.js"></script>
+<!-- marketplace -->
+<script type="text/javascript" src="{$this->theme_url}/js/marketplace.js"></script>
+<!-- stories -->
+<script type="text/javascript" src="{$this->theme_url}/js/stories.js"></script>
+<!-- venobox -->
+  <link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/venobox/css/venobox.css">
+  <script src="{$this->theme_url}/js/cmd/venobox/js/venobox.min.js"></script>
+<!--users on map -->
+<script src="{$this->theme_url}/js/users-on-map.js"></script>
+
+{if $this->settings['_NODE_ENABLED']} 
+<script>
+var iceservers_stun = '{$this->settings['ICESERVERS']['stun']}';
+var iceservers_turn = '{$this->settings['ICESERVERS']['turn']}';
+var iceservers_cr = '{urlencode(base64_encode($this->settings['ICESERVERS']['credential']))}';
+var iceservers_un = '{urlencode(base64_encode($this->settings['ICESERVERS']['username']))}';
+</script>
+<!-- web socket -->
+<script src="{$this->theme_url}/js/cmd/real-time/socket.io-1.2.0.js"></script>
+{/if}
+
+<script rel="flocv" type="text/javascript" src="{$this->theme_url}/js/_system.js?v=243"></script>
+
+
+<script type="text/javascript" src="{$this->theme_url}/js/global_ajax.js"></script>
+{if !isset($is_admin)}<script src="{$this->theme_url}/js/search.js?v=2"></script>{/if}
+<!--<script src="{$this->theme_url}/js/alog.js"></script>-->
+
+<script src="{$this->theme_url}/js/unveil.js"></script>
+<script src="{$this->theme_url}/js/clicklog.js"></script>
+<script src="{$this->theme_url}/js/gslider.js"></script>
+<script src="{$this->theme_url}/js/jquery.stickyscroll.js"></script>
+<script src="{$this->theme_url}/js/tinysort.min.js"></script>
+<script src="{$this->theme_url}/js/jpulse.min.js"></script>
+<script src="{$this->theme_url}/js/jquery.tipsy.js"></script>
+<script src="{$this->theme_url}/js/jquery.lazyload.min.js"></script>
+<script src="{$this->theme_url}/js/jquery.scrollstop.min.js"></script>
+<script src="{$this->theme_url}/js/freewall.min.js"></script>
+<script src="{$this->theme_url}/js/cmd/post/media-post.js"></script>
+<script src="{$this->theme_url}/js/pages.js"></script>
+<script src="{$this->theme_url}/js/jquery.starrating.min.js"></script>
+<script src="{$this->theme_url}/js/blazy.js"></script>
+<script src="{$this->theme_url}/js/cmd/awesomplete/awesomplete.min.js" async></script>
+<script src="{$this->theme_url}/js/soundmanager2-jsmin.js?v=42131"></script>
+<script type="text/javascript" src="{$this->theme_url}/js/jquery.imagedrag.min.js"></script>
+<script src="{$this->theme_url}/js/intlTelInput.min.js"></script>
+  
+  <script type="text/javascript" src="{$this->theme_url}/js/jquery.sticky.js"></script>
+ 
+  <script src="{$this->theme_url}/js/online-ufilter.js"></script>
+  
+  <!-- check for loaded images -->
+  <script src="{$this->theme_url}/js/imagesloaded.pkgd.min.js"></script>
+
+
+  <!-- zoom image -->
+  <script src="{$this->theme_url}/js/jquery.zoom.min.js"></script>
+  
+  <!-- nanoScroll -->
+  <link rel="stylesheet" type="text/css" href="{$this->settings['HOST']}/cmd/nanoScroll/css/nanoscroller.css">
+      <script type="text/javascript" src="{$this->settings['HOST']}/cmd/nanoScroll/javascripts/overthrow.min.js"></script>
+    <script type="text/javascript" src="{$this->settings['HOST']}/cmd/nanoScroll/javascripts/jquery.nanoscroller.min.js"></script>
+  
+  
+  <!-- pace js 
+  
+   <script src="{$this->settings['HOST']}/cmd/pace/js/pace.min.js"></script>
+  <link href="{$this->settings['HOST']}/cmd/pace/css/pace-theme-minimal.css" rel="stylesheet" />
+  -->
+  
+  
+  
+  
+  
+  <!-- BUC --->
+  	<!--- instafeed -->
+	<script type="text/javascript" src="{$this->theme_url}/js/cmd/BUC/assets/instafeed/instafeed.min.js"></script>
+	<!---
+	
+	@BUC basic files
+	
+	-->
+	
+	<!-- basic css style -->
+    <link rel="stylesheet" type="text/css" href="{$this->theme_url}/js/cmd/BUC/css/BUC.css" media="screen" />
+	
+    <!--- basic js file --->
+    <script type="text/javascript" src="{$this->theme_url}/js/cmd/BUC/js/jquery.BUC.js"></script>
+  <script type="text/javascript" src="{$this->theme_url}/js/cmd/BUC/js/init_buc.js"></script>
+  
+
+  
+<!-- responsive -->
+<script src="{$this->theme_url}/js/responsive.js"></script>
+  
+ 
+
+<!-- rangy -->
+<script type="text/javascript" src="{$this->theme_url}/js/wysihtml5-0.3.0.js"></script>
+
+ 
+
+<!-- leaflet map -->
+<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/leaflet-map/leaflet.css" />
+<link rel="stylesheet" href="{$this->theme_url}/css/stub-places.css" />
+<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/leaflet-map/plugins/search/css/leaflet-search.css" />
+<script src="{$this->settings['HOST']}/cmd/leaflet-map/leaflet.js"></script> 
+<script src="{$this->settings['HOST']}/cmd/leaflet-map/leaflet_init.js?V=13"></script> 
+<script src="{$this->settings['HOST']}/cmd/leaflet-map/plugins/search/js/leaflet-search.js?v=2"></script>
+
+
+
+
+
+<!-- tag it -->
+<script type="text/javascript" src="{$this->theme_url}/js/cmd/tagit/js/tagit.js"></script>
+
+<!-- masonry -->
+<script src="{$this->theme_url}/js/jquery.masonry.min.js"></script>
+
+
+
+<!-- justified -->
+<link rel="stylesheet" href="{$this->theme_url}/css/cmd/justified/css/justifiedGallery.min.css" />
+<script type="text/javascript" src="{$this->theme_url}/js/cmd/justified/js/jquery.justifiedGallery.min.js"></script>
+
+
+ 
+
+<!-- music -->
+<script type="text/javascript" src="{$this->settings['HOST']}/music/js/initialize.MusicModule.js"></script>
+
+
+ <!--media element -->
+<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/mediaelement/build/mediaelementplayer.css">
+	<script src="{$this->settings['HOST']}/cmd/mediaelement/build/mediaelement-and-player.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/renderers/dailymotion.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/renderers/facebook.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/renderers/soundcloud.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/renderers/twitch.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/renderers/vimeo.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/cs.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/de.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/es.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/fa.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/fr.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/hr.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/hu.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/it.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/ja.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/ko.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/nl.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/pl.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/pt.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/pt-br.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/ro.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/ru.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/sk.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/sv.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/uk.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/zh-cn.js"></script>
+    <script src="{$this->settings['HOST']}/cmd/mediaelement/build/lang/zh.js"></script>
+
+
+	
+	<!-- textext  plugin --> 
+	<!-- css-->
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.core.css" type="text/css" />
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.plugin.tags.css" type="text/css" />
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.plugin.autocomplete.css" type="text/css" />
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.plugin.focus.css" type="text/css" />
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.plugin.prompt.css" type="text/css" />
+		<link rel="stylesheet" href="{$this->settings['HOST']}/cmd/textext/css/textext.plugin.arrow.css" type="text/css" />
+		<!-- js -->
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.core.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.tags.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.autocomplete.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.suggestions.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.filter.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.focus.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.prompt.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script src="{$this->settings['HOST']}/cmd/textext/js/textext.plugin.arrow.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- collage plus -->
+<script src="{$this->theme_url}/js/jquery.collagePlus.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+<!-- vegas script -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/vegas/vegas.min.css">
+<script src="{$this->theme_url}/js/cmd/vegas/vegas.min.js"></script>
+
+<!-- poll -->
+<link href="{$this->theme_url}/css/cmd/poll/css/style.css" rel="stylesheet" type="text/css"/> 
+
+
+<!-- autogrow textarea/input -->
+<script src="{$this->theme_url}/js/jquery.ns-autogrow.min.js"></script>
+
+</head>
+
+<body>
+
+{if !$is_chat}
+{include file="{$this->theme_dir}/body/sub-header.html"}
+{/if}
+ 
+{if isset($is_admin)}
+<div class="toolbar __redesign __right __common-buttons fixed_always">
+    <div class="toolbar_decor">
+        <div class="toolbar_c">
+            <a class=" a_user_toolbar_logo " href="{$this->settings['HOST']}/admin">
+                <div class="nat_logo "> </div>
+            </a>
+<div data-height="0" style="height: 34px;" id="scrollToTop" class="scroll-arrow h-mod __animated" data-module="scrollToTop"><span class="scroll-arrow_cnt __top">Up</span><span class="scroll-arrow_cnt __bottom">Down</span></div>
+<form  method="get" action="/admin.php">
+<input type="hidden" name="cmd" value="search"/>
+<div class="toolbar_search _admin">
+    <div class="search_wrappa">
+        <div class="it_w"><i class="ic ic_close __to_right"></i><span class="glyphicon glyphicon-search __to_right" aria-hidden="false"></span>
+		<input type="text" name="key" placeholder="Search" autocomplete="off" class="it  italic_placeholder" {if isset($smarty.get.key)}value="{$smarty.get.key}"{/if}>
+
+		<button type="submit" class="topheader_submit_search_btn"><span class="glyphicon glyphicon-search bb" aria-hidden="false"></span></button>
+		
+		<select style="display:none;" id="adcp_header_search_select" name="search_in">
+		<option value="users" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'users')}selected{/if}>in users</option>
+		<option value="videos" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'videos')}selected{/if}>in videos</option>
+		<option value="music" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'music')}selected{/if}>in music</option>
+		<option value="apps" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'apps')}selected{/if}>in apps</option>
+		<option value="posts" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'posts')}selected{/if}>in posts</option>
+		<option value="themes" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'themes')}selected{/if}>in themes</option>
+		<option value="communities" {if isset($smarty.get.search_in) && ($smarty.get.search_in === 'communities')}selected{/if}>in groups</option>
+		</select>
+		</div>
+    </div>
+</div> 
+</form>
+		<!-- messages -->
+			<div class="admincp_messages_top">
+			<a href="javascript:;" onclick="admincpMsgNotif(event);" class="atopmsg"><i class="ic ic-admincp-msg"></i>{if $c_feedback}<div class="unread-msgs-c" title="{$c_feedback} unread messages">{$c_feedback}</div>{/if}</a>
+			</div>
+			
+		<div class="adcp_logged_user">
+			<div class="adcp_privet"><span class="adcp_u_unm_cl">Hi,&nbsp;{$this->USER['name']}</span> <img src="/getPhoto?p={$this->USER['profile_photo']}&sz=small&g={$this->USER['gender']}"/></div>
+		</div>
+
+		
+        </div>
+    </div>
+</div>
+
+{/if}
+
+{/strip}

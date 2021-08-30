@@ -1,0 +1,127 @@
+<?php if (Wo_IsAdmin()) {
+   header('Location: ' . $wo['config']['site_url'] . '/admincp/verifications_requests');
+   exit();
+} ?>
+
+<div class="wo_settings_page">
+	<h3><?php echo $wo['lang']['profile_verification']; ?></h3>
+
+	<?php if (Wo_IsVerificationRequestExists()): ?>
+	<div class="verification-status">
+		<h4>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg> &nbsp;
+			<?php echo $wo['lang']['verification_sent']; ?> 
+		</h4>
+	</div>
+	<?php elseif($wo['user']['verified'] == 1): ?>
+	<div class="verification-status">                                             
+		<h4>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="verified-color feather feather-check-circle"><path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"></path></svg>
+			<?php echo $wo['lang']['verification_complete']; ?> 
+		</h4>
+	</div>
+	<?php else: ?>
+	<form action="#" method="post" class="form-horizontal setting-verification-form">
+		<div id="verificate-user-alert"></div>
+		
+		<div class="setting-panel row">
+			<div class="form-group col-lg-12">
+				<label class="col-md-12" ><?php echo $wo['lang']['name']; ?>:</label>
+				<div class="col-md-12">
+					<input  name="name" type="text" class="form-control input-md">
+				</div>
+            </div>
+            <div class="form-group col-lg-12">
+				<label class="col-md-12" ><?php echo $wo['lang']['message']; ?>:</label>
+				<div class="col-md-12">
+					<textarea name="text" class="form-control" id="text" rows="5"></textarea>
+				</div>
+            </div>
+            <div class="form-group">
+				<label class="col-md-12"><?php echo $wo['lang']['upload_docs']; ?></label>
+				<div class="col-md-12">
+					<div class="select-user-verification-data">
+						<p><?php echo $wo['lang']['select_verif_images']; ?></p>
+						<div class="select-user-verification-photos">
+							<div class="pull-left text-center" id="verif-id">
+								<p>
+									<i class="fa fa-id-card-o"></i>
+								</p>
+								<span><?php echo $wo['lang']['passport_id']; ?></span>
+							</div>
+							<div class="pull-right text-center" id="verif-photo">
+								<p>
+									<i class="fa fa-picture-o" aria-hidden="true"></i>
+								</p>
+								<span><?php echo $wo['lang']['your_photo']; ?></span>
+							</div>
+						</div>
+						<div class="clear"></div> 
+					</div>
+				</div>
+            </div>
+		</div>
+		<div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+				<?php echo $wo['lang']['send']; ?>
+			</button>
+		</div>
+		<input type="file" name="passport" class="hidden" id="select-passport-photo" >
+		<input type="file" name="photo" class="hidden" id="select-user-photo" >
+		<input type="reset" class="hidden" id="reset-verification-request">
+	</form>
+	<?php endif; ?>
+</div>
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/autosize.min.js"></script>
+<script>
+   jQuery(document).ready(function($) {
+      $("#text").autogrow({vertical: true, horizontal: false});
+
+      $("#verif-id").click(function(event) {
+         $("#select-passport-photo").trigger('click');
+      });
+
+      $("#verif-photo").click(function(event) {
+         $("#select-user-photo").trigger('click');
+      });
+
+      $("#select-passport-photo").change(function(event) {
+         $("#verif-id").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture' class='responsive-img'>")
+      });
+
+      $("#select-user-photo").change(function(event) {
+         $("#verif-photo").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture' class='responsive-img'>")
+      });
+
+      
+      $(".setting-verification-form").ajaxForm({
+         url: Wo_Ajax_Requests_File() + '?f=verificate-user',
+         beforeSend: function() {
+           $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+         },
+         success: function(data) {
+           scrollToTop();
+           if (data['status'] == 200) {
+             $("#verificate-user-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+             window.location = data['url'];
+           }
+           else {
+             $("#verificate-user-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+           } 
+           $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+      }});
+   });
+</script>
+
+<style>
+.select-user-verification-data{width: 100%;overflow: hidden;}
+.select-user-verification-data p{width: 100%;margin: 0;font-size: 13px;color: #333;}
+.select-user-verification-data .select-user-verification-photos{width: 100%;overflow: hidden;}
+.select-user-verification-data .select-user-verification-photos div{width: 49%;height: 150px;background: #f9f9f9;border-radius: 5px;border: 1px solid #efefef;margin-top: 15px;color: #333;overflow: hidden;cursor: pointer;}
+.select-user-verification-data .select-user-verification-photos div span{width: 100%;display: block;font-size: 13px;color: #55acee;}
+.select-user-verification-data .select-user-verification-photos div p{width: 100%;font-size: 30px;margin-top: 35px;}
+.verification-status{width: 100%;height: 200px;text-align: center;}
+.verification-status h4{width: 100%;line-height: 200px;font-family: arial,sans-serif;color: #666;}
+</style>

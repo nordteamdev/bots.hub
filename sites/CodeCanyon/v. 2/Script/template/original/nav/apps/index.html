@@ -1,0 +1,170 @@
+{strip}
+{assign var=ad value=$this->getAdMarkup('apps')}
+<div id="in_app_page"></div>
+{if $mheader && $headername && $backhref}<div data-headername="{$headername}" data-backhref="{$backhref}" id="modifyheader"></div>{/if}
+
+<div class="main-content-column">
+
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Games']}</div></div></h2>
+
+
+ 
+<div class="main-content-panel">
+  
+			
+		
+<div class="ui_search ui_search_field_empty _wrap" id="apps_search">
+    <div class="ui_search_input_block">
+        <div class="ui_search_reset" onclick="return clearAppSearchInput();">
+            <span class="blind_label">{$this->lang['cancel']}</span>
+        </div>
+
+        <input type="text" class="ui_search_field _field" id="s_search" data-searcgcateg="{if $c === 'genre'}{$genre}{else}0{/if}" placeholder="{if $c === 'genre'}{$this->lang['search_games']} {$this->lang['for']} {$this->getAppGenre($genre)}{else}{$this->lang['search_games']}{/if}">
+
+    </div>
+    <div class="ui_search_filters_pane" style="display: none;">
+        <div class="ui_search_filters"></div>
+        <div class="ui_search_filters_reset" onclick="return uiSearch.removeAllFilters(this);"></div>
+    </div>
+</div>
+
+<div class="apps_list_content">
+<div class="clear_fix apps_cat_wrap">
+
+{foreach $query_apps as $res}
+
+<div id="app{$res.id}" data-approw="true" class="apps_cat_row">
+    <div class="apps_cat_cont">
+        <div class="app_cat_image_cont">
+		
+                {if strtotime("+3 days", $res.added) >= time()}
+                <span class="app_card_new">
+                </span>
+                {/if}
+		
+            <div class="app_deleted_layer"></div>
+            <div class="app_cat_image">
+                <a href="javascript:;" onclick="runApp(event);"><img class="apps_wide_img" src="/appGetPhoto?i={$res.cover}&t=1"></a>
+            </div>
+        </div>
+        <div class="apps_cat_info">
+            <div class="app_cat_name sl_nowrap">
+                <a href="javascript:;" onclick="runApp(event);" class="app_link">{$res.title}</a>
+            </div>
+            <div class="apps_cat_users">
+              <!--  <div class="apps_rate_cat clear_fix">
+                    <span class="app_rate fl_l full"></span>
+                    <span class="app_rate fl_l full"></span>
+                    <span class="app_rate fl_l full"></span>
+                    <span class="app_rate fl_l full"></span>
+                    <span class="app_rate fl_l half"></span>
+                </div>-->
+                <div class="app_type_label">
+                   {$this->getAppPlayersCount($res.id)} {$this->lang['players']}
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{foreachelse}
+{if $custom_msg}
+{$custom_msg}
+{else}
+<div class="no_rows" id="no_apps"><div>{$this->lang['no_games_in_categ']}</div></div>
+{/if}
+{/foreach}
+
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="nav-side-right transparent">
+ 
+				
+				
+					
+                    <div class="nav-side appsg mb-4x">
+					
+					{if !$mheader}
+					<div id="m_apps_l_mene_contr">
+					<a href="/apps?nav=apps" hrefattr="true" class="nav-side_i {if !$c}__ac{/if}"><span class="tico"><i class="tico_img ic ic-leftm ic_nav_new_apps"></i>{$this->lang['new_and_recommended']}</span></a>
+					<a href="/apps/all" class="nav-side_i {if $c === 'all'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic-leftm ic_nav_all_apps"></i>{$this->lang['All']}
+					{if $c === 'all'}&nbsp;<span class="capp">{count($query_apps)}</span>
+					{/if}</span></a>
+                        <div class="nav-side apps {if $c !== 'all' && $c !== 'genre'}__hide{/if}">
+						
+						
+						{foreach from=$this->settings['APPS_GENRES'] item=label key=key}
+                            <a href="/apps/genre/{$key+1}" class="nav-side_i {if $c === 'genre' && $genre === $key+1}__ac{/if}" hrefattr="true">
+                                <div class="nav-side_tx">{$label} {if $c === 'genre' && $genre === $key+1}<span class="capp">{count($query_apps)}</span>{/if}</div>
+                            </a>
+						{/foreach}
+						
+                        </div>
+                      <a href="/apps/user/{$uid}" class="nav-side_i {if $c === 'uapps' && $user_id == $this->userid}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic-leftm ic_nav_mygames"></i>{$this->lang['my_games']}{if $c === 'uapps' && $user_id == $this->userid}&nbsp;<span class="capp">{count($query_apps)}</span>{/if}</span></a>
+                        <div id="hook_Block_AppsMyMini" class="hookBlock">
+                            <div class="nav-side_delim"></div>
+							
+							{if count($user_apps)}
+                            <div class="portlet __sidebar">
+                                <div class="portlet_h">
+                                    <div class="portlet_h_name_t"><a href="/apps/user/{$uid}" class="ml" hrefattr="true">{$this->lang['my_games']}</a></div>
+									
+									<ul class="my_apps_side">
+									
+									{foreach $user_apps as $app}
+									<li class="my_app_it" title="{$app.title}" rel="tipsy"><a href="/app/id/{$app.id}" hrefattr="true"><div class="appit3gfx"><img src="/appGetPhoto?i={$app.cover}&t=1"></div></a></li>
+									{/foreach}
+									
+									</ul>
+									
+                                </div>
+                        </div>
+						{/if}
+						
+						</div> 
+				{/if}
+                            <div class="portlet __sidebar">
+                                <div class="portlet_h noborder">
+                                    <div class="portlet_h_name_t_b">{$this->lang['top_games']}</div>
+									
+									<ul class="top_apps_side">
+									
+									{foreach $top_apps as $app}
+									<li class="top_app_it"><a href="/app/id/{$app.id}" hrefattr="true"><div class="appit4gfx"><img src="/appGetPhoto?i={$app.cover}&t=1"></div><div class="top_app_title">{$app.title}</div></a><div class="top_games_players_count">{$this->lang['Players']}: {$this->getAppPlayersCount($app.id)}</div></li>
+									{/foreach}
+									
+									</ul>
+									
+                                </div>
+                        </div>
+						
+						
+						{if $ad}
+                            <div class="portlet __sidebar">
+                                <div class="portlet_h noborder">
+                                    <div class="portlet_h_name_t_b">{$this->lang['sponsored']}</div>
+									
+										{$ad}
+									
+                                </div>
+                        </div>	
+						{/if}
+						
+						
+                    </div>
+
+				</div>
+				
+ 
+</div>
+
+{/strip}

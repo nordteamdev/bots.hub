@@ -1,0 +1,67 @@
+<div class="fl-plus-trending-news-list-wrapper">
+   <div class="col-md-11 no-padding-both">
+      <div class="col-md-5 no-padding-both">
+         <div class="fl-plus-trending-news-list-thumb">
+            <?php if (!empty($fl['latest_news_data']['image'])): ?>
+               <img src="<?php echo $fl['latest_news_data']['image'];?>" alt="Image">
+            <?php else: ?>
+               <figure class="no-image">
+                  <i class="fa fa-picture-o"></i>
+               </figure>
+            <?php endif; ?>
+         </div>
+      </div>
+      <div class="col-md-7">
+         <div class="fl-plus-trending-news-list-info">
+            <div class="fl-plus-trending-news-list-title">
+               <a href="<?php echo $fl['latest_news_data']['link'];?>" target="_blank">
+                  <h4><?php echo $fl['latest_news_data']['title'];?></h4>
+               </a>
+            </div>
+            <div class="fl-plus-trending-news-list-desc">
+               <article>
+                  <?php echo mb_substr($fl['latest_news_data']['description'], 0, 100, "UTF-8") . '..';?>
+               </article>
+            </div>
+            <div class="fl-plus-trending-news-list-meta">
+               <time>
+                  <i class="fa fa-clock-o"></i>
+                  <?php echo $fl['latest_news_data']['date'];?>
+               </time>
+            </div>
+         </div>
+      </div>
+      <div class="clear"></div>
+   </div>
+   <div class="col-md-1 col-xs-3 col-sm-3 pull-right">
+      <div class="dropdown">
+         <a class="pull-right dropdown-toggle pointer" type="button" data-toggle="dropdown">
+            <i class="material-icons">more_vert</i>
+         </a>
+         <ul class="dropdown-menu custom-dropdown">
+            <li>
+               <a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($fl['latest_news_data']['link'])?>" target="_blank"><i class="fa fa-fw fa-facebook"></i> {{LANG facebook}}</a>
+            </li>
+
+            <li>
+               <a href="https://plus.google.com/share?url=<?php echo urlencode($fl['latest_news_data']['link'])?>" target="_blank"><i class="fa fa-fw fa-google"></i> {{LANG google_plus}}
+               </a>
+            </li>
+
+            <li>
+               <a href="http://twitter.com/intent/tweet?text=<?php echo $fl['latest_news_data']['title']?>&url=<?php echo urlencode($fl['latest_news_data']['link'])?>" target="_blank"><i class="fa fa-fw fa-twitter"></i> {{LANG twitter}}</a>
+            </li>
+
+            <li class="pointer">
+            <a onclick="FL_ShareToEmail('<?php echo $fl['latest_news_data']['link']?>');" target="_blank"><i class="fa fa-fw fa-envelope-o"></i> {{LANG email}}</a>
+            </li>
+
+            <li>
+               <a href="http://www.reddit.com/submit?url=<?php echo urlencode($fl['latest_news_data']['link'])?>" target="_blank"><i class="fa fa-fw fa-reddit"></i> {{LANG reddit}}</a>
+            </li>
+         </ul>
+      </div>
+      <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+</div>

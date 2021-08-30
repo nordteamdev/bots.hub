@@ -1,0 +1,66 @@
+{strip}
+{assign var="user_is_online" value=$this->getUserStatus($user.id)}
+<section id="up_K_theme" class="v117" style="margin-top:-13px;">
+<div class="__none" id="user-profile"></div>
+ 
+{include file="{$smarty.const.__ROOT__}/template/{$smarty.const._THEME}/nav/profile/umenu.html"}
+
+<section id="user-r-theme-loc">
+
+
+{if $res.theme === '-1'}
+{assign var=ph_slideshow value=$_d->getSlideshowConfig($res.id)}
+
+<div class="U_profile_slideshow_top" id="u__slideshow"></div>
+<div class="hookData" id="slideshow_data"><!--{$ph_slideshow}--></div>
+ 
+
+{else if !$res.theme}
+<div class="no_theme_no_images"></div>
+{else if !$res.theme}
+<div class="uprf_coll_abs">
+<div class=" uprof_ntheme_photos_collage">
+{assign var=ph_collage value=$this->createUserThemeFromCollage($res.id)}
+{foreach $ph_collage as $vphoto}
+{if $vphoto.is_video}
+<div class="vp_header_item">
+<a href="javascript:void(0);"><i class="vid_play"></i><img class="prof_header_v" src="/videoCover?v={$vphoto.id}&empty=1" />
+<div class="vp_header_item_info"><span class="info_txt">{$vphoto.str}</span></div>
+<div class="vp_header_item_likes"><div class="ic ic_klass_wd _curDef "></div><span class="vp_hd_likes_count">{$this->getLikesCount($vphoto.id,'video')}</span></div>
+</a>
+</div>
+{else}
+<div class="vp_header_item">
+<a href="#"><img class="prof_header_p" src="/getPhoto?p={$vphoto.id}&sz=thumb" />
+<div class="vp_header_item_info"><span class="info_txt">{$vphoto.str}</span></div>
+<div class="vp_header_item_likes"><div class="ic ic_klass_wd _curDef "></div><span class="vp_hd_likes_count">{$this->getLikesCount($vphoto.id,'photo')}</span></div>
+</a>
+</div>
+{/if}
+{/foreach}
+
+</div>
+</div>
+{else}
+{assign var=k_theme value=$this->getThemeDetails($res.theme)}
+{if $k_theme['kn'] === 'true'}
+<div class="uprf_coll_abs_kn">
+<div class="vp_header_kn_theme_bg" style="background-image:url({$this->settings['THEMES_DIR']}body/{$k_theme.body});"></div>
+
+
+    <div class="cover_t_c_repeat dzsparallaxer">
+      <div id="hook_Block_ThemeTopCenterImageRB" class="hookBlock">
+
+	<img class="kn_img_setted divimage dzsparallaxer--target" src="{$this->settings['THEMES_DIR']}{$k_theme.photo}" alt="" tuid="{$res.id}" id="th_v_bod">
+
+</div>
+</div>
+</div>
+{else}
+<div class="vp_header_custom_theme"><img class="kn_theme_cust_cover _default_cur" style="top:{$k_theme.position}px;" src="{if $k_theme['s3'] == 'yes'} {$s3_cover_url}{$k_theme['photo']} {else} {$smarty.const.__COVERS_DIR}{$k_theme.userid}/covers/{$k_theme.id}.{$k_theme.ext}{/if}" /></div>
+{/if}
+{/if}
+
+</section>
+</section>
+{/strip}

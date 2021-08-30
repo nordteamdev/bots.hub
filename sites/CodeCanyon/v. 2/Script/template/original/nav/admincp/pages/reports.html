@@ -1,0 +1,67 @@
+{strip}
+
+<div class="ad-rowcol">
+<h2>{$count} reports</h2>
+
+{assign var=i value=0}
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>Mark <input onclick="markAllChBxTbl(event);" type="checkbox"/></th>
+	
+	<th>#id</th>
+	
+	<th>Type</th>
+	
+	<th>Reason</th>
+	
+	<th>Content</th>
+	
+	<th>Item id</th>
+	
+	<th>Reported about</th>
+
+	<th>Reported by</th>
+	
+	<th>Verified</th>
+	
+	<th>*</th>
+	
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+	{assign var=u value=$this->getReportUser($r.report_by)}
+<!-- Table Row -->
+
+	<tr id="p{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td><input type="checkbox" data-rid="{$r.id}" onclick="showActButton(this);"/></td>
+	<td><A target="_blank" href="/post?i={$r.id}">{$r.id}</a></td>
+	<td><div class="p_type">{$r.type}</div></td>
+	<td><div class="p_type">{$this->lang[$r.reason]}</div></td>
+	<td><div class="p_info">{$this->getReportCnt($r.type_id,$r.type)}</div></td>
+	<td><div class="p_available">#{$r.type_id}</div></td>
+	<td><div class="vp_added">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="p_by"><a href="/user/{$u.id}" target="_blank">{$u.fullname}</a></div></td>
+	<td><div class="p_by">{if $r.seen === 'yes'}<span style="color:green;">Yes</span>{else}<span style="color:red;">No</span>{/if}</div></td>
+	<td><div class="f11"><a href="/admin.php?cmd=viewreport&id={$r.id}&type={$r.type}&itemid={$r.type_id}&rby={$r.report_by}" target="_blank">View</a></div></td>
+	</tr>
+	<!-- Darker Table Row -->
+	{$i = $i+1}
+{/foreach}
+
+</table>
+{$pagination}
+
+<hr>
+
+        <div class="form-group last-btn " style="display:none;">
+     
+            <div class="col-sm-3">
+                <button onclick="markAsReadAllCheckedReports(this);" class="form-actions_yes button-pro js-submit">Mark as read</button>
+            </div>
+        </div>
+
+</div>
+
+{/strip}

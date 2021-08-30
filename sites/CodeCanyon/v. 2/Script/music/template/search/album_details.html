@@ -1,0 +1,178 @@
+<!--------------------- Album details [ Template ] --------------------------->
+
+{strip}
+
+
+<span class="m_c_s_searchResult pl-mb-90">
+  
+  {foreach $query_a as $result}
+  {assign var=al_s_id value={$result.id}}
+  {assign var=al_s_tt value={$result.title}}
+  {assign var=al_s_ar value={$result.artist}}
+  {assign var=al_s_al value={$result.album}}
+  {assign var=al_s_vd value={$result.video}}
+  {assign var=al_s_tm value={$result.time}}
+  {assign var=al_s_cv value={$result.cover}}
+  {assign var=al_s_pt value={$result.path}}
+  {assign var=al_s_lg value={$result.language}}
+  {assign var=download value=''}
+  {if $al_s_lg === $this->purchase_ic}
+  {assign var=download value='__download'}        
+  {/if}
+  
+  
+  {if $play > 0}
+  <div style="display:none;" id="this_playlist_active" data-collection-play="{$al_s_id}">
+  </div>
+  {/if}
+  
+  {if $c === 0}
+  <div class="mus_content_w" id="windowMusic_search_container">
+    <div class="mus_album">
+      <div class="mus_album_i__absolute" parent-for-cover="true">
+        <div class="mus_album_i_w">
+          <div class="mus_card_img_w mus_card_img_w__album">
+            <img class="mus_card_img" src="{$al_s_cv}">
+            
+          </div>
+        </div>
+        <div class="m_c_col-data">
+          <div class="m_c_col-data_ac">
+            
+            <a class="mtico mus-dl m_c_col-data_ac_i __14" data-search-res-add="{$al_s_id}" data-search-res-name="{$al_s_al}" data-search-res-count="{$count}">
+              <i class="mic14 mic14_add">
+              </i>
+              <span id="alBM_st">
+                Add to My music
+              </span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="mus_h2">
+        <span class="mus_h2_tx ellip" m_ppl_title="true" data-id="{$al_s_id}">
+          {$al_s_al}
+        </span>
+      </div>
+      <div class="mus_h3 ellip">
+        <div class="mus_h2_tx ellip" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($al_s_ar)}">
+          <span class="mus-dl">
+            {$al_s_ar}
+          </span>
+        </div>
+      </div>
+      <div class="mus-tr_lst mus_scroll-overlay">
+        <div class="mus_scroll-overlay_dummy">
+        </div>
+        <ol data-for-serialize="true">
+          {/if}
+          
+          <li target="#p18m_sec_album_{$al_s_id}">
+            <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_m_sec_album_{$al_s_id}">
+              <div class="mus-tr_hld">
+                <span class="mus-tr_play __play js-mus-tr_play" id="p18m_sec_album_{$al_s_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$al_s_pt}","cover":"{$al_s_cv}"{literal}}{/literal}' >
+                </span>
+                {if $download !== ''}
+                <span class="mus-tr_download js-mus-tr_download" title="Download">
+                </span>
+                {/if}
+                <div class="mus-tr_cnt">
+                  <a style="display:none;" class="mus-tr_a mus-tr_artist">
+                    {$al_s_ar}
+                  </a>
+                  <a class="mus-tr_a mus-tr_song">
+                    {$al_s_tt}
+                  </a>
+                  <span class="foh-s mus-tr_info">
+                  </span>
+                </div>
+                <div class="mus-tr_right-controls foh-s" id="rc_m_sec_album_{$al_s_id}">
+                  <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+                  </span>
+                  <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+                  </span>
+                </div>
+                <span class="mus-tr_time">
+                  {$al_s_tm}
+                </span>
+              </div>
+              {if $al_s_vd > '0'}
+              <div class="mus-tr_video" data-showVideo="true" data-video="{$al_s_vd}">
+              </div>
+              {/if}
+    		</div>
+                  </li>
+                  {assign $c $c++ nocache}
+                  {/foreach}
+                 </ol>
+                 </div>
+                 {if $count 
+                 < 3}
+                 <div class="m_album_upload mt-10">
+                   Some songs are missing from the album?
+                 </div>
+                 <a class="m_album_upload m_c_s_c_go_to" data-href="mymusic">
+                   Upload
+                 </a>
+                 {/if}
+                  </div>
+                  
+                  
+                  {if $ot_count > 0}
+                  {foreach $query_b as $result}
+                  {assign var=ot_alb_id value={$result.id}}
+                  {assign var=ot_alb_ar value={$result.artist}}
+                  {assign var=ot_alb_cv value={$result.cover}}
+                  {assign var=ot_alb_nm value={$result.album}}
+                  
+                  
+                  {if $oc === 0}
+                  <div class="mus_h2" id="gwt-uid-435">
+                    Other artist's albums
+                  </div>
+                  <div class="mus_album-list">
+                    <div>
+                      <div>
+                        {/if}
+                        <div class="mus_card_i wd24">
+                          <div class="mus_card" uid="card" id="crdI_{$ot_alb_id}">
+                            <div class="mus_card_img_w mus_card_img_w__album">
+                              <img src="{$ot_alb_cv}" class="mus_card_img" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($ot_alb_ar)}&alb={urlencode($ot_alb_nm)}">
+                              <div class="mus_card_ac_lst">
+                                <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($ot_alb_ar)}&alb={urlencode($ot_alb_nm)}&play=true">
+                                  <span class="mus_card_play">
+                                  </span>
+                                  Play
+                                </span>
+                                <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause">
+                                  <span class="mus_card_play __pause">
+                                  </span>
+                                  pause
+                                </span>
+                                <span class="mus_card_ac_i mus_card_ac_i__more" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($ot_alb_ar)}&alb={urlencode($ot_alb_nm)}">
+                                  <span class="mus_card_more">
+                                  </span>
+                                  More
+                                </span>
+                              </div>
+                            </div>
+                            <div class="mus_card_n_w">
+                              <div class="mus_card_n textWrap" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($ot_alb_ar)}&alb={urlencode($ot_alb_nm)}">
+                                <span class="mus_card_n_a" title="{$ot_alb_nm}">
+                                  {$ot_alb_nm}
+                                </span>
+                              </div>
+                              <div class="mus_card_n_artist ellip">
+                                <span data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($ot_alb_ar)}" class="mus_card_n_artist_a" title="{$ot_alb_ar}">
+                                  {$ot_alb_ar}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {assign $oc $oc++ nocache}
+                        {/foreach}
+                        {/if}
+                        
+                        {/strip}

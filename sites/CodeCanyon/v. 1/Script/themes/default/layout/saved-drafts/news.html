@@ -1,0 +1,18 @@
+<div class="top-news-list fl_search_result" id="<?php echo $fl['latest_news_data']['news']['id'];?>">
+	<div class="news latest-news-list" data-id="<?php echo $fl['latest_news_data']['news']['id'];?>">
+		<a href="<?php echo $fl['latest_news_data']['news']['url'];?>">
+			<div class="latest-news-img" style="background-image: url('<?php echo($fl['latest_news_data']['news']['small_image']);?>');"></div>
+			<div class="latest-news-title">
+				<div>
+					<h3><?php echo $fl['latest_news_data']['news']['title'];?></h3>
+					<div class="latest-news-info">
+						<span class="latest-news-time"><?php echo $fl['latest_news_data']['news']['publisher']['name'];?></span> - 
+						<span class="latest-news-time"><?php echo $fl['latest_news_data']['news']['posted'];?></span>
+					</div>
+					<div class="latest-news-desc"><?php echo $fl['latest_news_data']['news']['description'];?></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</a>
+	</div>
+</div>

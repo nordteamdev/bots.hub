@@ -1,0 +1,69 @@
+<?php 
+function Wo_GetPopularBlogs($limit) {
+    global $sqlConnect, $wo;
+    $data = array();
+    $query  = mysqli_query($sqlConnect, "SELECT * FROM  " . T_BLOG . "  
+                                         ORDER BY `view` DESC LIMIT $limit");
+    while ($fetched_data = mysqli_fetch_assoc($query)) {
+        $data[] = Wo_GetArticle($fetched_data['id']);
+    }
+    return $data;
+}
+?>
+<div class="main-blog-sidebar">
+	<!-- Search system -->
+	<div class="widget search-blog">
+		<h4 class="recent-articles"><?php echo $wo['lang']['search'] ?> <span id="load-search-icon" class="hidden"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#333" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/> </path></svg></span></h4>
+		<input type="text" placeholder="<?php echo $wo['lang']['keyword']?>" class="form-control" id="search-blog-input">
+	</div>
+
+	<!--Popular Posts-->
+	<div class="widget">
+		<h4 class="recent-articles"><?php echo $wo['lang']['popular_posts'] ?></h4>
+		<ul class="popular-articles">
+		<?php 
+		$blogs = Wo_GetPopularBlogs(5);
+		foreach ($blogs as $key => $wo['blog-style']) {
+			echo Wo_LoadPage('blog/blog-popular');
+		}
+		?>
+		</ul>
+	</div>
+	
+	<!--Categories-->
+	<div class="widget">
+		<h4 class="recent-articles"><?php echo $wo['lang']['categories'] ?></h4>
+		<ul class="popular-categories">
+			<?php 
+				$category_id = (!empty($_GET['id'])) ? (int) $_GET['id'] : 0;
+				foreach ($wo['page_categories'] as $key => $category) {
+			?>
+			<li>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=blog-category&id=' . $key) ?>" data-ajax="?link1=blog-category&id=<?php echo $key?>"><?php echo $category;?></a>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<style>
+#load-search-icon svg{
+	margin-left: 2px;
+	margin-bottom: -5px;
+	position: absolute;
+}
+</style>
+<script>
+$('#search-blog-input').keyup(function(event) {
+	$keyword = $(this).val();
+	$('#load-search-icon').removeClass('hidden');
+	$.post(Wo_Ajax_Requests_File() + '?f=search-blog', {keyword: $keyword}, function(data, textStatus, xhr) {
+		if (data.status == 200) {
+			$('#recent-blogs').html(data.html);
+		} else {
+			$('#recent-blogs').html('<div class="text-center">' + data.message + '</div>');
+		}
+		$('#load-search-icon').addClass('hidden');
+	});
+});
+</script>

@@ -1,0 +1,185 @@
+
+<!-------------------------------  My purchased music [ template ] --------------------->
+{strip}
+{if $count > 0}  
+
+<div class="mus_content_w">
+  
+  <div class="mus-tr_lst mus_scroll-overlay">
+    
+    <div class="mus_scroll-overlay_dummy">
+    </div>
+    <ol>
+      
+      {assign var=c_tkm value={$_COOKIE['tk_m']}} 
+      {foreach $rows as $row}
+      {assign var=s_id value={$row.id}} 
+      {assign var=s_path value={$row.path}} 
+      {assign var=s_cover value={$row.cover}} 
+      {assign var=s_video value={$row.video}} 
+      {assign var=s_time value={$row.time}} 
+      {assign var=s_artist value={$row.artist}} 
+      {assign var=s_song value={$row.title}} 
+      {assign var=s_album value={$row.album}} 
+      
+      
+      <li target="#p0m_sec_purchased_{$s_id}">
+        <div class="mus-tr_i __has-video soh-s __download" id="tri_m_sec_purchased_{$s_id}">
+          <div class="mus-tr_hld">
+            <span class="mus-tr_play __play js-mus-tr_play" id="p0m_sec_purchased_{$s_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$s_path}","cover":"{$s_cover}"{literal}}{/literal}'>
+            </span>
+            
+            <span class="mus-tr_download js-mus-tr_download" title="Download" onclick='window.open("download.php?file={$s_path}&tk={$c_tkm}", "_self","location=no, width=50,height=50,titlebar=no,menubar=no");'>
+            </span>
+            
+            <div class="mus-tr_cnt">
+              <a class="mus-tr_a mus-tr_artist">
+                {$s_artist}
+              </a>
+             &nbsp;&#8211;&nbsp;
+              <a class="mus-tr_a mus-tr_song">
+                {$s_song}
+              </a>
+              <span class="foh-s mus-tr_info">
+                &nbsp;from&nbsp;
+                <a class="mus-tr_a mus-tr_album">
+                  <span class="mus-tr_album-ic ic10_album">
+                  </span>
+                  {$s_album}
+                </a>
+              </span>
+            </div>
+            <div class="mus-tr_right-controls foh-s" id="rc_m_sec_purchased_{$s_id}">
+              <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+              </span>
+              <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+              </span>
+              
+            </div>
+            <span class="mus-tr_time">
+              {$s_time}
+            </span>
+          </div>
+          {if $s_video > 0}
+          <div class="mus-tr_video" data-showVideo="true" data-video="{$s_video}">
+            
+          </div>
+          {/if}
+          
+        </div>
+      </li>
+      {/foreach}
+  </ol>
+      </div>
+      <!--- recommended section for purchase another songs --->
+</div>
+</div>
+<div class="m_recommendations_w js-hide-in-edit js-m_recommendations_w __visible-teaser">
+  <div class="m_recommendations">
+    <div class="m_recommendations_cnt">
+      
+      <span class="ic ic_close m_recommendations_close" title="OK">
+      </span>
+      <div class="mus_h2 m_recommendations_h">
+        Similar to your songs
+      </div>
+      <div class="m_recommendations_track-list">
+        <div class="mus-tr_lst mus_scroll-overlay">
+        </div>
+      </div>
+      <div class="m_recommendations_more">
+        
+        <span class="m_c_s_c_go_to">
+          Show more songs
+        </span>
+        
+      </div>
+    </div>
+    <div class="m_recommendations_teaser">
+      
+      <span>
+        We have found songs that will suit you.
+      </span>
+      
+      <span class="m_c_s_c_go_to">
+        &nbsp;Show.
+      </span>
+      
+    </div>
+  </div>
+</div>
+
+{else}
+
+<div style="height:100%;overflow:hidden;" class="mus_stub">
+  <div class="mus_content_w">
+    <div>
+      <div>
+        <div class="purchased_empty_layer_cnt">
+          <div class="portlet-i_h">
+            Listen. Buy. Download.
+          </div>
+          
+          <div class="mb-15">
+            
+            <div>
+              If you see a green flag next to the "Play" button, it means that this song is also available for download.
+            </div>
+            <div class="mus_stub_track">
+              <div class="mus-tr_lst mus_scroll-overlay">
+                
+                {foreach $random_song as $result}
+                
+                <ol>
+                  <li target="#p0m_sec_featured_download_{$result.id}">
+                    <div class="mus-tr_i  __has-video soh-s __download" id="tri_m_sec_featured_download_{$result.id}">
+                      <div class="mus-tr_hld">
+                        <span class="mus-tr_play __play js-mus-tr_play" id="p0m_sec_featured_download_{$result.id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$result.path}","cover":"{$result.cover}"{literal}}{/literal}'>
+                        </span>
+			<span class="mus-tr_download js-mus-tr_download" onclick="call_buy_popup(this);" title="Download"></span>
+                        <div class="mus-tr_cnt">
+                          <a class="mus-tr_a mus-tr_artist">
+                            {$result.artist}
+                          </a>
+                         &nbsp;&#8211;&nbsp;
+                          <a class="mus-tr_a mus-tr_song">
+                            {$result.title}
+                          </a>
+                          <span class="foh-s mus-tr_info">
+                            &nbsp;from&nbsp;
+                            <a class="mus-tr_a mus-tr_album">
+                              <span class="mus-tr_album-ic ic10_album">
+                              </span>
+                              {$result.album}
+                            </a>
+                          </span>
+                        </div>
+                        
+                        <div class="mus-tr_right-controls foh-s" id="rc_m_sec_featured_download_{$result.id}">
+                          <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+                          </span>
+                          <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+                          </span>
+                        </div>
+                        
+                        <span class="mus-tr_time">
+                          {$result.time}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </li>
+          </ol>
+          {/foreach}
+          <div>
+            Download your favorite music to your computer, phone or 
+            <br>
+            tablet and enjoy it anytime you want.
+          </div>
+        </div>
+      </div>
+
+      {/if}
+
+{/strip}

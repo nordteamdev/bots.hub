@@ -1,0 +1,317 @@
+{strip}
+<div class="ad-rowcol">
+{if !$key}
+{$this->msg("Enter a keyword to search something.","notice")}
+{else if !$_in}
+{$this->msg("Please select a category from select menu to search to.","warning")}
+{else}
+
+
+
+{if $_in === 'users'}
+<h2>{$count} users found.</h2>
+
+<!-- users list -->
+<div style="padding:1px;">
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+
+			<th sort="id">#id</th>
+			<th sort="cover">Picture</th>
+			<th sort="title">Fullname</th>
+			<th sort="title">Username</th>
+			<th sort="genre">E-mail</th>
+			<th sort="descr">Gender</th>
+			<th sort="reg">Region</th>
+			<th sort="time">Added</th>
+			<th sort="status">Status</th>
+			<th sort="*">*</th>
+		</tr>
+
+	
+
+	{foreach $q as $r}
+		<tr id="app{$r.id}">
+			<td>#{$r.id}</td>
+			<td><div class="tbl_user_td_cover photo"><img class="tbl_user_picture" width="32" height="32" src="/getPhoto?p={$r.profile_photo}&sz=small&g={$r.gender}"></div></td>
+			<td><a href="/user/{$r.id}" target="_blank">{str_highlight($r.name,$key,null,'<span class="search_highlight_key">\1</span>')}<br/>{str_highlight($r.surname,$key,null,'<span class="search_highlight_key">\1</span>')}</a></td>
+			<td class="f11">{if $r.username}@{str_highlight($r.username,$key,null,'<span class="search_highlight_key">\1</span>')}{else}No username setted.{/if}</td>
+			<td><div class="f11">{$r.email}</div></td>
+			<td class="f11">{$r.gender}</td>
+			<td class="f11">{$this->getUserCityAndCountry($r)}</td>
+			<td class="f11">{$this->time_elapsed($r.added)}</td>
+			<td class="f11">{if $r.status === 'confirmed'}<span style="color:green">{$r.status}</span>{else}<span style="color:red">{$r.status}</span>{/if}</td>
+			<td><a href="/admin.php?cmd=useredit&id={$r.id}" target="_blank" title="Edit" rel="tipsy">E</a> / <a href="javascript:;" title="Delete" rel="tipsy" onclick="deleteApp({$r.id});">D</a></td>
+		</tr>
+		{/foreach}
+
+</table>
+
+{$pagination}
+</div>
+
+{else if $_in === 'videos'}
+
+<div>
+<h2>{$count} videos found</h2>
+
+
+{assign var=i value=0}
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Cover</th>
+	
+	<th>Title</th>
+	<th>Info</th>
+	<th>Tags</th>
+	<th>Dur.</th>
+	<th>Source</th>
+	<th>Added</th>
+	<th>*</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="vd{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url(/videoCover?v={$r.id}&empty=1);"></div></td>
+	<td><div class="vd_title"><A target="_blank" href="/video?cmd=open&vid={$r.id}">{str_highlight($r.title,$key,null,'<span class="search_highlight_key">\1</span>')}</a></div></td>
+	<td><div class="vd_info f11">{if $r.description}{str_highlight(pellipse($r.description,200),$key,null,'<span class="search_highlight_key">\1</span>')}{else}No info available.{/if}</div></td>
+	<td><div class="vdd_tags f11">{if $r.tags}{str_highlight(pellipse($r.tags,200),$key,null,'<span class="search_highlight_key">\1</span>')}{else}No tags.{/if}</div></td>
+	<td><div class="vd_dur f11">{$r.dur}</div></td>
+	<td><div class="vd_dur f11">{if $r.external}{$r.external}{else}Local{/if}</div></td>
+	<td><div class="vd_add_time f11">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="vd_add_time f11"><a target="_blank" href="/admin.php?cmd=videoedit&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deleteVideo({$r.id});">D</a></div></td>
+	</tr><!-- Darker Table Row -->
+	{$i = $i+1}
+{/foreach}
+
+</table>
+{$pagination}
+</div>
+
+{else if $_in === 'music'}
+
+<div>
+
+<h2>{$count} tracks found</h2>
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Cover</th>
+	
+	<th>Artist</th>
+	<th>Track</th>
+	<th>Album</th>
+	<th>Dur.</th>
+	<th>Genre</th>
+	<th>Year</th>
+	<th>Uploaded</th>
+	<th>*</th>
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="track{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td>{$r.id}</td>
+	<td><div class="vd_cover" style="background-image:url({$r.cover});"></div></td>
+	<td><div class="vd_title"><A target="_blank" href="/search?key={$r.artist}&c=m&filter=tracks">{str_highlight($r.artist,$key,null,'<span class="search_highlight_key">\1</span>')}</a></div></td>
+	<td><div class="vd_info f11">{str_highlight($r.title,$key,null,'<span class="search_highlight_key">\1</span>')}</div></td>
+	<td><div class="vdd_tags f11">{str_highlight($r.album,$key,null,'<span class="search_highlight_key">\1</span>')}</div></td>
+	<td><div class="vd_dur f11">{$r.time}</div></td>
+	<td><div class="vd_dur f11">{$r.genre}</div></td>
+		<td><div class="vd_dur f11">{$r.year}</div></td>
+	<td><div class="vd_add_time f11">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="vd_add_time f11"><a target="_blank" href="/admin.php?cmd=trackedit&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deleteSong({$r.id});">D</a></div></td>
+	</tr><!-- Darker Table Row -->
+
+{/foreach}
+
+</table>
+{$pagination}
+
+</div>
+
+
+
+{else if $_in === 'apps'}
+
+<h2>{$count} apps found</h2>
+<!-- games list -->
+<div style="padding:1px;">
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th sort="id">id</th>
+			<th sort="cover">Cover</th>
+			<th sort="title">App name</th>
+			<th sort="genre">Category</th>
+			<th sort="descr">Description</th>
+			<th sort="time">Added</th>
+			<th sort="time">*</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	{foreach $q as $r}
+		<tr id="app{$r.id}">
+			<td>{$r.id}</td>
+			<td class="tbl_app_td_cover"><img class="tbl_app_cover" src="/appGetPhoto?i={$r.cover}&t"></td>
+			<td class="tbl_app_title">{str_highlight($r.title,$key,null,'<span class="search_highlight_key">\1</span>')}</td>
+			<td>{$this->getAppGenre($r.genre)}</td>
+			<td class="tbl_app_descr">{str_highlight(pellipse($r.description,90),$key,null,'<span class="search_highlight_key">\1</span>')}</td>
+			<td>{$this->time_elapsed($r.added)}</td>
+			<td><a href="javascript:;" onclick="deleteApp({$r.id});">Delete</a></td>
+		</tr>
+		{/foreach}
+	</tbody>
+</table>
+{$pagination}
+</div>
+
+
+
+{else if $_in === 'posts'}
+<div>
+
+<h2>{$count} posts found</h2>
+
+
+{assign var=i value=0}
+
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+	
+	<th>#id</th>
+	
+	<th>Type</th>
+	
+	<th>Info</th>
+	
+	<th>Active</th>
+	
+	<th>Added</th>
+
+
+	<th>*</th>
+	
+	</tr><!-- Table Header -->
+    
+	{foreach $q as $r}
+
+<!-- Table Row -->
+	<tr id="p{$r.id}" {if $smarty.foreach.r.id is even}class='even'{/if}>
+	<td><A target="_blank" href="/post?i={$r.id}">{$r.id}</a></td>
+	<td><div class="p_type">{$r.type}</div></td>
+	<td><div class="p_info">{if $r.text}{str_highlight(pellipse($r.text,200),$key,null,'<span class="search_highlight_key">\1</span>')}{else}Post empty.{/if}</div></td>
+	<td><div class="p_available">{$r.available}</div></td>
+	<td><div class="vp_added">{$this->time_elapsed($r.added)}</div></td>
+	<td><div class="f11"><a target="_blank" href="/admin.php?cmd=editpost&id={$r.id}">E</a> / <a href="javascript:;" onclick="return deletePost({$r.id});">D</a></div></td>
+	</tr>
+	<!-- Darker Table Row -->
+	{$i = $i+1}
+{/foreach}
+
+</table>
+{$pagination}
+
+</div>
+
+{else if $_in === 'communities'}
+
+
+<h2>{$count} groups found</h2>
+ 
+<!-- groups list -->
+<div style="padding:1px;">
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th sort="id">#id</th>
+			<th sort="cover">Logo</th>
+			<th sort="title">Name</th>
+			<th sort="time">Type</th>
+			<th sort="time">Category</th>
+			<th sort="time">Verified</th>
+			<th sort="time">Created</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	{foreach $q as $r}
+		<tr id="group{$r.id}">
+			<td>#{$r.id}</td>
+			<td class="tbl_theme_td_cover"><img class="tbl_theme_cover" src="/clubpicture?i={$r.id}&size=small&clubid={$r.id}&corr=1&logo=true"></td>
+			<td class="tbl_app_title">{str_highlight($r.name,$key,null,'<span class="search_highlight_key">\1</span>')}</td>
+			<td>{$r.type}</td>
+			<td><div class="vdd_tags f11">{$this->lang[$r.category]} {if !empty($r.subcategory)}<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$r.subcategory]}{/if}</div></td>
+			
+	<td><div class="vd_dur f11 soh-s">
+	
+	{if $r.verified == 'yes'}
+	
+	<span class="verified-ic"></span>
+	<div class="foh-s verify-group"><button onclick="unverifyGroup(event,'{$r.id}');" class="flat_button button_small button_wide secondary">Un-verify this group</button></div>
+	{else}
+	<div class="foh-s verify-group"><button onclick="verifyGroup(event,'{$r.id}');" class="flat_button button_small button_wide">Verify this group</button></div>
+	NO
+	{/if}
+	</div></td>
+			
+			<td>{$this->time_elapsed($r.created)}</td>
+ 
+		</tr>
+		{/foreach}
+	</tbody>
+
+</table>
+{$pagination}
+</div>
+
+
+
+{else if $_in === 'themes'}
+<h2>{$count} themes found</h2>
+<!-- themes list -->
+<div style="padding:1px;">
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th sort="id">id</th>
+			<th sort="cover">Image</th>
+			<th sort="title">Theme name</th>
+			<th sort="time">Added</th>
+			<th sort="time">*</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	{foreach $q as $r}
+		<tr id="theme{$r.id}">
+			<td>#{$r.id}</td>
+			<td class="tbl_theme_td_cover"><a title="View large image" href="/cmd/themes/{$r.photo}" target="_blank"><img class="tbl_theme_cover" src="/cmd/themes/thumb/{$r.photo}"></a></td>
+			<td class="tbl_app_title">{str_highlight($r.name,$key,null,'<span class="search_highlight_key">\1</span>')}</td>
+			<td>{$this->time_elapsed($r.added)}</td>
+			<td><a href="javascript:;" onclick="deleteTheme({$r.id});">Delete</a></td>
+		</tr>
+		{/foreach}
+	</tbody>
+
+</table>
+{$pagination}
+</div>
+
+{/if}
+
+{/if}
+</div>
+{/strip}

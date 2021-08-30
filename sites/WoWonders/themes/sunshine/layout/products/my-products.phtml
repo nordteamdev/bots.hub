@@ -1,0 +1,33 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=my-products'); ?>" data-ajax="?link1=my-products"><?php echo $wo['lang']['my_products'] ?></a></li>
+						<li><a href="<?php echo Wo_SeoLink('index.php?link1=products'); ?>"><?php echo $wo['lang']['market'] ?></a></li>
+					</ul>
+					<span class="btn btn-success <?php echo Wo_RightToLeft('pull-right'); ?>" title="<?php echo $wo['lang']['new'] ?>">
+						<a href="#" data-toggle="modal" data-target="#create-product-modal" data-backdrop="static" data-keyboard="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+					</span>
+				</div>
+				<div class="row my_products">
+					<?php
+						$products = Wo_GetProducts(array('user_id' => $wo['user']['user_id']));
+						if (count($products) > 0) {
+							foreach ($products as $wo['product']) {
+								echo Wo_LoadPage('products/product-style');
+							}
+						} else {
+							echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> ' . $wo['lang']['no_available_products'] . '</h5>';
+						}
+					?>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- .row -->
+</div>
+<?php echo Wo_LoadPage('products/create'); ?>

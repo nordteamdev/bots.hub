@@ -1,0 +1,60 @@
+<!--- HTML for users from left side --->
+{strip}
+
+ <div class="mml_subcat_ul">
+
+   {assign var=aria_hiddr value='true'}
+   {assign var=s_display value='none;'}
+   {assign var=c value='0'}
+
+   {foreach $query as $result}
+   {assign var=f_song_count value={$this->get_friend_songs_count($result.id)}}
+   {assign var=aria_hidd value='false'}
+   {assign var=aria_hiddr value='true'}
+   {assign var=l_a_h value='false'}
+   {assign var=f_display value='block;'}
+   {assign var=u_id value={$result.id}}
+   {assign var=u_name value={$result.name}}
+   {assign var=u_fam value={$result.surname}}
+   {assign var=u_photo value={$result.profile_photo}}
+   {assign var=u_c_mus value={$f_song_count}}
+
+   {if $c === $limit_of_users}
+   {assign var=f_display value='none;'}
+   {assign var=s_display value='block;'}
+   {assign var=aria_hidd value='true'}
+   {assign var=aria_hiddr value='false'}
+   {assign var=l_a_h value='true'}
+   {/if}
+
+   <div class="mml_subcat_li mus_friends" style="display:{$f_display}" aria-hidden="{$aria_hidd}" aria-hidden-live="{$l_a_h}" data-href="users" data-action="true" data-query="?user={$u_id}">
+      <a class="mml_subcat_btn" style="padding-bottom:41px;" data-mymus-subcat="true" title="{$u_name} {$u_fam}">
+         <div class="mml_ucard">
+            <div class="mml_ucard_img"> <img class="mml_ucard_img_cnt" src="/getPhoto?p={$u_photo}&sz=small" onerror="this.style.display='none';">
+               <img src="/music/css/images/user50__dark-redesign.png"> 
+            </div>
+            <div class="mml_ucard_n">
+               <div class="mml_ucard_n_f ellip" style="margin-top:0px;">{$u_name}
+                  <br>{$u_fam}
+               </div>
+            </div>
+         </div>
+         <div class="mml_notif mml_notif__num __on">{$u_c_mus}</div>
+      </a>
+   </div>
+
+   {assign $c $c++ nocache} 
+
+   {/foreach}
+
+</div>
+<div class="mus_user-search_empty" id="mUSR" style="display: {$s_display};">
+   <p class="mus_user-search_empty-tx"></p>
+   <p class="mus_user-search_empty-tx" aria-hidden="{$aria_hiddr}">
+      <a id="mus_show_all_friends" class="m_c_s_c_go_to">Show all friends</a> 
+   </p>
+   <div class="mml_subcat_ul"></div>
+</div>
+</div>
+
+{/strip}

@@ -1,0 +1,177 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div role="tabpanel" class="tab-pane active" id="members">
+<div class="w-100">
+    <div class="member_list">
+        <span class="pull-left"><?php echo $wo['lang']['list_of_users']; ?></span> 
+        <div class="pull-right">
+        <?php foreach (range('a', 'z') as $char): ?>
+            <a class="<?php if ($wo['char'] == $char) echo 'bold font20'; ?>" href="<?php echo Wo_SeoLink("index.php?link1=forum-members-byname&char=".$char); ?>">
+                <?php echo strtoupper($char); ?>
+            </a>
+        <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+    <div>
+        <table class="table threads-table">
+            <thead>
+                <tr>
+                  <th><?php echo $wo['lang']['name']; ?></th>
+                  <th><?php echo $wo['lang']['joined']; ?></th>
+                  <th><?php echo $wo['lang']['last_visit']; ?> </th>
+                  <th><?php echo $wo['lang']['post_count']; ?></th>
+                  <th><?php echo $wo['lang']['referrals']; ?></th>
+                </tr>
+            </thead>
+            <tbody id="mbrs">
+    <?php if (count($wo['members']) > 0): ?>
+            <?php foreach ($wo['members'] as $wo['member']): ?>
+                <tr class="forum-mbr-list" id="<?php echo $wo['member']['id']; ?>">
+                    <td>
+                        <p>
+                            <b>
+                              <a href="/<?php echo $wo['member']['username'] ?>/"
+                                 data-ajax="?link1=timeline&u=<?php echo $wo['member']['username'] ?>">
+                                <?php echo $wo['member']['username'] ?>
+                              </a>
+                            </b>
+                        </p>
+                        <p>
+                            <?php if ($wo['member']['admin'] == 1): ?>
+                                <?php echo $wo['lang']['site_admin']; ?>
+                            <?php else: ?>
+                                <?php echo $wo['lang']['registered']; ?>
+                            <?php endif; ?>
+                            
+                        </p>
+                    </td>
+                    <td>
+                        <span><?php echo Wo_Time_Elapsed_String($wo['member']['joined']) ?></span>
+                    </td>
+                    <td>
+                        <span><?php echo Wo_Time_Elapsed_String($wo['member']['lastseen']) ?></span>
+                        
+                    </td>
+
+
+                    <td><?php echo($wo['member']['forum_posts']) ?></td>
+           
+                    <td>
+                          <span><?php echo($wo['member']['referrer']) ?></span>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+    <?php else: ?>
+
+        <?php echo '<tr> <td colspan="7" class="text-center" style="padding:40px 40px;" >' . $wo['lang']['no_members_found'] .'</td></tr>'; ?>
+    <?php endif; ?>
+            </tbody>
+        </table>
+
+
+</div>
+
+<div>
+    <div class="posts_load">
+        <?php if (count($wo['members']) >= 1): ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer" id="forum-mbrs-load" >
+            <?php echo $wo['lang']['load_more_users'] ?></button>
+        </div>
+        <?php endif ?>
+    </div>  
+</div>
+<br>
+<div class="clear"></div>
+
+</div>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+
+<script>
+    jQuery(document).ready(function($) {
+
+      var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+          clearTimeout (timer);
+          timer = setTimeout(callback, ms);
+        };
+      })();
+
+
+      $("#search-members").keyup(function(event) {
+
+          delay(function(){
+          if ($("#search-members").val().trim()) {
+              $.ajax({
+                url: Wo_Ajax_Requests_File(),
+                type: 'GET',
+                data: { f:"search-forum-mbrs",
+                        keyword:$("#search-members").val(),
+                        orderby:$("#sort_mbr_by").val()
+                      },
+                dataType: "json",
+                success: function(data){
+                  $(".posts_load").remove()
+                  if (data['status'] == 200) {
+                    $("#mbrs").html(data['html'])
+                  }
+                  else if(data['status'] == 404){
+                    
+                    $("#mbrs").html('<tr> <td colspan="7" class="text-center" style="padding:40px 40px;" >' + data['html'] + '</td></tr>')
+                  }
+                }
+              })}
+
+          }, 1000 );
+      });
+
+      $("#forum-mbrs-load").click(function () {
+              
+              $.ajax({
+                 url: Wo_Ajax_Requests_File(),
+                 type: 'GET',
+                 dataType: 'json',
+                 data: {
+                    f:"forum-mbrs-load",
+                    offset:($(".forum-mbr-list").length > 0) ? $(".forum-mbr-list:last").attr('id') : 0
+
+                 },
+                 success:function(data){
+                    
+                    if (data['status'] == 200) {
+
+                        $("#mbrs").append(data['html'])
+                     }
+                     else{
+
+                       $(".posts_load").remove()
+                       
+                     }
+
+                 }
+              });
+      });
+
+      $("#adv-mbr-search input").keyup(function(event) {
+        var empty = false;
+        $("#adv-mbr-search input[type=text]").each(function(index, el) {
+            if ($(this).val() == '') {
+              empty = true;
+            }
+        });
+
+        if (empty) {
+          $("#adv-mbr-search input[type=submit]").attr('disabled','disabled')
+        }
+        if(!empty){
+          $("#adv-mbr-search input[type=submit]").removeAttr('disabled')
+        }
+         
+      });
+
+
+
+ });
+</script>

@@ -1,0 +1,33 @@
+<div class="entry" data-type="video" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="material-icons">videocam</i>
+	   {{LANG video}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}"><br>
+	<input type="text" id="video-url" class="form-control" placeholder="{{LANG video_url}}" data-name="entry_video_url">
+	<input type="file" class="hidden" id="fl-upload-video-{{ENTRY_TIME}}" onchange="FL_UploadVideo('{{ENTRY_TIME}}',this);" accept="video/*">
+	<span class="help-block">{{LANG video_supported_sites}}</span><Br>
+	<div id="fetched-video">
+
+	</div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-main" type="button" onclick="$('#fl-upload-video-{{ENTRY_TIME}}').trigger('click');">
+		  <i class="fa fa-cloud-upload progress-icon" data-icon="cloud-upload"></i> {{LANG upload}}
+	    </button>
+	    <button class="btn btn-blue" type="button" onclick="FL_FetchVideo({{ENTRY_TIME}});">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	    </button>
+		<input type="hidden" id="entry_video_type" class="btn btn-blue" data-name="entry_video_type">
+		<input type="hidden" id="entry_video_id" class="btn btn-blue" data-name="entry_video_id">
+		<input type="hidden" id="entry_video_src" class="btn btn-blue" data-name="entry_video_src">
+	</div>
+	<div class="clear"></div>
+</div>
+

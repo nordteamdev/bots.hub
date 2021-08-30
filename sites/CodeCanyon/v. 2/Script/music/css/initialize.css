@@ -1,0 +1,22 @@
+audio,
+canvas,
+progress,
+video {
+  display:inline-block;
+  vertical-align:baseline;
+}
+
+audio:not([controls]) {
+  display:none;
+  height:0;
+}
+.d_layer_toolbar_nav { height: 47px;width: 90px;padding: 0;display: inline-block;padding: 0 4px;white-space: normal;text-align: center;background:rgba(45, 94, 173, 0.99); }
+.d_layer_toolbar_ic_pl { display: block;position: relative;left: 62px;bottom: 38px;z-index: 100;width: 16px;height: 16px;background-image: url(../css/images/play-hover-16.ico);background-repeat: no-repeat; }
+.d_layer_toolbar_ic_ps { display: block;position: relative;left: 62px;bottom: 38px;z-index: 100;width: 16px;height: 16px;background-image: url(../css/images/pause-16.ico);background-repeat: no-repeat; }
+.d_layer_toolbar_nav_a { position: relative;display: block;height: 48px;min-width: 54px;color: #CDCDCD;text-decoration: none;cursor: pointer; }
+.d_layer_toolbar_note_ic { background-image: url(../css/images/note-24.ico);background-repeat: no-repeat;background-position: 28px 6px;}
+.d_layer_toolbar_i_tx_w { display: inline-block;position: relative;padding-top: 32px;font-size: 10px;line-height: 14px;margin-left: 2px;margin-right: 2px;max-width: 74px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.d_layer_toolbar_nav:hover, .d_layer_toolbar_nav.__active  {background: rgba(61, 109, 187, 1);}
+.d_layer_toolbar_nav:hover {text-decoration: none;color: #f8d6b4;}
+.d_layer_toolbar_ic_pl:hover {background-image: url(../css/images/play-16.ico);background-repeat: no-repeat;}
+.d_layer_toolbar_ic_ps:hover {opacity:.7}

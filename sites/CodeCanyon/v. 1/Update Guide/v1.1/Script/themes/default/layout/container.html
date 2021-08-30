@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>{{CONTAINER_TITLE}}</title>
+      <meta charset="UTF-8">
+      <meta name="title" content="{{CONTAINER_TITLE}}">
+      <meta name="description" content="{{CONTAINER_DESC}}">
+      <meta name="keywords" content="{{CONTAINER_KEYWORDS}}">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta property="fb:app_id" content="1643990952546825" />
+      {{OG_META_TAGS}}
+      <link rel="shortcut icon" type="image/png" href="{{CONFIG theme_url}}/img/icon.{{CONFIG icon_extension}}"/>
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/font-awesome-4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/twemoji-awesome.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/mediaelement/build/mediaelementplayer.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/style.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootsrap-social.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/sweetalert2/dist/sweetalert2.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/swal-forms/swal-forms.css">
+      <?php 
+      if ($fl['page'] == 'register') {
+      ?>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <?php } ?>
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootsrap-social.css">
+      <script src="{{CONFIG theme_url}}/js/jquery-3.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/jquery.form.min.js"></script>
+      <style type="text/css">
+        {{BACKGROUND_IMAGE}}
+        {{CONFIG styles_cc}}
+      </style>
+      <?php if (!empty($fl['config']['google_code'])) {?>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{CONFIG google_code}}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{CONFIG google_code}}');
+      </script>
+      <?php } ?>
+      <script>
+        var site_url = '{{CONFIG site_url}}';
+        function FL_Ajax_Requests_File() {
+          return site_url + '/ajax_requests.php';
+        }
+
+        function FL_ShareToEmail(url){
+          if (!url) { return false;}
+          var share_form = '<form class="form share-e-form"><div class="share-alert"></div><div class="form-group"><input type="text" class="form-control" id="share-en" name="name" placeholder="{{LANG name}}"></div><div class="form-group"><input type="email" class="form-control" id="share-ee" name="email" placeholder="{{LANG recipients_email}}"></div><div class="form-group optional"><textarea placeholder="{{LANG write_message}}" class="form-control" name="text"></textarea></div><div class="form-group" style="margin-bottom: 0;"><button class="btn-main btn btn-main" type="submit" ><i class="fa fa-paper-plane-o progress-icon" data-icon="paper-plane-o"></i> {{LANG send}}</button></div><input type="hidden" name="url" value="{{URL}}"></form>';
+          swal({
+            title: '',
+            showConfirmButton: false,
+            customClass: 'swal2-small',
+            html: share_form.replace('{{URL}}',url)
+          }).then(function(){}, function(){});
+        }
+
+        {{CONFIG header_cc}}
+      </script>
+      
+      {{EXTRA_JS_CODE}}
+   </head>
+   <body {{WHITE_BACKGROUND}}>
+       {{OVER}}
+       <header>
+         <?php if ($fl['page'] != 'post_data') {?> {{HEADER_HTML}} <?php } ?>        
+       </header>
+       
+       <div class="container {{CONTAINER_SIZE}} {{CONTENT_CONTAINER}} latest-container">
+          {{ANNOUNCEMENT}}
+          {{BR_NEWS}}
+          <div class="ads-contnet">{{HEADER_AD}}</div>  
+          {{CONTAINER_CONTENT}}
+          <div class="ads-contnet">{{FOOTER_AD}}</div>
+       </div>
+       <div class="clear"></div>
+       <footer>
+          <?php if ($fl['page'] != 'post_data') {?> {{FOOTER_HTML}} <?php } ?> 
+          <script>
+            {{CONFIG footer_cc}}
+          </script>
+       </footer>
+       {{AUTH_FOOTER_HTML}}
+
+       
+      <!-- JS FILES -->
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/script.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/autosize.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/sweetalert2/dist/sweetalert2.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/swal-forms/swal-forms.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/mediaelement/build/mediaelement-and-player.js"></script>
+      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script> 
+      <input type="hidden" value="<?php echo FL_CreateSession()?>" class="main_session">
+      <?php
+      if(!empty($fl['story']['is_active'])) {
+      ?>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=1643990952546825";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        
+        
+      </script>
+      <?php
+      }
+      ?>
+
+      <!-- End 'JS FILES' -->
+      <div class="cd-top"><i class="fa fa-arrow-up"></i></div>
+   </body>
+</html> 

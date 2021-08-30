@@ -1,0 +1,30 @@
+<a class="file-sharing-download-btn" href="<?php echo $wo['media']['filename'];?>"> 
+    <i class="media-download-btn fa fa-download"></i>
+</a>
+<div class="user-ad-container" id="<?php echo($wo['wo_ad_id']); ?>">
+<video onplay="Wo_AddVideoViews($(this).attr('data-post-video'))" class="video-js vjs-big-play-centered <?php echo($wo['rvad_con']); ?>" controls preload="auto" poster="<?php  echo $wo['media']['video_thumb'];?>" data-setup="{}" data-post-video="<?php echo $wo['media']['storyId'];?>" style="width:100%;height:100%;">
+    <source src="<?php echo $wo['media']['filename'];?>" type='video/mp4'>
+    <source src="<?php echo $wo['media']['filename'];?>" type='video/webm'> 
+</video>
+</div>  
+<script>
+jQuery(document).ready(function($) {
+  $('video[data-post-video="<?php echo $wo['media']['storyId'];?>"]').mediaelementplayer({
+    videoHeight: 300,
+    pluginPath: 'https://cdnjs.com/libraries/mediaelement-plugins/',
+    shimScriptAccess: 'always',
+    autoplay: true,
+    features: ['playpause', 'fullscreen', 'current', 'progress', 'duration', 'speed', 'skipback', 'jumpforward', 'tracks', 'markers', 'volume', 'chromecast', 'contextmenu', 'flash',<?php echo($wo['is_video_ad']); ?>],
+    jumpForwardInterval: 20,
+    adsPrerollMediaUrl: ['<?php echo(Wo_GetMedia($wo['wo_ad_media'])); ?>'],
+    adsPrerollAdUrl: ['<?php echo($wo['wo_ad_url']); ?>'],
+    adsPrerollAdEnableSkip: true,
+    adsPrerollAdSkipSeconds: <?php echo $wo['config']['video_ad_skip'];?>,
+
+    success: function (media) {
+        media.addEventListener('ended', function (e) { /* pass */}, false); 
+    },
+  }).attr('poster', '<?php  echo $wo['media']['video_thumb'];?>');
+
+});
+</script>

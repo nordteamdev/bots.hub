@@ -1,0 +1,36 @@
+{strip}
+{foreach $q as $res}
+<a class="ce11 this_wall_family image-hover micro noclone" href="/photo?q={$user.id}&show=profileWall&from=medium&a={b_encode($res.albumid)}&o={b_encode($res.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($res.id)}">
+
+<img src="/getPhoto?p={$res.id}&sz=medium&g={$user.gender}&corr=1" >
+{assign var="rates" value=$this->pwGetPhotoStars($res.id)}
+{if $rates}
+<div class="photo_rate_res">
+<div class="photo_rate_bg" style="width:{$rates}%;"></div>
+<div class="photo_rate_stars"></div>
+</div>
+{/if}
+<div class="profilephoto-wall widgets">
+<span class="widged_albname ellip">
+
+{$this->getAlbumName($res.name)}
+
+</span>
+
+<div class="klass_comm_wdg_p __{$res.id}">
+<div {if $res.userid !== $this->USER['id']}data-callback="phwallLikeClick" data-log-click='{ldelim}"type":"like","item":"photo","itemid":"{$res.id}"{rdelim}'{/if} class="ic ic_klass_wd {if $res.userid == $this->USER['id']}_curDef{/if} {if $res.lbyme}__active{/if}"></div>
+<span data-pplikt="ppo_{$res.id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$res.lc}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$res.id}" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$res.kc}</span>
+</div>
+
+</div>
+
+
+
+</a>
+{/foreach}
+{/strip}

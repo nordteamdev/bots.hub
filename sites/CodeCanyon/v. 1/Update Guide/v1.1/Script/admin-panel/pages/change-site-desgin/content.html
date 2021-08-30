@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Design > Change Site Design</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Change Site Design</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success d-settings-alert"></div>
+                    <form class="d-settings" method="POST">
+                        <div class="input-group">
+                    	   <span>Favicon</span>
+                           <span class="btn btn-default btn-file">
+		                     <i class="fa fa-camera"></i>
+		                     <input type="file" id="favicon" accept="image/x-png, image/gif, image/jpeg" name="favicon">
+		                   </span>
+		                    <div class="form-group hidden" id="favicon-i">
+					            <input type="text" class="form-control" readonly>
+					        </div>
+                        </div>
+                        <div class="input-group">
+                    	   <span>Logo (290x120)</span>
+                           <span class="btn btn-default btn-file">
+		                     <i class="fa fa-camera"></i>
+		                     <input type="file" id="logo" accept="image/x-png, image/gif, image/jpeg" name="logo">
+		                   </span>
+		                    <div class="form-group hidden" id="logo">
+					            <input type="text" class="form-control" readonly>
+					        </div>
+                        </div>
+                        <hr>
+                        <div>Please make sure to clean your browser cache after changing the design settings.</div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    $("#favicon").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         var check = filename.split('.').pop();
+         if (check == 'png' || check == 'PNG') {
+         	$("#favicon-i input").val(filename);
+         	$("#favicon-i").removeClass('hidden');
+         } else {
+         	alert('Just PNG format is supported');
+         	$("#favicon-i input").val('');
+         	$("#favicon-i").addClass('hidden');
+         	$('#favicon').val('');
+         }
+    });
+    $("#logo").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         var check = filename.split('.').pop();
+         if (check == 'png' || check == 'PNG') {
+         	$("#logo-i input").val(filename);
+         	$("#logo-i").removeClass('hidden');
+         } else {
+         	alert('Just PNG format is supported');
+         	$("#logo-i input").val('');
+         	$("#logo-i").addClass('hidden');
+         	$('#logo').val('');
+         }
+    });
+    var form_d_settings = $('form.d-settings');
+    form_d_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=design&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_d_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.d-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.d-settings-alert').empty();
+                }, 2000);
+            }
+            form_d_settings.find('.waves-effect').text('Save');
+        }
+    });
+});
+</script>

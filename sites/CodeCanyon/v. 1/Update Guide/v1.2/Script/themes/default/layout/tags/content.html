@@ -1,0 +1,112 @@
+<div id="search-page" class="content-shadow main-border-color search-by-tags">
+   <div id="exTab2">
+       <ul class="nav nav-tabs">
+         <li class="active">
+            <a href="#news" data-toggle="tab" class="nav-news">{{LANG news}} ({{COUNT_NEWS_DRAFTS}})</a>
+         </li>
+         <li>
+            <a href="#lists" data-toggle="tab" class="nav-lists">{{LANG lists}} ({{COUNT_LISTS_DRAFTS}})</a>
+         </li>
+         <li>
+            <a href="#videos" data-toggle="tab" class="nav-videos">{{LANG videos}} ({{COUNT_VIDEOS_DRAFTS}})</a>
+         </li>
+         <li>
+            <a href="#music" data-toggle="tab" class="nav-music">{{LANG music}} ({{COUNT_MUSIC_DRAFTS}})</a>
+         </li>
+         <li>
+            <a href="#polls" data-toggle="tab" class="nav-polls">{{LANG polls}} ({{COUNT_POLLS_DRAFTS}})</a>
+         </li>
+      </ul>
+      <div class="tab-content custom-page" style="margin-top: 0; padding: 10px 15px 20px 15px;" >
+         <h4>{{LANG tag}}: {{TAG}}</h4><hr>
+         <div class="tab-pane active" id="news">
+            <div class="row">
+               <?php 
+                  $len = count($fl['get_news_drafts']);
+                  foreach ($fl['get_news_drafts'] as $key => $fl['latest_news_data']): 
+                      $fl['latest_news_data']['last'] = false;
+                      if ($key == $len - 1) {
+                         $fl['latest_news_data']['last'] = true;
+                      } 
+                      echo FL_LoadPage('home/latest-news');
+                  endforeach;
+                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                  ?>
+               <div class="clear"></div>
+            </div>
+         </div>
+         <div class="tab-pane" id="lists">
+            <div class="row">
+               <div class="col-md-12 no-padding-left">
+                  <?php 
+                     $len = count($fl['get_lists_drafts']);
+                     foreach ($fl['get_lists_drafts'] as $key => $fl['latest_news_data']): 
+                         $fl['latest_news_data']['last'] = false;
+                         if ($key == $len - 1) {
+                            $fl['latest_news_data']['last'] = true;
+                         } 
+                         echo FL_LoadPage('home/latest-news');
+                     endforeach;
+                     echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                     ?>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+         <div class="tab-pane" id="videos">
+            <div class="row">
+               <div class="col-md-12 no-padding-left">
+                  <?php 
+                     $len = count($fl['get_videos_drafts']);
+                     foreach ($fl['get_videos_drafts'] as $key => $fl['latest_news_data']): 
+                         $fl['latest_news_data']['last'] = false;
+                         if ($key == $len - 1) {
+                            $fl['latest_news_data']['last'] = true;
+                         } 
+                         echo FL_LoadPage('home/latest-news');
+                     endforeach;
+                     echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                     ?>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+         <div class="tab-pane" id="music">
+            <div class="row">
+               <div class="col-md-12 no-padding-left">
+                  <?php 
+                     $len = count($fl['get_music_drafts']);
+                     foreach ($fl['get_music_drafts'] as $key => $fl['latest_news_data']): 
+                         $fl['latest_news_data']['last'] = false;
+                         if ($key == $len - 1) {
+                            $fl['latest_news_data']['last'] = true;
+                         } 
+                         echo FL_LoadPage('home/latest-news');
+                     endforeach;
+                     echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                     ?>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+         <div class="tab-pane" id="polls">
+            <div class="row">
+               <div class="col-md-12 no-padding-left">
+                  <?php 
+                     $len = count($fl['get_polls_drafts']);
+                     foreach ($fl['get_polls_drafts'] as $key => $fl['latest_news_data']): 
+                         $fl['latest_news_data']['last'] = false;
+                         if ($key == $len - 1) {
+                            $fl['latest_news_data']['last'] = true;
+                         } 
+                         echo FL_LoadPage('home/latest-news');
+                     endforeach;
+                     echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                     ?>
+               </div>
+               <div class="clear"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

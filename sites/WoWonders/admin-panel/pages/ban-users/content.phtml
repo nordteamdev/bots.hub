@@ -1,0 +1,97 @@
+<?php
+$error = '';
+$succuss = '';
+if (isset($_POST['ip'])) {
+	if (!empty($_POST['ip'])) {
+     	  $add_ip = Wo_BanNewIp($_POST['ip']);
+     	  if ($add_ip === true) {
+     	  	$succuss = '<i class="fa fa-fw fa-check"></i> User was added to the blacklist';
+     	  } else {
+     	  	$error = '<i class="fa fa-fw fa-exclamation-triangle"></i> Error found while adding the user to the blacklist';
+     	  }
+    } else {
+       $error = '<i class="fa fa-fw fa-exclamation-triangle"></i> Please fill the input';
+    }
+}
+if (!empty($_GET['delete_ip'])) {
+	if (Wo_DeleteBanned($_GET['delete_ip']) === true) {
+		$succuss = '<i class="fa fa-fw fa-check"></i> ' . $wo['lang']['ip_deleted'];
+	}
+}
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Blacklist Users</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+    	<div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Ban IP, email or username</h2><br>
+                    <p>Add any email, username or ip to prevent users from creating accounts within the blacklist.</p>
+                </div>
+                <div class="body">
+                     <?php if (!empty($error)) { ?>
+				      <div class="alert alert-danger">
+				      	<?php echo $error;?>
+				      </div>
+				      <?php } ?>
+				      <?php if (!empty($succuss)) { ?>
+				      <div class="alert alert-success">
+				      	<?php echo $succuss;?>
+				      </div>
+				      <?php } ?>
+                    <form class="ban-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="ip" name="ip" class="form-control">
+                                <label class="form-label">IP Address, Email Address, or Username</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ban</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Banned IPs</h2>
+                </div>
+                <div class="body">
+                   <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                   <div class="clearfix"></div>
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Banned</th>
+					                  <th>Value</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <?php 
+				               foreach (Wo_GetBanned() as $wo['ip']) {
+				                  echo Wo_LoadAdminPage('ban-users/list');
+				                }
+				               ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+
+<script>
+$(function () {
+	$('table').DataTable();
+});
+
+</script>

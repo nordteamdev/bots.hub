@@ -1,0 +1,251 @@
+function gLocation(ev,obj){
+	ev.preventDefault();
+	
+	var $obj = $(obj);
+	var map_inited;
+	if(!$('#main_ff_share #lf_map_i').length)
+	$('#main_ff_share #posting_form_text_field-w').append('<section id="lf_map_i"><div id="lf_map_findbox"></div><div id="lf_map_cnt" class="lf_map_cnt"></div></section>');
+	else {$('#main_ff_share #lf_map_i').show();map_inited=!0;}
+$('#post_btmm_btnss').children().each(function(){
+
+	$(this).addClass('__disabled');
+	
+});
+$obj.removeClass('__disabled').addClass('active').removeAttr('onclick');
+if($obj.hasClass('active'))
+	$obj.off('click').on('click',function(e){
+		var $this = $(this);
+		e.preventDefault();
+		
+		$('#post_btmm_btnss').children().each(function(){
+
+			$(this).removeClass('__disabled active');
+	
+		});
+		$this.off('click').on('click',function(e){gLocation(e,this);});$('#main_ff_share #lf_map_i').hide();
+	});
+/*
+	// init map
+	var map = L.map('lf_map_cnt', {
+    center: [51.505, -0.09],
+    zoom: 13
+	});
+
+	
+
+	
+	var map = new L.Map('lf_map_cnt', {zoom: 9, center: new L.latLng(data[0].loc) });	//set center from first location
+
+	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+
+	var markersLayer = new L.LayerGroup();	//layer contain searched elements
+	map.addLayer(markersLayer);
+
+	map.addControl( new L.Control.Search({
+		container: 'lf_map_findbox',
+		layer: markersLayer,
+		initial: false,
+		collapsed: false
+	}) );
+	//inizialize search control
+
+	////////////populate map with markers from sample data
+	for(i in data) {
+		var title = data[i].title,	//value searched
+			loc = data[i].loc,		//position found
+			marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+		marker.bindPopup('title: '+ title );
+		markersLayer.addLayer(marker);
+	}
+	
+		*/
+
+	if(map_inited)return;
+	var search_plugin_init,location_found;
+	var map = new L.Map('lf_map_cnt', {zoom: 17
+	
+	/*,
+	
+	            revealOSMControl: true,
+				getQueryTemplate:function(a){alert(a)},
+            revealOSMControlOptions: {
+                queryTemplate: '[out:json];(node(around:{radius},{lat},{lng})[name];way(around:{radius},{lat},{lng})[name][highway];);out body qt 999;'
+            },
+            zoomControl: true*/
+	});
+	map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
+		var markersLayer = new L.LayerGroup();	//layer contain searched elements
+/*
+
+var marker;
+    var lcm = map.locate({ setView: true, maxZoom:13, enableHighAccuracy:true }).on('locationfound', function(e){
+		marker = new L.marker([e.latitude, e.longitude],{ draggable:true }).bindPopup(lang.map_you_are_here);
+		map.addLayer(marker);
+		location_found = true;
+		search_plugin_init();
+	}).on('locationerror', function(e){
+		
+		location_found=false;
+		search_plugin_init();
+	});
+
+	map.on('click', function(e){  marker.setLatLng( e.latlng); });
+	*/
+			var options = {
+			key: '3c38d15e76c02545181b07d3f8cfccf0', // REPLACE WITH YOUR API-KEY. This key might go away any time!
+			limit: 1
+		};
+				/*
+
+			var geocoder = L.Control.OpenCageSearch.geocoder(options);
+		var control = L.Control.openCageSearch(options).addTo(map);
+		
+
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+
+
+	*/
+	
+	var marker;
+
+	var lcm = map.locate({ setView: true, maxZoom:13, enableHighAccuracy:true }).on('locationfound', function(e){
+		
+	marker = new L.marker([e.latitude, e.longitude]).bindPopup(lang.map_you_are_here);
+		map.addLayer(marker);
+		location_found = true;
+search_plugin_init();
+	}).on('locationerror', function(e){
+	
+			marker = new L.marker([44.4361414, 26.1027443]);
+		map.addLayer(marker);
+		location_found=false;
+	 search_plugin_init();
+	
+	});
+	
+	
+	
+	/*
+Find trees 100m around a given location:
+
+  [out:json];
+  node
+  (around:100.0,lat,lon)
+  ["natural"="tree"];
+  out;
+*/
+var happyLittleTree = L.icon({
+    iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Emojione_1F333.svg/32px-Emojione_1F333.svg.png',
+    iconSize: [32, 32]
+});
+	
+	map.on('click', function(e){
+	var url = 'https://overpass-api.de/api/interpreter?data='+
+  	encodeURIComponent('[out:json];node(around:100.0,'+e.latlng.lat+','+e.latlng.lng+')[~"^(amenity)$"~"(bar|cafe|biergarten|pub|car_rental|car_sharing|car_wash|dentist|dentist|pharmacy|doctors|bank|atm|fuel|ice_cream|restaurant|fast_food|brothel|stripclub|swingerclub|casino|theatre|nightclub|planetarium|gym|post_office|register_office|sauna)"];out;');
+	$.get(url, function(data) {
+    if(data.hasOwnProperty("elements")){
+    	if(data.elements.length > 0) {
+      	for(var i in data.elements){
+        	new L.marker([data.elements[i].lat, data.elements[i].lon], {icon: happyLittleTree}).addTo(map);
+        }
+      }
+    }
+  });
+	marker.setLatLng(e.latlng);
+});
+
+
+
+/*
+	var geocoder = L.Control.OpenCageSearch.geocoder(options);
+			map.on('click', function(e) {
+			var query = e.latlng.lat.toString() + ',' + e.latlng.lng.toString();
+			
+			marker.setLatLng( e.latlng);
+			
+			var send = jAjax('http://nominatim.openstreetmap.org/search',
+			'get','format=json&addressdetails=1&accept-language='+__g_lang+'&extratags=1&namedetails=1&q='+query);
+			
+			send.done(function(d){
+
+							var ev = $.Event("keyup keypress keydown", { which: 13, keyCode: 13 } );
+							var place_id = typeof d[0].placeid !== 'undefined' && d[0].placeid.length ? d[0].placeid : 0;
+							var q = typeof d[0].namedetails.name !== 'undefined' && d[0].namedetails.name.length ? d[0].namedetails.name : query;
+							var is_country = typeof d[0].address.country !== 'undefined' && d[0].address.country.length ? d[0].address.country : false;
+			$('#leaflet-search-input').addClass('triggered '+ (is_country ? 'hasCountry' : '')  ).attr({'placeid':place_id,'map-loc':e.latlng,'where':q, 'country' : is_country ? is_country : ''}).val('');
+
+			//console.log(d[0].namedetails)
+			
+			var ev = document.createEvent('KeyboardEvent');
+// Send key '13' (= enter)
+ev.initKeyboardEvent(
+    'keyup', true, true, window, false, false, false, false, 13, 0);
+$('#leaflet-search-input')[0].dispatchEvent(ev);
+
+
+			});
+			
+			
+						$('#leaflet-search-input').off('keydown.removeCl').on('keydown.removeCl',function(e){
+				
+				$(this).removeClass('triggered hasCountry');
+				
+			});
+			
+			
+			
+			geocoder.geocode(query, function(results) {console.log(results)
+				var r = results[0];
+				if (r) {
+					if (marker) {
+						marker.
+							setLatLng(r.center).
+							setPopupContent(r.name).
+							openPopup();
+					} else {
+						marker = L.marker(r.center,{draggable:true}).bindPopup(r.name).addTo(map).openPopup();
+					}
+				}
+			})
+			//var ev = $.Event('keyup',{which:13,keyCode:13});
+
+			//$('#searchtext9')[0].keyup();
+			//alert(typeof handleSrchSumit);
+
+			//$('.search-button')[0].click();
+		});
+	*/
+	
+	search_plugin_init = function(){
+		
+		
+			map.addControl( new L.Control.Search({
+			container: 'lf_map_findbox',
+			//layer: markersLayer,
+			initial: true,
+			collapsed: false,
+			marker: marker,
+			url: 'http://nominatim.openstreetmap.org/search?format=json&addressdetails=1&accept-language='+__g_lang+'&extratags=1&namedetails=1&q={s}',
+			jsonpParam: 'json_callback',
+			propertyName: 'display_name',
+			propertyLoc: ['lat','lon'],
+			circleLocation: false,
+			markerLocation: true,			
+			autoType: true,autoResize: false,
+			autoCollapse: false,
+			minLength: 0,
+			zoom:17,casesesitive: false,history:true,
+			textErr: 'Location not found',	//error message
+			textCancel: 'Cancel',		//title in cancel button		
+			textPlaceholder: 'Search...'//placeholder value
+		}) );
+		
+	
+	}
+
+
+		$('.leaflet-control-attribution.leaflet-control').remove();
+}

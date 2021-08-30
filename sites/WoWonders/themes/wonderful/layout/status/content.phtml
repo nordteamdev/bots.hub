@@ -1,0 +1,106 @@
+<div class="story-container user-story-container" id="<?php echo $wo['story']['id']; ?>" data-status-id="<?php echo $wo['story']['id']; ?>">
+    <div class="panel panel-white panel-shadow">
+      <div class="ads-heading">
+        
+        <div class="ads-meta">
+		<div class="<?php echo Wo_RightToLeft('pull-left');?> ads-image" style="height: 41px;margin-top: -4px;">
+          <a data-ajax="?link1=timeline&u=<?php echo $wo['story']['user_data']['username']?>">
+          <img src="<?php echo $wo['story']['user_data']['avatar']; ?>" class="responsive-img" style="border-radius:50%;width: 41px;height: 41px;">
+          </a>
+        </div>
+          <div class="title h5">
+            <p style="margin-bottom: 0px;">
+              <a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['story']['user_data']['username'] . '');?>"><b><?php echo $wo['story']['user_data']['name']; ?></b>(@<?php echo $wo['story']['user_data']['username']; ?>)</a>
+              
+              <?php if ($wo['story']['is_owner']):?>
+	            <span class="pull-right pointer" onclick="Wo_DeleteStatus(<?php echo $wo['story']['id']; ?>)" style="margin-top: 7px;font-size: 16px;">
+	              	<i class="zmdi zmdi-delete"></i>
+	            </span>
+	          <?php endif;?>
+              <span class="clear"></span>
+            </p>
+            <h6>
+              <span class="time">
+		        <span class="ajax-time" title="<?php echo date('c',$wo['story']['posted']); ?>">
+		          <?php echo Wo_Time_Elapsed_String($wo['story']['posted']); ?>
+		        </span>
+		      </span>  
+            </h6>
+          </div>
+        </div>
+        <div class="ads-headline">
+          <p class="hind">
+            <b><?php echo $wo['story']['title']; ?></b>
+            <span>
+              <?php echo $wo['story']['description']; ?>
+            </span>
+          </p>
+        </div>
+        <?php if (isset($wo['story']['thumb'])): ?>
+	        <div class="story-media-cont" id="<?php echo $wo['story']['id']; ?>">
+	          	<div class="story-image-wrapper user-story-gallery-<?php echo $wo['story']['id']; ?>">
+	          		<a href="<?php echo $wo['story']['thumb']['filename']; ?>">
+	          			<div style="background-repeat: no-repeat; background-size: cover; background-image:url('<?php echo $wo['story']['thumb']['filename']; ?>'); height: 400px;background-position: center;">
+	          				
+	          			</div>
+	          		</a>
+		          	<?php foreach ($wo['story']['images'] as $image): ?>
+		            	<?php if ($image['type'] == 'image'): ?>           		
+							<a href="<?php echo $image['filename']; ?>"></a>	
+		            	<?php endif; ?>
+		            <?php endforeach; ?>
+	            </div>
+	        </div>
+        <?php endif; ?>
+
+        <?php if (count($wo['story']['videos']) > 0): ?>
+        	<hr>
+        	<div class="story-media-cont">
+	        	<?php foreach ($wo['story']['videos'] as $wo['media']): ?>
+	    			<?php echo Wo_LoadPage('status/video'); ?>
+	    		<?php endforeach; ?>
+    		</div>
+        <?php endif; ?>	
+    	
+      
+      <div class="clear"></div>
+    </div>
+</div>
+
+
+<script>
+	jQuery(document).ready(function($) {
+		var interval;
+		$('.user-story-gallery-<?php echo $wo['story']['id']; ?>').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			tLoading: '',
+			gallery:{
+				enabled:true,
+			},
+			removalDelay: 300,
+
+			callbacks: {
+				open: function() {
+					Wo_StoryProgress();																			
+					if ($('.user-story-gallery-<?php echo $wo['story']['id']; ?> a').length > 1) {
+						interval = setInterval(function() {
+					        $.magnificPopup.instance.next(true);
+					    }, 10000);
+					}
+					else if($('.user-story-gallery-<?php echo $wo['story']['id']; ?> a').length == 1){
+						Wo_StoryProgress();
+						Wo_Delay(function(){
+							$('.user-story-gallery-<?php echo $wo['story']['id']; ?>').magnificPopup('close');
+						},10000)
+						
+						
+					}
+				},
+				close:function() {
+					clearInterval(interval);
+				}
+			}
+		});	
+	});
+</script>

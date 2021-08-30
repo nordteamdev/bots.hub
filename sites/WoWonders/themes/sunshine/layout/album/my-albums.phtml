@@ -1,0 +1,32 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=albums'); ?>" data-ajax="?link1=albums"><?php echo $wo['lang']['albums'] ?></a></li>
+					</ul>
+					<span class="btn create_album_btn <?php echo Wo_RightToLeft('pull-right'); ?>">
+						<a href="<?php echo Wo_SeoLink('index.php?link1=create-album');?>" data-ajax="?link1=create-album" title="<?php echo $wo['lang']['create'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+					</span>
+				</div>
+				
+				<div class="row">
+					<?php
+						$albums = Wo_GetUserAlbums($wo['user_id']);
+							if (count($albums) > 0) {
+								foreach ($albums as $wo['album']) {
+									echo Wo_LoadPage('album/album-list');
+								}
+							} else {
+								echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> ' . $wo['lang']['no_albums_found'] . '</h5>';
+							}
+					?>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .row -->
+</div>

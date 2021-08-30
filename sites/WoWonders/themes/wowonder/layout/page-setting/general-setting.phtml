@@ -1,0 +1,127 @@
+<div class="wo_settings_page">
+	<h3>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+		<?php echo $wo['lang']['general_setting'];?>
+	</h3>
+
+	<form class="setting-general-form form-horizontal" method="post">
+		<div class="setting-general-alert setting-update-alert"></div>
+		
+		<div class="setting-panel row">
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="page_title"><?php echo $wo['lang']['page_name'];?></label>  
+				<div class="col-md-12">
+					<input name="page_title" id="page_title" type="text" class="form-control input-md" value="<?php echo $wo['setting']['page_title']?>" autocomplete="off">
+				</div>
+			</div>
+			<!-- Select Basic -->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="page_category"><?php echo $wo['lang']['category'];?></label>
+				<div class="col-md-12">
+					<select id="page_category" name="page_category" class="form-control">
+						<?php 
+							foreach ($wo['page_categories'] as $categories => $category) { 
+							$category_id = $wo['setting']['page_category'];
+							$selected_contry = ($categories == $category_id) ? ' selected' : '' ;
+						?>
+						<option value="<?php echo $categories;?>" <?php echo $selected_contry;?> ><?php echo $category;?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-lg-12">
+				<label class="col-md-12" for="page_name"><?php echo $wo['lang']['page'];?> URL</label>  
+				<div class="col-md-12 input-group">
+					<span class="input-group-addon"><?php echo $wo['config']['site_url'];?>/</span>
+					<input id="page_name" name="page_name" type="text" class="form-control input-md" value="<?php echo $wo['setting']['page_name']?>" onkeyup="Wo_CheckPagename(this.value, <?php echo $wo['setting']['page_id'];?>);" autocomplete="off">
+				</div>
+				<span class="help-block checking" style="padding: 0px 20px;"></span>
+			</div>
+			<!-- Select Basic -->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="call_action_type"><?php echo $wo['lang']['call_to_action'];?></label>
+				<div class="col-md-12">
+					<select id="call_action_type" name="call_action_type" class="form-control">
+						<?php 
+						foreach ($wo['call_action'] as $categories => $category) { 
+							$category_id = $wo['setting']['call_action_type'];
+							$selected_action = ($categories == $category_id) ? ' selected' : '' ;
+						?>
+						<option value="<?php echo $categories;?>" <?php echo $selected_action;?> ><?php echo $category;?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="call_action_type_url"><?php echo $wo['lang']['call_to_action_target'];?></label>  
+				<div class="col-md-12">
+					<input name="call_action_type_url" id="call_action_type_url" type="text" class="form-control input-md" value="<?php echo $wo['setting']['call_action_type_url']?>" autocomplete="off">
+				</div>
+			</div>
+			<?php if (Wo_IsAdmin() || Wo_IsModerator()) { ?>
+				<div class="form-group col-lg-12">
+					<?php
+						$selected_verified_yes = ($wo['setting']['verified'] == 1)   ? ' checked' : '';
+						$selected_verified_no  = ($wo['setting']['verified'] == 0)   ? ' checked' : '';
+					?>
+					<label class="col-md-12" for="verified"><?php echo $wo['lang']['verification']; ?></label>
+					<div class="col-md-12"> 
+						<label class="radio-inline" for="verified-0">
+							<input type="radio" name="verified" id="verified-0" value="verified" <?php echo $selected_verified_yes; ?> >
+							<?php echo $wo['lang']['verified']; ?>
+						</label> 
+						<label class="radio-inline" for="verified-1">
+							<input type="radio" name="verified" id="verified-1" value="notVerified" <?php echo $selected_verified_no; ?>>
+							<?php echo $wo['lang']['not_verified']; ?>
+						</label>
+					</div>
+				</div>
+			<?php } else { ?>
+				<div class="form-group col-lg-12">
+					<label class="col-md-12"><?php echo $wo['lang']['verification'];?></label>  
+					<div class="col-md-12" id="verification-request">
+						<?php 
+							echo Wo_GetVerificationButton($wo['setting']['page_id'],'Page');
+						?>               
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+        <div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+				<?php echo $wo['lang']['save']; ?>
+			</button>
+		</div>
+		<input type="hidden" name="page_id" value="<?php echo $wo['setting']['page_id'];?>">
+		<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+</div>
+<script type="text/javascript">
+$(function() {
+  $('form.setting-general-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=pages&s=update_general_settings',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+        $('.setting-general-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else {
+          var errors = data.errors.join("<br>");
+          $('.setting-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

@@ -1,0 +1,34 @@
+<!--- SONGS FOR RECOMMENDATION SECTION ---->
+{strip}
+<ol class="rec_pl">
+    {foreach $query as $result}
+    {assign var=id value={$result.id}}
+    {assign var=artist value={$result.artist}}
+    {assign var=song value={$result.title}}
+    {assign var=album value={$result.album}}
+    {assign var=filep value={$result.path}}
+    {assign var=fcover value={$result.cover}}
+    {assign var=ftime value={$result.time}}
+    {assign var=track_video value={$result.video}}
+    <li target="track_{$id}" id="tr_rc_{$id}">
+        <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_m_sec_ppl_rec_tr_{$id}">
+            <div class="mus-tr_hld">
+                <span class="mus-tr_play __play js-mus-tr_play" id="recommendation_tr{$add_slash}{$id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$filep}","cover":"{$fcover}"{literal}}{/literal}'></span>
+                {if $download !== ''}
+                <span class="mus-tr_download js-mus-tr_download" onclick="return call_buy_popup(jQuery(this));" title="Download"></span>
+                {/if}
+                <div class="mus-tr_cnt"><a class="mus-tr_a mus-tr_artist">{$artist}</a>&nbsp;&#8211;&nbsp;<a class="mus-tr_a mus-tr_song">{$song}</a><span class="foh-s mus-tr_info">&nbsp;from&nbsp;<a class="mus-tr_a mus-tr_album"><span class="mus-tr_album-ic ic10_album"></span>{$album}</a>
+                    </span>
+                </div>
+                <div class="mus-tr_right-controls foh-s" id="rc_m_sec_ppl_rec_tr_{$id}"><span class="mus-tr_add js-mus-tr_add" title="Add to My music"></span><span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist"></span>
+                </div>
+                <span class="mus-tr_time">{$ftime}</span>
+            </div>
+            {if $track_video > '0' }
+            <div class="mus-tr_video" data-showVideo="true" data-video="{$track_video}"></div>
+            {/if}
+        </div>
+    </li>
+    {/foreach}
+</ol>
+{/strip}

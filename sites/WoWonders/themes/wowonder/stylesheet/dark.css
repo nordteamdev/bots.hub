@@ -1,0 +1,141 @@
+.navbar-default, .chat-container, .chat-container .online-toggle, .sidebar-profile-style, .wowonder-well, .ads-cont-wrapper, .list-group, #send-money-form h5 input, .wo_ads_wallet #replenish-user-account input, .modal-content, .payment_box .btn, .wo_settings_page, .dropdown-menu, .my_pages_header, .cool-style-album .album_parent, .cool-style-album .album_parent:after, .cool-style-album .album_parent:before, .wo-create-forms .wo_settings_page form, .blog-h-list, .read-blog-container .read-blog .read-blog-head, .read-blog, .read-blog .blog-author-info, .read-blog-container .related-post, .blog-com-wrapper, .movies-com-wrapper, .read-blog-container .related-post .blog-sidebar h4.title, .blog-ls-box .view-blog, .wo_game_style a, .wo_my_pages .page_list, .wo_my_products a, .panel, .post .post-description .post-actions .stat-item, #wo_post_stat_button .stat-item, .like-emo > .how_reacted, .events-list-cover, .wo_event_profile .event-info-cont, .wo_page_profile .page-info-cont, .list-group-item, .event_invite_frnd, .event_two_blocks, .threads-table tr td, .thread-replies, #search-nearby-users .nearby-users-gender, #search-nearby-users, #search-nearby-users .nearby-users-gender-collapse, .wo_game_list .list_parent, .pricing, .tab-container, .app_dv_head, .wo_loading_post, .lightbox-content .comment-section, .lightbox-content .comment-section .stats .stat-item, .movies-top-breadcrumb, .movies-search input, .movies-navbar-wrapper, .played-film-image-wrap, .played-film-description-wrapper, .watch-film-top-nav, .film-player-wrapper, .played-film-details, .related-movies-wrapper, .related-movies-container, .related-movies-wrapper .related-movies-carousel .related-film-wrapper, .wo_pokes_cont, .wo_poke_users, .user-fetch, .wo_market .market_widget, .wo_market .market_bottom .product .product_info, .wo_search_page .tab-content, .wo_search_page .nav-tabs li a, .search-filter-form input[readonly], .nearby_user_wrapper, .wo_search_page .wo_game_style, .featured-users, .sidebar .sidebar-title-back, input[readonly].bg_read_input, #video-form div.video-poster-image, .feeling-type.feeling-types, .wo_user_profile .user-bottom-nav, .login form, .wo_r_features, .modal .modal-footer, #head_menu_rght .create_head_menu:before, #wo_msg_right_prt .wo_msg_user_dtl, .mobilerightpane .inner-addon, #wo_msg_right_prt .text-sender-container .sendMessages .input-group, #sendMessage, .text-sender-container, #wo_main_sett_mid .wo_settings_page h3, ul.profile-completion-bar li.percentage-bar h4, .login {background: #212121 !important;}
+body {background: #131313 !important;color: #dfdfdf;}
+.chat-container input, .modal-header {background: #010101 !important;}
+.sidebar-profile-style, .list-group, .create-ads-cont .select-admedai-box, .wo-create-forms .wo_settings_page, .panel-white, .wo_event_profile .event-info-cont, .wo_page_profile .page-info-cont, #members table, .f_topics, .thread-replies, .setting-well input[type=text], .setting-well input[type=password], .setting-well select, #search-nearby-users, .colloape-panel-stg, .sidebar-ad-wrapper, .wo-content-shadow, .wo_loading_post, .movies-navbar-wrapper, .played-film-image-wrap, .played-film-description-wrapper, .related-movies-container, .wo_pokes_cont, .featured-users, .greetalert {box-shadow: 0 1px 0 0 #212121, 0 0 0 1px #212121 !important;}
+.table-striped>tbody>tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.42);}
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th, .form-control, output, .create-ads-cont .select-admedai-box, .create-ads-cont .select-admedai-box button, .create-ads-cont .select-admedai-box input[readonly], .create-ads-cont .create-ads-inner-right button, .dropdown-menu>li>a, .bootstrap-tagsinput, .wo_my_pages .page_title, .setting-well input[type=text], .setting-well input[type=password], .setting-well select, #search-nearby-users .nearby-users-gender, .admin-panel .col-md-9 .list-group-item:first-child, .setting-panel .col-md-8 .list-group-item:first-child, .profile-lists .list-group-item:first-child, .col-md-8 .list-group-item:first-child, .col-md-3.custom .list-group-item:first-child, .col-sm-4 .list-group-item:first-child, .col-md-7 .list-group-item:first-child, .col-md-9 .list-group-item:first-child, .red-list .list-group-item:first-child, .active.list-group-item:first-child, pre, .messages-recipients-list > span, .related-movies-wrapper h4.related-movies, .related-movies-wrapper .related-movies-carousel .related-film-wrapper h4, .wo_page_profile .first_row .title a, .wo_poke_users .poke_info .user-name, .user-fetch .user-name, .user-fetch .user-name a, .wo_market .market_widget .m_widget_head, .wo_market .market_bottom .market_bottom_header, .products .product .product-title a, .nearby_user_wrapper .user_wrapper_link, .wo_search_page .wo_game_style .game-name, .wo_settings_page .setting-panel .avatar-holder strong, .wo_settings_page .setting-panel .avatar-holder strong a, .sidebar-conatnier .sidebar-profile-style .card.hovercard .info .title p, .second-user-color, .sidebar-ad-wrapper .sidebar-ad-footer p.ad-title, .publisher-box #camera-button-btn, .publisher-box .add-emoticons .dropdown-toggle, .publisher-box #camera-button-btn svg, .publisher-box .publisher-box-footer .poster-left-buttons svg.feather, #video-form div.video-poster-image .thumb-renderer #post_vthumb_droparea, .post-fetched-url .fetched-url-text h4, .wo_post_ad h3, .product-description, .options .poll-option, .login .title, .login input, .login select, .login textarea, .admin-panel .col-md-9 .list-group-item:first-child a, .setting-panel .col-md-8 .list-group-item:first-child a, .profile-lists .list-group-item:first-child a, .col-md-8 .list-group-item:first-child a, .col-md-7 .list-group-item:first-child a, .active.list-group-item:first-child a, .wo_adv_search_filter_side .wo_settings_page .setting-panel input[type=text].age_number, .user-request-list .user-info a, .modal-title, ul.profile-completion-bar li.percentage-bar h4 {color: #e5e5e5 !important;}
+.publisher-box .add-emoticons .dropdown-toggle svg.feather {fill: #e5e5e5 !important;}
+.ads-cont-wrapper .table td, #wo_sidebar_users {outline: 1px solid rgba(255, 255, 255, 0.05);}
+a, .blog-h-list h3, .main-blog-sidebar .popular-articles li .article-title, .wo_settings_page .setting-panel .avatar-holder .chavatlink, .earn_points .ep_illus .ep_how_many b {color: #c6c6c6;}
+.btn-default, .slide-film-desc, .wo_search_page .wo_game_style .btn-link {background: #363636;color: #c8c8c8;}
+.btn-default:hover, .btn-default:active, .btn-default:focus, .blog-ls-box .art-text h4:hover, .wo_my_pages .page_title:hover, .read-blog-container .related-post .recommended-articles .article-title h4:hover, a:focus, a:hover, .payment_box .btn:hover, .blog-h-list h3:hover, .close:focus, .close:hover, .btn-default.active, .btn-default.focus, .open>.dropdown-toggle.btn-default, .wo_find_friends .find_friends_header h3, .related-movies-wrapper .related-movies-carousel .related-film-wrapper h4:hover, .wo_poke_users .poke_info .user-name:hover, .sidebar-conatnier .sidebar-profile-style .card.hovercard .info .title a, .publisher-box .publisher-box-footer .poster-left-buttons:hover svg.feather, .wo_product_row .product-name .product_row_title {	color: #fff !important;}
+.wo_ads_wallet .my_wallet, .form-control, .wo_settings_page .setting-panel input[type=email], .wo_settings_page .setting-panel input[type=password], .wo_settings_page .setting-panel input[type=text], .wo_settings_page .setting-panel select, .modal-footer, .create-ads-cont input, .wo_settings_page .setting-panel textarea, .create-ads-cont .create-ads-inner-right button, .create-ads-cont .create-ads-inner-left, .postFooter, .read-blog .blog-author-info, .create-article-form .bootstrap-tagsinput, .chat-btns-w, #sendMessage, .event_two_blocks li:first-child, .thread-replies, textarea, #search-nearby-users .nearby-users-gender, .table-bordered, pre, .nav-tabs, .wo_sidebar_groups, .wo_settings_page .wo_design_button, .recent, .notifications-dropdown .turn-off-sound, .messages-recipients-list, .movies-top-breadcrumb, .movies-search input, input, .wo_market .market_bottom .market_bottom_header, .wo_market .market_bottom .product .product_info, .wo_search_page .tab-content, .wo_search_page_side .wo_settings_page, .earn_points .counter, .wo_user_side_info li, .activity-container .activity, .wo_sidebar_pages, .publisher-box .publisher-box-footer .pub-footer-bottom, .feeling-type.feeling-types, .feeling-type ul, .answers input, .post-fetched-url, .wo_post_ad, .image-file, .wo_product_row, .wo_product_row .product-name, .wo_r_features ul li, select, .admin-panel .col-md-9 .list-group-item:first-child, .setting-panel .col-md-8 .list-group-item:first-child, .profile-lists .list-group-item:first-child, .col-md-8 .list-group-item:first-child, .col-md-3.custom .list-group-item:first-child, .col-sm-4 .list-group-item:first-child, .col-md-7 .list-group-item:first-child, .col-md-9 .list-group-item:first-child, .red-list .list-group-item:first-child, .active.list-group-item:first-child, .order-by {border-color: #363636 !important;}
+.payment_box .btn {border-bottom: 1px solid rgba(188, 188, 188, 0.07);color: #c4c4c4;}
+.alert, .form-control, .modal-footer, .create-ads-cont .select-admedai-box, .create-ads-cont .select-admedai-box button, .create-ads-cont .select-admedai-box input[readonly], .create-ads-cont .create-ads-inner-right button, .create-article-form .prv-img, .bootstrap-tagsinput, .chat-btns-w, #wo_comment_combo.comment-toggle, #wo_comment_combo .comment_combo_footer, textarea, #cusrange-reader, .pricing .price-table-head, pre, code, .wo_settings_page .wo_design_button, input, .wo_radio_btn input[type=radio]+span, .earn_points .counter, .wo_pro_users li, .wo_sidebar_products, #select-status-media, .publisher-box #camera-button-btn, .publisher-box .add-emoticons .dropdown-toggle, #video-form div.video-poster-image .thumb-renderer, .post-fetched-url:hover, .options .poll-option, select, .wo_adv_search_filter_side .wo_settings_page .setting-panel input[type=text].age_number, .wo_adv_search_filter_side .ui-slider, .key_shortcts th span, ul.profile-completion-bar li.completion-bar div.completion-bar-wrapper {background: #363636 !important;}
+.alert-info {color: #57acd7;}
+.estimated_ad_limit, .earn_points .points_tip, #select-status-media, #video-form div.video-poster-image .thumb-renderer, .wo_votes, .key_shortcts th span, .modal-header {border-color: rgba(255, 255, 255, 0.23);}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .left-sidebar ul li a:hover {background: #333 !important;}
+hr, .lightbox-content .comment-section .stats {border-color: #424242 !important;}
+.dropdown-menu .divider {background: #424242 !important;}
+.my_pages_header, .cool-style-album .album_parent, .blog-h-list, .read-blog, .read-tags, .read-blog-container .related-post, .blog-com-wrapper, .wo_blogcomm_combo img{border-color: #2c2c2c;}
+.cool-style-album .album_parent:after, .cool-style-album .album_parent:before {border-color: #000;}
+.cool-style-album .album_parent:after {box-shadow: 0 0 2px #000;}
+.recent-articles {border-color: #4b4b4b;}
+.blog-h-desc p.desc {color: #959595;}
+
+#welcomeheader .mdbtn:hover{background-color:rgba(0, 0, 0, 0.2) !important;}
+.postFooter .u-floatRight a, .blog-h-list .middot, .read-blog .read-blog-info-user .middot {color: rgba(255, 255, 255, 0.5);}
+.main-blog-sidebar .popular-articles li .article-info, .read-blog .read-blog-info-user {color: rgba(255, 255, 255, 0.4);}
+#category-page .popular-categories li {background-color: #212121;}
+#category-page .popular-categories li a, #search-nearby-users .nearby-users-gender-collapse ul li {color: #c4c4c4;}
+.read-blog-container .read-blog h1 {color: rgba(255, 255, 255, 0.8);}
+.read-blog-container .read-blog .read-blog-desc {color: #ababab;}
+#wo_msg_right_prt .text-sender-container .incoming .message-model .message p{color: #333 !important;}
+.read-blog .read-blog-info-user, .post .post-footer .comments-list .comment .avatar, .wo_imagecombo_lbox .lightbox-post-footer .comment .avatar {border-color: rgba(255, 255, 255, 0.07);}
+.read-blog-container .read-blog .read-content {color: #bababa;}
+.read-blog-container .read-tags .postTag {border-color: #454545;background: #303030;}
+.read-blog-container .related-post .recommended-articles .article-title h4 {color: #d0d0d0;}
+.wo_my_pages .page_info ul li {color: #9d9d9d;}
+.input-group-addon {color: #c2c2c2;background-color: #171717;border-color: #171717;}
+.wo_create_chat_group .input-group-addon {border-color: #171717;}
+.group_chat_mbr_part {border-color: #383838;}
+.chat-messages-wrapper {background-color: #212121;border-color: #000000;}
+.chat-textarea {border-color: #494949;}
+.chat-textarea .chat-btns-w .chat_optns svg.feather {color: #b3b3b3;}
+.chat-user-desc {background-color: #2b2b2b;}
+.chat-user-desc .head-text {color: #cfcfcf;}
+.chat-user-desc .desc-text {color: #aeaeae;}
+.chat-messages-wrapper .incoming, .chat-messages-wrapper .outgoing, .text-sender-container .message-model .message {color: #cacaca;background-color: #444;}
+.message p {color: #cacaca;}
+.chat_main {color: #969696;}
+.post .post-heading .meta .title a, .user-story-container .ads-meta .title b, .user-ad-container div.post-advertisement .ads-meta .title b {color: #cecece;}
+.post .post-description p, .user-story-container .ads-headline, .user-ad-container div.post-advertisement .ads-headline p {color: #c0c0c0;}
+#wo_post_stat_button .stat-item {color: #b2b2b2;}
+#wo_post_stat_button .dropdown.open .stat-item, #wo_post_stat_button .stat-item:hover {background-color: rgba(255, 255, 255, 0.04) !important;}
+.reactions-box {background: #424242;}
+.post .post-footer, .wo_imagecombo_lbox .comment-section-inner .comment-inner-footer, .wo_imagecombo_lbox .lightbox-post-footer .comments-list {background: #2a2a2a !important;}
+#wo_comment_combo, #wo_comment_combo.comment-toggle {border-color: #474747;}
+.post .post-file {background: #2a2a2a;}
+.event-l-info ul li {color: #a5a5a5;}
+.wo_event_profile .card.hovercard .info .title {color: #e5e5e5;}
+.event_cdown li span {background: linear-gradient(#494949,#363636);}
+.event_cdown li span::before {background: rgba(255, 255, 255, 0.1);}
+.list-group-item {color: #b6b6b6;}
+iframe, .post-map img {border-color: #4b4b4b;}
+.event_two_blocks {border-color: rgba(255, 255, 255, 0.12);}
+.event_invite_frnd input {border-color: #595959!important;}
+#wo_language_modal {background-color: #212121;}
+.close {color: #fff;filter: alpha(opacity=30);opacity: .3;}
+.f_topics {color: #cccccc;background: #212121;}
+.small, .colloape-panel-stg, .sidebar-ad-wrapper .sidebar-ad-footer p.ad-descrition {color: #a3a3a3;}
+.threads-table tr td {box-shadow: 0 1px 0 0 #6e6e6e, 0 0 0 1px #3e3e3e;}
+.forum_title {color: #e7e7e7;}
+.friends_nearby_status_ul li[data-gender=all].active svg.feather, .friends_nearby_status_ul li[data-nearby-user-status="2"].active svg.feather {fill: #2196F3;background-color: rgba(33, 150, 243, 0.4);}
+.wo_game_list_info .page-website {color: #9d9d9d;}
+.pricing {box-shadow: 0 1px 2px rgba(255, 255, 255, 0.16);}
+.wo_settings_page h3, .wo_terms_page h3, .wo_search_page_side .wo_settings_page h3 {color: #ababab;border-color: #2c2c2c;background-color: #0b0b0b;}
+.gray {color: #bcbcbc;}
+.search-advanced-container a, .search-advanced-container a svg.feather {color: #9d9d9d !important;}
+.search-advanced-container a:hover {color: #e7e7e7 !important;background-color: rgba(255, 255, 255, 0.02);}
+.headtoppoint, .user-details.not-profile:before {border-bottom-color: #212121;}
+.notification-list .notification-text, .activities-wrapper .notification-list .notification-text {color: #bcbcbc;}
+.notification-list span.main-color {color: #e7e7e7 !important;}
+.notification-list .notification-time, .notification-list .notification-time svg.feather {color: #a1a1a1;}
+.notification-list:hover {background: rgba(0, 0, 0, 0.5);}
+.show-message-link-container {background: #0f0f0f;}
+.center-text {color: #8a8a8a;}
+.wo_loading_post_child, .wo_loading_post_child2 {background-image: radial-gradient(circle 30px at 60px 30px,#363636 99%,transparent 0),linear-gradient(100deg,rgba(255, 255, 255, 0),rgba(33, 33, 33, 0.5) 50%,rgba(255,255,255,0) 80%),linear-gradient(#363636 15px,transparent 0),linear-gradient(#363636 10px,transparent 0),linear-gradient(#363636 10px,transparent 0),linear-gradient(#363636 10px,transparent 0);}
+#filterby-post .filter_negative_clr, #filterby-post .filter_negative_clr svg  {color: #dfdfdf;}
+.lb-preloader svg {background-color: #000;}
+.text-sender-container .red-list, .wo_msg_tabs, #wo_nw_msg_page .messages-users-list {background: #151515 !important;border-color: #151515 !important;}
+.messages-users-list {background-color: #222;}
+.empty_state {color: #939393;}
+.unread {background: #2e2e2e;}
+.wo_page_profile .page-info-cont .page_navbar {background: linear-gradient(to right,#212121,#171717);}
+.wo_page_profile .first_row .title .page_username { color: #c6c6c6;}
+.wo_page_profile .first_row .title .page_info { color: #959595;}
+.wo_sidebar_pages .page_middle .title a {color: #e3e3e3!important;}
+.wo_poke_users {border-color: rgba(255, 255, 255, 0.07);}
+.user-fetch .user-information {color: #ababab;border-color: #454545;}
+.wo_market .market_categories ul li a:before, .round-check input+label:before, .wo_adv_search_filter_side .round_check input+label:before {border-color: rgba(255, 255, 255, 0.3);}
+.wo_radio_btn input[type=radio]:checked+span {background-color: #4285F4 !important;}
+.nearby_user_wrapper, .wo_search_page .wo_game_style {box-shadow: 0 0 0 1px #3c3c3c;}
+.left-sidebar ul li a {color: #a3a3a3;}
+.left-sidebar ul li a:hover {color: #fff;background: rgba(255, 255, 255, 0.05) !important;}
+.sidebar .sidebar-title-back, .featured-users .sidebar-title-back, .featured-users .pro-me-here a {color: #c2c2c2 !important;}
+.left-sidebar ul.list-group {box-shadow: none !important;}
+.left-sidebar ul.list-group li {background: #131313 !important;}
+.dropdown-menu.post-privacy-menu {background-color: #151515 !important;}
+.post-privacy-menu li a, .post-privacy-menu li div {color: #9f9f9f;}
+.post-privacy-menu li a:hover, .post-privacy-menu li div:hover, .feeling-type.feeling-types li:hover {background-color: #2a2a2a;color: #ffffff;}
+.publisher-box .publisher-box-footer .poster-left-buttons:hover {background-color: #4d4d4d;}
+.wo_adaptive_media_4 .album-image .image-file, .wo_adaptive_media .album-image:last-child .image-file {border-color: #212121!important;}
+.options .poll-option:hover, .wo_votes.active, .wo_votes.active .poll-option {background-color: #000000;}
+.wo_page_profile .page-info-cont .page_navbar .dropdown-menu li .menu-item, .wo_user_profile .options-buttons .dropdown-menu li .menu-item, .wo_page_profile .page-info-cont .page_navbar .dropdown-menu li .menu-item a, .wo_user_profile .options-buttons .dropdown-menu li .menu-item a {color: rgba(223, 223, 223, 0.87);}
+.ball-pulse>div {background-color: #cecece;}
+.product-navigate a {background-color: rgba(95, 95, 95, 0.98);}
+.round-check input+label:after, .wo_adv_search_filter_side .round_check input+label:after {border-color: #212121;}
+#night_mode_toggle svg {fill: #e5e5e5;}
+#wo_nw_msg_page .msg_under_hood {box-shadow: 0px 10px 15px 0px rgba(15, 15, 15, 0.6);}
+#wo_msg_right_prt .message-option-btns .btn:hover {background-color: #3f3f3f !important;}
+#wo_msg_right_prt .wo_msg_user_dtl {border-color: rgba(255, 255, 255, 0.4)}
+#wo_msg_right_prt .text-sender-container .sendMessages .input-group {border-color: rgba(255, 255, 255, 0.07);}
+.greetalert {background: #212121 !important;}
+.wo_market .market_bottom .product .product-links .info-middle .more-info:hover {color: #000 !important;}
+.sett_tab_noti {border-color: rgba(255, 255, 255, 0.08);}
+.sett_tab_noti li.active a {background-color: rgba(255, 255, 255, 0.05);color: white;}
+
+@media (min-width: 992px){
+#wo_nw_msg_page .mobilerightpane .inner-addon {
+    width: 268px;border-color: rgba(255, 255, 255, 0.07);
+}
+#wo_msg_right_prt .text-sender-container .incoming .message-model .message {
+    background-color: #3d3d3d;
+}
+}
+@media (max-width: 767px){
+.wo_user_profile .pic-info-cont {background-color: #212121;box-shadow: 0 1px 0 0 #212121, 0 0 0 1px #212121;}
+.wo_user_profile .btn-glossy a, .wo_user_profile .btn-glossy button {color: #ffffff;background: rgba(255, 255, 255, 0.23);}
+.profile-container .card.hovercard .info .title a {color: #f2f2f2;}
+.container .wo_user_profile .card.hovercard .info .title svg.feather {fill: #f2f2f2;}
+}

@@ -1,0 +1,139 @@
+{strip}
+{assign var=limit value=0}
+{assign var=mystory value=$stories->getMyStory()}
+{assign var=friend_stories value=$stories->getFriendsStories()}
+
+{if isset($mystory.story_id)}
+{assign var=story_id value=$mystory.story_id}
+{assign var=m_story_obj value=$stories->getMyStoryObject($mystory.story_id)}
+{else}
+{assign var=story_id value=0}
+
+
+{/if}
+ 
+	<ul class="stories_while nano-content">
+	
+	<!-- My Story--->
+	 <li id="story_uid_{$story_id}" data-story-by-user="{$this->USER.id}" class="li_story my  {if $mystory.exist == 'yes'}with{else}_empty{/if}">
+	 
+	{if $mystory.exist == 'yes'} 
+	  <div class="hookData stories-hookData"><!-- {$m_story_obj} --></div>
+	  {else}
+	   <div class="hookData stories-hookData"></div>
+	  {/if}
+	 
+	 <div class="story_uploading_progr">{$this->lang['Uploading_please_wait']}</div>
+	 <a class="story_a_img" onclick="event.preventDefault();this.nextSibling.click();">
+	 <div class="story_img fl_left">
+
+	 {if $mystory.exist == 'yes'}
+	 
+	 <img id="img_story" src="/stories?cmd=view-picture&id={$mystory.story_thumb_id}&size=thumb" />
+	 {else} 
+	 <img id="img_story" src="/getPhoto?p={$this->USER['profile_photo']}&sz=small" />
+	 {/if}
+	   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="stories" style="enable-background:new -580 439 577.9 194;"
+		 xml:space="preserve">  
+		<circle cx="50" cy="50" r="40" />
+	  </svg>
+	 
+	 
+	 <div class="coreSpriteStoryCreationAlt TiuNS"></div>
+	 </div>
+	 
+	 <div class="story_info ellip">
+	 {if $mystory.exist == 'yes'}
+		<div class="story_a_head_name ellip">{$this->lang['View_your_story']}</div>
+		<div class="story_a_time_ago ellip">{$mystory.time_ago}</div>
+	 {else}
+		<div class="story_a_head_name ellip">{$this->lang['add_your_story']}</div>
+		<div class="story_a_time_ago ellip">{$this->lang['add_story_descr']}</div>
+		
+	{/if}
+	 </div>
+ 
+	 </a>
+	
+	 <input accept="image/*,video/*" data-new-story-input="true" {if $mystory.exist == 'yes'}style="display:none;"{/if} onchange="story.add(event);" class="html5-upload-link add-story-html5" id="files" name="files[]" size="1" title="" type="file" value="">
+	 
+	 {if $mystory.exist == 'yes'}
+	 <div class="ui_actions_menu_icons mystory">
+		<span class="kn_shortcutmenu wh100">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$this->USER.id}","uname":"Settings","uphoto":"/stories?cmd=view-picture&id={$mystory.story_thumb_id}&size=thumb","ugender":"","ulmen":{ldelim}"story":"{$story_id}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$story_id}">
+		</div></span>
+	 </div>
+
+	 {/if}
+	<A href="javascript:void(0);" {if $mystory.exist == 'no'}style="display:none;"{/if} class="invisible-a-openstory" id="u-{$this->USER.id}" onclick="story.openStory(this,event,'{$story_id}');"></a>
+	 
+	 </li>
+		
+		
+		
+	
+	{if count($friend_stories)}
+	 {assign var=friends_stories_obj value=array()}
+	 
+	 <script>
+	 {literal}
+	 ga('#play_all_stories').show();
+	 
+	 {/literal}
+	 </script>
+
+	 
+	 
+	{foreach $friend_stories as $story}
+	
+	
+    {assign var=d_story value=($story.obj)}
+	{assign var=seen value=$stories->seen($d_story.id)}
+	 
+			<li id="story_uid_{$d_story.id}" {if $limit > 5}style="display:none;"{/if} data-story-by-user="{$d_story.author.id}" class="li_story with {if $seen}_seen{/if}">
+			<div class="hookData stories-hookData"><!-- {$story.obj} --></div>
+	 
+	 <a class="story_a_img" onclick="event.preventDefault();this.nextSibling.click();">
+	 <div class="story_img fl_left">
+
+	
+	 
+	 <img id="img_story" src="/stories?cmd=view-picture&id={$story.cover}&size=thumb" />
+
+
+<div {if !$seen}style="display:none;"{/if} class="story_seen_bord"></div>
+ 
+	   <svg viewBox="0 0 100 100" {if $seen}style="display:none;"{/if} xmlns="http://www.w3.org/2000/svg" class="stories" style="enable-background:new -580 439 577.9 194;"
+		 xml:space="preserve">  
+		<circle cx="50" cy="50" r="40" />
+	  </svg>
+
+	 </div>
+	
+	 
+	<div class="story_info ellip">
+		<div class="story_a_head_name ellip">{$d_story.author.name}</div>
+		<div class="story_a_time_ago ellip">{$story.time_ago}</div>
+	 </div>
+	  </a>
+	<A href="javascript:void(0);" class="invisible-a-openstory" id="u-{$d_story.author.id}" onclick="story.openStory(this,event,'{$d_story.id}',1);"></a>
+	 
+			</li>	
+			{$friends_stories_obj[] = $story.obj}
+			{$limit = $limit+1}
+
+	{/foreach}
+	{/if}
+          
+		  
+		{if $limit > 6}
+			<a href="javascript:void(0);" onclick="story.showMore(this,event);keepRightColFix();" class="stories-a-more">+ {$this->lang['Stories-show-more']}</a>
+        {/if}
+	
+		
+	<div class="hookData hookData_while_stories_friends"><!-- {json_encode($friends_stories_obj)} --></div>
+	
+	</ul>
+	
+	
+{/strip}

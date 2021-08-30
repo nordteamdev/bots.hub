@@ -1,0 +1,97 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">
+			<h3 class="wo_create_form_cover album">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+				Create new application
+				<span class="<?php echo Wo_RightToLeft('pull-right');?>">
+					<a data-ajax="?link1=apps" href="<?php echo Wo_SeoLink('index.php?link1=apps');?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>My Apps
+					</a>
+				</span>
+				<div class="clear"></div>
+			</h3>
+
+            <div class="wo_settings_page">
+				<form class="app-general-form form-horizontal" method="post">
+					<div class="setting-panel row">
+						<!-- Text input-->
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="app_name">Name *</label>  
+							<div class="col-md-12">
+								<input id="app_name" name="app_name" type="text" class="form-control input-md">
+								<span class="help-block">Your application name. This is used to attribute the source user-facing authorization screens. 32 characters max.</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="app_website_url">Domain *</label>  
+							<div class="col-md-12">
+								<input name="app_website_url" id="app_website_url" type="text" class="form-control input-md">
+								<span class="help-block">Your application's publicly accessible home page.</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="app_callback_url">Redirect URI</label>  
+							<div class="col-md-12">
+								<input name="app_callback_url" id="app_callback_url" type="text" class="form-control input-md">
+								<span class="help-block">Where should we return after successfully authenticating?</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="app_description">Description *</label>  
+							<div class="col-md-12">
+								<textarea name="app_description" id="" rows="3" class="form-control input-md"></textarea>
+								<span class="help-block">Your application description, which will be shown in user-facing authorization screens. Between 10 and 200 characters max.</span>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="app_avatar">Photo *</label>  
+							<div class="col-md-12">
+								<input name="app_avatar" id="app_avatar" type="file" class="form-control input-md">
+								<span class="help-block">Your application thumbnail</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="app-general-alert setting-update-alert"></div>
+					 
+					<div class="form-group last-sett-btn modal-footer">
+                        <div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+							<?php echo $wo['lang']['create'];?>
+						</button>
+					</div>
+
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+				</form>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script>
+$(function() {
+  $('form.app-general-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=apps&s=create_app',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+        window.location.href = data.location;
+      } else {
+          var errors = data.errors.join("<br>");
+          $('.app-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

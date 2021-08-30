@@ -1,0 +1,59 @@
+<div class="list-group profile-lists">
+	<div class="list-group-item">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+		<?php echo $wo['lang']['activities'];?>
+	</div>
+    <div id="following-list" class="row" style="margin: 0;">
+        <?php $activities = Wo_GetActivities(array('me' => true, 'limit' => 20));?>
+        <ul class="activity-container no-padding-left-list">
+            <li >
+                <?php
+                    if (count($activities) == 0) {
+                        echo '<h2><div class="no-activities-profile text-center">' . $wo['lang']['no_activities'] . '</div><h2>';
+                    } else {
+                        foreach ($activities as $wo['activity']) {
+                            echo Wo_LoadPage('sidebar/activities-list');
+                        }
+                    }
+                    ?>
+            </li>
+            <li>
+                <div class="no-activities center-text"></div>
+            </li>
+        </ul>
+        
+    </div>
+    <div class="clear"></div>
+</div>
+<?php
+        if (count($activities) > 19) {
+         	?>
+         	<div class="load-more">
+				<button class="btn btn-default text-center pointer" onclick="Wo_GetMoreActivities(<?php echo $wo['user_profile']['user_id'];?>);">
+				<i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_activities']; ?></button>
+			</div>
+         	<?php
+        } 
+        ?>
+<script>
+function Wo_GetMoreActivities(user_id) {
+      var activity_container = $('.activity-container');
+      var after_activity_id = $('.activity-container .activity:last').attr('data-activity-id');
+      $.post(Wo_Ajax_Requests_File() + '?f=activities&s=get_more_activities', {
+        after_activity_id: after_activity_id,
+        user_id: user_id
+      }, function (data) {
+        if(data.status == 200) {
+          if(data.html.length == 0) {
+            $('.load-more').hide();
+          } else {
+            $('.activity-container').append(data.html);
+          }
+          $(".activity-container").animate({
+            scrollTop: $('.activity-container')[0].scrollHeight
+          }, 100);
+          Wo_progressIconLoader(activity_container);
+        }
+      });
+    }
+</script>

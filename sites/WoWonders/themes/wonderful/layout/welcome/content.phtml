@@ -1,0 +1,185 @@
+<?php echo Wo_LoadPage('welcome/welcome-header-register');?>
+
+<div class="jumbotron header-jumbo" style="background-color:<?php echo $wo['config']['header_background'];?>;">
+	<div class="container">
+		<h2 style="font-family: 'Open Sans', sans-serif !important;font-size: 40px;color: #fff;">Welcome to <?php echo $wo['title'];?></h2>
+		<div class="typing-element"></div>
+		<?php echo Wo_LoadPage('welcome/welcome-users-profiles');?>
+		<button class="mdbtn create-account gradient-btn" onclick="location.href='<?php echo Wo_SeoLink('index.php?link1=register');?>';">
+			<?php echo $wo['lang']['sign_up']?>
+		</button>
+		
+		<div class="col-md-12 wonderful-apps">
+			<a href="https://www.apple.com/itunes/" target="_blank">
+				<img src="<?php echo $wo['config']['theme_url'];?>/img/app-store.png" alt="App Store">
+			</a> 
+			<a href="https://play.google.com/store" target="_blank">
+				<img src="<?php echo $wo['config']['theme_url'];?>/img/play-store.png" alt="Play Store">
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="container welpanel">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="<?php echo $wo['config']['theme_url'];?>/img/login/user.png" width="200" height="200" alt="User"/>
+	</div>
+
+	<div class="col-md-8">
+		<h2 class="header_welcome_colr" style="font-family: 'Open Sans', sans-serif !important;font-size: 30px;color: #444;">Create your Social ID and Login</h2>
+		<p>Start your <?php echo $wo['title'];?> experience by creating a Social ID. Once created you can login in and start using <?php echo $wo['title'];?> with your friends.</p>
+	</div>
+</div>
+
+<div class="jumbotron welc_jumb_dark" style="background: #fff;padding: 0;margin: 0;">
+	<div class="container welpanel">
+		<div class="col-md-8">
+			<h2 class="header_welcome_colr" style="font-family: 'Open Sans', sans-serif !important;font-size: 30px;color: #444;">Start by creating a Post using a unique #Hashtag</h2>
+			<p style="margin: 0 0 10px;font-size: 14px;">Create a #title for your post using a unique #hashtag. Users can search, view or save posts keeping track of all the content being published to it in one place.</p>
+		</div>
+		
+		<div class="col-md-4" style="text-align: center;">
+			<img src="<?php echo $wo['config']['theme_url'];?>/img/login/post.png" width="200" height="200" alt="Post"/>
+		</div>
+	</div>
+</div>
+
+<div class="container welpanel">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="<?php echo $wo['config']['theme_url'];?>/img/login/share.png" width="200" height="200" alt="Share"/>
+	</div>
+
+	<div class="col-md-8">
+		<h2 class="header_welcome_colr" style="font-family: 'Open Sans', sans-serif !important;font-size: 30px;color: #444;">Share your Posts and Engage Audience</h2>
+		<p>Each post is given a unique url link for direct access to your created feed. Share your live posts to your connected social media accounts and let your audience know what you have created.</p>
+	</div>
+</div>
+
+<div class="jumbotron welc_jumb_dark" style="background: #fff;padding: 0;margin: 0;">
+	<div class="container" style="text-align: center;padding-top: 40px;padding-bottom: 40px;">
+		<h2 class="header_welcome_colr" style="font-family: 'Open Sans', sans-serif !important;font-size: 30px;color: #444;">JOIN THE MOVEMENT</h2>
+		<p style="margin: 0 0 10px;font-size: 14px;">Create your account to join the awesome network and connect with friends.</p>
+		<button class="mdbtn create-account gradient-btn" onclick="location.href='<?php echo Wo_SeoLink('index.php?link1=register');?>';" style="margin-top: 50px !important;">
+			<?php echo $wo['lang']['sign_up']?>
+		</button>
+	</div>
+</div>
+
+<div class="wrapperlogin">
+<?php echo Wo_LoadPage('footer/welcome');?>
+</div>
+
+
+<div class="modal fade-scale" id="wellogmodal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document" style="padding: 0;width: 100%;height: 100%;margin: 0;">
+		<div class="modal-content" style="background-color: transparent;width: 100%;height: 100%;display: table;">
+			<div class="modal-header" style="background: transparent;border-bottom: 0;padding: 18px 10px 35px 35px;position: absolute;top: 0px;right: 0px;z-index: 9;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+					<span aria-hidden="true" style="padding: 10px 16px;background: #bbb;border-radius: 50%;height: 40px;width: 40px;z-index: 9;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body"style="display: table-cell;vertical-align: middle;">
+				<div class="welvidlog">
+					<form class="login" id="login" method="post" style="margin: auto;">
+						<p class="title"><?php echo $wo['lang']['login']?></p>
+						<input name="username" type="text" placeholder="<?php echo $wo['lang']['username']?>" autofocus required/>
+						<i class="zmdi zmdi-account"></i>
+						<input name="password" type="password" placeholder="<?php echo $wo['lang']['password']?>" required/>
+						<i class="zmdi zmdi-dialpad"></i>
+						<a href="<?php echo Wo_SeoLink('index.php?link1=forgot-password');?>" style="border-radius: 0;box-shadow: none;"><?php echo $wo['lang']['forget_password']?></a>
+						<?php if(!empty( $_GET['last_url'])){?>
+						<div class="form-group">
+							<input type="hidden" name="last_url" value="<?php echo urldecode($_GET['last_url']);?>">
+						</div>
+						<?php } ?>
+						<div class="text-center">
+							<div class="ui horizontal divider">OR&nbsp;&nbsp;</div>
+							<?php if($wo['config']['facebookLogin'] != 0): ?>
+							<a href="<?php echo $wo['facebookLoginUrl']?>" class="btn btn-social-icon btn-facebook">
+								<i class="fa fa-facebook"></i>
+							</a>
+							<?php endif; ?>
+							<?php if($wo['config']['googleLogin'] != 0): ?>
+							<a href="<?php echo $wo['googleLoginUrl']?>" class="btn btn-social-icon btn-google">
+								<i class="fa fa-google"></i>
+							</a>
+							<?php endif; ?>
+							<?php if($wo['config']['twitterLogin'] != 0): ?>
+							<a href="<?php echo $wo['twitterLoginUrl']?>" class="btn btn-social-icon btn-twitter">
+								<i class="fa fa-twitter"></i>
+							</a>
+							<?php endif; ?>
+							<?php if($wo['config']['linkedinLogin'] != 0): ?>
+							<a href="<?php echo $wo['linkedInLoginUrl']?>" class="btn btn-social-icon btn-linkedin">
+								<i class="fa fa-linkedin"></i>
+							</a>
+							<?php endif; ?>
+							<?php if($wo['config']['VkontakteLogin'] != 0): ?>
+							<a href="<?php echo $wo['VkontakteLoginUrl']?>" class="btn btn-social-icon btn-vk">
+								<i class="fa fa-vk"></i>
+							</a>
+							<?php endif; ?>
+							<?php if($wo['config']['instagramLogin'] != 0): ?>
+							<a href="<?php echo $wo['instagramLoginUrl']?>" class="btn btn-social-icon btn-instagram">
+								<i class="fa fa-instagram"></i>
+							</a>
+							<?php endif; ?>
+						</div>
+						<button type="submit">
+							<i class="spinner"></i>
+							<span class="state"><i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <?php echo $wo['lang']['login']?></span>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+var working = false;
+var $this = $('#login');
+var $state = $this.find('button > .state');
+var login_button_text = '<i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <?php echo $wo['lang']['login']?>';
+$(function() {
+  $('#login').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=login',
+    beforeSend: function() {
+      working = true;
+      $this.addClass('loading');
+      $state.html('<?php echo $wo['lang']['authenticating'] ?>');
+    },
+    success: function(data) {
+      if (data.status == 200 || data.status == 600) {
+      	$this.addClass('ok');
+        $state.html('<?php echo $wo['lang']['welcome_back'] ?>');
+        setTimeout(function () {
+        	window.location.href = data.location;
+        }, 1000);
+      } else {
+        var errors = data.errors.join("<br>");
+        $state.html(login_button_text);
+        $this.removeClass('ok loading', function () {
+        	$state.html(errors);
+        });
+      } 
+      working = false;
+    }
+  });
+  $('#login input').on('click', function(e) {
+  	$state.html(login_button_text);
+  });
+});
+</script>
+<script>
+  $(function(){
+      $(".typing-element").typed({
+        strings: ["<?php echo $wo['lang']['connect_with_people'] ?> <span class='typed-cursor'>|</span>", "<?php echo $wo['lang']['make_new_friends'] ?> <span class='typed-cursor'>|</span>", "<?php echo $wo['lang']['share_your_memories'] ?> <span class='typed-cursor'>|</span>", "<?php echo $wo['lang']['create_new_relationships'] ?> <span class='typed-cursor'>|</span>", "<?php echo $wo['lang']['discover_new_places'] ?> <span class='typed-cursor'>|</span>"],
+        typeSpeed: 80,
+        startDelay: 500,
+        backDelay: 2500,
+        shuffle: false,
+        cursorChar: "",
+      });
+  });
+</script>

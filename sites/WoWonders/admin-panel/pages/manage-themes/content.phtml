@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Design > Themes</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Themes</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success pro-settings-alert"></div>
+                    <div class="row">
+                         <?php
+                         foreach (Wo_GetThemes() as $theme_url) {
+                            if (file_exists($theme_url . '/info.php')) {
+                                include($theme_url . '/info.php');
+                                $theme = str_replace('themes/', '', $theme_url);
+                         ?>
+                         <div class="col-lg-6">
+                            <div class="theme <?php echo ($theme == $wo['config']['theme']) ? ' active' : '';?>">
+                               <img src="<?php echo Wo_GetMedia('themes/' . $themeImg);?>" alt="">
+                               <div class="themeName"><?php echo $themeName;?></div>
+                               <div class="themeVirsion"><?php echo $wo['lang']['version'];?> <?php echo $themeVirsion;?></div>
+                               <div class="themeAuthor"><?php echo $wo['lang']['author'];?> <a href="<?php echo $themeAuthorUrl;?>"><?php echo $themeAuthor;?></a></div>
+                               <?php if($theme == $wo['config']['theme']) { ?>
+                               <div class="active"><i class="fa fa-check"></i> <?php echo $wo['lang']['activeted'];?></div>
+                               <?php } else { ?>
+                               <div class="active"><a href="#" id="active" data-theme="<?php echo $theme; ?>"><?php echo $wo['lang']['active'];?></a></div>
+                               <?php } ?>
+                               <div class="clearfix"></div>
+                            </div>
+                         </div>
+                         <?php } }?>
+                         <div class="clearfix"></div>
+                    </div>
+                <form action="#" method="post" class="setting-themes-container">
+                    <input type="hidden" name="theme" id="theme" value="" />
+                    <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+   $('a#active').click(function() {
+     $themeName = $(this).attr('data-theme');
+     $('#theme').val($themeName);
+     $('form.setting-themes-container').submit();
+   });
+   $('form.setting-themes-container').ajaxForm({
+     url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=updateTheme',
+     beforeSend: function() {
+      
+     },
+     success: function(data) {
+       if (data.status == 200) {
+         window.location = "<?php echo Wo_LoadAdminLinkSettings('manage-themes'); ?>";
+       } 
+       
+     }
+  });
+});
+</script>

@@ -1,0 +1,19 @@
+<div class="col-xs-12 answer-img-wrapper question-ans-wrapper">
+	<div class="answer-img question-ans-header" >
+		<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="{{INDEX}}">
+
+			<div class="preview">
+				<h5 id="preview-image-{{ENTRY_TIME}}-{{INDEX}}"><small><i class="fa fa-plus"></i> {{LANG choose_img}}</small></h5>
+				
+			</div>
+			<input class="hidden entry_answer" data-answer="entry_answer_img" id="{{INDEX}}">
+		</div>
+	</div>
+	<div class="question-ans-footer">
+		<input class="entry_answer form-control" data-answer="entry_answer_text" id="{{INDEX}}" type="text" placeholder="{{LANG answer}} {{INDEX}}">
+		<select class="entry_answer form-control"  data-answer="entry_answer_result">
+		</select>
+	</div>
+	<span onclick="$(this).parent().remove();"><i class="fa fa-times"></i></span>
+</div>
+

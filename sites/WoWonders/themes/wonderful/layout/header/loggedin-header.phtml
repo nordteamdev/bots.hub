@@ -1,0 +1,295 @@
+<?php
+$notification_alert     = Wo_CountNotifications(array(
+    'unread' => true,
+    'data' => 'all'
+));
+$messages_alert         = Wo_CountMessages(array(
+    'new' => true
+));
+$followers_alert        = Wo_CountFollowRequests();
+$hidden_class           = '';
+$messages_hidden_class  = '';
+$followers_hidden_class = '';
+$unread_update_notification = 'unread-update';
+$unread_update_messages = 'unread-update';
+$unread_update_followers = 'unread-update';
+if ($notification_alert == 0) {
+    $hidden_class = ' hidden';
+    $unread_update_notification = '';
+}
+if ($messages_alert == 0) {
+    $messages_hidden_class = ' hidden';
+    $unread_update_messages = '';
+}
+if ($followers_alert == 0) {
+    $followers_hidden_class = ' hidden';
+    $unread_update_followers = '';
+}
+?>
+
+<ul class="nav navbar-nav navbar-right <?php echo Wo_RightToLeft('pull-right');?> equmobiwidthul">
+	<li class="navbar-home equmobiwidth" id="mobihomiz">
+		<a href="<?php echo $wo['config']['site_url']; ?>" id="home-button" data-ajax="?index.php?link1=home" <?php echo ($wo['config']['smooth_loading'] == 0) ? 'onclick="Wo_ChangeHomeButtonIcon()"' : ''?>>
+			<i class="zmdi zmdi-home" style="font-size: 19px;"></i>
+			<div class="mobihide"><?php echo $wo['lang']['home']; ?></div>
+		</a>
+	</li>
+	
+	<li class="dropdown msearch-container equmobiwidth" style="display:none">
+		<a href="#" class="dropdown-toggle sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false" style="min-height: 50px;">
+			<i class="zmdi zmdi-search" style="font-size: 22px;margin-top: -2px;"></i>
+		</a>
+		<ul class="dropdown-menu clearfix mobisearchcont" role="menu" style="height: 100vh;">
+			<li class="dropdown search-container">
+				<form class="navbar-form navbar-left col-lg-12 form-group" data-toggle="dropdown" role="button" id="navbar-searchbox" role="search" style="display: block;border: none;padding: 0px;margin: 10px 10px;">
+					<input type="text" class="form-control search-input" onkeyup="Wo_DetectSearchType(this.value)" placeholder="<?php echo $wo['lang']['search_header_label']; ?>" dir="auto" <?php if ($wo['loggedin'] == true) { echo 'onfocus="Wo_GetRecentSearchs()"';}?> id="mobi-search-input" autofocus>
+				</form>
+				<ul class="dropdown-menu search-dropdown-container" style="display: block;" role="menu">
+						<div class="search-dropdown-result">
+							<?php
+							if ($wo['loggedin'] == true) {
+							foreach (Wo_GetRecentSerachs() as $wo['result']) {
+							echo Wo_LoadPage('header/search');
+							}
+							}
+							?>
+						</div>
+					</ul>
+			</li>
+		</ul>
+	</li>
+	
+	<li class="dropdown requests-container equmobiwidth" onclick="Wo_OpenRequestsMenu();">
+		<span class="new-update-alert<?php echo $followers_hidden_class;?>">
+			<?php echo $followers_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_followers;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false" style="min-height: 50px;">
+			<i class="zmdi zmdi-account-add" style="font-size: 22px;margin-top: -2px;"></i>
+		</a>
+		<ul class="dropdown-menu request-list clearfix notifications-dropdown" role="menu" style="padding: 0px;">
+			<ul id="requests-list" style="padding-left: 0;padding: 10px;">
+				<li>
+					<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+				</li>
+			</ul>
+			
+			<hr>
+			
+			<?php $users = Wo_UserSug(5); if (count($users) != 0) ?>
+			<ul class="list-group" id="sidebar-user-list-container" style="border: none;border-radius: 0;padding: 0px 10px;margin-bottom: 0px;">
+				<li class="list-group-item text-muted side-widget-name" contenteditable="false">
+					<?php echo $wo['lang']['people_you_may_know'];?>
+				</li>
+				<li>
+					<div class="sidebar-users-may-know-container">
+						<?php 
+                        foreach ($users as $wo['UsersList']) {
+                            $wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'],0,10, "utf-8");
+                            echo Wo_LoadPage('header/user-list');
+                        } 
+                        ?>
+					</div>
+					<div class="clear"></div>
+				</li>
+			</ul>
+		</ul>
+	</li>
+	
+	<li class="dropdown messages-notification-container equmobiwidth" onclick="Wo_OpenMessagesMenu();">
+		<span class="new-update-alert<?php echo $messages_hidden_class;?>">
+			<?php echo $messages_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_messages;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false" style="min-height: 50px;">
+			<i class="zmdi zmdi-comment-text-alt" style="font-size: 22px;margin-top: -2px;"></i>
+		</a>
+		<ul class="dropdown-menu clearfix notifications-dropdown messages-dropdown" role="menu" id="messages-list">
+			<li>
+				<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+			</li>
+		</ul>
+	</li>
+   
+	<li class="dropdown notification-container equmobiwidth" onclick="Wo_OpenNotificationsMenu();">
+		<span class="new-update-alert<?php echo $hidden_class;?>">
+			<?php echo $notification_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_notification;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false" style="min-height: 50px;">
+			<i class="zmdi zmdi-notifications" style="font-size: 22px;margin-top: -2px;"></i>
+		</a>
+		<ul class="dropdown-menu clearfix notifications-dropdown" role="menu">
+			<li onclick="Wo_TurnOffSound();" class="turn-off-sound <?php echo Wo_RightToLeft('text-left');?>">
+				<span>
+					<?php if ($wo['user']['notifications_sound'] == 0): ?>
+						<i class="zmdi zmdi-volume-up"></i> <?php echo $wo['lang']['turn_off_notification'] ?>
+					<?php else: ?>
+						<i class="zmdi zmdi-volume-mute"></i> <?php echo $wo['lang']['turn_on_notification'] ?>
+					<?php endif; ?>
+				</span> 
+			</li>
+			<li id="notification-list">
+				<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+			</li>
+		</ul>
+	</li>
+	<div class="topheadbar"></div>
+	<li class="dropdown smalldevicemenu mobiaccmenuz equmobiwidth" style="vertical-align: top;">
+		<a href="#" class="dropdown-toggle toprightsmallcar" data-toggle="dropdown" role="button" aria-expanded="false" style="min-height: 50px;">
+			<!-- <span id="user-full-name" class="User-Name">
+			<?php echo $wo['user']['name'];?>
+			</span> -->
+			<div class="user-avatar <?php echo Wo_RightToLeft('pull-left'); ?>">
+				<img id="updateImage-<?php echo $wo['user']['user_id']?>" src="<?php echo $wo['user']['avatar'];?>" alt="<?php echo $wo['user']['name'];?> Profile Picture">
+			</div>
+			<span class="caret topheadcart"></span>
+			<i class="zmdi zmdi-more-vert mobie-acc-menu" style="font-size: 22px;display:none;padding: 0px 5px;"></i>
+		</a>
+		<ul class="dropdown-menu accountmenu-icons" role="menu" style="min-width: 200px;">
+			<?php if ($wo['config']['point_level_system'] == 1) { ?>
+				<li class="dropdown-hidden-link">
+					<a class="wabe waves-effect" href="<?php echo Wo_SeoLink('index.php?link1=setting&page=my_points'); ?>" data-ajax="?link1=setting&page=my_points">
+						<i class="zmdi zmdi-link"></i> <b><?php echo $wo['lang']['points']; ?>: <?php echo $wo['user']['points'];?></b>
+					</a>
+				</li>
+			<?php } ?>
+			<li>
+				<a class="wabe" id="update-username" href="<?php echo $wo['user']['url']; ?>">
+					<i class="zmdi zmdi-account"></i> <?php echo $wo['lang']['my_profile']; ?>
+				</a>
+			</li>
+			<li><hr></li>
+			<?php if ($wo['config']['pro'] == 1) { ?>
+			<?php if ($wo['user']['is_pro'] == 1 && $wo['user']['pro_type'] > 1) { ?>
+			<li>
+				<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=boosted-posts');?>" data-ajax="?link1=boosted-posts">
+					<i class="zmdi zmdi-flash"></i> <?php echo $wo['lang']['boosted_posts']; ?>
+				</a>
+			</li>
+			<li>
+				<a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=boosted-pages');?>" data-ajax="?link1=boosted-pages">
+					<i class="zmdi zmdi-flash"></i> <?php echo $wo['lang']['boosted_pages']; ?>
+				</a>
+			</li>
+         <li><hr></li>
+         <?php } ?>
+         <?php } ?>
+         <?php if ($wo['config']['pages'] == 1) { ?>
+         <li class="dropdown-hidden-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=create-page'); ?>" data-ajax="?link1=create-page">
+            <i class="zmdi zmdi-google-pages"></i> <?php echo $wo['lang']['create_new_page']; ?>
+            </a>
+         </li>
+         <?php } ?>
+         <?php if ($wo['config']['groups'] == 1) { ?>
+         <li class="dropdown-hidden-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=create-group'); ?>" data-ajax="?link1=create-group">
+            <i class="zmdi zmdi-group-work"></i> <?php echo $wo['lang']['create_new_group']; ?>
+            </a>
+         </li>
+         <?php } ?>
+		 <?php if ($wo['config']['user_status'] == 1) { ?>
+         <li class="dropdown-hidden-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=create-status'); ?>">
+            <i class="zmdi zmdi-chart-donut"></i> <?php echo $wo['lang']['create_new_status']; ?>
+            </a>
+         </li>
+         <?php } ?>
+         <?php if ($wo['config']['pages'] == 1) { ?>
+         <li class="dropdown-search-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>" data-ajax="?link1=pages">
+            <i class="zmdi zmdi-google-pages"></i> <?php echo $wo['lang']['pages']; ?>
+            </a>
+         </li>
+         <?php } ?>
+
+         <?php if ($wo['config']['classified'] == 1) { ?>
+         <li class="dropdown-search-link smalldevicemenulink">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=my-products'); ?>" data-ajax="?link1=my-products">
+            <i class="zmdi zmdi-shopping-cart"></i> <?php echo $wo['lang']['my_products']; ?>
+            </a>
+         </li>
+         <?php } ?>
+         <?php if ($wo['config']['blogs'] == 1) { ?>
+         <li class="dropdown-search-link smalldevicemenulink">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=blogs'); ?>" data-ajax="?link1=blogs">
+            <i class="zmdi zmdi-blogger"></i> <?php echo $wo['lang']['blog']; ?>
+            </a>
+         </li>
+         <?php } ?>
+         <?php if ($wo['config']['events'] == 1) { ?>
+         <li class="dropdown-search-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=events'); ?>" data-ajax="?link1=events">
+            <i class="zmdi zmdi-calendar"></i> <?php echo $wo['lang']['events']; ?>
+            </a>
+         </li>
+         <?php } ?>
+         <?php if ($wo['config']['groups'] == 1) { ?>
+         <li class="dropdown-search-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=groups'); ?>" data-ajax="?link1=groups">
+            <i class="zmdi zmdi-group-work"></i> <?php echo $wo['lang']['groups']; ?>
+            </a>
+         </li>
+         <?php } ?>
+		 
+		 <?php if ($wo['config']['user_ads'] == 1) { ?>
+         <li>
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=ads'); ?>">
+            <i class="zmdi zmdi-money"></i> <?php echo $wo['lang']['ads']; ?>
+            </a>
+         </li>
+         <?php } ?>
+		 <li class="dropdown-search-link smalldevicemenulink">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=albums'); ?>" data-ajax="?link1=albums">
+            <i class="zmdi zmdi-collection-image"></i> <?php echo $wo['lang']['albums']; ?>
+            </a>
+         </li>
+		 
+         <?php if ($wo['config']['groups'] == 1 || $wo['config']['pages'] == 1) { ?><li><hr></li><?php } ?>
+         <li class="dropdown-hidden-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=setting&page=general-setting'); ?>" data-ajax="?link1=setting&page=general-setting">
+            <i class="zmdi zmdi-settings"></i><?php echo $wo['lang']['general_setting']; ?>
+            </a>
+         </li>
+         <li class="dropdown-search-link">
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=setting'); ?>" data-ajax="?link1=setting">
+            <i class="zmdi zmdi-settings"></i> <?php echo $wo['lang']['setting']; ?>
+            </a>
+         </li>
+         <?php if(Wo_IsAdmin() || Wo_IsModerator()) { ?>
+         <li><hr></li>
+         <li>
+            <a class="wabe" href="<?php echo $wo['config']['site_url'] . '/admin-cp'; ?>">
+            <i class="zmdi zmdi-view-dashboard"></i> <?php echo $wo['lang']['admin_area']; ?>
+            </a>
+         </li>
+         <?php } ?>
+		 <?php 
+         if ($wo['config']['pro'] == 1) {
+         if (Wo_IsUserPro() === false) { ?>
+		 <li><hr></li>
+         <li>
+            <a class="cusupgrade wabe" href="<?php echo Wo_SeoLink('index.php?link1=go-pro'); ?>" data-ajax="?link1=go-pro">
+            <i class="zmdi zmdi-flash"></i> <?php echo $wo['lang']['upgrade_to_pro']; ?>
+            </a>
+         </li>
+         <?php } } ?>
+         <li><hr></li>
+         <li>
+            <a class="wabe" href="<?php echo Wo_SeoLink('index.php?link1=logout'); ?>">
+            <i class="zmdi zmdi-power"></i> <?php echo $wo['lang']['log_out']; ?>
+            </a>
+         </li>
+		 <li><hr></li>
+		 <li>
+            <a class="wabe" href="javascript:void(0);" data-toggle="modal" data-target="#keyboard_shortcuts_box">
+				<i class="zmdi zmdi-keyboard"></i> <?php echo $wo['lang']['keyboard_shortcuts']; ?>
+            </a>
+         </li>
+		 <li>
+            <a href="javascript:void(0);" id="night_mode_toggle" data-mode='<?php echo Wo_Secure($wo['mode_link']) ?>'>
+            	<svg class="wabe feather feather-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+				<span id="night-mode-text"><?php echo $wo['mode_text']; ?></span>
+			</a>
+         </li>
+      </ul>
+   </li>
+</ul>

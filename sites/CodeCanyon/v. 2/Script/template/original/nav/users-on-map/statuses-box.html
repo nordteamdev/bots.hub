@@ -1,0 +1,49 @@
+{strip}
+
+<section id="friends_on_map_box_statuses" class="fixed_always">
+{assign var=now_count value=$this->PostsOnMapCount('now')}
+{assign var=all_today value=$this->PostsOnMapCount('all_today')}
+{assign var=last_days value=$this->PostsOnMapCount('last_days')}
+{assign var=nearby_count value=$this->nearbyPeopleCount()}
+<div class="fmap_box">
+<div class="fmap_box_header">
+
+
+<div class="fmap_box_filter_top soh-s"><span id="fmap_box_title_top" class="ftop_a_active_tab">{$this->lang['map_box_statuses_last_2_hours']} {if $now_count > 0}({$now_count}){/if}<i class="icofont icofont-caret-down">&#xeb25;</i></span>
+
+<ul class="foh-s fmap-box-fohmenu">
+<li><a href="javascript:void(0);" class="active" id="fmapbox_start_btn" onclick="getPostsOnMapForPeriod(event,this,'now');">{$this->lang['map_box_statuses_last_2_hours']} {if $now_count > 0}({$now_count}){/if}</a></li>
+<li><a href="javascript:void(0);" onclick="getPostsOnMapForPeriod(event,this,'all_today');">{$this->lang['map_box_statuses_all_today']} {if $all_today > 0}({$all_today}){/if}</a></li>
+<li><a href="javascript:void(0);" onclick="getPostsOnMapForPeriod(event,this,'last_days');">{$this->lang['map_box_statuses_last_3_days']} {if $last_days > 0}({$last_days}){/if}</a></li>
+
+
+</ul>
+
+</div>
+
+<div class="fmap_box_filter_top"><a class="ftop_a_active_tab" href="javascript:void(0);" onclick="fmapBoxNearbyPeople(event,this);">{$this->lang['Nearby']} {if $nearby_count > 0}({$nearby_count}){/if}</a></div>
+
+<div class="tico tico__n-t notifs_close" id="map_posts_box_close"><i class="tico_img ic ic_close"></i></div>
+</div>
+
+
+
+<div class="fmap_box_cnt">
+
+
+
+</div>
+
+<div class="fmap_box_footer">
+
+<a href="/users-on-map" id="fmap_footer_go_toMap" hrefattr="True">{$this->lang['map_box_statuses_go_to_live_map']}</a>
+
+</div>
+
+</div>
+
+
+
+
+</section>
+{/strip}

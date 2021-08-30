@@ -1,0 +1,248 @@
+{strip}
+{assign var="his_her" value=$this->lang['his']}
+{assign var="update_relation" value=$this->checkForUpdateFriendRelation()}
+{assign var="delete_relation" value=$this->checkForDeletedFriendRelation()}
+{assign var="delete_friend" value=$this->checkForDeletedFriend()}
+{assign var="friend_request_accepted" value=$this->checkForAcceptedFriendRequests()}
+{assign var="friend_request_declined" value=$this->checkForDeclinedFriendRequests()}
+{assign var="r_q" value=$query}
+
+{if !$query && !$update_relation && !$delete_relation && !$delete_friend && !$friend_request_accepted && !$friend_request_declined}
+{$this->empty_notif()}
+{/if}
+
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+
+
+
+            {foreach $query as $res} 
+			{assign var=status value={$res.status}}
+{if $this->getUserGender($res.id) == 'female'}
+{assign var="his_her" value=$this->lang['her']}
+{/if}
+            <div id="ne-n" data-category="Friendships" class="notif {if $status != 'pending'} __confirm {/if} {if $res.added < time() - (24 * 60 * 60)} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx {if $status != 'pending'}__confirm{/if}"><a class="o bold" data-clbk="removePopup" href="/user/{$res.id}" hrefattr="true">{$res.fullname}</a>
+{if $status == 'pending'}
+{if !$res.relationship}
+<span class="become_friend_text"> {$this->lang['want_become_friend']}</span>
+{else}
+<span class="become_friend_text"> {str_replace('.','',$this->lang['want_become_friend'])} {$this->lang['friend_indicate']} {$his_her} <span class="il">{$this->relationDelimiter($res.relationship)}</span></span>
+{/if}
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-freq="{$res.added}-{$res.nid}" onclick="return vFriendReq(event,this,1);" type="submit" class="button-pro __def __small mr-8">{$this->lang['accept']}</button>
+<button id="hook_FormButton_a_{$res.id}" data-freq="{$res.added}-{$res.nid}" name="IGNORE" onclick="return vFriendReq(event,this,0);" type="submit" class="button-pro __sec __small">{$this->lang['ignore']}</button>
+</div>
+{else}
+&nbsp;<span class="become_friend_text">{str_replace("%s", {$this->time_elapsed($res.added)}, $this->lang['yarfriend'])}</span>
+<div class="notif_footer mt2 mb4">{$this->gDateYear($res.added)}</div>
+<div class="notif_btn m0"><a  href="javascript:void(0);"
+ onclick="return new_chat_window(this,event);" id="y-{$res.id}"
+data-clbk="removePopup"
+data-uch='{ldelim}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{rdelim}'
+ class="lp mr-4x">
+<span class="tico"><i class="tico_img ic ic_message"></i>{$this->lang['send_message']}</span></a>
+<span>
+<a href="/profile?q={$res.id}&cmd=friends&list=true&nav=friends" hrefattr="true" data-clbk="removePopup" class="lp mr-4x"><span class="tico"><i class="tico_img ic ic_friend"></i>{str_replace('%s',$his_her,$this->lang['view_her_friends'])}</span></a></span></div>
+{/if}
+
+
+
+
+                    </div></div>
+                </div>
+                {if $status == 'pending'}
+                <div class="notif_ac fade-on-hover"><span class="hook inlineBlock"><span title="{$this->lang['close']}" data-freq="{$res.added}-{$res.nid}" tsid="skip" id="hook_FormButton_fri_{$res.id}" onclick="vFriendReq(event,this,0)" class="ic12 ic12_close-g lp"></span>
+                    </span><a class="tdn" title="{$this->lang['report']}" href="/music"><span class="tico tico__12 ml2"><i class="tico_img ic12 ic12_warn"></i></span></a></div>
+		{else}
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+                {/if}
+            </div>
+
+            {/foreach}
+
+
+
+
+
+{foreach $friend_request_declined as $res}
+           <div id="ne-n" data-category="Friendships" class="notif {if $res.added < time() - (24 * 60 * 60) && $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a><span class="__frrpkc_txt">&nbsp;{$this->lang['declined_your_friend_request']}.</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-freq="bb32hoHeool-{$res.nid}" onclick="ga('[data-norelationrelativ]').trigger('click');" type="submit" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+
+</div>
+                    </div></div>
+                </div>
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+
+{/foreach}
+
+
+{foreach $friend_request_accepted as $res}
+           <div id="ne-n" data-category="Friendships" class="notif {if $res.added < time() - (24 * 60 * 60) && $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o bold" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a><span class="__frrpkc_txt">&nbsp;{$this->lang['accepted_your_friend_request']}.</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-freq="bb32hoHeool-{$res.nid}" onclick="$('[data-norelationrelativ]').trigger('click');" type="submit" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+
+</div>
+                    </div></div>
+                </div>
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+
+{/foreach}
+
+
+
+{foreach $delete_friend as $res}
+           <div id="ne-n" data-category="Friendships" class="notif {if $res.added < time() - (24 * 60 * 60) && $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a><span class="__frrpkc_txt">&nbsp;{str_replace("#g",$his_her,$this->lang['removed_you_from_hisher_friends'])}.</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-freq="bb32hoHeool-{$res.nid}" onclick="$('[data-norelationrelativ]').trigger('click');" type="submit" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+
+</div>
+                    </div></div>
+                </div>
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+
+{/foreach}
+
+
+
+{foreach $delete_relation as $res}
+           <div id="ne-n" data-category="Friendships" class="notif {if $res.added < time() - (24 * 60 * 60) && $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o" data-clbk="removePopup" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a><span class="__frrpkc_txt">{str_replace("#g",$his_her,str_replace("#n","",$this->lang['removed_you_from_hisher_relative_friends']))}.</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-freq="bb32hoHeool-{$res.nid}" onclick="$('[data-norelationrelativ]').trigger('click');" type="submit" class="button-pro __def __small mr-8">{$this->lang['Ok']}</button>
+
+</div>
+                    </div></div>
+                </div>
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+
+{/foreach}
+
+{foreach $update_relation as $res}
+{if $this->getUserGender($res.id) == 'female'}
+{assign var="his_her" value=$this->lang['her']}
+{/if}
+{assign var="relations_com" value=json_decode($res.notifjson,true)}
+ 
+
+{if !$relations_com.relationship}
+<Script>
+var i = '{$res.id}';
+{literal}
+setTimeout(function(){
+ga('#hook_FormButton_fri_'+i).trigger('click');
+},100);
+{/literal}
+</script>
+{/if}
+           <div id="ne-n" data-category="Friendships" class="notif {if $res.added < time() - (24 * 60 * 60) && $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+                            <a class="photo" data-clbk="removePopup" href="/user/{$res.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="64" height="64"></a>
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+<a class="o" data-clbk="removePopup" href="/user/{$res.id}" hrefattr="true">{$res.fullname}</a>&nbsp;<span class="__frrpkc_txt">{$this->lang['friend_update_indicate']} {$his_her} {$this->relationDelimiter($relations_com.relationship)}</span>
+
+
+<div class="notif_footer">{$this->time_elapsed($res.added)}</div>
+<div class="notif_btn">
+<button name="ACCEPT" id="hook_FormButton_a_{$res.id}" data-rolereltxt="{$this->relationDelimiter($this->oppositeRelationship($relations_com.relationship))}" data-freq="bb32hoHeool-{$res.nid}" onclick="return confirmFriendRelationShip(event,this);" type="submit" class="button-pro __def __small mr-8">{$this->lang['Confirm']}</button>
+
+</div>
+                    </div></div>
+                </div>
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['not_true']}" id="hook_FormButton_fri_{$res.id}" data-freq="{$res.added}-{$res.nid}" href="/profile?cmd=removeNotif&i={$res.nid}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+{/foreach}
+
+
+        </div>
+    </div>
+</div>
+{/strip}

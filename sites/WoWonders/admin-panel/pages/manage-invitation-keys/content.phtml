@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Invitation Codes</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Invitation Codes</h2> 
+                     <form id="add-invitation"><button type="submit" class="btn btn-warning waves-effect waves-light m-t-20">Generate New Code</button></form>
+                     <br>
+                     <div>This system is used to invite users to your site if the registration system is turned off.</div>
+                </div>
+                
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                   <th>Created</th>
+					               <th>Invitation Code</th>
+					               <th>Status</th>
+					               <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="manage-invitation-list">
+                                <?php 
+				                foreach (Wo_GetAdminInvitation() as $wo['invitation']) {
+				                    echo Wo_LoadAdminPage('manage-invitation-keys/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+jQuery(document).ready(function($) {
+      $('#add-invitation').ajaxForm({
+      url: Wo_Ajax_Requests_File(),
+      type:'GET',
+      dataType:'json',
+      data: {f: 'admincp',s:'insert-invitation'},
+      beforeSend: function() {
+        $('#add-invitation').find('button').text('Please wait..');
+      },
+      success: function(data) {
+        if (data.status == 200) {
+            if ($('tr.setting-invitation').length > 0) {
+               $('.manage-invitation-list').prepend(data.html);            
+            }
+            else{
+               $('.manage-invitation-list').html(data.html); 
+            }
+        } 
+        $('#add-invitation').find('button').text('Generate New Code');
+      }});
+
+      $(document).on('click', '.delete-admin-invitation', function(event) {
+         var id = $(this).attr('id');
+         $("tr[data-invitation='"+id+"']").remove();
+         $.ajax({
+            url:  Wo_Ajax_Requests_File(),
+            type: 'GET',
+            dataType: 'json',
+            data: {f: 'admincp',s:'rm-invitation',id:id},
+         })
+         .done(function(data) {
+            if (data.status == 200) {
+               
+            }
+         })
+         .fail(function() {
+            console.log("error");
+         })
+      });
+
+      $(document).on('click', '.copy-invitation-url', function(event) {
+         event.preventDefault();
+           var $temp = $("<input>");
+           $("body").append($temp);
+           $temp.val($(this).attr('data-link')).select();
+           document.execCommand("copy");
+           $temp.remove();
+           $(this).addClass('main');
+      });
+
+   });
+</script>

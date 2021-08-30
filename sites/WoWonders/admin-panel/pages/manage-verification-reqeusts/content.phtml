@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Users > Manage Verification Reqeusts</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Verification Reqeusts</h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>User</th>
+					                  <th>Type</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+				                foreach (Wo_GetVerifications() as $wo['verification']) {
+				                    echo Wo_LoadAdminPage('manage-verification-reqeusts/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+function Wo_DeleteVerification(id) {
+  var delete_icon = $('.setting-verification-container').find('#VerificationID_' + id).find('.delete-verification');
+  $('#review-verif-request-info-'+id).slideUp(function(){
+        $(this).remove();
+        $('#VerificationID_' + id).fadeOut(300, function() {
+          $(this).remove();
+        });
+      })
+  $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s:'delete_verification', id:id});
+}
+
+function Wo_Verify(id,verification_id,type) {
+  var verify_icon = $('.setting-verification-container').find('#VerificationID_' + verification_id).find('.verify');
+  $('#review-verif-request-info-'+verification_id).slideUp(function(){
+    $(this).remove();
+  })
+$('#VerificationID_' + verification_id).fadeOut(300, function() {
+  $(this).remove();
+});
+  $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s:'verify_user', id:id, verification_id:verification_id, type:type});
+}
+$(document).ready(function() {
+  $('.review-verif-request-cont a').magnificPopup({type:'image'});
+});
+function Wo_ToggleVerfRequest(id,self){
+  if (!id || !self) {
+    return false;
+  }
+  $(self).find('i').toggleClass('rotate-90d');
+  $("#review-verif-request-info-"+id).slideToggle();
+
+}
+
+jQuery(document).ready(function($) {
+  $(document).on('click', '.toggle-verification-request', function(event) {
+    event.preventDefault();
+    $(this).find('i').toggleClass('rotate-90d');
+  });
+});
+</script>
+
+<style>
+  .review-verif-request-cont{
+    width: 100%;
+    overflow: hidden;
+    margin: 5px 0;
+  }
+  .review-verif-request-cont div{
+    width: 200px;
+    height: 150px;
+    float: left;
+    cursor: pointer;
+    margin: 0 5px 5px 0;
+  }
+
+  .review-verif-request-cont h4{
+    width: 100%;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .toggle-verification-request{
+    padding: 3px 5px;
+  }
+</style>

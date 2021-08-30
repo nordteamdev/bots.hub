@@ -1,0 +1,115 @@
+<div class="content-shadow fluid">
+	<div class="settings-header main-border-color">
+		<h3><span class="verified-icon"><i class="fa fa-check-circle fa-fw "></i> </span>{{LANG verification}}</h3>
+	</div>
+	<?php if ($fl['user']['verified'] == 1): ?>
+
+		<div class="verification-completed list-group">
+			<p>{{LANG verif_request_accepted}}</p>
+		</div>
+
+	<?php elseif (!FL_IsVerificationRequestExists()): ?>
+		<form class="form-horizontal setting-panel" id="verification-request" method="POST">
+		    <div class="verification-request-alert"></div>
+			<fieldset>
+				<!-- password input-->
+				<div class="form-group verification-request-header">
+					<h4 class="text-center">{{LANG upload_id}}</h4>
+					<p class="text-center">{{LANG please_upload_passport_id}}</p>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-6">
+						<div class="preview-verification-pictures" onclick="$('#verification-user-passport').trigger('click');">
+							<div id="preview-verification-passport">
+								<i class="fa fa-id-card" aria-hidden="true"></i>
+								<small><span class="fa fa-info-circle"></span> {{LANG verify_data_fields}}</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="preview-verification-pictures" onclick="$('#verification-user-image').trigger('click');">
+							<div id="preview-verification-image">
+								<i class="fa fa-camera" aria-hidden="true"></i>
+								<small>{{LANG your_photo}}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					
+					<div class="col-md-6">
+						<label class="" for=""></label>
+						<input type="text" name="first_name" class="form-control verification-username" placeholder="{{LANG first_name}}" style="height: 40px !important;">
+					</div>
+					<div class="col-md-6">
+						<label class="" for=""></label>
+						<input type="text" name="last_name" class="form-control verification-username"  placeholder="{{LANG last_name}}" style="height: 40px !important;">
+					</div>
+				</div>
+
+				<div class="form-group">
+					
+					<div class="col-md-12">
+						<textarea name="text" class="form-control verification-text" placeholder="{{LANG message}}" rows="1"></textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-8">
+						<button  class="btn" type="reset" id="verification-form-reset">
+							<i class="fa fa-ban"></i> {{LANG cancel}}
+						</button>
+
+						<button id="submit" name="submit" class="btn btn-main">
+							<i class="fa fa-share-square-o progress-icon" data-icon="share-square-o"></i> {{LANG send}}
+						</button>
+					</div>
+				</div>
+				<input type="file" class="hidden" name="passport" id="verification-user-passport" accept="image/*">
+				<input type="file" class="hidden" name="image" id="verification-user-image" accept="image/*">
+			</fieldset>
+		</form>
+	<?php else: ?>
+		<div class="verification-pending list-group">
+			<p>
+				<i class="fa fa-info-circle" aria-hidden="true"></i> {{LANG verif_request_pending}}
+			</p>
+		</div>
+	<?php endif; ?>
+</div>
+<script>
+$(function() {
+	$(".verification-text").autogrow();
+
+	$('#verification-user-passport').change(function(event) {
+		$("#preview-verification-passport").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture'>")
+	});
+
+	$('#verification-user-image').change(function(event) {
+		$("#preview-verification-image").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture'>")
+	});
+
+  var form = $('form#verification-request');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=verification&s=request',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.verification-request-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        FL_Delay(function(){
+        	window.location = data.url;
+        },1000);
+      }
+      else if (data.status == 400) {
+        $('.verification-request-alert').html('<div class="alert alert-danger">' + data.message + '</div>');
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

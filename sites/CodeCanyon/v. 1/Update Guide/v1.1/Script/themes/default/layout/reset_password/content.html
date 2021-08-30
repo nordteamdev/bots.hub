@@ -1,0 +1,59 @@
+<div class="login-con">
+   <div class="login-form next-col-home ">
+      <form method="post" id="reset-form">
+         <fieldset>
+            <h4>{{LANG reset_your_password}}</h4>
+            <!-- email_address input-->
+            <div class="errors hidden"></div>
+            <div class="success hidden"></div>
+            <div class="form-group">
+               <input id="password" name="password" type="password" class="form-control input-login" placeholder="{{LANG new_password}}">
+            </div>
+            <div class="form-group">
+               <input id="c_password" name="c_password" type="password" class="form-control input-login" placeholder="{{LANG confirm_new_password}}">
+            </div>
+            <input type="hidden" name="hash_id" value="<?php echo FL_CreateSession();?>">
+            <input type="hidden" name="code" value="<?php echo $_GET['code'];?>">
+            <div class="form-group">
+               <button type="submit" class="btn btn-main">
+               <i class="fa fa-sign-in progress-icon" data-icon="sign-in"></i> {{LANG reset_password}}</button>
+            </div>
+         </fieldset>
+      </form>
+   </div>
+   <div class="login-form-bottom-link">
+    {{LANG remember_your_old_password}} <a href="<?php echo FL_Link('login')?>">{{LANG login}}</a>
+   </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var reset_form = $("form#reset-form");
+	var reset_button = reset_form.find("button");
+    reset_form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=reset_password',
+    beforeSend: function() {
+      reset_button.attr("disabled", true);
+      FL_progressIconLoader(reset_form.find('button'));
+    },
+    success: function(data) {
+      if (data.status == 200) {
+      	$(".errors").addClass('hidden');
+      	$(".success").removeClass('hidden');
+      	$(".success").html('<i class="fa fa-check"></i> {{LANG your_password_has_been_reset}}');
+      	setTimeout(function () {
+        	window.location.href = data.location;
+        }, 1000);
+      } else {
+        var errors = data.errors.join("<br>");
+        $(".success").addClass('hidden');
+        $(".errors").removeClass('hidden');
+        $(".errors").html(errors);
+        reset_button.attr("disabled", false);
+      }
+      reset_button.attr("disabled", false);
+      FL_progressIconLoader(reset_form.find('button'));
+    }
+  });
+});
+</script>

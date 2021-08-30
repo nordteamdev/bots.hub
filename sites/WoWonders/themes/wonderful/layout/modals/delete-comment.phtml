@@ -1,0 +1,16 @@
+<div class="modal fade" id="delete-comment" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> <?php echo $wo['lang']['delete_comment']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['confirm_delete_comment']; ?></p>
+         </div>
+         <div class="modal-footer">
+            <button id="delete-all-post" type="button" class="btn btn-main"><i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i> <?php echo $wo['lang']['delete']; ?></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript:$('.modal').modal('hide');"><?php echo $wo['lang']['cancel']; ?></button>
+         </div>
+      </div>
+   </div>
+</div>

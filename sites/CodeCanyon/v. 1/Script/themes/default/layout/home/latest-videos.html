@@ -1,0 +1,15 @@
+<div class="col-sm-12 video-homepage video-<?php echo $fl['latest_videos_data']['video']['id']?>" data-id="<?php echo $fl['latest_videos_data']['video']['id']?>">
+                    <div class="video-list">
+                        <div class="latest-news-img">
+                            <a href="<?php echo $fl['latest_videos_data']['video']['url']?>"><img src="<?php echo FL_GetMedia($fl['latest_videos_data']['video']['image'])?>" alt="">
+                            <div class="latest-videos-button">
+                                <i class="fa fa-play-circle"></i>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="latest-videos-title">
+                            <h4><?php echo $fl['latest_videos_data']['video']['title']?></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>

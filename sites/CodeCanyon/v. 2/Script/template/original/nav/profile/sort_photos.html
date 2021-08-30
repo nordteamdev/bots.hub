@@ -1,0 +1,39 @@
+{strip}
+{include file={$_usermenu}}
+
+<div class="profile-photos-gallery">
+<div class="photo_sticky sticky" style="min-height: 25px;">
+
+		
+
+	<div class="panelRounded_head">
+	
+	<div class="panelRounded_head_header">{$this->lang['drag_pictures_text']}
+	
+	<a class="photo_sticky_action _s53 al" href="{$bk}"  hrefattr="true">{$this->lang['back']}</a></div>
+
+	
+	</div>	
+		
+		</div>
+<div id="sortUphotos" data-act="{$act}" data-postd="/profile?q={$user['id']}&cmd=updateSort">
+{foreach $query as $result}
+{assign var=is_gif value=$this->is_gif($result.id)}
+<div class="ec_items notOvr stort-pictures" id="photo_{$result['id']}">
+<div class="eg_gotph">
+<img class="sortimg lazy-image" data-original="{$gPhoto}?p={$result['id']}&sz=grid" />
+{if $is_gif}<ins class="play-gif _tocenter">GIF</ins>{/if}
+</div>
+</div>
+
+{foreachelse}
+<h3>
+{$this->lang['user_null_photos']}
+</h3>
+
+{/foreach}
+
+</div>
+</div>
+
+{/strip}

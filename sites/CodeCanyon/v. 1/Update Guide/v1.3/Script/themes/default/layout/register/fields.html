@@ -1,0 +1,25 @@
+<?php 
+	if ($fl['field']['select_type'] == 'yes') {
+      	$options = @explode(',', $fl['field']['type']); ?>
+            <div class="form-group fl_cus_input">
+				<select name="<?php echo $fl['field']['fid'];?>" class="form-control">
+					<?php foreach ($options as $key => $value) { ?>
+						<option value="<?php echo $key + 1;?>"><?php echo $value;?></option>
+					<?php } ?>
+				</select>
+			</div>
+      	<?php
+      }
+      else {
+      	if ($fl['field']['type'] == 'textbox') { ?>
+			<div class="form-group fl_cus_input">
+				<input id="<?php echo $fl['field']['fid'];?>" name="<?php echo $fl['field']['fid'];?>" type="text" placeholder="" class="form-control">
+				<label for="<?php echo $fl['field']['fid'];?>"><?php echo $fl['field']['name'];?></label>
+			</div>
+			
+		<?php } else if ($fl['field']['type'] == 'textarea') {?>
+			<div class="form-group fl_cus_input textarea">
+				<textarea style="resize: vertical;" id="<?php echo $fl['field']['fid'];?>" name="<?php echo $fl['field']['fid'];?>" cols="20" rows="3" placeholder="" class="form-control"></textarea>
+				<label for="<?php echo $fl['field']['fid'];?>"><?php echo $fl['field']['name'];?></label>
+			</div>
+<?php } }?>

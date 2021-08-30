@@ -1,0 +1,295 @@
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<div class="wo_about_wrapper_parent">
+	<div class="wo_about_wrapper"> 
+		<div class="hero hero-overlay"> 
+			<div class="container wo_go_pro">
+				<div class="col-md-8">
+					<h1 class="head_pro"><?php echo $wo['config']['siteName'];?> <span class="pro-badge">PRO</span></h1>
+					<h1 class="main_head_pro"><?php echo $wo['lang']['pro_feature_control_profile'];?></h1>
+				</div>
+				<div class="col-md-4 hidden-rocket">
+					<img src="<?php echo $wo['config']['theme_url'];?>/img/go-pro/rocket.svg" alt="go-pro"/>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<div class="page-margin wo_about_page_margin">
+	<div class="list-group text-center wo_pro_features">
+		<div class="col-md-12">
+			<h2><?php echo $wo['lang']['why_choose_pro'];?></h2>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<img src="<?php echo $wo['config']['theme_url'];?>/img/go-pro/superhero.svg" alt="superhero"/>
+			<h3><?php echo $wo['lang']['featured_member'];?></h3>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<img src="<?php echo $wo['config']['theme_url'];?>/img/go-pro/lastseen.svg" alt="lastseen"/>
+			<h3><?php echo $wo['lang']['show_hide_lastseen'];?></h3>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<img src="<?php echo $wo['config']['theme_url'];?>/img/go-pro/post.svg" alt="post"/>
+			<h3><?php echo $wo['lang']['post_promotion_star'];?></h3>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<img src="<?php echo $wo['config']['theme_url'];?>/img/go-pro/verify.svg" alt="verify"/>
+			<h3><?php echo $wo['lang']['verified_badge'];?></h3>
+		</div>
+	</div>
+
+	<div class="pricing_table">
+		<section>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<ul class="pricing p-green">
+						<li class="price-table-head">
+							<big><i class="fa fa-star"></i></big>
+							<h3><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['weekly_price'];?></h3>
+							<span><?php echo $wo['lang']['per_week'];?></span>
+						</li>
+						<li class="plan-name"><big><?php echo $wo['lang']['star'];?></big></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['featured_member'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['see_profile_visitors'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['show_hide_lastseen'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['verified_badge'];?></li>
+						<li><i class="fa fa-times red"></i> <?php echo $wo['lang']['post_promotion_star'];?></li>
+						<?php
+						if ($wo['config']['pages'] == 1) {
+						?>
+							<li><i class="fa fa-times red"></i> <?php echo $wo['lang']['page_promotion_star'];?></li>
+						<?php } ?>
+						<li><?php echo $wo['lang']['0_discount'];?></li>
+						<li>
+							<button class="button-week" onclick="Wo_GetPaymentLink(1);"><?php echo $wo['lang']['upgrade_now'];?></button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<ul class="pricing p-yel">
+						<li class="price-table-head">
+							<big><i class="fa fa-fire"></i></big>
+							<h3><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['monthly_price'];?></h3>
+							<span><?php echo $wo['lang']['per_month'];?></span>
+						</li>
+						<li class="plan-name"><big><?php echo $wo['lang']['hot'];?></big></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['featured_member'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['see_profile_visitors'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['show_hide_lastseen'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['verified_badge'];?></li>
+						<li><i class="fa fa-check green"></i> 
+						<?php 
+						$post_promotion_hot = str_replace('{monthly_boosts}', $wo['config']['monthly_boosts'], $wo['lang']['post_promotion_hot']);
+						echo $post_promotion_hot;
+						?>
+						</li>
+						<?php
+						if ($wo['config']['pages'] == 1) {
+						?>
+							<li><i class="fa fa-check green"></i> 
+							<?php 
+							$page_promotion_hot = str_replace('{monthly_boosts}', $wo['config']['monthly_boosts'], $wo['lang']['page_promotion_hot']);
+							echo $page_promotion_hot;
+							?>
+							</li>
+						<?php } ?>
+						<li><?php echo $wo['lang']['10_discount'];?></li>
+						<li>
+							<button class="button-month" onclick="Wo_GetPaymentLink(2);"><?php echo $wo['lang']['upgrade_now'];?></button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 ">
+					<ul class="pricing p-red">
+						<li class="price-table-head">
+							<big><i class="fa fa-bolt"></i></big>
+							<h3><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['yearly_price'];?></h3>
+							<span><?php echo $wo['lang']['per_year'];?></span>
+						</li>
+						<li class="plan-name"><big><?php echo $wo['lang']['ultima'];?></big></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['featured_member'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['see_profile_visitors'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['show_hide_lastseen'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['verified_badge'];?></li>
+						<li><i class="fa fa-check green"></i> 
+						<?php 
+						$post_promotion_ultima = str_replace('{yearly_boosts}', $wo['config']['yearly_boosts'], $wo['lang']['post_promotion_ultima']);
+						echo $post_promotion_ultima;
+						?>
+						</li>
+						<?php
+						if ($wo['config']['pages'] == 1) {
+						?>
+							<li><i class="fa fa-check green"></i>
+							<?php 
+							$page_promotion_ultima = str_replace('{yearly_boosts}', $wo['config']['yearly_boosts'], $wo['lang']['page_promotion_ultima']);
+							echo $page_promotion_ultima;
+							?>
+							</li>
+						<?php } ?>
+						<li><?php echo $wo['lang']['20_discount'];?></li>
+						<li>
+							<button class="button-year" onclick="Wo_GetPaymentLink(3);"><?php echo $wo['lang']['upgrade_now'];?></button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<ul class="pricing p-blue">
+						<li class="price-table-head">
+							<big><i class="fa fa-rocket"></i></big>
+							<h3><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['lifetime_price'];?></h3>
+							<span><?php echo $wo['lang']['life_time'];?></span>
+						</li>
+						<li class="plan-name"><big><?php echo $wo['lang']['vip'];?></big></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['featured_member'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['see_profile_visitors'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['show_hide_lastseen'];?></li>
+						<li><i class="fa fa-check green"></i> <?php echo $wo['lang']['verified_badge'];?></li>
+						<li><i class="fa fa-check green"></i> 
+						<?php 
+						$post_promotion_vip = str_replace('{lifetime_boosts}', $wo['config']['lifetime_boosts'], $wo['lang']['post_promotion_vip']);
+						echo $post_promotion_vip;
+						?>
+						</li>
+						<?php
+						if ($wo['config']['pages'] == 1) {
+						?>
+							<li><i class="fa fa-check green"></i>
+							<?php 
+							$page_promotion_vip = str_replace('{lifetime_boosts}', $wo['config']['lifetime_boosts'], $wo['lang']['page_promotion_vip']);
+							echo $page_promotion_vip;
+							?>
+							</li>
+						<?php } ?>
+						<li><?php echo $wo['lang']['60_discount'];?></li>
+						<li>
+							<button class="button-life-time" onclick="Wo_GetPaymentLink(4);"><?php echo $wo['lang']['upgrade_now'];?></button>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /row -->
+		</section>
+	</div>
+</div>
+<div id="pay-modal"></div>
+<script>
+function pay_using_wallet(type,description){
+	var result = confirm("Are you want to buy "+ description + " using your wallet balance?");
+	if (result) {
+		
+		$('.btn-walletpay').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+		$.post(Wo_Ajax_Requests_File() + '?f=pay_using_wallet', {type:type}, function(data) {
+			if (data.status == 200) {
+				window.location.href = data.url;
+			} else {
+				$('.btn-walletpay').attr('disabled', false).html("Problem While pay using wallet");
+			}
+		});
+	 
+	}
+}
+function Wo_GetPayPalLink(type) {
+   	 $('.btn-paypal').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+     $.post(Wo_Ajax_Requests_File() + '?f=get_paypal_url', {type:type}, function(data) {
+         if (data.status == 200) {
+             window.location.href = data.url;
+         } else {
+         	$('.btn-paypal').attr('disabled', false).html("PayPal App not set yet.");
+         }
+     });
+}
+function Wo_CheckOutCard(type, description, amount, payment_type) {
+	if (payment_type == 'bitcoin') {
+		$('.btn-bitcoin').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	} else if (payment_type == 'credit_card') {
+		$('.btn-cart').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	} else if (payment_type == 'alipay') {
+		$('.btn-alipay').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	}
+	var img = 'star';
+	if (type == 1) {
+		img = 'star';
+	} else if (type == 2) {
+		img = 'hot';
+	} else if (type == 3) {
+		img = 'ultima';
+	} else if (type == 4) {
+		img = 'vip';
+	}
+	var handler = StripeCheckout.configure({
+        key: "<?php echo $wo['config']['stripe_id'];?>",
+        locale: 'english',
+        image: '<?php echo $wo['config']['theme_url']?>/img/' + img + '.png',
+        token: function(token) {
+          $('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['c_payment'] ?>');
+          $('#pay-go-pro').modal({
+             show: true
+            });
+          $.post(Wo_Ajax_Requests_File() + '?f=stripe_payment&pro_type=' + type, {stripeToken:token.id, amount:amount}, function (data) {
+          	 if (data.status == 200) {
+          	 	window.location.href = data.location;
+          	 } else {
+          	 	$('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['payment_declined'] ?>');
+          	 }
+          });
+        }
+    });
+    if (payment_type == 'bitcoin') {
+		$.get(Wo_Ajax_Requests_File() + '?f=paypro_with_bitcoin&amount=' + (amount/100) + '&desc=' + description + '&usertype=' + type  , function (data) {
+			if (data.status == 200) {
+				$(data.html).appendTo('body').submit();
+			}
+		});
+
+    	// handler.open({
+        //    name: "<?php echo $wo['config']['siteName']?>",
+        //    description: description,
+        //    amount: amount,
+        //    currency: '<?php echo $wo['config']['currency']?>',
+        //    bitcoin: true,
+        //    opened: function () {
+        //    	  $('#pay-go-pro').modal('hide');
+        //    	  $('.btn-bitcoin').attr('disabled', false).html("<i class='fa fa-bitcoin'></i> <?php echo $wo['lang']['bitcoin'] ?>");
+        //    }
+        // });
+    } else if (payment_type == 'credit_card') {
+    	handler.open({
+           name: "<?php echo $wo['config']['siteName']?>",
+           description: description,
+           amount: amount,
+           currency: '<?php echo $wo['config']['currency']?>',
+           opened: function () {
+           	  $('#pay-go-pro').modal('hide');
+           	  $('.btn-cart').attr('disabled', false).html("<i class='fa fa-credit-card'></i> <?php echo $wo['lang']['credit_card'] ?>");
+           }
+        });
+    } else if (payment_type == 'alipay') {
+    	handler.open({
+           name: "<?php echo $wo['config']['siteName']?>",
+           description: description,
+           amount: amount,
+           alipay: true,
+           currency: '<?php echo $wo['config']['currency']?>',
+           opened: function () {
+           	  $('#pay-go-pro').modal('hide');
+           	  $('.btn-alipay').attr('disabled', false).html("<i class='fa fa-credit-card'></i> Alipay");
+           }
+        });
+    }
+    $(window).on('popstate', function() {
+       handler.close();
+    });
+}
+
+function Wo_GetPaymentLink(type) {
+	$.get(Wo_Ajax_Requests_File() + '?f=get_payment_method&type=' + type, function (data) {
+        if (data.status == 200) {
+          	$('#pay-modal').html(data.html);
+          	$('#pay-go-pro').modal({
+             show: true
+            });
+
+        }
+    });
+}
+</script>

@@ -1,0 +1,24 @@
+<div class="col-sm-6 col-md-4">
+	<div class="wo_sidebar_pages">
+		<div class="page_middle">
+			<div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+				<img alt="<?php echo $wo['result']['name']?> Profile Picture" src="<?php echo $wo['result']['avatar']?>">
+			</div>
+			<div class="info">
+				<div class="title">
+					<span class="user-popover" data-type="<?php echo $wo['result']['type']; ?>" data-id="<?php echo $wo['result']['id']; ?>" data-search-type="<?php echo $wo['result']['type']; ?>">
+						<a id="user-full-name" href="<?php echo $wo['result']['url']. $wo['marker'];?>ref=se" data-ajax="?link1=timeline&u=<?php echo $wo['result']['username']?>&ref=se"><?php echo $wo['result']['name'];?></a>
+					</span>
+				</div>
+				<span><?php echo $wo['result']['category']?></span>
+			</div>
+		</div>
+		<div class="cardheader">
+			<img src="<?php echo $wo['result']['cover']?>" id="cover-image" alt="<?php echo $wo['result']['name']?> Cover Image">
+			<div class="user-follow-button">
+				<span class="page_catg"><?php echo Wo_CountPageLikes($wo['result']['page_id']);?> <?php echo $wo['lang']['people_likes_this']; ?></span>
+				<?php echo Wo_GetLikeButton($wo['result']['page_id']);?>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > E-mail Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-8 col-md-8 ">
+            <div class="card">
+                <div class="header">
+                    <h2>E-mail Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <label for="smtp_or_mail">Server Type</label>
+                        <div class="form-group">
+                            <input type="radio" name="smtp_or_mail" id="smtp_or_mail-enabled" value="smtp" <?php echo ($fl['config']['smtp_or_mail'] == 'smtp') ? 'checked': '';?>>
+                            <label for="smtp_or_mail-enabled">SMTP Server</label>
+                            <input type="radio" name="smtp_or_mail" id="smtp_or_mail-disabled" value="mail" <?php echo ($fl['config']['smtp_or_mail'] == 'mail') ? 'checked': '';?>>
+                            <label for="smtp_or_mail-disabled" class="m-l-20">Server Mail (Default)</label>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_host" name="smtp_host" class="form-control" value="{{CONFIG smtp_host}}">
+                                <label class="form-label">SMTP Host</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_username" name="smtp_username" class="form-control" value="{{CONFIG smtp_username}}">
+                                <label class="form-label">SMTP Username</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_password" name="smtp_password" class="form-control" value="{{CONFIG smtp_password}}">
+                                <label class="form-label">SMTP Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="smtp_port" name="smtp_port" class="form-control" value="{{CONFIG smtp_port}}">
+                                <label class="form-label">SMTP Port</label>
+                            </div>
+                        </div>
+                        <label for="smtp_encryption">SMTP Encryption</label>
+                        <div class="form-group">
+                            <input type="radio" name="smtp_encryption" id="smtp_encryption-enabled" value="tls" <?php echo ($fl['config']['smtp_encryption'] == 'tls') ? 'checked': '';?>>
+                            <label for="smtp_encryption-enabled">TLS</label>
+                            <input type="radio" name="smtp_encryption" id="smtp_encryption-disabled" value="ssl" <?php echo ($fl['config']['smtp_encryption'] == 'ssl') ? 'checked': '';?>>
+                            <label for="smtp_encryption-disabled" class="m-l-20">SSL</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_email_settings = $('form.email-settings');
+
+    form_email_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_email_settings.find('button').text('{{LANG please_wait}}');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_email_settings.find('button').text('Save');
+            	$('.email-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.email-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+});
+</script>

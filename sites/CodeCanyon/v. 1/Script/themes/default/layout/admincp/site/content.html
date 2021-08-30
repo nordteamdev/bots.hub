@@ -1,0 +1,153 @@
+<div class="settings-header">
+	<h3><i class="fa fa-wrench fa-fw"></i> {{LANG site_settings}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="site-settings" method="POST">
+    <div class="setting-site-alert"></div>
+	<fieldset>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="name">{{LANG site_name}}</label>  
+			<div class="col-md-6">
+				<input id="name" name="name" type="text" placeholder="" class="form-control input-md" value="{{CONFIG name}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="title">{{LANG site_title}}</label>  
+			<div class="col-md-6">
+				<input id="title" name="title" type="text" placeholder="" class="form-control input-md" value="{{CONFIG title}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="email">{{LANG site_email}}</label>  
+			<div class="col-md-6">
+				<input id="email" name="email" type="text" placeholder="" class="form-control input-md" value="{{CONFIG email}}">
+			</div>
+		</div>
+		<hr>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="keywords">{{LANG site_keywords}}</label>  
+			<div class="col-md-6">
+				<input id="keywords" name="keywords" type="text" placeholder="" class="form-control input-md" value="{{CONFIG keywords}}">
+				<span class="help-block">Example: flame, viral, media site</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="description">{{LANG site_description}}</label>  
+			<div class="col-md-6">
+				<textarea name="description" id="description" cols="20" class="form-control" rows="5">{{CONFIG description}}</textarea>
+			</div>
+		</div>
+		<hr>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="language">{{LANG default_language}}</label>
+			<div class="col-md-6">
+				<select id="language" name="language" class="form-control">
+				    <?php foreach (FL_GetLanguages() as $key => $lang_file) { 
+				    	$lang_file = explode('.php', $lang_file);
+				    	$lang_file = $lang_file[0];
+				    ?>
+				    <option value="<?php echo $lang_file ?>" <?php echo ($fl['config']['language'] == $lang_file) ? 'selected': '' ?>><?php echo ucfirst($lang_file) ?></option>
+				    <?php } ?>
+				</select>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="upload">{{LANG max_upload_size}}</label>
+			<div class="col-md-6">
+				<select id="upload" name="upload" class="form-control">
+				    <option value="2000000" <?php echo ($fl['config']['upload'] == '2000000') ? 'selected' : '';?>>2MB</option>
+				    <option value="6000000" <?php echo ($fl['config']['upload'] == '6000000') ? 'selected' : '';?>>6MB</option>
+				    <option value="12000000" <?php echo ($fl['config']['upload'] == '12000000') ? 'selected' : '';?>>12MB</option>
+				    <option value="24000000" <?php echo ($fl['config']['upload'] == '24000000') ? 'selected' : '';?>>24MB</option>
+				    <option value="48000000" <?php echo ($fl['config']['upload'] == '48000000') ? 'selected' : '';?>>48MB</option>
+				    <option value="96000000" <?php echo ($fl['config']['upload'] == '96000000') ? 'selected' : '';?>>96MB</option>
+				    <option value="256000000" <?php echo ($fl['config']['upload'] == '256000000') ? 'selected' : '';?>>256MB</option>
+				    <option value="512000000" <?php echo ($fl['config']['upload'] == '512000000') ? 'selected' : '';?>>512GB</option>
+				    <option value="1000000000" <?php echo ($fl['config']['upload'] == '1000000000') ? 'selected' : '';?>>1GB</option>
+				</select>
+			</div>
+		</div>
+		<hr>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="censored">{{LANG censored_words}}</label>  
+			<div class="col-md-6">
+				<input id="censored" name="censored" type="text" placeholder="" class="form-control input-md" value="{{CONFIG censored}}">
+				<span class="help-block">{{LANG censored_words_desc}}</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="reCaptcha_key">{{LANG recaptcha_key}}</label>  
+			<div class="col-md-6">
+				<input id="reCaptcha_key" name="reCaptcha_key" type="text" placeholder="" class="form-control input-md" value="{{CONFIG reCaptcha_key}}">
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-3" for="reCaptcha">{{LANG recaptcha}}</label>
+			<div class="col-md-6">
+				<select id="reCaptcha" name="reCaptcha" class="form-control">
+				    <option value="1" <?php echo ($fl['config']['reCaptcha'] == '1') ? 'selected' : '';?>>{{LANG enabled}}</option>
+				    <option value="2" <?php echo ($fl['config']['reCaptcha'] == '2') ? 'selected' : '';?>>{{LANG disabled}}</option>
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="analytics">{{LANG google_code}}</label>  
+			<div class="col-md-6">
+				<textarea name="analytics" id="analytics" cols="20" class="form-control" rows="5">{{CONFIG analytics}}</textarea>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-3" for="fb_page">{{LANG your_facebook_page}}</label>  
+			<div class="col-md-6">
+				<input id="fb_page" name="fb_page" type="text" placeholder="" class="form-control input-md" value="{{CONFIG fb_page}}">
+			</div>
+		</div>
+		<hr>
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-3" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+<script>
+$(function() {
+  var form = $('form#site-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=admincp&s=site',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-site-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-site-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

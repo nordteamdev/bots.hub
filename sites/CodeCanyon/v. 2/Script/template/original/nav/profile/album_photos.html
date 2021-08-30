@@ -1,0 +1,92 @@
+{strip}
+
+{assign var=is_friend value=$this->isfriend($user.id)}
+{include file={$_usermenu}}
+
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+<div data-headername="{$user.name} - {$this->lang['Photo_albums']}" data-backhref="/photos/{$user.id}" id="modifyheader"></div>
+<div class="profile-photos-gallery">
+<div class="photo-sc_h2 portlet-i_h2 photo-sc_h2__alb-page show-on-hover"><span title="{$album_res['name']}" class="portlet-i_h2_tx ellip">
+  <span class="photo-sc_h2_alb-title" id="alb_detail_title">{$this->getAlbumName($album_res['name'])}</span></span><span class="photo-sc_h2_alb-count portlet-i_h2_tx">{$pCount} {$this->lang['photos']}</span>
+</div>
+{if $this->USER['id'] === $user['id']}
+<div class="photo-sc_grid_controls jcols clearfix">
+    <div class="jcol-l">
+        <ul class="controls-list">
+
+{if count($query)> 0 && $this->USER['id'] === $user['id']}
+            <li class="controls-list_item"><a href="javascript:;" id="obj_photos_movement" onclick="movePhotos(this,event);" class="tdn"><span class="tico _underline"><i class="tico_img ic ic_move"></i>{$this->lang['move_photos']}</span></a></li>
+            <li class="controls-list_item"><a href="/profile?q={$this->USER['id']}&i={$album_res.id}&cmd=AsortPhotos&nav=photos" hrefattr="true" class="tdn"><span class="tico  _underline"><i class="tico_img ic ic_sort"></i>{$this->lang['order_photos']}</span></a></li>
+{/if}
+            <li class="controls-list_item"><a href="/profile?q={$this->USER['id']}&cmd=aAlbum&nav=photos" data-album-ni='{ldelim}"name":"{urlencode($this->getAlbumName($album_res.name))}","id":"{$album_res.id}"{rdelim}' data-album-c='{$album_res.visible_to}' onclick="addAlbum(this,event,1)" class="tdn"><span class="tico  _underline"><i class="tico_img ic ic_settings"></i><span id="album_detail_set">Settings</span></span></a></li>
+
+          <!--  <li class="controls-list_item"><a href="/profile?q={$this->USER['id']}&cmd=sortPhotos&nav=photos" hrefattr="true" class="tdn"><span class="tico  _underline"><i class="tico_img ic12 ic12_comment _orde"></i>Comments</span></a></li>-->
+       </ul>
+    </div>
+
+
+</div>
+{/if}
+
+
+<div class="photos_content">
+
+{if $this->USER['id'] === $user['id']}
+<div parent-alb="true" id="{$albid}" class="{if count($query) <= 0}xc3F{/if}">
+{include file={$_addPhoto}}
+</div>
+{/if}
+
+{if $query != ''}
+
+
+{foreach $query as $result}
+{assign var=is_gif value=$this->is_gif($result.id)}
+<div class="ec_items image-hover">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.id}"></span>
+{if $user['id'] === $this->USER['id']}
+<div class="ph disabling-layer"><span class="photo-sc_i_utility_delete-status">{$this->lang['photo_deleted']}</span>
+<div class="photo-sc_i_utility_undo-delete"><a onclick="restorePhoto(this,event)" href="/profile?pid={$result['id']}&q={$user['id']}&cmd=phreturn&i={$albid}&phf={$result['filename']}&ex={$result['extension']}&fsz={$result['size']}&pos={$result['position']}&ad={$result['added']}" class="il">{$this->lang['restore']}</a></div></div>
+<a class="x_delete_pp" title="{$this->lang['delete_photo']}" onclick="deletePhoto(this,event)" href="/profile?q={$user['id']}&cmd=deletephoto&ph={$result['id']}"></a>
+{/if}
+<a href="/photo?q={$user.id}&show=album&from=medium&a={b_encode($album_res.id)}&o={b_encode($result.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($result.id)}">
+<img class="{if $is_gif}gifplayer{/if}" src="{$gPhoto}?p={$result['id']}&sz=grid&g={$user.gender}&corr=1" 
+{if $is_gif}data-gif-id="gif-{$result['id']}" data-gif="/getPhoto?p={$result['id']}&sz=large&g={$user.gender}&corr=1" data-wait="true" data-playon="hover"{/if} />
+</a>
+{if $user['id'] === $this->USER['id']}
+<div class="sc-menu grid ">
+    <ul class="u-menu u-menu__photo">
+        <li class="u-menu_li">
+			<a href="/profile?q={$user['id']}&ph={$result['id']}&i={$albid}&cmd=setAlbumCover" onclick="setAlbumCover(this,event)" class="u-menu_a">
+				<span class="tico _underline __default_album_cover"><i class="tico_img ic ic_make-main"></i>{$this->lang['set_album_cover']}</span>
+				<span class="tico _underline __album_cover_succ"><i class="tico_img ic ic_success"></i>{$this->lang['settedAlbumCover']}</span>
+			</a>	
+		</li>
+        <li class="u-menu_li"><a href="javascript:;" onclick="movePhotos(this,event)" class="u-menu_a"><span class="tico _underline"><i class="tico_img ic ic_move"></i>{$this->lang['move']}</span></a></li>
+    </ul>
+
+</div>
+{else}
+{assign var=photoid value=$result.id}
+{assign var=photo_owner value=$user.id}
+{assign var=likes_count value=$result.lc}
+{assign var=comments_count value=$result.kc}
+{assign var=liked_byme value=$result.lbyme}
+{assign var=item_type value='photo'}
+{include file={$_notes}}
+{/if}
+</div></div>
+{/foreach}
+
+{/if}
+</div>
+{if count($query) > 5}
+<div class="link-show-more loader-controls" data-loadd='{ldelim}"cmd":"profileAlbumPhotosMore","c":"{$album_res.id}","i":"{$user.id}","appto":".photos_content","p":"1"{rdelim}' uid="profileWallImages">{$this->lang['View_more_photos']}</div>
+{/if}
+</div>
+{/if}
+{/strip}

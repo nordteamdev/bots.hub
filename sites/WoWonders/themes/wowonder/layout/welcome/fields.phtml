@@ -1,0 +1,21 @@
+<?php 
+      if ($wo['field']['select_type'] == 'yes') {
+      	$options = @explode(',', $wo['field']['type']); ?>
+            <div class="help-block-welcome"><?php echo $wo['field']['name'];?></div> 
+      	<select name="<?php echo $wo['field']['fid'];?>">
+      	<?php
+      	foreach ($options as $key => $value) {
+      		?>
+      		<option value="<?php echo $key + 1;?>"><?php echo $value;?></option>
+      		<?php
+      	}
+      	?>
+      	</select>
+
+      	<?php
+      } else {
+      	if ($wo['field']['type'] == 'textbox') { ?>
+      		<input id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" type="text" placeholder="<?php echo $wo['field']['name'];?>">
+      	<?php } else if ($wo['field']['type'] == 'textarea') {?>
+      		<textarea id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" cols="20" rows="3" placeholder="<?php echo $wo['field']['name'];?>"></textarea>
+<?php } } ?>

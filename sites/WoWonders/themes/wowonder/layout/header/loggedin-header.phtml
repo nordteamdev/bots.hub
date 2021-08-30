@@ -1,0 +1,273 @@
+<?php
+$notification_alert     = Wo_CountNotifications(array(
+    'unread' => true,
+    'data' => 'all'
+));
+$messages_alert         = Wo_CountMessages(array(
+    'new' => true
+));
+$followers_alert        = Wo_CountFollowRequests();
+$hidden_class           = '';
+$messages_hidden_class  = '';
+$followers_hidden_class = '';
+$unread_update_notification = 'unread-update';
+$unread_update_messages = 'unread-update';
+$unread_update_followers = 'unread-update';
+if ($notification_alert == 0) {
+    $hidden_class = ' hidden';
+    $unread_update_notification = '';
+}
+if ($messages_alert == 0) {
+    $messages_hidden_class = ' hidden';
+    $unread_update_messages = '';
+}
+if ($followers_alert == 0) {
+    $followers_hidden_class = ' hidden';
+    $unread_update_followers = '';
+}
+?>
+
+</ul>
+<ul class="nav navbar-nav navbar-right <?php echo Wo_RightToLeft('pull-right');?>" id="head_menu_rght">
+	<li class="head_name_links">
+		<a class="sixteen-font-size" href="<?php echo $wo['config']['site_url']; ?>" data-ajax="?index.php?link1=home">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
+			<span><?php echo $wo['lang']['home'] ?></span>
+		</a>
+	</li>
+	<li class="dropdown head_name_links">
+		<a href="#" class="dropdown-toggle sixteen-font-size btn-main" data-toggle="dropdown" role="button" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
+		</a>
+		<ul class="dropdown-menu clearfix create_head_menu" role="menu">
+			<?php if ($wo['config']['user_ads'] == 1) { ?>
+			<li class="animated">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#9c27b0" d="M12,8H4A2,2 0 0,0 2,10V14A2,2 0 0,0 4,16H5V20A1,1 0 0,0 6,21H8A1,1 0 0,0 9,20V16H12L17,20V4L12,8M21.5,12C21.5,13.71 20.54,15.26 19,16V8C20.53,8.75 21.5,10.3 21.5,12Z" /></svg> <?php echo $wo['lang']['create_ad'] ?></a>
+			</li>
+			<?php } ?>
+			<?php if (Wo_CanBlog() == true) { ?>
+			<li class="animated_20">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-blog');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#009da0" d="M18,20H6V18H4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V18H18V20M14,2H6A2,2 0 0,0 4,4V12H6V4H14V8H18V12H20V8L14,2M11,16H8V14H11V16M16,16H13V14H16V16M3,14H6V16H3V14M21,16H18V14H21V16Z" /></svg> <?php echo $wo['lang']['create_blog'] ?></a>
+			</li>
+			<?php } ?>
+			<?php if ($wo['config']['events'] == 1) { ?>
+			<li class="animated_40">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-event');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#f25e4e" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" /></svg> <?php echo $wo['lang']['create_event'] ?></a>
+			</li>
+			<?php } ?>
+			<?php if ($wo['config']['groups'] == 1) { ?>
+			<li class="animated_60">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-group'); ?>" data-ajax="?link1=create-group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#03A9F4" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" /></svg> <?php echo $wo['lang']['create_group'] ?></a>
+			</li>
+			<?php } ?>
+			<?php if ($wo['config']['pages'] == 1) { ?>
+			<li class="animated_80">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=create-page'); ?>" data-ajax="?link1=create-page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#f79f58" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" /></svg> <?php echo $wo['lang']['create_page'] ?></a>
+			</li>
+			<?php } ?>
+		</ul>
+	</li>
+	<li class="dropdown requests-container" onclick="Wo_OpenRequestsMenu();">
+		<span class="new-update-alert<?php echo $followers_hidden_class;?>">
+			<?php echo $followers_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_followers;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg>
+		</a>
+		<ul class="dropdown-menu request-list clearfix notifications-dropdown" role="menu" id="requests-list">
+			<li>
+				<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown messages-notification-container" onclick="Wo_OpenMessagesMenu();">
+		<span class="new-update-alert<?php echo $messages_hidden_class;?>">
+			<?php echo $messages_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_messages;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z" /></svg>
+		</a>
+		<ul class="dropdown-menu clearfix notifications-dropdown messages-dropdown" role="menu" id="messages-list">
+			<li>
+				<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown notification-container" onclick="Wo_OpenNotificationsMenu();">
+		<span class="new-update-alert<?php echo $hidden_class;?>">
+			<?php echo $notification_alert?>
+		</span>
+		<a href="#" class="dropdown-toggle <?php echo $unread_update_notification;?> sixteen-font-size" data-toggle="dropdown" role="button" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" /></svg>
+		</a>
+		<ul class="dropdown-menu clearfix notifications-dropdown" role="menu">
+			<li onclick="Wo_TurnOffSound();" class="turn-off-sound <?php echo Wo_RightToLeft('text-left');?>">
+				<span>
+					<?php if ($wo['user']['notifications_sound'] == 0): ?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg> <?php echo $wo['lang']['turn_off_notification'] ?>
+					<?php else: ?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg> <?php echo $wo['lang']['turn_on_notification'] ?>
+					<?php endif; ?>
+				</span> 
+			</li>
+			<li id="notification-list">
+				<h5 class="text-center"><svg width='50px' height='50px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><circle cx="50" cy="50" r="40" stroke="#676d76" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="stroke-dashoffset" dur="1.5s" repeatCount="indefinite" from="0" to="502"></animate><animate attributeName="stroke-dasharray" dur="1.5s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate></circle></svg></h5>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle user-menu-combination" data-toggle="dropdown" role="button" aria-expanded="false">
+			<!--<span id="user-full-name" class="User-Name hidden-xs">
+				<?php if($wo['user']['first_name'] == false) {?>
+					<?php echo $wo['user']['username'];?>
+				<?php } else {?>
+					<?php echo $wo['user']['first_name'];?>
+				<?php } ?>
+			</span>-->
+			<div class="user-avatar">
+				<img id="updateImage-<?php echo $wo['user']['user_id']?>" src="<?php echo $wo['user']['avatar'];?>" alt="<?php echo $wo['user']['name'];?> Profile Picture">
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+		</a>
+		<ul class="dropdown-menu ani-acc-menu" role="menu">
+			<li>
+				<a id="update-username" href="<?php echo $wo['user']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['user']['username'];?>"><b><?php echo $wo['user']['name'];?></b></a>
+			</li>
+			<?php if ($wo['config']['point_level_system'] == 1) { ?>
+				<li class="dropdown-hidden-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=my_points'); ?>" data-ajax="?link1=setting&page=my_points">
+						<?php echo $wo['lang']['points']; ?>: <?php echo $wo['user']['points'];?>
+					</a>
+				</li>
+			<?php } ?>
+			<?php 
+			if ($wo['config']['pro'] == 1) {
+			if (Wo_IsUserPro() === false) { ?>
+			<li><hr></li>
+				<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=go-pro'); ?>" data-ajax="?link1=go-pro"><?php echo $wo['lang']['upgrade_to_pro']; ?></a>
+				</li>
+			<?php } } ?>
+			<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=search');?>" data-ajax="?link1=search"><?php echo $wo['lang']['search']; ?></a>
+			</li>
+			
+			<li><hr></li>
+			<?php if ($wo['config']['pro'] == 1) { ?>
+			<?php if ($wo['user']['is_pro'] == 1 && $wo['user']['pro_type'] > 1) { ?>
+				<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=boosted-posts');?>" data-ajax="?link1=boosted-posts"><?php echo $wo['lang']['boosted_posts']; ?></a>
+				</li>
+				<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=boosted-pages');?>" data-ajax="?link1=boosted-pages"><?php echo $wo['lang']['boosted_pages']; ?></a>
+				</li>
+				<li><hr></li>
+			<?php } ?>
+			<?php } ?>
+			<!--<?php if ($wo['config']['pages'] == 1) { ?>
+				<li class="dropdown-hidden-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=create-page'); ?>" data-ajax="?link1=create-page"><?php echo $wo['lang']['create_new_page']; ?></a>
+				</li>
+			<?php } ?>
+			<?php if ($wo['config']['groups'] == 1) { ?>
+				<li class="dropdown-hidden-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=create-group'); ?>" data-ajax="?link1=create-group"><?php echo $wo['lang']['create_new_group']; ?></a>
+				</li>
+			<?php } ?>-->
+        
+			<?php if ($wo['config']['pages'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>" data-ajax="?link1=pages"><?php echo $wo['lang']['pages']; ?></a>
+				</li>
+			<?php } ?>
+
+			<?php if ($wo['config']['classified'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=my-products'); ?>" data-ajax="?link1=my-products"><?php echo $wo['lang']['my_products']; ?></a>
+				</li>
+			<?php } ?>
+			<?php if ($wo['config']['classified'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=products'); ?>"><?php echo $wo['lang']['market']; ?></a>
+				</li>
+			<?php } ?>
+			<?php if ($wo['config']['blogs'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=blogs'); ?>" data-ajax="?link1=blogs"><?php echo $wo['lang']['blog']; ?></a>
+				</li>
+			    <?php if(Wo_CanBlog() == true) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=my-blogs'); ?>" data-ajax="?link1=my-blogs"><?php echo $wo['lang']['my_articles']; ?></a>
+				</li>
+				<?php } ?>
+			<?php } ?>
+			<?php if ($wo['config']['movies'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=movies'); ?>"><?php echo $wo['lang']['movies']; ?></a>
+				</li>
+			<?php } ?>
+			<?php if ($wo['config']['events'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=events'); ?>" data-ajax="?link1=events"><?php echo $wo['lang']['events']; ?></a>
+				</li>
+			<?php } ?>
+
+			<?php if ($wo['config']['groups'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=groups'); ?>" data-ajax="?link1=groups"><?php echo $wo['lang']['groups']; ?></a>
+				</li>
+			<?php } ?>
+         
+			<?php if ($wo['config']['forum'] == 1) { ?>
+				<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=forum'); ?>" ><?php echo $wo['lang']['forum']; ?></a>
+				</li>
+			<?php } ?>
+
+			<?php if ($wo['config']['user_ads'] == 1) { ?>
+				<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=ads'); ?>"><?php echo $wo['lang']['ads']; ?></a>
+				</li>
+			<?php } ?>
+
+			<li class="dropdown-search-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=albums'); ?>" data-ajax="?link1=albums"><?php echo $wo['lang']['albums']; ?></a>
+			</li>
+			
+			<?php if ($wo['config']['groups'] == 1 || $wo['config']['pages'] == 1) { ?><li><hr></li><?php } ?>
+			<li class="dropdown-hidden-link">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting'); ?>" data-ajax="?link1=setting&page=profile-setting"><?php echo $wo['lang']['edit']; ?></a>
+			</li>
+			<li class="dropdown-hidden-link">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=general-setting'); ?>" data-ajax="?link1=setting&page=general-setting"><?php echo $wo['lang']['general_setting']; ?></a>
+			</li>
+			<li class="dropdown-search-link">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=setting'); ?>" data-ajax="?link1=setting"><?php echo $wo['lang']['setting']; ?></a>
+			</li>
+			<?php if(Wo_IsAdmin() || Wo_IsModerator()) { ?>
+				<li><hr></li>
+				<li>
+					<a href="<?php echo $wo['config']['site_url'] . '/admin-cp'; ?>"><?php echo $wo['lang']['admin_area']; ?></a>
+				</li>
+			<?php } ?>
+			<li><hr></li>
+			<li>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=logout'); ?>"><?php echo $wo['lang']['log_out']; ?></a>
+			</li>
+			<li><hr></li>
+			<li>
+				<a href="javascript:void(0);" data-toggle="modal" data-target="#keyboard_shortcuts_box" id="keyboard_shortcut">
+					<?php echo $wo['lang']['keyboard_shortcuts']; ?>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-command"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" id="night_mode_toggle" data-mode='<?php echo Wo_Secure($wo['mode_link']) ?>'>
+					<span id="night-mode-text"><?php echo $wo['mode_text']; ?></span>
+					<svg class="feather feather-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+				</a>
+			</li>
+			<span class="headtoppoint"></span>
+		</ul>
+	</li>
+</ul>

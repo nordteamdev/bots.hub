@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Maling List</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Send E-mail To Users</h2>
+                </div>
+                <div class="body">
+                    <div id="alert"></div>
+                    <form class="mailing-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="subject" name="subject" class="form-control">
+                                <label class="form-label">Subject</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="message" id="message" class="form-control" cols="30" rows="10"></textarea>
+                                <label class="form-label">Message (HTML Allowed)</label>
+                            </div>
+                        </div>
+                        <label for="send_to">Send E-mail To</label>
+                        <select class="form-control show-tick" id="send_to" name="send_to">
+                          <option value="all">All users</option>
+		                  <option value="active">Active users</option>
+		                  <option value="inactive">Inactive users</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" class="form-control" onkeydown="Wo_SearchMailingUsers(this.value)" autocomplete="off">
+                                <label class="form-label" id="mailing-selected-users">Search Users (Optional) <span></span></label>
+                            </div>
+                        </div>
+                        <div class="search-mailing-users hidden"></div>
+                        <div class="form-group">
+                           <input type="checkbox" id="test_message" class="filled-in" name="test_message">
+                           <label for="test_message">Test Message <small>(Send to my email first)</small></label>
+			            </div>
+                        
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <input type="hidden" name="selected_emails" id="selected_emails">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+var mailing_users = [];
+$(function () {
+   $('form.mailing-settings').ajaxForm({
+      url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=send_mail_to_all_users',
+      beforeSend: function () {
+         $('form.mailing-settings').find('.waves-effect').text('Please wait..');
+      },
+      success: function (data) {
+         if (data.status == 400) {
+            $("#alert").html('<div class="alert alert-danger">'+ data['message'] +'</div>');
+         } else if (data.status == 200) {
+            $("#alert").html('<div class="alert alert-success">Message Sent!</div>');
+         } else if (data.status == 300) {
+            $("#alert").html('<div class="alert alert-success">Messages are being sent in background.</div>');
+         }
+         $('form.mailing-settings').find('.waves-effect').text('Send');
+      }
+   });
+
+   $(document).on('click', '.search-mailing-users p', function(event) {
+      event.preventDefault();
+      var id = $(this).attr('data-user');
+      if ($.inArray(id, mailing_users) == -1) {
+         mailing_users.push(id);
+         $("#mailing-selected-users span").text(mailing_users.length);
+         $("#selected_emails").val(mailing_users.join());
+         $(this).remove();
+      }
+
+   });
+
+});
+function Wo_SearchMailingUsers(name = ''){
+   if (!name) { return false;}
+   $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'admin_setting',s:'get_users_emails',name:name},
+   })
+   .done(function(data) {
+      if (data.status == 200) {
+         $('.search-mailing-users').removeClass('hidden').html(data.html);     
+      }
+   })
+   .fail(function() {
+      console.log("error");
+   })
+}
+</script>

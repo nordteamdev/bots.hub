@@ -1,0 +1,59 @@
+<?php 
+if (empty($_GET['id'])) {
+	header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+    exit();
+}
+if (!is_numeric($_GET['id'])) {
+	header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+    exit();
+}
+$user_data = Wo_UserData($_GET['id']);
+if (empty($user_data)) {
+	header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+    exit();
+}
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Users > Affiliates System > Payment Requests > Referrals</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Referrals From The User: <?php echo $user_data['name']?></h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+					                  <th>Username</th>
+					                  <th>Source</th>
+					                  <th>E-mail</th>
+					                  <th>IP Address</th>
+					                  <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <?php 
+                              foreach (Wo_GetReferrers($_GET['id']) as $wo['userlist']) {
+                                  echo Wo_LoadAdminPage('referrals-list/list');
+                              }
+                              ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function () {
+  $('table').DataTable();
+});
+</script>

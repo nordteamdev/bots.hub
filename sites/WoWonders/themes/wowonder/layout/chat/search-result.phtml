@@ -1,0 +1,24 @@
+<?php 
+$message_count = Wo_CountMessages(array('new' => true,'user_id' => $wo['chatList']['user_id']));    
+?>
+<div class="recipient-chat-user" id ="online_<?php echo $wo['chatList']['user_id'];?>" >
+   <div class="user-info" onclick="Wo_OpenChatTab(<?php echo $wo['chatList']['user_id'];?>);">
+      <div class="<?php echo Wo_RightToLeft('pull-right');?>" style="margin-right:5px; margin-top:7px;">
+         <span class="new-message-alert <?php echo ($message_count == 0) ? 'hidden' : ''; ?>">
+         <?php echo $message_count; ?>
+         </span>
+      </div>
+      <span class="chat-user-text" id="chat-tab-id" onclick="Wo_OpenChatTab(<?php echo $wo['chatList']['user_id'];?>);">
+         <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['chatList']['avatar'];?>" alt="<?php echo $wo['chatList']['avatar'];?> Profile Picture" />
+         </div>
+         <?php echo $wo['chatList']['name']; ?>
+      </span>
+      <?php if($wo['config']['user_lastseen'] == 1 && $wo['chatList']['showlastseen'] != 0) { ?>
+      <div class="user-lastseen" >
+         <?php echo Wo_UserStatus($wo['chatList']['user_id'],$wo['chatList']['lastseen']); ?>
+      </div>
+      <?php } ?>
+   </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,85 @@
+<section class="g8erq">
+<div class="photo-sc_grid_i show-on-hover jb_attch_uadph"><span class="html5-link_w js-fileapi-wrapper"><span class="add-stub add-stub__180 al" style="width:183px;height:183px;"><i class="add-stub_img add-stub_img__photo"></i><span class="add-stub_tx">{$upload_picture_from_comp}</span></span>
+    <input type="file" name="photo" class="invisible-input" id="attachPhotoFile" multiple="true" accept="image/*" title="Add a photo" onchange="jb_build_upload(event)">
+    </span>
+</div>
+
+<section class="atch_cont"></section>
+</section>
+
+
+{if $query_last_u && count($query_last_u) > 0}
+<section class="latest_attached_filter_by_user">
+
+{foreach $query_last_u as $res}
+{if $q_o_c == '0'}
+<div class="portlet_h2">
+            <div class="portlet_h2_tx ellip ml_10">{$this->lang['latest_uploaded_attachments']} <span class="lstp-t">{$res.fullname}</span></div>
+        </div>
+
+<div class="hook ml_10" id="hook_Form_AttachDialogFormForm">
+
+
+{/if}
+<div class="jb_rivr_lt_img selectable-card" onclick="jb_uploaded_attach_click(event,this)" id="boer_{$res.id}">
+<div class="jb_lt_images" style="background-image:url(/getPhoto?p={$res.id}&attach=true)"></div>
+<span class="selectable-card_ovr"></span><span class="selectable-card_ic"></span>
+</div>
+{assign $q_o_c $q_o_c++ nocache} 
+{/foreach}
+</div>
+</section>
+{/if}
+
+<!-- all uploaded -->
+
+{if count($q_all_u) > 0}
+<section class="latest_attached_filter_by_user">
+
+
+
+<div class="portlet_h2">
+            <div class="portlet_h2_tx ellip ml_10">{$this->lang['jb_all_up_attach']} <a class="ajb" href="javascript:;" onclick="$('#jb_all_t_hook_Form_AttachDialogFormForm').removeClass('m_hidden');$(this).remove();{literal}$('.modal-new').animate({'scrollTop': '+=400'});{/literal}">{$this->lang['click_to_show']}</a></div>
+        </div>
+
+<div class="hook ml_10 m_hidden" id="jb_all_t_hook_Form_AttachDialogFormForm">
+
+{foreach $q_all_u as $res}
+{assign var=sended_at value={$res.added}}
+
+{if date('Y') == date('Y', $sended_at)}
+{assign var=sd_at value={date('j F', $res.added)}}
+{else}
+{assign var=sd_at value={date('j F, Y', $res.added)}}
+{/if}
+<div class="jb_rivr_lt_img selectable-card" onclick="jb_uploaded_attach_click(event,this)" id="boer_{$res.id}">
+<div class="jb_lt_images" style="background-image:url(/css/images/b/blank.gif);" data-p-src="background-image:url(/getPhoto?p={$res.id}&attach=true)"></div>
+<span class="selectable-card_ovr"></span><span class="selectable-card_ic"></span>
+<div class="sub_foto_to"><span class="date">{$sd_at}</span><br/>Sended to {$res.fullname}</div>
+</div>
+{assign $q_x_c $q_x_c++ nocache}
+{/foreach}
+</div>
+</section>
+{/if}
+
+
+<script>
+{literal}
+$(function(){
+setTimeout(function(){
+jb_enable_Ok_btn_upload();
+},1000);
+
+
+
+ga('.modal-new').off('scroll.getImagesSrc').on('scroll.getImagesSrc', function(){
+ga('[data-p-src]').each(function(){
+var t = ga(this);
+if(isElementInViewport(t) && !t.hasClass('_f03filt')) setTimeout(function(){t.attr('style',t.data('p-src')).addClass('_f03filt');},10);
+});
+});
+
+});
+{/literal}
+</script>

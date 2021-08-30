@@ -1,0 +1,76 @@
+.indexwall #mainContentContentColumn {
+    width: 100%!important;
+    float: left!important;
+	padding:0!important;
+}
+
+.bif42 {
+    width: 100%!important;
+}
+ 
+
+.feed
+{
+width:auto;float:left;
+    margin: 5px;
+}
+.columns-gap{
+	    column-count: 3;
+    column-gap: 3px;
+    column-fill: auto;
+    column-width: auto;
+}
+/*
+.feed.large
+{
+    width: 460px;
+    height: auto;
+    
+    background: #c24444;
+}
+
+.feed.medium
+{
+    width: 320px;
+    height: auto;
+    
+    background: #c29744;
+}
+
+.feed.small
+{
+    width: 240px;
+    height: auto;
+    
+    background: #bbc244;
+}
+
+*/
+
+
+
+/**** Transitions ****/
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}

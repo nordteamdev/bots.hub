@@ -1,0 +1,74 @@
+
+<!--------------------- ADMIN PANEL [ template ] ------------------>
+
+<div style="margin:5px 5px 5px 10px;">
+  <div class="mus_h2" style="margin:5px 5px 5px 5px;">
+    This page is only for administrator of site, here you can see the feedbacks from users, for example: bugs, suggestions.
+  </div>
+  
+  
+  <div class="mus_admin_feedback_page">
+    <table class="tg">
+      <tr>
+        <th class="tg-cxkv">
+          No
+        </th>
+        <th class="tg-s2ka">
+          Subject
+        </th>
+        <th class="tg-s2ka">
+          Message
+        </th>
+        <th class="tg-s2ka">
+          From
+        </th>
+        <th class="tg-s2ka">
+          Date
+        </th>
+        <th class="tg-s2ka">
+          Attachment
+        </th>
+      </tr>
+      
+      {foreach $query as $result}
+      <tr id="m_fdbk_elements">
+        <td class="tg-hjma">
+          {$result.id}
+        </td>
+        <td class="tg-415l">
+          {$result.subject}
+        </td>
+        <td class="tg-8jh0 ellip_feedbk" title="Click on image for more details">
+          {$result.message}
+        </td>
+        <td class="tg-8jh0">
+          <a href="mailto:{$result.sender_email}">
+            {$result.sender}
+          </a>
+        </td>
+        {if date('Y') === date('Y', $result.send_at)}
+        {assign var=sended_at value={date('j F', $result.send_at)}}
+        {else}
+        {assign var=sended_at value={date('j F Y', $result.send_at)}}
+        {/if}      
+        <td class="tg-8jh0">
+          {$sended_at}
+        </td>
+        {if $result.attachment}
+        <td class="tg-8jh0">
+          <span class="attach" data-fdbk-m-img="/music/feedback/attachments/{$result.attachment}" data-fbdk-m-msg="{$result.message}" data-fbdk-m-subject="{$result.subject}" style="background:url(/music/feedback/attachments/{$result.attachment}) no-repeat 50% 50%;background-size:contain;">
+          </span>
+        </td>
+        {else}
+        <td class="tg-8jh0">
+          <span class="attach" data-fdbk-m-img="/music/images/no-attach.jpg" data-fbdk-m-msg="{$result.message}" data-fbdk-m-subject="{$result.subject}" style="margin:0px;padding-top:10px;">
+            Click for details
+          </span>
+        </td>
+        {/if}
+      </tr>
+      {/foreach}
+      
+    </table>
+  </div>
+  

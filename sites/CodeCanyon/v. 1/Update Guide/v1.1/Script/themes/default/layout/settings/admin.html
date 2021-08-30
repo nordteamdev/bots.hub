@@ -1,0 +1,54 @@
+<!-- Multiple Radios -->
+<div class="form-group">
+	<label class="col-md-2" for="activeation">{{LANG status}}</label>
+	<div class="col-md-6">
+		<div class="radio">
+			<label for="activeation-0">
+			<input type="radio" name="activeation" id="activeation-0" value="1" <?php echo ($fl['setting']['active'] == 1) ? 'checked': ''?>>
+			{{LANG active}}
+			</label>
+		</div>
+		<div class="radio">
+			<label for="activeation-1">
+			<input type="radio" name="activeation" id="activeation-1" value="2" <?php echo ($fl['setting']['active'] == 2) ? 'checked': ''?>>
+			{{LANG inactive}}
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="col-md-2" for="type">{{LANG type}}</label>
+	<div class="col-md-6">
+		<div class="radio">
+			<label for="type-0">
+			<input type="radio" name="type" id="type-0" value="1" <?php echo ($fl['setting']['admin'] == 0) ? 'checked': ''?>>
+			{{LANG user}}
+			</label>
+		</div>
+		<div class="radio">
+			<label for="type-1">
+			<input type="radio" name="type" id="type-1" value="2" <?php echo ($fl['setting']['admin'] == 1) ? 'checked': ''?>>
+			{{LANG admin}}
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="col-md-2" for="type">{{LANG verification}}</label>
+	<div class="col-md-6">
+		<div class="radio">
+			<label for="verified-0">
+			<input type="radio" name="verified" id="verified-0" value="1" <?php echo ($fl['setting']['verified'] == 0) ? 'checked': ''?>>
+			{{LANG not_verified}}
+			</label>
+		</div>
+		<div class="radio">
+			<label for="verified-1">
+			<input type="radio" name="verified" id="verified-1" value="2" <?php echo ($fl['setting']['verified'] == 1) ? 'checked': ''?>>
+			{{LANG verified}}
+			</label>
+		</div>
+	</div>
+</div>

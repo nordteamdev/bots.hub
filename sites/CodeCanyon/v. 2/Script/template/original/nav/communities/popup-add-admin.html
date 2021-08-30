@@ -1,0 +1,69 @@
+{strip}
+
+
+{if !$isadmin}
+
+<h3>
+{$this->lang['you_dosent_have_permission']}
+</h3>
+
+{else}
+
+
+<h2>{$this->lang['Community_administrators']}</h2> 
+{assign var=c value=0}
+<script>
+{literal}
+var old_admins = new Array();
+{/literal}
+</script>
+<ul class="comm_popup_curr_admins">
+{foreach $this->getCommunityAdmins($clubid) as $user}
+
+
+<script>
+var u_id = '{$user.id}';
+{literal}
+old_admins.push(u_id);
+{/literal}
+
+</script>
+
+
+<li id="old_ad_{$user.id}">
+<a href="javascript:void(0);" class="soh-s" data-tosend='{ldelim}"admin_photo":"{$user.photo}","admin_fullname":"{$user.fullname}","admin_id":"{$user.id}","id":"{$clubid}","action":"remove"{rdelim}' onclick="communityAddRemoveAdmin(event,this);">
+<div class="verified"></div><div class="verified_admin_remove foh-s"><span>{$this->lang['remove']}</span></div>
+<img src="/getPhoto?p={$user.photo}&sz=small"/><div class="ellip">{$user.fullname}</div></a>
+</li>
+{$c = $c+1}
+{foreachelse}
+
+{$this->lang['community_no_administrators']}
+
+{/foreach}
+</ul>
+<div class="comm_popup_admins_separator"></div>
+
+<ul class="comm_popup_followers comm_p_n_admins">
+
+{foreach $res as $user}
+<li id="new_ad_{$user.id}">
+<a href="javascript:void(0);" data-tosend='{ldelim}"admin_photo":"{$user.profile_photo}","admin_fullname":"{$user.fullname}","admin_id":"{$user.id}","id":"{$clubid}","action":"add"{rdelim}' onclick="communityAddRemoveAdmin(event,this);"><img src="/getPhoto?p={$user.profile_photo}&sz=small"/><div>{$user.fullname}</div></a>
+</li>
+{foreachelse}
+<h3>{$this->lang['Community_no_followers']}</h3>
+{/foreach}
+</ul>
+{/if}
+
+<script>
+{literal}
+
+for(var i=0;i<old_admins.length;i++)
+ga('#new_ad_'+old_admins[i]).remove();
+ 
+{/literal}
+
+</script>
+
+{/strip}

@@ -1,0 +1,203 @@
+<?php 
+
+$page           = (!empty($_GET['page-id']) && is_numeric($_GET['page-id'])) ? $_GET['page-id'] : 1;
+$filter_keyword = (!empty($_GET['query'])) ? Wo_Secure($_GET['query']) : '';
+$filter_type    = '';
+$db->pageLimit  = 50;
+
+
+if (!empty($filter_keyword)) {
+  $sql   = "(`post_id` LIKE '%$filter_keyword%' OR `postText` LIKE '%$filter_keyword%')";
+  $posts = $db->where($sql)->orderBy('post_id', 'DESC')->objectbuilder()->paginate(T_POSTS, $page);
+} 
+
+else {
+  $posts = $db->objectbuilder()->orderBy('post_id', 'DESC')->paginate(T_POSTS, $page);
+}
+
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+  header("Location: " . Wo_LoadAdminLinkSettings('manage-posts'));
+  exit();
+}
+
+?>
+
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Posts</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <div class="info-box bg-cyan  hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">comment</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL COMMENTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountAllData('comments'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-cyan  hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">thumb_up</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL LIKES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPostData('likes'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-cyan  hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">error</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL WONDERS / DISLIKES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPostData('wonders'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 ">
+            <div class="info-box bg-cyan  hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">reply</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL REPLIES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo Wo_CountPostData('replies'); ?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage & Edit Posts</h2>
+                </div>
+                <div class="body">
+                    <div class="row">
+                      <div class="col-md-4" style="margin-bottom:0;">
+                        <form method="get" action="<?php echo Wo_LoadAdminLinkSettings('manage-posts'); ?>">
+                          <div class="row">
+                            <div class="col-md-11">
+                              <div class="form-group form-float">
+                                  <div class="form-line">
+                                      <input type="text" name="query" id="query" class="form-control" value="<?php echo($filter_keyword); ?>">
+                                      <label class="form-label search-form">
+                                        Search for post ID, post text.
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-1">
+                               <button class="btn btn-info">Search</button>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                    </div>
+                    <input type="hidden" id="hash_id" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                    <div class="clearfix"></div>
+                    <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                             <th>ID</th>
+                             <th>Publisher</th>
+                             <th>Post Link</th>
+                             <th>Posted</th>
+                             <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php 
+                              foreach ($posts as $post) {
+                                $wo['story'] = $post;
+                                $wo['story']->publisher = Wo_UserData($post->user_id);
+                                echo Wo_LoadAdminPage('manage-posts/list');
+                              }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="wo-admincp-feturepager">
+                        <div class="pull-left">
+                            <span>
+                              <?php echo "Showing $page out of " . $db->totalPages; ?>
+                            </span>
+                        </div>
+                        <div class="pull-right">
+                            <nav>
+                                <ul class="pagination">
+                                    <li>
+                                      <a href="<?php echo Wo_LoadAdminLinkSettings('manage-posts?page-id=1'); ?>" class="waves-effect" title='First Page'>
+                                          <i class="material-icons">first_page</i>
+                                      </a>
+                                    </li>
+                                    <?php if ($page > 1) {  ?>
+                                      <li>
+                                          <a href="<?php echo Wo_LoadAdminLinkSettings('manage-posts?page-id=' . ($page - 1)); ?>" class="waves-effect" title='Previous Page'>
+                                              <i class="material-icons">chevron_left</i>
+                                          </a>
+                                      </li>
+                                    <?php  } ?>
+
+                                    <?php 
+                                      $nums       = 0;
+                                      $nums_pages = ($page > 4) ? ($page - 4) : $page;
+
+                                      for ($i=$nums_pages; $i <= $db->totalPages; $i++) { 
+                                        if ($nums < 20) {
+                                    ?>
+                                      <li class="<?php echo ($page == $i) ? 'active' : ''; ?>">
+                                        <a href="<?php echo Wo_LoadAdminLinkSettings('manage-posts?page-id=' . ($i)); ?>" class="waves-effect">
+                                          <?php echo $i ?>   
+                                        </a>
+                                      </li>
+
+                                    <?php } $nums++; }?>
+
+                                    <?php if ($db->totalPages > $page) { ?>
+                                      <li>
+                                          <a href="<?php echo Wo_LoadAdminLinkSettings('manage-posts?page-id=' . ($page + 1)); ?>" class="waves-effect" title="Next Page">
+                                              <i class="material-icons">chevron_right</i>
+                                          </a>
+                                      </li>
+                                    <?php } ?>
+                                    <li>
+                                      <a href="<?php echo Wo_LoadAdminLinkSettings('manage-posts?page-id=' . ($db->totalPages)); ?>" class="waves-effect" title='Last Page'>
+                                          <i class="material-icons">last_page</i>
+                                      </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+<script>
+
+function Wo_AdminDeletePost(post_id) {
+    if (confirm("Are you sure you want to delete this post?") == false) {
+      return false;
+    }
+    hash_id = $('#hash_id').val();
+    $('#PostID_' + post_id).fadeOut(300, function() {
+       $(this).remove();
+    });
+    $.post(Wo_Ajax_Requests_File() + '?f=admin_setting&s=delete_post', {post_id:post_id, hash_id:hash_id});
+}
+
+</script>

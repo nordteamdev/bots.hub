@@ -1,0 +1,30 @@
+<div class="entry" data-type="result" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-check-square"></i> 
+	   Quiz Results 
+	</div>
+	<div class="pull-right">
+	   <i class="entry-times fa-fw fa fa-trash" onclick="FL_RemoveResultEntry({{ENTRY_TIME}});"></i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<div class="form-group">
+	    <input type="text" class="form-control" data-name="entry_result_titile" placeholder="Result..">
+	    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadResultCover('{{ENTRY_TIME}}');">
+	    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+	</div>
+	<div class="form-group">
+	    <textarea class="form-control" data-name="entry_result_description" rows="4" placeholder="Add result description"></textarea>
+	</div>
+	<div class="form-group">
+	    <div class="img-content">
+			<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+			    <div class="content">
+				    <i class="fa fa-upload"></i> {{LANG choose_img}}
+			    </div>
+		    </div>
+		    
+		</div>
+
+	</div>
+</div>	

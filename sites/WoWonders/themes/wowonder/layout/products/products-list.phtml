@@ -1,0 +1,43 @@
+<div class="product col-proxs-12 col-xs-6 col-sm-4 col-md-4" id="product-<?php echo $wo['product']['id']?>" data-id="<?php echo $wo['product']['id']?>">
+	<div class="product_info">
+			<div class="product-image">
+				<a href="<?php echo $wo['product']['url']?>"><img src="<?php echo $wo['product']['images'][0]['image_org'];?>"></a>
+				<div class="product-links">
+					<div class="info-middle">
+						<a class="more-info" href="<?php echo $wo['product']['url']?>" target="_blank">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+							<?php echo $wo['lang']['more_info'] ?>
+						</a>
+						<?php if ($wo['loggedin']) { if ($wo['product']['seller']['id'] != $wo['user']['user_id']) { ?>
+							<span class="contact more-info" onclick="Wo_OpenChatTab(<?php echo $wo['product']['seller']['id']?>)">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+								<?php echo $wo['lang']['contact_seller'] ?>
+							</span> 
+						<?php } ?>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+			<div class="produc_info">
+				<div class="product-title">
+					<a href="<?php echo $wo['product']['url']?>" title="<?php echo $wo['product']['name']?>"><?php echo $wo['product']['name']?></a>
+				</div>
+				<div class="product-by">
+				    <?php
+				    $product_by_ = $wo['product']['category'];
+				    $product_by_ = str_replace('{product_category_name}', $wo['products_categories'][$wo['product']['category']], $product_by_);
+				    ?>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=products&c_id=' . $wo['product']['category']);?>"><?php echo $wo['products_categories'][$wo['product']['category']];?></a>
+				</div>
+				
+				<!--<div class="product-desc">
+					<?php echo mb_substr($wo['product']['description'], 0, 150, "UTF-8") . '...';?>
+				</div>-->
+				<div class="product-price">
+					<?php echo (!empty($wo['currencies'][$wo['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];?><?php echo $wo['product']['price']?>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+</div>

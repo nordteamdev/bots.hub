@@ -1,0 +1,95 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+	<div role="tabpanel" class="tab-pane active" id="search">
+		<div class="g_search">
+			<span class="pull-left"><?php echo $wo['lang']['search']; ?></span>
+			<span class="pull-right"><i id="togg-search-cont" class="fa fa-search" aria-hidden="true"></i></span>
+		</div>
+		<div id="forum-search-container" class="list-group setting-well">
+			<form id="forum-search" action="<?php echo Wo_SeoLink('index.php?link1=forum-search-result');?>" method="get" class="forum form-horizontal">
+			    <fieldset>
+					<input type="hidden" name="mode" value="search">
+					  
+					 <div class="form-group">
+			            <label class="col-md-3" for="search-terms"><?php echo $wo['lang']['search_for_term']; ?></label>  
+			            <div class="col-md-6 main" >
+			               <textarea class="form-control" cols="20" rows="6" name="search-terms" id="search-subject"></textarea>
+			            </div>
+			         </div>
+			          <div class="form-group">
+			             <label class="col-md-3" for="searchtype"></label>  
+			            <div class="col-md-6">
+			               <select id="search-only" name="search-only" class="form-control">
+			                  <option value="0" ><?php echo $wo['lang']['search_subject_only']; ?></option>
+			                  <option value="1" ><?php echo $wo['lang']['search']; ?> <?php echo $wo['lang']['post']; ?></option>
+			               </select>
+			            </div>
+			         </div>
+			         <div class="form-group">
+			             <label class="col-md-3" for="search-in"></label>  
+			            <div class="col-md-6">
+			               <select id="search-in" name="search-in" class="form-control">
+			                    <option value="forums"><?php echo $wo['lang']['search_in_forums']; ?></option>
+								<option value="messages"><?php echo $wo['lang']['search_in_messages']; ?></option>
+								<option value="threads" selected><?php echo $wo['lang']['search_in_threads']; ?></option>
+			               </select>
+			            </div>
+			         </div>
+			        <div class="form-group">
+			             <label class="col-md-3" for="section"><?php echo $wo['lang']['search_in']; ?></label>  
+			            <div class="col-md-6">
+			               <select name="section" class="form-control">
+			                   <?php foreach ($wo['sections'] as $wo['section']): ?>
+									<option value="<?php echo $wo['section']['id']; ?>"><?php echo $wo['section']['section_name']; ?></option>
+								<?php endforeach; ?>
+			               </select>
+			            </div>
+			         </div>
+			         <div class="form-group">
+			            <label class="col-md-3" for="searchtype"><?php echo $wo['lang']['general_search_terms']; ?></label>  
+			            <div class="col-md-7 main" >
+			               <i class="fa fa-exclamation-circle"></i> <?php echo $wo['lang']['search_terms_more4']; ?>
+			            </div>
+			         </div>
+			         <hr>
+			          <div class="form-group last-btn">
+			            <label class="col-md-3"></label>
+			            <div class="col-sm-3">
+			               <button type="submit" class="btn btn-main" id="forum-search-btn">
+			                  <i class="fa fa-search progress-icon" data-icon="search"></i> <?php echo $wo['lang']['search']; ?>
+			               </button>
+			            </div>
+			         </div>
+					<div class="clear"></div>
+				 </fieldset>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<script>
+	jQuery(document).ready(function($) {
+		//Toggle search panel
+		$("#togg-search-cont").click(function(){
+          $("#forum-search-container").slideToggle();
+        });
+
+
+        $("#forum-search").submit(function(event) {
+
+	        var empty = $("#search-subject").val();
+            if ($("#search-subject").val().length < 4) {
+            	event.preventDefault();
+            	$("#search-terms").addClass('alert alert-danger');
+            	scrollToTop();
+            	$("#search-subject").focus();
+
+            	
+
+            }
+         
+        });
+
+	});
+</script>

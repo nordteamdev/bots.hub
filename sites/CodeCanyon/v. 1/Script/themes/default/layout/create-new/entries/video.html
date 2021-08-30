@@ -1,0 +1,31 @@
+<div class="entry" data-type="video" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"></path></svg>
+	   {{LANG video}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}"><br>
+	<input type="text" id="video-url" class="form-control" placeholder="{{LANG video_url}}" data-name="entry_video_url">
+	<input type="file" class="hidden" id="fl-upload-video-{{ENTRY_TIME}}" onchange="FL_UploadVideo('{{ENTRY_TIME}}',this);" accept="video/*">
+	<span class="help-block">{{LANG video_supported_sites}}</span><Br>
+	<div id="fetched-video"></div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-main fl_btn" type="button" onclick="$('#fl-upload-video-{{ENTRY_TIME}}').trigger('click');">
+		  <i class="fa fa-cloud-upload progress-icon" data-icon="cloud-upload"></i> {{LANG upload}}
+	    </button>
+	    <button class="btn btn-blue fl_btn" type="button" onclick="FL_FetchVideo({{ENTRY_TIME}});" style="margin-left:15px;">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	    </button>
+		<input type="hidden" id="entry_video_type" class="btn btn-blue" data-name="entry_video_type">
+		<input type="hidden" id="entry_video_id" class="btn btn-blue" data-name="entry_video_id">
+		<input type="hidden" id="entry_video_src" class="btn btn-blue" data-name="entry_video_src">
+	</div>
+	<div class="clear"></div>
+</div>
+

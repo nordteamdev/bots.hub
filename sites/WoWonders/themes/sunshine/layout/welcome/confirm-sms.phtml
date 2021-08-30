@@ -1,0 +1,80 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+
+<div class="wrapper">
+	<div class="container">
+		<div class="row login">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="sun_welcome_heading">
+					<h1>Confrim your phone</h1>
+				</div>
+				<form id="confirm-form" class="small-padd" method="post">
+					<div class="errors"></div>
+					<div class="loading_cont">
+						<div class="loading hidden"></div>
+					</div>
+					<div class="sun_input_holder">
+						<div class="sun_input">
+							<input name="phone_num" type="text" id="phone_num" placeholder="Phone number" value="<?php echo $wo['confirm_user']['phone_number'];?>" />
+							<label for="phone_num">Phone number</label>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+						</div>
+						<div class="sun_input">
+							<input name="confirm_code" type="text" id="confirm_code" placeholder="Confirmation code" autofocus />
+							<label for="confirm_code">Confirmation code</label>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+						</div>
+						<input type="hidden" name="user_id" id="confirm-user-id" value="<?php echo $wo['confirm_user']['user_id'];?>"/>
+					</div>
+					<div id="hideMsg" class="item">
+						<h2><span>60</span></h2>
+					</div>
+					<div class="login_signup_combo">
+						<div class="login__">
+							<button type="submit" class="btn btn-main"><?php echo $wo['lang']['confirm']?></button>
+						</div>
+						<div class="signup__">
+						</div>
+					</div>
+					<div class="form-group" id="re-send" style="display:none">
+						<div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCode();"><i class="fa fa-repeat"></i> <?php echo $wo['lang']['activation_resend'];?></a></div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
+</div>
+
+<div class="container"><?php echo Wo_LoadPage('footer/welcome');?></div>
+
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('.errors');
+$(function() {
+  Wo_SetTimer();
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+    beforeSend: function() {
+		working = true;$this.find('button').attr("disabled", true);
+		$this.find('.loading').removeClass('hidden');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $state.addClass('success');
+        $state.html('<?php echo $wo['lang']['welcome_'] ?>');
+		$this.find('.loading').addClass('hidden');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $this.find('button').attr("disabled", false);
+		$this.find('.loading').addClass('hidden');
+        $state.html(data.errors);
+      }
+      working = false;
+    }
+  });
+});
+</script>

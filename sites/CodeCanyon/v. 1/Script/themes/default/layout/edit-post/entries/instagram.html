@@ -1,0 +1,23 @@
+<div class="entry" data-type="instagram" data-id="{{ENTRY_ID}}" id="entry-{{ENTRY_ID}}">
+	<div class="entry-name pull-left">
+	   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"></path></svg>
+	   {{LANG ig}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_ID}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_ID}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntryByID({{ENTRY_ID}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}" value="{{ENTRY_TITLE}}"><br>
+	<input type="text" id="instagram-url" class="form-control" data-name="entry_instagram_url" placeholder="{{LANG ig_post_url}}" value="{{ENTRY_INSTAGRAM_URL}}"><br>
+	<input type="hidden" class="form-control" data-name="entry_instagram" value="{{ENTRY_INSTAGRAM_URL}}">
+	<div class="fetched-instagram">{{ENTRY_INSTAGRAM}}</div>
+	<div class="form-group pull-right">
+	    <button class="btn btn-blue fl_btn" type="button" onclick="FL_GetInstagramPost({{ENTRY_ID}});">
+		  <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG get_post}}
+	    </button>
+	</div>
+	<div class="clear"></div>
+</div>

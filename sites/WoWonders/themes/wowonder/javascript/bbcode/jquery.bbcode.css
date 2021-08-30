@@ -1,0 +1,53 @@
+/*// +------------------------------------------------------------------------+
+// | @author Deen Doughouz (DoughouzForest)
+// | @author_url 1: http://www.wowonder.com
+// | @author_url 2: http://codecanyon.net/user/doughouzforest
+// | @author_email: wowondersocial@gmail.com   
+// +------------------------------------------------------------------------+
+// | WoWonder - The Ultimate Social Networking Platform
+// | Copyright (c) 2017 WoWonder. All rights reserved.
+// +------------------------------------------------------------------------+*/
+
+.bbcode-editor {
+    width: 100%;
+}
+
+.bbcode-toolbar {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+.bbcode-toolbar li {   
+    display: inline;
+    padding-right: 18px;  
+    cursor: pointer;
+}
+
+.bbcode-toolbar li:hover {
+    opacity: 1;
+}
+
+.bbcode-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    border: 1px solid #ededed;
+    resize: vertical;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ie-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.bbcode-preview {
+    color: #777;    
+    font-family: "Courier New";
+    background: #F8F8F8; 
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.bbcode-preview img {
+    max-width: 100%;
+}

@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-8 col-md-8 ">
+            <div class="card">
+                <div class="header">
+                    <h2 class="pull-left">Pro System Settings</h2>
+                    <button class="btn btn-danger pull-right" onclick="FL_RemoveSubscriptions('expired',this);">Cancel Expired Subscriptions</button>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="body">
+                    <div class="alert alert-success prosys-settings-alert"></div>
+                    <form class="prosys-settings" method="POST">
+                        <label for="go_pro">Pro system</label>
+                        <div class="form-group">
+                            <input type="radio" name="go_pro" id="go_pro-enabled" value="1" <?php echo ($fl['config']['go_pro'] == 1) ? 'checked': '';?>>
+                            <label for="go_pro-enabled">Enabled</label>
+                            <input type="radio" name="go_pro" id="go_pro-disabled" value="0" <?php echo ($fl['config']['go_pro'] == 0) ? 'checked': '';?>>
+                            <label for="go_pro-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" id="user_max_posts" name="user_max_posts" class="form-control" value="{{CONFIG user_max_posts}}">
+                                <label class="form-label">Free users posting limit</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" id="pro_pkg_price" name="pro_pkg_price" class="form-control" value="{{CONFIG pro_pkg_price}}">
+                                <label class="form-label">Pro Package Price</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- #END# Vertical Layout -->
+<script>
+
+
+function FL_RemoveSubscriptions(type,self){
+    if (!type || type != 'expired' || !self){
+        return false;
+    }
+
+    else if(type == 'expired'){
+        $(self).text("{{LANG please_wait}}").attr('disabled', 'true');
+        $.ajax({
+            url: '{{LINK ajax_requests.php}}',
+            type: 'GET',
+            dataType: 'json',
+            data:{
+                f:'go_pro',
+                s:'remove_expired',
+                hash_id: $('.main_session').val()
+            }
+        })
+        .done(function() {
+            $('.payment-settings-alert').html('<i class="fa fa-check"></i> Expired Subscriptions was deleted successfully!');
+            setTimeout(function () {
+                $('.payment-settings-alert').empty();
+            }, 2000);
+            $(self).text('Cancel Expired Subscriptions').removeAttr('disabled');
+        })
+        .fail(function() {
+            console.log("error");
+        })
+    }
+}
+
+$(function() {
+    var form_prosys_settings = $('form.prosys-settings');
+
+    form_prosys_settings.ajaxForm({
+        url: "{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}" + $('.main_session').val(),
+        type: "POST",
+        dataType: "json",
+        beforeSend: function() {
+            form_prosys_settings.find('button[type="submit"]').text("{{LANG please_wait}}");
+        },
+
+        success: function(data) {
+            if (data.status == 200) {
+            	form_prosys_settings.find('button[type="submit"]').text('Save');
+            	$('.prosys-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.prosys-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+});
+</script>

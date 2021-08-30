@@ -1,0 +1,47 @@
+<div class="sidebar-conatnier">
+	<div class="col-md-3 sidebar rightcol">
+		<ul class="list-group" id="sidebar-user-list-container">
+			<li class="list-group-item text-muted sidebar-title-back" contenteditable="false">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #4caf50;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+				<?php echo $wo['lang']['people_you_may_want_to_meet'];?>
+			</li>
+			<div class="sidebar-users-may-know-container">
+				<?php 
+					foreach (Wo_GetAllUsers(5, 'sidebar') as $wo['UsersList']) {
+					$wo['UsersList']['user_name'] = substr($wo['UsersList']['name'],0,10);
+						echo Wo_LoadPage('sidebar/sidebar-user-list');
+					} 
+				?>
+			</div>
+			<div class="clear"></div>
+		</ul>
+		<ul class="list-group trending" >
+			<li class="list-group-item sidebar-title-back" contenteditable="false">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #2196F3;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+				<?php echo $wo['lang']['trending'];?>
+			</li>
+        <?php 
+        $hashtags = Wa_GetTrendingHashs('popular');
+        if (count($hashtags) > 0) {
+          foreach ($hashtags as $wo['hashtag']) { 
+        ?>
+        <li class="list-group-item" dir="auto">
+          <a href="<?php echo $wo['hashtag']['url'];?>">#<?php echo $wo['hashtag']['tag'];?></a>
+        </li>
+        <?php
+          } 
+        }
+        ?>
+      <div class="clear"></div>
+    </ul>
+      <?php 
+      $sidebar_ad = Wo_GetAd('sidebar', false);
+      if (!empty($sidebar_ad)) {?>
+      <ul class="list-group sidebar-ad">
+         <?php echo $sidebar_ad; ?>
+      </ul>
+     <?php } ?>
+     <?php echo Wo_LoadPage('footer/sidebar-footer')?>
+  </div>
+
+</div>

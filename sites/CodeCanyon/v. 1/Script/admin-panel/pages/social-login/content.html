@@ -1,0 +1,217 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Social Login Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="header">
+                    <h2>Social Login Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success login-settings-alert"></div>
+                    <form class="login-settings" method="POST">
+                        <label for="facebook">Facebook</label>
+                        <div class="form-group">
+                            <input type="radio" name="facebook" id="facebook-enabled" value="1" <?php echo ($fl['config']['facebook'] == 1) ? 'checked': '';?>>
+                            <label for="facebook-enabled">Enabled</label>
+                            <input type="radio" name="facebook" id="facebook-disabled" value="2" <?php echo ($fl['config']['facebook'] == 2) ? 'checked': '';?>>
+                            <label for="facebook-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="twitter">Twitter</label>
+                        <div class="form-group">
+                            <input type="radio" name="twitter" id="twitter-enabled" value="1" <?php echo ($fl['config']['twitter'] == 1) ? 'checked': '';?>>
+                            <label for="twitter-enabled">Enabled</label>
+                            <input type="radio" name="twitter" id="twitter-disabled" value="2" <?php echo ($fl['config']['twitter'] == 2) ? 'checked': '';?>>
+                            <label for="twitter-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="google">Google+</label>
+                        <div class="form-group">
+                            <input type="radio" name="google" id="google-enabled" value="1" <?php echo ($fl['config']['google'] == 1) ? 'checked': '';?>>
+                            <label for="google-enabled">Enabled</label>
+                            <input type="radio" name="google" id="google-disabled" value="2" <?php echo ($fl['config']['google'] == 2) ? 'checked': '';?>>
+                            <label for="google-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="vkontakte">Vkontakte</label>
+                        <div class="form-group">
+                            <input type="radio" name="vkontakte" id="vkontakte-enabled" value="1" <?php echo ($fl['config']['vkontakte'] == 1) ? 'checked': '';?>>
+                            <label for="vkontakte-enabled">Enabled</label>
+                            <input type="radio" name="vkontakte" id="vkontakte-disabled" value="2" <?php echo ($fl['config']['vkontakte'] == 2) ? 'checked': '';?>>
+                            <label for="vkontakte-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="wowonder">WoWonder (Your Own Site) <a href="#" data-toggle="modal" data-target="#wowonder">?</a></label>
+                        <div class="form-group">
+                            <input type="radio" name="wowonder" id="wowonder-enabled" value="1" <?php echo ($fl['config']['wowonder'] == 1) ? 'checked': '';?>>
+                            <label for="wowonder-enabled">Enabled</label>
+                            <input type="radio" name="wowonder" id="wowonder-disabled" value="2" <?php echo ($fl['config']['wowonder'] == 2) ? 'checked': '';?>>
+                            <label for="wowonder-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <div class="card">
+                <div class="header">
+                    <h2>API Keys</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success api-settings-alert"></div>
+                    <form class="api-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="facebook_app_ID" name="facebook_app_ID" class="form-control" value="{{CONFIG facebook_app_ID}}">
+                                <label class="form-label">Facebook API ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="facebook_app_key" name="facebook_app_key" class="form-control" value="{{CONFIG facebook_app_key}}">
+                                <label class="form-label">Facebook API Key</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="twitter_app_ID" name="twitter_app_ID" class="form-control" value="{{CONFIG twitter_app_ID}}">
+                                <label class="form-label">Twitter API ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="twitter_app_key" name="twitter_app_key" class="form-control" value="{{CONFIG twitter_app_key}}">
+                                <label class="form-label">Twitter API Key</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="google_app_ID" name="google_app_ID" class="form-control" value="{{CONFIG google_app_ID}}">
+                                <label class="form-label">Google API ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="google_app_key" name="google_app_key" class="form-control" value="{{CONFIG google_app_key}}">
+                                <label class="form-label">Google API Key</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="vkontakte_app_ID" name="vkontakte_app_ID" class="form-control" value="{{CONFIG vkontakte_app_ID}}">
+                                <label class="form-label">Vkontakte APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="vkontakte_app_key" name="vkontakte_app_key" class="form-control" value="{{CONFIG vkontakte_app_key}}">
+                                <label class="form-label">Vkontakte APP key</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="wowonder_app_ID" name="wowonder_app_ID" class="form-control" value="{{CONFIG wowonder_app_ID}}">
+                                <label class="form-label">WoWonder API Key</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="wowonder_app_key" name="wowonder_app_key" class="form-control" value="{{CONFIG wowonder_app_key}}">
+                                <label class="form-label">WoWonder API Secret</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="wownder_domain_uri" name="wownder_domain_uri" class="form-control" value="{{CONFIG wownder_domain_uri}}">
+                                <label class="form-label">WoWonder Domain <small>The domain of your website that uses WoWonder Social Network</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="wownder_site_name" name="wownder_site_name" class="form-control" value="{{CONFIG wownder_site_name}}">
+                                <label class="form-label">WoWonder SiteName</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<div id="wowonder" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">WoWonder Integration</h4>
+      </div>
+      <div class="modal-body">
+        <p>This feature allows you to integrate users from your own website that uses <a href="http://www.wowonder.com" target="_blank">WoWonder</a>.</p>
+        <p>To get started please follow those steps:</p>
+        <ul>
+            <li>Go to http://yoursite.com/developers, you'll get the following <a target="_blank" href="<?php echo FL_LoadAdminLink('images/Screenshot_1.png'); ?>">Page</a></li>
+            <li>Click on "Create an app", and fill the required information.</li>
+            <li>On the form, make sure the info are similar as shown <a target="_blank" href="<?php echo FL_LoadAdminLink('images/Screenshot_2.png'); ?>">Here</a>.</li>
+            <li>Save the form, get the <a  target="_blank" href="<?php echo FL_LoadAdminLink('images/Screenshot_4.png'); ?>">Keys</a>, and use them <a target="_blank" href="<?php echo FL_LoadAdminLink('images/Screenshot_3.png'); ?>">Here</a>.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<style>
+.modal-body img {
+    max-width: 100%;
+}
+</style>
+<script>
+
+$(function() {
+    var form_login_settings = $('form.login-settings');
+
+    form_login_settings.ajaxForm({
+    	url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_login_settings.find('button').text("{{LANG please_wait}}");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_login_settings.find('button').text('Save');
+            	$('.login-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.login-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    var form_api_settings = $('form.api-settings');
+
+    form_api_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_api_settings.find('button').text("{{LANG please_wait}}");
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_api_settings.find('button').text('Save');
+            	$('.api-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.api-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+});
+</script>

@@ -1,0 +1,238 @@
+{strip}
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/pg/anonym-content.css">
+
+<div class="toolbar __redesign __right __common-buttons fixed_always">
+<div class="nat_logo __toCenter"></div>
+</div>
+
+<div id="anonymPageContent" class="anonym_new_content gm-cl-aft">
+
+
+
+<div style="display: block !important;visibility: visible !important;background-image: url({$this->theme_url}/css/images/login/winter-v1.1.8.jpg);" class="prl h-mod __show"></div>
+<a href="/" class="anonym_logo"></a>
+
+</div>
+
+<div class="index_page">
+ 
+ 
+ 
+<div id="wrap2">
+<div id="wrap1">
+ <div id="prlText" class="prl_txt"><div class="prl_txt_large"><span class="prl_txt_level1"><span class="prl_txt_level2"><span class="prl_txt_level3">{$this->lang['INDEX_LOGIN_WELCOME_TEXT']}&nbsp;<br/>{$this->settings['SITENAME']}</span></span></span></div></div>
+
+<div class="{if $this->settings['mob_view_enabled']}index_rcolumn{else}index_rcolumn acenter{/if}" id="index_rcolumn">
+<div id="index_login" class="page_block index_login">
+<div class="login-spinner center __none"></div>
+<h2 class="ij_header_login">{$this->lang['lg_login_btn']}</h2>
+    <form class="_rwf8p" method="post"   id="login_form" action="/takelogin">
+	<input type="hidden" name="returnto" id="returnto" value="{trim($returnto)}" />
+        <input type="text" class="big_text {if $login != ''}_replies__highlight{/if}" name="st.email" id="field_email" value="{$login}" placeholder="{$this->lang['lg_email_field']}">
+        <input type="password" class="big_text" name="st.password" id="field_password" value="" placeholder="{$this->lang['lg_pass_field']}">
+        <button type="button" onclick="return takelogin(event,this.form);" class="index_login_button flat_button button_big_text">{$this->lang['lg_login_btn']}</button>
+        <div class="forgot">
+               <label for="field_remember" class="anonym_login_rem">
+                    <input name="st.remember" checked="checked" id="field_remember" type="checkbox" class="anonym_log_rem_check"><span class="anonym_log_rem_check_tx">{$this->lang['lg_remember_checkbox']}</span></label>
+           <div class="txt_left"> <a id="index_forgot" class="index_forgot" hrefattr="true" href="/getsecretcode/restore-password/" target="_top">{$this->lang['Forgot']}?</a></div>
+        </div>
+		<div id="anonymLoginMsg"></div>	
+    </form>
+</div>
+
+
+<div id="ij_form" class="page_block ij_form" style="">
+    <h2 class="ij_header">{$this->lang['anonym_no_account']}</h2>
+    <div class="ij_subheader">{$this->lang['signup_now']}</div>
+    <div id="ij_msg"></div>
+	
+
+	
+	
+	
+	
+<div class="">
+        <div class="reg_index">
+
+
+            <div class="regir_form_i1">
+                <form accept-charset="UTF-8" action="/takesignup.php" class="new_user" id="new_user" method="post" novalidate="novalidate">
+				
+
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_first_name">{$this->lang['sg_name']}</label>
+                        <input id="reg_first_name" name="first_name" class="big_text" type="text" placeholder="{$this->lang['sg_name']}" />
+                    </div>
+
+                    <div class="regist_form_1">
+                        <label for="reg_last_name" class="input-l">{$this->lang['sg_surname']}</label>
+                        <input id="reg_last_name" name="surname" class="big_text" type="text" placeholder="{$this->lang['sg_surname']}" />
+                    </div>
+					
+                    <div class="regist_form_1">
+                        <label for="date_of_birth" class="input-l">{$this->lang['birthDate']}</label>
+						<div class="reg_index_rpl_placeholder">{$this->lang['birthDate']}</div>
+                        <div class="data_of_birth">
+
+                            <select id="day" class="isl __day" name="day">
+                                <option value="">{$this->lang['sg_day']}</option>
+
+                                {for $i=1 to 31}
+                                <option value="0{$i}">{$i}</option>
+                                {/for}
+
+                            </select>
+
+                            <select id="month" class="isl __month" name="month">
+
+                                <option value="">{$this->lang['sg_month']}</option>
+                                <option value="01">{$this->lang['january']}</option>
+                                <option value="02">{$this->lang['february']}</option>
+                                <option value="03">{$this->lang['march']}</option>
+                                <option value="04">{$this->lang['aprill']}</option>
+                                <option value="05">{$this->lang['may']}</option>
+                                <option value="06">{$this->lang['june']}</option>
+                                <option value="07">{$this->lang['july']}</option>
+                                <option value="08">{$this->lang['august']}</option>
+                                <option value="09">{$this->lang['september']}</option>
+                                <option value="10">{$this->lang['octomber']}</option>
+                                <option value="11">{$this->lang['november']}</option>
+                                <option value="12">{$this->lang['december']}</option>
+                            </select>
+
+                            <select id="year" class="isl __year" name="year">
+                                <option value="">{$this->lang['sg_year']}</option>
+								{section name="yearLoop" loop=date('Y')-5 max=(date('Y')-5 - 1925) step=-1}
+								<option value="{$smarty.section.yearLoop.index}">{$smarty.section.yearLoop.index}</option>	
+								{/section}
+                            </select>
+                        </div>
+
+                    </div>
+					
+
+					<section id="index_reg_hideit">
+                    <div class="regist_form_1"> <div class="reg_index_rpl_placeholder">{$this->lang['im']}</div>
+
+                        <ul class="form_ul form_ul__inline">
+                            <li class="form_ul_li">
+                                <input class="irc" type="radio" name="fr.gender" value="1" id="field_gender_1" checked="checked"><span class="irc_l">
+<span for="field_gender_1">{$this->lang['g_male']}</span></span></li>
+                            <li class="form_ul_li">
+                                <input class="irc" type="radio" name="fr.gender" value="2" id="field_gender_2">
+                                <span class="irc_l">
+<span for="field_gender_2">{$this->lang['g_female']}</span></span></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="regist_form_1">
+                        <label for="reg_country" class="input-l">{$this->lang['reg_location']}</label>
+ 
+						<input id="reg_country" autocomplete="off" name="location_name" placeholder="{$this->lang['reg_location']}; {$this->lang['location_name_eg']}" class="big_text getuserlocation" type="text" value="" />
+						<input type="hidden" name="location_id" id="location_id" value="" />
+                    </div>
+					
+                    <div class="regist_form_1">
+                        <label for="reg_phone" class="input-l">{$this->lang['reg_phone']}</label>
+ 
+						<input id="reg_phone" autocomplete="off" data-user-country="{$this->getUserCountryCode()}" placeholder="{$this->lang['reg_phone']}" class="big_text phone-input" type="text" value="" />
+						<input type="hidden" name="phone_number" id="js_phone_number" value="" />
+						<div class="signup_phone_descr">{$this->lang['phone_descr_no_share']}</div>
+                    </div>
+					
+ 
+ 
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_mail">{$this->lang['email']}</label>
+                        <input id="reg_mail" onfocus="reg_validateEmail(this,event);" name="reg_email" class="big_text" type="text" placeholder="{$this->lang['email']}" />
+						<div class="reg_em_err __none"></div>
+                    </div>
+                    <div class="regist_form_1">
+                        <label class="input-l" for="reg_pass">{$this->lang['password']}</label>
+                        <input id="reg_password" name="reg_pass" class="big_text" type="text" placeholder="{$this->lang['password']}" />
+                    </div>
+                    <div class="regist_form_1">
+                        <div class="reg_disclamer">{$this->lang['sg_agree_text']} <a class="lp il" onclick="tpaPopup(event);" data-mm="terms" href="javascript:;">{$this->lang['sg_terms&condition']}</a>.</div>
+                    </div>
+
+                    <div class="regist_form_1">
+					
+					
+					<button type="button" name="button_continue" onclick="return takesignup(event);" class="isubmit flat_button button_wide button_big_text ij_button">{$this->lang['sg_submit_btn']}</button>
+					
+					</div>
+                </section>
+				
+				<button class="flat_button button_wide button_big_text ij_button" onclick="animateIndexSignup(event,this);">{$this->lang['sg_submit_btn']}</button>
+				
+				
+				</form>
+
+            </div>
+
+        </div>
+		</div>	
+	
+	
+	
+	
+	<script>
+	{literal}
+	function animateIndexSignup(e,el){
+		e.preventDefault();
+		e.stopPropagation();
+		ga(el).hide();
+		ga('body,html').stop().animate({'scrollTop':'+=150px'},800);
+		ga('#index_reg_hideit').slideDown();
+	}
+	
+	{/literal}
+	
+	</script>
+	
+ 
+	
+	
+	
+	
+	</div>
+</div>
+
+{if $this->settings['mob_view_enabled']}
+<div class="login_mobile_promo_wrap clear_fix">
+    <div class="login_mobile_apps">
+  
+        <div class="login_mobile_info">{$this->lang['index_login_info_headr']}</div>
+
+        <div class="login_app_devices">
+
+
+		
+
+			<a href="{$this->settings['mob_HOST']}" target="_blank" class="index_mob_ic">
+			
+				<div class="login_mobile_ic _android">
+					 
+				</div>
+			
+			
+			</a>
+			<a href="{$this->settings['mob_HOST']}" target="_blank" class="index_mob_ic">
+			
+				<div class="login_mobile_ic _ios"></div>
+			
+			
+			</a>
+        </div>
+      
+    </div>
+ 
+</div>
+{/if}
+ 
+ 
+</div>
+</div></div>
+{/strip}

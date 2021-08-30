@@ -1,0 +1,19 @@
+<div class="col-xs-6 col-sm-4 nearby_user_wrapper text-center user-data" data-user-id="<?php echo $wo['UsersList']['user_id'];?>">
+	<div class="avatar">
+		<img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture" />
+		<?php if($wo['config']['user_lastseen'] == 1 && $wo['UsersList']['showlastseen'] != 0): ?>
+			<span class="sun_status mini <?php echo($wo['UsersList']['lastseen'] > (time() - 60) ? 'online' : 'offline' ) ?>" title="<?php echo($wo['UsersList']['lastseen'] > (time() - 60) ? $wo['lang']['online'] : Wo_Time_Elapsed_String($wo['UsersList']['lastseen']) ) ?>"></span>
+		<?php endif; ?>
+    </div>
+	<span class="user-popover" data-id="<?php echo $wo['UsersList']['id'];?>" data-type="<?php echo $wo['UsersList']['type'];?>">
+		<a href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username'];?>" class="user_wrapper_link"><?php echo $wo['UsersList']['name']; ?></a>
+	</span>
+	<div class="user-follow-button">
+		<?php echo Wo_GetFollowButton($wo['UsersList']['user_id']);?>
+		<?php if (!empty($wo['UsersList']['family_member'])): ?>
+			<span data-family-member="<?php echo $wo['UsersList']['user_id'];?>">
+				<button type="button" class="btn btn-default btn-sm" onclick="$('#delete_family_mbr_modal').attr('data-family-member-id', '<?php echo $wo['UsersList']['id'];?>').modal('show');"><i class="fa fa-times progress-icon" data-icon="fa-times"></i><span class="button-text"> <?php echo $wo['lang']['delete'];?></span></button>
+			</span>
+		<?php endif; ?>
+	</div>
+</div>

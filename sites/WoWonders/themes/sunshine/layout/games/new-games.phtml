@@ -1,0 +1,86 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=new-game'); ?>" data-ajax="?link1=new-game"><?php echo $wo['lang']['games'] ?></a></li>
+					</ul>
+					<ul class="<?php echo Wo_RightToLeft('pull-right'); ?>">
+						<li><a data-ajax="?link1=games" href="<?php echo Wo_SeoLink('index.php?link1=games');?>"><?php echo $wo['lang']['my_games']; ?></a></li>
+					</ul>
+				</div>
+				
+				<div class="sun_pop_games">
+					<div class="spop_head">
+						<h3><?php echo $wo['lang']['popular_games'] ?></h3>
+						<div class="pop_gams_arow"></div>
+					</div>
+					<div class="sun_pop_gam_cont">
+						<?php
+							$games = Wo_GetPopularGames(10);
+							if (count($games) > 0) {
+								foreach ($games as $wo['game']) {
+									$wo['game']['all'] = 1;
+									echo Wo_LoadPage('games/popular-games');
+								}
+							} else {
+								echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> ' . $wo['lang']['no_games_found'] . '</h5>';
+							}
+						?>
+					</div>
+				</div>
+				
+				<div class="sun_lat_games">
+					<div class="spop_head">
+						<h3><?php echo $wo['lang']['latest_games'] ?></h3>
+					</div>
+					<div class="row">
+						<?php
+							$games = Wo_GetAllGames(7000);
+							if (count($games) > 0) {
+								foreach ($games as $wo['game']) {
+									$wo['game']['all'] = 1;
+									echo Wo_LoadPage('games/game-style');
+								}
+							} else {
+								echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> ' . $wo['lang']['no_games_found'] . '</h5>';
+							}
+						?>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .row -->
+</div>
+
+<script>
+$(document).ready(function(){
+	$('.sun_pop_gam_cont').slick({
+		slidesToShow: 3,
+		appendArrows: '.pop_gams_arow',
+		infinite: false,
+		variableWidth: false,
+		<?php if($wo['language_type'] == 'rtl') { ?>
+		rtl: true,
+		<?php } ?>
+		responsive: [
+			{
+				breakpoint: 745,
+				settings: {
+					slidesToShow: 2
+				}
+			},
+			{
+				breakpoint: 510,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
+	});
+});
+</script>

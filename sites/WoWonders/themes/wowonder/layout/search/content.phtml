@@ -1,0 +1,485 @@
+<?php 
+$not_found = '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg> ' . $wo["lang"]["no_result"] . '</h5>';
+$type_to_find = '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> ' . $wo["lang"]["what_are_looking_for"] . '</h5>';
+?>
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="wo_search_page">
+				<div class="setting-well">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a data-toggle="tab" data-target="#users" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+								<?php echo $wo['lang']['users'];?>
+							</a>
+						</li>
+						<?php if ($wo['config']['pages'] == 1) { ?>
+						<li>
+							<a data-toggle="tab" data-target="#pages" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+								<?php echo $wo['lang']['pages'];?>
+							</a>
+						</li>
+						<?php } ?>
+						<?php if ($wo['config']['groups'] == 1) { ?>
+						<li>
+							<a data-toggle="tab" data-target="#groups" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+								<?php echo $wo['lang']['groups'];?>
+							</a>
+						</li>
+						<?php } ?>
+						<?php if ($wo['config']['games'] == 1) { ?>
+						<li>
+							<a data-toggle="tab" data-target="#games" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+								<?php echo $wo['lang']['games'];?>
+							</a>
+						</li>
+						<?php } ?>
+					</ul>
+					<div class="tab-content">
+						<div id="users" class="tab-pane fade in active">
+							<div id="users-cont">
+								<?php
+								if (!isset($_GET['query'])) {
+									echo $type_to_find;
+								}
+								if (isset($_GET['query'])) {
+									
+									$search_query = Wo_GetSearchFilter($_GET, 30);
+									if (count($search_query) != 0) {
+										foreach ($search_query as $wo['result']) {
+											echo Wo_LoadPage('search/result');
+										}
+									} else {
+										echo $not_found;
+									}
+								}
+								?>
+							</div>
+							<div class="clear"></div>
+							<br>
+							<div class="load-more">
+								<button class="btn btn-default text-center pointer load-more-users">
+									<i class="fa fa-chevron-down progress-icon" data-icon="chevron-down"></i> 
+									<?php echo $wo['lang']['load_more_users'] ?>
+								</button>
+							</div>
+						</div>
+						
+						<?php if ($wo['config']['pages'] == 1) { ?>
+						<div id="pages" class="tab-pane fade">
+							<div id="pages-cont">
+								<?php
+									if (!isset($_GET['query'])) {
+										echo $type_to_find;
+									}
+									if (isset($_GET['query'])) {
+										$search_query = Wo_GetSearchAdv($_GET['query'], 'pages');
+										if (count($search_query) != 0) {
+											foreach ($search_query as $wo['result']) {
+												echo Wo_LoadPage('search/result');
+											}
+										} else {
+											echo $not_found;
+										}
+									}
+								?>
+							</div>
+							<div class="clear"></div>
+							<br>
+							<div class="load-more">
+								<button class="btn btn-default text-center pointer load-more-pages">
+									<i class="fa fa-chevron-down progress-icon" data-icon="chevron-down"></i> 
+									<?php echo $wo['lang']['load_more_pages'] ?>
+								</button>
+							</div>
+						</div>
+						<?php } ?>
+						
+						<?php if ($wo['config']['groups'] == 1) { ?>
+						<div id="groups" class="tab-pane fade">
+							<div id="groups-cont">
+								<?php
+									if (!isset($_GET['query'])) {
+										echo $type_to_find;
+									}
+									if (isset($_GET['query'])) {
+										$search_query = Wo_GetSearchAdv($_GET['query'], 'groups');
+										if (count($search_query) != 0) {
+											foreach ($search_query as $wo['result']) {
+												echo Wo_LoadPage('search/result');
+											}
+										} else {
+											echo $not_found;
+										}
+									}
+								?>
+							</div>
+							<div class="clear"></div>
+							<br> 
+							<div class="load-more">
+								<button class="btn btn-default text-center pointer load-more-groups">
+									<i class="fa fa-chevron-down progress-icon" data-icon="chevron-down"></i> 
+									<?php echo $wo['lang']['load_more_groups'] ?>
+								</button>
+							</div>
+						</div>
+						<?php } ?>
+						
+						<?php if ($wo['config']['groups'] == 1) { ?>
+						<div id="games" class="tab-pane fade">
+							<?php
+								if (!isset($_GET['query'])) {
+									echo $type_to_find;
+								}
+								if (isset($_GET['query'])) {
+									$search_query = Wo_GetSearchAdv($_GET['query'], 'games');
+									if (count($search_query) != 0) {
+										foreach ($search_query as $wo['game']) {
+											echo Wo_LoadPage('games/game-style');
+										}
+									} else {
+										echo $not_found;
+									}
+								}
+							?>
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="col-md-4 custom-fixed-element wo_search_page_side wo_adv_search_filter_side">
+			<div class="wo_settings_page">
+				<h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> <?php echo $wo['lang']['search_filter'];?></h3>
+				<form action="<?php echo Wo_SeoLink('index.php?link1=search') ?>" method="get" class="search-filter-form" id="search_form">
+					<div class="setting-panel row" style="padding-top: 0;">
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="query"><?php echo $wo['lang']['keyword'];?></label>
+							<div class="form-group">
+								<input type="text" name="query" id="query" class="form-control" value="<?php echo (isset($_GET['query'])) ? Wo_Secure($_GET['query']): '';?>" autocomplete="off">
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="country"><?php echo $wo['lang']['country'];?></label>
+							<div class="form-group">
+								<select name="country" id="country" class="form-control">
+									<option value="all" selected><?php echo $wo['lang']['all'];?></option>
+									<?php 
+										foreach ($wo['countries_name'] as $country_ids => $country) { 
+										$selected_c = (!empty($_GET['country']) && $_GET['country'] == $country_ids) ? ' selected': '';
+									?>
+									<option value="<?php echo $country_ids;?>" <?php echo $selected_c?>><?php echo $country;?></option>
+									<?php } ?>
+								</select>
+							</div>
+						</div>
+
+						<?php
+						$fields = Wo_GetUserCustomFields();
+						if (count($fields) > 0) {
+							foreach ($fields as $key => $wo['field']) {
+								$wo['field']['issearch'] = true;
+								echo Wo_LoadPage('setting/profile-fields');
+							}
+						}
+						?>
+
+						<script>
+						<?php
+							$age_from = 18;
+							if (!empty($_GET['age_from'])) {
+								$age_from = Wo_Secure( $_GET['age_from'] );
+							}
+							$age_to = 50;
+							if (!empty($_GET['age_to'])) {
+								$age_to = Wo_Secure( $_GET['age_to'] );
+							}
+						?>
+						$( function() {
+							$( "#slider-range" ).slider({
+							range: true,
+							min: 10,
+							max: 70,
+							values: [ <?php echo $age_from;?>, <?php echo $age_to;?> ],
+							slide: function( event, ui ) {
+								$( "#amount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+								$( "#age_from" ).val( ui.values[ 0 ] );
+								$( "#age_to" ).val( ui.values[ 1 ] );
+							}
+							});
+							$( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
+						});
+						</script>
+
+						<?php 
+							$selected_filterbyage_on = '';
+							$selected_filterbyage_off = 'checked';
+
+							$agefilter_style = "display: none;";
+							if (!empty($_GET['filterbyage'])) {
+								if ($_GET['filterbyage'] == 'yes') {
+									$selected_filterbyage_on = 'checked';
+									$selected_filterbyage_off = '';
+									$agefilter_style = "display: block;";
+								} else if ($_GET['filterbyage'] == 'no') {
+									$selected_filterbyage_on = '';
+									$selected_filterbyage_off = 'checked';
+								} 
+							}
+						?>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="filterbyage"><?php echo $wo['lang']['age']; ?></label>
+							<div class="pp_mat_input">
+								<div class="round_check">
+									<input type="radio" name="filterbyage" id="filterbyage-0" value="yes" onclick="$('.agefilter_hide').css({'display':'block'});" <?php echo $selected_filterbyage_on;?>>
+									<label class="radio-inline" for="filterbyage-0"><?php echo $wo['lang']['yes']; ?></label> 
+								</div>
+								<div class="round_check">
+									<input type="radio" name="filterbyage" id="filterbyage-1" value="no" onclick="$('.agefilter_hide').css({'display':'none'});" <?php echo $selected_filterbyage_off;?>>
+									<label class="radio-inline" for="filterbyage-1"><?php echo $wo['lang']['no']; ?></label>
+								</div>
+								<input type="text" id="amount" class="agefilter_hide age_number" readonly style="display:none;">
+							</div>
+						</div>
+
+						<div class="form-group col-lg-12 agefilter_hide" id="agefilter" style="<?php echo $agefilter_style;?>">
+							<div class="form-group">
+								<div id="slider-range"></div>
+								<input type="hidden" name="age_from" id="age_from" value="<?php echo $age_from;?>">
+								<input type="hidden" name="age_to" id="age_to" value="<?php echo $age_to;?>">
+							</div>
+						</div>
+
+						<div class="row">
+						<div class="col-md-6">
+							<?php 
+								$selected_verified_all = 'checked';
+								$selected_verified_on = '';
+								$selected_verified_off = '';
+								if (!empty($_GET['verified'])) {
+									if ($_GET['verified'] == 'on') {
+										$selected_verified_on = 'checked';
+										$selected_verified_all = '';
+									} else if ($_GET['verified'] == 'off') {
+										$selected_verified_off = 'checked';
+										$selected_verified_all = '';
+									} 
+								}
+							?>
+							<label class="col-md-12"><?php echo $wo['lang']['verified'];?></label>
+							<div class="wo_radio_btn">
+								<label class="radio-inline" for="verified-0">
+									<input type="radio" name="verified" id="verified-0" value="all" <?php echo $selected_verified_all;?>>
+									<span title="<?php echo $wo['lang']['all']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg>
+									</span>
+								</label> 
+								<label class="radio-inline" for="verified-1">
+									<input type="radio" name="verified" id="verified-1" value="on" <?php echo $selected_verified_on;?>>
+									<span title="<?php echo $wo['lang']['verified']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg>
+									</span>
+								</label>
+								<label class="radio-inline" for="verified-2">
+									<input type="radio" name="verified" id="verified-2" value="off"<?php echo $selected_verified_off;?>>
+									<span title="<?php echo $wo['lang']['unverified']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" /></svg>
+									</span>
+								</label>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<?php 
+								$selected_status_all = 'checked';
+								$selected_status_on = '';
+								$selected_status_off = '';
+								if (!empty($_GET['status'])) {
+									if ($_GET['status'] == 'on') {
+										$selected_status_on = 'checked';
+										$selected_status_all = '';
+									} else if ($_GET['status'] == 'off') {
+										$selected_status_off = 'checked';
+										$selected_status_all = '';
+									} 
+								}
+							?>
+							<label class="col-md-12"><?php echo $wo['lang']['status'];?></label>
+							<div class="wo_radio_btn">
+								<label class="radio-inline" for="status-0">
+									<input type="radio" name="status" id="status-0" value="all" <?php echo $selected_status_all;?>>
+									<span title="<?php echo $wo['lang']['all']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg>
+									</span>
+								</label> 
+								<label class="radio-inline" for="status-1">
+									<input type="radio" name="status" id="status-1" value="on" <?php echo $selected_status_on;?>>
+									<span title="<?php echo $wo['lang']['online']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-online"><path d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" /></svg>
+									</span>
+								</label>
+								<label class="radio-inline" for="status-2">
+									<input type="radio" name="status" id="status-2" value="off"<?php echo $selected_status_off;?>>
+									<span title="<?php echo $wo['lang']['offline']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-offline"><path d="M15,14C17.67,14 23,15.33 23,18V20H7V18C7,15.33 12.33,14 15,14M15,12A4,4 0 0,1 11,8A4,4 0 0,1 15,4A4,4 0 0,1 19,8A4,4 0 0,1 15,12M5,9.59L7.12,7.46L8.54,8.88L6.41,11L8.54,13.12L7.12,14.54L5,12.41L2.88,14.54L1.46,13.12L3.59,11L1.46,8.88L2.88,7.46L5,9.59Z" /></svg>
+									</span>
+								</label>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<?php 
+								$selected_status_all_sex = 'checked';
+								$selected_status_male = '';
+								$selected_status_female = '';
+								if (!empty($_GET['gender'])) {
+									if ($_GET['gender'] == 'male') {
+										$selected_status_male = 'checked';
+										$selected_status_all = '';
+									} else if ($_GET['gender'] == 'female') {
+										$selected_status_female = 'checked';
+										$selected_status_all = '';
+									} 
+								}
+							?>
+							<label class="col-md-12"><?php echo $wo['lang']['gender'];?></label>
+							<div class="wo_radio_btn">
+								<label class="radio-inline" for="gender-0">
+									<input type="radio" name="gender" id="gender-0" value="all" <?php echo $selected_status_all_sex;?>>
+									<span title="<?php echo $wo['lang']['all']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg>
+									</span>
+								</label> 
+								<label class="radio-inline" for="gender-1">
+									<input type="radio" name="gender" id="gender-1" value="male" <?php echo $selected_status_male;?>>
+									<span title="<?php echo $wo['lang']['male']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-male"><path d="M9,9C10.29,9 11.5,9.41 12.47,10.11L17.58,5H13V3H21V11H19V6.41L13.89,11.5C14.59,12.5 15,13.7 15,15A6,6 0 0,1 9,21A6,6 0 0,1 3,15A6,6 0 0,1 9,9M9,11A4,4 0 0,0 5,15A4,4 0 0,0 9,19A4,4 0 0,0 13,15A4,4 0 0,0 9,11Z" /></svg>
+									</span>
+								</label>
+								<label class="radio-inline" for="gender-2">
+									<input type="radio" name="gender" id="gender-2" value="female" <?php echo $selected_status_female;?>>
+									<span title="<?php echo $wo['lang']['female']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-female"><path d="M12,4A6,6 0 0,1 18,10C18,12.97 15.84,15.44 13,15.92V18H15V20H13V22H11V20H9V18H11V15.92C8.16,15.44 6,12.97 6,10A6,6 0 0,1 12,4M12,6A4,4 0 0,0 8,10A4,4 0 0,0 12,14A4,4 0 0,0 16,10A4,4 0 0,0 12,6Z" /></svg>
+									</span>
+								</label>
+								<div class="clear"></div>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<?php 
+								$selected_status_image_all = 'checked';
+								$selected_status_image_y = '';
+								$selected_status_image_n = '';
+								if (!empty($_GET['image'])) {
+									if ($_GET['image'] == 'yes') {
+										$selected_status_image_y = 'checked';
+										$selected_status_image_all = '';
+									} else if ($_GET['image'] == 'no') {
+										$selected_status_image_n = 'checked';
+										$selected_status_image_all = '';
+									} 
+								}
+							?>
+							<label class="col-md-12"><?php echo $wo['lang']['profile_picture'];?></label>
+							<div class="wo_radio_btn">
+								<label class="radio-inline" for="image-0">
+									<input type="radio" name="image" id="image-0" value="all" <?php echo $selected_status_image_all;?>>
+									<span title="<?php echo $wo['lang']['all']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-users"><path d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" /></svg>
+									</span>
+								</label>
+								<label class="radio-inline" for="image-1">
+									<input type="radio" name="image" id="image-1" value="yes" <?php echo $selected_status_image_y;?>>
+									<span title="<?php echo $wo['lang']['yes']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-camera"><path d="M4,4H7L9,2H15L17,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9Z" /></svg>
+									</span>
+								</label>
+								<label class="radio-inline" for="image-2">
+									<input type="radio" name="image" id="image-2" value="no" <?php echo $selected_status_image_n;?>>
+									<span title="<?php echo $wo['lang']['no']; ?>" data-toggle="tooltip">
+										<svg fill="#009da0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-camera-off"><path d="M1.2,4.47L2.5,3.2L20,20.72L18.73,22L16.73,20H4A2,2 0 0,1 2,18V6C2,5.78 2.04,5.57 2.1,5.37L1.2,4.47M7,4L9,2H15L17,4H20A2,2 0 0,1 22,6V18C22,18.6 21.74,19.13 21.32,19.5L16.33,14.5C16.76,13.77 17,12.91 17,12A5,5 0 0,0 12,7C11.09,7 10.23,7.24 9.5,7.67L5.82,4H7M7,12A5,5 0 0,0 12,17C12.5,17 13.03,16.92 13.5,16.77L11.72,15C10.29,14.85 9.15,13.71 9,12.28L7.23,10.5C7.08,10.97 7,11.5 7,12M12,9A3,3 0 0,1 15,12C15,12.35 14.94,12.69 14.83,13L11,9.17C11.31,9.06 11.65,9 12,9Z" /></svg>
+									</span>
+								</label>
+								<div class="clear"></div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="form-group last-sett-btn modal-footer">
+						<button type="submit" class="btn btn-main setting-panel-mdbtn">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> 
+							<?php echo $wo['lang']['search'];?>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+  jQuery(document).ready(function($) {
+    //Load more users
+    $(".load-more-users").click(function(event) {
+      var form = document.getElementById('search_form');
+	  var formdata = new FormData(form);
+      var u_offset = ($("[data-search-type=user]").length > 0) ? $("[data-search-type=user]").last().attr('data-id') : 0;
+      $.ajax({
+      	processData: false,
+        url: Wo_Ajax_Requests_File()+'?f=load-more-users&offset='+u_offset,
+        type: 'POST',
+        dataType: 'json',
+        data: formdata,
+        contentType: false,
+        success:function(data){
+          if (data['status'] == 200) {
+            $("#users-cont").append(data['html'])
+          }else{$(".load-more-users").remove()}
+        }
+      })    
+    });
+    //Load more groups
+    $(".load-more-groups").click(function(event) {
+      var g_offset = ($("[data-search-type=group]").length > 0) ? $("[data-search-type=group]").last().attr('data-id') : 0;
+      $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'load-more-groups',offset:g_offset,query:$("#query").val()},
+        success:function(data){
+          if (data['status'] == 200) {
+            $("#groups-cont").append(data['html'])
+          }else{$(".load-more-groups").remove()}
+        }
+      })   
+    });
+    //Load more pages
+    $(".load-more-pages").click(function(event) {
+      var p_offset = ($("[data-search-type=page]").length > 0) ? $("[data-search-type=page]").last().attr('data-id') : 0;
+      $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'load-more-pages',offset:p_offset,query:$("#query").val()},
+        success:function(data){
+          if (data['status'] == 200) {
+            $("#pages-cont").append(data['html'])
+          }else{$(".load-more-pages").remove()}
+        }
+      })   
+    });
+
+    
+    $("#input").hover(function(event) {
+      $("#input").focus()
+    });
+
+  });
+</script>

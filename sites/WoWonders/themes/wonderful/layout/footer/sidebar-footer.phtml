@@ -1,0 +1,61 @@
+<div class="page-margin">
+   <div class="footer-wrapper sidebar">
+      <hr>
+      <ul class="list-inline <?php echo Wo_RightToLeft('pull-left');?>">
+         <li><a data-ajax="?link1=terms&type=about-us" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=about-us');?>"><?php echo $wo['lang']['about'];?></a></li><li> - </li>
+         <?php  if ($wo['config']['blogs'] == 1) { ?><li><a href="<?php echo Wo_SeoLink('index.php?link1=blogs');?>"><?php echo $wo['lang']['blog'];?></a></li><li> - </li>
+         <?php } ?>
+         <li>
+         <div class="dropdown dropup">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+             <?php echo $wo['lang']['more'];?> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" style="width: auto; min-width: 100px; font-size: 11px;">
+               <li><a data-ajax="?link1=contact-us" href="<?php echo Wo_SeoLink('index.php?link1=contact-us');?>"><?php echo $wo['lang']['contact_us'];?></a></li>
+               <li><a data-ajax="?link1=terms&type=privacy-policy" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=privacy-policy');?>"><?php echo $wo['lang']['privacy_policy'];?></a></li>
+               <li><a data-ajax="?link1=terms&type=terms" href="<?php echo Wo_SeoLink('index.php?link1=terms&type=terms');?>"><?php echo $wo['lang']['terms_of_use'];?></a></li>
+               <?php if ($wo['config']['developers_page'] == 1)  { ?>
+               <li><a data-ajax="?link1=developers" href="<?php echo Wo_SeoLink('index.php?link1=developers');?>"><?php echo $wo['lang']['developers'];?></a></li>
+               <?php } ?>
+               <?php
+               $pages = Wo_GetCustomPages();
+               if (count($pages) > 0) {
+                  foreach ($pages as $key => $page) {
+                  ?>
+                  <li><a href="<?php echo Wo_SeoLink('index.php?link1=site-pages&page_name=' . $page['page_name']);?>"><?php echo $page['page_title'];?></a></li>
+                  <?php
+                 }
+               }
+               ?>
+            </ul>
+         </div>
+         </li> 
+      </ul>
+      <div class="<?php echo Wo_RightToLeft('pull-right');?>">
+         <div class="dropdown dropup">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <i class="zmdi zmdi-translate"></i> <?php echo $wo['lang']['language'];?> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" style="width: 60px; min-width: 80px; font-size: 11px;">
+               <?php
+               $langs = Wo_LangsNamesFromDB();
+               if (count($langs) > 0) {
+                   foreach ($langs as $key => $wo['langs']) {
+                     $language = $wo['langs'];
+                     $languages_name = ucfirst($wo['langs']);
+                     $link = ($wo['config']['seoLink'] == 1) ? '?lang=' . $language: '?&lang=' . $language;
+                ?>
+               <li><a href="<?php echo $link;?>" rel="nofollow"><?php echo $languages_name;?></a></li>
+               <?php } } ?>
+            </ul>
+         </div>
+      </div>
+      <div class="clear"></div>
+      <div class="footer-powered">
+         <p><?php 
+         $copy = str_replace('{site_name}', $wo['config']['siteName'], $wo['lang']['copyrights']);
+         echo $copy = str_replace('{date}', date('Y'), $copy);
+         ?></p>
+      </div>
+   </div>
+</div>

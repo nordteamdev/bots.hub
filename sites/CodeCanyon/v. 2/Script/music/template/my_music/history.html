@@ -1,0 +1,153 @@
+
+<!-------------------------- RECENTLY PLAYED (History) [ TEMPLATE ] -------------------->
+
+{strip}
+{if $count <= 0}
+
+<div class="pplmus_stub">
+  <div class="mus_content_w">
+    <div class="noMusic_c">
+      <div class="ppl_empty_layer_hld">
+        <div class="history_empty_layer_cnt">
+          <div class="portlet-i_h">
+            Here are displayed  
+            <br>
+            all played songs
+          </div>
+          
+          <div class="mb-15">
+            
+            <span>
+              Press button
+            </span>
+            <span class="mus_stub_play">
+            </span>
+            
+            <span>
+              to start 
+              <br>
+              playback.
+            </span>
+            
+          </div>
+          <img alt="" src="{$this->musicimg}mus_stub_playlist.png">
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    
+    {else}
+    
+    
+    <div class="mus_history_cnt">
+      <ol>
+        
+        {assign var=todaycl value=''} 
+        {assign var=nmt value=''} 
+        {assign var=date value=''} 
+        {assign var=day value=''} 
+        
+        {foreach $query as $result}
+        {assign var=s_id value={$result.s_id}} 
+        {assign var=s_path value={$result.path}} 
+        {assign var=s_cover value={$result.cover}} 
+        {assign var=s_time value={$result.time}} 
+        {assign var=artist value={$result.artist}} 
+        {assign var=song value={$result.title}} 
+        {assign var=album value={$result.album}} 
+        {assign var=track_video value={$result.video}} 
+        {assign var=track_lang value={$result.language}}
+        {assign var=download value=''}
+        {if $track_lang === $this->show_prch_icon}
+        {assign var=download value='__download'}
+        {/if}
+        
+        
+        {if $curr_year === date('Y', $result.listen)}
+        {$date=date('j F', $result.listen)}
+        {$day=explode(' ', $date)}
+        {else}
+        {$date=date('d.m.Y', $result.listen)}
+        {$day=explode('.', $date)}
+        {/if}
+
+        
+        {if $day[0] === $today}
+        {$date='Today'}
+        {$todaycl='today'}
+        {$nmt='__no-mt'}
+
+        {elseif $day[0] === $yday}
+        {$date='Yesterday'}
+
+        {/if}
+
+        {if $condition !== $day[0]}
+        
+        <div class="mus_timestamp {$nmt}">
+          <div class="mus_timestamp_cnt">
+            <div class="mus_timestamp_tx {$todaycl}">
+              {$date}
+            </div>
+          </div>
+        </div>
+        {/if}
+        
+        
+        <li target="#p0m_sec_history_{$s_id}">
+          <div class="mus-tr_i __has-video soh-s {$download}" id="tri_m_sec_history_{$s_id}">
+            <div class="mus-tr_hld">
+              <span class="mus-tr_play __play js-mus-tr_play" id="p0m_sec_history_{$s_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$s_path}","cover":"{$s_cover}"{literal}}{/literal}'>
+              </span>
+              {if $download !== ''}
+              <span class="mus-tr_download js-mus-tr_download" title="Download">
+              </span>
+              {/if}
+              <div class="mus-tr_cnt">
+                <a class="mus-tr_a mus-tr_artist">
+                  {$artist}
+                </a>
+               &nbsp;&#8211;&nbsp;
+                <a class="mus-tr_a mus-tr_song">
+                  {$song}
+                </a>
+                <span class="foh-s mus-tr_info">
+                  &nbsp;from&nbsp;
+                  <a class="mus-tr_a mus-tr_album">
+                    <span class="mus-tr_album-ic ic10_album">
+                    </span>
+                    {$album}
+                  </a>
+                </span>
+              </div>
+              <div class="mus-tr_right-controls foh-s" id="rc_m_sec_history_{$s_id}">
+                <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+                </span>
+                <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+                </span>
+              </div>
+              <span class="mus-tr_time">
+                {$s_time}
+              </span>
+            </div>
+            {if $track_video > '0'}
+            <div class="mus-tr_video" data-showVideo="true" data-video="{$track_video}">
+            </div>
+            {/if}
+          </div>
+      </li>
+      {$condition=$day[0]} 
+      
+      {/foreach}
+    </ol>
+    </div>
+    <div id="history_page_active">
+    </div>
+    <div style="position:relative;bottom:-10px;padding:20px;left:45%;" id="history_dmm_scr_load">
+    </div>
+    {/if}
+    {/strip}
+    

@@ -1,0 +1,224 @@
+{strip}
+  {assign var=c_tr_w value=''}
+  {assign var=c_tr_h value=''}
+
+  {assign var=visible_videos value=0}
+  {assign var=widget_enabled value=0}
+  
+{assign var=club_id value=$clubid}
+{if $clubid > 0}
+{assign var=feed_author value={$clubid}}
+{assign var=isclub value=true}
+{else}
+{assign var=isclub value=false}
+{assign var=feed_author value={$res.uid}}
+{/if}
+  
+  
+  		{if $res.community == 'yes' && !$isclub && $index_feed > 0}
+		{$clubid = $res.parent_id}
+		{/if}
+<div class="feed large _nopad {if $video_c > 6}_mbottom4{/if}">
+
+
+	<header>
+	
+	
+    <div class="feed_ava">
+        
+		{if $clubid > 0}
+		
+		<a href="/community/{$clubid}" hrefattr="true">
+            <div><img class="feed_ava_img" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+            </div>
+        </a>
+		
+		{else}
+		
+		<a href="/user/{$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+		
+		{/if}
+    </div>
+    <div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+        <a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+    </div>
+	
+	
+        <div class="feed_h">
+		
+		
+		{if $clubid > 0}
+		
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+		{/if}
+		
+		
+          {if $video_c > 1} {$this->lang['added']} {$video_c} {$this->lang['videos']} {else} {$this->lang['added_single_video']} {/if} 
+		</div>
+	
+	
+	</header>
+
+
+
+
+
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+         
+
+        <div class="feed_b">
+
+
+           
+			{if $video_c == 1}
+			<div class="feed_photos_collage_justified __1">
+		{else if $video_c <= 5 && $video_c > 1}
+		<div class="collage_full_width feed_mediavideos feed_videos_collage_justified __{$video_c}">
+		{else}
+		<div class="collage_full_width feed_mediavideos feed_videos_collage_justified __mmm">
+		{/if}
+ 
+				
+	
+		{foreach $m_videos as $vd_id}
+		
+
+	   {assign var=kl_res value={$this->gMultiPhotosKlass($vd_id)}}
+           {assign var=kl_count value={$this->smarty_explode_data($kl_res,',','0')}}
+           {assign var=kl_eu value={$this->smarty_explode_data($kl_res,',','1')}}
+		   		
+			{if $clubid > 0}{assign var=video_details value=$this->getGroupVideoDetails($vd_id)}	{/if}
+	{if $video_c == 1}
+		{assign $widget_enabled $widget_enabled++ nocache}
+		{assign var=video_info value=$this->str_smilies($this->getPhotoDescription($vd_id))}
+                   
+     <div class="feed_photo_descr ellip">{$video_info} {$this->checkForTranslating($video_info)}</div>   
+	 
+		<div class="feed_videos_cnt">
+		
+		{if $clubid > 0}
+		
+		
+<div id="videojw_{$vd_id}" style="display:none;"></div>
+    <div class="vid-card vid-card__xl">
+        <div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_p":"{$videos_dir}{$clubid}/","vd_clubid":"{$clubid}","vd_title":"{$video_details.vd_name}","vd_fn":"{$video_details.filename}","vd_i":"{$vd_id}","vd_ext":"{$video_details.type}"{rdelim}'>
+            <div class="vid-card_cnt_w">
+                <div class="video-card-cover" style="background-image:url(/videoCover?v={$vd_id}&clubid={$clubid});"></div><i class="vid_play"></i><i class="vid-card_duration">{$video_details.vd_duration}</i></div>
+        </div>
+        <div class="ellip video-card_n-w"><a href="/video?vid={$vd_id}&cmd=open&clubid={$clubid}" data-ivideo="1" class="video-card_n ellip">{$video_details.vd_name}</a>
+            <div class="video-card_info"><span class="video-card_info_i">{$video_details.views}&nbsp;{$this->lang['video_views']}</span></div>
+        </div>
+    </div>
+
+		
+		
+		{else}
+		
+			<a href="/photo?q={$res.uid}&show=single&from=medium&o={b_encode($ph_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="image-hover">
+				<img class="feed_single_img {if $is_gif}gifplayer{/if}" {if $is_gif}data-gif-id="gif-{$ph_id}" data-gif="/getPhoto?p={$ph_id}&sz=large&g={$ugender}" data-wait="true" data-playon="hover"{/if}  src="/getPhoto?p={$ph_id}&sz=medium&feed=1">
+			
+			</a>
+			
+		{/if}	
+			
+	</div>
+
+              
+
+		{else}
+		
+		
+
+			{assign var=comm_count value=$this->getCommentsCount($vd_id,'video',$clubid)}
+<div class="ce11 this_wall_family micro noclone soh-s">
+
+			<div id="videojw_{$vd_id}" style="display:none;"></div>
+    <div class="vid-card vid-card__xl">
+	<img src="/videoCover?v={$vd_id}&clubid={$clubid}" class="none-important" />
+        <div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_p":"{$videos_dir}{$clubid}/","vd_clubid":"{$clubid}","vd_title":"{$video_details.vd_name}","vd_fn":"{$video_details.filename}","vd_i":"{$vd_id}","vd_ext":"{$video_details.type}"{rdelim}'>
+            <div class="vid-card_cnt_w">
+                <div class="video-card-cover" style="background-image:url(/videoCover?v={$vd_id}&clubid={$clubid});"></div><i class="vid_play"></i><i class="vid-card_duration">{$video_details.vd_duration}</i></div>
+        </div>
+
+		  </div>
+		<div class="profilephoto-wall widgets foh-s">
+
+
+<div class="klass_comm_wdg_p __{$video_details.id}" data-community="true">
+<div data-callback="phwallLikeClick" data-itemcateg="video" data-photolikesdropdown="{$video_details.id}" data-appendtooltipto=".klass_comm_wdg_p" data-log-click='{ldelim}"community":"{$clubid}","type":"like","item":"video","itemid":"{$video_details.id}"{rdelim}' class="ic ic_klass_wd {if $this->likedByMe($video_details.id,'video',1)}__active{/if}"></div>
+<span data-pplikt="ppo_{$video_details.id}" data-itemcateg="video" data-popup-people-likedphoto="1" data-photolikesdropdown="{$video_details.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$this->getLikesCount($video_details.id,'video',1)}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$video_details.id}" data-categ="video" data-community="true" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$this->getCommentsCount($video_details.id,'video',1)}</span>
+</div>
+
+</div>
+
+
+		  {if $video_c > 6 && $visible_videos == 5}
+			 <a class="overlay_more_photos" data-ivideo="1" href="/video?cmd=open&vid={$video_details.id}&playlist={$all_vv_id}&clubid={$clubid}" rel="tipsy" title="{$this->lang['Open_all']} {$video_c} {$this->lang['videos']}"><div class="fpc42">+{$video_c-6}</div></a>
+			 {/if}
+
+			</div>
+
+		
+			
+			{$visible_videos = $visible_videos+1}
+	
+		
+		
+{/if}
+
+			{/foreach}
+			
+			
+            </div>
+			
+			
+			</div>
+        </div>
+	
+
+	{if $widget_enabled}
+        <div class="feed_f">
+	{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+	{/if}
+   
+</div>
+	{if $widget_enabled}
+<script>
+var $feed_id = '{$res.id}', $itemid = '{$vd_id}', $author_id = '{$res.uid}', clubid = '{$clubid}';
+{literal}
+
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget '+ ( clubid ? 'incommunity' : '')).attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'video',
+						{'width':'75%','height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/if}
+{/strip}

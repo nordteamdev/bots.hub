@@ -1,0 +1,54 @@
+<div class="row top-news-list" id="<?php echo $fl['latest_news_data']['news']['id'];?>">
+   <div class="col-md-11">
+      <div class="news latest-news-list" data-id="<?php echo $fl['latest_news_data']['news']['id'];?>">
+         <div class="col-sm-5">
+            <div class="latest-news-img">
+                <a href="<?php echo $fl['latest_news_data']['news']['url'];?>">
+                  <img src="<?php echo($fl['latest_news_data']['news']['small_image']);?>" alt="<?php echo $fl['latest_news_data']['news']['title'];?> Image">
+                </a>
+            </div>
+         </div>
+         <div class="col-sm-7 no-padding-left no-padding-right">
+            <div class="latest-news-title">
+               <a href="<?php echo $fl['latest_news_data']['news']['url'];?>">
+                  <h4><?php echo $fl['latest_news_data']['news']['title'];?></h4>
+               </a>
+            </div>
+            <div class="latest-news-info">
+               <span class="latest-news-time">
+               <i class="fa fa-clock-o"></i> 
+               <?php
+                  $fl['latest_news_data']['news']['posted'] = date('n, M Y h:i A',$fl['latest_news_data']['news']['time']);
+                  echo $fl['latest_news_data']['news']['posted'];
+               ?>
+               </span>
+               <span class="latest-news-time">
+               {{LANG by}} <a href="<?php echo $fl['latest_news_data']['news']['publisher']['url'];?>"><?php echo $fl['latest_news_data']['news']['publisher']['name'];?></a> 
+               </span>
+            </div>
+            <div class="latest-news-disc">
+               <?php echo mb_substr($fl['latest_news_data']['news']['description'], 0, 200, "UTF-8") . '..';?>
+            </div>
+         </div>
+         <div class="clear"></div>
+         <?php if (isset($fl['latest_news_data']['last']) && $fl['latest_news_data']['last'] == false): ?>
+         <hr class="margin-top-20">
+         <?php endif ?>
+      </div>
+   </div>
+   <div class="col-md-1">
+      <div class="dropdown">
+         <a class="dropdown-toggle pointer" type="button" data-toggle="dropdown">
+            <i class="material-icons">more_vert</i>
+         </a>
+         <ul class="dropdown-menu custom-dropdown">
+            <li><a href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($fl['latest_news_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-facebook"></i> {{LANG facebook}}</a></li>
+            <li><a href="https://plus.google.com/share?url=<?php echo urlencode($fl['latest_news_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-google"></i> {{LANG google_plus}}</a></li>
+            <li><a href="http://twitter.com/intent/tweet?text=<?php echo $fl['latest_news_data']['news']['title']?>&url=<?php echo urlencode($fl['latest_news_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-twitter"></i> {{LANG twitter}}</a></li>
+           <li class="pointer"><a onclick="FL_ShareToEmail('<?php echo $fl['latest_news_data']['news']['url']?>');" target="_blank"><i class="fa fa-fw fa-envelope-o"></i> {{LANG email}}</a></li>
+            <li><a href="http://www.reddit.com/submit?url=<?php echo urlencode($fl['latest_news_data']['news']['url'])?>" target="_blank"><i class="fa fa-fw fa-reddit"></i> {{LANG reddit}}</a></li>
+         </ul>
+      </div>
+      <div class="clear"></div>
+   </div>
+</div>

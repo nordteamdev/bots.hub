@@ -1,0 +1,1728 @@
+<?php
+$IsOwner       = Wo_IsOnwer($wo['user_profile']['user_id']);
+$IsOwnerUser   = Wo_IsOnwerUser($wo['user_profile']['user_id']);
+
+if ($wo['loggedin'] && $IsOwnerUser) {
+   $wo['pr_complition'] = Wo_ProfileCompletion();
+}
+?>
+<style>.post-youtube iframe {overflow: hidden !important; height: 362px !important;}</style>
+<div class="row page-margin profile wo_user_profile" data-page="timeline" data-id="<?php echo $wo['user_profile']['user_id'];?>">
+	<div class="profile-container">
+		<div class="card hovercard" style="/*margin-bottom: 0px;*/">
+			<div class="cardheader user-cover">
+				<?php if($IsOwner === true) { ?>
+					<form action="#" method="post" class="profile-cover-changer">
+                        <div class="input-group when-notedit">
+                            <span class="input-group-btn">
+                                <span class="btn btn-upload-image btn-file">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                                    <input type="file" name="cover" accept="image/*" onchange="Wo_UpdateProfileCover();">
+                                </span>
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-btn when-notedit">
+                                <span class="btn btn-upload-image btn-file" onclick="Wo_StartRepositioner();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crop"><path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"></path><path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"></path></svg>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="input-group when-edit" style="display: none;">
+                            <span class="input-group-btn">
+                                <span class="btn btn-upload-image btn-file" onclick="Wo_SubmitRepositioner();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="input-group when-edit" style="display: none;">
+                            <span class="input-group-btn">
+                                <span class="btn btn-upload-image btn-file" onclick="Wo_StopRepositioner();">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </span>
+                            </span>
+                        </div>
+                        <input type="hidden" name="user_id" value="<?php echo $wo['user_profile']['user_id'];?>">
+					</form>
+                    <form class="cover-position-form hidden" method="post">
+                        <input class="cover-position" name="pos" value="0" type="hidden">
+                        <input class="image_type" name="image_type" value="0" type="hidden">
+                        <input name="cover_image" id="cover-input-image" value="<?php echo $wo['user_profile']['cover_org']?>" type="hidden">
+                        <input name="real_image" id="full-input-image" value="<?php echo Wo_GetMedia($wo['user_profile']['cover_full']); ?>" type="hidden">
+                    </form>
+				<?php } ?>
+				<div class="user-cover-uploading-container"></div>
+				<div class="user-cover-uploading-progress">
+					<div class="pace-activity-parent"><div class="pace-activity"></div></div>
+				</div>
+				<div class="user-cover-reposition-container">
+					<div class="user-cover-reposition-w">
+						<img id="cover-image" src="<?php echo $wo['user_profile']['cover']?>" alt="<?php echo $wo['user_profile']['name']?> Cover Image" onclick="Wo_OpenProfileCover('<?php echo $wo['user_profile']['cover_org']?>');" class="pointer"/>
+					</div>
+					<div class="user-reposition-container">
+						<img id="full-image" src="<?php echo Wo_GetMedia($wo['user_profile']['cover_full'])?>" alt="User Image"/>
+						<div class="user-reposition-dragable-container" align="center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-move"><polyline points="5 9 2 12 5 15"></polyline><polyline points="9 5 12 2 15 5"></polyline><polyline points="15 19 12 22 9 19"></polyline><polyline points="19 9 22 12 19 15"></polyline><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg>
+							<?php echo $wo['lang']['drag_to_re']; ?>
+						</div>
+						<div class="user-cover-uploading-container user-repositioning-icons-container1"></div>
+						<div class="user-cover-uploading-progress user-repositioning-icons-container"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="problackback"></div>
+				
+			<div class="propicname">
+                <div class="user-avatar flip" id="profile-pic-mobile">
+                    <div class="user-avatar-uploading-container" style="border-radius: 50%">
+                        <div class="user-avatar-uploading-progress">
+                            <i class="fa fa-spinner fa-spin fa-spin progress-icon" data-icon="spin"></i>
+                        </div>
+                    </div>
+                    <img id="updateImage-<?php echo $wo['user_profile']['user_id']?>" class="pointer timelineuserpropic" alt="<?php echo $wo['user_profile']['name']?> Profile Picture" src="<?php echo $wo['user_profile']['avatar']?>" onclick="Wo_OpenProfilePicture('<?php echo $wo['user_profile']['avatar_org']?>');"/>
+                    <?php if($IsOwner === true) { ?>
+                    <form action="#" method="post" class="profile-avatar-changer" id="propic-form-mobile" style="text-align: center;display: block;">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+								<span class="btn btn-upload-image btn-file" id="upload-propic-mobile">
+									<i class="zmdi zmdi-camera"></i>
+									<input type="file" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
+								</span>
+								<span class="btn btn-upload-image btn-file" onclick="OpenCropModal()">
+									<i class="zmdi zmdi-crop"></i>
+								</span>
+                            </span>
+                        </div>
+                        <input type="hidden" name="user_id" id="user-id" value="<?php echo $wo['user_profile']['user_id'];?>">
+                    </form>
+                    <?php } ?>
+				</div>
+                
+                <div class="infoz">
+                    <div class="title main-profile-user-title" id="timelineusernam">
+                        <a class="pronameblack" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'];?>" style="color: #fff;">
+                        <?php echo $wo['user_profile']['name']; ?>
+                        </a>
+                        <?php if($wo['user_profile']['verified'] == 1) {   ?>
+                        <i class="zmdi zmdi-badge-check verified-color" data-toggle="tooltip" data-placement="bottom" title="<?php echo $wo['lang']['verified_user'];?>"></i>
+                        <?php } ?>
+						<?php if (Wo_IsUserPro($wo['user_profile']['is_pro']) === true) { 
+						$user_pro_type = Wo_GetUserProType($wo['user_profile']['pro_type']);
+						?>
+						<span class="badge-pro" style="background-color:<?php echo $user_pro_type['color_name'];?>">
+							<a class="badge-link" href="<?php echo Wo_SeoLink('index.php?link1=go-pro');?>" title="<?php echo $user_pro_type['type_name'];?>" data-toggle="tooltip">PRO</a>
+						</span>
+						<?php } ?>
+                    </div>
+                    <div class="main-profile-user-option options-buttons prouseroptions">
+                        <span class="profile-message-btn">
+                        <?php echo Wo_GetMessageButton($wo['user_profile']['user_id']);?>
+                        </span>
+                        <span class="user-follow-button">
+                        <?php echo Wo_GetFollowButton($wo['user_profile']['user_id']);?>
+                        </span>
+						<?php if($IsOwnerUser === true) { ?>
+						<span class="btn-glossy">
+							<a class="btn btn-default" href="<?php echo Wo_SeoLink('index.php?link1=setting&user=' . $wo['user_profile']['username'] . '&page=general-setting') ?>" data-ajax="?link1=setting&user=<?php echo $wo['user_profile']['username'] . '&page=general-setting'; ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+								<?php echo $wo['lang']['edit'];?>
+							</a>
+						</span>
+						<span class="btn-glossy">
+							<a class="btn btn-default" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=activities');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'] . '&type=activities'; ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+								<?php echo $wo['lang']['activities'];?>
+							</a>
+						</span>
+						<?php } else { ?>
+						<?php if($wo['loggedin'] == true) { ?>
+						<span class="dropup btn-glossy">
+							<button class="btn btn-default dropdown-toggle" type="button" id="user-dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdownMenu">
+								<?php if($IsOwnerUser === false && $wo['loggedin'] == true) { ?>
+									<li>
+										<span class="menu-item">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-slash"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+											<a href="<?php echo $wo['marker'] . 'block_user=block'?>"><?php echo $wo['lang']['block_user'];?></a>
+										</span>
+									</li>
+								<?php } ?>
+                                <?php if($IsOwnerUser === false && $wo['loggedin'] == true) { ?>
+                                    <?php //if( !Wo_IsPoked( $wo['user_profile']['user_id'] , $wo['user']['user_id'] ) ) { ?>
+									<li id="pokebutton" onclick="Wo_RegisterPoke(<?php echo $wo['user_profile']['user_id'];?>,<?php echo $wo['user']['user_id'];?>)">
+										<span class="menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-slash" width="24" height="24" viewBox="0 0 24 24">   <path fill="currentColor" d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z" /></svg>
+                                            <span><span class="pointer"><?php echo $wo['lang']['poke_user'];?></span></span>
+										</span>
+									</li>
+                                    <?php //} ?>
+								<?php } ?>
+								<?php if($IsOwnerUser === false && $wo['loggedin'] == true && !Wo_IsFamilyMemberExists($wo['user']['id'],$wo['user_profile']['id'],false)) { ?>
+									<li id="open_add_to_family_modal">
+										<span class="menu-item">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" style="margin: -4px 11px auto 2px;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+											<span onclick="$('#add_to_family').modal('show');"><span class="pointer"><?php echo $wo['lang']['add_to_family'];?></span></span>
+										</span>
+									</li>
+								<?php } ?>
+								<?php if($wo['loggedin'] == true && $IsOwner) { ?>
+									<li id="open_add_to_family_modal">
+										<span class="menu-item">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
+											<a href="<?php echo Wo_SeoLink('index.php?link1=setting&user=' . $wo['user_profile']['username'] . '&page=general-setting') ?>"><?php echo $wo['lang']['edit'];?></a>
+										</span>
+									</li>
+								<?php } ?>
+								<?php if ($wo['loggedin'] && !Wo_IsAdmin() && $wo['user']['id'] != $wo['user_profile']['id'] && !Wo_IsAdmin($wo['user_profile']['id'])): ?>
+									<?php if (!Wo_IsReportExists($wo['user_profile']['id'],'user')): ?>
+										<li id="report_status" onclick="$('#report_profile').modal('show');">
+											<span class="menu-item">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+												<span><?php echo $wo['lang']['report_user']; ?></span>
+											</span>
+										</li>
+									<?php else: ?>
+										<li id="report_status" onclick="Wo_ReportProfile(<?php echo $wo['user_profile']['id']; ?>,false);">
+											<span class="menu-item">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+												<span><?php echo $wo['lang']['unreport']; ?></span>
+											</span>
+										</li>
+									<?php endif; ?>
+								<?php endif;?>
+							</ul>
+						</span>
+						<?php } ?>
+						<?php } ?>
+                    </div>
+                </div>
+				</div>
+
+        </div>
+		
+		<div class="profile-container name-cont-mobile">
+				<div id="profilenav">
+		<ul class="cusscrolz">
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'];?>">
+		<span><?php echo $wo['lang']['timeline'];?></span></a></li>
+		
+		<!--<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=albums&user=' . $wo['user_profile']['username']);?>" data-ajax="?link1=albums&user=<?php echo $wo['user_profile']['username'];?>">
+		<span><?php echo $wo['lang']['albums'];?></span></a></li>-->
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=groups');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=groups">
+		<span><?php echo $wo['lang']['groups'];?></span></a></li>
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=likes');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=likes">
+		<span><?php echo $wo['lang']['likes'];?></span></a></li>
+		
+		<?php if ($wo['config']['connectivitySystem'] == 1) {?>
+			<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers">
+		<span><?php echo $wo['lang']['friends_btn'];?></span></a></li>	
+		<?php } ?>
+		
+		<?php if ($wo['config']['connectivitySystem'] == 0) {?>
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=following');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=following">
+		<span><?php echo $wo['lang']['following'];?></span></a></li>
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers">
+		<span><?php echo $wo['lang']['followers'];?></span></a></li>
+		<?php } ?>
+
+        <li>
+            <a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=photos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=photos">
+                <span><?php echo $wo['lang']['photos'];?></span>
+            </a>
+        </li>                    
+        <li>
+            <a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=videos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=videos">
+                <span><?php echo $wo['lang']['videos'];?></span>
+            </a>
+        </li>
+
+
+		</ul>
+		</div>
+		
+		
+				<div id="profilenav-mobile">
+		<ul class="cusscrolz">
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username'];?>">
+		<span><b><?php echo $wo['user_profile']['details']['post_count'];?></b></span>
+		<span class="split-link"><?php echo $wo['lang']['posts']; ?></span>
+		</a></li>
+		
+		<?php if ($wo['config']['connectivitySystem'] == 1) {?>
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=albums&user=' . $wo['user_profile']['username']);?>" data-ajax="?link1=albums&user=<?php echo $wo['user_profile']['username'];?>">
+		<span><b><?php echo $wo['user_profile']['details']['album_count'];?></b></span>
+		<span class="split-link"><?php echo $wo['lang']['albums'];?></span>
+		</a></li>
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers">
+		<span><b><?php echo $wo['user_profile']['details']['following_count'];?></b></span>
+		<span class="split-link"><?php echo $wo['lang']['friends_btn'];?></span>
+		</a></li>	
+		<?php } ?>
+		
+		<?php if ($wo['config']['connectivitySystem'] == 0) {?>
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=following');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=following">
+		<span><b><?php echo $wo['user_profile']['details']['following_count'];?></b></span>
+		<span class="split-link"><?php echo $wo['lang']['following'];?></span>
+		</a></li>
+		
+		<li>
+		<a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers">
+		<span><b><?php echo $wo['user_profile']['details']['followers_count'];?></b></span>
+		<span class="split-link"><?php echo $wo['lang']['followers'];?></span>
+		</a></li>
+		<?php } ?>
+		
+        <li>
+            <a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=photos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=photos">
+                <span class="split-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></span>
+                <span><?php echo $wo['lang']['photos'];?></span>
+            </a>
+        </li>                    
+        <li>
+            <a class="groupmenulist" href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=videos');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=videos">
+                <span class="split-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></span>
+                <span><?php echo $wo['lang']['videos'];?></span>
+            </a>
+        </li>
+
+		</ul>
+		</div>
+		
+		
+				
+            </div>
+	</div>
+    <div class="col-md-8">
+        <?php
+            if (isset($_GET['type'])) {
+            	if ($_GET['type'] == 'activities' && $IsOwner) {
+            		echo Wo_LoadPage('timeline/activities');
+            	} else if ($_GET['type'] == 'mutual_friends') {
+            ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item">
+         <i class="fa fa-fw fa-users"></i> <?php echo $wo['lang']['mutual_friends'];?>
+         </div>
+            <div id="following-list" class="setting-well">
+                     <?php
+                	if (Wo_CountMutualFriends($wo['user_profile']['user_id']) == 0) {
+                        echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_mutual_friends'] . '</h5>';
+                    } else {
+                        foreach (Wo_GetMutualFriends($wo['user_profile']['user_id'],'profile', 100) as $wo['UsersList']) {
+                            echo Wo_LoadPage('timeline/follow-list');
+                        }
+                    }
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php if ($wo['user_profile']['details']['following_count'] > 10) { ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer" onclick="Wo_GetMoreFollowing(<?php echo $wo['user_profile']['user_id'];?>);">
+            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_users']; ?></button>
+        </div>
+        <?php } ?>
+        <?php }  else if ($_GET['type'] == 'following') {
+            ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item">
+         <i class="fa fa-fw fa-users"></i><?php echo $wo['lang']['following'];?>
+         <span class="pull-right">
+            <a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=family_list');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=family_list">
+                <?php echo $wo['lang']['family_members']; ?>
+             </a> 
+         </span>
+         </div>
+            <div id="following-list" class="setting-well">
+                <?php
+                 if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])) {
+                    if ($wo['user_profile']['details']['following_count'] == 0) {
+                        echo '<h5 class="search-filter-center-text">' . $wo['lang']['not_following'] . '</h5>';
+                    } else {
+                        foreach (Wo_GetFollowing($wo['user_profile']['user_id'],'profile', 100) as $wo['UsersList']) {
+                            echo Wo_LoadPage('timeline/follow-list');
+                        }
+                    }
+                   }
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php if ($wo['user_profile']['details']['following_count'] > 10) { ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer" onclick="Wo_GetMoreFollowing(<?php echo $wo['user_profile']['user_id'];?>);">
+            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_users']; ?></button>
+        </div>
+        <?php } ?>
+        <?php } else if ($_GET['type'] == 'videos') { ?>
+			<div class="list-group profile-lists">
+				<div class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                	<?php 
+						echo $wo['lang']['videos'];
+					?> 
+				</div>
+				<div id="videos-list" class="user_media_list_section">
+                    <?php
+                        $video_stories = Wo_GetPosts(array('filter_by' => 'video','limit' => 10, 'publisher_id' => $wo['user_profile']['user_id'])); 
+
+                        if (count($video_stories) == 0) {
+                            echo '<h5 class="search-filter-center-text empty_state" style="margin:80px auto;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> ' . $wo['lang']['no_posts_found'] . '</h5>';
+                        } else {
+                            foreach ($video_stories as $wo['story']) {
+                                if(isset($wo['story']['postFile']) && !empty($wo['story']['postFile'])){
+                                    ?>
+                                    <div class="text-center video-data" data-video-id="<?php echo $wo['story']['post_id'];?>">
+                                        <a href="<?php echo $wo['story']['url'];?>" target="_blank">
+                                            <video><source src="<?php echo Wo_GetMedia($wo['story']['postFile']);?>" type="video/mp4"></video>
+                                        </a>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                    ?>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<?php if (count($video_stories) > 1) {  ?>
+				<div class="load-more">
+					<button class="btn btn-default text-center pointer" onclick="Wo_GetMoreVideos(<?php echo $wo['user_profile']['user_id'];?>);">
+					<i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_videos']; ?></button>
+				</div>
+			<?php } ?>
+            <?php } else if ($_GET['type'] == 'photos') { ?>
+			<div class="list-group profile-lists">
+				<div class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>                	<?php 
+						echo $wo['lang']['photos'];
+					?> 
+				</div>
+				<div id="photos-list" class="user_media_list_section">
+                    <?php
+                        $photo_stories = Wo_GetPosts(array('filter_by' => 'photos','limit' => 10, 'publisher_id' => $wo['user_profile']['user_id'])); 
+                       
+                        if (count($photo_stories) == 0) {
+                            echo '<h5 class="search-filter-center-text empty_state" style="margin:80px auto;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> ' . $wo['lang']['no_posts_found'] . '</h5>';
+                        } else {
+                            foreach ($photo_stories as $wo['story']) {
+                                if(isset($wo['story']['postFile']) && !empty($wo['story']['postFile'])){
+                                    ?>
+                                    <div class="text-center photo-data" data-photo-id="<?php echo $wo['story']['post_id'];?>">
+                                        <a href="javascript:void(0)" onclick="Wo_OpenLightBox(<?php echo $wo['story']['post_id'];?>);">
+                                            <img src="<?php echo Wo_GetMedia( $wo['story']['postFile'] )?>" alt="image">
+                                        </a>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                        }
+                    ?>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<?php if (count($photo_stories) > 1) {  ?>
+				<div class="load-more">
+					<button class="btn btn-default text-center pointer" onclick="Wo_GetMorePhotos(<?php echo $wo['user_profile']['user_id'];?>);">
+					<i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_photos']; ?></button>
+				</div>
+			<?php } ?>
+        <?php } else if ($_GET['type'] == 'followers') { ?>
+         <div class="list-group profile-lists">
+         <div class="list-group-item"><i class="fa fa-fw fa-users"></i>  
+
+         <?php 
+         if ($wo['config']['connectivitySystem'] == 1) {
+            echo $wo['lang']['friends_btn'];
+         } else {
+            echo $wo['lang']['followers'];
+         }
+         ?> 
+         <span class="pull-right">
+            <a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=family_list');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=family_list">
+                <?php echo $wo['lang']['family_members']; ?>
+             </a> 
+         </span>
+         
+         </div>
+            <div id="followers-list" class="setting-well">
+                <?php
+                 if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])) {
+                    if ($wo['user_profile']['details']['followers_count'] == 0) {
+                        if ($wo['config']['connectivitySystem'] == 1) {
+                            echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_friends'] . '</h5>';
+                        } else {
+                            echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_followers'] . '</h5>';
+                        }
+                    } else {
+                        foreach (Wo_GetFollowers($wo['user_profile']['user_id'],'profile',100) as $wo['UsersList']) {
+                          echo Wo_LoadPage('timeline/follow-list');
+                        } 
+                    }
+                   }
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php if ($wo['user_profile']['details']['followers_count'] > 10) {  ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer" onclick="Wo_GetMoreFollowers(<?php echo $wo['user_profile']['user_id'];?>);">
+            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_users']; ?></button>
+        </div>
+        <?php } ?>
+        <?php } else if ($_GET['type'] == 'likes') { ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item"><i class="fa fa-fw fa-thumbs-up"></i> <?php echo $wo['lang']['likes'];?></div>
+            <div id="likes-list" class="setting-well">
+                <?php
+                    if (Wo_CountUserLikes($wo['user_profile']['user_id']) == 0) {
+                        echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_likes'] . '</h5>';
+                    } else {
+                        foreach (Wo_GetLikes($wo['user_profile']['user_id'],'profile',100) as $wo['PageList']) {
+                          echo Wo_LoadPage('timeline/likes-list');
+                        } 
+                    }
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php if (Wo_CountUserLikes($wo['user_profile']['user_id']) > 10) {  ?>
+        <div class="load-more">
+            <button class="btn btn-default text-center pointer" onclick="Wo_GetMoreUserLikes(<?php echo $wo['user_profile']['user_id'];?>);">
+            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_pages'];?></button>
+        </div>
+        <?php } ?>
+        <?php } else if ($_GET['type'] == 'groups') { ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item"><i class="fa fa-fw fa-users"></i> <?php echo $wo['lang']['groups'];?></div>
+            <div id="groups-list" class="setting-well">
+                <?php
+                    if (Wo_CountUserGroups($wo['user_profile']['user_id']) == 0) {
+                        echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_groups'] . '</h5>';
+                    } else {
+                        foreach (Wo_GetUsersGroups($wo['user_profile']['user_id'], 5000) as $wo['GroupList']) {
+                          echo Wo_LoadPage('timeline/groups-list');
+                        } 
+                    }
+                    ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php } else if ($_GET['type'] == 'family_list') { ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item"><i class="fa fa-fw fa-users"></i> <?php echo $wo['lang']['family_members']; ?>
+             <?php if ($wo['user_profile']['user_id'] == $wo['user']['id']): ?>
+                 <span class="pull-right">
+                     <a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=requests');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=requests">
+                     <?php echo $wo['lang']['requests']; ?>
+                     </a>
+                 </span>
+             <?php endif; ?>
+         </div>
+            <div id="family-members-list" class="setting-well">
+                <?php 
+                     $family = Wo_GetFamaly($wo['user_profile']['user_id'],false,1);
+                     $i      = 0;
+                     if (count($family) > 0) {
+                        foreach ($family as $wo['UsersList']) {
+                            if ($wo['UsersList']['type'] == 'family') {
+                                echo Wo_LoadPage('timeline/family-list');
+                                $i++;
+                            }
+                        }
+                     }
+
+                     if($i < 1){
+                        echo '<h5 class="search-filter-center-text"> ' . $wo['lang']['no_members_found'] . '</h5>';
+                     }
+                     
+
+                ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php } else if ($_GET['type'] == 'requests' && $wo['user_profile']['user_id'] == $wo['user']['id']) { ?>
+        <div class="list-group profile-lists">
+         <div class="list-group-item">
+         <i class="fa fa-fw fa-users"></i> 
+         <?php echo $wo['lang']['requests']; ?>
+         <span class="pull-right">
+             <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> 
+             <a  href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=family_list');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=family_list">
+                
+                 <?php echo $wo['lang']['family_members']; ?>
+             </a> 
+         </span>
+         </div>
+            <div id="family-requests-list" class="setting-well">
+                <?php 
+                     $family = Wo_GetFamaly($wo['user_profile']['user_id'],false,0,true);
+                     if (count($family) > 0) {
+                        $i      = 0;
+                        foreach ($family as $wo['UsersList']) {
+                            if ($wo['UsersList']['type'] == 'family' || $wo['UsersList']['type'] == 'rel_ship') {
+                                echo Wo_LoadPage('timeline/requests-list');
+                                $i++;
+                            }
+                        }
+                     }
+
+                     else{
+                        echo '<h5 class="search-filter-center-text"> ' . $wo['lang']['no_requests_found'] . '</h5>';
+                     }
+                ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php } else { 
+               header("Location: " . Wo_SeoLink('index.php?link1=timeline&u=' . $_GET['u'])); 
+               exit(); 
+            } ?>
+        <?php } else { echo Wo_GetPostPublisherBox(0, $wo['user_profile']['user_id']); ?>
+        <?php if ($wo['loggedin'] == true) { echo Wo_LoadPage('story/filter-by'); } ?>
+        <div class="posts_load">
+          <div id="posts" data-story-user="<?php echo $wo['user_profile']['user_id'];?>">
+            <div class="pinned-post-container">
+                <?php
+                    $pinedstory = Wo_GetPinnedPost($wo['user_profile']['user_id']);
+                    if (count($pinedstory) == 1) {
+                        foreach ($pinedstory  as $wo['story']) {
+                          echo Wo_LoadPage('story/content');
+                        }
+                    }
+                    ?>
+        </div>
+            <?php
+                $stories = Wo_GetPosts(array('filter_by' => 'all','publisher_id' => $wo['user_profile']['user_id'])); 
+                if (count($stories) == 0 && count($pinedstory) == 0) {
+                   echo Wo_LoadPage('story/profile-no-stories');
+                } else {
+                   foreach ($stories as $wo['story']) {
+                     echo Wo_LoadPage('story/content');
+                   }
+                }
+                ?>
+        </div>
+        <?php if ($wo['loggedin'] == true && count($stories) > 0) {  ?>
+        <div class="load-more pointer" id="load-more-posts" onclick="Wo_GetMorePosts();">
+            <span class="btn btn-default"><i class="fa fa-chevron-circle-down progress-icon" data-icon="chevron-circle-down"></i> <?php echo $wo['lang']['load_more_posts']; ?><span>
+        </div>
+        <?php } ?>
+
+
+        </div>
+             
+         <?php } ?>
+        <div id="load-more-filter">
+            <span class="filter-by-more hidden" data-filter-by="all"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+	
+        <?php if($wo['loggedin'] == true && $wo['config']['gift_system'] != 0) {  ?>
+            <?php if ($IsOwnerUser == false) { ?>
+            <span class="btn btn-md main send_gift_btn" onclick="Wo_open_send_gift();">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 504.124 504.124" style="enable-background:new 0 0 504.124 504.124;" xml:space="preserve"> <path style="fill:#DB5449;" d="M15.754,133.909l236.308,118.154L488.37,133.909v252.062L252.062,504.123L15.754,385.969V133.909z"/> <path style="fill:#C54B42;" d="M15.754,157.538v73.649l235.52,115.397l237.095-115.791v-73.255L252.062,273.33L15.754,157.538z"/> <path style="fill:#D05045;" d="M252.062,504.123V252.063L31.508,141.786H15.754v244.185L252.062,504.123z"/> <path style="fill:#BB483E;" d="M15.754,157.538v73.649l235.52,115.397l0.788-0.394v-73.255v0.394L15.754,157.538z"/> <path style="fill:#EB6258;" d="M0,125.638L252.062,0.001l252.062,125.637v16.542L252.062,267.815L0,142.573V125.638z"/> <path style="fill:#EFEFEF;" d="M396.603,39.779c-8.271-14.966-25.994-24.025-46.868-24.025c-47.655,0-81.132,44.505-97.674,72.862 c-16.542-28.357-50.412-72.468-97.674-72.468c-30.326,0-51.988,18.511-51.988,43.717c0,44.898,49.231,74.043,148.086,74.043 s151.237-37.415,151.237-73.649C401.723,53.17,400.148,46.081,396.603,39.779z M164.628,88.223 c-11.028-7.483-14.966-15.754-14.966-21.268c0-6.695,6.302-11.815,15.36-11.815c21.268,0,38.203,27.963,47.655,47.262 C187.865,100.432,173.292,93.736,164.628,88.223z M339.495,88.223c-8.665,5.514-23.237,12.209-48.049,14.178 c9.058-19.298,25.994-47.262,47.655-47.262c9.058,0,15.36,5.12,15.36,11.815C354.462,72.469,350.523,80.739,339.495,88.223z"/> <path style="fill:#E2574C;" d="M0,126.032l252.062,123.274l252.062-123.274v81.526l-252.85,123.274L0,207.558V126.032z"/> <path style="fill:#EFEFEF;" d="M346.585,213.859v-9.058l-94.523-51.2l-94.523,51.2v9.058L94.524,186.29v-12.603l154.387-81.526 l3.151,1.575l3.151-1.575L409.6,173.293v12.603L346.585,213.859z"/> <path style="fill:#DCDCDC;" d="M346.585,204.801v251.668l63.015-31.508V173.293L346.585,204.801z"/> <path style="fill:#D1D1D1;" d="M94.523,425.354l63.015,31.508V205.195l-63.015-31.902C94.523,173.292,94.523,425.354,94.523,425.354 z"/> </svg> <?php echo $wo['lang']['send_a_gift']; ?>
+            </span>
+            <?php } ?>
+        <?php } ?>
+
+        <!-- Profile Percentage System -->
+        <?php if ($IsOwnerUser === true && array_sum($wo['pr_complition']) < 100): ?>
+            <?php echo Wo_LoadPage('timeline/profile-completion'); ?>
+        <?php endif; ?>
+        
+		<?php if($wo['loggedin'] == true) {  ?>
+        <ul class="list-group">
+            <li class="list-group-item text-muted search-for-posts-container hidden" contenteditable="false"><i class="fa fa-search progress-icon fa-fw" data-icon="search"></i></li>
+            <li class="form-group inner-addon" style="margin-bottom: 0px;padding: 5px;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search glyphicon" color="gray" style="padding: 0;margin: 11px 7px 12px 8px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="form-control search-for-posts" onkeyup="Wo_SearchForPosts(this.value);" placeholder="<?php echo $wo['lang']['search_for_posts']; ?>" style="padding-left: 37px;padding-right: 37px;" />
+            </li>
+        </ul>
+        <?php } ?>
+		
+		<?php if ($wo['config']['user_status'] == 1 && Wo_CountUserStatus($wo['user_profile']['id']) > 0): ?>
+			<ul class="list-group right_user_info" style="padding: 6px 0px;">
+				<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['story']; ?></li>
+				<li class="list-group-item pointer" onclick="Wo_LoadStory('prof', $('[data-page=timeline]').attr('data-id'));">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    <?php echo $wo['lang']['story']; ?>
+                </li>
+			</ul>
+		<?php endif; ?>
+		
+        <ul class="list-group right_user_info" style="padding-top: 5px;">
+            <li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['details']; ?></li>
+
+            <?php if($wo['config']['user_lastseen'] == 1 && $wo['user_profile']['showlastseen'] != 0 && $wo['loggedin'] == true) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <?php echo Wo_UserStatus($wo['user_profile']['user_id'], $wo['user_profile']['lastseen'], 'profile') ?> 
+            </li>
+            <?php } ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
+               <?php echo $wo['user_profile']['details']['post_count'];?> <?php echo $wo['lang']['posts']; ?>
+            </li>
+
+			<?php if(!empty($wo['user_profile']['website'])) {  ?>
+			<li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link" title="<?php echo $wo['lang']['website']; ?>"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+				<a href="<?php echo $wo['user_profile']['website']?>" target="_blank"><?php echo $wo['user_profile']['website']?></a>
+            </li>
+			<?php } ?>
+			
+            <li class="list-group-item" style="padding-top:0; padding-bottom:0;">
+                <hr>
+            </li>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <?php 
+                $gender = ucfirst(strtolower($wo['user_profile']['gender']));
+                echo ($gender == 'Male') ? $wo['lang']['male'] : $wo['lang']['female']; 
+                ?>
+            </li>
+            <?php if ($wo['user_profile']['birthday'] != '0000-00-00' && Wo_CanSeeBirthday($wo['user_profile']['user_id'], $wo['user_profile']['birth_privacy']) === true) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <?php echo date($wo['config']['date_style'],strtotime($wo['user_profile']['birthday']));?>
+            </li>
+            <?php  }  ?>
+
+            <?php if(!empty(Wo_UserRelationship($wo['user_profile']['id']))) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <?php echo Wo_UserRelationship($wo['user_profile']['id']); ?>
+            </li>
+            <li class="list-group-item" style="padding-top:0; padding-bottom:0;">
+                <hr>
+            </li>
+            <?php } ?>
+            <?php if(!empty($wo['user_profile']['working'])) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <span><?php echo $wo['lang']['working_at'];?> <?php if (!empty($wo['user_profile']['working_link'])) { ?><a href="<?php echo $wo['user_profile']['working_link']; ?>" target="_blank" rel="nofollow"><?php echo $wo['user_profile']['working']; ?></a> <?php } else { echo $wo['user_profile']['working'];} ?></span>
+            </li>
+            <?php } ?>
+            <?php if(!empty($wo['user_profile']['school'])) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <span><?php echo $wo['lang']['studying_at'];?> <?php echo $wo['user_profile']['school']; ?></span>
+            </li>
+            <li class="list-group-item" style="padding-top:0; padding-bottom:0;">
+                <hr>
+            </li>
+            <?php } ?>
+            
+            <?php 
+            $country = $wo['user_profile']['country_id'];
+            if ($country > 0) {
+            ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <?php echo $wo['lang']['living_in'];?> 
+                <?php echo $wo['countries_name'][$country];?>
+            </li>
+            <?php } ?>
+            <?php if(!empty($wo['user_profile']['address']) && $wo['user_profile']['share_my_location'] == 1) {  ?>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span onclick="$('.user-location-frame').fadeToggle();" class="pointer"><?php echo $wo['lang']['located_in'];?> <?php echo $wo['user_profile']['address'];?></span>
+                <?php if (!empty($wo['config']['google_map_api']) && $wo['config']['google_map'] == 1) { ?>
+                <iframe width="100%" class="user-location-frame" frameborder="0" style="border:0;margin-top: 10px;display:none;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=<?php echo $wo['user_profile']['address'];?>&language=en"></iframe>
+                <?php } ?>
+            </li>
+            <?php } ?>
+			
+			<?php if(!empty($wo['user_profile']['facebook']) || !empty($wo['user_profile']['twitter']) || !empty($wo['user_profile']['google']) || !empty($wo['user_profile']['linkedin']) || !empty($wo['user_profile']['vk']) || !empty($wo['user_profile']['youtube'])) { ?>
+				<li class="list-group-item text-muted" contenteditable="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> 
+					<?php echo $wo['lang']['social_links']; ?>
+				</li>
+				<li class="list-group-item user-social-links">
+                    <?php  if(!empty($wo['user_profile']['youtube'])) {  ?>
+                    <a class="social-btn" href="https://www.youtube.com/<?php echo $wo['user_profile']['youtube']?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-youtube" fill="#ff0000"><path d="M10,16.5V7.5L16,12M20,4.4C19.4,4.2 15.7,4 12,4C8.3,4 4.6,4.19 4,4.38C2.44,4.9 2,8.4 2,12C2,15.59 2.44,19.1 4,19.61C4.6,19.81 8.3,20 12,20C15.7,20 19.4,19.81 20,19.61C21.56,19.1 22,15.59 22,12C22,8.4 21.56,4.91 20,4.4Z" /></svg>
+                    </a>
+                    <?php } if(!empty($wo['user_profile']['twitter'])) {  ?>
+                    <a class="social-btn" href="https://twitter.com/<?php echo $wo['user_profile']['twitter']?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-twitter" fill="#1da1f2"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26 17.56,8.33C18.06,7.97 18.47,7.5 18.68,6.86C18.16,7.14 17.63,7.38 16.97,7.5C15.42,5.63 11.71,7.15 12.37,9.95C9.76,9.79 8.17,8.61 6.85,7.16C6.1,8.38 6.75,10.23 7.64,10.74C7.18,10.71 6.83,10.57 6.5,10.41C6.54,11.95 7.39,12.69 8.58,13.09C8.22,13.16 7.82,13.18 7.44,13.12C7.81,14.19 8.58,14.86 9.9,15C9,15.76 7.34,16.29 6,16.08C7.15,16.81 8.46,17.39 10.28,17.31C14.69,17.11 17.64,13.95 17.71,9.33Z"></path></svg>
+                    </a>
+                    <?php }  if(!empty($wo['user_profile']['google'])) {  ?>
+                    <a class="social-btn" rel="publisher" href="https://plus.google.com/<?php echo $wo['user_profile']['google']?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-google" fill="#dc4938"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M19.5,12H18V10.5H17V12H15.5V13H17V14.5H18V13H19.5V12M9.65,11.36V12.9H12.22C12.09,13.54 11.45,14.83 9.65,14.83C8.11,14.83 6.89,13.54 6.89,12C6.89,10.46 8.11,9.17 9.65,9.17C10.55,9.17 11.13,9.56 11.45,9.88L12.67,8.72C11.9,7.95 10.87,7.5 9.65,7.5C7.14,7.5 5.15,9.5 5.15,12C5.15,14.5 7.14,16.5 9.65,16.5C12.22,16.5 13.96,14.7 13.96,12.13C13.96,11.81 13.96,11.61 13.89,11.36H9.65Z"></path></svg>
+                    </a>
+                    <?php }  if(!empty($wo['user_profile']['facebook'])) {  ?>
+                    <a class="social-btn" rel="publisher" href="https://www.facebook.com/<?php echo $wo['user_profile']['facebook']?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-facebook" fill="#4267b2"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z"></path></svg>
+                    </a>
+                    <?php }  if(!empty($wo['user_profile']['linkedin'])) {  ?>
+                    <a class="social-btn" rel="publisher" href="https://www.linkedin.com/profile/view?id=<?php echo $wo['user_profile']['linkedin']?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-linkedin" fill="#0076b6"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path></svg>
+                    </a>
+                    <?php } ?>
+                    <?php  if(!empty($wo['user_profile']['vk'])) {  ?>
+                    <a class="social-btn" rel="publisher" href="https://vk.com/<?php echo $wo['user_profile']['vk'];?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-vk" fill="#4a76a8"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.24,14.03C16.06,12.94 16.22,13.11 17.64,11.22C18.5,10.07 18.85,9.37 18.74,9.07C18.63,8.79 18,8.86 18,8.86L15.89,8.88C15.89,8.88 15.73,8.85 15.62,8.92C15.5,9 15.43,9.15 15.43,9.15C15.43,9.15 15.09,10.04 14.65,10.8C13.71,12.39 13.33,12.47 13.18,12.38C12.83,12.15 12.91,11.45 12.91,10.95C12.91,9.41 13.15,8.76 12.46,8.6C12.23,8.54 12.06,8.5 11.47,8.5C10.72,8.5 10.08,8.5 9.72,8.68C9.5,8.8 9.29,9.06 9.41,9.07C9.55,9.09 9.86,9.16 10.03,9.39C10.25,9.68 10.24,10.34 10.24,10.34C10.24,10.34 10.36,12.16 9.95,12.39C9.66,12.54 9.27,12.22 8.44,10.78C8,10.04 7.68,9.22 7.68,9.22L7.5,9L7.19,8.85H5.18C5.18,8.85 4.88,8.85 4.77,9C4.67,9.1 4.76,9.32 4.76,9.32C4.76,9.32 6.33,12.96 8.11,14.8C9.74,16.5 11.59,16.31 11.59,16.31H12.43C12.43,16.31 12.68,16.36 12.81,16.23C12.93,16.1 12.93,15.94 12.93,15.94C12.93,15.94 12.91,14.81 13.43,14.65C13.95,14.5 14.61,15.73 15.31,16.22C15.84,16.58 16.24,16.5 16.24,16.5L18.12,16.47C18.12,16.47 19.1,16.41 18.63,15.64C18.6,15.58 18.36,15.07 17.24,14.03Z" /></svg>
+                    </a>
+                    <?php } ?>
+                    <?php  if(!empty($wo['user_profile']['instagram'])) {  ?>
+                    <a class="social-btn" rel="publisher" href="https://instagram.com/<?php echo $wo['user_profile']['instagram'];?>" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-instagram" fill="#3f729b"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" /></svg>
+                    </a>
+                    <?php } ?>
+				</li>
+			<?php } ?>
+        </ul>
+            
+        <?php if(!empty($wo['user_profile']['about'])) {  ?>
+        <ul class="list-group">
+			<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['about_me']; ?></li>
+            <li class="list-group-item text-muted widget-heading" contenteditable="false">
+				<?php if ($IsOwner === true) { ?>
+				<span class="<?php echo Wo_RightToLeft('pull-right');?> edit-link">
+					<a href="<?php echo Wo_SeoLink('index.php?link1=setting&page=profile-setting'); ?>" data-ajax="?link1=setting&page=profile-setting"><?php echo $wo['lang']['edit']; ?></a>
+				</span>
+				<?php } ?>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info" style="background:#047cac;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg> 
+				<?php echo $wo['lang']['about']; ?>
+			</li>
+            <li class="list-group-item text-left">
+                <?php echo $wo['user_profile']['about']?>
+            </li>
+        </ul>
+        <?php } ?>
+
+        <?php
+        $fields = Wo_GetProfileFields('none'); 
+        if (count($fields) > 0) { ?>
+        <ul class="list-group">
+			<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['more_info']; ?></li>
+            <li class="list-group-item text-muted widget-heading" contenteditable="false">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list" style="background:#8d73cc;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg>
+				<?php echo $wo['lang']['more_info']; ?>
+            </li>
+            <?php
+            foreach ($fields as $key => $wo['field']) {
+                $name = $wo['field']['fid'];
+                if (!empty($wo['user_profile']['fields'][$name])) {
+                    echo Wo_LoadPage('timeline/custom-fields');
+                }
+            }
+            ?>
+        </ul>
+        <?php } ?>
+		
+        <?php 
+			echo Wo_LoadPage('timeline/albums-sidebar');
+            if ($wo['config']['connectivitySystem'] == 1) {
+              echo Wo_LoadPage('timeline/friends-sidebar');
+            } else {
+              echo Wo_LoadPage('timeline/following-followers-sidebar');
+            }
+            if ($wo['config']['pages'] == 1) {
+                echo Wo_LoadPage('timeline/likes-sidebar');
+            }
+            if ($wo['config']['groups'] == 1) {
+            	echo Wo_LoadPage('timeline/groups-sidebar');
+            }
+            
+            ?>
+        <?php 
+            $sidebar_ad = Wo_GetAd('sidebar', false);
+            if (!empty($sidebar_ad)) {?>
+        <ul class="list-group sidebar-ad">
+            <?php echo $sidebar_ad; ?>
+        </ul>
+        <?php } ?>
+        <?php echo Wo_LoadPage('footer/sidebar-footer')?>
+    </div>
+</div>
+<?php echo Wo_LoadPage('modals/profile-picture');?>
+<?php echo Wo_LoadPage('modals/cover-image');?>
+<?php if (!empty($wo['user_profile']['background_image']) && $wo['user_profile']['background_image_status'] == 1) { ?>
+<style>
+  body {
+    background: url(<?php echo Wo_GetMedia($wo['user_profile']['background_image']); ?>) fixed;
+    background-size:100% auto;
+  }
+</style>
+<?php } ?>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+.navbar-default {padding-right: 260px;}
+}
+
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<?php if($wo['loggedin'] == false) {  ?>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 0px;}
+.navbar-default {padding-right: 0px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+.hideinmenu {display: none;}
+}
+</style>
+<?php } ?>
+
+<div class="modal fade" id="report_profile" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-flag"></i> <?php echo $wo['lang']['report_user']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <textarea class="form-control" placeholder="Type text" dir="auto" rows="6" id="report-user-text-<?php echo $wo['user_profile']['id']; ?>"></textarea>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn  btn-main" id="report-user-button" onclick="Wo_ReportProfile(<?php echo $wo['user_profile']['id']; ?>,true)" >
+            <i class="fa fa-paper-plane-o progress-icon" data-icon="paper-plane-o"></i>
+             <?php echo $wo['lang']['send']; ?></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+         </div>
+      </div>
+   </div>
+</div>
+<?php if ($wo['loggedin']): ?>
+    <div class="modal fade" id="add_to_family" role="dialog">
+       <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-group"></i> <?php echo $wo['lang']['family_member']; ?></h4>
+             </div>
+             <div class="add_to_family_alert">
+                 
+             </div>
+             <div class="modal-body">
+                <div class="col-md-3">
+                <div class="family_mbr_avatar">
+                    <img src="<?php echo $wo['user_profile']['avatar']; ?>" alt="<?php echo $wo['user_profile']['name']; ?> Picture" class="responsive-img">
+                </div>
+                </div>
+                <div class="col-md-9">
+                    <h4 class="family_mbr_name"><?php echo $wo['user_profile']['name']; ?></h4>
+                    <?php if($wo['config']['user_lastseen'] == 1 && $wo['user_profile']['showlastseen'] != 0): ?>
+                       <div class="user-lastseen">
+                          <?php echo Wo_UserStatus($wo['user_profile']['user_id'],$wo['user_profile']['lastseen']); ?>
+                       </div>
+                    <?php endif; ?>
+                    <div  class="add_as_cont">
+                        <div class="col-md">
+                            <label class="main">
+                               <small><?php echo $wo['lang']['add_as']; ?>*</small>
+                            </label>
+                        </div>
+                        <div class="col-md-">
+                            <select class="form-control" name="family_list" id="family_list" title="Add as.">
+                                <?php foreach ($wo['family'] as $key => $value): ?>
+                                    <option value="<?php echo $key; ?>">
+                                        <?php echo $wo['lang'][$value]; ?>
+                                    </option>
+                                <?php endforeach; ?>
+
+                            </select>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="clear"></div>
+             </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-main" id="add_to_family_button" onclick="Wo_AddFamilyMember();">
+                     <i class="fa fa-floppy-o progress-icon" data-icon="progress-icon"></i>
+                     <?php echo $wo['lang']['save']; ?>
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <?php echo $wo['lang']['cancel']; ?>
+                </button>
+             </div>
+          </div>
+       </div>
+    </div>
+<?php endif; ?>
+<div class="modal fade" id="delete_family_mbr_modal"  role="dialog" data-slide='true'>
+ <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> <?php echo $wo['lang']['important']; ?></h4>
+       </div>
+       <div class="modal-body">
+          <p><?php echo $wo['lang']['confirm_remove_family_member']; ?></p>
+       </div>
+       <div class="modal-footer">
+          <button id="delete_family_member_button"  type="button" class="btn btn-main" onclick="Wo_DeleteFamilyMember($('#delete_family_mbr_modal').attr('data-family-member-id'));">
+          <i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i> <?php echo $wo['lang']['delete']; ?>
+          </button>
+          <button type="button" class="btn btn-default" onclick="Wo_CloseModels();" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+       </div>
+    </div>
+ </div>
+</div>
+<div class="modal fade in" id="accept_family_mbr_modal" role="dialog">
+  <div class="modal-dialog">
+  
+    <div class="modal-content">
+      <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 16px;">
+        <i class="fa fa-check" aria-hidden="true" style="color: green;"></i>      
+        <?php echo $wo['lang']['family_member_added']; ?>
+      </p>
+    </div>
+    
+  </div>
+</div>
+<div class="modal fade" id="cropImage" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg> <?php echo $wo['lang']['crop_your_avatar'] ?></h4>
+			</div>
+			<div class="modal-body">
+				<div id="image-to-crop">
+					<img src="<?php echo Wo_GetMedia($wo['user_profile']['avatar_full'])?>?123" alt="" data-image ="<?php echo $wo['user_profile']['avatar_full']; ?>" style="max-width: 100%;" >
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="ball-pulse"><div></div><div></div><div></div></div>
+				<button type="button" class="btn btn-main" onclick="CropImage();" id="crop-button">
+					<?php echo $wo['lang']['save']; ?>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade in" id="poke_modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 16px;">
+				<i class="fa fa-check" aria-hidden="true" style="color: green;"></i>      
+				<?php echo $wo['lang']['you_have_poked'] . " " . ucfirst($wo['user_profile']['username']); ?>
+			</p>
+		</div>
+	</div>
+</div>
+<?php if ($wo['loggedin']): ?>
+<div class="modal fade" id="send_gift" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                    <?php echo $wo['lang']['send_a_gift']; ?>
+				</h4>
+			</div>
+			<div class="modal-body">
+                <div id="gifts-list" class="wo_send_gift">
+                    <?php foreach (Wo_GetAllGifts(500000) as $wo['giftlist']) {?>
+                        <div class="text-center gift-data" data-gift-id="<?php echo $wo['giftlist']['id'];?>">
+                            <label>
+                                <input type="radio" onClick="$('#send-gift-button').attr('data-gift-id',$(this).val());$('#send-gift-button').attr('data-gift-img','<?php echo $wo['giftlist']['media_file'];?>');$('#send-gift-button').attr('disabled',false);" name="gift" value="<?php echo $wo['giftlist']['id'];?>" />
+                                <img src="<?php echo Wo_GetMedia($wo['giftlist']['media_file']); ?>" alt="<?php echo $wo['giftlist']['name'];?> gift">
+                            </label>
+                        </div>
+                    <?php } ?>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<div class="ball-pulse"><div></div><div></div><div></div></div>
+				<button type="button" class="btn  btn-main" id="send-gift-button" data-gift-id="" data-gift-img="" onclick="Wo_SendGiftToUser(<?php echo $wo['user']['id']; ?>,<?php echo $wo['user_profile']['id']; ?>,this)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                    <?php echo $wo['lang']['send']; ?>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+<?php if ( $wo['loggedin'] ): ?>
+    <?php if ( isset( $_GET['mode'] ) && $_GET['mode'] == 'opengift' ): ?>
+        <div class="modal fade" id="gift_show_model" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+                        <h4 class="modal-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                        <?php echo $wo['user_profile']['name'] . " " . $wo['lang']['send_gift_to_you'] ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="image-to-crop">
+                            <img src="<?php echo Wo_GetMedia($_GET['gift_img']);?>" style="max-width: 100%;margin: 0 auto;display: block;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<!-- JS Timline functions -->
+<script>
+function OpenCropModal() {
+	$('#cropImage').modal('show');
+	setTimeout(function () {
+    	$('#image-to-crop img').rcrop({
+            minSize : [100,100],
+            preserveAspectRatio : true,
+            grid : true
+        });
+    }, 1000);
+}
+function CropImage() {
+    values = $('#image-to-crop img').rcrop('getValues');
+    $path = $('#image-to-crop img').attr('data-image');
+    if (!$path) {
+    	return false;
+    	$('#cropImage').modal('hide');
+    }
+    $('#crop-button').text("<?php echo $wo['lang']['please_wait']?>");
+    $.post(Wo_Ajax_Requests_File() + '?f=crop-avatar', {user_id:<?php echo $wo['user_profile']['id']; ?>, path: $path, x: values.x, y:values.y, height: values.height, width:values.width}, function(data, textStatus, xhr) {
+        if (data.status == 200) {
+        	location.reload(false);
+        } else {
+        	$('#cropImage').modal('hide');
+        }
+        $('#crop-button').text("<?php echo $wo['lang']['save']?>")
+    });
+}
+
+function Wo_ActivateFamilyMember(id = false,self = false,member = false){
+    if (!id || !self || !member) {
+        return false;
+    }
+    Wo_progressIconLoader($(self).find('i'));
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'family',s:'accept_member',id:id,type:member},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $("#accept_family_mbr_modal").modal('show');
+            $('[data-family-member="'+id+'"]').slideUp(function(){
+                    $(this).remove();
+            });
+            Wo_Delay(function(){
+                $("#accept_family_mbr_modal").modal('hide');
+            },1500);
+        }
+    })
+    .fail(function() {
+        console.log("error");
+    });
+    Wo_progressIconLoader($(self).find('i'));
+}
+
+function Wo_AcceptRelationRequest(id = false,member = false,type = false ,self = false){
+    if (!member || !self || !type || !id) {
+        return false;
+    }
+    Wo_progressIconLoader($(self));
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'family',s:'accept_relation',id:id,type:type,member:member},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            window.location = data.url;
+        }
+    })
+    .fail(function() {
+        console.log("error");
+    })
+}
+
+function Wo_DeleteRelationRequest(id = false,user = false,type = false,self = false){
+    if (!self || !id || !user || !type) {
+        return false;
+    }
+    Wo_progressIconLoader($(self).find('i'));
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'family',s:'delete_relation',id:id,user:user,type:type},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $("[data-relationship-request='"+id+"']").slideUp(function(){
+                $(this).remove();
+            })
+        }
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    Wo_progressIconLoader($(self).find('i'));
+}
+
+function Wo_DeleteFamilyMember(id = false){
+    if (!id) {
+        return false;
+    }
+    Wo_progressIconLoader($("#delete_family_member_button"));
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'family',s:'delete_member',id:id},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $('[data-family-member="'+id+'"]').slideUp('slow',function(){
+                    $(this).remove();
+            })
+            Wo_Delay(function(){
+                $("#delete_family_mbr_modal").modal('hide');
+            },1500);
+        }
+        Wo_progressIconLoader($("#delete_family_member_button"));
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    
+}
+
+function Wo_AddFamilyMember(){
+    var member_type = $("#family_list").val();
+    if (!member_type || member_type < 1 || member_type > 43) {
+        return false;
+    }
+    Wo_progressIconLoader($("#add_to_family_button"));
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            f: 'family',
+            s:'add_member',
+            member_id:'<?php echo $wo['user_profile']['user_id']; ?>',
+            type:member_type
+        },
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $('.add_to_family_alert').html('<div class="alert alert-success">' + data.message + '</div>');
+            Wo_Delay(function(){
+                $("#open_add_to_family_modal").slideUp(function(){
+                    $(this).remove();
+                    $("#add_to_family").modal('hide');
+                })
+            },1500);
+            
+        }
+        else{
+            $('.add_to_family_alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        }
+        Wo_progressIconLoader($("#add_to_family_button"));
+    })
+    .fail(function() {
+        console.log("error");
+    })  
+}
+
+function Wo_ReportProfile(id = false,report = true){
+    var report_text = $("#report-user-text-<?php echo $wo['user_profile']['id']; ?>").val();
+    if (!id) {return false;}
+    else if(report == true){
+      if (!report_text) {return false;}  
+    }
+    Wo_progressIconLoader($("#report-user-button"));
+    $.ajax({
+        url: Wo_Ajax_Requests_File() + '?f=reports&s=report_user',
+        type: 'POST',
+        dataType: 'json',
+        data: {text:report_text,user:id},
+    })
+    .done(function(data) {
+        if(data.status == 200 && data.code == 0){
+            $('#report_status').replaceWith('\
+                <li id="report_status" class="list-group-item pointer" onclick="$(\'#report_profile\').modal(\'show\');">\
+                    <img class="profile-icon" src="<?php echo Wo_GetIcon('flag-2'); ?>" alt="flag-2">\
+                    <span><?php echo $wo['lang']['report_user']; ?></span>\
+                </li>');
+        }
+
+        else if (data.status == 200 && data.code == 1) {
+            $("#report-user-text-<?php echo $wo['user_profile']['id']; ?>").val('');
+            $("#report_profile").modal('hide');
+            $('#report_status').replaceWith('\
+                <li id="report_status" class="list-group-item pointer" onclick="Wo_ReportProfile(<?php echo $wo['user_profile']['id']; ?>,false);">\
+                    <img class="profile-icon" src="<?php echo Wo_GetIcon('flag-2'); ?>" alt="flag-2">\
+                    <span><?php echo $wo['lang']['unreport']; ?></span>\
+                </li>');
+        }
+        Wo_progressIconLoader($("#report-user-button"));
+        
+    })
+    .fail(function() {
+        console.log("error");
+    })
+}
+
+function loadposts(user_id) {
+  $.get(Wo_Ajax_Requests_File() + '?f=load_profile_posts', {user_id:user_id}, function(data) {
+    $('.posts_load').html(data);
+  });
+}
+
+var user_id = $('.profile').attr('data-id');
+$(function () {
+  user_id = $('.profile').attr('data-id');
+  <?php 
+  if (!empty($_GET['story'])) {
+    ?>
+    Wo_LoadStory('prof', $('[data-page=timeline]').attr('data-id'));
+    <?php
+  }
+  ?>
+  if($(window).width() > 600) {
+    $(".user-avatar").hover(function () {
+      $('.profile-avatar-changer').fadeIn(100);
+    }, function () {
+      $('.profile-avatar-changer').fadeOut(100);
+    });
+  }
+  if($(window).width() > 600) {
+    $(".user-cover").hover(function () {
+      $('.profile-cover-changer').fadeIn(100);
+    }, function () {
+      $('.profile-cover-changer').fadeOut(100);
+    });
+  }
+  
+  $('form.profile-avatar-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_avatar_picture',
+
+    beforeSend: function () {
+      $('.user-avatar-uploading-container, .user-avatar-uploading-progress').fadeIn(200);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+        Wo_GetNewPosts();
+        $('[id^=updateImage-<?php echo $wo['user_profile']['id']; ?>]').attr('data-target', '#ProfileImageModal-Stopped'); 
+        $('[id^=updateImage-<?php echo $wo['user_profile']['id']; ?>]').attr('onclick', 'Wo_OpenProfilePicture("' + data.img_or + '");');
+        $('[id^=updateImage-<?php echo $wo['user_profile']['id']; ?>]').attr("src", data.img);
+		$('#cropImage').modal('show');
+        $('#image-to-crop img').attr('src', data.avatar_full);
+        $('#image-to-crop img').attr('data-image', data.avatar_full_or);
+        $('#image-to-crop img').on("load", function() {
+		    setTimeout(function () {
+		    	$('#image-to-crop img').rcrop({
+		            minSize : [100,100],
+		            preserveAspectRatio : true,
+		            grid : true
+		        });
+		    }, 1000);
+		}).each(function() {
+		  if(this.complete) $(this).load();
+		});
+		if($("ul[data-profile-completion]").length == 1) {
+            if ($('#add-profile-avatar').length == 1) {
+                //window.location.reload();
+            }
+        }
+		
+      }
+      $('.user-avatar-uploading-container,.user-avatar-uploading-progress').fadeOut(200);
+    }
+  });
+  
+  $('form.cover-position-form').ajaxForm({
+        url:  Wo_Ajax_Requests_File() + '?f=re_cover',
+        dataType:  'json', 
+        beforeSend: function() {
+            $('.user-reposition-dragable-container').hide();
+            $('.user-repositioning-icons-container1').show();
+            $('.user-repositioning-icons-container').html('<i class="fa fa-spinner fa-spin progress-icon" data-icon="spin"></i>').fadeIn('fast');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $('.user-cover-reposition-w img').attr('src', data.url + '?time=' + Math.random()).on("load", function () {
+                    $('.when-edit').hide();
+                    $('.when-notedit').show();
+                    $('.user-repositioning-icons-container1').fadeOut('fast');
+                    $('.user-repositioning-icons-container').fadeOut('fast').html('');
+                    $('.user-cover-reposition-w').show();
+                    $('.user-reposition-container').hide().find('img').css('top', 0);
+                    $('.cover-resize-buttons').hide();
+                    $('.default-buttons').show();
+                    $('input.cover-position').val(0);
+                    $('.user-reposition-container img').draggable('destroy').css('cursor','default');
+                    window.location.reload();
+                });
+            }
+        }
+    });
+  $('.profile-cover-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_cover_picture',
+
+    beforeSend: function () {
+      $('.user-cover-uploading-container,.user-cover-uploading-progress').fadeIn(200);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+        Wo_GetNewPosts();
+        $('[id^=cover-image]').attr('data-target', '#ProfileCoverImageModal-Stopped');      
+        $('[id^=cover-image]').attr('onclick', 'Wo_OpenProfileCover("' + data.cover_or + '");');
+        $('[id^=cover-image]').attr("src", data.img);
+        $('#full-image').attr("src", data.cover_full);
+        $('#full-input-image').val(data.cover_full);
+        $('#cover-input-image').val(data.cover_or);
+        Wo_StartRepositioner();
+      }
+      $('.user-cover-uploading-container,.user-cover-uploading-progress').fadeOut(200);
+    }
+  });
+});
+
+function Wo_GetFollowing(user_id) {
+  Wo_progressIconLoader($('#sidebar-following-list-container').find('span'));
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_following_users',
+    user_id: user_id
+  }, function (data) {
+    if(data.status == 200) {
+      $('.sidebar-following-users-container').html(data.html);
+    }
+    Wo_progressIconLoader($('#sidebar-following-list-container').find('span'));
+  });
+}
+
+function Wo_GetMutualFriends(user_id) {
+  Wo_progressIconLoader($('#sidebar-mutual-list-container').find('span'));
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_mutual_users',
+    user_id: user_id
+  }, function (data) {
+    if(data.status == 200) {
+      $('.sidebar-mutual-users-container').html(data.html);
+    }
+    Wo_progressIconLoader($('#sidebar-mutual-list-container').find('span'));
+  });
+}
+
+function Wo_GetFollowers(user_id) {
+  Wo_progressIconLoader($('#sidebar-followers-list-container').find('span'));
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_followers_users',
+    user_id: user_id
+  }, function (data) {
+    if(data.status == 200) {
+      $('.sidebar-followers-users-container').html(data.html);
+    }
+    Wo_progressIconLoader($('#sidebar-followers-list-container').find('span'));
+  });
+}
+
+function Wo_GetLikes(user_id) {
+  Wo_progressIconLoader($('#sidebar-pages-list-container').find('span'));
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'pages',
+    s: 'get_likes',
+    user_id: user_id
+  }, function (data) {
+    if(data.status == 200) {
+      $('.sidebar-likes-container').html(data.html);
+    }
+    Wo_progressIconLoader($('#sidebar-pages-list-container').find('span'));
+  });
+}
+
+function Wo_GetMoreFollowing(user_id) {
+  Wo_progressIconLoader($('.load-more').find('button'));
+  after_last_id = $('.user-data:last').attr('data-user-id');
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_more_following',
+    user_id: user_id,
+    after_last_id: after_last_id
+  }, function (data) {
+    if(data.status == 200) {
+      if(data.html.length == 0) {
+        $('.load-more').find('button').text("<?php echo $wo['lang']['no_more_users_to_show']; ?>");
+      } else {
+        $('#following-list').append(data.html);
+      }
+    }
+    Wo_progressIconLoader($('.load-more').find('button'));
+  });
+}
+
+function Wo_GetMoreUserLikes(user_id) {
+  Wo_progressIconLoader($('.load-more').find('button'));
+  after_last_id = $('.user-data:last').attr('data-page-id');
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'pages',
+    s: 'get_more_likes',
+    user_id: user_id,
+    after_last_id: after_last_id
+  }, function (data) {
+    if(data.status == 200) {
+      if(data.html.length == 0) {
+        $('.load-more').find('button').text("<?php echo $wo['lang']['no_more_pages']; ?>");
+      } else {
+        $('#likes-list').append(data.html);
+      }
+    }
+    Wo_progressIconLoader($('.load-more').find('button'));
+  });
+}
+
+function Wo_GetMoreFollowers(user_id) {
+  Wo_progressIconLoader($('.load-more').find('button'));
+  after_last_id = $('.user-data:last').attr('data-user-id');
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_more_followers',
+    user_id: user_id,
+    after_last_id: after_last_id
+  }, function (data) {
+    if(data.status == 200) {
+      if(data.html.length == 0) {
+        $('.load-more').find('button').text("<?php echo $wo['lang']['no_more_users_to_show']; ?>");
+      } else {
+        $('#followers-list').append(data.html);
+      }
+    }
+    Wo_progressIconLoader($('.load-more').find('button'));
+  });
+}
+
+function Wo_UpdateProfileAvatar() {
+  $("form.profile-avatar-changer").submit();
+}
+
+function Wo_UpdateProfileCover() {
+  $("form.profile-cover-changer").submit();
+}
+
+function Wo_SetCookieAlert() {
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'set_admin_alert_cookie'
+  });
+}
+
+function Wo_OpenProfileCover(image) {
+    $.post(Wo_Ajax_Requests_File() + '?f=get_user_profile_cover_image_post', {
+      image:image
+    }, function (data) {
+        if (data.status == 200) {
+            Wo_OpenLightBox(data.post_id);
+        } else {
+            $('[id^=cover-image]').attr('data-target', '#ProfileCoverImageModal');
+            $('[id^=cover-image]').attr('data-toggle', 'modal');
+            $('#ProfileCoverImageModal').modal('show');
+        }
+    });
+}
+
+function Wo_OpenProfilePicture(image) {
+    $.post(Wo_Ajax_Requests_File() + '?f=get_user_profile_image_post', {
+      image:image
+    }, function (data) {
+        if (data.status == 200) {
+            Wo_OpenLightBox(data.post_id);
+        } else {
+            $('[id^=updateImage-' + user_id + ']').attr('data-target', '#ProfileImageModal-' + user_id);
+            $('[id^=updateImage-' + user_id + ']').attr('data-toggle', 'modal');
+            $('#ProfileImageModal-' + user_id).modal('show');
+        }
+    });
+}
+
+$(function(){
+
+    var url = window.location.pathname, 
+        urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+        // now grab every link from the navigation
+        $('#profilenav a').each(function(){
+            // and test its normalized href against the url pathname regexp
+            if(urlRegExp.test(this.href.replace(/\/$/,''))){
+                $(this).addClass('menuactive');
+            }
+        });
+
+});
+
+$(function(){
+
+    var url = window.location.pathname, 
+        urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+        // now grab every link from the navigation
+        $('#profilenav-mobile a').each(function(){
+            // and test its normalized href against the url pathname regexp
+            if(urlRegExp.test(this.href.replace(/\/$/,''))){
+                $(this).addClass('menuactive');
+            }
+        });
+
+});
+
+
+
+
+
+function Wo_open_send_gift(){
+    $('#send_gift').modal('show');
+}
+
+function Wo_SendGiftToUser(from, to){
+    var gift_id = $('#send-gift-button').attr('data-gift-id');
+    var gift_img = $('#send-gift-button').attr('data-gift-img');
+
+    if (!from || !to || !gift_id) {
+        return false;
+    }
+
+    $('#send-gift-button').attr('disabled','');
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'send_gift',from:from,to:to,gift_id:gift_id,gift_img:gift_img},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $('#send-gift-button').html('<?php echo $wo['lang']['gift_sent_succesfully']; ?>');
+            Wo_Delay(function(){
+                $("#send_gift").modal('hide');
+                $('#send-gift-button').attr('data-gift-id', '');
+                $('#send-gift-button').attr('data-gift-img', '');
+                $('#send-gift-button').attr('disabled',false);
+                $('#send-gift-button').html('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg><?php echo $wo['lang']['send']; ?>');
+            },1500);
+        }
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    
+}
+
+function Wo_RegisterPoke(received_user_id , send_user_id){
+    if (!received_user_id || !send_user_id) {
+        return false;
+    }
+    $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'poke',received_user_id:received_user_id,send_user_id:send_user_id},
+    })
+    .done(function(data) {
+        if (data.status == 200) {
+            $("#poke_modal").modal('show');
+            $("#pokebutton").remove();
+            Wo_Delay(function(){
+                $("#poke_modal").modal('hide');
+            },1500);
+        }
+    })
+    .fail(function() {
+        console.log("error");
+    })
+}
+
+function Wo_GetMoreVideos(user_id) {
+  Wo_progressIconLoader($('.load-more').find('button'));
+  after_last_id = $('.video-data:last').attr('data-video-id');
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_more_videos',
+    user_id: user_id,
+    after_last_id: after_last_id
+  }, function (data) {
+    if(data.status == 200) {
+      if(data.html.length == 0) {
+        $('.load-more').find('button').text("<?php echo $wo['lang']['no_more_videos_to_show']; ?>");
+      } else {
+        $('#videos-list').append(data.html);
+      }
+    }
+    Wo_progressIconLoader($('.load-more').find('button'));
+  });
+}
+
+function Wo_GetMorePhotos(user_id) {
+  Wo_progressIconLoader($('.load-more').find('button'));
+  after_last_id = $('.photo-data:last').attr('data-photo-id');
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'get_more_photos',
+    user_id: user_id,
+    after_last_id: after_last_id
+  }, function (data) {
+    if(data.status == 200) {
+      if(data.html.length == 0) {
+        $('.load-more').find('button').text("<?php echo $wo['lang']['no_more_photos_to_show']; ?>");
+      } else {
+        $('#photos-list').append(data.html);
+      }
+    }
+    Wo_progressIconLoader($('.load-more').find('button'));
+  });
+}
+
+
+$(document).on('click', '.story-image-wrapper', function(event) {
+  event.preventDefault();
+  $value = $(this).parents(".story-container").attr('data-status-id');
+  $.post(Wo_Ajax_Requests_File() + '?f=story_view', {id: $value}, function(data, textStatus, xhr) {
+    
+  });
+});
+
+<?php if ( $wo['loggedin'] ){ ?>
+    <?php if ( isset( $_GET['mode'] ) && $_GET['mode'] == 'opengift' ){ ?>
+        $(document).ready(function() {
+            setTimeout(() => {
+
+                $('#gift_show_model').modal('show');
+
+            }, 3000);
+        });
+    <?php } ?>
+<?php } ?>
+</script>

@@ -1,0 +1,24 @@
+{strip}
+
+{if sizeof($a)}
+<section id="hook_alpha">
+<div class="drk-modal_1000"></div>
+<div class="ul_list_alpha">
+<div class="ulistanim">
+{foreach range('A', 'Z') as $char}
+
+{if in_array($char, $a)}
+<div class="char_alpha" onclick="fr_flt_b_lt(this,event);">{$char}</div>
+{else}
+<div class="char_alpha __disabled" disabled>{$char}</div>
+{/if}
+
+{/foreach}
+<div class="char_alpha __disabled" disabled>#</div>
+</div></div>
+</section>
+{else}
+NODATA
+{/if}
+
+{/strip}

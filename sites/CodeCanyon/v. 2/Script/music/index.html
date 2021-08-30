@@ -1,0 +1,271 @@
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<div class="layer multimedia-layer inverted %s" data-multimedia-layer="%s">
+  <div class="layer_ovr" style="position:fixed;">
+  </div>
+  <div class="layer_cnt mus_margin">
+    
+    <!-- disable all point events for normal initializing -->
+    <div class="m_no_flash_block" aria-hidden="false" style="display:none;">
+      <div class="m_no_flash_block_sh">
+      </div>
+      <div class="m_notification_content">
+        <div class="m_notification_sh">
+        </div>
+        <div class="m_notification_wrapper">
+          <div class="m_notification_container">
+            <div class="m_notification_popup_msg" id="tc1">
+              An error has occurred while loading the Music.
+              <br>
+              Please, refresh the page.
+            </div>
+            <div class="m_notification_popup_buttons" id="buttonContainer1">
+              <button type="button" onclick="window.location.reload()" class="gwt-Button" style="margin: 0px;">
+                Refresh
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end popup loading -->
+
+    <div class="layer_top layer">
+      <div class="hd_top">
+        <div class="layer_top usel-off">
+          <!-- audio player zdesi -->
+        </div>
+        <div class="layer_col-aux">
+          <div class="layer_aux_cnt">
+            <div class="layer_scr mus-custom-scrolling" style="overflow:hidden;display:none;" id="mlLM">
+              <div class="mus_scroll-overlay">
+                <div class="mus_scroll-overlay_dummy">
+                </div>
+                <div>
+                  <ul class="mus_nav_lst">
+                    <li class="mml_cat_li" data-href="popular">
+                      <div class="mml_cat_btn" id="lmSecm_sec_best">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic mml_ic_klass" id="lmicm_sec_best">
+                            </i>
+                          </span>
+                          
+                          <span class="mml_cat_n">
+                            Popular music
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                    <li class="mml_cat_li" data-href="playlist">
+                      <div class="mml_cat_btn" id="lmSecm_sec_collections">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic m_ic_collections" id="lmicm_sec_collections">
+                            </i>
+                          </span>
+                          <span class="mml_cat_n">
+                            Playlists
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                    <li class="mml_cat_li">
+                      <div class="mml_cat_btn" id="lmSecm_sec_upload">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic m_ic_uploads" id="lmicm_sec_upload">
+                            </i>
+                          </span>
+                          <span class="mml_cat_n">
+                            Upload music
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                    <!--<li class="mml_cat_li" data-href="downloads">
+                      <div class="mml_cat_btn" id="lmSecm_sec_downloaded">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic m_ic_purchases" id="lmicm_sec_downloaded">
+                            </i>
+                          </span>
+                          <span class="mml_cat_n">
+                            My purchased music
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+					-->
+                    <li class="mml_cat_li" data-href="radio">
+                      <div class="mml_cat_btn" id="lmSecm_sec_my_radio">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic m_ic_radio" id="lmicm_sec_my_radio">
+                            </i>
+                          </span>
+                          <span class="mml_cat_n">
+                            My radio
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                    <li style="display:none;" id="uAddedFeed" data-href="addedFeed">
+                    </li>
+                    <li style="display:none;" id="uploadedmu" data-href="mymusic">
+                    </li>
+                    <li style="display:none;" id="mngplaylist" data-href="mymusic">
+                    </li>
+                    <li style="display:none;" id="mus_playlist_upload_succ" data-href="playlist" data-action="true">
+                    </li>
+                    <li class="mml_cat_li" id="lmSecm_sec_klass">
+                      <div class="mml_cat_btn __openable"data-href="mymusic">
+                        <span class="tico">
+                          <span class="tico_img">
+                            <i class="mml_ic mml_ic_my-openable" id="lmicm_sec_klass">
+                            </i>
+                          </span>
+                          <span class="mml_cat_n">
+                            My music
+                          </span>
+                        </span>
+                        <div class="mml_notif mml_notif__num" id="sec_cnt_m_sec_klass">
+                          0
+                        </div>
+                        <span class="mus_dot m_hidden" id="mus_sec_dot_m_sec_klass">
+                        </span>
+                        <span class="mml_notif mml_notif__num" id="pplUpnull">
+                          <span style="visibillity:visible;" class="inlineBlock ic ic12 ic12_anim-upload">
+                          </span>
+                        </span>
+                      </div>
+                      <div id="expm_sec_klass">
+                      </div>
+                      <div>
+                        <div>
+                          <ul class="mml_subcat_ul __inner mus_playlist_lst m_hidden" id="lmPPLlst">
+                            <li class="mml_subcat_li __menu-item" id="mus_createPlaylist">
+                              <a class="mml_subcat_btn" uid="addPersonalPL" style="height:40px;padding-bottom:10px;">
+                                <div class="mml_ucard">
+                                  <div class="va">
+                                  </div>
+                                  <div class="mml_ucard_ic m_ic_create-collection">
+                                  </div>
+                                  <div class="mml_ucard_n va_target">
+                                    <div class="mml_ucard_n_f">
+                                      Add a playlist
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                            
+                            <!-- this section is for playlists -->
+                            <li uid="myMusicHistory" data-href="mymusic" data-action="true" data-query="?action=history" class="mml_subcat_li __menu-item __history-item">
+                              <a class="mml_subcat_btn " data-mymus-subcat="true" style="height:40px;">
+                                <div class="mml_ucard">
+                                  <div class="va">
+                                  </div>
+                                  <div class="mml_ucard_ic m_ic_listen-music">
+                                  </div>
+                                  <div class="mml_ucard_n va_target">
+                                    <div class="mml_ucard_n_f">
+                                      Recently played
+                                    </div>
+                                  </div>
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <ul id="omUsrLst">
+                  <li class="mus_user-list">
+                    <div class="mml_cat_li">
+                      <div class="mml_cat_btn mus_user-search">
+                        
+                        <span class="tico">
+                          
+                          <span class="tico_img">
+                            
+                            <i class="mml_ic mml_ic_friends">
+                            </i>
+                            
+                          </span>
+                          
+                          <span class="mml_cat_n">
+                            Friends' music
+                          </span>
+                          
+                        </span>
+                        <div class="mus_user-search_cnt">
+                          <input class="mus_user-search_it" type="text" placeholder="Search among friends">
+                          
+                        </div>
+                        
+                        <span class="mus_user-search_ic">
+                        </span>
+                        
+                      </div>
+                      
+                      <span id="mus_space_for_friends">
+                        <div class="mml_subcat_ul">
+                        </div>
+                        <div class="mus_user-search_loading">
+                          <div class="mus_loading_shadow">
+                          </div>
+                          
+                          <div class="mus_loading_ic" style="display: block;">
+                          </div>
+                        </div>
+                      </span>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mus_inds" style="display:none;">
+          <div class="layer_main_cnt">
+            <div class="m_search_w">
+              <div class="m_search">
+                <div class="mus_back" title="Back">
+                </div>
+                <div class="it_w search-input mml_search">
+                  <label>
+                    <input class="search-input_it it" type="text" placeholder="Search for music">
+                    
+                    <span class="search-input_control search-input_process">
+                      
+                      <i class="search-input_ic ic18 ic18_anim-procces-vl">
+                      </i>
+                      
+                    </span>
+                    
+                    <span class="search-input_control search-input_search-ic" id="gwt-uid-314">
+                      
+                      <i class="search-input_ic ic mml_ic_search">
+                      </i>
+                      
+                    </span>
+                    
+                  </label>
+                  <div data-action="" id="hook_Block_MusicSearch">
+                  </div>
+                </div>
+                <a data-href="search" data-action="true" data-query="?action=searchResult&method=inx&tk=" id="mus_search_gl" class="vl_btn ml-5">Search</a>
+              </div>
+            </div>
+            <div class="mus_content js-mus_content" style="height: 596px;">
+              <div class="m_c_s" id="msic_content" aria-hidden="false">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

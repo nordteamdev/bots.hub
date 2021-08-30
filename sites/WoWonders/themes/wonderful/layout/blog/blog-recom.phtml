@@ -1,0 +1,25 @@
+<div class="blog recommended-articles">
+	<div class="article-thumbnail">
+		<a href="<?php echo $wo['blog-style']['url'] ?>">
+			<img src="<?php echo $wo['blog-style']['thumbnail'];?>" alt="Article Picture">
+		</a>
+	</div>
+	
+	<div class="article-title">
+		<a href="<?php echo $wo['blog-style']['url'] ?>">
+			<h4>
+				<?php echo $wo['blog-style']['title'] ?>
+			</h4>
+		</a>
+	</div>
+	<div class="article-info">
+		<span>
+			<i class="fa fa-clock-o fa-fw"></i> 
+			<?php echo date("d M Y",$wo['blog-style']['posted']); ?>
+		</span> 
+		<span>
+			<i class="fa fa-eye fa-fw"></i> 
+			<?php echo $wo['blog-style']['view'];?> <?php echo $wo['lang']['views'] ?>
+		</span>
+	</div>
+</div>

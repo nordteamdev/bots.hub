@@ -1,0 +1,200 @@
+.user_card.avt {
+    position: relative;
+    float: left;
+    width: 26px;
+    height: 26px;
+padding-right:6px;
+}
+.user_card.avt img {
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 50%;
+    background: #eee;
+    border: 0;
+}
+.attachjbfl{
+ overflow:inherit;
+}
+.comments_cnt .mdialog_entertm_ics {
+    top: 4px;
+    margin-left: -48px;
+}
+
+
+.comments_cnt .em_disc_toolbar_i_ic__sm {
+margin-left: -75px;
+    top: 1px;
+float: left;
+}
+
+.comments_cnt .emoji-menu {
+    margin: -294px 0px 0px -272px;
+}
+.comm_widget_pb {
+    padding-bottom: 9px;
+    padding-top: 4px;
+}
+.comm_widget ._55yn._55yo{
+
+    float: right;
+}
+.comments_cnt .comm_previous_load.__loading .ic-prev-comments {
+    vertical-align: text-top;
+}
+
+
+.comments_cnt ul > .comment .comment-likes.__liked,
+.comments_cnt ul > .comment .comment-likes.__count_like,
+.comments_cnt ul > .comment .comment-likes.__liked .comment-reply,
+.comments_cnt ul > .comment .comment-likes.__count_like .comment-reply
+ {
+    opacity:1!important;
+    visibility:visible!important;
+}
+
+/*
+.comments_cnt .comm_likes_count {
+    margin-left: -4px;
+}*/
+.photo-layer_bottom .comment-like {
+    margin-right: 4px;
+}
+.comments-p-sticky {
+    bottom: 0;
+    background: #f6f7f9;
+}
+.feed .comments-p-sticky{
+	background:transparent;
+}
+/*
+#pp_post_viewer .comments-p-sticky:after {
+    content: '';
+    width: 612px;
+    margin-left: -32px;
+    background: #fff;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}*/
+.comments-p-sticky.__on {
+    position:relative;
+    padding-top: 8px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+	z-index:1;
+}
+
+.comments-p-sticky.__on:before {
+    position: absolute;
+    top: -3px;
+    content: '';
+    height: 4px;
+    width: 100%;
+    background-image: url(images/photo-layer/comment_line.png);
+    background-size: 549px 4px;
+}
+/*
+.comments-p-sticky.__on:before {
+    content: '';
+    box-shadow: 0 -1px 2px rgba(0,0,0,.2);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+}*/
+#pp_post_viewer .jb_attached_files {
+    /* left: 32px; */
+    max-width: 510px;
+}
+
+#pp_post_viewer .jb_attached_files obattch {
+    margin-right: 18px;
+}
+.commentsWidgetTracks {
+    margin-left: -3px;
+    margin-top: 3px;
+}
+#pp_photo_viewer .user_card.avt{ margin-right: 13px; }
+#pp_photo_viewer .user_card.avt, #pp_photo_viewer .emoji-wysiwyg-editor{float:none;box-sizing:border-box;    vertical-align: middle;display:inline-block;}
+#pp_photo_viewer .comments-p-sticky{background:transparent;}
+#pp_photo_viewer .emoji_input_controls{margin: 0px;}
+#pp_photo_viewer .phlayer_ul_comms {
+    min-height: 100px;
+}
+.feed_post_comments_widget {
+    position: relative;
+ 
+    padding: 0 16px;
+    background: #f6f7f9;
+ 
+    border-top: 1px solid #eee;
+}
+.comment-content {
+    background-color: #eff1f3;
+    border-radius: 18px;
+    display: table;
+    line-height: 16px;
+    font-size: 13px;
+    margin: 4px 0;
+    padding: 8px 10px;
+    word-break: break-word;
+}.feed_post_comments_widget {
+ 
+    background: #f8f9fb;
+ 
+}
+
+.phlayer_ul_comms .comment-author a {
+    position: relative;
+    top: -1px;
+    color: #000;
+    line-height: 20px;
+ 
+    font-weight: 500;
+    font-size: 13px;
+    direction: ltr;
+    display: inline-block;
+ 
+}
+.comment_bottom {
+    margin-top: -8px;
+    margin-left: 7px;
+}
+
+ .comment-typing-notif {
+    padding-left: 40px;
+    margin: 10px 0;
+	display:none;
+}.typing-indicator-comments-widget {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 6px;
+}.typing_txt {
+    display: inline-flex;    font-weight: 400;
+}
+.typing-indicator-comments-widget span {
+    height: 6px;
+    width: 6px;
+    float: left;
+    margin: 0 1px;
+    background-color: #9e9ea1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+.typing-indicator-comments-widget span:nth-of-type(1) {
+  -webkit-animation: 1s blink infinite 0.3333s;
+          animation: 1s blink infinite 0.3333s;
+}
+.typing-indicator-comments-widget span:nth-of-type(2) {
+  -webkit-animation: 1s blink infinite 0.6666s;
+          animation: 1s blink infinite 0.6666s;
+}
+.typing-indicator-comments-widget span:nth-of-type(3) {
+  -webkit-animation: 1s blink infinite 0.9999s;
+          animation: 1s blink infinite 0.9999s;
+}

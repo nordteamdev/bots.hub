@@ -1,0 +1,93 @@
+<div id="wk_content" tabindex="0">
+    <div class="wk_text wk_wiki_content wk_nano_content">
+        <div class="apps_i_wrap">
+            <div class="apps_i_panel clear_fix">
+                <img src="/appGetPhoto?i={$res.cover}" class="apps_i_icon">
+                <div class="apps_i_buttons">
+                    <a class="flat_button green button_big apps_i_desktop" href="/app/id/{$res.id}" hrefattr="true" onclick="document.getElementById('nohook_modal_close').click();" id="apps_i_btn">{$this->lang['launch_game']}</a>
+                </div>
+                <div class="apps_i_info">
+                    <h1 class="apps_i_name">{$res.title}</h1>
+
+                    <div class="apps_i_users">{$this->getAppGenre($res.genre)}, {$this->getAppPlayersCount($res.id)} {$this->lang['players']}</div>
+
+                    <div class="clear_fix"></div>
+                </div>
+                <div id="app_descrcnt" class="apps_i_description_content">{pellipse($res.description,200)}</div>
+               {if strlen($res.description) > 200} <a class="apps_i_description_show_more" onclick="ga(this).remove();ga('#app_descrcnt').html('{$res.description}');">{$this->lang['show_more']}..</a>{/if}
+
+            </div>
+            <div class="apps_i_content">
+
+			
+			
+
+
+
+
+
+
+	<div id="horizontal-gallery" class="nobleSlider">
+		<div class="nb-slides">
+{foreach $images as $image}
+			<div class="nb-slide">
+					<img class="nb-image" src="/css/images/preloaders/process-50x50.gif"
+					data-small="/appGetPhoto?i={$image.id}&t=1"
+					data-src="/appGetPhoto?i={$image.id}"
+					data-medium="/appGetPhoto?i={$image.id}"
+					data-large="/appGetPhoto?i={$image.id}"
+					data-retina="/appGetPhoto?i={$image.id}"/>
+			</div>
+{/foreach}
+		</div>
+
+		<div class="nb-thumbnails">
+		{foreach $images as $image}
+			<img class="nb-thumbnail" src="/appGetPhoto?i={$image.id}&t=1"/>
+{/foreach}
+
+
+		</div>
+    </div>
+			
+			
+			
+			
+			
+			
+			
+			
+                <div class="apps_i_policy">
+                    {$this->lang['app_policy']} <a href="javascript:void(0);" data-mm="terms" onclick="tpaPopup(event);">{$this->lang['terms_and_condition']}</a> {$this->lang['and']} <a href="javascript:void(0);" onclick="tpaPopup(event);" data-mm="policy">{$this->lang['privacy_policy']}</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+{literal}
+	$(function( $ ) {
+		ga( '#horizontal-gallery' ).nobleSlider({
+			_SLIDER_BEZIER_ENGINE: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
+			_SLIDE_ANIMATION_DURATION: 600, // miliseconds
+			_TOUCH_SWIPE_TRESHOLD:10,
+                	_TOUCH_SWIPE_SPEED_RATIO: .77,
+			_IMAGE_SCALE_MODE: 'fit-for-bigger',_LOAD_ALL_IMAGES:true,
+			_DEEP_LINKING: false,
+			_SLIDER_WIDTH: '100%',
+			_SLIDER_HEIGHT: 380,
+			_ENABLE_ARROWS: true,
+			_ENABLE_PAGINATION: false,
+			_ALLOW_FULL_SCREEN: false,
+			_AUTO_PLAY_SLIDE: true,
+			_AUTO_PLAY_DELAY: 5000,
+			_IMG_SMALL_SIZE: 500,
+			_IMG_MEDIUM_SIZE: 1000,
+			_IMG_LARGE_SIZE: 3000,
+			_THUMB_ENABLE_ARROWS: true,
+                	_THUMB_SIZE_WIDTH: 145,
+                	_THUMB_SIZE_HEIGHT: 90
+		});
+	});
+	{/literal}
+</script>

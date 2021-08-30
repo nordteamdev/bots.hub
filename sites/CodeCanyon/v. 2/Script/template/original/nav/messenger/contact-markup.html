@@ -1,0 +1,42 @@
+{strip}
+
+
+	{foreach $contacts as $contact}
+
+
+	{assign var=last_message value=$this->getLastMessage($contact.id)}
+	{assign var=last_seen value=$this->time_elapsed($contact['online'])}
+	{assign var=user_status value=$this->getUserStatus($contact.id)}
+	
+	{if $user_status}
+	{assign var=last_seen value=$this->lang['Active_now']}
+	{/if}
+	
+	<a href="javascript:void(0);" data-last-message-timestamp="{$last_message.time}" id="contact-{$contact.id}" class="pmessenger-contact-a" onclick="messenger.openContact(this,event,'{$contact.id}','{$contact.profile_photo}','{$contact.fullname}','{$last_seen}');">
+	<div class="pmessenger-mleft12">
+			<div class="pmessenger-contact-avatar">
+			
+				<img src="/getPhoto?p={$contact.profile_photo}&sz=small" />
+				<div class="only_ic global_user_online global_user_online_{$contact.id}">{if $user_status}<span class="ic-online"></span>{/if}</div>
+			</div>
+	
+			<div class="pmessenger-contact-info">
+			
+				<div class="pmessenger-contact-name">{$contact.fullname}</div>
+				<div class="pmessenger-contact-last-msg ellip">{if $last_message.fromUser == $this->USER.id}<span class="convo__msgAuthor">{$this->lang['You']}:</span>{/if} {str_replace('&amp;','&',$this->str_smilies($this->str_messenger($last_message.msg,1),1))}</div>
+				<div class="pmessenger-contact-last-msg-time">{$this->lastMessageConvertTime($last_message.time)}</div>
+			</div>
+	</div>
+	</a>
+	
+	{foreachelse}
+	
+	{if isset($nullreturn)}
+	0
+	{else}
+	<div class="pmessenger-no-contacts">{$this->lang['you_dosent_have_dialog_with_users']}</div>
+	{/if}
+	
+	{/foreach}
+	
+{/strip}

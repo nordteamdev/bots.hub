@@ -1,0 +1,59 @@
+<tr class="setting-userlist <?php echo ($wo['report']['seen'] == 0) ? ' report-not-seen' : '';?> " id="ReportID_<?php echo $wo['report']['id']?>" >
+   <td><?php echo $wo['report']['id']?></td>
+   <td class="pointer">
+      <?php echo ucfirst($wo['report']['type']); ?>
+   </td>
+   <td>
+      <a href="<?php echo $wo['report']['reporter']['url']; ?>">
+      <img src="<?php echo $wo['report']['reporter']['avatar'];?>" class="setting-avatar" alt="<?php echo $wo['report']['reporter']['avatar'];?> Profile Picture">
+      <?php echo $wo['report']['reporter']['name']; ?>
+      </a>
+ 
+   </td>
+   <td>
+      <?php if ($wo['report']['type'] == 'post'): ?>
+         <a href="<?php echo $wo['report']['story']['url']; ?>">
+           <?php echo $wo['lang']['open_post'];?>
+         </a>
+      <?php elseif($wo['report']['type'] == 'profile'): ?>
+         <a href="<?php echo $wo['report']['user']['url']; ?>">
+            <?php echo $wo['report']['user']['name']; ?>
+         </a>
+      <?php elseif($wo['report']['type'] == 'page'): ?>
+         <a href="<?php echo $wo['report']['page']['url']; ?>">
+            <?php echo $wo['report']['page']['page_name']; ?>
+         </a>
+      <?php elseif($wo['report']['type'] == 'group'): ?>
+         <a href="<?php echo $wo['report']['group']['url']; ?>">
+            <?php echo $wo['report']['group']['group_name']; ?>
+         </a>
+      <?php elseif($wo['report']['type'] == 'comment'): ?>
+         <a href="<?php echo $wo['report']['comment']['fullurl']; ?>" target="_blank">
+          <?php echo $wo['report']['comment']['Orginaltext'];?>
+         </a>
+      <?php endif; ?>
+   </td>
+   <td>
+      <div class=" ajax-time" title="<?php echo date('c',$wo['report']['time']); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['report']['time']);?>
+      </div>
+   </td>
+   <td>
+      <button class="btn btn-success waves-effect waves-light" onclick="Wo_MarkSafeReportedPost(<?php echo $wo['report']['id']?>);">MARK SAFE</button>
+      <?php if ($wo['report']['type'] == 'post'): ?>
+         <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteReportedContent(<?php echo $wo['report']['story']['id']?>,<?php echo $wo['report']['id']?>,'post');">DELETE</button>
+      <?php elseif($wo['report']['type'] == 'profile'): ?>
+          <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteReportedContent(<?php echo $wo['report']['user']['id']?>,<?php echo $wo['report']['id']?>,'user');">DELETE</button>
+          <button class="btn btn-info waves-effect waves-light" onclick="$('#read_report').modal().find('.report_text').text('<?php echo htmlspecialchars($wo['report']['text']); ?>')">VIEW REPORT</button>
+      <?php elseif($wo['report']['type'] == 'page'): ?>
+         <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteReportedContent(<?php echo $wo['report']['page']['page_id']?>,<?php echo $wo['report']['id']?>,'page');">DELETE</button>
+         <button class="btn btn-info waves-effect waves-light" onclick="$('#read_report').modal().find('.report_text').text('<?php echo htmlspecialchars($wo['report']['text']); ?>')">VIEW REPORT</button>
+      <?php elseif($wo['report']['type'] == 'group'): ?>
+         <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteReportedContent(<?php echo $wo['report']['group']['id']?>,<?php echo $wo['report']['id']?>,'group');">DELETE</button>
+         <button class="btn btn-info waves-effect waves-light" onclick="$('#read_report').modal().find('.report_text').text('<?php echo htmlspecialchars($wo['report']['text']); ?>')">VIEW REPORT</button>
+      <?php elseif($wo['report']['type'] == 'comment'): ?>
+         <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteReportedContent(<?php echo $wo['report']['comment']['id']?>,<?php echo $wo['report']['id']?>,'comment');">DELETE</button>
+         <button class="btn btn-info waves-effect waves-light" onclick="$('#read_report').modal().find('.report_text').text('<?php echo htmlspecialchars($wo['report']['comment']['Orginaltext']); ?>')">VIEW REPORT</button>
+      <?php endif; ?>
+   </td>
+</tr>

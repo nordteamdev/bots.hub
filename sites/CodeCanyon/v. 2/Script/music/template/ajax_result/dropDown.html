@@ -1,0 +1,43 @@
+<!---------- DropDown for add songs to the playlist --------->
+{strip}
+<div class="mus_dropDown_active">
+<div class="mus_dropdown_w __active">
+    <div class="mus_dropdown">
+        <ul class="mus_dropdown_lst">
+            {if $count > 0}
+            {foreach $query as $result}
+            <li data-hv-pl="true" class="mus_dropdown_i" pid="{$result.id}">
+                <a class="mus_dropdown_a mus-tr_a" uid="personalPL" >{urldecode($result.name)}<i class="fader-img">
+                </i></a>
+            </li>
+            {/foreach}
+            {else}
+            <div class="textWrap mus_dropdown_txt">You doesn't have any
+                <br>playlists yet.
+                {if $d === ''}
+                <br>Create one by entering
+                <br>the title:
+            </div>
+            {/if}
+            {/if}
+            {if $d === ''}
+            <li class="mus_dropdown_i">
+                <div class="mus_dropdown_f">
+                    <a class="mus_dropdown_f_a mtico tdn"><i class="mic12 mic12_add" uid="addPersonalPL"></i>
+                    <label uid="addPersonalPL" for="inputId" class="mus-tr_il">&nbsp;Add a playlist</label></a>
+                    <div class="m_add_ppl_input_cont" id="addPersonalPLInputWrapper">
+                        <div class="m_add_ppl_input_wrapper">
+                            <input uid="pplName" class="m_add_ppl_input" maxlength="100">
+                            <div class="m_ppl_input_enter">
+                                <i class="tico_img m_enter_ppl_ico" uid="createPPL"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+{/if}
+{/strip}

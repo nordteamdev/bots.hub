@@ -1,0 +1,34 @@
+﻿body {
+	background: url(img/background.png);
+}
+
+.st {
+	display: inline
+}
+
+input {
+	text-align: center;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+.content {
+	padding-top: 30px;
+	padding-bottom: 50px;
+}
+
+footer {
+position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	background: #f5f4f4;
+}
+
+.profile {
+	min-width: 380px;
+	max-width: 380px;
+}

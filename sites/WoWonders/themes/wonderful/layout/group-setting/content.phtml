@@ -1,0 +1,28 @@
+<?php
+$wo['setting_page'] = 'general-setting';
+$pages_array = array(
+   'general-setting',
+   'privacy-setting',
+   'delete-group',
+   'avatar-setting',
+   'requests',
+   'group-members'
+   );
+if (!empty($_GET['link3'])) {
+   if (in_array($_GET['link3'], $pages_array)) {
+      $wo['setting_page'] = $_GET['link3'];
+   }
+}
+?>
+<style>.wo_settings_page h3, .wo_settings_page .modal-footer .btn{background-color: #3f87f5;border-color: #3f87f5;}</style>
+<div class="page-margin">
+   <div class="row setting-panel">
+      <div class="col-md-2 offnavmenu"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+      <div class="col-md-7 cushomewider" style="padding-left: 0px;padding-right: 0px;">
+         <?php echo Wo_LoadPage("group-setting/" . $wo['setting_page']); ?>
+      </div>
+      <div class="col-md-3 cushomesmaller">
+          <?php echo Wo_LoadPage('group-setting/group-setting-sidebar');?>
+      </div>
+   </div>
+</div>

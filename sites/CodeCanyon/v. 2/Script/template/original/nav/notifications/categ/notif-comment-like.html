@@ -1,0 +1,43 @@
+{strip}
+{foreach $query as $res}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock notif-comment-liked">
+            <div id="ne-n" data-category="Comments" class="nn21 notif  {if $res.unread == 'yes'}__marked{/if}  notif__111 show-on-hover">
+                <!-- liked comments -->
+                <div class="notif_media clearfix">
+				<div class="ucard-v __xs">
+				<div class="section">
+				
+				
+				<div class="notif_ic_parent">
+				<div class="notif_ic_cnt liked-content"></div>
+				</div>
+				 
+				</div></div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+                        <div class="notif_tx">
+						<a class="o bold" data-clbk="removePopup" href="/user/{$res.uid}" hrefattr="true">
+						<div class="notification-user-avatar"><img src="/getPhoto?p={$res.uphoto}&sz=small" class="photo_img" width="24" height="24" /></div>{$res.fullname}</a>
+						<span class="__frrpkc_txt">&nbsp;liked your comment.&nbsp;</span>
+						 <br/>
+						<span rel="tipsy" class="notif_mini_comment_preview">{$this->str_smilies($res.str_comment)}</span>
+                            <div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+                           
+							
+							<div class="notif_ac fade-on-hover">
+							<span class="hook inlineBlock">
+							<span title="{$this->lang['remove_notif']}" data-norelationrelativ data-removenotif="{$res.id}" id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span>
+							
+							</span></div>
+
+							 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/foreach}
+{/strip}

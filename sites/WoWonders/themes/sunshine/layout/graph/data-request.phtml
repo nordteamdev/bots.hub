@@ -1,0 +1,55 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="wo_settings_page sun_oauth">
+				<div class="form-horizontal setting-panel row text-center" method="post">
+					<div class="avatar">
+						<img src="<?php echo $wo['app']['app_avatar'];?>" alt="<?php echo $wo['app']['app_name']; ?> Profile Picture"/>
+					</div>
+					<br>
+					<div style="font-size: 25px;text-transform: capitalize;"><?php echo $wo['app']['app_name']; ?></div>
+					<div class="app-website">
+						<p><?php echo $wo['app']['app_description']?></p>
+					</div>
+					<div class="clear"></div>
+					<hr>
+					<h4 style="font-size: 15px;">
+						<b style="margin: 0;"><?php echo $wo['app']['app_name']; ?></b> would to receive the following info: <br><small>(email, profile info, posts)</small>
+					</h4>
+					<hr>
+					<div class="form-inline">
+						<a href="<?php echo $wo['app']['app_website_url'];?>" class="btn btn-link">Back</a>
+						<button onclick="Wo_AcceptPermissions(<?php echo $wo['app']['id'];?>);" class="btn btn-main okdok">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+							Accept
+						</button>
+						<?php 
+							$url = $wo['app']['app_website_url'];
+							if (isset($_GET['redirect_uri']) && !empty($_GET['redirect_uri'])) {
+								$url = $_GET['redirect_uri'];
+							} else if (!empty($wo['app']['app_callback_url'])) {
+								$url = $wo['app']['app_callback_url'];
+							}
+						?>
+						<input type="hidden" id="url" name="url" value="<?php echo urlencode($url);?>">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script>
+  function Wo_AcceptPermissions(id) {
+	  $('.okdok').addClass('disabled');
+    var url = $('#url').val();
+    $.post(Wo_Ajax_Requests_File() + '?f=apps&s=acceptPermissions', {id:id, url:url}, function (data) {
+      if (data.status == 200) {
+        window.location.href = data.location;
+      }
+    });
+  }
+</script>

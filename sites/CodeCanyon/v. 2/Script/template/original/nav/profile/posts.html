@@ -1,0 +1,363 @@
+{strip}
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+{include file={$_usermenu}}
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+{assign var=ad value=$this->getAdMarkup('posts')}
+
+
+<div class="flex posts_pg">
+<div id="mainContentContentColumn" class="posts_pg">
+
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+        <div id="hook_Block_AfterLoginRedirector" class="hookBlock"></div>
+        <div id="hook_Block_MiddleColumn" class="hookBlock">
+            <div id="middleColumn">
+			
+			<div class="posts_top_white">
+			
+				   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Posts']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+			
+			
+		{if $user.id === $this->USER['id']}	
+
+		{include file={$this->userPostBox}}
+
+		{/if}
+
+ 
+
+
+			
+			</div>
+		<a style="display:none;" id="post_page_reload" href="{$curr_pg_url}" class="hrefimportant" hrefattr="true"></a>	
+			
+	<div class="posts_top_pagination">{$pagination}</div>		
+<div class="media_feed status_pg">
+
+{assign var=countit value=0}
+{foreach $query as $r}
+
+{if $filter == 'shared'}
+{assign var=id_shared_id value=$r.share_id}
+{/if}
+
+{$r.itemid = $r.id}
+{$r.byuser = $r.userid}
+{if $r.community == 'yes'}
+{assign var=clubid value=$r.clubid}
+{else}
+{assign var=clubid value=0}
+{/if}
+{assign var="p_text" value=$r.text}
+
+
+ 
+
+{assign var="str_text" value=$this->str_smilies($this->generateMediaPost($p_text,'text',0,$clubid))}
+{assign var="bgcolor" value=$this->generateMediaPost($p_text,'bgcolor',0,$clubid)}
+{assign var="track_cover" value=$this->generateMediaPost($p_text,'songs_cover',0,$clubid)}
+{assign var="tagged_friends" value=$this->generateMediaPost($p_text,'tagged_people',0,$clubid)}
+{assign var="tagged_places" value=$this->generateMediaPost($p_text,'places',0,$clubid)}
+{assign var="photos" value=$this->generateMediaPost($p_text,'photos',$r.id,$clubid)}
+{assign var="video" value=$this->generateMediaPost($p_text,'videos',0,$clubid)}
+{assign var="tracks" value=$this->generateMediaPost($p_text,'tracks',0,$clubid)}
+{assign var="links" value=$this->generateMediaPost($p_text,'links',0,$clubid)}
+{assign var="poll" value=$this->generateMediaPost($p_text,'poll',0,$clubid)}
+
+{if $clubid > 0}
+{assign var="wd_comm_href" value="/post?i={$r.id}&clubid={$clubid}"}
+{else}
+{assign var="wd_comm_href" value="/post?i={$r.id}"}
+{/if}
+
+{assign var="wd_comm_data" value='data-type-post="1" data-scrollto="comments"'}
+
+{if $filter == 'shared'}
+{assign var="wd_comm_count" value=$this->getCommentsCountSharedPosts($r.share_id)}
+
+{assign var="kl_count" value=$this->getLikesCountSharedPost($r.share_id)}
+{assign var="kl_eu" value=$this->likedByMeSharedContent($r.share_id)}										
+{else}
+{assign var="wd_comm_count" value=$this->getCommentsCount($r.id,'post')}
+{assign var="kl_count" value=$this->getLikesCount($r.id,'post')}
+{assign var="kl_eu" value=$r.kl_eu}
+{/if}
+
+{assign var="res" value=$r}
+
+{if $filter == 'shared'}
+
+{$res['itemid'] = $r.share_id}
+
+{/if}
+
+{if !isset($item_type)}
+{assign var="item_type" value="post"}
+{/if}
+
+{assign var="k_it_type" value=""}
+{assign var="more" value=0}
+{assign var="c_more" value=0}
+
+
+<div class="feed {if $r.available == 'yes'}__setted{/if}" data-gth="feed-posts-{$countit}{$res.id}" id="st_fd_i_{$r.id}">
+	<div class="hook delete-stub">
+		<div class="delete-stub_i __deleted">
+			<div class="delete-stub_ac"><span class="delete-stub_info tico"><i class="tico_img ic ic_ok"></i>{$this->lang['post_removed']}</span><a href="javascript:void(0);" data-post-d='{ldelim}"i":"{b_encode($r.id)}", "added":"{$r.added}","type":"{$r.type}","available":"{$r.available}","cnt":"{$r.text}"{rdelim}' onclick="return restoreMyPost(event,this);" class="delete-stub_cancel il lp">{$this->lang['restore']}</a></div>
+		</div>
+	</div>
+	
+	{if $filter == 'shared'}
+
+
+	<div class="feed_ha">
+	<span class="kn_shortcutmenu">
+	<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$r.ushared_id}","uname":"{$r.ushared_fullname}","uphoto":"{$r.ushared_picture}","ugender":"{$r.ushared_gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$r.ushared_id}"></div>
+	<a href="/user/{$r.ushared_id}" class="ob" hrefattr="true">{$r.ushared_fullname}</a></span>&nbsp;{$this->lang['shared_this']}</div>
+	<div class="divider_feed_share"></div>
+	
+	{else}
+	
+	{if $r.userid === $this->USER['id']}
+	<!---<div class="feed-i_pin_w">
+		<div class="feed-i_pin"><a href="/post?i={$r.id}" hrefatrr="true" data-postcurr='{ldelim}"i":"{b_encode($r.id)}"{rdelim}' onclick="return postAsCurStatus(this,event);" class="mst-feed_pin cl {if $r.available == 'yes'}__setted{/if}"><span class="tico"><i class="tico_img ic ic_status"></i><span>{if $r.available == 'yes'}{$this->lang['posted_as_status']}{else}{$this->lang['set_as_current_status']}{/if}</span></span></a></div>
+	</div>-->
+	{/if}
+	
+	<header>
+	
+	<div class="feed_ava">
+		<div>
+			<a class="dblock" href="/user/{$r.uid}" hrefattr="true"><img class="feed_ava_img" src="/getPhoto?p={$r.profile_photo}&sz=small&g={$r.gender}" alt="{$r.fullname}" width="48" height="48"></a>
+
+		</div>
+	</div>
+	
+	
+	<div class="feed_ac"><span class="feed_date">{$this->addedConv($r.added)}</span>
+	{if $r.userid === $this->USER['id']}
+	<a title="{$this->lang['Delete']}" href="javascript:void(0);" data-post-d='{ldelim}"i":"{b_encode($r.id)}"{rdelim}' onclick="return deleteMyPost(event,this);"class="al feed_close _nofeed"></a>
+	{else}
+	<a title="{$this->lang['report']}" href="javascript:void(0);" onclick="return reportCnt(event,{$r.id},'post');" class="u-menu_a mlr_top_ac_i __pg_posts ic12 ic12_warn"></a>
+	{/if}
+	</div>
+	
+		<div class="feed_h">
+		
+		<span class="shortcut-wrap">
+		<a href="/user/{$r.uid}" class="ob" hrefattr="true">{$r.fullname}</a>
+		
+		{if $r.community == 'yes'}
+		{assign var=club_details value=$this->getCommunityDetails($r.clubid)}
+		<span class="glyphicon glyphicon-triangle-right feed-to-club"></span>
+		<a href="/community/{$club_details.id}" hrefattr="true" class="ob">{$club_details.name}</a>
+		
+		{/if}
+		
+		</span>
+		
+		{$tagged_friends} {if isset($tagged_places[0]) && count($tagged_places)}{$tagged_places[0]}{/if}
+        </div>
+	</header>
+
+
+    <div class="feed_cnt" id="feed_cnt_{$r.id}">
+        <div class="hook delete-stub"></div>
+        
+		
+		
+
+		{/if}
+		
+		
+        <div class="feed_b">
+		
+		      <div class="media-statuss __arw-t __accent">
+                <div class="media-statuss_cnt">
+		{if $r.type == 'song'}
+		{assign var="song_details" value=$this->getSongDetails($r.text)}
+			<div class="track __media-status">
+				<div class="track_hld"><span id="pm_sec_outsite_track_{$song_details.id}" class="track_play" data-track-inf='{ldelim}"track":"{$song_details.path}","cover":"{$song_details.cover}","artist":"{$song_details.artist}","songname":"{$song_details.title}","albumname":"{$song_details.album}"{rdelim}' onclick="nobilMusicPlayOutsideTrack(this,event)"></span>
+					<div class="track_cnt textWrap"><span onclick="nobilMusicSearch('{$song_details.artist} {$song_details.title}')" class="track_song">{$song_details.artist} - {$song_details.title}</span></div>
+				</div>
+			</div>
+		{else}
+
+
+							
+				
+				{if $filter == 'shared'}
+
+ 
+				{assign var="post_content" value=$r.text}
+
+				{assign var="post_id" value=$r.original_post_id}
+				{if $r.original_post_community == 'yes' && $r.post_type == 'club'}
+					{$clubid = $r.original_post_id}
+					
+				{else if $r.original_post_community == 'yes' && ($r.post_type == 'video' || $r.post_type == 'photo')}
+				{$clubid = $this->getClubIdByPost($post_id,$r.post_type)}
+				{/if}
+
+				{assign var="post_type" value=$r.post_type}
+			 
+				{append var='r' value=$r.type index='p_type'}
+ 
+				{include file="{$this->theme_dir}{$this->feed_templates}/shared-cnt.html"}
+				  
+				
+				{else if $r.type == 'bgcolor'}
+				
+				 
+				{$bgcolor}
+				
+				
+				{else}
+				 
+				
+				{$this->checkForTranslating(trim($str_text))}
+				{if empty($video[0]) && empty($photos[0]) && !$links && count($tagged_places)}
+				<!-- Show Map Location -->
+				<div class="feed_map_cnt_f">{$tagged_places[1]}</div>
+				{/if}
+				
+			
+				{if $video[0] != '' && $video[1] != ''}
+				{if $c_more < 2}
+				<div class="feed_videos_cnt">{$video[0]}</div>
+				{/if}
+				{if $video[1] == 1} {$k_it_type = 'video'}{/if}
+				{$c_more = $c_more+1}
+				{if $video[1] > 3}
+				{$more = 1}
+				{/if}
+				{else if $r.type == 'videos'}
+				Video is not available
+				{/if}
+				
+				{if $photos[0] != '' && $photos[1] != ''}
+				{if $photos[1] == 1 && $k_it_type == ''} {$k_it_type = 'photos'}
+				{else if $photos[1] >= 1 && $k_it_type != ''} {$k_it_type = ''}
+				{/if}
+				{if $c_more < 2}
+				<div class="feed_image_collage __{$photos[1]}">{$photos[0]}</div>
+				{/if}
+				{$c_more = $c_more+1}
+				{if $photos[1] && $video[0] != '' || $photos[1] > 2}
+				{$more = 1}
+				{/if}
+				{else if $r.type === 'photo'}
+				Photo is not available
+				{/if}
+				
+				
+				{if $links && $c_more < 2}
+				<div class="feed_links_cnt">{$links}</div>
+				{$k_it_type = ''}
+				{$c_more = $c_more+1}
+				{/if}
+				{if $poll}
+				<div class="sh_poll_cnt">{$poll}</div>
+				{/if}
+				
+				{if !empty($tracks[0]) && !empty($tracks[1]) && $c_more < 2}
+				{$k_it_type = ''}
+				
+				{if !$photos && !$video[0] && !$tagged_places && !$links}
+				{if $track_cover}{assign var="song_use_cv" value="1"}<div class="feed_media_post_muz_av"><img src="{$track_cover}"></div>{/if}
+				{/if}
+				
+				
+				<div class="feed_songs_cnt {if isset($song_use_cv)}__is_cover{/if}">{$tracks[0]}</div>
+				{$c_more = $c_more+1}
+				{if $tracks[1] > 4 || ($tracks[1] && $tagged_places) }
+				{$more = 1}
+				
+				{/if}
+				{/if}
+				
+				
+				
+                    <div class="media_more {if !$more}invisible{/if}"><a href="/post?i={$r.id}" data-type-post="1" class="media_more_a scrollbottom" hrefattr="true"><span class="media_more_ic"><span class="post_view_more_txt">{$this->lang['view_more']}</span>&nbsp;&#8226;&#8226;&#8226;</span></a></div>
+               
+				{/if}
+				{/if}
+			   </div>
+            </div>
+			
+			 
+        </div>
+		<div class="feed_f">
+			{assign var=clubid value=0}
+		{if $filter == 'shared'}
+			{assign var=disable_share value=1}
+		{/if}
+          {include file="{$this->theme_dir}/feed/widget-list.html"} 
+          
+		</div>
+	</div>
+	
+{if $filter == 'shared'}
+	<posts-comments rel="comments-in-posts-page" data-comments-categ="shared-content" id="{$countit}{$res.id}" data-shared-post-id="{$res.share_id}" data-original-post-id="{$r.original_post_id}" data-posts-author-id="{$res.uid}" data-posts-clubid="{$clubid}"></posts-comments>
+{else}
+<posts-comments rel="comments-in-posts-page" id="{$countit}{$res.id}" data-comments-categ="post" data-shared-post-id="{$res.id}" data-original-post-id="{$res.id}" data-posts-author-id="{$res.uid}" data-posts-clubid="{$clubid}"></posts-comments>
+</div>
+{/if}
+
+
+
+{$countit = $countit+1}
+{foreachelse}
+
+{$this->info_msg(sprintf($this->lang['u_has_no_posts_shares'],$user.fullname))}
+{/foreach}
+
+</div></div></div></div>
+{$pagination}
+</div>
+ <div class="uprofile-nav-side-right">
+ 
+ 						<div class="nav-side">
+							<a class="nav-side_i {if !$filter || $filter == ''}__ac{/if}" data-scrolltop="20" href="/profile?q={$user.id}&cmd=posts&nav=posts" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['Created']} {$this->getPostsCount($user.id)}</div>
+							</a>
+							<a href="/profile?q={$user.id}&cmd=posts&filter=shared&nav=posts" data-scrolltop="20" class="nav-side_i {if $filter == 'shared'}__ac{/if}" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['Shared_posts']}&nbsp;{$this->getUserSharedPostsCount($user.id)}</div>
+							</a>
+
+							<a href="/profile?q={$user.id}&cmd=posts&filter=links&nav=posts" data-scrolltop="20" class="nav-side_i {if $filter == 'links'}__ac{/if}" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['Links']} {$this->getSharedLinksCount($user.id)}</div>
+							</a>
+							<a href="/profile?q={$user.id}&cmd=posts&filter=tagged&nav=posts" data-scrolltop="20" class="nav-side_i {if $filter == 'tagged'}__ac{/if}" hrefattr="true">
+								<div class="nav-side_tx ellip">{if $user.id == $this->USER['id']}{$this->lang['tagged_by_friends']}{else}{$this->lang['with_friends']}{/if} {$this->getPostsTaggedByFriendsCount($user.id)}</div>
+							</a>
+
+						</div>
+{if $ad}
+			<!--- AD -->
+
+				<div class="portlet" id="MediaTopicDisplayTypeFilter">
+					<div class="portlet_b">
+						<div class="ads-box"><div class="ads-box-title">{$this->lang['sponsored']}</div><div class="ads-box-cnt">
+						
+						{$ad}
+			</div>
+			</div>
+			</div>
+			</div>
+			<!-- end AD -->
+			{/if}
+ </div>
+ </div>
+ 
+
+{/if}
+{/strip}

@@ -1,0 +1,72 @@
+<div class="wo_settings_page profile-lists sun_sett_page">
+	<h3>
+		<?php echo $wo['lang']['admin']; ?> 
+		<input type="text" placeholder="<?php echo $wo['lang']['search']; ?>.." class='pull-right' id='search-page-admins' onkeydown="Wo_SearchPageAdminUsers(this.value)">
+		<div class="clear"></div>
+	</h3>
+      <div class="setting-well" id="page_admins">
+                  <?php
+                     $requests = Wo_GetPageAdmins($wo['setting']['page_id']);
+                     if (count($requests) > 0) {
+                        foreach ($requests as $wo['member']) {
+                            echo Wo_LoadPage('page-setting/admin-list');
+                        }
+                     } else {
+                        echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg> ' . $wo['lang']['no_members_found'] . '</h5>';
+                     }
+                  ?>
+      </div>
+
+</div>
+
+<style>#search-page-admins{margin-top: -5px;margin-bottom: -8px;width:60%;border: 1px solid #ebeaea;border-radius: 2px;padding-left: 10px;height: 30px;margin-top: -4px;}</style>
+
+<script>
+   function Wo_SearchPageAdminUsers(name = '') {
+      if (!name) {
+         return false;
+      }
+      $.ajax({
+         url: Wo_Ajax_Requests_File(),
+         type: 'GET',
+         dataType: 'json',
+         data: {f: 'pages',s:'get_mbr',name:name,page:'<?php echo $wo['setting']['page_id']; ?>'},
+      })
+      .done(function(data) {
+         if (data.status == 200) {
+            $("#page_admins").html(data.html)
+         }
+         else{
+            $("#page_admins").html('<h5 class="search-filter-center-text"><?php echo $wo['lang']['no_result']; ?></h5>');
+         }
+      })
+      .fail(function() {
+         console.log("error");
+      })
+
+   }
+
+   function Wo_AddPageAdmin(member_id = false,page_id = false,self = false){
+     if (!member_id || !page_id || !self) {
+       return false;
+     }
+     $.ajax({
+       url: Wo_Ajax_Requests_File(),
+       type: 'GET',
+       dataType: 'json',
+       data: {f: 'pages',s:'add_admin',user_id:member_id,page_id:page_id},
+     })
+     .done(function(data) {
+       if (data.status == 200 && data.code == 1) {
+         $(self).find('i').replaceWith('<i class="fa fa-times-circle-o"></i>');
+       }
+       else if(data.status == 200 && data.code == 0){
+         $(self).find('i').replaceWith('<i class="fa fa-plus-square-o"></i>');
+       }
+     })
+     .fail(function() {
+       console.log("error");
+     })
+     
+   }
+</script>

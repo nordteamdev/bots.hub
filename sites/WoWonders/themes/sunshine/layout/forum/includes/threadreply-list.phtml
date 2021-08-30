@@ -1,0 +1,41 @@
+<div class="thread-replies" data-thread-reply="<?php echo $wo['threadreply']['id']; ?>" id="reply-<?php echo $wo['threadreply']['id']; ?>">
+	<div class="t-left_prt text-center">
+		<div class="avatar">
+			<a href="#reply-<?php echo $wo['threadreply']['id']; ?>" class="btn">
+	       		<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24"><path fill="currentColor" d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" /></svg>
+	       </a>
+			<a href="<?php echo ($wo['threadreply']['user_data']['url']); ?>" data-ajax="?link1=timeline&u=<?php echo $wo['threadreply']['user_data']['username']; ?>"><img src="<?php echo $wo['threadreply']['user_data']['avatar']; ?>" alt="Avatar"></a>
+		</div>
+	</div>
+	<div class="t-right_prt">
+		<div class="sun_forum_opts <?php echo Wo_RightToLeft('pull-right');?> ">
+			<a class="btn btn-default btn-sm" href="<?php echo $wo['threadreply']['reply-url']; ?>" data-ajax="?link1=threadquote&tid=<?php echo $wo['threadreply']['id'];?>">
+		   		<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="currentColor" d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" /></svg>
+		    </a>
+		    <?php if ($wo['threadreply']['is_owner'] || $wo['threadreply']['is_admin']): ?>
+			    <a class="btn btn-default btn-sm" href="<?php echo $wo['threadreply']['edit-url']; ?>" data-ajax="?link1=editreply&tid=<?php echo $wo['threadreply']['id'];?>">
+			        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+		        </a>
+				<a class="btn btn-default delete-reply btn-sm" id="<?php echo $wo['threadreply']['id']; ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+				</a>
+		    <?php endif; ?>
+		</div>
+		<h4 class="user-title-thread">
+			<a href="<?php echo ($wo['threadreply']['user_data']['url']); ?>" data-ajax="?link1=timeline&u=<?php echo $wo['threadreply']['user_data']['username']; ?>"><?php echo ($wo['threadreply']['user_data']['name']); ?></a>
+			<span class="small"><?php echo $wo['lang']['joined']; ?>: <?php echo Wo_Time_Elapsed_String($wo['threadreply']['user_data']['joined']); ?></span>
+		</h4>
+		<h5 class="time">
+			<?php echo $wo['lang']['posted']; ?>:
+			<?php if ($wo['threadreply']['post_quoted'] == 1): ?>
+				<i class="fa fa-reply" aria-hidden="true"></i> 
+			<?php else: ?>
+				<i class="fa fa-reply-all" aria-hidden="true"></i> 
+			<?php endif; ?>
+			<span> <?php echo Wo_Time_Elapsed_String($wo['threadreply']['posted_time']); ?></span>
+		</h5>
+		<div class="clear"></div>
+		<div class="small"><?php echo Wo_BbcodeToHtml($wo['threadreply']['post_text']); ?></div>
+	</div>
+	<div class="clear"></div>
+</div>

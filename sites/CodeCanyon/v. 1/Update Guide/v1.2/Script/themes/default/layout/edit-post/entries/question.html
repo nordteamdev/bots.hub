@@ -1,0 +1,52 @@
+<div class="entry" data-type="question" data-id="{{ENTRY_ID}}" id="entry-{{ENTRY_ID}}">
+	<div class="entry-name pull-left">
+	   <i class="fa fa-question-circle"></i> 
+	    {{LANG question}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_ID}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_ID}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntryByID({{ENTRY_ID}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<div class="form-group">
+	    <input type="text" class="form-control" data-name="entry_question_name" placeholder="{{LANG question}}" value="{{ENTRY_TITLE}}">
+	    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_ID}}" onchange="FL_UploadImage('{{ENTRY_ID}}', '{{LANG set_as_p_image}}');">
+	    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name" value="{{ENTRY_IMAGE}}">
+	</div>
+	<div class="img-content">
+		<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_ID}}').click();">
+		    <div class="post-image"><img src="{{ENTRY_IMAGE}}"></div>
+	    </div>
+	    <div class="img-set-as"></div>
+	</div>
+	<div class="image-link">
+	    <div class="form-group">
+		    <input type="text" class="form-control" id="entry-image-link" placeholder="{{LANG img_link}}">
+		</div>
+		<div class="form-group pull-right">
+	        <button class="btn btn-blue" type="button" onclick="FL_FetchQuestionImage({{ENTRY_ID}}, '{{LANG set_as_p_image}}');">
+		      <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	        </button>
+	    </div>
+	    <div class="clear"></div>
+	</div>
+
+	<span href="#" class="fetch-image-link" onclick="FL_OpenFetchImageInput({{ENTRY_ID}});"><i class="fa fa-link"></i> {{LANG fetch_url_from_image}}</span>
+
+	<div class="answers">
+		<p>{{LANG answers_not_modifiable}}</p>
+		<div id="question-answers">
+		</div>
+		
+
+
+		<div class="clear"></div>
+		<hr>
+		<button class="btn btn-main" onclick="FL_AddQuizAnswer({{ENTRY_ID}}, '{{LANG choose_img}}');" type="button">
+		<i class="fa fa-plus progress-icon" data-icon="plus"></i> {{LANG add_answer}}
+		</button>
+	</div>	
+	<input type="file" id="questionans-img-{{ENTRY_ID}}" class="hidden" onchange="FL_UploadQuestionImg({{ENTRY_ID}},this);">	
+</div>

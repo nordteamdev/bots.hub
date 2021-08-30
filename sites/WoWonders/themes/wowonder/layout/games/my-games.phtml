@@ -1,0 +1,34 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row" style="margin: 0px 0px 20px;">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li><a href="<?php echo Wo_SeoLink('index.php?link1=new-game'); ?>" data-ajax="?link1=new-game"><?php echo $wo['lang']['latest_games'] ?></a></li>
+					</ul>
+					<ul class="<?php echo Wo_RightToLeft('pull-right'); ?>">
+						<li class="active"><a data-ajax="?link1=games" href="<?php echo Wo_SeoLink('index.php?link1=games');?>"><?php echo $wo['lang']['my_games']; ?></a></li>
+					</ul>
+				</div>
+				
+				<div class="row" style="padding: 0px 5px;">
+					<?php
+						$pages = Wo_GetMyGames();
+						if (count($pages) > 0) {
+							foreach ($pages as $wo['game']) {
+								echo Wo_LoadPage('games/game-list');
+							}
+						} else {
+							echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> ' . $wo['lang']['no_games_found'] . '</h5>';
+						}
+					?>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+	<!-- .row -->
+</div>

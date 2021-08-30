@@ -1,0 +1,133 @@
+<div class="list-group page-margin">
+    <div class="add-photo row">
+       <div class="col-lg-9">
+       	<h2><?php echo $wo['lang']['tell_us'];?></h2>
+        <h4><?php echo $wo['lang']['tell_us_des'];?></h4>
+        <br>
+      <form class="setting-general-form form-horizontal" method="post">
+      <fieldset>
+         <!-- Text input-->
+         <div class="form-group">
+            <label class="col-md-2" for="first_name"><?php echo $wo['lang']['first_name']; ?></label>  
+            <div class="col-md-7">
+               <input id="first_name" name="first_name" type="text" class="form-control input-md" value="<?php echo $wo['user']['first_name']?>" autocomplete="off"> 
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-md-2" for="email"><?php echo $wo['lang']['last_name']; ?></label>  
+            <div class="col-md-7">
+               <input name="last_name" id="last_name" type="text" class="form-control input-md" value="<?php echo $wo['user']['last_name']?>" autocomplete="off">
+            </div>
+         </div>
+         
+         <!-- Select Basic -->
+         <div class="form-group">
+            <label class="col-md-2" for="country"><?php echo $wo['lang']['country']; ?></label>
+            <div class="col-md-7">
+               <select id="country" name="country" class="form-control">
+                  <?php 
+                  foreach ($wo['countries_name'] as $country_ids => $country) { 
+                    $country_id = $wo['user']['country_id'];
+                    $selected_contry = ($country_ids == $country_id) ? ' selected' : '' ;
+                  ?>
+                  <option value="<?php echo $country_ids;?>" <?php echo $selected_contry;?> ><?php echo $country;?></option>
+                  <?php } ?>
+               </select>
+            </div>
+         </div>
+         <?php
+         $cutoff   = 1930;
+         $now      = date('Y');
+         $birthday = '';
+         if ($wo['user']['birthday'] != '0000-00-00') {
+             $birthday = explode('-', $wo['user']['birthday']);
+         }
+         ?>
+         <!-- Select Basic -->
+         <!-- <div class="form-group">
+            <label class="col-md-2" for="birthday"><?php echo $wo['lang']['birthday']; ?></label>
+            <div class="col-sm-2">
+               <select id="birthday" name="age_day" class="form-control">
+                  <option value="" disabled selected><?php echo $wo['lang']['day']; ?></option>
+                  <?php
+                  for ($d = 1; $d <= 31; $d++) {
+                      $birthday_d = ($birthday[2] == $d) ? ' selected' : '';
+                      echo '  <option value="' . $d . '" ' . $birthday_d . '>' . $d . '</option>' . PHP_EOL;
+                  }
+                  ?>
+               </select>
+            </div> -->
+            <!-- Select Basic -->
+            <!-- <div class="col-sm-3 no-padding-left">
+               <select id="birthday" name="age_month" class="form-control">
+                  <option value="" disabled selected><?php echo $wo['lang']['month']; ?></option>
+                  <?php
+                  for ($m = 1; $m <= 12; $m++) {
+                      $birthday_m = ($birthday[1] == $m) ? ' selected' : '';
+                     echo '  <option value="' . $m . '" ' . $birthday_m . '>' . $wo['months'][$m] . '</option>' . PHP_EOL;
+                  }
+                  ?>
+               </select>
+            </div> -->
+            <!-- Select Basic -->
+            <!-- <div class="col-sm-2 no-padding-left">
+               <select id="birthday" name="age_year" class="form-control">
+                  <option value="" disabled selected><?php echo $wo['lang']['year']; ?></option>
+                  <?php
+                  for ($y = $now; $y >= $cutoff; $y--) {
+                      $birthday_y = ($birthday[0] == $y) ? ' selected' : '';
+                      echo '  <option value="' . $y . '" ' . $birthday_y . '>' . $y . '</option>' . PHP_EOL;
+                  }
+                  ?>
+               </select>
+            </div>
+         </div> -->
+         <div class="form-group">
+            <label class="col-md-2" for="country"><?php echo $wo['lang']['birthday']; ?></label>
+            <div class="col-md-7">
+              <input id="usr_birthday" name="birthday" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['birthday']; ?>" autocomplete="off" value="<?php echo $wo['setting']['birthday']?>"> 
+            
+            </div>
+         </div>
+         <input type="hidden" name="user_id" value="<?php echo $wo['user']['user_id'];?>">
+         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+      </fieldset>
+   </form>
+       </div>
+       <div class="col-lg-2 continue-button">
+       	<button class="btn con-button btn-main" onclick="Wo_SubmitInfoForm();"><?php echo $wo['lang']['start_up_continue'];?></button><br> <small class="skip-step" onclick="Wo_SkipStep('start_up_info');"><?php echo $wo['lang']['start_up_skip'];?></small>
+       </div>
+       <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+  $("#usr_birthday").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'dd-mm-yy',
+    yearRange: "1930:2020",
+    minDate: "-60Y",
+    maxDate: "today",
+    prevText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>',
+    nextText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>'
+    });
+});
+function Wo_SubmitInfoForm() {
+	$("form.setting-general-form").submit();
+}
+$(function () {
+	$('form.setting-general-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_information_startup',
+    beforeSend: function () {
+      $('button').attr('disabled', true);
+      $('button').text("<?php echo $wo['lang']['please_wait'];?>");
+    },
+    success: function (data) {
+      if(data.status == 200) {
+      	window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+      }
+    }
+  });
+});
+</script>

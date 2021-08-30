@@ -1,0 +1,119 @@
+<div class="settings-header">
+	<h3><i class="fa fa-share-square fa-fw "></i> {{LANG social_login}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="general-settings" method="POST">
+    <div class="setting-general-alert"></div>
+	<fieldset>
+	   <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-3" for="facebook">Facebook Login</label>
+      <div class="col-md-6">
+        <select id="facebook" name="facebook" class="form-control">
+            <option value="1" <?php echo ($fl['config']['facebook'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+            <option value="2" <?php echo ($fl['config']['facebook'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+        </select>
+      </div>
+    </div>
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-3" for="twitter">Twitter Login</label>
+      <div class="col-md-6">
+        <select id="twitter" name="twitter" class="form-control">
+            <option value="1" <?php echo ($fl['config']['twitter'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+            <option value="2" <?php echo ($fl['config']['twitter'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+        </select>
+      </div>
+    </div>
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-3" for="google">Google+ Login</label>
+      <div class="col-md-6">
+        <select id="google" name="google" class="form-control">
+            <option value="1" <?php echo ($fl['config']['google'] == 1) ? 'selected' : '';?>>{{LANG enabled}}</option>
+            <option value="2" <?php echo ($fl['config']['google'] == 2) ? 'selected' : '';?>>{{LANG disabled}}</option>
+        </select>
+      </div>
+    </div>
+		<hr>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="facebook_app_ID">Facebook APP ID</label>  
+      <div class="col-md-6">
+        <input id="facebook_app_ID" name="facebook_app_ID" type="text" placeholder="" class="form-control input-md" value="{{CONFIG facebook_app_ID}}">
+      </div>
+    </div>
+     <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="facebook_app_key">Facebook APP key</label>  
+      <div class="col-md-6">
+        <input id="facebook_app_key" name="facebook_app_key" type="text" placeholder="" class="form-control input-md" value="{{CONFIG facebook_app_key}}">
+      </div>
+    </div>
+    <hr>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="twitter_app_ID">Twitter APP ID</label>  
+      <div class="col-md-6">
+        <input id="twitter_app_ID" name="twitter_app_ID" type="text" placeholder="" class="form-control input-md" value="{{CONFIG twitter_app_ID}}">
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="twitter_app_key">Twitter APP key</label>  
+      <div class="col-md-6">
+        <input id="twitter_app_key" name="twitter_app_key" type="text" placeholder="" class="form-control input-md" value="{{CONFIG twitter_app_key}}">
+      </div>
+    </div>
+    <hr>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="google_app_ID">Google+ APP ID</label>  
+      <div class="col-md-6">
+        <input id="google_app_ID" name="google_app_ID" type="text" placeholder="" class="form-control input-md" value="{{CONFIG google_app_ID}}">
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-3" for="google_app_key">Google+ APP key</label>  
+      <div class="col-md-6">
+        <input id="google_app_key" name="google_app_key" type="text" placeholder="" class="form-control input-md" value="{{CONFIG google_app_key}}">
+      </div>
+    </div>
+    <hr>
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-3" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+<script>
+$(function() {
+  var form = $('form#general-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=admincp&s=site',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-general-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

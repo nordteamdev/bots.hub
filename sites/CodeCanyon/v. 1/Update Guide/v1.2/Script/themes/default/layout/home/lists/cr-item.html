@@ -1,0 +1,25 @@
+<div class="item <?php echo($fl['trending_data']['active']); ?>">
+    <img src="<?php echo $fl['trending_data']['news']['big_image'];?>" alt="" class="image">
+    <div class="carousel-caption">
+    	<a href="<?php echo $fl['trending_data']['news']['url'];?>" class="list-url">
+	        <h5>
+	        	<strong>
+	        		<?php echo $fl['trending_data']['news']['title'];?>
+	        	</strong>
+	        </h5>
+        </a>
+        <p><?php echo $fl['trending_data']['news']['description'];?></p>
+        <div class="meta width-100">
+        	<a href="<?php echo $fl['trending_data']['news']['publisher']['url'];?>">
+        		<?php echo $fl['trending_data']['news']['publisher']['name'];?>
+        	</a> 
+        	<time>
+        		<i class="fa fa-clock-o"></i> 
+        		<?php echo $fl['trending_data']['news']['posted'];?>
+        	</time>
+        </div>
+    </div>
+    <div class="item-overlay">
+    	
+    </div>
+</div>

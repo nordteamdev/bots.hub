@@ -1,0 +1,189 @@
+{strip}
+  {assign var=c_tr_w value=''}
+  {assign var=c_tr_h value=''}
+ {assign var=condition_split_users value=0}
+  {assign var=visible_photos value=0}
+  {assign var=widget_enabled value=0}
+  {assign var=kl_count value=$res_u_video.kl_count}
+
+<div class="feed __like">
+
+	<header class="feed-like-header-top">
+	
+	
+
+		<div class="feed_ac">
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+			<span class="feed_date">{$this->feedConvDate($res.added)}</span>
+		</div>
+	
+        <div class="feed_ha">
+		
+		{foreach $l_users as $user_result}
+ 
+		{if $condition_split_users > 2}
+			{break}
+		{/if}
+		
+		{if $condition_split_users === 0}
+		<div class="feed_ava_like"><img src="/getPhoto?p={$user_result.photo}&sz=small"></div>
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user_result.id}","uname":"{$user_result.name}","uphoto":"{$user_result.photo}","ugender":"{$user_result.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$user_result.id}">
+		</div>
+		<a href="/user/{$user_result.id}" class="ob" hrefattr="true">{$user_result.name}</a>
+		</span>
+		{else if $condition_split_users === 1}
+
+		{if count($l_users) - 2 === 0}&nbsp;{$this->lang['and']}&nbsp;{else},&nbsp;{/if}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user_result.id}","uname":"{$user_result.name}","uphoto":"{$user_result.photo}","ugender":"{$user_result.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$user_result.id}">
+		</div>
+		<a href="/profile?q={$user_result.id}" class="ob" hrefattr="true">{$user_result.name}</a>
+		</span>
+		{else if $condition_split_users > 1} 
+		
+		
+		&nbsp;{$this->lang['and_other']}&nbsp;<a class="lp il feed_lk_oth_fr" data-feedid="{$res.id}" {if $tooltip_more}data-tooltipmore="{$total_u_lk_count}"{/if} data-getjs='{$tooltip_data}' href="javascript:;" onclick="return feed_liked_popup(this,{$res.id});">{if count($l_users) - 2 == 1} {$total_u_lk_count-2} {$this->lang['friend']} {else} {$total_u_lk_count-2} {$this->lang['friends']}{/if}</a> 
+		{/if}
+		
+		
+		{$condition_split_users = $condition_split_users+1}
+		{/foreach}
+
+        &nbsp;{$this->lang['liked_this']} </div>
+	
+	</header>
+
+
+
+
+
+
+
+
+	<div class="divider_feed_like"></div>
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+	<header>
+    <div class="feed_ava">
+	
+	{if !$parent_id && !$res_u_video.uid}
+	<div class="feed_no_author"></div>
+	{else}
+	
+	
+			{if $clubid > 0}
+		
+		<a href="/community/{$clubid}" hrefattr="true">
+            <div><img class="feed_ava_img" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+            </div>
+        </a>
+		
+		{else}
+		
+		<a href="/user/{$res_u_video.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res_u_video.profile_photo}&g={$res_u_video.ugender}&sz=small" alt="{$res_u_video.fullname}" width="48" height="48">
+            </div>
+        </a>
+		
+		{/if}
+		
+
+		
+		{/if}
+		
+		
+    </div>
+		<div class="feed_h">	
+		
+				{if !$parent_id && !$res_u_video.uid}
+		<span class="shortcut-wrap">{$this->lang['video_added']}</span> 
+		{else}
+		
+		
+		{if $clubid > 0}
+		
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		{else}
+		
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res_u_video.uid}","uname":"{$res_u_video.fullname}","uphoto":"{$res_u_video.profile_photo}","ugender":"{$res_u_video.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res_u_video.uid}">
+		</div>
+		<a href="/profile?q={$res_u_video.uid}" class="ob" hrefattr="true">{$res_u_video.fullname}</a></span> 
+		{/if}
+		
+		
+		
+		{/if}
+		&nbsp;{$this->lang['added_a_video']}
+		
+		</div>
+	</header>
+
+	
+
+			
+        <div class="feed_b">
+
+
+            <div class="media-block media-video">
+
+
+        {if $res_u_video.description} 
+		{assign var=video_description value=$this->str_smilies(pellipse($res_u_video.description,100))}
+	 <div class="image_txt_ovr">
+     <div class="feed_photo_descr ellip">{$video_description} {$this->checkForTranslating($video_description)}</div>   
+	 </div>
+	 {/if}
+
+	 <div id="videojw_{$video_id}" style="display:none;"></div>
+	 
+<div class="media-block media-video">
+	<div class="vid-card vid-card__xl">
+		<div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_p":"{$video_like_stcmd}",{if $clubid > 0}"vd_clubid":"{$clubid}",{/if}"vd_title":"{$res_u_video.title}","vd_fn":"{$res_u_video.filename}","vd_i":"{$video_id}","vd_ext":"{$res_u_video.extension}"{rdelim}'>
+			<div class="vid-card_cnt_w">
+				<div class="video-card-cover" style="background-image:url(/videoCover?v={$video_id}{if $clubid > 0}&clubid={$clubid}{/if});"></div><i class="vid_play"></i><i class="vid-card_duration">{$res_u_video.dur}</i></div>
+		</div>
+		<div class="video-card_n-w"><a href="/video?vid={$video_id}&cmd=open{if $clubid > 0}&clubid={$clubid}{/if}" data-ivideo="1" class="video-card_n ellip">{$res_u_video.title}</a>
+			<div class="video-card_info"><span class="video-card_info_i">{$res_u_video.views}&nbsp;{$this->lang['video_views']}</span></div>
+		</div>
+	</div>
+</div>
+	 
+           
+		
+			
+			</div>
+        </div>
+	
+
+
+        <div class="feed_f">
+			{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+
+    </div>
+</div>
+
+<script>
+var $feed_id = '{$res.id}', $itemid = '{$video_id}', $author_id = '{$res_u_video.uid}';
+{literal}
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'video',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/strip}

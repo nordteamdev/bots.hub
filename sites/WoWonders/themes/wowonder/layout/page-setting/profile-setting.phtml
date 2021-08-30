@@ -1,0 +1,123 @@
+<div class="wo_settings_page">
+	<h3>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+		<?php echo $wo['lang']['page_information'];?>
+	</h3>
+
+	<form  method="post" class="form-horizontal setting-information-form">
+		<div class="setting-information-alert setting-update-alert"></div>
+		
+		<div class="setting-panel row">
+			<!-- Text input-->
+            <div class="form-group col-lg-6">
+				<label class="col-md-12" for="company"><?php echo $wo['lang']['company'];?></label>  
+				<div class="col-md-12">
+					<input id="company" name="company" type="text" class="form-control input-md" value="<?php echo $wo['setting']['company'];?>">
+				</div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group col-lg-6">
+				<label class="col-md-12" for="phone"><?php echo $wo['lang']['phone_number'];?></label>  
+				<div class="col-md-12">
+					<input id="phone" name="phone" type="text" class="form-control input-md" value="<?php echo $wo['setting']['phone'];?>">
+				</div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group col-lg-6">
+				<label class="col-md-12" for="address"><?php echo $wo['lang']['location'];?></label>  
+				<div class="col-md-12">
+					<input id="address" name="address" type="text" class="form-control input-md" value="<?php echo $wo['setting']['address'];?>">
+				</div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group col-lg-6">
+				<label class="col-md-12" for="website"><?php echo $wo['lang']['website']; ?></label>  
+				<div class="col-md-12">
+					<input id="website" name="website" type="text" class="form-control input-md" value="<?php echo $wo['setting']['website'];?>">
+					<span class="help-block"><?php echo $wo['lang']['site_eg'];?></span>
+				</div>
+            </div>
+			
+			<!-- Text input-->
+			<div class="form-group col-lg-12">
+				<label class="col-md-12" for="page_description"><?php echo $wo['lang']['about'];?></label>
+				<div class="col-md-12">
+					<?php $text = br2nl($wo['setting']['about']); ?>         
+					<textarea class="form-control" id="page_description" name="page_description" cols="20" rows="3"><?php echo $text;?></textarea>
+				</div>
+			</div>
+		</div>
+         <div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+				<?php echo $wo['lang']['save']; ?>
+			</button>
+		</div>
+		<input type="hidden" name="page_id" value="<?php echo $wo['setting']['page_id'];?>">
+		<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+</div>
+<script type="text/javascript">
+   $(function() {
+     $('form.setting-information-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=pages&s=update_information_setting',
+       beforeSend: function() {
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+       },
+       success: function(data) {
+         if (data.status == 200) {
+           scrollToTop();
+           $('.setting-information-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+           $('.alert-success').fadeIn('fast', function() {
+             $(this).delay(2500).slideUp(500, function() {
+               $(this).remove();
+             });
+           });
+         } else {
+           var errors = data.errors.join("<br>");
+           scrollToTop();
+           $('.setting-profile-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+           $('.alert-danger').fadeIn(300);
+         }
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+       }
+     });
+   });
+   <?php if ($wo['config']['google_map'] == 1) { ?>
+   var pac_input = document.getElementById('address');
+     (function pacSelectFirst(input) {
+       // store the original event binding function
+       var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+       function addEventListenerWrapper(type, listener) {
+         // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+         // and then trigger the original listener.
+         if(type == "keydown") {
+           var orig_listener = listener;
+           listener = function (event) {
+             var suggestion_selected = $(".pac-item-selected").length > 0;
+             if(event.which == 13 && !suggestion_selected) {
+               var simulated_downarrow = $.Event("keydown", {
+                 keyCode: 40,
+                 which: 40
+               });
+               orig_listener.apply(input, [simulated_downarrow]);
+             }
+             orig_listener.apply(input, [event]);
+           };
+         }
+         // add the modified listener
+         _addEventListener.apply(input, [type, listener]);
+       }
+       if(input.addEventListener)
+         input.addEventListener = addEventListenerWrapper;
+       else if(input.attachEvent)
+         input.attachEvent = addEventListenerWrapper;
+     })(pac_input);
+   
+     $(function () {
+        var autocomplete = new google.maps.places.Autocomplete(pac_input);
+     });
+   <?php } ?>
+</script>

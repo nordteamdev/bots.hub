@@ -1,0 +1,18 @@
+<?php
+$online = '';
+$time     = time() - 60;
+if ($wo['user-list']['lastseen'] > $time) {
+	$online = 'online';
+}
+?>
+<li>
+	<div class="user">
+		<div class="icon <?php echo $online;?>">
+			<i class="fa fa-circle"></i>
+		</div>
+		<a href="<?php echo $wo['user-list']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['user-list']['username'];?>">
+			<img alt="<?php echo $wo['user-list']['name'];?>" src="<?php echo $wo['user-list']['avatar'];?>" />
+			<span title="<?php echo $wo['user-list']['name'];?>"><?php echo $wo['user-list']['name'];?></span>
+		</a>
+	</div>
+</li> 

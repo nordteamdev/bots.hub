@@ -1,0 +1,88 @@
+
+
+<!---------- Feedback Popup Layer -------------------->
+
+
+{strip}
+
+<div id="layer_popup" class="hookBlock" feedback-popup-layer="10" style="display: block;">
+  <div id="hook_PopLayer_popLayer">
+    <div class="layer_ovr">
+    </div>
+    <div id="popLayerBodyWrapper" class="modal_wrap" style="left:auto!important;visibility: visible; top: 100px;">
+      <div id="popLayer_cc" class="popupSimple">
+        <div class="mwt_cont">
+          <table cellpadding="20" cellspacing="0" class="mw_tbl">
+            <tbody>
+              <tr>
+                <td>
+                  <div id="mp_mm_cont" class="mp_mm_cont">
+                    <div class="panelLayer layerPanelSimple" id="cfrmPopLayerHelpFeedback">
+                      <div class="panelLayer_head">
+                        <div class="layerPanelCloseContainer">
+                          <a href="javascript:void(0)">
+                            <div class="layer_close ic ic_close">
+                            </div>
+                          </a>
+                        </div>
+                        <div class="panelLayer_head_headerSimple">
+                          Choose your payment method
+                        </div>
+                      </div>
+                      <div class="panelLayer_body">
+
+		<iframe id="payment_iframe" class="iframe" src="" width="650" height="470"></iframe>
+           	<div class="payments_tab">
+		<div class="p_tab" id="paypal" onclick="get_p_met('paypal',this);"><span class="text">PayPal</span></div>
+		<div class="p_tab" id="skrill" onclick="get_p_met('skrill',this)"><span class="text">Skrill</span></div>
+		<div class="p_tab" id="fortumo" onclick="get_p_met('sms',this);"><span class="text">SMS</span></div>	
+		
+
+
+ 		</div>
+
+
+
+                            </div>
+
+      
+                </td>        </tr>
+            </tbody>
+          </table>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+<script>
+jQuery(document).ready(function(){
+jQuery('#fortumo').click();
+});
+</script>
+<style>
+.modal_wrap {
+left: 250px!important;
+}
+.panelLayer_body{
+overflow: initial!important;
+}
+
+.panelLayer_body ::-webkit-scrollbar-thumb {
+min-height: 40px;
+border-radius: 5px;
+background-color: #B0B0B0;
+border: 1px solid transparent;
+background-clip: padding-box;
+}
+
+.panelLayer_body ::-webkit-scrollbar-thumb:hover {
+background-color:#C3C3C3;
+}
+
+
+.panelLayer_body ::-webkit-scrollbar-track {
+background-color: transparent;
+}
+</style>
+    
+{/strip}

@@ -1,0 +1,7 @@
+<ul>
+{foreach $users as $user}
+<li class="us_xgg3"><a href="/user/{$user.id}" data-clbk="removePopup" hrefattr="true"><img src="/getPhoto?p={$user.avatar}&sz=small&g={$user.gender}"><div class="xr42">{$user.fullname}</div></a></li>
+{foreachelse}
+{$this->lang['sorry_empty_content']}
+{/foreach}
+</ul>

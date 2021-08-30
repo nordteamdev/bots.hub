@@ -1,0 +1,17 @@
+<div class="modal fade matdialog" id="delete-comment-reply" role="dialog">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><?php echo $wo['lang']['delete_comment']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['confirm_delete_comment']; ?></p>
+         </div>
+         <div class="modal-footer">
+		 <button type="button" class="matbtn wabe btn btn-default" onclick="Wo_CloseModels();" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+            <button id="delete-all-reply" type="button" class="matbtn wabe btn btn-main"><?php echo $wo['lang']['delete']; ?></button>
+            
+         </div>
+      </div>
+   </div>
+</div>

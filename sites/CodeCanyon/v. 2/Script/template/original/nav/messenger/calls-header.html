@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>{if $connecting == 'yes'}{$this->lang['Call_Connecting...']}{else}{$this->lang['Call_Contacting...']}{/if} {$user.fullname}</title>
+<!-- css ---->
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans%3A400%2C700&ver=4.2.3" type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,|Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic," type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A300%7CUbuntu+Condensed%7CUbuntu%7CRaleway%3A300%2C500%2C400%7CPT+Sans+Narrow&amp;ver=4.3.1" type="text/css" media="all">
+<!--- static fonts -->
+<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/fonts/g/fonts.css?v=4">
+
+<link id="favicon" rel="shortcut icon" href="{$this->settings['HOST']}/getPhoto?p={$user.profile_photo}&sz=small" type="image/x-icon">
+ <link rel="stylesheet" scomm="common-global-style" type="text/css" href="{$this->theme_url}/css/style.css?v=416461">
+<!-- js core-->
+<script>
+var hangUpCall = function(){};
+var stopCallingSound = function(){};
+ var redial = function(){};
+ var callEnded = function(){};
+var up_href, 
+  ringing_sound,
+  end_time,
+peer,
+chat_default_color =  '{$this->settings['MESSENGER_DEFAULT_COLOR']}', 
+	NODE_HOST_NAME = '{$this->settings['NODE_HOSTNAME']}',
+	NODE_PORT = '{$this->settings['NODE_PORT']}',
+	NODE_HOST = '{$this->settings['NODE_HOST']}',
+	_HTTP = "{$smarty.const.IS_HTTPS}",
+    _THEME = "{$this->theme_url}/",
+	_BLANK = "{$smarty.const.__TRANS_BG}",
+    __SITENAME = '{$this->settings['SITENAME']}',
+    __SITEURL = '{$this->settings['HOST']}',
+	  lang = {$this->getJSLang()};
+	  
+
+var sio = window.opener.parent.sio;
+// import variables from parent window
+var peer = window.opener.parent._peer;
+var socket = sio;
+var existingCall = window.opener.parent.existingCall;
+var call_user_answered = window.opener.parent.call_user_answered;
+</script>
+
+<script type="text/javascript" src="{$this->theme_url}/js/jquery-v1.11.1.js"></script>
+
+ <!-- <script src="{$this->theme_url}/js/cmd/venobox/js/venobox.min.js"></script>
+<script type="text/javascript" src="{$this->theme_url}/js/_system.js?v=1243"></script>-->
+<!-- peerjs -->
+<script src="{$this->theme_url}/js/cmd/real-time/peer.min.js"></script>
+<script src="{$this->theme_url}/js/soundmanager2-jsmin.js?v=42131"></script>
+<script type="text/javascript" src="{$this->theme_url}/js/cmd/real-time/messenger.js"></script>
+<script type="text/javascript" src="{$this->theme_url}/js/easytimer.min.js?v2"></script> 
+ </head>
+ 
+ <body>
+<div id="important" class="callpopup-important-container {if $call_type == 'video'}video-call{/if}">
+
+<div class="callpopup-background-cl" style="background-image:url({$user_avatar});"></div>
+
+
+<div class="callpopup-header">
+	<div class="callpopup-uinfo">{$user.fullname}</div>
+	<div class="callpopup-str"><span id="calling_status">{if $connecting == 'yes'}{$this->lang['Call_Connecting...']}{else}{$this->lang['Call_Contacting...']}{/if}</span></div>
+		<div class="callpopup-str" id="end-time"></div>
+	<div class="callpopup-str error" id="calling_error"></div>
+</div>
+
+
+<div id="recipient-media-element-err"></div>
+
+<div class="callpopup-footer">
+<a href="javascript:void(0);" onclick="hangUpCall(this,event);" id="hangup" class="callpopup-hangup"></a>
+<a href="javascript:void(0);" onclick="redial(this,event);" id="redial" class="callpopup-redial __none"></a>
+
+
+
+
+
+</div>
+
+ 
+
+
+
+
+

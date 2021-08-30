@@ -1,0 +1,21 @@
+<div class="home profile-style promoted-style main sidebar-page-data cussidepageda" data-page-id="<?php echo $wo['PageList']['page_id']?>">
+    <div class="card hovercard promoted" style="overflow: visible;">
+        <div class="cardheader">
+            <img src="<?php echo $wo['PageList']['cover']?>" id="cover-image" alt="<?php echo $wo['PageList']['name']?> Cover Image">
+        </div>
+        <div class="text-shadow"></div>
+        <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>" style="top: -23px;">
+            <img style="width: 60px;height: 60px;" id="updateImage-<?php echo $wo['PageList']['page_id']?>" alt="<?php echo $wo['PageList']['name']?> Profile Picture" src="<?php echo $wo['PageList']['avatar']?>">
+        </div>
+        <div class="info">
+            <div class="title" style="top: -18px;margin-left: 7px;">
+                <span class="user-popover" data-id="<?php echo $wo['PageList']['id'];?>" data-type="<?php echo $wo['PageList']['type'];?>">
+                <a id="user-full-name" href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['PageList']['username']?>"><?php echo $wo['PageList']['user_name'];?></a>  <?php if ($wo['PageList']['verified'] == 1) { ?> <i class="fa fa-check-circle verified-color" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"></i> <?php } ?>
+				<br><div class="user-follow-button">
+            <?php echo Wo_GetLikeButton($wo['PageList']['page_id']);?>
+        </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

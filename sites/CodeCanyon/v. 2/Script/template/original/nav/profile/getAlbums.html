@@ -1,0 +1,64 @@
+
+{strip}
+   <div id="nb-move-to-albums" class="nobleSlider">
+        <div class="nb-thumbnails">
+
+<!-- personal phootos --->
+{if $pp_album}
+
+            <!--- Personal photos album ---------->
+            <div class="nb-thumbnail nb-carousel" /*title="{$this->lang['double_click']}"*/ onclick="toThisAlbum(this,event,'0')">
+
+                <div class="carousel_cont">
+
+                    <div class="carousel-main-image">
+                        <img class="carousel-main-image-sty" title="{$p_name}" src="/gCimage?img={$p_cov}&album=1&sz=thumb&dm=70*70" />
+                    </div>
+
+                </div>
+		<!--
+                <div class="nb-caption">{$p_name}</div>
+		-->
+            </div>
+
+{/if}
+
+<!--- albums -->
+{foreach $query as $result}
+
+
+            <!--- Albums ---------->
+            <div class="nb-thumbnail nb-carousel" /*title="{$this->lang['double_click']}"*/ onclick="toThisAlbum(this,event,{$result.id})">
+
+                <div class="carousel_cont">
+
+                    <div class="carousel-main-image">
+                        <img class="carousel-main-image-sty" title="{$this->getAlbumName($result.name)}" src="/gCimage?img={$result.cover}&album=1&sz=thumb&dm=70*70" />
+                    </div>
+
+                </div>
+		<!--
+                <div class="nb-caption">{$result.name}</div>
+		-->
+            </div>
+
+{/foreach}
+
+</div>
+</div>
+{/strip}
+<script>
+{literal}
+$(function(){
+$('.carousel-main-image-sty').jBox('Tooltip', {
+			getContent: 'title',//theme:'TooltipDark',
+			trigger: 'mouseenter',
+			position: {x: 'center', y: 'bottom'},
+			outside: 'y',
+			pointer: true,
+			adjustPosition: true,
+			reposition: true
+});
+});
+{/literal}
+</script>

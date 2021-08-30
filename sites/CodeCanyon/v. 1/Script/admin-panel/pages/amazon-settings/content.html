@@ -1,0 +1,133 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Amazon S3 Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 ">
+            <div class="card">
+                <div class="header">
+                    <h2>Configure Amazon S3</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success general-settings-alert"></div>
+                    <form class="general-settings" method="POST">
+                        <label for="amazone_s3">Amazon S3 Storage</label>
+                        <div class="form-group">
+                            <input type="radio" name="amazone_s3" id="amazone_s3-enabled" value="1" <?php echo ($fl['config']['amazone_s3'] == 1) ? 'checked': '';?>>
+                            <label for="amazone_s3-enabled">Enabled</label>
+                            <input type="radio" name="amazone_s3" id="amazone_s3-disabled" value="0" <?php echo ($fl['config']['amazone_s3'] == 0) ? 'checked': '';?>>
+                            <label for="amazone_s3-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="bucket_name" name="bucket_name" class="form-control" value="<?php echo $fl['config']['bucket_name']?>">
+                                <label class="form-label">Amazon Bucket Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="amazone_s3_key" name="amazone_s3_key" class="form-control" value="<?php echo $fl['config']['amazone_s3_key']?>">
+                                <label class="form-label">Amazon S3 Key</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="amazone_s3_s_key" name="amazone_s3_s_key" class="form-control" value="<?php echo $fl['config']['amazone_s3_s_key']?>">
+                                <label class="form-label">Amazon S3 Secret Key</label>
+                            </div>
+                        </div>
+                        <label for="region">Amazon S3 bucket Region</label>
+                        <select class="form-control show-tick" id="region" name="region">
+                          <option value="us-east-1" <?php echo ($fl['config']['region'] == 'us-east-1')   ? ' selected' : '';?> >US East (N. Virginia)</option>
+		                  <option value="us-west-2" <?php echo ($fl['config']['region'] == 'us-west-2')   ? ' selected' : '';?> >US West (Oregon)</option>
+		                  <option value="ap-northeast-2" <?php echo ($fl['config']['region'] == 'ap-northeast-2')   ? ' selected' : '';?> >Asia Pacific (Seoul)</option>
+		                  <option value="ap-southeast-1" <?php echo ($fl['config']['region'] == 'ap-southeast-1')   ? ' selected' : '';?> >Asia Pacific (Singapore)</option>
+		                  <option value="ap-southeast-2" <?php echo ($fl['config']['region'] == 'ap-southeast-2')   ? ' selected' : '';?> >Asia Pacific (Sydney)</option>
+		                  <option value="ap-northeast-1" <?php echo ($fl['config']['region'] == 'ap-northeast-1')   ? ' selected' : '';?> >Asia Pacific (Tokyo)</option>
+		                  <option value="eu-central-1" <?php echo ($fl['config']['region'] == 'eu-central-1')   ? ' selected' : '';?> >EU (Frankfurt)</option>
+		                  <option value="eu-west-1" <?php echo ($fl['config']['region'] == 'eu-west-1')   ? ' selected' : '';?> >EU (Ireland)</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <span class="help-block ">1. Before enabling Amazon S3, make sure you upload the whole "upload/" folder to your bucket.</span>
+		                <span class="help-block ">2. Before disabling Amazon S3, make sure you download the whole "upload/" folder to your server.</span>
+		                <span class="help-block ">3. We recommend to upload the folder and files via <a href="http://s3tools.org/s3cmd">S3cmd</a>.</span>
+		                <span class="help-block ">4. If your site is still brand new, you can escape the upload step, but make sure to click on "Test Connection".</span>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                        <button type="button" class="btn btn-warning m-t-15 waves-effect test-con" onclick="FL_TestS3()">Test Connection</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+function FL_TestS3() {
+    $('.test-con').text('Please wait..');
+    $.get('{{LINK ajax_requests.php?f=admincp&s=test_s3&hash_id=}}' + $('.main_session').val(), {f:'admincp', s: 'test_s3'}, function (data) {
+        if (data.status == 200) {
+      swal({
+        title: "Connected!",
+        text: "Connection successfully established!",
+        type: "success"
+      });
+        } 
+
+    else if (data.status == 300) {
+      swal({
+        title: "Error!",
+        text: "Bucket doesn\'t exists!",
+        type: "error"
+      });
+        } 
+
+    else if (data.status == 500) {
+      swal({
+        title: "Error!",
+        text: "Your s3 account doesn\'t have any buckets, please create one.",
+        type: "error"
+      });
+
+        } 
+
+    else if (data.status == 400) {
+            swal({
+        title: "Error 400 Bad Request",
+        html: data.message,
+        type: "error",
+        customClass: 'swal-wide',
+      });
+        } 
+
+    else  {
+      swal({
+        title: "Error!",
+        html: 'Error while connecting to amazone, please check your details',
+        type: "error"
+      });
+        }
+        $('.test-con').text('Test Connection');
+    });
+}
+$(function() {
+    var form_general_settings = $('form.general-settings');
+    form_general_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_general_settings.find('.btn-primary').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_general_settings.find('.btn-primary').text('Save');
+            	$('.general-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.general-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+});
+
+</script>

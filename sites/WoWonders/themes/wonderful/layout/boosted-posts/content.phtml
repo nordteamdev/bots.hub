@@ -1,0 +1,34 @@
+<div class="page-margin">
+  <div class="row">
+    <div class="col-md-2 offnavmenu"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+    <div class="col-md-7 cushomewider" style="padding-left: 0px;padding-right: 0px;">
+     <?php
+     $up = Wo_GetUserProType($wo['user']['pro_type']);
+     ?>
+      <div class="alert alert-warning">
+        <i class="fa fa-<?php echo $up['icon'];?> fa-fw"></i> 
+        <?php 
+        $string = str_replace('{type_name}', $up['type_name'], $wo['lang']['boost_posts_in_same_time']);
+        $string = str_replace('{can_boost}', $up['can_boost'], $string);
+        echo $string;
+        ?>
+      </div>
+      <div class="alert alert-info">
+        <i class="fa fa-check fa-fw"></i> <?php echo $wo['lang']['boosted_pages_viewable'];?>
+      </div>
+      <div class="saved-posts">
+        <?php
+        $stories = Wo_GetBoostedPosts($wo['user']['user_id']);
+        if (count($stories) <= 0) {
+            echo Wo_LoadPage('boosted-posts/no-posts');
+        } else {
+            foreach ($stories as $wo['story']) {
+               echo Wo_LoadPage('story/content');
+            }
+        }
+       ?>
+      </div>
+    </div>
+    <div class="col-md-3 cushomesmaller"><div class="theiaStickySidebar"><?php echo Wo_LoadPage('sidebar/content');?></div></div>
+  </div>
+</div>

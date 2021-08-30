@@ -1,0 +1,57 @@
+<?php if ($wo['UsersList']['type'] == 'family'): ?>
+<div class="col-xs-6 col-sm-4 nearby_user_wrapper text-center user-data" data-family-member="<?php echo $wo['UsersList']['user_data']['user_id'];?>">
+  <div class="avatar">
+      <img src="<?php echo $wo['UsersList']['user_data']['avatar'];?>" alt="<?php echo $wo['UsersList']['user_data']['name']; ?> Profile Picture" />
+    </div>
+  <span class="user-popover" data-id="<?php echo $wo['UsersList']['user_data']['id'];?>" data-type="<?php echo $wo['UsersList']['user_data']['type'];?>">
+  <a href="<?php echo $wo['UsersList']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['user_data']['username'];?>" class="user_wrapper_link"><?php echo $wo['UsersList']['user_data']['name']; ?></a>
+  </span>
+
+  <div class="user-lastseen">
+    &#64;<?php echo $wo['lang'][$wo['family'][$wo['UsersList']['member']]];?>
+  </div>
+
+  <div class="user-follow-button">
+      <span>
+          <button type="button" class="btn btn-default btn-sm" onclick="Wo_ActivateFamilyMember(<?php echo $wo['UsersList']['user_data']['id']; ?>,this,<?php echo $wo['UsersList']['member']; ?>);">
+             <i class="fa fa-user-plus progress-icon" data-icon="user-plus"></i>
+             <span class="button-text"> <?php echo $wo['lang']['accept'];?></span>
+          </button>
+      </span>
+      <span>
+          <button type="button" class="btn btn-default btn-sm" onclick="$('#delete_family_mbr_modal').attr('data-family-member-id', <?php echo $wo['UsersList']['user_data']['id']; ?>).modal('show');">
+             <i class="fa fa-times progress-icon" data-icon="fa-times"></i>
+             <span class="button-text"><?php echo $wo['lang']['delete'];?></span>
+          </button>
+      </span>
+  </div>
+</div>
+<?php else: ?>
+<div class="col-xs-6 col-sm-4 nearby_user_wrapper text-center user-data" data-relationship-request="<?php echo $wo['UsersList']['id']; ?>">
+  <div class="avatar" >
+      <img src="<?php echo $wo['UsersList']['user_data']['avatar'];?>" alt="<?php echo $wo['UsersList']['user_data']['name']; ?> Profile Picture" />
+  </div>
+  <span class="user-popover" data-id="<?php echo $wo['UsersList']['user_data']['id'];?>" data-type="<?php echo $wo['UsersList']['user_data']['type'];?>">
+  <a href="<?php echo $wo['UsersList']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['user_data']['username'];?>" class="user_wrapper_link"><?php echo $wo['UsersList']['user_data']['name']; ?></a>
+  </span>
+
+  <div class="user-lastseen">
+    &#64;<?php echo $wo['relationship'][$wo['UsersList']['relationship']];?>
+  </div>
+
+  <div class="user-follow-button">
+      <span>
+          <button type="button" class="btn btn-default btn-sm" onclick="Wo_AcceptRelationRequest(<?php echo $wo['UsersList']['id']; ?>,<?php echo $wo['UsersList']['user_data']['id']; ?>,<?php echo $wo['UsersList']['relationship'];?>,this);">
+             <i class="fa fa-user-plus progress-icon" data-icon="user-plus" id="hren"></i>
+             <span class="button-text"> <?php echo $wo['lang']['accept'];?></span>
+          </button>
+      </span>
+      <span>
+          <button type="button" class="btn btn-default btn-sm" onclick="Wo_DeleteRelationRequest(<?php echo $wo['UsersList']['id']; ?>,<?php echo $wo['UsersList']['user_data']['id']; ?>,<?php echo $wo['UsersList']['relationship']; ?>,this);">
+             <i class="fa fa-times progress-icon" data-icon="fa-times"></i>
+             <span class="button-text"><?php echo $wo['lang']['delete'];?></span>
+          </button>
+      </span>
+  </div>
+</div> 
+<?php endif; ?>

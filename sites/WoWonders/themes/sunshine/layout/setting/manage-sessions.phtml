@@ -1,0 +1,27 @@
+<div class="wo_settings_page sun_sett_page">
+	<h3><?php echo $wo['lang']['manage_sessions'] ?></h3>
+	<br>
+	<div class="active_sessions">
+		<div class="table-responsive">
+					<?php
+						$get_sessions = Wo_GetAllSessionsFromUserID($wo['setting']['user_id']);
+						if (count($get_sessions) > 0) {
+							foreach ($get_sessions as $wo['key'] => $wo['session']) {
+							     echo Wo_LoadPage('setting/includes/sessions');
+							}
+						}
+					?>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function logOutSession(id) {
+	if (!confirm('Are you sure you want to log out from this device?')) {
+		return false;
+	}
+	$('#session_' + id).remove();
+	$.post(Wo_Ajax_Requests_File() + '?f=delete_s', {id: id}, function () {
+		Wo_IsLogged();
+	});
+}
+</script>

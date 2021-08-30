@@ -1,0 +1,44 @@
+<div class="page-margin">
+	<div class="wowonder-well text-center wo_404_main">
+		<h1><b><?php echo $wo['lang']['sorry_page_not_found']; ?></b></h1>
+		<section class="wo_404">
+			<span class="four"><span class="screen-reader-text">4</span></span>
+			<span class="zero"><span class="screen-reader-text">0</span></span>
+			<span class="four"><span class="screen-reader-text">4</span></span>
+		</section>
+		<h4><?php echo $wo['lang']['page_not_found']; ?></h4>
+		<a href="<?php echo $wo['config']['site_url']; ?>" class="btn btn-main btn-shadow"><?php echo $wo['lang']['home']; ?></a>
+	</div>
+</div>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+.navbar-default {padding-right: 260px;}
+}
+
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<?php if($wo['loggedin'] == false) {  ?>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 0px;}
+.navbar-default {padding-right: 0px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+.hideinmenu {display: none;}
+}
+</style>
+<?php } ?>

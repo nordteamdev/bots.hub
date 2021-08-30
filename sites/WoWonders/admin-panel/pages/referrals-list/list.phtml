@@ -1,0 +1,13 @@
+<tr class="setting-userlist" id="UserID_<?php echo $wo['userlist']['user_id']?>" data-user-id="<?php echo $wo['userlist']['user_id']?>">
+   <td><?php echo $wo['userlist']['user_id']?></td>
+   <td>
+      <a href="<?php echo $wo['userlist']['url']; ?>">
+      <img src="<?php echo $wo['userlist']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['userlist']['avatar']?> Profile Picture">
+      <?php echo $wo['userlist']['name']; ?>
+      </a>
+   </td>
+   <td><?php echo $wo['userlist']['src']?></td>
+   <td><?php echo $wo['userlist']['email']?></td>
+   <td><?php echo $wo['userlist']['ip_address']?></td>
+   <td><?php echo (Wo_UserActive($wo['userlist']['username']) === true) ? '<span class="label label-success">' . $wo['lang']['active'] . '</span>': '<span class="label label-danger">' . $wo['lang']['pending'] . '</span>';?></td>
+</tr>

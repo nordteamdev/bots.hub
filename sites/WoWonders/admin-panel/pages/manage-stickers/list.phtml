@@ -1,0 +1,19 @@
+<tr class="setting-stickerlist" id="StickerID_<?php echo $wo['stickerlist']['id']?>" data-sticker-id="<?php echo $wo['stickerlist']['id']?>">
+   <td><?php echo $wo['stickerlist']['id']?></td>
+   <td>
+        <?php echo $wo['stickerlist']['name'];?>
+   </td>
+   <td>
+        <a href="<?php echo Wo_GetMedia($wo['stickerlist']['media_file']); ?>" target="_blank">
+            <img src="<?php echo Wo_GetMedia( $wo['stickerlist']['media_file'] ); ?>" class="setting-avatar" alt="<?php echo $wo['stickerlist']['name']?> Sticker Picture">
+        </a>
+   </td>
+   <td>
+     <div class="ajax-time" title="<?php echo date('c',$wo['stickerlist']['time']); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['stickerlist']['time']);?>
+     </div>
+   </td>
+   <td>
+    <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteSticker(<?php echo $wo['stickerlist']['id']?>);">DELETE</button>
+   </td>
+</tr>

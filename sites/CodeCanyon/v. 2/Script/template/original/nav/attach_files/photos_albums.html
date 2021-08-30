@@ -1,0 +1,158 @@
+{strip}
+
+
+{if !$query_p && !$query_a}
+
+{$this->lang['no_albums']}
+
+{else}
+<div class="modal-new_center _emj_attach_fls">
+<section uid="jbox_all_inclus_alb_pph">
+
+    <div class="modal-new_cnt">
+
+        <div id="hook_Block_AttachDialogAlbums" class="hookBlock">
+
+	   <!---- Albums ---->
+            <div class="photo-sc_w">
+                <div class="photo-sc __albums">
+                    <div>
+                        <ul id="photo-sc_grid-{$this->USER['id']}" class="photo-sc_grid __inner-sm">
+
+                            <li class="photo-sc_grid_i photo-sc_grid_i__animated show-on-hover ovr-menu_soh">
+                                <div class="col-card">
+                                    <div class="photo-sc_i_cover vbf_"  onclick="jBoxModalGetAlbumPhotos(event,0)">
+                                        <div class="photo-sc_i_cnt"><a href="javascript:;" class="photo-sc_i_cnt_a"><span class="va"></span>
+				
+					<img  class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$pPhotos['id']}&sz=thumb&album=true" alt="">
+
+					</a>
+
+						<div class="col-card_num">{$pPhotoCount}</div>
+
+
+                                           <div class="photo-sc_i_cnt_data">
+
+                                            </div>
+						<div title="{$this->lang['p_photos']}" class="jb_attach_alb_nm">{$this->lang['p_photos']}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="photo-sc_grid_i_alb-t ellip"><a class="o" title="{$this->lang['p_photos']}" href="javascript:;" onclick="jBoxModalGetAlbumPhotos(event,0)">{$this->lang['p_photos']}</a></div>-->
+                                <div class="photo-sc_i_controls invisiblocked">
+                                    <ul class="controls-list">
+                                        <li class="controls-list_item"></li>
+                                        <li class="controls-list_item controls-list_item__last"></li>
+                                    </ul>
+                                </div>
+                                <div class="photo-sc_i_utility"></div>
+                            </li>
+
+
+
+			{foreach $query_a as $res_a}
+                            <li class="photo-sc_grid_i photo-sc_grid_i__animated show-on-hover ovr-menu_soh">
+                                <div class="col-card">
+                                    <div class="photo-sc_i_cover vbf_" onclick="jBoxModalGetAlbumPhotos(event,{$res_a.id})">
+                                        <div class="photo-sc_i_cnt"><a href="javascript:;" class="photo-sc_i_cnt_a"><span class="va"></span>
+				
+					<img  class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$res_a.cover}&sz=thumb&album=true" alt="">
+
+					</a>
+
+						<div class="col-card_num">{$this->getAlbumPhotoCount($res_a.id)}</div>
+
+
+                                           <div class="photo-sc_i_cnt_data">
+
+                                            </div>
+					<div title="{$this->getAlbumName($res_a.name)}" class="jb_attach_alb_nm">{$this->getAlbumName($res_a.name)}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               <!-- <div class="photo-sc_grid_i_alb-t ellip"><a class="o" title="{$res_a.name}" href="javascript:;" onclick="jBoxModalGetAlbumPhotos(event,{$res_a.id})">{$res_a.name}</a></div>-->
+                                <div class="photo-sc_i_controls invisiblocked">
+                                    <ul class="controls-list">
+                                        <li class="controls-list_item"></li>
+                                        <li class="controls-list_item controls-list_item__last"></li>
+                                    </ul>
+                                </div>
+                                <div class="photo-sc_i_utility"></div>
+                            </li>
+				{/foreach}
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	<!-- photos river (all photos) -->
+
+        <div class="portlet_h2">
+            <div class="portlet_h2_tx ellip ml_10">{$this->lang['all_photos']}&nbsp;<span class="lstp-t">{count($query_p)}</span></div>
+        </div>
+
+        <div class="hook" id="hook_Form_AttachDialogFormForm">
+            <form data-module="AttachPicker" data-attach-type="PHOTOODKL" data-object-id="" data-single="false" data-use-local-storage="true" action="/feed?st.cmd=userMain&amp;cmd=AttachDialog" method="post">
+                <div id="hook_PhotosBatchOp_1990872576" data-submit-name="button_attach" data-photos-count="0" data-limit="12" class="photo-sc">
+                    <div id="hook_Block_AttachDialogPhotoPicker" class="hookBlock">
+                        <div class="photo-sc_w">
+                            <div id="photosBatchOpLoaderContent">
+                                <ul class="photo-sc_grid photo-sc_grid__remove-action">
+
+				{foreach $query_p as $res_p}
+
+                                    <li uid="jbx_attch_ph_sel" id="photosBatchOpLi_{$res_p.id}" class="photo-sc_grid_i show-on-hover">
+                                        <div class="ucard-b __l">
+                                            <div class="ucard-b_img">
+                                                <div class="photo-crop">
+                                                    <div class="photo-crop_cnt selectable-card" data-pid="{$res_p.id}">
+							<img data-p-src="/getPhoto?p={$res_p.id}&sz=thumb" src="{$smarty.const.__SLIDER_BLANK}" class="photo-crop_img"><span class="selectable-card_ovr"></span><span class="selectable-card_ic"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+				  {/foreach}
+
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+</section>
+<!--                   <div class="sticky-plank_hld">
+                        <div id="modal-sticky" class="sticky-plank modal-new_sticky scroll-right-indent __off" style="bottom: 0px;">
+                            <div class="sticky-plank_cnt">
+                                <div class="modal-new_actions taCenter">
+                                    <div class="modal-new_cnt"><span onclick="ready"><input class="button-pro __disabled attachButton" disabled="disabled" type="submit" name="button_attach" value="Ready!" id="hook_FormButton_button_attach"></span>
+
+				    <span><a target="_self" href="/feed?st.cmd=userMain&amp;cmd=PopLayer&amp;st.layer.cmd=PopLayerClose" class="modal_buttons_no lp" id="button_cancel">Cancel</a></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>--->
+        <div class="tip  __l __mid __fixed m_hidden" id="limit-tip">
+            <div class="tip_cnt">You have reached the maximum of the added photos</div>
+        </div>
+    </div>
+</div>
+<script>
+{literal}
+$(function(){
+ga('.modal-new').off('scroll.getImagesSrc').on('scroll.getImagesSrc', function(){
+ga('[data-p-src]').each(function(){
+var t = ga(this);
+if(isElementInViewport(t) && !t.hasClass('_f03filt')) setTimeout(function(){t.attr('src',t.data('p-src')).addClass('_f03filt');},10);
+});
+});
+});
+{/literal}
+</script>
+{/if}
+{/strip}

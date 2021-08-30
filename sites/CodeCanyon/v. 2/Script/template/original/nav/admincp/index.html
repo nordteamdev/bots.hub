@@ -1,0 +1,134 @@
+
+					
+						<div id="admin-3d-donut-count"></div>
+						<div class="adcp-divider"></div>
+						<div id="admin-chart-container"></div>
+			
+<script>
+
+var c_users = {$c_users},
+	c_videos = {$c_videos},
+	c_posts = {$c_posts},
+	c_photos = {$c_photos},
+	c_tracks = {$c_tracks},
+	c_apps = {$c_apps},
+	c_comments = {$c_comments};
+	
+
+{literal}	
+	
+ga(document).ready(function() {
+
+/* 3D donut. data count */
+    Highcharts.setOptions({
+      colors: ['#a285c5', '#68cab6', '#22ba9b', '#e17695','#666981','#ff7d12','#a8e114']
+    });
+   ga('#admin-3d-donut-count').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            }
+        },
+        title: {
+            text: 'Count of data on '+__SITENAME
+        },
+        subtitle: {
+            text: ''
+        },
+        plotOptions: {
+            pie: {
+                innerSize: 100,
+                depth: 45
+            }
+        },
+        series: [{
+            name: 'Count',
+            data: [
+                ['Photos', c_photos],
+                ['Videos', c_videos],
+                ['Posts', c_posts],
+                ['Tracks', c_tracks],
+                ['Users', c_users],
+                ['Apps', c_apps],
+                ['Comments', c_comments]
+            ]
+        }]
+    });
+
+/* stats by each month */
+var send = jAjax('/admin.php', 'post', 'cmd=mavg&json=1');
+send.done(function(d){
+	var d_dc = validateJson(d);
+
+    Highcharts.setOptions({
+      colors: ['#a285c5', '#68cab6', '#22ba9b', '#e17695','#666981','#ff7d12']
+    });
+    ga('#admin-chart-container').highcharts({
+	
+	
+        title: {
+            text: 'Monthly Average Site Statistic',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: (new Date()).getFullYear()
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+ series:  [{
+            name: 'Photos',
+            data: d_dc.photos // predefined JavaScript array
+         },{
+            name: 'Videos',
+            data: d_dc.videos
+         },{
+            name: 'Posts',
+            data: d_dc.posts
+         },{
+            name: 'Tracks',
+            data: d_dc.tracks
+         },{
+            name: 'Users',
+            data: d_dc.users
+         },{
+            name: 'Apps',
+            data: d_dc.apps
+         }
+		 ]
+		
+		
+    });
+
+});
+
+});
+
+
+
+			
+{/literal}
+</script>

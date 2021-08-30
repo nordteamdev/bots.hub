@@ -1,0 +1,261 @@
+{strip}
+  {assign var=c_tr_w value=''}
+  {assign var=c_tr_h value=''}
+
+  {assign var=visible_photos value=0}
+  {assign var=widget_enabled value=0}
+
+{assign var=club_id value=$clubid}
+{assign var=check_admin value=false}
+{if $clubid > 0}
+{assign var=feed_author value={$clubid}}
+{assign var=isclub value=true}
+{assign var=check_admin value=$this->checkGroupAdmin($res.byuser,$clubid)}
+{else}
+{assign var=isclub value=false}
+{assign var=feed_author value={$res.uid}}
+{/if}
+
+  
+  		{if $res.community == 'yes' && !$isclub && $index_feed > 0}
+		{$clubid = $res.parent_id}
+		{/if}
+<div class="feed  _nopad {if $photo_c > 6}_mbottom4{/if} large">
+
+	<header>
+	    <div class="feed_ava">
+			
+			{if $clubid > 0}
+			
+			{if $check_admin}
+			<a href="/community/{$clubid}" hrefattr="true">
+				<div><img class="feed_ava_img" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true" alt="{$res.club_name}" width="48" height="48">
+				</div>
+			</a>
+			
+			{else}
+			
+			<a href="/user/{$res.uid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+				</div>
+			</a>
+			{/if}
+			
+			{else}
+			
+			<a href="/user/{$res.uid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+				</div>
+			</a>
+			
+			{/if}
+		</div>
+	
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+	
+        <div class="feed_h">
+		
+		
+		{if $clubid > 0}
+		
+		{if $check_admin}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$clubid}","uname":"{$res.club_name}","uphoto":"/clubpicture?i={$clubid}&size=small&clubid={$clubid}&corr=1&logo=true","ugender":"","ulmen":{ldelim}"invite_group":"1","group":"1","photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/community/{$clubid}" class="ob" hrefattr="true">{$res.club_name}</a>
+		</span>
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+		
+		<span class="glyphicon glyphicon-triangle-right feed-to-club"></span>
+		<a href="/community/{$clubid}" hrefattr="true" class="ob">{$res.club_name}</a>
+		{/if}
+		
+		
+		{else}
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+		{/if}
+		
+		
+          {if $photo_c > 1} {$this->lang['added']} {$photo_c} {$this->lang['photos']} {else} {$this->lang['added_single_photo']} {/if} 
+		  
+		</div>
+	</header>
+
+
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+ 
+
+        <div class="feed_b">
+
+
+            <div class="FEED_PHOTO(S)">
+			{if $photo_c == 1}
+			<div class="feed_photos_collage_justified __1">
+		{else if $photo_c <= 5 && $photo_c > 1}
+		<div class="collage_full_width feed_photos_collage_justified __{$photo_c}">
+		{else}
+		<div class="collage_full_width feed_photos_collage_justified __mmm">
+		{/if}
+ 
+				
+			
+		{foreach $m_photos as $ph_id}
+		
+
+	   {assign var=kl_res value={$this->gMultiPhotosKlass($ph_id)}}
+           {assign var=kl_count value={$this->smarty_explode_data($kl_res,',','0')}}
+           {assign var=kl_eu value={$this->smarty_explode_data($kl_res,',','1')}}
+		   		
+				{if $clubid > 0}
+				
+				{assign var=is_gif value={$this->is_gif($ph_id,1)}}
+				
+				{else}
+				
+				{assign var=is_gif value={$this->is_gif($ph_id)}}
+				
+				{/if}
+	{if $photo_c == 1}
+		{assign $widget_enabled $widget_enabled++ nocache}
+		
+		{if $clubid > 0}
+		{assign var=photo_description value=$this->str_smilies($this->getPhotoDescription($ph_id,1))}
+		{else}
+		{assign var=photo_description value=$this->str_smilies($this->getPhotoDescription($ph_id))}
+		{/if}
+                   
+   {if !empty($photo_description)}<div class="feed_photo_descr ellip">{$this->checkForTranslating($photo_description)}</div> {/if}  
+		<div class="feed_image_fullsize">
+		<div class=" feed_collage_single_item_p">
+		
+		{if $clubid > 0}
+		
+			<a href="/photo?q={$this->USER['id']}&clubid={b_encode($clubid)}&show=community-single&from=medium&o={b_encode($ph_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="image-hover">
+				<img class="feed_single_img {if $is_gif}gifplayer{/if}" {if $is_gif}data-gif-id="gif-{$ph_id}" data-gif="/clubpicture?i={$ph_id}&size=large&clubid={$clubid}&corr=1" data-wait="true" data-playon="hover"{/if}  src="/clubpicture?i={$ph_id}&size=medium&clubid={$clubid}&corr=1">
+			
+			</a>
+		
+		{else}
+		
+			<a href="/photo?q={$res.uid}&show=single&from=medium&o={b_encode($ph_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="image-hover">
+				<img class="feed_single_img {if $is_gif}gifplayer{/if}" {if $is_gif}data-gif-id="gif-{$ph_id}" data-gif="/getPhoto?p={$ph_id}&sz=large&g={$ugender}" data-wait="true" data-playon="hover"{/if}  src="/getPhoto?p={$ph_id}&sz=medium&feed=1">
+			
+			</a>
+			
+		{/if}	
+			
+	</div>
+	</div>
+              
+
+
+
+		{else}
+		
+		
+
+			{assign var=comm_count value=$this->getCommentsCount($ph_id,'photo',$clubid)}
+            <div class="feed_collage_i  this_wall_family  micro noclone">
+			 
+			
+               {if $clubid > 0}
+
+			   <a href="/photo?q={$this->USER['id']}&clubid={b_encode($clubid)}&show=filter-community&from=medium&o={b_encode($ph_id)}&pp={$all_pp_id}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="collage_cnt image-hover">
+             
+			 {if $visible_photos === 5}
+			 <div class="overlay_more_photos" rel="tipsy" title="{$this->lang['Open_all']} {$photo_c} {$this->lang['photos']}"><div class="fpc42">+{$photo_c-6}</div></div>
+			 {/if}
+			 
+			 <img src="/clubpicture?i={$ph_id}&size=medium&clubid={$clubid}&corr=1" id="feed_img_coll_{$ph_id}">
+				  {if $is_gif}<ins class="play-gif _tocenter">GIF</ins>{/if}
+				
+                </a>
+			   
+			   {else}
+			   
+			   
+			   <a href="/photo?q={$user_id}&show=filter&from=medium&o={b_encode($ph_id)}&pp={$all_pp_id}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="collage_cnt image-hover">
+             
+			 {if $visible_photos === 5 && $photo_c > 6}
+			 <div class="overlay_more_photos" rel="tipsy" title="{$this->lang['Open_all']} {$photo_c} {$this->lang['photos']}"><div class="fpc42">+{$photo_c-6}</div></div>
+			 {/if}
+			 
+				   <img src="/getPhoto?p={$ph_id}&sz=medium&feed=1" id="feed_img_coll_{$ph_id}"> 
+				  {if $is_gif}<ins class="play-gif _tocenter">GIF</ins>{/if}
+				
+                </a>
+				
+				{/if}
+				
+				
+				<ul class="widget-list __dark __overlay inverted">
+                    <li class="widget-list_i">
+                        <div class="widget  __compact __lockeds"><a href="javascript:void(0);" onclick="return photoCommentBfLayer(event,this);" data-categ="photo" {if $clubid > 0}data-community="true"{/if} data-thicommi="comm_{$ph_id}" class="h-mod widget_cnt _in_feed"><span class="widget_ico ic12 ic12_comment"></span><span class="widget_tx">{$this->lang['feed_comment_widget']}</span><span class="widget_delim"></span><span class="widget_count js-count">{$comm_count}</span></a></div>
+                    </li>
+                    <li class="widget-list_i _flvkl __{$ph_id}">
+                        <div id="hook_Block">
+                            <div  data-pplikt="ppo_{$ph_id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$ph_id}" data-appendtooltipto="._flvkl" class="widget {if $kl_eu}__active{/if}  __compact">
+                                <button {if $clubid > 0} data-log-click='{ldelim}"community":"{$clubid}","type":"like","item":"{$item_type}","itemid":"{$ph_id}"{rdelim}'{else}data-log-click='{ldelim}"type":"like","item":"{$item_type}","itemid":"{$ph_id}"{rdelim}'{/if} class="h-mod widget_cnt controls-list_lk">
+								<span class="widget_ico ic12 ic12_klass"></span>
+								<span class="widget_tx">Like</span><span class="widget_delim"></span>
+								<span class="widget_count js-count">{$kl_count}</span></button>
+                            </div>
+                        </div>
+                        <div class="h-mod sc-menu_w">
+                            <div id="hook_Block" class="posR"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+		
+		{$visible_photos = $visible_photos+1}
+{/if}
+
+			{/foreach}
+			
+			
+            </div>
+			
+			
+			</div>
+        </div>
+	
+
+	{if $widget_enabled}
+        <div class="feed_f">
+	{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+	{/if}
+    </div>
+</div>
+	{if $widget_enabled}
+<script>
+var $feed_id = '{$res.id}', $itemid = '{$ph_id}', $author_id = '{$res.uid}', clubid = '{$clubid}';
+{literal}
+
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget '+ ( clubid ? 'incommunity' : '')).attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'photo',
+						{'width':'75%','height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>
+{/if}
+{/strip}

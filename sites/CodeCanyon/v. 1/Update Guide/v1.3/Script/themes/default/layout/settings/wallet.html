@@ -1,0 +1,68 @@
+<div class="fluid">
+	<form class="form-horizontal setting-panel" id="wallet-settings" method="POST">
+		<?php if (isset($fl['refilled_balance'])): ?>
+			<div class="alert-info alert">
+				<i class="fa fa-check-circle-o"></i>
+				<?php 
+					$subject = $fl['lang']['ur_balance_refilled'];
+					echo str_replace('{{AMOUNT}}', $fl['refilled_balance'],$subject);
+				?>
+			</div>
+		<?php endif; ?>
+	    <div class="setting-wallet-alert"></div>
+		<fieldset>
+			<!-- password input-->
+			<div class="text-center fl_wallet">
+				<label>{{LANG balance}}</label>
+				<h5>
+					<span>$</span>
+					<b>{{USER wallet}}</b>
+				</h5>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="fl_wallet_add text-center">
+						<label class="" for="amount">{{LANG add_money}}</label>  
+						<div class="">
+							<input type="number" step="any" class="form-control input-md" name="amount" required="required" id="amount" placeholder="{{LANG enter_amount}}..">
+						</div>
+						<button id="submit" name="submit" class="btn btn-main"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg> {{LANG replenish_balance}}</button>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+			<input type="hidden" name="user_id" value="{{USER user_id}}">
+			<!-- Button (Double) -->
+			
+		</fieldset>
+	</form>
+</div>
+<script>
+$(function() {
+  var form = $('form#wallet-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=wallet&s=upto',
+    dataType:'json',
+    beforeSend: function() {
+      form.find('button').text("{{LANG please_wait}}").attr('disabled', 'true');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+      	window.location.href = data.url;
+      } 
+
+      else if (data.status == 500) {
+        swal({
+			title: "{{LANG error}}",
+			text: "{{LANG error_found_request}}",
+			type: "error"
+		});
+      }
+    }
+  });
+});
+</script>

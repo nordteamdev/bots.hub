@@ -1,0 +1,141 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">
+			<div class="wo_settings_page">
+				<div class="sun_head_onboard shortpwidth">
+					<img class="sho_img" src="<?php echo $wo['config']['theme_url'];?>/img/cads/app.svg" alt="App" />
+					<span class="go_back_link">
+						<a data-ajax="?link1=apps" href="<?php echo Wo_SeoLink('index.php?link1=apps');?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>My Apps
+						</a>
+					</span>
+					<div class="sun_head_onboard_innr">
+						<h2>App Details</h2>
+					</div>
+				</div>
+				
+			<div class="app_dv_head">
+				<ul class="nav nav-tabs">
+					<li class="active" style="width: 50%;">
+						<a data-target="#keys" href="#" data-toggle="tab" style="height: 35px;">
+							<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-key"><path d="M7,14A2,2 0 0,1 5,12A2,2 0 0,1 7,10A2,2 0 0,1 9,12A2,2 0 0,1 7,14M12.65,10C11.83,7.67 9.61,6 7,6A6,6 0 0,0 1,12A6,6 0 0,0 7,18C9.61,18 11.83,16.33 12.65,14H17V18H21V14H23V10H12.65Z" /></svg>
+							<span class="setting-tab-text">App Keys</span>
+						</a>
+					</li>
+					<li style="width: 50%;">
+						<a data-target="#app-setting" href="#" data-toggle="tab" style="height: 35px;">
+							<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-setting"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>
+							<span class="setting-tab-text">App Setting</span>
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="tabs">
+					<div class="tab-pane active" id="keys">
+						<div class="tab-container" style="border: 0;">
+							<div class="setting-panel row">
+								<div class="app-update-alert setting-update-alert"></div>
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_name">App ID</label>  
+									<div class="col-md-12">
+										<input id="app_name" name="app_name" type="text" class="form-control input-md" disabled value="<?php echo $wo['app']['app_id']; ?>">
+										<span class="help-block">Your application ID.</span>
+									</div>
+								</div>
+								<!-- Text input-->
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_name">App secret</label>  
+									<div class="col-md-12">
+										<input id="app_name" name="app_name" type="text" class="form-control input-md" disabled value="<?php echo $wo['app']['app_secret']; ?>">
+										<span class="help-block">Your application secret key.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="app-setting">
+						<div class="tab-container" style="border: 0;">
+							<form class="app-update-form row" method="post" style="margin-top: 0px;">
+								<div class="setting-panel row">
+								<!-- Text input-->
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_name">App name *</label>  
+									<div class="col-md-12">
+										<input name="app_name" id="app_name" type="text" class="form-control input-md" value="<?php echo $wo['app']['app_name']; ?>">
+										<span class="help-block">Your application name. This is used to attribute the source user-facing authorization screens. 32 characters max.</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_website_url">App website *</label>  
+									<div class="col-md-12">
+										<input name="app_website_url" id="app_website_url" type="text" class="form-control input-md" value="<?php echo $wo['app']['app_website_url']; ?>">
+										<span class="help-block">Your application's publicly accessible home page.</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_description">App description *</label>  
+									<div class="col-md-12">
+										<textarea name="app_description" id="" rows="3" class="form-control input-md"><?php echo $wo['app']['app_description']; ?></textarea>
+										<span class="help-block">Your application description, which will be shown in user-facing authorization screens. Between 10 and 200 characters max.</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_callback_url">App callback url</label>  
+									<div class="col-md-12">
+										<input name="app_callback_url" id="app_callback_url" type="text" class="form-control input-md" value="<?php echo $wo['app']['app_callback_url']; ?>">
+										<span class="help-block">Where should we return after successfully authenticating?</span>
+									</div>
+								</div>
+								<div class="form-group col-lg-12">
+									<label class="col-md-12" for="app_avatar">App avatar</label>  
+									<div class="col-md-12">
+										<input name="app_avatar" id="app_avatar" type="file" class="form-control input-md">              
+									</div>
+								</div>
+								</div>
+								
+								<div class="app-update-alert setting-update-alert"></div>
+								
+								<input name="app_id" id="app_id" type="hidden" value="<?php echo $wo['app']['id']; ?>">  
+								
+								<div class="form-group last-sett-btn modal-footer" style="margin: 0px -15px -25px -15px;">
+									<div class="ball-pulse"><div></div><div></div><div></div></div>
+									<button type="submit" name="save_setting" id="save-setting" tabindex="4" value="Save" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['update']; ?></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="sidebar"><?php echo Wo_LoadPage('sidebar/content');?></div>
+	</div>
+</div>
+<script>
+  $(function() {
+    $('form.app-update-form').ajaxForm({
+      url: Wo_Ajax_Requests_File() + '?f=apps&s=update_app',
+      beforeSend: function() {
+        $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+      },
+      success: function(data) {
+        if (data.status == 200) {
+          $('[id^=app-name]').text(data.name);
+          $('.app-avatar').attr('src', data.image);
+          $('.app-update-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+          $('.alert-success').fadeIn('fast', function() {
+             $(this).delay(2500).slideUp(500, function() {
+                $(this).remove();
+              });
+          });
+        } else {
+            var errors = data.errors.join("<br>");
+            $('.app-update-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+            $('.alert-danger').fadeIn(300);
+        }
+        $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,28 @@
+<?php 
+	if ($wo['field']['select_type'] == 'yes') {
+      	$options = @explode(',', $wo['field']['type']); ?>
+		<div class="sun_input">
+			<select name="<?php echo $wo['field']['fid'];?>" id="<?php echo $wo['field']['name'];?>">
+				<?php foreach ($options as $key => $value) { ?>
+					<option value="<?php echo $key + 1;?>"><?php echo $value;?></option>
+				<?php } ?>
+			</select>
+			<label for="<?php echo $wo['field']['name'];?>"><?php echo $wo['field']['name'];?></label>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+		</div>
+
+      	<?php
+      } else {
+      	if ($wo['field']['type'] == 'textbox') { ?>
+			<div class="sun_input">
+				<input id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" type="text" placeholder="<?php echo $wo['field']['name'];?>">
+				<label for="<?php echo $wo['field']['fid'];?>"><?php echo $wo['field']['name'];?></label>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+			</div>
+      	<?php } else if ($wo['field']['type'] == 'textarea') {?>
+			<div class="sun_input">
+				<textarea id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" cols="20" rows="3" placeholder="<?php echo $wo['field']['name'];?>"></textarea>
+				<label for="<?php echo $wo['field']['fid'];?>"><?php echo $wo['field']['name'];?></label>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line></svg>
+			</div>
+<?php } } ?>

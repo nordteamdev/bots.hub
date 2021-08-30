@@ -1,0 +1,273 @@
+<?php 
+$attr = '';
+if (!empty($_GET['user_id'])) {
+   $attr ='data-story-user="' .  Wo_Secure($_GET['user_id']) . '"';
+} else
+if (!empty($_GET['page_id'])) {
+    $attr ='data-story-page="' .  Wo_Secure($_GET['page_id']) . '"';
+} else
+if (!empty($_GET['group_id'])) {
+    $attr ='data-story-group="' .  Wo_Secure($_GET['group_id']) . '"';
+} else
+if (!empty($_GET['event_id'])) {
+    $attr ='data-story-event="' .  Wo_Secure($_GET['event_id']) . '"';
+}
+
+?>
+<div class="api_posts">
+	<?php if (empty($attr)) { ?>
+		<form action="#" method="post" class="post publisher-box">
+			<div class="panel post panel-shadow">
+				<div id="post-textarea">
+					<?php if ($wo['page'] != 'events') { ?>
+						<img class="post-avatar" src="<?php echo (empty($wo['page_profile']['avatar'])) ? $wo['user']['avatar'] : $wo['page_profile']['avatar'];?>">
+					<?php } ?>
+					<textarea name="postText" class="form-control postText" cols="10" rows="3" placeholder="<?php echo $wo['lang']['write_something_here']; ?>" dir="auto" onclick="InjectAPI('<?php echo htmlentities(json_encode(array('type' => 'publisher-box'))); ?>', event);"></textarea> 
+				</div>
+			</div>
+		</form>
+    <?php } ?>
+	<div id="<?php echo (!empty($_GET['hashtag'])) ? 'posts_hashtag' : 'posts' ?>" <?php echo $attr?>>
+		<?php
+			if ($wo['config']['pro'] == 1 && empty($_GET['post_id']) && empty($_GET['hashtag']) && empty($_GET['event_id']) && empty($_GET['save_posts']) && empty($_GET['page_id']) && empty($_GET['group_id']) && empty($_GET['user_id'])) {
+				$promoted = $wo['story'] = Wo_GetPromotedPost();
+				if (count($promoted) > 0) {
+					$wo['story']['post_is_promoted'] = 1;
+		?>
+			<div class="promoted-post">
+				<img  class="promoted-icon" src="<?php echo $wo['config']['theme_url'] . '/img/promote.png';?>" alt="Promoted" data-toggle="tooltip" title="<?php echo $wo['lang']['promoted'];?>">
+				<?php echo Wo_LoadPage('story/api-posts'); ?>
+			</div>
+		<?php } }
+			if (!empty($_GET['post_id'])) {
+				$wo['story'] = Wo_PostData($_GET['post_id']);
+				if (!empty($wo['story'])) {
+					echo Wo_LoadPage('story/api-posts');
+				} else {
+					echo Wo_LoadPage('story/no-stories');
+				}
+			} else if (!empty($_GET['save_posts'])) {
+				$stories = Wo_GetSavedPosts($wo['user']['user_id']);
+				if (count($stories) <= 0) {
+					echo Wo_LoadPage('saved-posts/no-posts');
+				} else {
+					foreach ($stories as $wo['story']) {
+						echo Wo_LoadPage('story/api-posts');
+					}
+				}
+			} else {
+				$array = array('limit' => 10);
+				if (!empty($_GET['user_id'])) {
+					$array['publisher_id'] = Wo_Secure($_GET['user_id']);
+				}
+				if (!empty($_GET['page_id'])) {
+					$array['page_id'] = Wo_Secure($_GET['page_id']);
+				}
+				if (!empty($_GET['group_id'])) {
+					$array['group_id'] = Wo_Secure($_GET['group_id']);
+				}
+				if (!empty($_GET['event_id'])) {
+					$array['event_id'] = Wo_Secure($_GET['event_id']);
+				}
+				if (!empty($_GET['hashtag'])) {
+					$stories = Wo_GetHashtagPosts($_GET['hashtag']);
+				} else {
+					$stories = Wo_GetPosts($array);
+				}
+				if (count($stories) <= 0) {
+					echo Wo_LoadPage('story/no-stories');
+				} else {
+					foreach ($stories as $wo['story']) {
+						echo Wo_LoadPage('story/api-posts');
+					}
+				}
+			}
+		?>
+	</div>
+    <?php if (!empty($stories) && count($stories) > 0) { ?>
+		<?php if (!empty($_GET['hashtag'])) { ?>
+			<input type="hidden" value="<?php echo $_GET['hashtag'];?>" id="hashtagName">
+		<?php } ?>
+		<input type="hidden" value="true" id="api">
+		<div class="load-more pointer" id="load-more-posts" onclick="<?php echo (!empty($_GET['hashtag'])) ? 'Wo_GetMoreHashTagsPosts();' : 'Wo_GetMorePosts();' ?>">
+			<span class="btn btn-default">
+			<i class="fa fa-chevron-circle-down progress-icon" data-icon="chevron-circle-down"></i> <?php echo $wo['lang']['load_more_posts'];?><span>
+		</div>
+	<?php } ?>
+	<div id="load-more-filter">
+		<span class="filter-by-more hidden" data-filter-by="all"></span>
+	</div>
+</div>
+<input type="hidden" id="ISAPI" value="1">
+<style>
+.scroll-to-top {position: fixed;bottom: 20px;right: 20px;width: 45px;height: 45px;line-height: 1;cursor: pointer;text-align: center;color: <?php echo $wo['config']['btn_color'];?>;font-size: 15px;padding: 15px;border-radius: 100%;background-color: <?php echo $wo['config']['btn_background_color'];?>;}
+.like-btn-mobile {display: inherit !important;}
+
+.api_posts {overflow:hidden;}
+.api_posts #post-textarea {height: 55px;}
+.api_posts .publisher-box .post-avatar {width: 40px;height: 40px;top: 50%;transform: translateY(-50%);}
+.api_posts .publisher-box textarea.postText {padding: 20px 15px 20px 60px;height: 55px !important;font-size: 15px;line-height: 1;}
+.api_posts .panel {border-radius: 0;}
+.api_posts .post .post-heading {padding: 10px;height: 60px;}
+.api_posts .meta h6 {margin-top: 5px;}
+.api_posts .post .post-description {padding: 10px 15px 5px;}
+.api_posts .reactions-box {left: 5px;}
+.api_posts .post .post-description p:empty {margin:0;}
+.api_posts .right_postz_drop_menu a {display: inline-flex;}
+.api_posts .right_postz_drop_menu .dropdown-menu {position: fixed;bottom: -400px;left: 0;right: 0;top: auto;margin: 0;z-index: 9999;padding: 0;border: 0;border-radius: 0;transition: all 0.25s;display: block;}
+.api_posts .right_postz_drop_menu.open .dropdown-menu {bottom:0;}
+.api_posts .right_postz_drop_menu .dropdown-menu > ul{padding: 0;margin: 0;}
+.api_posts .right_postz_drop_menu .dropdown-menu li > a, .api_posts .right_postz_drop_menu .dropdown-menu li > div {padding: 15px 20px !important;transition: all 0.15s !important;font-size: 14px;color: #454545;}
+.api_posts .right_postz_drop_menu .dropdown-menu li > a:hover, .api_posts .right_postz_drop_menu .dropdown-menu li > div:hover {background-color: #f0f0f0;}
+.dropback_bg {background-color: rgba(0, 0, 0, 0.3);top:0;bottom:0;left:0;right:0;position: fixed;transition: all 0.2s ease;visibility: hidden;opacity: 0;height: 100%;z-index: 9990;}
+body.side_open {overflow:hidden;}
+body.side_open .dropback_bg {opacity: 1;visibility: visible;}
+</style>
+
+<div class="dropback_bg" onclick="javascript:$('body').removeClass('side_open');"></div>
+
+<script>
+$(window).scroll(function(event) {
+  var h = $(window).scrollTop();
+  if (h < 20 && h > 1) {
+     var link = "{type: 'scorll', num: '1'}";
+     InjectAPI(link, event);
+  } else if (h < 50 && h > 20) {
+    var link = "{type: 'scorll', num: '2'}";
+    InjectAPI(link, event);
+  } else if (h < 70 && h > 50) {
+    var link = "{type: 'scorll', num: '3'}";
+    InjectAPI(link, event);
+  } else if (h < 100 && h > 70) {
+    var link = "{type: 'scorll', num: '4'}";
+    InjectAPI(link, event);
+  } else if (h < 150 && h > 100) {
+    var link = "{type: 'scorll', num: '5'}";
+    InjectAPI(link, event);
+  } else if (h < 200 && h > 150) {
+    var link = "{type: 'scorll', num: '6'}";
+    InjectAPI(link, event);
+  } else if (h < 250 && h > 200) {
+    var link = "{type: 'scorll', num: '7'}";
+    InjectAPI(link, event);
+  } else if (h < 300 && h > 250) {
+    var link = "{type: 'scorll', num: '8'}";
+    InjectAPI(link, event);
+  }
+});
+jQuery(document).ready(function($) {
+  $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+
+
+  $(window).scroll(function() {
+      $('.youtube-player').each(function(index, el) {
+          if (!$(el).isInViewport()) {
+             $(el).find('iframe').attr('src', $(el).find('iframe').attr('src'));
+          }
+      });
+  });
+
+});
+function isFunction(possibleFunction) {
+     return typeof(possibleFunction) === typeof(Function);
+}
+function InjectAPI(data, e) {
+    if (isFunction(csharp)) {
+        csharp(data);
+        e.preventDefault();
+        return false;
+    }
+}
+
+function Wo_GetMoreHashTagsPosts() {
+    var more_posts = $('#load-more-posts');
+    var after_post_id = $('.post:last').attr('data-post-id');
+    var hashtagName = $('#hashtagName').val();
+    var is_api = 0;
+    var api = $('#api').val();
+    if (api) {
+        is_api = 1;
+    }
+    Wo_progressIconLoader($('#load-more-posts'));
+    $.post(Wo_Ajax_Requests_File() + '?f=get_more_hashtag_posts', {after_post_id: after_post_id,hashtagName:hashtagName,is_api:is_api}, function(data) {
+        if (data.status == 200) {
+            if (data.html.length == 0) {
+                $('#posts_hashtag').append(data.html);
+                more_posts.html('<span class="btn btn-default"><?php echo $wo["lang"]["no_more_posts"];?><span>');
+            } else {
+              $('#posts_hashtag').append(data.html);
+            }
+            Wo_progressIconLoader($('#load-more-posts'));
+            scrolled_hash = 0;
+        }
+    });
+}
+function Wo_loadAPIAllComments(post_id) {
+  main_wrapper = $('#post-' + post_id);
+  view_more_wrapper = main_wrapper.find('.view-more-wrapper');
+  Wo_progressIconLoader(view_more_wrapper);
+  $.get(Wo_Ajax_Requests_File(), {
+    f: 'posts',
+    s: 'load_more_comments',
+    post_id: post_id,
+    is_api: 1
+  }, function (data) {
+    if(data.status == 200) {
+      main_wrapper.find('.comments-list').html(data.html);
+      view_more_wrapper.remove();
+    }
+  });
+}
+$(document).on('click', '.rads-clicks', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-c',ad_id:ad_id},
+      })
+      .done(function(data) {
+        if (data.status == 200) {
+          var link = "{type: 'url', link: '" + self.find('a').attr('href') + "'}";
+          InjectAPI(link, event);
+        }
+      })
+      .fail(function() {
+        console.log("Something went wrong. Try again later");
+      })
+    }
+    event.preventDefault();
+  });
+  $(document).on('click', '.rads-views', function(event) {
+    var self  = $(this);
+    var ad_id = self.attr('id');
+    if (ad_id) {
+      $.ajax({
+        url: Wo_Ajax_Requests_File() ,
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'ads',s:'rads-v',ad_id:ad_id},
+      })
+      .done(function(data) {
+        if (data.status == 200) {
+          var link = "{type: 'url', link: '" + self.find('a').attr('href') + "'}";
+          InjectAPI(link, event);
+        }
+      })
+      .fail(function() {
+        console.log("Something went wrong. Try again later");
+      })
+    }
+    event.preventDefault();
+  });
+</script>

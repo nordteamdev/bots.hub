@@ -1,0 +1,84 @@
+
+<!-------------------------- Edit song [ popup layer ] --------------------->
+
+{/strip}
+
+<div id="layer_popup">
+  <div class="layer_ovr">
+    </div>
+    <div class="track_edit_layer_cnt mml_popup">
+      <div class="portlet-i_h mb-25">
+        Info about the song
+      </div>
+      <div class="form form__gl-1-2">
+        <div class="form_i mb-5">
+          <label>
+            
+            <span class="input-l">
+              Artist
+            </span>
+            <div class="it_w">
+              <input data-query="mus_artist" class="it vl_it tred" maxlength="256" type="text" value="{$s_artist}">
+            </div>
+          </label>
+        </div>
+        <div class="form_i mb-5">
+          <label>
+            
+            <span class="input-l">
+              Title
+            </span>
+            <div class="it_w">
+              <input data-query="mus_title" class="it vl_it tred" maxlength="256" type="text" value="{$s_title}">
+            </div>
+          </label>
+        </div>
+        <div class="form_i mb-5">
+          <label>
+            
+            <span class="input-l">
+              Album
+            </span>
+            <div class="it_w">
+              <input data-query="mus_album" class="it vl_it tred" maxlength="256" type="text" value="{$s_album}">
+            </div>
+          </label>
+        </div>
+	{if $allow_change_cover}
+        <div class="form_i mb-5">
+          <label>
+            
+            <span class="input-l">
+              Cover
+            </span>
+            <div class="it_w">
+              <input id="cover_input" style="opacity:.5;cursor:not-allowed" disabled="true" data-query="mus_cover" class="it vl_it tred" maxlength="256" type="text" value="{$s_cover}">
+
+	      <div class="song_editable_info" style="font-size: 11px;white-space: nowrap;margin-left: -23px;">
+	      <input onclick="var el = document.getElementById('cover_input'); if(!this.che) { this.che=true; el.removeAttribute('disabled');el.removeAttribute('style');}else{ this.che=false; el.setAttribute('disabled','true');el.setAttribute('style','opacity:.5;cursor:not-allowed;');}" type="checkbox" style="vertical-align: bottom;height: 11px;cursor: pointer;">Please enter a valid cover URL for respective song</div>
+	      
+            </div>
+          </label>
+        </div>
+{else}
+<div style="text-align: center;color: #C1C0C0;font-size: 8pt;">* This song contains its original cover and can't be changed.</div>
+{/if}
+      </div>
+      <div class="form-actions">
+        <button class="vl_btn" data-track="{$s_id}" data-action="trackSaveChanges">
+          Ready
+        </button>
+        <span class="vl_a-sw ml-15 curPointer">
+          Cancel
+        </span>
+        
+      </div>
+      
+      <span class="layer_close ic ic_close">
+      </span>
+      
+    </div>
+    
+</div>
+
+{/strip}

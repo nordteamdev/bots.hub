@@ -1,0 +1,28 @@
+<div class="view-verification-request">
+	<h4>{{REQUEST_USERNAME}}</h4>
+	<p>{{REQUEST_MESSAGE}}</p>
+	<div class="user-request-images">
+		<img src="{{REQUEST_USER_PHOTO}}" alt="Picture" class="responsive-img">
+	</div>
+	<div class="user-request-images">
+		<img src="{{REQUEST_USER_ID}}" alt="Picture" class="responsive-img">
+	</div>
+</div>
+
+<style>
+	.white-popup,.view-verification-request {
+		position: relative;
+	    background: #FFF;
+	    padding: 20px;
+	    width: 50%;
+	    max-width: 70%;
+	    margin: 20px auto;
+	}
+
+	.view-verification-request div.user-request-images{
+		width: 100%;
+		overflow: hidden;
+		max-height: 400px;
+		margin-bottom: 30px;
+	}
+</style>

@@ -1,0 +1,87 @@
+<?php
+$error = '';
+$succuss = '';
+if (isset($_POST['game'])) {
+	if (!empty($_POST['game'])) {
+	   if (!filter_var($_POST['game'], FILTER_VALIDATE_URL)) {
+       	  $error = '<i class="fa fa-fw fa-exclamation-triangle"></i> ' . $wo['lang']['website_invalid_characters'];
+       } else {
+        $reg = '#([A-Za-z0-9_-]+)://([A-Za-z0-9_-]+).miniclip.com/games/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)#s';
+       	  if (preg_match($reg, $_POST['game'], $match)) {
+       	  	  $get_url = $_POST['game'];
+              include_once("assets/libraries/simple_html_dom.inc.php");
+              $get_content = str_get_html(file_get_contents($get_url));
+              foreach ($get_content->find('title') as $element) {
+                   $page_title = $element->plaintext;
+              }
+             $img = 'upload/photos/game-icon.png';
+             if (!empty($_POST['avatar'])) {
+             	if (filter_var($_POST['avatar'], FILTER_VALIDATE_URL)) {
+       	           $img = $_POST['avatar'];
+                }
+             }
+             $page_title = explode("-", $page_title);
+             $data_array = array('game_avatar' => Wo_Secure(Wo_ImportImageFromUrl($img)), 'game_name' => Wo_Secure($page_title[0]), 'game_link' => Wo_Secure($match[3]), 'time' => time());
+       	  	 $add_game = Wo_AddGame($data_array);
+       	  	 if ($add_game === true) {
+       	  	 	$succuss = '<i class="fa fa-fw fa-check"></i> ' . $wo['lang']['game_added'];
+       	  	 }
+       	  } else {
+       	  	 $error = '<i class="fa fa-fw fa-exclamation-triangle"></i> ' . $wo['lang']['url_not_supported_game'];
+       	  }
+       	  
+       }
+    } else {
+       $error = '<i class="fa fa-fw fa-exclamation-triangle"></i> ' . $wo['lang']['please_add_a_game'];
+    }
+}
+if (!empty($_GET['delete_ip'])) {
+	if (Wo_DeleteBanned($_GET['delete_ip']) === true) {
+		$succuss = '<i class="fa fa-fw fa-check"></i> ' . $wo['lang']['ip_deleted'];
+	}
+}
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Games > Add New Game</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Add New Game <small>Supported from miniclip.com</small></h2>
+                </div>
+                <div class="body">
+                      <?php if (!empty($error)) { ?>
+				      <div class="alert alert-danger">
+				      	<?php echo $error;?>
+				      </div>
+				      <?php } ?>
+				      <?php if (!empty($succuss)) { ?>
+				      <div class="alert alert-success">
+				      	<?php echo $succuss;?>
+				      </div>
+				      <?php } ?>
+                    <form class="" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="game" name="game" class="form-control">
+                                <label class="form-label">Game URL <small>Example: https://www.miniclip.com/games/8-ball-pool-multiplayer/en/</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="avatar" name="avatar" class="form-control">
+                                <label class="form-label">Game Image URL <small>Example: https://static.miniclipcdn.com/content/game-icons/medium/8-Ball-Pool_26-02-2015.jpg</small></label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add Game</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->

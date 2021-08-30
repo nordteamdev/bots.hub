@@ -1,0 +1,78 @@
+
+{strip}
+{foreach $query as $result} 
+
+{assign var=mr_id value={$result.id}}
+{assign var=mr_artist value={$result.artist}}
+{assign var=mr_song value={$result.title}}
+{assign var=mr_album value={$result.album}}
+{assign var=mr_pth value={$result.path}}
+{assign var=mr_cover value={$result.cover}}
+{assign var=mr_time value={$result.time}}
+{assign var=mr_video value={$result.video}}
+{assign var=mr_lang value={$result.language}}
+{assign var=download value=''}
+
+{if $mr_lang === $purchase_ic}
+{assign var=download value='__download'}
+{/if}
+
+
+<!---- only for history page, store the current year, current day ..... ---->
+{if $b eq 'history' }  
+
+{if $curr_year === date('Y', $result.listen) } 
+
+        {$date=date('j F', $result.listen)}
+        {$day=explode(' ', $date)}
+
+{else}
+
+        {$date=date('d.m.Y', $result.listen)}
+        {$day=explode('.', $date)}
+
+{/if}
+
+{if ! isset($_SESSION['curr_date_res'])}
+
+{$_SESSION['curr_date_res'] = $day[0]}
+
+{/if}
+
+{if $_SESSION['curr_date_res'] !== $day[0]}
+
+<div class="mus_timestamp {$nmt}">
+    <div class="mus_timestamp_cnt">
+        <div class="mus_timestamp_tx {$todaycl}">{$date}</div>
+    </div>
+</div>
+
+{/if}
+
+{$_SESSION['curr_date_res'] = $day[0]}
+{/if}
+
+<!--- end for history page ---->
+<li target="#m_{$b}_{$pd_fr}_{$mr_id}">
+    <div class="mus-tr_i  __has-video soh-s {$download}" id="tri_{$pd_fr}_{$mr_id}">
+        <div class="mus-tr_hld">
+            <span class="mus-tr_play __play js-mus-tr_play datanw" id="m_{$b}_{$pd_fr}_{$mr_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$mr_pth}","cover":"{$mr_cover}"{literal}}{/literal}'></span>
+            {if $download !== '' }
+            <span class="mus-tr_download js-mus-tr_download" title="Download"></span>
+            {/if}
+            <div class="mus-tr_cnt"><a class="mus-tr_a mus-tr_artist">{$mr_artist}</a>&nbsp;&#8211;&nbsp;<a class="mus-tr_a mus-tr_song">{$mr_song}</a><span class="foh-s mus-tr_info">&nbsp;from&nbsp;<a class="mus-tr_a mus-tr_album"><span class="mus-tr_album-ic ic10_album"></span>{$mr_album}</a>
+                </span>
+            </div>
+            <div class="mus-tr_right-controls foh-s" id="rc_{$mr_id}">
+                <span class="mus-tr_add js-mus-tr_add" title="Add to My music"></span>
+                <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist"></span>
+            </div>
+            <span class="mus-tr_time">{$mr_time}</span>
+        </div>
+        {if $mr_video > '0'}
+        <div class="mus-tr_video" data-showVideo="true" data-video="{$mr_video}"></div>
+       {/if}
+    </div>
+</li>
+{/foreach}
+{/strip}

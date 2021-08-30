@@ -1,0 +1,110 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div role="tabpanel" class="tab-pane active" id="showthread">
+	<div class="w-100">
+		<h5><i class="fa fa-comments-o" aria-hidden="true"></i> <?php echo $wo['lang']['replies']; ?>
+		<i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo ($wo['user']['username']); ?>
+		</h5>
+	</div>
+	<div class="w-100">
+		<?php if (count($wo['messages']) > 0): ?>
+			  <table class="table threads-table table-striped">
+			    <thead class="bg-main">
+			      <tr>
+			        <th><?php echo $wo['lang']['subject']; ?></th>
+			        <th><?php echo $wo['lang']['forum']; ?></th>
+			        <th><?php echo $wo['lang']['posted']; ?></th>
+			        <th><?php echo $wo['lang']['action']; ?></th>
+			      </tr>
+			    </thead>
+			    <tbody id="mymessage-list">
+			    <?php foreach ($wo['messages'] as $wo['message']): ?>
+			    	<?php echo Wo_LoadPage("forum/includes/mymessage-list"); ?>
+			    <?php endforeach; ?>
+
+			    </tbody>
+			  </table>
+	    <?php else: ?>
+			<?php echo '<h5 class="search-filter-center-text">' . $wo['lang']['no_replies_found'] .  '</h5>'; ?>
+		<?php endif; ?>	
+	</div>
+	<div class="col-md-12">
+	    <div class="posts_load">
+	        <?php if (count($wo['messages']) > 0): ?>
+	        <div class="load-more">
+	            <button class="btn btn-default text-center pointer load-my-replies"  >
+	            <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_posts'] ?></button>
+	        </div>
+	        <?php endif ?>
+	    </div>  
+	</div>
+
+	<div class="">
+
+		<div class="btn-group dropup">
+          <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> &nbsp;|&nbsp; <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads'); ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php echo $wo['lang']['my_threads']; ?></a></li>
+            <li><a href="#" class="disabled"><i class="fa fa-comments" aria-hidden="true"></i> <?php echo $wo['lang']['my_messages']; ?></a></li>
+            <li class="divider"></li>
+            
+          </ul>
+        </div>
+
+        <?php if ($wo['forums'] && count($wo['forums']) > 0): ?>
+        		        
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+            <?php echo $wo['lang']['jump_to']; ?> &nbsp;|&nbsp; <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+          	<?php foreach ($wo['forums'] as $jump): ?>
+          			          	
+            	<li>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$jump['id']);?>">
+			        <?php echo $jump['name']; ?>
+			        </a>
+            	</li>
+            <?php endforeach ?>
+            
+          </ul>
+        </div>
+        <?php endif ?>
+	</div>
+
+
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<?php echo Wo_LoadPage('forum/includes/delete-reply'); ?>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+
+<script>
+	$(".load-my-replies").click(function () {
+        $.ajax({
+             url: Wo_Ajax_Requests_File(),
+             type: 'GET',
+             dataType: 'json',
+             data: {
+                f:"load-my-thread-replies",
+                offset:($(".my-thread-reply-list").length > 0) ? $(".my-thread-reply-list:last").attr('data-thread-reply') : 0
+
+             },
+             success:function(data){
+                
+                if (data['status'] == 200) {
+                	
+                    $("#mymessage-list").append(data['html'])
+                 }
+                 else{
+
+                   $(".posts_load").remove()
+                   
+                 }
+
+             }
+          });
+    });
+</script>
+

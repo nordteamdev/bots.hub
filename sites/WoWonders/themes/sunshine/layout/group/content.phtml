@@ -1,0 +1,402 @@
+<?php 
+	$show_list = false;
+	if ($wo['group_profile']['privacy'] == 1) {
+		$show_list = true;
+	} else if ($wo['group_profile']['privacy'] == 2) {
+		if (!Wo_IsGroupOnwer($wo['group_profile']['id'])) {
+			if (Wo_IsGroupJoined($wo['group_profile']['id'])) {
+				$show_list = true;
+			}
+		} else {
+			$show_list = true;
+		}
+	}  
+?>
+<div class="row page-margin wo_group_profile" data-page="group" data-id="<?php echo $wo['group_profile']['id'];?>">
+	<div class="profile-container">
+		<div class="card hovercard">
+			<div class="cardheader user-cover">
+				<?php if(Wo_IsGroupOnwer($wo['group_profile']['id']) === true) { ?>
+					<form action="#" method="post" class="profile-cover-changer">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<span class="btn btn-upload-image btn-file">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+									<input type="file" name="cover" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileCover();">
+								</span>
+							</span>
+						</div>
+						<input type="hidden" name="group_id" id="group-id" value="<?php echo $wo['group_profile']['id'];?>">
+					</form>
+				<?php } ?>
+				<div class="user-cover-uploading-container"></div>
+				<div class="user-cover-uploading-progress">
+					<div class="pace-activity-parent"><div class="pace-activity"></div></div>
+				</div>
+				<img id="cover-image" src="<?php echo $wo['group_profile']['cover']?>" alt="<?php echo $wo['group_profile']['name']?> Cover Image"/>
+			</div>
+			
+			<div class="side_panel">
+				<div class="box-inner" style="background-image: url(<?php echo $wo['group_profile']['cover']?>)"></div>
+				<div class="sp_innrr">
+					<div class="user-avatar flip">
+						<div class="user-avatar-uploading-container">
+							<div class="user-avatar-uploading-progress">
+								<div class="ball-pulse"><div></div><div></div><div></div></div>
+							</div>
+						</div>
+						<img id="group-avatar-image" alt="<?php echo $wo['group_profile']['name']?> Profile Picture" src="<?php echo $wo['group_profile']['avatar']?>"/>
+						<?php if(Wo_IsGroupOnwer($wo['group_profile']['id']) === true) { ?>
+							<form action="#" method="post" class="profile-avatar-changer">
+								<div class="input-group">
+									<span class="input-group-btn">
+										<span class="btn btn-upload-image btn-file">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+											<input type="file" name="avatar" accept="image/x-png, image/jpeg" onchange="Wo_UpdateProfileAvatar();">
+										</span>
+									</span>
+								</div>
+								<input type="hidden" name="group_id" id="group-id" value="<?php echo $wo['group_profile']['id'];?>">
+							</form>
+						<?php } ?>
+					</div>
+					<div class="info">
+						<div class="title">
+							<a href="<?php echo Wo_SeoLink('index.php?link1=?link1=timeline&u=' . $wo['group_profile']['group_name'] . '');?>" data-ajax="?link1=timeline&u=<?php echo $wo['group_profile']['group_name'];?>">
+								<?php echo $wo['group_profile']['name']; ?>
+							</a>
+						</div>
+						<span style="display: block;"><?php echo Wo_CountGroupMembers($wo['group_profile']['id']);?> <?php echo $wo['lang']['members'];?></span>
+					</div>
+					<div class="options-buttons">
+						<span class="user-follow-button group-join-btn">
+							<?php echo Wo_GetJoinButton($wo['group_profile']['id']);?>
+						</span>
+						<?php if (Wo_IsGroupOnwer($wo['group_profile']['id'])) { ?>
+							<a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' .  $wo['group_profile']['group_name']); ?>" data-ajax="?link1=group-setting&group=<?php echo $wo['group_profile']['group_name'];?>" class="btn btn-default"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg> <?php echo $wo['lang']['edit']; ?></a>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-8">
+		<?php
+			if (isset($_GET['type'])) {
+				if ($_GET['type'] == 'members') {
+					if ($show_list == true) {
+						# code...
+		?>
+			<div class="list-group profile-lists">
+				<div class="list-group-item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+					<?php echo $wo['lang']['members'];?>
+				</div>
+				<div class="row" style="margin: 0;">
+					<?php
+					if (Wo_CountGroupMembers($wo['group_profile']['id']) == 0) {
+						echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>' . $wo['lang']['no_members_found'] . '</h5>';
+					} else {
+					foreach (Wo_GetGroupMembers($wo['group_profile']['id']) as $wo['UsersList']) {
+						echo Wo_LoadPage('timeline/follow-list');
+					}
+					}
+					?>
+				</div>
+				<div class="clear"></div>
+			</div>
+		<?php } } else if ($_GET['type'] == 'add_members') { ?>
+			<div class="list-group profile-lists">
+				<div class="list-group-item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+					<?php echo $wo['lang']['add_your_frineds'];?>
+				</div>
+				<div class="row" style="margin: 0;">
+					<?php
+					if (Wo_CountGroupsNotMember($wo['group_profile']['id']) == 0) {
+						echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>' . $wo['lang']['added_all_friends'] . '</h5>';
+					} else {
+					foreach (Wo_GetGroupsNotMember($wo['group_profile']['id']) as $wo['UsersList']) {
+						echo Wo_LoadPage('group/add-list');
+					}
+					}
+					?>
+				</div>
+				<div class="clear"></div>
+			</div>
+		<?php } } else { ?>
+		
+		<?php echo Wo_GetGroupPostPublisherBox($wo['group_profile']['id']); ?>
+		
+		<?php if ($wo['loggedin'] == true) { echo Wo_LoadPage('story/filter-by'); } ?>
+		
+		<div id="posts" data-story-group="<?php echo $wo['group_profile']['id'];?>">
+			<div class="pinned-post-container">
+				<?php
+					$pinedstory = Wo_GetPinnedPost($wo['group_profile']['id'], 'group');
+					if (count($pinedstory) == 1) {
+					foreach ($pinedstory  as $wo['story']) {
+					echo Wo_LoadPage('story/content');
+					}
+				}
+				?>
+			</div>
+			<?php
+				$stories = Wo_GetPosts(array('filter_by' => 'all', 'group_id' => $wo['group_profile']['id'])); 
+				if (count($stories) == 0 && count($pinedstory) == 0) {
+				echo Wo_LoadPage('story/group-no-stories');
+				} else {
+				foreach ($stories as $wo['story']) {
+					echo Wo_LoadPage('story/content');
+				}
+				}
+			?>
+		</div>
+		<?php if ($wo['loggedin'] == true && count($stories) > 0) {  ?>
+		<div class="load-more pointer" id="load-more-posts" onclick="Wo_GetMorePosts();">
+			<span class="btn btn-default"><i class="fa fa-chevron-circle-down progress-icon" data-icon="chevron-circle-down"></i> <?php echo $wo['lang']['load_more_posts']; ?><span>
+		</div>
+		<?php } } ?>
+		<div id="load-more-filter">
+			<span class="filter-by-more hidden" data-filter-by="all"></span>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+		<?php if($wo['loggedin'] == true) {  ?>
+			<ul class="list-group">
+				<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['search_for_posts']; ?></li>
+				<li class="form-group inner-addon" style="margin-bottom: 0px;padding: 5px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search glyphicon" color="gray" style="padding: 0;margin: 11px 7px 12px 8px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+					<input type="text" class="form-control search-for-posts" onkeyup="Wo_SearchForPosts(this.value);" placeholder="<?php echo $wo['lang']['search_for_posts']; ?>" style="padding-left: 37px;padding-right: 37px;" />
+				</li>
+			</ul>
+		<?php } ?>
+		<ul class="list-group right_user_info" style="padding-top: 5px;">
+			<li class="list-group-item hidden"><?php echo $wo['lang']['details']; ?></li>
+			<li class="list-group-item text-muted widget-heading" contenteditable="false">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info" style="background:#047cac;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg> <?php echo $wo['lang']['info']; ?>
+			</li>
+			<?php if(!empty($wo['group_profile']['about'])) {  ?>
+				<li class="list-group-item text-muted user-desc-field" contenteditable="false"><?php echo $wo['group_profile']['about']; ?></li>
+			<?php } ?>
+			<?php 
+				$group_privacy = $wo['lang']['public'];
+				$group_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24"><path fill="currentColor" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"></path></svg>';
+				if ($wo['group_profile']['privacy'] == 2) {
+					$group_privacy = $wo['lang']['private'];
+					$group_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24"><path fill="currentColor" d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg>';
+				}
+			?>
+			
+			<?php if ($show_list == true): ?>
+			
+			<li class="list-group-item">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24"><path fill="currentColor" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"></path></svg>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['group_profile']['group_name'] . '&type=members');?>" data-ajax="?link1=timeline&u=<?php echo $wo['group_profile']['group_name'];?>&type=members"><?php echo Wo_CountGroupMembers($wo['group_profile']['id']);?> <?php echo $wo['lang']['members'];?></a>
+				<?php if (Wo_IsGroupOnwer($wo['group_profile']['id'])) { ?>
+					<span class="green">+<?php echo Wo_CountJoinedThisWeek($wo['group_profile']['id']); ?> <?php echo $wo['lang']['this_week']; ?></span>
+				<?php } ?>
+			</li>
+			<?php endif ?>
+			<li class="list-group-item" <?php if ($show_list == false): ?>style="background-color: #fff;border-bottom:0;  position: relative; display: block; padding: 5px 15px;font-size: 13px;background-color: #fff;color: #555"<?php endif ?>>
+				<?php echo $group_icon; ?> <?php echo $group_privacy; ?>
+			</li>
+			<li class="list-group-item">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24" title="<?php echo $wo['lang']['category']; ?>"><path fill="currentColor" d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z"></path></svg>
+				<?php echo $wo['group_profile']['category']; ?>
+			</li>
+			<li class="list-group-item">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24"><path fill="currentColor" d="M21,6V8H3V6H21M3,18H12V16H3V18M3,13H21V11H3V13Z"></path></svg>
+				<?php echo Wo_CountGroupPosts($wo['group_profile']['id']);?> <?php echo $wo['lang']['posts']; ?>
+			</li>
+			<?php if ($wo['loggedin'] == true) { ?>
+			<?php if (Wo_IsGroupJoined($wo['group_profile']['id']) === true) { ?>
+				<li class="list-group-item">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="feather" viewBox="0 0 24 24"><path fill="currentColor" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z"></path></svg>
+					<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['group_profile']['group_name'] . '&type=add_members');?>" data-ajax="?link1=timeline&u=<?php echo $wo['group_profile']['group_name'];?>&type=add_members"><?php echo $wo['lang']['add_your_frineds']; ?></a>
+				</li>
+			<?php } } ?>
+			<?php if ($wo['loggedin'] && !Wo_IsAdmin() && $wo['user']['id'] != $wo['group_profile']['user_id'] && !Wo_IsAdmin($wo['group_profile']['user_id'])): ?>
+			<?php if (!Wo_IsReportExists($wo['group_profile']['id'],'group')): ?>
+				<li id="report_status" class="list-group-item pointer" onclick="$('#report_group').modal('show');">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+					<span><?php echo $wo['lang']['report_group']; ?></span>
+				</li>
+			<?php else: ?>
+				<li id="report_status" class="list-group-item pointer" onclick="Wo_ReportGroup(<?php echo $wo['group_profile']['id']; ?>,false);">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+					<span><?php echo $wo['lang']['unreport']; ?></span>
+				</li>
+			<?php endif; ?>
+			<?php endif; ?>
+		</ul>
+		
+		<?php if($wo['loggedin'] == true) {  ?>
+		<?php
+			$groups = Wo_GroupSug(5);
+			if (count($groups) > 0) {
+		?>
+			<ul class="list-group" id="sidebar-group-list-container">
+				<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['suggested_groups'];?></li>
+				<li class="list-group-item text-muted widget-heading" contenteditable="false">
+					<span onclick="Wo_ReloadSideBarGroups();" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+						<i class="fa fa-refresh progress-icon" data-icon="refresh"></i>
+					</span> 
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid" style="background:#03A9F4;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+					<?php echo $wo['lang']['suggested_groups']; ?>
+				</li>
+				<div class="sidebar_sugg_groups">
+					<?php 
+						foreach ($groups as $wo['GroupList']) {
+						$wo['GroupList']['name'] = substr($wo['GroupList']['name'],0,20);
+						echo Wo_LoadPage('sidebar/sidebar-group-list');
+					} 
+					?>
+				</div>
+				<div class="clear"></div>
+			</ul>
+		<?php } ?>
+		<?php } ?>
+		
+		<?php 
+		$sidebar_ad = Wo_GetAd('sidebar', false);
+		if (!empty($sidebar_ad)) {?>
+			<ul class="list-group sidebar-ad">
+				<?php echo $sidebar_ad; ?>
+			</ul>
+		<?php } ?>
+		<?php echo Wo_LoadPage('footer/sidebar-footer')?>
+	</div>
+</div>
+
+<div class="modal fade" id="report_group" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+					<?php echo $wo['lang']['report_group']; ?>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<textarea class="form-control" placeholder="Type text" dir="auto" rows="4" id="report-group-text-<?php echo $wo['group_profile']['id']; ?>"></textarea>
+			</div>
+			<div class="modal-footer">
+				<div class="ball-pulse"><div></div><div></div><div></div></div>
+				<button type="button" class="btn  btn-main" id="report-group-button" onclick="Wo_ReportGroup(<?php echo $wo['group_profile']['id']; ?>,true)" >
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+					<?php echo $wo['lang']['send']; ?>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- JS Pages functions -->
+<script>
+$(document).ready(function(){
+  $('.sidebar_sugg_groups').slick({
+	  slidesToShow: 1,
+	  arrows: false,
+	  dots: true,
+	  draggable: false,
+	  infinite: false,
+	  variableWidth: true,
+	  <?php if($wo['language_type'] == 'rtl') { ?>
+  rtl: true,
+  <?php } ?>
+  });
+});
+
+$(function () {
+  if($(window).width() > 600) {
+    $(".user-avatar").hover(function () {
+      $('.profile-avatar-changer').fadeIn(100);
+    }, function () {
+      $('.profile-avatar-changer').fadeOut(100);
+    });
+  }
+  if($(window).width() > 600) {
+    $(".user-cover").hover(function () {
+      $('.profile-cover-changer').fadeIn(100);
+    }, function () {
+      $('.profile-cover-changer').fadeOut(100);
+    });
+  }
+  $('form.profile-avatar-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_group_avatar_picture',
+
+    beforeSend: function () {
+      $('.user-avatar-uploading-container,.user-avatar-uploading-progress').fadeIn(200);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+        $('[id^=group-avatar-image]').attr("src", data.img);
+      }
+      $('.user-avatar-uploading-container, .user-avatar-uploading-progress').fadeOut(200);
+    }
+  });
+
+  $('form.profile-cover-changer').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_group_cover_picture',
+
+    beforeSend: function () {
+      $('.user-cover-uploading-container,.user-cover-uploading-progress').fadeIn(200);
+    },
+    success: function (data) {
+      if(data.status == 200) {
+        $('[id^=cover-image]').attr("src", data.img);
+      }
+      $('.user-cover-uploading-container,.user-cover-uploading-progress').fadeOut(200);
+    }
+  });
+});
+
+function Wo_UpdateProfileAvatar() {
+  $("form.profile-avatar-changer").submit();
+}
+
+function Wo_UpdateProfileCover() {
+  $("form.profile-cover-changer").submit();
+}
+
+function Wo_ReportGroup(id = false,report = true){
+    var report_text = $("#report-group-text-<?php echo $wo['group_profile']['id']; ?>").val();
+    if (!id) {return false;}
+    else if(report == true){
+      if (!report_text) {return false;}  
+    }
+    $('#report_group').find('.modal-footer .ball-pulse').fadeIn(100);
+    $.ajax({
+        url: Wo_Ajax_Requests_File() + '?f=reports&s=report_group',
+        type: 'POST',
+        dataType: 'json',
+        data: {text:report_text,group:id}
+    })
+    .done(function(data) {
+        if(data.status == 200 && data.code == 0){
+            $('#report_status').replaceWith('\
+                <li id="report_status" class="list-group-item pointer" onclick="$(\'#report_group\').modal(\'show\');">\
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>\
+                    <span><?php echo $wo['lang']['report_group']; ?></span>\
+                </li>');
+        }
+
+        else if (data.status == 200 && data.code == 1) {
+            $("#report-group-text-<?php echo $wo['group_profile']['id']; ?>").val('');
+            $("#report_group").modal('hide');
+            $('#report_status').replaceWith('\
+                <li id="report_status" class="list-group-item pointer" onclick="Wo_ReportGroup(<?php echo $wo['group_profile']['id']; ?>,false);">\
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12" y2="17"></line></svg>\
+                    <span><?php echo $wo['lang']['unreport']; ?></span>\
+                </li>');
+        }
+        $('#report_group').find('.modal-footer .ball-pulse').fadeOut(100);
+    })
+    .fail(function() {
+        console.log("error");
+    })
+}
+</script>

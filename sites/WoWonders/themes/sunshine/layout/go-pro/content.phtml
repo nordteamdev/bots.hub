@@ -1,0 +1,264 @@
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<div class="page-margin">
+	<div class="sun_gp_head text-center">
+		<h1 class="main_head_pro"><?php echo $wo['lang']['pro_feature_control_profile'];?></h1>
+	</div>
+	<div class="sun_pro_features row">
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-award" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C99EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+				<p><?php echo $wo['lang']['featured_member'];?></p>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-bell" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2EC46A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"></path></svg>
+				<p><?php echo $wo['lang']['see_profile_visitors'];?></p>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-flag" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F9B04F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+				<p><?php echo $wo['lang']['page_promotion_star'];?></p>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-eye" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FA375D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+				<p><?php echo $wo['lang']['show_hide_lastseen'];?></p>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DC23EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+				<p><?php echo $wo['lang']['verified_badge'];?></p>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-4">
+			<div class="spf_block">
+				<svg class="feather feather-zap" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ACECA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+				<p><?php echo $wo['lang']['post_promotion_star'];?></p>
+			</div>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<h3 class="pick_plan text-center"><?php echo $wo['lang']['pick_your_plan'];?></h3>
+	<div class="table-responsive">
+	<table class="sun_price_plan table-hover">
+		<thead>
+			<tr>
+				<td class="t-cell labels_col"></td>
+				<th class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4c7737" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" /></svg> <?php echo $wo['lang']['star'];?></th>
+				<th class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ff9800" d="M11.71,19C9.93,19 8.5,17.59 8.5,15.86C8.5,14.24 9.53,13.1 11.3,12.74C13.07,12.38 14.9,11.53 15.92,10.16C16.31,11.45 16.5,12.81 16.5,14.2C16.5,16.84 14.36,19 11.71,19M13.5,0.67C13.5,0.67 14.24,3.32 14.24,5.47C14.24,7.53 12.89,9.2 10.83,9.2C8.76,9.2 7.2,7.53 7.2,5.47L7.23,5.1C5.21,7.5 4,10.61 4,14A8,8 0 0,0 12,22A8,8 0 0,0 20,14C20,8.6 17.41,3.8 13.5,0.67Z" /></svg> <?php echo $wo['lang']['hot'];?></th>
+				<th class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#e13c4c" d="M7,2V13H10V22L17,10H13L17,2H7Z" /></svg> <?php echo $wo['lang']['ultima'];?></th>
+				<th class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3f4bb8" d="M2.81,14.12L5.64,11.29L8.17,10.79C11.39,6.41 17.55,4.22 19.78,4.22C19.78,6.45 17.59,12.61 13.21,15.83L12.71,18.36L9.88,21.19L9.17,17.66C7.76,17.66 7.76,17.66 7.05,16.95C6.34,16.24 6.34,16.24 6.34,14.83L2.81,14.12M5.64,16.95L7.05,18.36L4.39,21.03H2.97V19.61L5.64,16.95M4.22,15.54L5.46,15.71L3,18.16V16.74L4.22,15.54M8.29,18.54L8.46,19.78L7.26,21H5.84L8.29,18.54M13,9.5A1.5,1.5 0 0,0 11.5,11A1.5,1.5 0 0,0 13,12.5A1.5,1.5 0 0,0 14.5,11A1.5,1.5 0 0,0 13,9.5Z" /></svg> <?php echo $wo['lang']['vip'];?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $wo['lang']['price'];?></td>
+				<td class="text-center"><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['weekly_price'];?>/<?php echo $wo['lang']['per_week'];?></td>
+				<td class="text-center"><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['monthly_price'];?>/<?php echo $wo['lang']['per_month'];?></td>
+				<td class="text-center"><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['yearly_price'];?>/<?php echo $wo['lang']['per_year'];?></td>
+				<td class="text-center"><?php echo Wo_GetCurrency($wo['config']['currency']);?><?php echo $wo['config']['lifetime_price'];?>/<?php echo $wo['lang']['life_time'];?></td>
+			</tr>
+			<tr>
+				<td><?php echo $wo['lang']['featured_member'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+			</tr>
+			<tr>
+				<td><?php echo $wo['lang']['see_profile_visitors'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+			</tr>
+			<tr>
+				<td><?php echo $wo['lang']['show_hide_lastseen'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+			</tr>
+			<tr>
+				<td><?php echo $wo['lang']['verified_badge'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4CAF50" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></td>
+			</tr>
+			<tr>
+				<td><?php echo $wo['lang']['post_promotion_star'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></td>
+				<td class="text-center"><?php echo $wo['config']['monthly_boosts'];?> <?php echo $wo['lang']['posts'];?></td>
+				<td class="text-center"><?php echo $wo['config']['yearly_boosts'];?> <?php echo $wo['lang']['posts'];?></td>
+				<td class="text-center"><?php echo $wo['config']['lifetime_boosts'];?> <?php echo $wo['lang']['posts'];?></td>
+			</tr>
+			<?php if ($wo['config']['pages'] == 1) { ?>
+				<tr>
+					<td><?php echo $wo['lang']['page_promotion_star'];?></td>
+					<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></td>
+					<td class="text-center"><?php echo $wo['config']['monthly_boosts'];?> <?php echo $wo['lang']['pages'];?></td>
+					<td class="text-center"><?php echo $wo['config']['yearly_boosts'];?> <?php echo $wo['lang']['pages'];?></td>
+					<td class="text-center"><?php echo $wo['config']['lifetime_boosts'];?> <?php echo $wo['lang']['pages'];?></td>
+				</tr>
+			<?php } ?>
+			<tr>
+				<td><?php echo $wo['lang']['discount'];?></td>
+				<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></td>
+				<td class="text-center"><?php echo $wo['lang']['10_discount'];?></td>
+				<td class="text-center"><?php echo $wo['lang']['20_discount'];?></td>
+				<td class="text-center"><?php echo $wo['lang']['60_discount'];?></td>
+			</tr>
+			<tr>
+				<td class="labels_col"></td>
+				<td class="text-center"><button class="btn btn_week" onclick="Wo_GetPaymentLink(1);"><?php echo $wo['lang']['upgrade_now'];?></button></td>
+				<td class="text-center"><button class="btn btn_month" onclick="Wo_GetPaymentLink(2);"><?php echo $wo['lang']['upgrade_now'];?></button></td>
+				<td class="text-center"><button class="btn btn_year" onclick="Wo_GetPaymentLink(3);"><?php echo $wo['lang']['upgrade_now'];?></button></td>
+				<td class="text-center"><button class="btn btn_life" onclick="Wo_GetPaymentLink(4);"><?php echo $wo['lang']['upgrade_now'];?></button></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+	<hr>
+	
+	<div class="sun_sec_pay">
+		<div class="sun_sec_pblock">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>
+			<?php echo $wo['lang']['trusted_payment_methods'];?>
+		</div>
+		<div class="sun_sec_pblock">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.1 14.8,9.5V11C15.4,11 16,11.6 16,12.3V15.8C16,16.4 15.4,17 14.7,17H9.2C8.6,17 8,16.4 8,15.7V12.2C8,11.6 8.6,11 9.2,11V9.5C9.2,8.1 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,9.5V11H13.5V9.5C13.5,8.7 12.8,8.2 12,8.2Z" /></svg>
+			<?php echo $wo['lang']['secure_payments'];?>
+		</div>
+	</div>
+</div>
+<div id="pay-modal"></div>
+<script>
+function pay_using_wallet(type,description){
+	var result = confirm("Are you want to buy "+ description + " using your wallet balance?");
+	if (result) {
+		
+		$('.btn-walletpay').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+		$.post(Wo_Ajax_Requests_File() + '?f=pay_using_wallet', {type:type}, function(data) {
+			if (data.status == 200) {
+				window.location.href = data.url;
+			} else {
+				$('.btn-walletpay').attr('disabled', false).html("Problem While pay using wallet");
+			}
+		});
+	 
+	}
+}
+function Wo_GetPayPalLink(type) {
+   	 $('.btn-paypal').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+     $.post(Wo_Ajax_Requests_File() + '?f=get_paypal_url', {type:type}, function(data) {
+         if (data.status == 200) {
+             window.location.href = data.url;
+         } else {
+         	$('.btn-paypal').attr('disabled', false).html("PayPal App not set yet.");
+         }
+     });
+}
+function Wo_CheckOutCard(type, description, amount, payment_type) {
+	if (payment_type == 'bitcoin') {
+		$('.btn-bitcoin').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	} else if (payment_type == 'credit_card') {
+		$('.btn-cart').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	} else if (payment_type == 'alipay') {
+		$('.btn-alipay').attr('disabled', true).text("<?php echo $wo["lang"]["please_wait"]?>");
+	}
+	var img = 'star';
+	if (type == 1) {
+		img = 'star';
+	} else if (type == 2) {
+		img = 'hot';
+	} else if (type == 3) {
+		img = 'ultima';
+	} else if (type == 4) {
+		img = 'vip';
+	}
+	var handler = StripeCheckout.configure({
+        key: "<?php echo $wo['config']['stripe_id'];?>",
+        locale: 'english',
+        image: '<?php echo $wo['config']['theme_url']?>/img/' + img + '.png',
+        token: function(token) {
+          $('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['c_payment'] ?>');
+          $('#pay-go-pro').modal({
+             show: true
+            });
+          $.post(Wo_Ajax_Requests_File() + '?f=stripe_payment&pro_type=' + type, {stripeToken:token.id, amount:amount}, function (data) {
+          	 if (data.status == 200) {
+          	 	window.location.href = data.location;
+          	 } else {
+          	 	$('.modal-body').html('<i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['payment_declined'] ?>');
+          	 }
+          });
+        }
+    });
+    if (payment_type == 'bitcoin') {
+		$.get(Wo_Ajax_Requests_File() + '?f=paypro_with_bitcoin&amount=' + (amount/100) + '&desc=' + description + '&usertype=' + type  , function (data) {
+			if (data.status == 200) {
+				$(data.html).appendTo('body').submit();
+			}
+		});
+
+    	// handler.open({
+        //    name: "<?php echo $wo['config']['siteName']?>",
+        //    description: description,
+        //    amount: amount,
+        //    currency: '<?php echo $wo['config']['currency']?>',
+        //    bitcoin: true,
+        //    opened: function () {
+        //    	  $('#pay-go-pro').modal('hide');
+        //    	  $('.btn-bitcoin').attr('disabled', false).html("<i class='fa fa-bitcoin'></i> <?php echo $wo['lang']['bitcoin'] ?>");
+        //    }
+        // });
+    } else if (payment_type == 'credit_card') {
+    	handler.open({
+           name: "<?php echo $wo['config']['siteName']?>",
+           description: description,
+           amount: amount,
+           currency: '<?php echo $wo['config']['currency']?>',
+           opened: function () {
+           	  $('#pay-go-pro').modal('hide');
+           	  $('.btn-cart').attr('disabled', false).html("<i class='fa fa-credit-card'></i> <?php echo $wo['lang']['credit_card'] ?>");
+           }
+        });
+    } else if (payment_type == 'alipay') {
+    	handler.open({
+           name: "<?php echo $wo['config']['siteName']?>",
+           description: description,
+           amount: amount,
+           alipay: true,
+           currency: '<?php echo $wo['config']['currency']?>',
+           opened: function () {
+           	  $('#pay-go-pro').modal('hide');
+           	  $('.btn-alipay').attr('disabled', false).html("<i class='fa fa-credit-card'></i> Alipay");
+           }
+        });
+    }
+    $(window).on('popstate', function() {
+       handler.close();
+    });
+}
+
+function Wo_GetPaymentLink(type) {
+	$.get(Wo_Ajax_Requests_File() + '?f=get_payment_method&type=' + type, function (data) {
+        if (data.status == 200) {
+          	$('#pay-modal').html(data.html);
+          	$('#pay-go-pro').modal({
+             show: true
+            });
+
+        }
+    });
+}
+</script>

@@ -1,0 +1,180 @@
+{strip}
+<div class="feed h-mod {if $photos_c === 1}_jf42 large{else}medium{/if}">
+
+	<header>
+	
+	
+		<div class="feed_ava">
+			<a href="/profile?q={$res.uid}" hrefattr="true">
+				<div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.ugender}" alt="{$res.fullname}" width="48" height="48">
+				</div>
+			</a>
+		</div>
+		
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+		</div>
+	
+	
+	
+        <div class="feed_h"><span class="kn_shortcutmenu">
+			<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.uid}">
+			</div>
+				<a href="/profile?q={$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+					 {if $photos_c > 1} added {$photos_c} photos {else} added a photo {/if} in album&nbsp;
+			<a class="o obp" hrefattr="true" href="/profile?q={$album_r.userid}&cmd=album&i={$album_r.id}&nav=photos" rel="tipsy" title="{$this->getAlbumName($album_r.name)}">{$this->getAlbumName($album_r.name)}</a>
+		</div>
+	</header>
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+        
+
+ 
+        <div class="feed_b {if $photos_c > 1}_h245{/if}">
+            <div class="media-block media-photos {if $photos_c > 1}album-bucket fleft _inline{/if} ">
+
+{if $photos_c > 1}
+		<section class="__fwall_ph_i80">
+{foreach $m_photos as $ph_id}
+{assign var=pdescr value=$this->gPhotoDescr($ph_id)}
+{assign var=pLikesCount value=$this->getLikesCount($ph_id,'photo')}
+{assign var=pCommCount value=$this->getCommentsCount($ph_id,'photo')}
+{if $c == 0}
+<div class="one __albk" data-orig-ind="10" onmouseover="feed_album_ph_hover(this,event)" onmouseout="feed_album_ph_out(this,event)" style="background-image:url(/getPhoto?p={$ph_id}&sz=thumb)">
+  <div class="zoomin_aimg" title="{$this->lang['Zoom_in']}">
+    <a href="/photo?q={$res.uid}&show=filter&from=medium&o={b_encode($ph_id)}&pp={$all_imgs_id}&cmd=openPhotoViewer&_token={time()}"
+	data-vphopen="1" data-vphi="{base64_encode($ph_id)}" >
+  <div class="search_bigph_label _faphoto"></div></a></div>
+  
+  <!-- comm & likes count -->
+  <div class="aphoto_widget_skris {if $pdescr}b_sus{/if}">
+		{if $pCommCount}<div class="widg_lkcm32">{$this->lang['comments']} {$pCommCount}</div>{/if}
+		{if $pCommCount && $pLikesCount}<div class="video_row_info_bullet _alignmiddle">&#8226;</div>{/if}
+		{if $pLikesCount}<div class="widg_lkcm32">{$this->lang['likes']} {$pLikesCount}</div>{/if}
+  </div>
+{if $pdescr}<div class="alb831q_descr ellip"><div class="pd32z">{$pdescr}</div></div>{/if}</div>
+{elseif $c == 1}
+  <div class="two __albk" data-orig-ind="20" onmouseover="feed_album_ph_hover(this,event)" onmouseout="feed_album_ph_out(this,event)" style="background-image:url(/getPhoto?p={$ph_id}&sz=thumb)">
+    <div class="zoomin_aimg" title="{$this->lang['Zoom_in']}">
+    <a href="/photo?q={$res.uid}&show=filter&from=medium&o={b_encode($ph_id)}&pp={$all_imgs_id}&cmd=openPhotoViewer&_token={time()}"
+	data-vphopen="1" data-vphi="{base64_encode($ph_id)}" >
+  <div class="search_bigph_label _faphoto"></div></a></div>
+    <!-- comm & likes count -->
+  <div class="aphoto_widget_skris {if $pdescr}b_sus{/if}">
+		{if $pCommCount}<div class="widg_lkcm32">{$this->lang['comments']} {$pCommCount}</div>{/if}
+		{if $pCommCount && $pLikesCount}<div class="video_row_info_bullet _alignmiddle">&#8226;</div>{/if}
+		{if $pLikesCount}<div class="widg_lkcm32">{$this->lang['likes']} {$pLikesCount}</div>{/if}
+  </div>
+  {if $pdescr}<div class="alb831q_descr ellip"><div class="pd32z">{$pdescr}</div></div>{/if}</div>
+{elseif $c == 2}
+  <div class="three __albk" data-orig-ind="30" onmouseover="feed_album_ph_hover(this,event)" onmouseout="feed_album_ph_out(this,event)" style="background-image:url(/getPhoto?p={$ph_id}&sz=thumb)">
+
+  <div class="zoomin_aimg" title="{$this->lang['Zoom_in']}">
+    <a href="/photo?q={$res.uid}&show=filter&from=medium&o={b_encode($ph_id)}&pp={$all_imgs_id}&cmd=openPhotoViewer&_token={time()}"
+	data-vphopen="1" data-vphi="{base64_encode($ph_id)}" >
+  <div class="search_bigph_label _faphoto"></div></a></div>
+  
+    <!-- comm & likes count -->
+  <div class="aphoto_widget_skris {if $pdescr}b_sus{/if}">
+		{if $pCommCount}<div class="widg_lkcm32">{$this->lang['comments']} {$pCommCount}</div>{/if}
+		{if $pCommCount && $pLikesCount}<div class="video_row_info_bullet _alignmiddle">&#8226;</div>{/if}
+		{if $pLikesCount}<div class="widg_lkcm32">{$this->lang['likes']} {$pLikesCount}</div>{/if}
+  </div>
+  
+  {if $pdescr}<div class="alb831q_descr ellip"><div class="pd32z">{$pdescr}</div></div>{/if}</div>
+{elseif $c == 3}
+
+<div class="four __albk" data-orig-ind="40" onmouseover="feed_album_ph_hover(this,event)" onmouseout="feed_album_ph_out(this,event)" style="background-image:url(/getPhoto?p={$ph_id}&sz=thumb)">
+  <div class="zoomin_aimg" title="{$this->lang['Zoom_in']}">
+    <a href="/photo?q={$res.uid}&show=filter&from=medium&o={b_encode($ph_id)}&pp={$all_imgs_id}&cmd=openPhotoViewer&_token={time()}"
+	data-vphopen="1" data-vphi="{base64_encode($ph_id)}" >
+  <div class="search_bigph_label _faphoto"></div></a></div>
+
+  <!-- comm & likes count -->
+  <div class="aphoto_widget_skris {if $pdescr}b_sus{/if}">
+		{if $pCommCount}<div class="widg_lkcm32">{$this->lang['comments']} {$pCommCount}</div>{/if}
+		{if $pCommCount && $pLikesCount}<div class="video_row_info_bullet _alignmiddle">&#8226;</div>{/if}
+		{if $pLikesCount}<div class="widg_lkcm32">{$this->lang['likes']} {$pLikesCount}</div>{/if}
+  </div>
+  
+{if $pdescr}<div class="alb831q_descr ellip"><div class="pd32z">{$pdescr}</div></div>{/if}</div>
+{/if}
+
+{assign $c $c++ nocache}
+{/foreach}
+</section>
+ <div class="media_more _abs_bottom {if !(($photos_c-4) > 0)}invisible{/if}"><a href="/profile?q={$album_r.userid}&cmd=album&i={$album_r.id}&nav=photos" title="{$this->lang['view_photos_in_album']}" rel="tipsy" class="media_more_a scrollbottom" hrefattr="true"><span class="media_more_ic">&#8226;&#8226;&#8226;</span></a></div>
+
+{else}
+
+{foreach $m_photos as $ph_id}
+                <!--<div class="collage __single">
+                    <a href="#">
+                        <div style="width:{$this->getThisPhotoDimension($ph_id,'medium','width')}px;height:{$this->getThisPhotoDimension($ph_id,'medium','height')}px;" class="collage_i image-hover image_sz_orig"><img src="/getPhoto?p={$ph_id}&sz=medium"></div>
+
+                    </a>
+                </div>	-->
+				
+			{assign var=is_gif value=$this->is_gif($ph_id)}	
+<div class="feed_photos_collage_justified __1">
+
+     <div class="feed_photo_descr ellip">{$this->str_smilies($this->getPhotoDescription($ph_id))}</div>   
+		<div class="feed_image_fullsize">
+		<div class=" feed_collage_single_item_p">
+			<a href="/photo?q={$res.uid}&show=single&from=medium&o={b_encode($ph_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($ph_id)}" class="image-hover">
+				<img class="feed_single_img {if $is_gif}gifplayer{/if}" {if $is_gif}data-gif-id="gif-{$ph_id}" data-gif="/getPhoto?p={$ph_id}&sz=large&g={$ugender}" data-wait="true" data-playon="hover"{/if}  src="/getPhoto?p={$ph_id}&sz=medium&feed=1">
+			
+			</a>
+
+
+			
+			
+	</div>
+	</div>
+        <div class="feed_f">
+			{include file="{$this->theme_dir}/feed/widget-list.html"}
+        </div>
+
+</div>
+		
+{/foreach}
+	<script>
+var $feed_id = '{$res.id}', $itemid = '{$ph_id}', $author_id = '{$res.uid}';
+{literal}
+var $this = ga('[data-gth="'+$feed_id+'"]');
+var $after_app = ga('<div/>').addClass('feed_post_comments_widget').attr('id','feed_post_comments_section_'+$feed_id);
+$this.closest('.feed').find('.feed_f').after($after_app);
+commentsWidget($itemid,
+						$after_app,
+						'photo',
+						{'width':292,'height':'auto','min-height':20,'overflow':'hidden','padding':'3px 7px'},
+						'',
+						'#feed_cnt_'+$feed_id,$author_id,'2',1);
+
+{/literal}
+</script>	
+{/if}
+
+            </div>
+{if $photos_c > 1}
+<!--
+<div class="feed_photos_in_album_arr"></div>
+<div class="feed_ph_in_album" id="a_{$album_r.id}">
+<div class="col-card ovr-menu_soh">
+<div class="photo-sc_i_cover">
+<div class="photo-sc_i_cnt __prw">
+<a hrefattr="true" href="/profile?q={$album_r.userid}&cmd=album&i={$album_r.id}&nav=photos" class="photo-sc_i_cnt_a">
+<span class="va"></span><img class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$album_r.cover}&album=true&sz=thumb&token={time()}">
+<div class="col-card_ovr"></div><div class="col-card_num">{$album_r.a_c}</div></a>
+
+</div></div></div><div class="photo-sc_grid_abt ellip"><a class="o" hrefattr="true" href="/profile?q={$album_r.userid}&cmd=album&i={$album_r.id}&nav=photos" rel="tipsy" title="{$album_r.name}">{$this->getAlbumName($album_r.name)}</a></div></div>
+-->
+{/if}
+        </div>
+
+    </div>
+</div>
+
+{/strip}

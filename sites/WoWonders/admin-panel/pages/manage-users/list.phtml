@@ -1,0 +1,20 @@
+<tr class="user-list" id="UserID_<?php echo $wo['userlist']['user_id']?>" data-user-id="<?php echo $wo['userlist']['user_id']?>">
+   <td><?php echo $wo['userlist']['user_id']?></td>
+   <td>
+      <a href="<?php echo $wo['userlist']['url']; ?>">
+      <img src="<?php echo $wo['userlist']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['userlist']['avatar']?> Profile Picture">
+      <?php echo $wo['userlist']['name']; ?>
+      </a>
+   </td>
+   <td><?php echo $wo['userlist']['src']?></td>
+   <td><?php echo $wo['userlist']['email']?></td>
+   <td><?php echo $wo['userlist']['ip_address']?></td>
+   <td><?php echo (Wo_UserActive($wo['userlist']['username']) === true) ? '<span class="label label-success">' . $wo['lang']['active'] . '</span>': '<span class="label label-danger">' . $wo['lang']['pending'] . '</span>';?></td>
+   <td>
+      <?php if ($wo['config']['connectivitySystem'] == 0) { ?>
+      <button onclick="getUserId(<?php echo $wo['userlist']['user_id']?>);" type="button" class="btn btn-danger waves-effect waves-light" style="background-color: #1f91f3 !important" data-toggle="modal" data-target="#FollowersForm">Add Followers</button>
+       <?php } ?>
+      <a target="_blank" class="btn btn-info waves-effect btn-lang m-r-10" href="<?php echo Wo_SeoLink('index.php?link1=setting&user=' . $wo['userlist']['username'] . '&page=general-setting') ?>">EDIT</a>
+      <button onclick="Wo_DeleteUser(<?php echo $wo['userlist']['user_id']?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

@@ -1,0 +1,47 @@
+<?php
+if ($wo['loggedin'] == true) {
+   header("Location: " . $wo['config']['site_url']);
+   exit();
+} else {
+  if (isset($_GET['link2'])) {
+   if ($_GET['link2'] == 'success') {
+?>
+<div class="text-center">
+   <h2><?php echo $wo['lang']['your_account_activated'];?></h2>
+   <div class="account-activate-icon"><i class="fa fa-check-circle"></i></div>
+   <h4><?php echo str_replace('{login}', $wo['lang']['login'], $wo['lang']['free_to_login']);?></h4>
+</div>
+<?php
+    } else {
+      header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+      exit();
+    }
+  } else if (isset($_GET['email'], $_GET['code']) === true) {
+      $email = $_GET['email'];
+      $code  = $_GET['code'];
+      if (Wo_EmailExists($email) === false) {
+        header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+        exit();
+      } else if (Wo_ActivateUser($email, $code) === false) {   
+        header("Location: " . Wo_SeoLink('index.php?link1=welcome'));   
+        exit();   
+      } else {
+        $session = Wo_CreateLoginSession(Wo_UserIdFromEmail($email));
+        $_SESSION['user_id'] = $session;
+        setcookie(
+            "user_id",
+            $session,
+            time() + (10 * 365 * 24 * 60 * 60)
+        );
+        if (!empty($wo['config']['auto_friend_users'])) {
+            $autoFollow = Wo_AutoFollow(Wo_UserIdFromEmail($email));
+        }
+        header("Location: " . Wo_SeoLink('index.php?link1=start-up'));
+        exit();
+      }
+  } else {
+    header("Location: " . Wo_SeoLink('index.php?link1=welcome'));
+    exit();
+  }
+}
+?>

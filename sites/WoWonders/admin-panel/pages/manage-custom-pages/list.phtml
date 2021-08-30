@@ -1,0 +1,9 @@
+<tr class="setting-postlist" id="<?php echo $wo['page']['id'];?>">
+   <td><?php echo $wo['page']['id'];?></td>
+   <td><a href="<?php echo Wo_SeoLink('index.php?link1=site-pages&page_name=' . $wo['page']['page_name']); ?>"><?php echo $wo['page']['page_name'];?></a></td>
+   <td><?php echo $wo['page']['page_title'];?></td>
+   <td>
+      <a class="btn btn-info waves-effect waves-light" href="<?php echo Wo_LoadAdminLinkSettings('edit-custom-page?id=' . $wo['page']['page_name']); ?>">EDIT</a>
+      <button class="btn btn-danger waves-effect waves-light" onclick="Wo_DeleteCustomPage(<?php echo $wo['page']['id'];?>);">DELETE</button>
+   </td>
+</tr>

@@ -1,0 +1,160 @@
+{strip}
+{assign var=more_tracks value=true}
+{assign var=more_videos value=true}
+
+
+
+<div class="feed h-mod">
+
+    <div class="feed_cnt">
+
+	<div class="portlet __newbie-cta">
+    <div class="portlet_h portlet_h__nb">{$this->lang['where_i_start']}</div>
+    <div class="portlet_tx">{$this->lang['welcome__find_your_friends']}&nbsp;{$this->settings['SITENAME']}</div>
+    <div class="newbie-cta_list">
+	<a href="/search" hrefattr="true"><button class="flat_button button_wide button_big_text ij_button fsbl" id="ij_submit">{$this->lang['Search']}</button></a>
+	
+	
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<div class="feed h-mod">
+
+    <div class="feed_cnt">
+
+<div id="hook_Block_NewUserVideo" class="hookBlock">
+    <div class="portlet">
+        <div class="portlet_h">
+            <div class="portlet_h_name_t">{$this->lang['Popular_Videos']}</div>
+        </div>
+        <div class="portlet_b new-user-video">
+            <div class="ugrid __l">
+                <div class="ugrid_cnt">
+
+<div class="feed_videos_cnt">
+
+{foreach $popular_videos as $video}
+<div id="videojw_{$video.id}" style="display:none;"></div>
+	<div class="media-block media-video">
+	<div class="vid-card vid-card__xl">
+		<div class="vid-card_cnt h-mod" data-video-meta='{ldelim}"vd_p":"{$video.userid}","vd_s3_userid":"{$video.userid}","vd_s3":"{$video.s3}","s3_url":"{$this->s3_video_url}","vd_title":"{$video.title}","vd_fn":"{$video.filename}","vd_i":"{$video.id}","vd_ext":"{$video.extension}"}'{rdelim}>
+			<div class="vid-card_cnt_w"><div class="video-card-cover" style="background-image:url(/videoCover?v={$video.id});"></div><i class="vid_play"></i><i class="vid-card_duration">{$video.dur}</i></div>
+		</div>
+		<div class="video-card_n-w"><a href="/video?vid={$video.id}&cmd=open" data-ivideo="1" class="video-card_n ellip">{$video.title}</a>
+			<div class="video-card_info"><span class="video-card_info_i">{$video.views}&nbsp;{$this->lang['video_views']}</span></div>
+		</div>
+	</div>
+</div>
+{foreachelse}
+	{assign var=more_videos value=false}
+	<div>
+	<div class="w__n_ic video"></div>
+	<div class="w_no_data_title">{$this->lang['not_videos_on_site']}</div>
+	</div>
+{/foreach}
+</div>
+				
+				
+				
+                </div>
+            </div>
+        </div>
+		{if $more_videos}
+        <div class="portlet_f"><a href="/search?c=v" hrefattr="true" class="lp">{$this->lang['More_videos']}</a></div>
+		{/if}
+    </div>
+</div>
+
+	
+
+    </div>
+</div>
+
+
+<div class="feed h-mod">
+
+
+	
+    <div class="feed_cnt">
+
+	
+<div id="hook_Block_NewUserMusic" class="hookBlock">
+    <div class="portlet new-user_portlet-main">
+        <div class="portlet_h">{$this->lang['Trending_music']}</div>
+        <div class="portlet_b">
+
+		{foreach $trending_tracks as $track}
+<div class="track js-track soh-s mw10">
+    <div class="track_hld "><span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$track.path}","cover":"{$track.cover}","artist":"{$track.artist}","songname":"{$track.title}","albumname":"{$track.album}"{rdelim}' title="{$this->lang['play']}" id="{$track.uploader}_{$track.id}" class="track_play __play js-track_play __mus_out"></span>
+        <div class="track_cnt "><a class="track_artist" onclick="nobilMusicSearch('{$track.artist}')">{$track.artist}</a>&nbsp;-&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$track.title}')">{$track.title}</a><span class="foh-s track_info"> {$this->lang['from']} <a lass="track_album" onclick="nobilMusicSearch('{$track.album}')">{$track.album}</a></span></div>
+        <div class="track_ac foh-s" id="19_116"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['mus_add_to_my_music']}" class="track_add js-track_add "></span></div>
+    </div>
+</div>
+
+{foreachelse}
+    {assign var=more_tracks value=false}
+	<div>
+	<div class="w__n_ic track"></div>
+	<div class="w_no_data_title">{$this->lang['no_tracks_on_site']}</div>
+	</div>
+{/foreach}
+		
+		
+        </div>
+		{if $more_tracks}
+        <div class="portlet_f"><span onclick="ga('[music_layer]').trigger('click');" class="lp">{$this->lang['More_tracks']}</span></div>
+		{/if}
+    </div>
+</div>
+
+	
+	
+    </div>
+	
+</div>
+
+
+
+<div class="feed h-mod">
+    
+	
+   
+        <div class="portlet_h">
+            <div class="portlet_h_name_t">{$this->lang['Some_apps']}</div>
+        </div>
+	
+	
+    <div class="feed_cnt">
+
+
+		{foreach $_apps as $app}
+		
+				<div class="feed_welcome_app" data-approw="true" id="app{$app.id}">
+					<a href="javascript:;" onclick="runApp(event);"><img class="apps_wide_img" src="/appGetPhoto?i={$app.cover}&t=1"></a>
+
+
+              
+<div class="apps_cat_info"><div class="app_cat_name sl_nowrap">
+<a href="javascript:;" onclick="runApp(event);" class="app_link">{$app.title}</a></div><div class="apps_cat_users">
+</div></div>
+            </div>
+
+	{foreachelse}
+	<div>
+	<div class="w__n_ic apps"></div>
+	<div class="w_no_data_title">{$this->lang['no_Some_apps']}</div>
+	</div>
+	{/foreach}
+
+<!--
+<div class="portlet_f"><a href="/apps" hrefattr="true" class="lp">{$this->lang['More_apps']}</a></div>
+-->
+
+    </div>
+</div>
+
+{/strip}

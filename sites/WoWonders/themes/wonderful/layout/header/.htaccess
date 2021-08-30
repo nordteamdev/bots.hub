@@ -1,0 +1,8 @@
+<meta property="og:title" content="<?php echo $wo['story']['product']['name'];?>" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="<?php echo Wo_GetMedia($wo['story']['product']['images'][0]['image'])?>" />
+<meta property="og:description" content="<?php echo $wo['story']['product']['description'];?>" />
+<meta property="og:url" content="<?php echo $wo['story']['product']['url'];?>" />   
+<meta name="twitter:title" content="<?php echo $wo['story']['product']['name'];?>" />
+<meta name="twitter:description" content="<?php echo $wo['story']['product']['description'];?>" />
+<meta name="twitter:image" content="<?php echo Wo_GetMedia($wo['story']['product']['images'][0]['image'])?>" />

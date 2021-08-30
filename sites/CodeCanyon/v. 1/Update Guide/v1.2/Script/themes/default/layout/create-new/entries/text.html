@@ -1,0 +1,13 @@
+<div class="entry" data-type="text" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <i class="material-icons">text_format</i>
+	   {{LANG text}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<input type="text" class="form-control" data-name="entry_title" placeholder="{{LANG title_optional}}"><br>
+	<textarea id="news-{{ENTRY_TIME}}" cols="25" rows="8" class="form-control" dir="auto" data-name="entry_text"></textarea>
+</div>

@@ -1,0 +1,21 @@
+<div class="content-shadow custom-page fl_terms">
+	<div class="row">
+		<div class="col-md-3 custom_fixed_element">
+			<div class="fl_terms_sidebar">
+				<ul>
+					<li class="<?php echo ($fl['type'] == 'terms') ? 'active': '';?>"><a href="{{LINK terms/terms}}">{{LANG terms_of_use}}</a></li>
+					<li class="<?php echo ($fl['type'] == 'privacy-policy') ? 'active': '';?>"><a href="{{LINK terms/privacy-policy}}">{{LANG privacy_policy}}</a></li>
+					<li class="<?php echo ($fl['type'] == 'about-us') ? 'active': '';?>"><a href="{{LINK terms/about-us}}">{{LANG about_us}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="fl_terms_content">
+				<h1>{{LANG privacy_policy}}</h1>
+				<div class="fl_terms_content_body">
+					<?php echo $fl['terms']['privacy_policy'];?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="alert alert-danger inactive-announcement" data-inactive-announcement="{{ANN_ID}}">
+  <span data-toggle="tooltip" title="{{LANG delete_post}}" onclick="FL_DeleteAnnouncement('{{ANN_ID}}',0);">
+    <i class="fa fa-trash"></i>
+  </span>
+  <span  data-toggle="tooltip" title="{{LANG enable}}" onclick="FL_ToggleAnnouncement('{{ANN_ID}}',1);">
+    <i class="fa fa-check"></i>
+  </span>
+  <p>
+    {{ANN_TEXT}}
+  </p>
+  <small>
+    <i class="fa fa-clock-o"></i> 
+    {{ANN_TIME}} {{LANG views}} {{ANN_VIEWS}}
+  </small>
+</div>

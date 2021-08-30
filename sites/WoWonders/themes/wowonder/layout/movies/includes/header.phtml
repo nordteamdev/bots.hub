@@ -1,0 +1,120 @@
+<nav class="movies-navbar-wrapper left-sidebar hidden-xs" role="navigation">
+	<ul class="nav movies-nav">
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=movies') ?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#8d73cc;"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+				<span> <?php echo $wo['lang']['movies']; ?> </span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void();" data-toggle="collapse" data-target="#movie-genre">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play-circle" color="#4caf50"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+				<span> <?php echo $wo['lang']['genre']; ?> </span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down pull-right" color="#384047"><polyline points="6 9 12 15 18 9"></polyline></svg>
+			</a>
+			<ul class="collapse in" id="movie-genre">
+				<?php foreach ($wo['film-genres'] as $g_key => $genre): ?>
+					<li><a href="<?php echo Wo_SeoLink('index.php?link1=movies-genre&genre='.$g_key); ?>"><?php echo $genre; ?></a></li>
+				<?php endforeach;?>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:void();" data-toggle="collapse" data-target="#movie-country">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe" color="#2196f3"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+				<span> <?php echo $wo['lang']['country']; ?></span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down pull-right" color="#384047"><polyline points="6 9 12 15 18 9"></polyline></svg>
+			</a>
+			<ul class="collapse" id="movie-country">
+				<?php foreach ($wo['countries'] as $c_key => $country): ?>
+					<li><a href="<?php echo Wo_SeoLink('index.php?link1=movies-country&country='.$c_key); ?>"><?php echo $country;?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</li>
+	</ul>
+	<div class="clear"></div>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-movies-mobile hidden-lg hidden-sm hidden-md">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav navbar-movies-mobile-header" style="margin: 0;">
+			<li id="open-movies-mobile-dropdown">
+				<a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg></a>
+			</li>
+			<li class="pull-right" id="open-movies-mobile-search-dropdown">
+				<a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+			</li>
+		</ul>
+	</div>
+	<div class="dropdown navbar-movies-mobile-dropdown">
+		<ul class="dropdown-menu">
+			<li>
+				<div class="navbar-movies-mobile-dropdown-cont">
+					<div class="navbar-movies-mobile-dropdown-collapse">
+						<h4>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-film"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+							<a href="<?php echo Wo_SeoLink('index.php?link1=movies') ?>"><?php echo($wo['lang']['movies']); ?></a>
+						</h4>
+					</div>
+					<div class="navbar-movies-mobile-dropdown-collapse">
+						<h4 onclick="$(this).toggleClass('dropped-down'); $('#movies-genre-mobile-dropdown').slideToggle('fast');" class="border-top">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play-circle"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+							<?php echo($wo['lang']['genre']); ?>
+						</h4>
+						<div id="movies-genre-mobile-dropdown">
+							<?php foreach ($wo['film-genres'] as $g_key => $genre): ?>
+							<p><a href="<?php echo Wo_SeoLink('index.php?link1=movies-genre&genre='.$g_key); ?>"><?php echo $genre; ?></a></p>
+							<?php endforeach;?>
+						</div>
+					</div>
+					<div class="navbar-movies-mobile-dropdown-collapse">
+						<h4 onclick="$(this).toggleClass('dropped-down'); $('#movies-country-mobile-dropdown').slideToggle('fast');" class="border-top">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+							<?php echo($wo['lang']['country']); ?>
+						</h4>
+						<div id="movies-country-mobile-dropdown">
+							<?php foreach ($wo['countries'] as $c_key => $country): ?>
+							<p><a href="<?php echo Wo_SeoLink('index.php?link1=movies-country&country='.$c_key); ?>"><?php echo $country;?></a></p>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="dropdown navbar-movies-mobile-search-dropdown">
+		<ul class="dropdown-menu">
+			<li>
+				<div class="navbar-movies-mobile-dropdown-cont">
+					<form action="#">
+						<div class="inner-addon left-addon">
+							<i class="glyphicon fa fa-search progress-icon" aria-hidden="true"></i>
+							<input type="text" value="" class="form-control" placeholder="<?php echo $wo['lang']['search'] ?>" id="search-movies">
+						</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+<script>
+  jQuery(document).ready(function($) {
+    $("#open-movies-mobile-dropdown").click(function(event) {
+
+      $(this).toggleClass('active').siblings('li').removeClass('active');
+      $('.navbar-movies-mobile-dropdown').toggleClass('open');
+      $('.navbar-movies-mobile-search-dropdown').removeClass('open');
+    });
+
+    $("#open-movies-mobile-search-dropdown").click(function(event) {
+
+      $(this).toggleClass('active').siblings('li').removeClass('active');
+      $('.navbar-movies-mobile-search-dropdown').toggleClass('open');
+      $('.navbar-movies-mobile-dropdown').removeClass('open');
+    });
+  });
+</script>
+<style>.navbar-movies-mobile{color: #fff;margin-bottom: 20px;background:  <?php echo $wo['config']['btn_background_color'];?>;}</style>

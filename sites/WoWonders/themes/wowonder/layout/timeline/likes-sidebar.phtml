@@ -1,0 +1,22 @@
+<ul class="list-group" id="sidebar-pages-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['more_info']; ?></li>
+	<li class="list-group-item text-muted widget-heading" contenteditable="false">
+		<span onclick="Wo_GetLikes(<?php echo $wo['user_profile']['user_id']?>);" class="<?php echo Wo_RightToLeft('pull-right');?> refresh">
+			<i class="fa fa-refresh progress-icon" data-icon="refresh"></i>
+		</span>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up" style="background:#f79f58;"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=likes');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=likes"><?php echo $wo['lang']['likes'];?></a>
+		<h5><?php echo $wo['user_profile']['details']['likes_count'];?></h5>
+	</li>
+	<li>
+		<div class="sidebar-likes-container">
+			<?php 
+			foreach (Wo_GetLikes($wo['user_profile']['user_id'], 'profile', 9 , 0, array('in' => 'profile_sidebar', 'likes_data' => $wo['user_profile']['likes_data'])) as $wo['PageList']) {
+				$wo['PageList']['user_name'] = mb_substr($wo['PageList']['name'], 0, 10, "utf-8");
+				echo Wo_LoadPage('sidebar/sidebar-page-list');
+			}
+			?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>

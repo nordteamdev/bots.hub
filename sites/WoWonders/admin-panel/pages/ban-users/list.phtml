@@ -1,0 +1,14 @@
+<tr class="setting-banlist" id="IPID_<?php echo $wo['ip']['id']?>" >
+   <td><?php echo $wo['ip']['id']?></td>
+   <td>
+      <div class="ajax-time" title="<?php echo date('c',$wo['ip']['time']); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['ip']['time']);?>
+      </div>
+   </td>
+   <td>
+     <?php echo $wo['ip']['ip_address']?>
+   </td>
+   <td>
+      <a href="<?php echo Wo_LoadAdminLinkSettings('ban-users?delete_ip=' . $wo['ip']['id']) ?>" class="btn btn-danger waves-effect">DELETE</a>
+   </td>
+</tr>

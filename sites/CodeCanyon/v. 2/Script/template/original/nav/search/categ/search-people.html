@@ -1,0 +1,217 @@
+{assign var="cc" value=0}
+{if !$filter_box}
+{$header}
+<div id="search_hints"></div>
+<div class="__none" id="is_search_page"></div>
+
+
+<div class="v2_gs_main gm-cl-aft __search_result">
+
+
+<div id="hook_Block_PortalSearchFilters">
+	<div class="v2_gs_filter_column_w">
+		<div id="facets" class="v2_gs_filter_column">
+			<div id="gender" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Gender']}</span></div>
+				<ul class="v2_gs_filter_list __gender"><input type="hidden" name="st.gender" value="" id="field_gender">
+					<li><span class="v2_gs_filter_i __active gender __default gs_it ellip" data-search-filter-gender="any" id="genderDoesntMatterSpan">{$this->lang['Any']}</span></li>
+					<li><span class="v2_gs_filter_i gs_it ellip" data-search-filter-gender="male">{$this->lang['g_male']}</span></li>
+					<li><span class="v2_gs_filter_i gs_it ellip" data-search-filter-gender="female">{$this->lang['g_female']}</span></li>
+				</ul>
+			</div>
+			<div id="age" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Age']}</span><span class="lwa-bef __close-l __by-date-i">{$this->lang['birthDate']}</span></div>
+				<ul class="v2_gs_filter_list">
+					<li>
+						<div id="customAge" class="v2_gs_filter_i v2_gs_adv-search_select">
+						<select id="field_fromage" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['from']}</option>
+						 {for $age=15 to 80}
+							<option value="{$age}">{$this->lang['from']} {$age}</option>
+						 {/for}
+						 </select>
+						&#8212;
+						<select name="st.toAge" id="field_toage" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['to']}</option>
+						 {for $age=16 to 81}
+							<option value="{$age}">{$this->lang['to']} {$age}</option>
+						 {/for}
+						 </select>
+						 </div>
+						<div id="customBirthday" class="v2_gs_filter_i v2_gs_adv-search_select __by-date-i">
+						
+						<select id="field_bthday" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['day']}</option>
+						 {for $day=1 to 31}
+							<option value="{$day}">{$day}</option>
+						 {/for}
+						</select>
+						
+						<select id="field_bthmonth" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['month']}</option>
+                                <option value="01">{$this->lang['january']}</option>
+                                <option value="02">{$this->lang['february']}</option>
+                                <option value="03">{$this->lang['march']}</option>
+                                <option value="04">{$this->lang['aprill']}</option>
+                                <option value="05">{$this->lang['may']}</option>
+                                <option value="06">{$this->lang['june']}</option>
+                                <option value="07">{$this->lang['july']}</option>
+                                <option value="08">{$this->lang['august']}</option>
+                                <option value="09">{$this->lang['september']}</option>
+                                <option value="10">{$this->lang['octomber']}</option>
+                                <option value="11">{$this->lang['november']}</option>
+                                <option value="12">{$this->lang['december']}</option>
+						</select>
+						
+						<select name="st.bthYear" id="field_bthyear" class="isl isl__res">
+						<option value="" selected="selected">{$this->lang['year']}</option>
+						 {for $year=1901 to date('Y')-15}
+							<option value="{$year}">{$year}</option>
+						 {/for}
+						</select>
+						
+						</div>
+					</li>
+					<li><span class="v2_gs_filter_i lp age_filter_toggler">{$this->lang['search_by_date_of_birth']}</span><span class="v2_gs_filter_i lp __by-date-i age_filter_toggler">{$this->lang['search_by_age']}</span></li>
+				</ul>
+			</div>
+			<div id="location" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">Location</span></div><input type="hidden" name="st.location" value="" id="field_location"><input type="hidden" name="st.country" value="" id="field_country">
+				<ul id="locationItems" class="v2_gs_filter_list">
+					<li><span class="v2_gs_filter_i __active __default gs_it ellip" id="locationDoesntMatterSpan">{$this->lang['all_cities_and_countries']}</span></li>
+
+					<li><span data-aid="PS_LoAd" id="customPlaceItemSpan" class="v2_gs_filter_i">{$this->lang['specify_the_location']} <span class="adv-search_nav_arrow">?</span></span>
+						
+						<div id="customPlace" class="v2_gs_custom-place">
+							<div class="v2_gs_place-search">
+								
+								<div class="v2_gs_sel-country_w">
+								<input id="field_location_int" autocomplete="off" name="location_name" placeholder="{$this->lang['location_name_eg']}" disabled="disabled" class="__disabled getuserlocation" type="text" value="" />
+								<input type="hidden" name="location_id" id="location_id" value="" />
+								</div>
+								
+								
+ 
+								
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+			<div class="v2_gs_filter __open __show __no-header">
+				<ul class="v2_gs_filter_list">
+					<li class="form_ul_li"><input type="checkbox" name="st.onSite" id="field_onSite" class="irc checkbox-pro"><span class="irc_l"><label for="field_onSite">{$this->lang['online_now']}</label></span></li>
+					<li class="form_ul_li"><input type="checkbox" name="st.onSite" id="field_withPhoto" class="irc checkbox-pro"><span class="irc_l"><label for="field_withPhoto">{$this->lang['with_photo']}</label></span></li>
+					<li class="form_ul_li"><input type="checkbox" name="st.single" id="field_single" class="irc checkbox-pro"><span class="irc_l"><label for="field_single">{$this->lang['single']}</label></span></li>
+				</ul>
+			</div>
+		</div>
+	</div></div>
+
+
+
+<div id="hook_Block_PortalSearchResults" class="hookBlock">
+	<div id="searchResults" class="v2_gs_left_column _fon_alb nopadding">
+		<div id="hook_Native">
+			<div class="disabling-layer v1_gs_result_fader"></div>
+			
+
+			
+			<div class="loader-container" id="search_ajax_new_results">
+			{/if}
+			<div class="portlet_h2"><span class="portlet_h2_tx">{$c} {$this->lang['people_found']}</span></div>
+			<div id="gs_result_list" class="v1_gs_result_list">
+				{$pagination}
+					{foreach $q as $r}
+					{$cc = $cc+1}
+					 
+					<div class="v1_gs_result_i_w {if $cc == 1}__first-child{/if} ">
+						<div class="show-on-hover">
+							<div class="ucard-v __h">
+								<div class="section">
+									<div class="ovr-menu_soh">
+										<a href="/profile?q={$r.id}" class="dblock" hrefattr="true">
+											<div class="photo"><img class="photo_img" src="/getPhoto?p={$r.uphoto}&sz=small&g={$r.gender}" alt="{$r.fullname}" width="80" height="80"> {if $r.online >= $is_online}<span class="ic-online"></span>{/if}</div>
+										</a>
+										{if $r.uphoto > 0}
+										<div class="ovr-menu_w">
+											<div class="ovr-menu">
+												<div class="ovr-menu_tx"><a href="/photo?q={$r.id}&show=single&from=medium&o={b_encode($r.uphoto)}&cmd=openPhotoViewer&_token={mt_rand(9,888)}" data-vphopen="1" data-vphi="{base64_encode($r.uphoto)}" class="ovr-menu_a"><span class="search_bigph_label"></span></a></div>
+											</div>
+										</div>
+										{/if}
+									</div>
+								</div>
+								
+								<div class="caption v1_gs_result_i">
+									<div class="v1_gs_result_i_t">
+										<div class="ellip"><a href="/profile?q={$r.id}" class="v1_gs_result_i_t_name o" hrefattr="true">{str_highlight($r.fullname,$key,null,'<span class="search_highlight_key">\1</span>')}</a></div>
+										<div class="v1_gs_result_i_t_addr ellip" rel="tipsy" title="{$r.yearsold} {$this->lang['years_old']}"><span>{$r.yearsold} {$this->lang['years_old']}</span></div>
+										<div class="v1_gs_result_i_t_addr ellip" title="{$r.location}" rel="tipsy">{$r.location}</div>
+									</div>
+									
+									{assign var="mutual_friends_c" value=$this->getMutualFriends($r.id,1,1)}
+									{if $mutual_friends_c > 0}
+									<div class="search_res_mutual_friends">
+									<a class="lp il lineheight-18 f11" onclick="return popupMutualFriends(this,event);" data-mtforui='{ldelim}"uid":"{$r.id}","uname":"{$r.fullname}"{rdelim}' href="javascript:;">{if $mutual_friends_c == 1}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friend']}{else}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friends']}{/if}</a>
+									</div>
+									{/if}
+									<div class="search_res_u_bottom_info {if $mutual_friends_c > 0}__maisus{/if}">
+									{if $r.is_friend == 'confirmed'} <div class="search_is_friend" title="{$this->lang['friends']}&nbsp;{$this->lang['since']}&nbsp;{$this->fullDate($r.fadded)}" rel="tipsy">{$this->lang['friends']}</div><div class="search_res_friends_since" title="{$this->lang['friends']}&nbsp;{$this->lang['since']}&nbsp;{$this->fullDate($r.fadded)}" rel="tipsy">{$this->lang['since']}&nbsp;{$this->fullDate($r.fadded)}</div>
+									{else if $r.is_friend == 'pending'} <div class="search_req_sent" title="{$this->lang['friend_request_was_sent']}&nbsp;{if $this->ieriaz(date('d',$r.fadded)) == '[_UNDEFINED_]'}{$this->lang['at']}&nbsp;{$this->fullDate($r.fadded)}{else}{$this->ieriaz(date('d',$r.fadded))}{/if}" rel="tipsy"><i class="ic ic_friend_req_sent_silver"></i><span class="search_fr_req_sent_txt">{$this->lang['friend_request_has_been_sent']}</span></div>
+									{else}
+									
+									<button href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$r.id}" onclick="addFriend(this,event,''+o_krypt({$r.id})+'','button')" class="flat_button search_sub">{$this->lang['add_friend']}</button>
+									{/if}
+									</div>
+									<div class="v1_gs_result_i_f-list">
+										<ul class="avatar-list_ul">
+										{assign var="avatar_l" value=$this->getAvatarList($r.id)}
+										{foreach $avatar_l[0] as $av}
+											<li class="avatar-list_li">
+												<a href="/photo?q={$r.id}&show=searchquery&from=medium&o={b_encode($av.id)}&cmd=openPhotoViewer&_token={mt_rand(9,888)}" data-vphopen="1" data-vphi="{base64_encode($av.id)}" class="ucard-v __xxs image-hover">
+													<div class="section"><img src="/getPhoto?p={$av.id}&sz=small&g={$r.gender}" class="photo"></div>
+												</a>
+											</li>
+										{/foreach}
+										</ul>{if $avatar_l[1] > 4}<a href="/profile?q={$r.id}&cmd=pphotos&nav=photos" class="v1_gs_result_i_all-photos" hrefattr="true">{str_replace("%s", $avatar_l[1]-4, $this->lang['all_personal_photos'])}</a>{/if}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					{/foreach}
+					
+					
+				</div>
+{$pagination}
+{if !$filter_box}
+			</div>
+		</div>
+	</div>
+</div>
+
+<form accept-charset="UTF-8" action="/search" class="submit_search" id="submit_search" method="post" novalidate="novalidate">
+<input type="hidden" name="gender" value="" />
+<input type="hidden" name="fromage" value="" />
+<input type="hidden" name="toage" value="" />
+
+<input type="hidden" name="bday" value="" />
+<input type="hidden" name="bmonth" value="" />
+<input type="hidden" name="byear" value="" />
+
+<input type="hidden" name="location" value="" />
+<input type="hidden" name="s_location_id" value="" />
+ 
+<input type="hidden" name="online.now" value="" />
+<input type="hidden" name="with.photo" value="" />
+<input type="hidden" name="relationship" value="" />
+<a id="trigger_search_query" href="/search?key={$key}" class="__none search-filter-box" hrefattr="true"></a>
+</form>
+
+
+</div>
+{/if}

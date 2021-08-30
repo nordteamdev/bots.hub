@@ -1,0 +1,95 @@
+<div class="settings-header">
+	<h3><i class="fa fa-user fa-fw "></i> {{LANG profile_settings}}</h3>
+</div>
+<form class="form-horizontal setting-panel" id="profile-settings" method="POST">
+    <div class="setting-profile-alert"></div>
+	<fieldset>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="first_name">{{LANG first_name}}</label>  
+			<div class="col-md-6">
+				<input id="first_name" name="first_name" type="text" placeholder="" class="form-control input-md" value="{{USER first_name}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="last_name">{{LANG last_name}}</label>  
+			<div class="col-md-6">
+				<input id="last_name" name="last_name" type="text" placeholder="" class="form-control input-md" value="{{USER last_name}}"> 
+			</div>
+		</div>
+		<!-- Textarea-->
+		<div class="form-group">
+			<label class="col-md-2" for="about">{{LANG about_profile}}</label>  
+			<div class="col-md-6">
+				<textarea name="about" id="about" cols="20" class="form-control" rows="5">{{USER about_decoded}}</textarea>
+			</div>
+		</div>
+		<hr>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="facebook">{{LANG facebook}}</label>  
+			<div class="col-md-6">
+				<input id="facebook" name="facebook" type="text" placeholder="Username" class="form-control input-md" value="{{USER facebook}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="google">{{LANG google_plus}}</label>  
+			<div class="col-md-6">
+				<input id="google" name="google" type="text" placeholder="Username" class="form-control input-md" value="{{USER google}}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-2" for="twitter">{{LANG twitter}}</label>  
+			<div class="col-md-6">
+				<input id="twitter" name="twitter" type="text" placeholder="Username" class="form-control input-md" value="{{USER twitter}}">
+			</div>
+		</div>
+		<hr>
+		<?php if (is_array($fl['profile_fields'])): ?>
+			<?php foreach ($fl['profile_fields'] as $key => $fl['field']): ?>
+				<?php echo FL_LoadPage('settings/profile-fields'); ?>
+			<?php endforeach; ?>
+			<input type="hidden" name="cf" value="1">
+		<?php endif; ?>
+		<input type="hidden" name="hash_id" value="<?php echo FL_CreateSession()?>">
+		<input type="hidden" name="user_id" value="{{USER user_id}}">
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-2" for="button1id"></label>
+			<div class="col-md-8">
+				<button id="submit" name="submit" class="btn btn-main"><i class="fa fa-floppy-o progress-icon" data-icon="floppy-o"></i> {{LANG save}}</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<script>
+$(function() {
+  var form = $('form#profile-settings');
+  form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=settings&s=profile',
+    beforeSend: function() {
+      FL_progressIconLoader(form.find('button'));
+    },
+    success: function(data) {
+      scrollToTop();
+      if (data.status == 200) {
+      	$('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+           $(this).delay(2500).slideUp(500, function() {
+              $(this).remove();
+            });
+        });
+      } else if (data.errors) {
+          var errors = data.errors.join("<br>");
+          $('.setting-profile-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+          $('.alert-danger').fadeIn(300);
+      }
+      FL_progressIconLoader(form.find('button'));
+    }
+  });
+});
+</script>

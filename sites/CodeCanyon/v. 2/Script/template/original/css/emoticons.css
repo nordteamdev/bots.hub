@@ -1,0 +1,1185 @@
+
+.emotics {
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: middle;
+    height: 18px;
+    width: 18px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    border: 0;
+}.emoji-spritesheet-0 {
+    background-size: 486px 126px;
+    background-image: url(images/emoticons/emojisprite.png);
+}
+.emoji-w26 {
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.emoji-w26.emoji-spritesheet-0 {
+    background-size: 702px 182px;
+}
+
+
+
+
+/* :smile:
+-----------*/
+.emoji-code-bg-kn_smile {
+    background-position: -0px -0px;
+}
+
+/* :smiley:
+-----------*/
+.emoji-code-bg-kn_smiley {
+    background-position: -18px -0px;
+}
+
+/* :grinning:
+-----------*/
+.emoji-code-bg-kn_grinning {
+    background-position: -36px -0px;
+}
+
+/* :blush:
+-----------*/
+.emoji-code-bg-kn_blush {
+    background-position: -54px -0px;
+}
+
+/* :relaxed:
+-----------*/
+.emoji-code-bg-kn_relaxed {
+    background-position: -72px -0px;
+}
+/* :wink:
+-----------*/
+.emoji-code-bg-kn_wink {
+    background-position: -90px -0px;
+}
+/* :heart-eyes:
+-----------*/
+.emoji-code-bg-kn_heart-eyes {
+    background-position: -108px -0px;
+}
+/* :kissing_heart:
+-----------*/
+.emoji-code-bg-kn_kissing_heart {
+    background-position: -126px -0px;
+}
+/* :kissing_closed_eyes:
+-----------*/
+.emoji-code-bg-kn_kissing_closed_eyes {
+    background-position: -144px -0px;
+}
+
+/* :kissing:
+-----------*/
+.emoji-code-bg-kn_kissing {
+    background-position: -162px -0px;
+}
+
+/* :kissing_smiling_eyes:
+-----------*/
+.emoji-code-bg-kn_kissing_smiling_eyes {
+    background-position: -180px -0px;
+}
+
+/* :stuck_out_tongue_winking_eye:
+-----------*/
+.emoji-code-bg-kn_stuck_out_tongue_winking_eye {
+    background-position: -198px -0px;
+}
+
+/* :stuck_out_tongue_closed_eyes:
+-----------*/
+.emoji-code-bg-kn_stuck_out_tongue_closed_eyes {
+    background-position: -216px -0px;
+}
+
+/* :stuck_out_tongue:
+-----------*/
+.emoji-code-bg-kn_stuck_out_tongue {
+    background-position: -234px -0px;
+}
+
+/* :flushed:
+-----------*/
+.emoji-code-bg-kn_flushed {
+    background-position: -252px -0px;
+}
+
+/* :grin:
+-----------*/
+.emoji-code-bg-kn_grin {
+    background-position: -270px -0px;
+}
+
+/* :pensive:
+-----------*/
+.emoji-code-bg-kn_pensive {
+    background-position: -288px -0px;
+}
+
+/* :relieved:
+-----------*/
+.emoji-code-bg-kn_relieved {
+    background-position: -306px -0px;
+}
+
+/* :unamused:
+-----------*/
+.emoji-code-bg-kn_unamused {
+    background-position: -324px -0px;
+}
+
+
+/* :disappointed:
+-----------*/
+.emoji-code-bg-kn_disappointed {
+    background-position: -342px -0px;
+}
+
+/* :persevere:
+-----------*/
+.emoji-code-bg-kn_persevered {
+    background-position: -360px -0px;
+}
+
+/* :cry:
+-----------*/
+.emoji-code-bg-kn_cry {
+    background-position: -378px -0px;
+}
+
+/* :joy:
+-----------*/
+.emoji-code-bg-kn_joy {
+    background-position: -396px -0px;
+}
+
+/* :sob:
+-----------*/
+.emoji-code-bg-kn_sob {
+    background-position: -414px -0px;
+}
+
+/* :sleepy:
+-----------*/
+.emoji-code-bg-kn_sleepy {
+    background-position: -432px -0px;
+}
+
+/* :disappointed_relieved:
+-----------*/
+.emoji-code-bg-kn_disappointed_relieved {
+    background-position: -450px -0px;
+}
+
+/* :cold_sweat:
+-----------*/
+.emoji-code-bg-kn_cold_sweat {
+    background-position: -468px -0px;
+}
+
+/* :sweat_smile:
+------------------*/
+.emoji-code-bg-kn_sweat_smile {
+    background-position: 0px -18px;
+}
+
+/* :sweat:
+------------------*/
+.emoji-code-bg-kn_sweat {
+    background-position: -18px -18px;
+}
+
+/* :weary:
+------------------*/
+.emoji-code-bg-kn_weary {
+    background-position: -36px -18px;
+}
+
+/* :tired_face:
+------------------*/
+.emoji-code-bg-kn_tired_face {
+    background-position: -54px -18px;
+}
+
+/* :fearful:
+------------------*/
+.emoji-code-bg-kn_fearful {
+    background-position: -72px -18px;
+}
+
+/* :scream:
+------------------*/
+.emoji-code-bg-kn_scream {
+    background-position: -90px -18px;
+}
+
+/* :angry:
+------------------*/
+.emoji-code-bg-kn_angry {
+    background-position: -108px -18px;
+}
+
+
+/* :rage:
+------------------*/
+.emoji-code-bg-kn_rage {
+    background-position: -126px -18px;
+}
+
+
+/* :triumph:
+------------------*/
+.emoji-code-bg-kn_triumph {
+    background-position: -144px -18px;
+}
+
+/* :confounded:
+------------------*/
+.emoji-code-bg-kn_confounded {
+    background-position: -162px -18px;
+}
+
+/* :laughing:
+------------------*/
+.emoji-code-bg-kn_laughing {
+    background-position: -180px -18px;
+}
+
+
+/* :yum:
+------------------*/
+.emoji-code-bg-kn_yum {
+    background-position: -198px -18px;
+}
+
+/* :mask:
+------------------*/
+.emoji-code-bg-kn_mask {
+    background-position: -216px -18px;
+}
+
+/* :sunglasses:
+------------------*/
+.emoji-code-bg-kn_sunglasses {
+    background-position: -234px -18px;
+}
+
+/* :sleeping:
+------------------*/
+.emoji-code-bg-kn_sleeping {
+    background-position: -252px -18px;
+}
+
+
+/* :dizzy_face:
+------------------*/
+.emoji-code-bg-kn_dizzy_face {
+    background-position: -270px -18px;
+}
+
+/* :astonished:
+------------------*/
+.emoji-code-bg-kn_astonished {
+    background-position: -288px -18px;
+}
+
+
+/* :worried:
+------------------*/
+.emoji-code-bg-kn_worried {
+    background-position: -306px -18px;
+}
+
+/* :frowning:
+------------------*/
+.emoji-code-bg-kn_frowning {
+    background-position: -324px -18px;
+}
+
+
+/* :anguished:
+------------------*/
+.emoji-code-bg-kn_anguished {
+    background-position: -342px -18px;
+}
+
+
+/* :smiling_imp:
+------------------*/
+.emoji-code-bg-kn_smiling_imp {
+    background-position: -360px -18px;
+}
+
+/* :imp:
+------------------*/
+.emoji-code-bg-kn_imp {
+    background-position: -378px -18px;
+}
+
+/* :open_mouth:
+------------------*/
+.emoji-code-bg-kn_open_mouth {
+    background-position: -396px -18px;
+}
+
+/* :grimacing:
+------------------*/
+.emoji-code-bg-kn_grimacing {
+    background-position: -414px -18px;
+}
+
+
+/* :neutral_face:
+------------------*/
+.emoji-code-bg-kn_neutral_face {
+    background-position: -432px -18px;
+}
+
+/* :confused:
+------------------*/
+.emoji-code-bg-kn_confused {
+    background-position: -450px -18px;
+}
+
+/* :hushed:
+------------------*/
+.emoji-code-bg-kn_hushed {
+    background-position: -468px -18px;
+}
+
+/* :no_mouth:
+------------------*/
+.emoji-code-bg-kn_no_mouth {
+    background-position: 0px -36px;
+}
+
+/* :innocent:
+------------------*/
+.emoji-code-bg-kn_innocent {
+    background-position: -18px -36px;
+}
+
+/* :smirk:
+------------------*/
+.emoji-code-bg-kn_smirk {
+    background-position: -36px -36px;
+}
+
+/* :expressionless:
+------------------*/
+.emoji-code-bg-kn_expressionless {
+    background-position: -54px -36px;
+}
+
+/* :man_with_gua_pi_mao:
+------------------*/
+.emoji-code-bg-kn_man_with_gua_pi_mao {
+    background-position: -72px -36px;
+}
+
+/* :man_with_turban:
+------------------*/
+.emoji-code-bg-kn_man_with_turban {
+    background-position: -90px -36px;
+}
+
+/* :cop:
+------------------*/
+.emoji-code-bg-kn_cop {
+    background-position: -108px -36px;
+}
+
+/* :construction_worker:
+------------------*/
+.emoji-code-bg-kn_construction_worker {
+    background-position: -126px -36px;
+}
+
+/* :guardsman:
+------------------*/
+.emoji-code-bg-kn_guardsman {
+    background-position: -144px -36px;
+}
+
+/* :baby:
+------------------*/
+.emoji-code-bg-kn_baby {
+    background-position: -162px -36px;
+}
+
+/* :boy:
+------------------*/
+.emoji-code-bg-kn_boy {
+    background-position: -180px -36px;
+}
+
+/* :girl:
+------------------*/
+.emoji-code-bg-kn_girl {
+    background-position: -198px -36px;
+}
+
+/* :man:
+------------------*/
+.emoji-code-bg-kn_man {
+    background-position: -216px -36px;
+}
+
+/* :woman:
+------------------*/
+.emoji-code-bg-kn_woman {
+    background-position: -234px -36px;
+}
+
+/* :older_man:
+------------------*/
+.emoji-code-bg-kn_older_man {
+    background-position: -252px -36px;
+}
+
+
+/* :older_woman:
+------------------*/
+.emoji-code-bg-kn_older_woman {
+    background-position: -270px -36px;
+}
+
+/* :person_with_blond_hair:
+------------------*/
+.emoji-code-bg-kn_person_with_blond_hair {
+    background-position: -288px -36px;
+}
+
+/* :angel:
+------------------*/
+.emoji-code-bg-kn_angel {
+    background-position: -306px -36px;
+}
+
+/* :princess:
+------------------*/
+.emoji-code-bg-kn_princess {
+    background-position: -324px -36px;
+}
+
+/* :smiley_cat:
+------------------*/
+.emoji-code-bg-kn_smiley_cat {
+    background-position: -342px -36px;
+}
+
+/* :smile_cat:
+------------------*/
+.emoji-code-bg-kn_smile_cat {
+    background-position: -360px -36px;
+}
+
+/* :heart_eyes_cat:
+------------------*/
+.emoji-code-bg-kn_heart_eyes_cat {
+    background-position: -378px -36px;
+}
+
+/* :kissing_cat:
+------------------*/
+.emoji-code-bg-kn_kissing_cat {
+    background-position: -396px -36px;
+}
+
+/* :smirk_cat:
+------------------*/
+.emoji-code-bg-kn_smirk_cat {
+    background-position: -414px -36px;
+}
+
+/* :scream_cat:
+------------------*/
+.emoji-code-bg-kn_scream_cat {
+    background-position: -432px -36px;
+}
+
+/* :crying_cat_face:
+------------------*/
+.emoji-code-bg-kn_crying_cat_face {
+    background-position: -450px -36px;
+}
+
+/* :joy_cat:
+------------------*/
+.emoji-code-bg-kn_joy_cat {
+    background-position: -468px -36px;
+}
+
+/* :pouting_cat:
+------------------*/
+.emoji-code-bg-kn_pouting_cat {
+    background-position: 0px -54px;
+}
+
+/* :japanese_ogre:
+------------------*/
+.emoji-code-bg-kn_japanese_ogre {
+    background-position: -18px -54px;
+}
+
+/* :japanese_goblin:
+------------------*/
+.emoji-code-bg-kn_japanese_goblin {
+    background-position: -36px -54px;
+}
+
+/* :see_no_evil:
+------------------*/
+.emoji-code-bg-kn_see_no_evil {
+    background-position: -54px -54px;
+}
+
+/* :hear_no_evil:
+------------------*/
+.emoji-code-bg-kn_hear_no_evil {
+    background-position: -72px -54px;
+}
+
+/* :speak_no_evil:
+------------------*/
+.emoji-code-bg-kn_speak_no_evil {
+    background-position: -90px -54px;
+}
+
+/* :skull:
+------------------*/
+.emoji-code-bg-kn_skull {
+    background-position: -108px -54px;
+}
+
+/* :alien:
+------------------*/
+.emoji-code-bg-kn_alien {
+    background-position: -126px -54px;
+}
+
+/* :hankey:
+------------------*/
+.emoji-code-bg-kn_hankey {
+    background-position: -144px -54px;
+}
+
+/* :fire:
+------------------*/
+.emoji-code-bg-kn_fire {
+    background-position: -162px -54px;
+}
+
+/* :sparkles:
+------------------*/
+.emoji-code-bg-kn_sparkles {
+    background-position: -180px -54px;
+}
+
+/* :star2:
+------------------*/
+.emoji-code-bg-kn_star2 {
+    background-position: -198px -54px;
+}
+
+/* :dizzy:
+------------------*/
+.emoji-code-bg-kn_dizzy {
+    background-position: -216px -54px;
+}
+
+/* :boom:
+------------------*/
+.emoji-code-bg-kn_boom {
+    background-position: -234px -54px;
+}
+
+/* :anger:
+------------------*/
+.emoji-code-bg-kn_anger {
+    background-position: -252px -54px;
+}
+
+
+/* :sweat_drops:
+------------------*/
+.emoji-code-bg-kn_sweat_drops {
+    background-position: -270px -54px;
+}
+
+
+/* :droplet:
+------------------*/
+.emoji-code-bg-kn_droplet {
+    background-position: -288px -54px;
+}
+
+
+/* :zzz:
+------------------*/
+.emoji-code-bg-kn_zzz {
+    background-position: -306px -54px;
+}
+
+/* :dash:
+------------------*/
+.emoji-code-bg-kn_dash {
+    background-position: -324px -54px;
+}
+
+/* :ear:
+------------------*/
+.emoji-code-bg-kn_ear {
+    background-position: -342px -54px;
+}
+
+
+/* :eyes:
+------------------*/
+.emoji-code-bg-kn_eyes {
+    background-position: -360px -54px;
+}
+
+/* :nose:
+------------------*/
+.emoji-code-bg-kn_nose {
+    background-position: -378px -54px;
+}
+
+/* :tongue:
+------------------*/
+.emoji-code-bg-kn_tongue {
+    background-position: -396px -54px;
+}
+
+/* :lips:
+------------------*/
+.emoji-code-bg-kn_lips {
+    background-position: -414px -54px;
+}
+
+/* :+1:
+------------------*/
+.emoji-code-bg-kn_plus1 {
+    background-position: -432px -54px;
+}
+
+/* :-1:
+------------------*/
+.emoji-code-bg-kn_minus1 {
+    background-position: -450px -54px;
+}
+
+
+/* :ok_hand:
+------------------*/
+.emoji-code-bg-kn_ok_hand {
+    background-position: -468px -54px;
+}
+
+
+/* :facepunch:
+------------------*/
+.emoji-code-bg-kn_facepunch {
+    background-position: 0px -72px;
+}
+
+/* :fist:
+------------------*/
+.emoji-code-bg-kn_fist {
+    background-position: -18px -72px;
+}
+
+/* :v:
+------------------*/
+.emoji-code-bg-kn_v {
+    background-position: -36px -72px;
+}
+
+/* :wave:
+------------------*/
+.emoji-code-bg-kn_wave {
+    background-position: -54px -72px;
+}
+
+/* :hand:
+------------------*/
+.emoji-code-bg-kn_hand {
+    background-position: -72px -72px;
+}
+
+/* :open_hands:
+------------------*/
+.emoji-code-bg-kn_open_hands {
+    background-position: -90px -72px;
+}
+
+/* :point_up_2:
+------------------*/
+.emoji-code-bg-kn_point_up_2 {
+    background-position: -108px -72px;
+}
+
+
+/* :point_down:
+------------------*/
+.emoji-code-bg-kn_point_down {
+    background-position: -126px -72px;
+}
+
+
+/* :point_right:
+------------------*/
+.emoji-code-bg-kn_point_right {
+    background-position: -144px -72px;
+}
+
+/* :point_left:
+------------------*/
+.emoji-code-bg-kn_point_left {
+    background-position: -162px -72px;
+}
+
+/* :raised_hands:
+------------------*/
+.emoji-code-bg-kn_raised_hands {
+    background-position: -180px -72px;
+}
+
+/* :pray:
+------------------*/
+.emoji-code-bg-kn_pray {
+    background-position: -198px -72px;
+}
+
+/* :point_up:
+------------------*/
+.emoji-code-bg-kn_point_up {
+    background-position: -216px -72px;
+}
+
+/* :clap:
+------------------*/
+.emoji-code-bg-kn_clap {
+    background-position: -234px -72px;
+}
+
+/* :muscle:
+------------------*/
+.emoji-code-bg-kn_muscle {
+    background-position: -252px -72px;
+}
+
+/* :walking:
+------------------*/
+.emoji-code-bg-kn_walking {
+    background-position: -270px -72px;
+}
+
+/* :runner:
+------------------*/
+.emoji-code-bg-kn_runner {
+    background-position: -288px -72px;
+}
+
+/* :dancer:
+------------------*/
+.emoji-code-bg-kn_dancer {
+    background-position: -306px -72px;
+}
+
+/* :couple:
+------------------*/
+.emoji-code-bg-kn_couple {
+    background-position: -324px -72px;
+}
+
+/* :family:
+------------------*/
+.emoji-code-bg-kn_family {
+    background-position: -342px -72px;
+}
+
+/* :two_men_holding_hands:
+------------------*/
+.emoji-code-bg-kn_two_men_holding_hands {
+    background-position: -360px -72px;
+}
+
+/* :two_women_holding_hands:
+------------------*/
+.emoji-code-bg-kn_two_women_holding_hands {
+    background-position: -378px -72px;
+}
+
+/* :couplekiss:
+------------------*/
+.emoji-code-bg-kn_couplekiss {
+    background-position: -396px -72px;
+}
+
+/* :couple_with_heart:
+------------------*/
+.emoji-code-bg-kn_couple_with_heart {
+    background-position: -414px -72px;
+}
+
+/* :dancers:
+------------------*/
+.emoji-code-bg-kn_dancers {
+    background-position: -432px -72px;
+}
+
+/* :ok_woman:
+------------------*/
+.emoji-code-bg-kn_ok_woman {
+    background-position: -450px -72px;
+}
+
+/* :no_good:
+------------------*/
+.emoji-code-bg-kn_no_good {
+    background-position: -468px -72px;
+}
+
+/* :information_desk_person:
+------------------*/
+.emoji-code-bg-kn_information_desk_person {
+    background-position: 0px -90px;
+}
+
+/* :raising_hand:
+------------------*/
+.emoji-code-bg-kn_raising_hand {
+    background-position: -18px -90px;
+}
+
+
+/* :massage:
+------------------*/
+.emoji-code-bg-kn_massage {
+    background-position: -36px -90px;
+}
+
+/* :haircut:
+------------------*/
+.emoji-code-bg-kn_haircut {
+    background-position: -54px -90px;
+}
+
+/* :nail_care:
+------------------*/
+.emoji-code-bg-kn_nail_care {
+    background-position: -72px -90px;
+}
+
+/* :ride_with_veil:
+------------------*/
+.emoji-code-bg-kn_ride_with_veil {
+    background-position: -90px -90px;
+}
+
+/* :person_with_pouting_face:
+------------------*/
+.emoji-code-bg-kn_person_with_pouting_face {
+    background-position: -108px -90px;
+}
+
+/* :person_frowning:
+------------------*/
+.emoji-code-bg-kn_person_frowning {
+    background-position: -126px -90px;
+}
+
+/* :bow:
+------------------*/
+.emoji-code-bg-kn_bow {
+    background-position: -144px -90px;
+}
+
+/* :tophat:
+------------------*/
+.emoji-code-bg-kn_tophat {
+    background-position: -162px -90px;
+}
+
+/* :crown:
+------------------*/
+.emoji-code-bg-kn_crown {
+    background-position: -180px -90px;
+}
+
+/* :womans_hat:
+------------------*/
+.emoji-code-bg-kn_womans_hat {
+    background-position: -198px -90px;
+}
+
+/* :athletic_shoe:
+------------------*/
+.emoji-code-bg-kn_athletic_shoe {
+    background-position: -216px -90px;
+}
+
+
+/* :mans_shoe:
+------------------*/
+.emoji-code-bg-kn_mans_shoe {
+    background-position: -234px -90px;
+}
+
+/* :sandal:
+------------------*/
+.emoji-code-bg-kn_sandal {
+    background-position: -252px -90px;
+}
+
+/* :high_heel:
+------------------*/
+.emoji-code-bg-kn_high_heel {
+    background-position: -270px -90px;
+}
+
+
+/* :boot:
+------------------*/
+.emoji-code-bg-kn_boot {
+    background-position: -288px -90px;
+}
+
+/* :shirt:
+------------------*/
+.emoji-code-bg-kn_shirt {
+    background-position: -306px -90px;
+}
+
+/* :necktie:
+------------------*/
+.emoji-code-bg-kn_necktie {
+    background-position: -324px -90px;
+}
+
+/* :womans_clothes:
+------------------*/
+.emoji-code-bg-kn_womans_clothes {
+    background-position: -342px -90px;
+}
+
+/* :dress:
+------------------*/
+.emoji-code-bg-kn_dress {
+    background-position: -360px -90px;
+}
+
+/* :running_shirt_with_sash:
+------------------*/
+.emoji-code-bg-kn_running_shirt_with_sash {
+    background-position: -378px -90px;
+}
+
+/* :jeans:
+------------------*/
+.emoji-code-bg-kn_jeans {
+    background-position: -396px -90px;
+}
+
+/* :kimono:
+------------------*/
+.emoji-code-bg-kn_kimono {
+    background-position: -414px -90px;
+}
+
+/* :bikini:
+------------------*/
+.emoji-code-bg-kn_bikini {
+    background-position: -432px -90px;
+}
+
+/* :briefcase:
+------------------*/
+.emoji-code-bg-kn_briefcase {
+    background-position: -450px -90px;
+}
+
+/* :handbag:
+------------------*/
+.emoji-code-bg-kn_handbag {
+    background-position: -468px -90px;
+}
+
+/* :pouch:
+------------------*/
+.emoji-code-bg-kn_pouch {
+    background-position: 0px -108px;
+}
+
+/* :purse:
+------------------*/
+.emoji-code-bg-kn_purse {
+    background-position: -18px -108px;
+}
+
+/* :eyeglasses:
+------------------*/
+.emoji-code-bg-kn_eyeglasses {
+    background-position: -36px -108px;
+}
+
+/* :ribbon:
+------------------*/
+.emoji-code-bg-kn_ribbon {
+    background-position: -54px -108px;
+}
+
+/* :closed_umbrella:
+------------------*/
+.emoji-code-bg-kn_closed_umbrella {
+    background-position: -72px -108px;
+}
+
+/* :lipstick:
+------------------*/
+.emoji-code-bg-kn_lipstick {
+    background-position: -90px -108px;
+}
+
+/* :yellow_heart:
+------------------*/
+.emoji-code-bg-kn_yellow_heart {
+    background-position: -108px -108px;
+}
+
+/* :blue_heart:
+------------------*/
+.emoji-code-bg-kn_blue_heart {
+    background-position: -126px -108px;
+}
+
+/* :purple_heart:
+------------------*/
+.emoji-code-bg-kn_purple_heart {
+    background-position: -144px -108px;
+}
+
+/* :green_heart:
+------------------*/
+.emoji-code-bg-kn_green_heart {
+    background-position: -162px -108px;
+}
+
+/* :heart:
+------------------*/
+.emoji-code-bg-kn_heart {
+    background-position: -180px -108px;
+}
+
+/* :broken_heart:
+------------------*/
+.emoji-code-bg-kn_broken_heart {
+    background-position: -198px -108px;
+}
+
+/* :heartpulse:
+------------------*/
+.emoji-code-bg-kn_heartpulse {
+    background-position: -216px -108px;
+}
+
+/* :heartpulse:
+------------------*/
+.emoji-code-bg-kn_heartpulse {
+    background-position: -216px -108px;
+}
+
+/* :heartbeat:
+------------------*/
+.emoji-code-bg-kn_heartbeat {
+    background-position: -234px -108px;
+}
+
+/* :two_hearts:
+------------------*/
+.emoji-code-bg-kn_two_hearts {
+    background-position: -252px -108px;
+}
+
+
+/* :sparkling_heart:
+------------------*/
+.emoji-code-bg-kn_sparkling_heart {
+    background-position: -270px -108px;
+}
+
+/* :revolving_hearts:
+------------------*/
+.emoji-code-bg-kn_revolving_hearts {
+    background-position: -288px -108px;
+}
+
+/* :cupid:
+------------------*/
+.emoji-code-bg-kn_cupid {
+    background-position: -306px -108px;
+}
+
+/* :love_letter:
+------------------*/
+.emoji-code-bg-kn_love_letter {
+    background-position: -324px -108px;
+}
+
+/* :kiss:
+------------------*/
+.emoji-code-bg-kn_kiss {
+    background-position: -342px -108px;
+}
+
+/* :ring:
+------------------*/
+.emoji-code-bg-kn_ring {
+    background-position: -360px -108px;
+}
+
+/* :gem:
+------------------*/
+.emoji-code-bg-kn_gem {
+    background-position: -378px -108px;
+}
+
+/* :bust_in_silhouette:
+------------------*/
+.emoji-code-bg-kn_bust_in_silhouette {
+    background-position: -396px -108px;
+}
+
+/* :busts_in_silhouette:
+------------------*/
+.emoji-code-bg-kn_busts_in_silhouette {
+    background-position: -414px -108px;
+}
+
+/* :speech_balloon:
+------------------*/
+.emoji-code-bg-kn_speech_balloon {
+    background-position: -432px -108px;
+}
+
+/* :footprints:
+------------------*/
+.emoji-code-bg-kn_footprints {
+    background-position: -450px -108px;
+}
+
+/* :thought_balloon:
+------------------*/
+.emoji-code-bg-kn_thought_balloon {
+    background-position: -468px -108px;
+}

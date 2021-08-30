@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Languages > Manage Languages</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage & Edit Languages</h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;">Language Name</th>
+                                    <th style="text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $langs = Wo_LangsNamesFromDB();
+                                if (count($langs) > 0) {
+                                    foreach ($langs as $key => $wo['langs']) {
+                                        $wo['langs_'] = $wo['langs'];
+                                        $wo['langs'] = ucfirst($wo['langs']);
+                                        echo Wo_LoadAdminPage('manage-languages/list');
+                                    }
+                                }  
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+function Wo_DeleteLang(id) {
+  if (id == '') {
+    return false;
+  }
+  if (!confirm('Are you sure you want to delete this language?')) {
+    return false;
+  }
+  $('#' + id).fadeOut(300, function () {
+      $(this).remove();
+  });
+  $.get(Wo_Ajax_Requests_File(), {f: 'admin_setting', s:'delete_lang', id:id});
+}
+</script>

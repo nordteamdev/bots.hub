@@ -1,0 +1,52 @@
+{include file=$header}
+      <script src="{$this->theme_url}/js/cmd/admincp/admincp.js"></script>
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	  
+	<script language="JavaScript" type="text/javascript" src="{$this->theme_url}/js/cmd/admincp/jTPS.js"></script>
+	<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/admincp/jTPS.css">
+	<link rel="stylesheet" type="text/css" href="{$this->theme_url}/css/cmd/admincp/alert-box.css">
+<div class="wrapper">
+<div class="structure-row">
+
+<div class="lf_fix">
+<div class="left_menu nano" style="position: fixed!important;  height:90%;  width: 270px!important;">
+
+<ul class="nav_lmenu nano-content">
+<div class="admcp_divider"></div>
+<section class="admcp_lf_box">
+<li class="l_li"><a href="/admin" class="mcatli {if !$cmd}_act{/if}"><i class="ic lm ic-admin-dashboard"></i><div class="l_li_txt">Dashboard</div></a></li>
+<li class="l_li"><a href="/admin?cmd=gsettings" class="mcatli {if $cmd === 'gsettings'}_act{/if}"><i class="ic lm ic-admin-generalsettings"></i><div class="l_li_txt">General Settings</div></a></li>
+<li class="l_li"><a href="/admin?cmd=settings" class="mcatli {if $cmd === 'settings'}_act{/if}"><i class="ic lm ic-admin-settings"></i><div class="l_li_txt">Site Settings</div></a></li>
+</section>
+<div class="admcp_divider"></div>
+<section class="admcp_lf_box">
+<li class="l_li"><a href="/admin?cmd=communities" class="mcatli {if $cmd === 'communities'}_act{/if}"><i class="ic lm ic-admin-communities"></i><div class="l_li_txt">Communities</div></a></li>
+<li class="l_li"><a href="/admin?cmd=users" class="mcatli {if $cmd === 'users'}_act{/if}"><i class="ic lm ic-admin-users"></i><div class="l_li_txt">Users ***</div></a></li>
+<li class="l_li"><a href="/admin?cmd=videos" class="mcatli {if $cmd === 'videos'}_act{/if}"><i class="ic lm ic-admin-videos"></i><div class="l_li_txt">Videos ***</div></a></li>
+<li class="l_li"><a href="/admin?cmd=tracks" class="mcatli {if $cmd === 'tracks'}_act{/if}"><i class="ic lm ic-admin-tracks"></i><div class="l_li_txt">Music</div></a></li>
+<li class="l_li"><a href="/admin?cmd=games" class="mcatli {if $cmd === 'games'}_act{/if}"><i class="ic lm ic-admin-games"></i><div class="l_li_txt">Games</div></a></li>
+<li class="l_li"><a href="/admin?cmd=posts" class="mcatli {if $cmd === 'posts'}_act{/if}"><i class="ic lm ic-admin-posts"></i><div class="l_li_txt">Posts</div></a></li>
+<li class="l_li"><a href="/admin?cmd=themes" class="mcatli {if $cmd === 'themes'}_act{/if}"><i class="ic lm ic-admin-themes"></i><div class="l_li_txt">Themes</div></a></li>
+<li class="l_li"><a href="/admin?cmd=gifts" class="mcatli {if $cmd === 'gifts'}_act{/if}"><i class="ic lm ic-admin-gifts"></i><div class="l_li_txt">Gifts</div></a></li>
+</section>
+<div class="admcp_divider"></div>
+<section class="admcp_lf_box">
+<li class="l_li"><a href="/admin?cmd=reports" class="mcatli {if $cmd === 'reports'}_act{/if}"><i class="ic lm ic-admin-reports"></i><div class="l_li_txt">Reports</div>{if $c_reports}<div class="zoomIn animated lnavMenuCount">{$c_reports}</div>{/if}</a></li>
+<li class="l_li"><a href="/admin?cmd=lang&l=en" class="mcatli {if $cmd === 'lang'}_act{/if}"><i class="ic lm ic-admin-lang"></i><div class="l_li_txt">Languages</div></a></li>
+<li class="l_li"><a href="/admin?cmd=ads" class="mcatli {if $cmd === 'ads'}_act{/if}"><i class="ic lm ic-admin-ads"></i><div class="l_li_txt">Ads</div></a></li>
+<li class="l_li"><a href="/admin?cmd=terms" class="mcatli {if $cmd === 'terms'}_act{/if}"><i class="ic lm ic-admin-terms"></i><div class="l_li_txt">Terms/Policy</div></a></li>
+<li class="l_li"><a href="/admin?cmd=mail" class="mcatli {if $cmd === 'mail'}_act{/if}"><i class="ic lm ic-admin-mailing"></i><div class="l_li_txt">Mailing List</div></a></li>
+</section>
+<div class="admcp_divider"></div>
+
+</ul>
+</div></div>
+
+<div class="content-section">
+
+
+<div class="container-liquid">
+
+<div class="row">
+

@@ -1,0 +1,18 @@
+<tr class="setting-postlist" id="PostID_<?php echo $wo['story']->id?>" data-post-id="<?php echo $wo['story']->id?>">
+   <td><?php echo $wo['story']->id?></td>
+   <td>
+      <a href="<?php echo $wo['story']->publisher['url']; ?>">
+      <img src="<?php echo $wo['story']->publisher['avatar']?>" class="setting-avatar" alt="<?php echo $wo['story']->publisher['avatar']?> Profile Picture">
+      <?php echo $wo['story']->publisher['name']; ?>
+      </a>
+   </td>
+   <td><a href="<?php echo $wo['site_url']?>/post/<?php echo $wo['story']->id;?>" target="_blank"><?php echo $wo['lang']['open_post'];?></a></td>
+   <td>
+      <div class="ajax-time" title="<?php echo date('c',$wo['story']->time); ?>">
+         <?php echo Wo_Time_Elapsed_String($wo['story']->time);?>
+      </div>
+   </td>
+   <td>
+      <button onclick="Wo_AdminDeletePost(<?php echo $wo['story']->id?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

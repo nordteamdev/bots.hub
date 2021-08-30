@@ -1,0 +1,32 @@
+{strip}
+
+{foreach $q as $r}
+<div class="box_body" style="padding: 2px 25px 20px;">
+		<h4 class="subheader">{$this->lang['Name']}</h4>
+        <input type="text" value="{$r.title}" class="dark it" id="album_title_update">
+
+		
+		<h4 class="subheader">{$this->lang['Delete']}</h4>
+		<div class="groups_create_section comm_radios clear_fix">
+            <div class="radiobtns group_radio" tabindex="0">
+              <label for="album_delete"> <input type="radio" onclick="event.preventDefault();var confirm_delete_com_Album = '{$this->lang['confirm_delete_com_Album']}';var _that = this;{literal}return confirm_act(confirm_delete_com_Album,function(){_that.checked=true;});{/literal}" id="album_delete" name="album_delete"/>{$this->lang['delete_album']}
+                </label>
+            </div>
+        </div>
+		</div>
+<div class="box_controls_wrap" style="display: block;">
+    <div class="box_controls">
+        <table cellspacing="0" cellpadding="0" class="fl_r">
+            <tbody>
+                <tr>
+                    <td><button id="new_comm_popup_close" onclick="ga('#nohook_modal_close').trigger('click');" class="flat_button secondary">{$this->lang['cancel']}</button></td>
+                    <td><button class="flat_button" data-id="{$clubid}" onclick="return createCommunityAlbum(event,1,'{$r.id}');">{$this->lang['Save']}</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="box_controls_text _box_controls_text" id="group_album_edit_ajax_msg"></div>
+    </div>
+</div>
+{/foreach}
+
+{/strip}

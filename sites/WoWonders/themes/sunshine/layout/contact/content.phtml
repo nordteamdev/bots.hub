@@ -1,0 +1,85 @@
+<div class="wo_about_wrapper_parent">
+	<div class="wo_about_wrapper"> 
+		<div class="hero hero-overlay"> 
+			<div class="container wo_go_pro">
+				<div class="col-md-1"></div>
+				<div class="col-md-6">
+					<h1 class="head_pro"><?php echo $wo['lang']['contact_us'];?></h1>
+					<h1 class="main_head_pro"><?php echo $wo['lang']['contact_help'];?></h1>
+				</div>
+				<div class="col-md-4 hidden-rocket">
+					<img src="<?php echo $wo['config']['theme_url'];?>/img/cads/help.svg" alt="help"/>
+				</div>
+				<div class="col-md-1"></div>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<div class="page-margin wo_about_page_margin">
+	<div class="row">
+		<label class="col-md-3"></label>
+		<div class="col-md-6">
+			<div class="red-list">
+				<div class="wo_settings_page">
+					<form class="contact-us-form form-horizontal" method="post">
+						<div class="setting-panel row">
+							<!-- Text input-->
+							<div class="sun_input">
+								<input type="text" id="first_name" name="first_name" placeholder="<?php echo $wo['lang']['first_name']?>" autofocus>
+								<label for="first_name"><?php echo $wo['lang']['first_name']?></label>
+							</div>
+							<div class="sun_input">
+								<input type="text" id="last_name" name="last_name" placeholder="<?php echo $wo['lang']['last_name']?>">
+								<label for="last_name"><?php echo $wo['lang']['last_name']?></label>
+							</div>
+							<div class="sun_input">
+								<input type="text" id="email" name="email" placeholder="<?php echo $wo['lang']['email']?>">
+								<label for="email"><?php echo $wo['lang']['email']?></label>
+							</div>
+							<div class="sun_input">
+								<textarea name="message" id="message" rows="5" placeholder="<?php echo $wo['lang']['message']?>"></textarea>
+								<label for="message"><?php echo $wo['lang']['message']?></label>
+							</div>
+						</div>
+						<div class="contact-us-alert setting-update-alert"></div>
+						<div class="form-group last-sett-btn modal-footer">
+							<div class="ball-pulse"><div></div><div></div><div></div></div>
+							<button type="submit" name="send" id="send" tabindex="4" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['send'];?></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<label class="col-md-3"></label>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script>
+   $(function() {
+     $('form.contact-us-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=contact_us',
+       beforeSend: function() {
+		 $('form.contact-us-form').find('.ball-pulse').fadeIn(100);
+       },
+       success: function(data) {
+         if (data.status == 200) {
+            $('.contact-us-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+            $('.alert-success').fadeIn(300);
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.contact-us-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('form.contact-us-form').find('.ball-pulse').fadeOut(100);
+       }
+     });
+   });
+</script>
+<style>
+.wo_about_wrapper .hero-overlay {background: #3D8CFA;padding-top: 30px;}
+.wo_go_pro .col-md-4 img, .wo_pro_features img {width: 50%;margin: 30px 20px 0 auto;display: block;opacity: 0.7;}
+.wo_about_page_margin {margin-top: 300px;}
+</style>

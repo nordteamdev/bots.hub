@@ -1,0 +1,106 @@
+
+<!------------ User's songs -------------->
+
+{strip}
+
+
+{foreach $s_query as $result}
+
+{if $condition === 0}
+
+<div class="mus_content_w">
+  <div class="mus_album">
+    <div class="mus_album_i__fixed">
+      <div class="mus_album_i_w">
+        <div class="mus_album_side_w curPointer">
+          <div class="mus_album_side mus_album_side__c">
+            
+            <img alt="" class="mus_album_i" src="{$this->defaultCover}">
+  
+                                </div>
+                                <div class="mus_album_side mus_album_side__a">
+                                  <img alt="" style="width:128px;height:128px;" class="mus_album_i" src="{$result.cover}">
+                                  
+                                </div>
+                              </div>
+                       </div>
+                       <div class="m_c_s_c_go_to mt-5" title="{$result.artist}">
+                         {$result.artist}
+                       </div>
+               </div>
+               
+               <div class="mus-tr_lst mus_scroll-overlay" aria-hidden="false" style="min-height: 280px;">
+                 <div class="mus_scroll-overlay_dummy">
+                 </div>
+                 
+                 <ol>
+                   {/if}
+                   {assign var=s_id value={$result.id}}
+                   {assign var=s_artist value={$result.artist}}
+                   {assign var=s_song value={$result.title}}
+                   {assign var=s_album value={$result.album}}
+                   {assign var=s_pth value={$result.path}}
+                   {assign var=s_cover value={$result.cover}}
+                   {assign var=s_time value={$result.time}}
+                   {assign var=s_video value={$result.video}}
+                   {assign var=s_lang value={$result.language}}
+                   {assign var=download value=''}
+                   {if $s_lang === $purchase_ic}
+                   {assign var=download value='__download'}
+                   {/if}
+                   <li target="#p0_fr_{$this->user_id}_{$s_id}">
+  <div class="mus-tr_i  __has-video soh-s {$download}"  id="tri_{$this->user_id}_{$s_id}">
+  
+  <div class="mus-tr_hld">
+    <span class="mus-tr_play __play js-mus-tr_play" id="p0_fr_{$this->user_id}_{$s_id}" title="Play" data-action="play" data-quest='{literal}{{/literal}"song":"{$s_pth}","cover":"{$s_cover}"{literal}}{/literal}'>    </span>
+    {if $download !== ''}
+    <span class="mus-tr_download js-mus-tr_download" title="Download">
+    </span>
+    {/if}
+    <div class="mus-tr_cnt">
+      <a class="mus-tr_a mus-tr_artist">
+        {$s_artist}
+      </a>
+      &nbsp;&#8211;&nbsp;
+      <a class="mus-tr_a mus-tr_song">
+        {$s_song}
+      </a>
+      <span class="foh-s mus-tr_info">
+        &nbsp;from&nbsp;
+        <a class="mus-tr_a mus-tr_album">
+          <span class="mus-tr_album-ic ic10_album">
+          </span>
+          {$s_album}
+        </a>
+      </span>
+    </div>
+    <div class="mus-tr_right-controls foh-s" id="rc_{$s_id}">
+      <span class="mus-tr_add js-mus-tr_add" title="Add to My music">
+      </span>
+      <span class="mus-tr_dropdown js-mus_dropdown_trigger" title="Add to the playlist">
+      </span>
+    </div>
+    <span class="mus-tr_time">
+      {$s_time}
+    </span>
+  </div>
+  {if $s_video > '0'}
+  <div class="mus-tr_video" data-showVideo="true" data-video="{$s_video}">
+  </div>
+  {/if}
+  </div>
+  </li>
+  {assign var=condition value={$condition++}}
+  {/foreach}
+  </ol>
+               </div>
+	       {if $songs_count >= $friend_songs_limit}
+               <div class="m_c_s_c_go_to mt-20" id="mus_more_song" d-more-songs="true" data-users-mr-sng="true" data-q="friends" data-user="{$this->user_id}">
+  		More songs 
+               </div>
+	       {/if}
+               <!--- get the user's playlists ---->
+               {$this->getUserPlaylists()}
+               
+               {/strip}
+               

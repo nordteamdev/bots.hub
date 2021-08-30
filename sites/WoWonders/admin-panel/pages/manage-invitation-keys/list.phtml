@@ -1,0 +1,15 @@
+<tr class="setting-invitation" data-invitation="<?php echo $wo['invitation']['id']; ?>">
+  <td >
+     <?php echo Wo_Time_Elapsed_String($wo['invitation']['posted']); ?>
+  </td>
+  <td>
+     <?php echo $wo['invitation']['code']; ?>
+  </td>
+  <td>
+     Pending
+  </td>
+  <td>
+     <button class="btn btn-info waves-effect copy-invitation-url" id="<?php echo $wo['invitation']['id']; ?>" data-link="<?php echo $wo['invitation']['url']; ?>">COPY LINK</button>
+     <button class="btn btn-danger waves-effect delete-admin-invitation" id="<?php echo $wo['invitation']['id']; ?>">DELETE</button>
+  </td>
+</tr>

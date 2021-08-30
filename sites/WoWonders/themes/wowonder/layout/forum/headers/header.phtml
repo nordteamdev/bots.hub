@@ -1,0 +1,51 @@
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.js"></script>
+<link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.css" media="all">
+<style>
+.navbar-forum {background-color: <?php echo $wo['config']['btn_background_color'];?>;margin-top: 20px;padding:0;min-height: 45px;height: 100%;}
+.f_category,.member_list,.adv-mbr-search,.g_search, .bg-main, .blocksubhead {background-color: <?php echo $wo['config']['header_background'];?>;color: #fff;}
+.section-list {padding: 10px;}
+.forum-tabs{width: 100%;overflow: hidden;margin-bottom: 20px;}
+.forum-tabs li{width: 25%;background-color: #a84849;float: left;text-align: center;font-size: 14px;}
+.forum-tabs li a{width: 100%;padding: 10px 0px;background-color: #a84849;color: #fff;vertical-align: middle;}
+.forum-tabs li a:hover{background: rgba(245, 245, 245, 0.04);}
+.navbar-forum .navbar-nav>.active>a, .navbar-forum .navbar-nav>.active>a:focus, .navbar-forum .navbar-nav>.active>a:hover, .nav-names li:hover{color: <?php echo $wo['config']['btn_color'];?> !important;background-color: <?php echo $wo['config']['btn_hover_background_color'];?> !important;border-color: <?php echo $wo['config']['btn_hover_background_color'];?> !important;}
+.navbar-collapse {padding-left: 0 !important;}
+.flink {color: <?php echo $wo['config']['btn_background_color'];?> !important;}
+blockquote {border-left: 2px solid <?php echo $wo['config']['btn_background_color'];?> !important;}
+.bbcode-editor .bbcode-toolbar {color: #fff;background: <?php echo $wo['config']['header_background'];?> !important;padding: 8px;padding-bottom: 5px;}
+.no-float{float:none !important;margin: 0;}
+@media (max-width:768px){
+.navbar-forum{text-align:center;}
+}
+</style>
+<?php 
+$forum_class = 'search-forums';
+if (!empty($_GET['fid'])) {
+	$forum_class = 'search-forum-threads';
+}
+if ($_GET['link1'] == 'showthread') {
+	$forum_class = 'forum-messages-search';
+}
+
+ ?>
+<nav class="navbar navbar-default navbar-forum" role="navigation">
+  <div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-8">
+    <ul class="nav navbar-nav no-float">
+      <li class="<?php if ($wo['active'] == 'forums') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum');?>" data-ajax="?link1=forum"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>  <span><?php echo $wo['lang']['forum']; ?></span></a></li>
+      <li class="<?php if ($wo['active'] == 'members') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-members');?>" data-ajax="?link1=forum-members"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>  <span><?php echo $wo['lang']['members']; ?></span></a></li>
+      <li class="<?php if ($wo['active'] == 'search') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-search');?>" data-ajax="?link1=forum-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>  <span><?php echo $wo['lang']['search']; ?></span></a></li>
+    </ul>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-4">
+    <ul class="nav navbar-nav pull-right">
+      <li class="<?php if ($_GET['link1'] == 'mythreads') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads');?>" data-ajax="?link1=mythreads"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> <span><?php echo $wo['lang']['my_threads']; ?></span></a></li>
+      <li class="<?php if ($_GET['link1'] == 'mymessages') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages');?>" data-ajax="?link1=mymessages"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> <span><?php echo $wo['lang']['my_messages']; ?></span></a></li>
+    </ul>
+	</div>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+<div class="page-margin" id="forum-cont">
+	<!-- Tab panes -->
+	<div class="tab-content" id="tab-content">

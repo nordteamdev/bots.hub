@@ -1,0 +1,460 @@
+<div class="row">
+	<form action="#" method="post" class="create-{{PAGE_TYPE}}-form posts-managing">
+		<div class="col-md-12 fl_new_header">
+			<div class="fl_new_header_child content-shadow">
+				{{LANG edit}} {{LANG post}}
+				<button type="button" data-btn-text="{{LANG publish}}" data-btn-icon="cloud-upload" class="btn-publish btn btn-blue pull-right" onclick="FL_SubmitNewsForm('publish')"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4V6H19V4H5M5,14H9V20H15V14H19L12,7L5,14Z" /></svg> {{LANG save}}</button>
+				<button type="button" class="btn btn-gray pull-right" onclick="FL_Cancel();">{{LANG cancel}}</button>
+			</div>
+		</div>
+		<div class="col-md-8 no-padding-right">
+			<div class="main-container fl_create_p_shadow">
+				<h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M5,4V7H10.5V19H13.5V7H19V4H5Z" /></svg> {{LANG title}}</h3>
+				<div class="content fl_create_title">
+					<div class="form-group" id="title_con">
+						<div class="error-con"></div>
+						<input  name="title" type="text" class="form-control" dir="auto" value="{{POST_TITLE}}">
+					</div>
+					<div class="form-group" id="short_title_con">
+						<div class="error-con"></div>
+						<input  name="short_title" type="text" class="form-control" value="{{POST_SHORT_TITLE}}" dir="auto">
+					</div>
+					<input  name="or_post_preview_image" type="text" class="form-control hidden" value="{{POST_IMAGE}}" dir="auto">
+				</div>
+			</div>
+			<br>
+			<div class="main-container fl_create_p_shadow">
+				<h3 class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg> {{LANG content_and_entries}}</h3>
+				<div class="content">
+					<div id="post-entries">
+						{{POST_ENTRIES}}
+					</div>
+					{{ADD_ENTRIES}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="main-container sidsebar-sticky fl_create_p_shadow">
+				<h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" /></svg> {{LANG publish}}</h3>
+				<br>
+				<div class="content">
+				<?php if (!empty($_GET['type']) && $_GET['type'] != 'quiz'): ?>
+					<div class="form-group">
+						<h5>{{LANG entries_per_page}}</h5>
+						<select name="entries_per_page" id="" class="form-control">
+							<option value="0"  {{SELECT_PER_PAGE_0}}>{{LANG all}}</option>
+							<option value="1"  {{SELECT_PER_PAGE_1}}>1</option>
+							<option value="2"  {{SELECT_PER_PAGE_2}}>2</option>
+							<option value="4"  {{SELECT_PER_PAGE_4}}>4</option>
+							<option value="6"  {{SELECT_PER_PAGE_6}}>6</option>
+							<option value="8"  {{SELECT_PER_PAGE_8}}>8</option>
+							<option value="10" {{SELECT_PER_PAGE_10}}>10</option>
+						</select>
+					</div>
+				<?php endif; ?>
+				<input type="hidden" class="hash_id" name="hash_id" value="<?php echo FL_CreateSession();?>">
+				<input type="hidden" name="post_preview_image" id="post-preview-image-input" value="{{POST_IMAGE}}">
+				</div>
+			</div>
+			<br>
+			<div class="main-container sidsebar-sticky fl_create_p_shadow" id="image_con">
+				<h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z" /></svg> {{LANG p_img}}</h3>
+				<br>
+				<div class="content">
+					<div class="error-con"></div>
+					<div class="preview-image" id="post-preview-image" onclick="document.getElementById('news-preview-image').click(); return false">
+						<div class="content">
+							<div class="post-image">
+								<img src="{{POST_IMAGE}}">
+							</div>
+						</div>
+					</div>
+					<input type="file" name="preview_image" id="news-preview-image" class="hidden" onchange="FL_UploadPreviewImage();">
+				</div>
+			</div>
+			<br>
+			<div class="main-container sidsebar-sticky fl_create_p_shadow">
+				<h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg> {{LANG details}}</h3>
+				<div class="content">
+					<div class="form-group" id="description_con">
+						<div class="error-con"></div>
+						<textarea onkeyup="textAreaAdjust(this, 70);" name="description" id="" cols="18" rows="3" class="form-control" dir="auto">{{POST_DESC}}</textarea>
+					</div>
+					<br>
+					<h5 class="label-text">{{LANG tags}}:</h5>
+					<div class="form-group" id="tags_con">
+						<div class="error-con"></div>
+						<input type="text" id="mySingleFieldTags" name="tags" class="form-control" placeholder="{{LANG tags}}" value="{{POST_TAGS}}">
+					</div>
+					<div class="form-group" id="category_con">
+						<div class="error-con"></div>
+						<select name="category" id="" class="form-control">
+							<option selected disabled>{{LANG category}}</option>
+							{{Categories}}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<input type="hidden" name="post_id" value="{{POST_ID}}">
+	</form>
+</div>
+<div id="img-uploading-wrapper" class="hidden">    
+ <div class="loader"></div>
+</div>
+
+<script>
+var form = $('.create-{{PAGE_TYPE}}-form');
+var data_entry = new Array();
+var data = new Array();
+var data_string = new Array();
+var form_name = '';
+var btn_save_text = $('.btn-save').attr('data-btn-text');
+var btn_save_icon = $('.btn-save').attr('data-btn-icon');
+var btn_publish_text = $('.btn-publish').attr('data-btn-text');
+var btn_publish_icon = $('.btn-publish').attr('data-btn-icon');
+
+$(function() {
+  $("#mySingleFieldTags").tagit();
+  $("[data-type=text] textarea").each(function (d) {
+      CKEDITOR.replace(this);
+    });
+});
+
+
+function FL_SubmitNewsForm(submit_type) {
+  for(var instanceName in CKEDITOR.instances) {
+    CKEDITOR.instances[instanceName].updateElement();
+  }
+  if (submit_type == '' || (typeof submit_type == 'undefined')) {
+    return false;
+  }
+  entries = $('div[data-type]');
+  entries.each(function(index, element) {
+    var self        = $(this);
+        type        = $(this).attr('data-type');
+        data_id     = $(this).attr('data-id');
+        data_inputs = {};
+        entry_input_data = new Array();
+        $(this).find('select[data-name], textarea[data-name], input[data-name]').each(function() {
+          data_string_name = $(this).attr('data-name');
+          data_string_val = $(this).val();
+          data_inputs[data_string_name] = data_string_val;
+          entry_input_data = data_inputs;
+        });
+        if (type == 'option') {
+         data_inputs['answers'] = [];
+         $(this).find('.answers').find('input[data-answer]').each(function(index) {
+              data_string_name = $(this).attr('data-answer');
+              data_string_id   = $(this).attr('data-id');
+              data_string_val  = $(this).val();
+              data_inputs['answers'].push({id:data_string_id, text: data_string_val});
+            });
+            if (self.find('.answers').find('.active').attr('data-ans-type') == 'text') {
+              data_inputs['answer']     = 't';
+            }
+
+            else{
+              data_inputs['answer']     = 'i';
+            }
+    }
+    if (type == 'question') {
+          data_inputs['answers']        = [];
+      var ans_container             = $(element).find('.answers');
+      
+      ans_container.find('.answer-img-wrapper').each(function(index,elans) {
+        var data_list_val         = {};
+        $(elans).find('[data-answer]').each(function(index, el) {
+          data_ans_key                 = $(this).attr('data-answer');    
+              data_list_val[data_ans_key]  = $(this).val();
+        });
+        data_inputs['answers'].push(data_list_val);
+            });
+    }
+        data = {
+      type: type,
+      data_inputs: entry_input_data,
+      data_id: data_id,
+      index_id: index + 1
+    };
+    data_entry.push(data);
+    });
+    var form_data = form.serialize();
+
+    if (data_entry.length < 1) {
+      swal({
+        title: 'Error!',
+        text: "{{LANG please_check_details}}!",
+        type:"error",
+        allowOutsideClick: false
+      });
+      return false;
+    }
+
+    $('.error-con').empty();
+    $('.btn-save').attr('disabled', true);
+    $('.btn-publish').attr('disabled', true);
+    if (submit_type == 'publish') {
+      $('.btn-publish').html('<i class="fa fa-spinner fa-spin"></i> {{LANG please_wait}}');
+    }
+
+    else {
+      $('.btn-save').html('<i class="fa fa-spinner fa-spin"></i>{{LANG please_wait}}');
+    }
+
+
+    $.ajax({
+      type: 'POST',
+      url: FL_Ajax_Requests_File() + '?f=update_post&post_type={{PAGE_TYPE}}',
+      dataType: 'json',
+      data: {submit_type:submit_type, data_entry:data_entry, form_data:form_data}, 
+      success: function (data) {
+        if (data.status == 400) {
+          data.error.forEach(function(entry) {
+                    $('#entry-' + entry.id).find('.error-con').html(entry.message);
+                });
+                FL_Scroll('entry-' + data.error[0].id);
+        }
+
+        else if (data.status == 410) {
+          $('#title_con').find('.error-con').addClass('active').html(data.error);
+          FL_Scroll('title_con');
+        }
+
+        else if (data.status == 460 || data.status == 470 || data.status == 480) {
+          $('#short_title_con').find('.error-con').addClass('active').html(data.error);
+          FL_Scroll('short_title_con');
+        }
+
+        else if (data.status == 420) {
+          $('#tags_con').find('.error-con').html(data.error);
+          FL_Scroll('tags_con');
+        }
+
+        else if (data.status == 430) {
+          $('#description_con').find('.error-con').html(data.error);
+          FL_Scroll('description_con');
+        }
+
+        else if (data.status == 440) {
+          $('#category_con').find('.error-con').html(data.error);
+          FL_Scroll('category_con');
+        }
+
+        else if (data.status == 450) {
+          $('#image_con').find('.error-con').html(data.error);
+          FL_Scroll('image_con');
+        }
+        else if (data.status == 451) {
+            swal("{{LANG error}}", "{{LANG min_results_2}}", "error")
+            FL_Scroll('title_con');
+
+          }
+
+          else if (data.status == 452) {
+            swal("{{LANG error}}", "{{LANG question_required}}", "error")
+            FL_Scroll('title_con');
+
+        }
+        else if (data.status == 1000) {
+          alert(data.error);
+        }
+
+        else if (data.status == 200) {
+          location.href = data.href;
+        }
+          data = new Array();
+          arra_test = new Array();
+          data_inputs = new Array();
+          data_entry = new Array();
+          $('.btn-save').attr('disabled', false);
+            $('.btn-publish').attr('disabled', false);
+            $('.btn-save').html('<i class="fa fa-' + btn_save_icon + '"></i> ' + btn_save_text);
+            $('.btn-publish').html('<i class="fa fa-' + btn_publish_icon + '"></i> ' + btn_publish_text);
+        },
+        error: function (request, status, error) {
+            data = new Array();
+          arra_test = new Array();
+          data_inputs = new Array();
+          data_entry = new Array();
+          $('.btn-save').attr('disabled', false);
+            $('.btn-publish').attr('disabled', false);
+            $('.btn-save').html('<i class="fa fa-' + btn_save_icon + '"></i> ' + btn_save_text);
+            $('.btn-publish').html('<i class="fa fa-' + btn_publish_icon + '"></i> ' + btn_publish_text);
+        }
+    });
+
+}
+
+
+function FL_CreateQuizResult(self){
+
+  FL_progressIconLoader($(self));
+  $.ajax({
+    url: FL_Ajax_Requests_File(),
+    type: 'GET',
+    dataType: 'json',
+    data: {f: 'quiz',s:'add-result'},
+  })
+  .done(function(data) {
+    if (data.status == 200) {
+      if ($("[data-type='result']").length > 0) {
+        $(data.html).insertAfter("[data-type='result']:last").scrollTo();
+        FL_QuizSyncQR();
+      }
+      else{
+        $("#create-quiz-results").prepend(data.html);
+        FL_QuizSyncQR();
+      }
+      
+    }
+    FL_progressIconLoader($(self));
+  })
+  .fail(function() {
+    console.log("error");
+    FL_progressIconLoader($(self));
+  })
+}
+
+function FL_QuizSyncQR(){
+  var results   = $('[data-type="result"]');
+  var questions = $('[data-type="question"]');
+  if (results.length < 1 || questions.length < 1) {
+    return false;
+  }
+
+  $('[data-type="question"]').each(function(index_q, el_q) {
+      $(el_q).find('select').empty();
+      $("[data-type='result']").each(function(index_r, el_r) {
+        var result_index = (index_r += 1);
+        $(el_q).find('select').append('<option value="'+result_index+'">{{LANG result}} '+result_index+'</option>');
+      });
+      
+  });
+}
+
+function FL_CreateQuizQuestion(self){
+
+  FL_progressIconLoader($(self));
+  $.ajax({
+    url: FL_Ajax_Requests_File(),
+    type: 'GET',
+    dataType: 'json',
+    data: {f: 'quiz',s:'add-question'},
+  })
+  .done(function(data) {
+    if (data.status == 200) {
+      if ($("[data-type='question']").length > 0) {
+        $(data.html).insertAfter("[data-type='question']:last").scrollTo();
+        FL_QuizSyncQR();
+      }
+      else{
+        $("#create-quiz-questions").prepend(data.html);
+        FL_QuizSyncQR();
+      }
+      
+    }
+    FL_progressIconLoader($(self));
+  })
+  .fail(function() {
+    console.log("error");
+    FL_progressIconLoader($(self));
+  })
+}
+
+function FL_AddQuizAnswer(id) {
+  if (!id) { return false;}
+  var question_container = $('#entry-' + id);
+  var question_answer_id = question_container.find('.pick-questionans-img:last').attr('data-id'); 
+  question_answer_id     = (question_answer_id) ? question_answer_id : 0;
+  $.ajax({
+    url: FL_Ajax_Requests_File(),
+    type: 'GET',
+    dataType: 'json',
+    data: {f: 'quiz',s:'answer',id:id,index:question_answer_id},
+  })
+  .done(function(data) {
+    if (data.status == 200) {
+      var answer =  $(data.html);
+      question_container.find('.answers').find('#question-answers').append(answer);
+      FL_QuizSyncQR();
+    }
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+
+
+function FL_RemoveResultEntry(id) {
+  var result_index = ($('#entry-' + id).index() + 1);
+  var box          = $('#entry-' + id).slideUp(200, function () {
+    $(this).remove();
+    FL_QuizSyncQR();
+  });
+}
+
+jQuery(document).ready(function($) {
+  $(document).on('click', '.pick-answer-img', function(event) {
+    event.preventDefault();
+    var entry_time = $(this).attr('id');
+    var index      = $(this).attr('data-id');
+    $("#opt-img-"+entry_time).attr('data-index', index).trigger('click');
+  });
+
+  $(document).on('click', '.pick-questionans-img', function(event) {
+    event.preventDefault();
+    var entry_time = $(this).attr('id');
+    var index      = $(this).attr('data-id');
+    $("#questionans-img-"+entry_time).attr('data-index', index).trigger('click');
+  });
+
+});
+
+function FL_UploadVideo(id,self){
+  if (!self || !id) { return false;}
+  var data = new FormData();
+  data.append('video',$(self).prop('files')[0]);
+  $("#img-uploading-wrapper").removeClass('hidden');
+  $.ajax({
+    url: FL_Ajax_Requests_File() + "?f=upload&s=video",
+    type: 'POST',
+    data: data,
+    processData: false,
+    contentType: false,
+    data: data,
+  })
+  .done(function(data) {
+    if (data.status == 200) {
+      $("#entry-"+id).find('#fetched-video').html(data.html);
+      $("#entry-"+id).find('.btn-main').attr('disabled', 'true');
+      $("#entry-"+id).find('#entry_video_type').val('source');
+      $("#entry-"+id).find('#entry_video_id').val(0);
+      $("#entry-"+id).find('#entry_video_src').val(data.filename);
+    }
+
+    else if(data.status == 401){
+      swal(
+        '{{LANG error}}',
+        data.message,
+        'error'
+      )
+    }
+
+    else{
+      swal(
+        '{{LANG error}}',
+        '{{LANG error_not_supported_video}}',
+        'error'
+      )
+    }
+    FL_Delay(function(){
+      $("#img-uploading-wrapper").addClass('hidden');
+    },300);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+</script>

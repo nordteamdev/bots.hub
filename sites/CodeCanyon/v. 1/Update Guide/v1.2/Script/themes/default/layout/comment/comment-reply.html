@@ -1,0 +1,27 @@
+<div class="fl-comment-item" data-reply-item="{{REPLY_ID}}">
+	<div class="col-md-1">
+		<div class="fl-comment-item-img"> 
+			<img src="{{REPLY_USER_AVATAR}}" alt="" class="responsive-img">
+		</div>
+	</div>
+	<div class="col-md-11 padding-rx col-sm-10 col-xs-9">
+		<div class="fl-comment-item-cont">
+			<div>
+				<a href="{{REPLY_USER_URL}}">{{REPLY_USER_NAME}}</a> {{USER_VERIFIED}}
+				&nbsp;
+				<time><i class="fa fa-clock-o" aria-hidden="true"></i> {{REPLY_TIME}}.</time>
+				<?php if ($fl['reply']['owner']): ?>
+					<span class="pull-right pointer delete-comment" onclick="FL_DeleteReply('{{REPLY_ID}}');">
+						<small><i class="material-icons">delete</i></small>
+					</span>
+				<?php endif ?>
+			</div>
+			<p>
+				{{REPLY_TEXT}}
+			</p>
+			<span class="pointer comms-reply" onclick="$('#comm-reply-{{COMM_ID}}').removeClass('hidden').find('input').val('@{{REPLY_USER_NAME}}: ').focus().scrollTo();"><small><i class="fa fa-fw fa-reply"></i>  {{LANG reply}}</small></span>
+		</div>
+	</div>
+	
+	<div class="clear"></div>
+</div>

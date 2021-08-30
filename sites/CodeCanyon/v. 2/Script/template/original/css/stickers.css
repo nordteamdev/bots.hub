@@ -1,0 +1,441 @@
+
+.sticker {
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: baseline;
+    height: 18px;
+    width: 18px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    border: 0;
+}
+
+.sticker-w26 {
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.sticker-w26.sticker-spritesheet-0 {
+    background-size: 702px 182px;
+}
+.emoji-menu img.sticker {
+    width: 64px;
+    height: 64px;
+}
+
+/* Cute cat
+=============================*/
+.sticker.cute-cat {
+    width: 64px!important;
+    height: 64px!important;
+	max-width:64px!important;
+	max-height:64px!important;
+    vertical-align: bottom;
+}
+.comments_smiles_tabs_ic.__cutecat, .sticker.cute-cat {
+    background-size: 385px 250px;
+    background-image: url(../../../../cmd/smilies/stickers/cutecat/cutecat.png);
+}
+.comments_smiles_tabs_ic.__cutecat {
+    background-size: 214px 133px;
+    width: 26px;
+    height: 26px;
+    background-position: -7px 1px;
+}
+
+/* :cutecat0:
+-----------*/
+.sticker-code-bg-kn_cutecat0 {
+    background-position: -2px 6px;
+}
+
+
+/* :cutecat1:
+-----------*/
+.sticker-code-bg-kn_cutecat1 {
+    background-position: -76px 0px;
+}
+
+/* :cutecat2:
+-----------*/
+.sticker-code-bg-kn_cutecat2 {
+    background-position: -72px 2px;
+}
+
+/* :cutecat3:
+-----------*/
+.sticker-code-bg-kn_cutecat3 {
+    background-position: -232px -6px;
+}
+
+/* :cutecat4:
+-----------*/
+.sticker-code-bg-kn_cutecat4 {
+    background-position: -309px 6px;
+}
+
+/* :cutecat5:
+-----------*/
+.sticker-code-bg-kn_cutecat5 {
+    background-position: -6px -57px;
+}
+
+/* :cutecat6:
+-----------*/
+.sticker-code-bg-kn_cutecat6 {
+    background-position: -79px -63px;
+}
+
+/* :cutecat7:
+-----------*/
+.sticker-code-bg-kn_cutecat7 {
+    background-position: -156px -59px;
+}
+
+/* :cutecat8:
+-----------*/
+.sticker-code-bg-kn_cutecat8 {
+    background-position: -231px -56px;
+}
+
+/* :cutecat9:
+-----------*/
+.sticker-code-bg-kn_cutecat9 {
+    background-position: -309px -56px;
+}
+
+
+/* :cutecat10:
+-----------*/
+.sticker-code-bg-kn_cutecat10 {
+    background-position: -2px -118px;
+}
+
+/* :cutecat11:
+-----------*/
+.sticker-code-bg-kn_cutecat11 {
+    background-position: -78px -118px;
+}
+
+/* :cutecat12:
+-----------*/
+.sticker-code-bg-kn_cutecat12 {
+    background-position: -155px -114px;
+}
+
+/* :cutecat13:
+-----------*/
+.sticker-code-bg-kn_cutecat13 {
+    background-position: -235px -123px;
+    background-size: 384px 265px!important;
+}
+
+
+/* :cutecat14:
+-----------*/
+.sticker-code-bg-kn_cutecat14 {
+    background-position:-309px -117px;
+}
+
+/* :cutecat15:
+-----------*/
+.sticker-code-bg-kn_cutecat15 {
+    background-position: 0px -178px;
+}
+
+/* :cutecat16:
+-----------*/
+.sticker-code-bg-kn_cutecat16 {
+    background-position: -78px -178px;
+}
+
+/* :cutecat17:
+-----------*/
+.sticker-code-bg-kn_cutecat17 {
+    background-position: -156px -176px;
+}
+
+/* :cutecat18:
+-----------*/
+.sticker-code-bg-kn_cutecat18 {
+    background-position: -233px -176px;
+}
+
+/* :cutecat19:
+-----------*/
+.sticker-code-bg-kn_cutecat19 {
+    background-position: -309px -180px;
+}
+
+ 
+
+
+
+
+/* Hacker boy
+=============================*/
+
+
+
+
+.sticker.hacker-boy {
+    width: 64px!important;
+    height: 64px!important;
+	max-width:64px!important;
+	max-height:64px!important;
+    vertical-align: bottom;
+}
+ .comments_smiles_tabs_ic.__hackerboy, .sticker.hacker-boy {
+        background-size: 280px 790px;
+    background-image: url(../../../../cmd/smilies/stickers/hacker-boy/hacker-boy.png);
+}
+.comments_smiles_tabs_ic.__hackerboy {
+    background-size: 107px 309px;
+    width: 23px;
+    height: 23px;
+    background-position: -0px -0px;
+}
+
+/* :hkboy1:
+-----------*/
+.sticker-code-bg-kn_hkboy1 {
+    background-position: -0px -0px;
+}
+
+
+/* :hkboy2:
+-----------*/
+.sticker-code-bg-kn_hkboy2 {
+        background-position: -0px -71px;
+}
+
+/* :hkboy3:
+-----------*/
+.sticker-code-bg-kn_hkboy3 {
+       background-position: -0px -144px;
+}
+
+/* :hkboy4:
+-----------*/
+.sticker-code-bg-kn_hkboy4 {
+       background-position: -0px -217px;
+}
+
+/* :hkboy5:
+-----------*/
+.sticker-code-bg-kn_hkboy5 {
+       background-position: -0px -290px;
+}
+
+/* :hkboy6:
+-----------*/
+.sticker-code-bg-kn_hkboy6 {
+       background-position: -0px -362px;
+}
+
+/* :hkboy7:
+-----------*/
+.sticker-code-bg-kn_hkboy7 {
+    background-position: -0px -434px;
+}
+
+/* :hkboy8:
+-----------*/
+.sticker-code-bg-kn_hkboy8 {
+        background-position: -0px -506px;
+}
+
+/* :hkboy9:
+-----------*/
+.sticker-code-bg-kn_hkboy9 {
+       background-position: -0px -578px;
+}
+
+/* :hkboy10:
+-----------*/
+.sticker-code-bg-kn_hkboy10 {
+       background-position: -0px -650px;
+}
+
+/* :hkboy11:
+-----------*/
+.sticker-code-bg-kn_hkboy11 {
+       background-position: -0px -722px;
+}
+
+
+/* :hkboy12:
+-----------*/
+.sticker-code-bg-kn_hkboy12 {
+       background-position: -72px -0px;
+}
+
+/* :hkboy13:
+-----------*/
+.sticker-code-bg-kn_hkboy13 {
+    background-position: -72px -72px;
+}
+
+/* :hkboy14:
+-----------*/
+.sticker-code-bg-kn_hkboy14 {
+    background-position: -72px -144px;
+}
+
+/* :hkboy15:
+-----------*/
+.sticker-code-bg-kn_hkboy15 {
+    background-position: -72px -217px;
+}
+
+/* :hkboy16:
+-----------*/
+.sticker-code-bg-kn_hkboy16 {
+    background-position: -72px -290px;
+}
+
+/* :hkboy17:
+-----------*/
+.sticker-code-bg-kn_hkboy17 {
+    background-position: -72px -362px;
+}
+
+/* :hkboy18:
+-----------*/
+.sticker-code-bg-kn_hkboy18 {
+    background-position: -72px -434px;
+}
+
+/* :hkboy19:
+-----------*/
+.sticker-code-bg-kn_hkboy19 {
+    background-position: -72px -506px;
+}
+
+/* :hkboy20:
+-----------*/
+.sticker-code-bg-kn_hkboy20 {
+    background-position: -72px -578px;
+}
+
+/* :hkboy21:
+-----------*/
+.sticker-code-bg-kn_hkboy21 {
+    background-position: -72px -650px;
+}
+
+/* :hkboy22:
+-----------*/
+.sticker-code-bg-kn_hkboy22 {
+    background-position: -72px -722px;
+}
+
+
+/* :hkboy23:
+-----------*/
+.sticker-code-bg-kn_hkboy23 {
+    background-position: -144px -0px;
+}
+
+/* :hkboy24:
+-----------*/
+.sticker-code-bg-kn_hkboy24 {
+    background-position: -144px -72px;
+}
+/* :hkboy25:
+-----------*/
+.sticker-code-bg-kn_hkboy25 {
+    background-position: -144px -144px;
+}
+/* :hkboy26:
+-----------*/
+.sticker-code-bg-kn_hkboy26 {
+    background-position: -144px -216px;
+}
+/* :hkboy27:
+-----------*/
+.sticker-code-bg-kn_hkboy27 {
+    background-position: -144px -288px;
+}
+/* :hkboy28:
+-----------*/
+.sticker-code-bg-kn_hkboy28 {
+    background-position: -144px -360px;
+}
+/* :hkboy29:
+-----------*/
+.sticker-code-bg-kn_hkboy29 {
+    background-position: -144px -432px;
+}
+/* :hkboy30:
+-----------*/
+.sticker-code-bg-kn_hkboy30 {
+    background-position: -144px -504px;
+}
+/* :hkboy31:
+-----------*/
+.sticker-code-bg-kn_hkboy31 {
+    background-position: -144px -576px;
+}
+/* :hkboy32:
+-----------*/
+.sticker-code-bg-kn_hkboy32 {
+    background-position: -144px -648px;
+}
+/* :hkboy33:
+-----------*/
+.sticker-code-bg-kn_hkboy33 {
+    background-position: -144px -720px;
+}
+/* :hkboy34:
+-----------*/
+.sticker-code-bg-kn_hkboy34 {
+    background-position: -216px -0px;
+}
+/* :hkboy35:
+-----------*/
+.sticker-code-bg-kn_hkboy35 {
+    background-position: -216px -72px;
+}
+/* :hkboy36:
+-----------*/
+.sticker-code-bg-kn_hkboy36 {
+    background-position: -216px -144px;
+}
+/* :hkboy37:
+-----------*/
+.sticker-code-bg-kn_hkboy37 {
+    background-position: -216px -216px;
+}
+/* :hkboy38:
+-----------*/
+.sticker-code-bg-kn_hkboy38 {
+    background-position: -216px -288px;
+}
+/* :hkboy39:
+-----------*/
+.sticker-code-bg-kn_hkboy39 {
+    background-position: -216px -360px;
+}
+/* :hkboy40:
+-----------*/
+.sticker-code-bg-kn_hkboy40 {
+    background-position: -216px -432px;
+}
+/* :hkboy41:
+-----------*/
+.sticker-code-bg-kn_hkboy41 {
+    background-position: -216px -504px;
+}
+/* :hkboy42:
+-----------*/
+.sticker-code-bg-kn_hkboy42 {
+    background-position: -216px -576px;
+}
+/* :hkboy43:
+-----------*/
+.sticker-code-bg-kn_hkboy43 {
+    background-position: -216px -648px;
+}

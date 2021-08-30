@@ -1,0 +1,31 @@
+Changes:
+1. Added login with WoWonder API and integration on Flame. (Users can log in to flame using your site that uses wowonder social network platform).
+2. Added login with VK.
+3. Added quizzes system.
+4. Added the ability to add an image on each poll answer.
+5. Added footer to the welcome page
+6. Added full API system for the upcoming native applications. (IOS / Android)
+7. Added load more option to the home page.
+8. Added reaction system for news, polls, videos, music, lists, quizzes.
+9. Added new comment system (FB comment + website comment system)
+10. Added upload progress bar while uploading media.
+11. Added full verification form + verified badge.
+12. Added RSS feed export for each section.
+13. Added breaking news system.
+14. Added announcement system.
+15. Added share to email option on all posts.
+16. Added the option to import RSS news from any RSS/XML link.
+17. Added upload logo, favicon to the admin panel.
+18. Added upload video feature on all create pages under videos entry.
+19. Added theme system in the admin panel.
+20. Added new powerful admin panel.
+21. Added the option to enable/disable news, polls, videos, lists, etc.
+22. Added custom profile fields system.
+23. Added ban user option in admin panel.
+24. Added report system, users can report articles.
+25. Added backup system for SQL and files(zip)
+26. Added max allowed upload size.
+27. Added custom JavaScript/CSS code in the admin panel.
+28. Added the option to choose if users can post, or just admin.
+29. Added Amazon S3 support (Upload/Load images, videos, and content from Amazon S3 CDN)
+30. Added API ID / Keys to admin panel, for the upcoming native application.

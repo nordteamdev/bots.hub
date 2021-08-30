@@ -1,0 +1,38 @@
+{strip}
+
+
+
+<div class="comm_nav_header">
+<h2 class="page_block_h2 comm">
+<div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">
+
+<a class="ui_crumb" href="/community/{$group_id}" hrefattr="true"> {$group_name} </a>
+
+
+    <div class="ui_crumb_sep"></div>
+	
+	
+    <div class="ui_crumb"><a class="ui_crumb all_albums" href="/community/{$group_id}/albums" hrefattr="true">{$this->lang['Albums']}<span class="ui_crumb_count">{$this->getGroupAlbumsCount($group_id)}</span></a>
+	</div>
+	
+	{if $page != 'albums'}
+	
+	<div class="ui_crumb_sep"></div>
+	<div class="ui_crumb album_name">{$page}</div>
+	{/if}
+
+
+{if $isAdmin}
+<a href="/community/{$group_id}" hrefattr="true" id="new_album_done_href" style="display:none;"></a>
+<a href="javascript:void(0);" data-id="{$group_id}" class="comm_add_album"><span class="plus_comm_add_album">+</span> {$this->lang['comm_new_album']}</a>
+{/if}
+</div>
+
+</div>
+</h2>
+</div>
+
+
+
+{/strip}

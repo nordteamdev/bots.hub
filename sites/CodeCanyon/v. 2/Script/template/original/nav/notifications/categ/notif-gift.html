@@ -1,0 +1,65 @@
+{strip}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		{assign var=g_dt value=json_decode($res.json,true)}
+		{assign var=fromuser value=$this->getUserDetails($res.condition)}
+		{assign var=gift_details value=$this->getGiftDetails($res.item)}
+		           <div id="ne-n" data-category="Gifts" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+				
+				{if $g_dt.private === '' && $g_dt.anonym === ''}
+                    <div class="ucard-v __xs">
+                        <div class="section">
+					 
+                           <img class="photo_img" src="/getPhoto?p={$fromuser.profile_photo}&g={$fromuser.gender}&sz=small" alt="{$fromuser.fullname}" width="64" height="64">
+
+                        </div>
+                    </div>
+					{else}
+                    <div class="ucard-v __xs">
+                        <div class="section _transparent">
+					 
+                           <div class="anonym_gift_ic"></div>
+
+                        </div>
+                    </div>
+				{/if}
+                  <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+		{if $g_dt.private === '' && $g_dt.anonym === ''}				
+<a class="o bold" data-clbk="removePopup" href="/user/{$fromuser.id}" hrefattr="true">{$fromuser.fullname}</a><span class="__frrpkc_txt">&nbsp;{$this->lang['sent_you_a_gift']}</span>
+{else if ($g_dt.private === 'on')}
+{$this->lang['you_have_received_a_private_gift']}
+{else if ($g_dt.anonym === 'on')}
+{$this->lang['you_have_received_anonym_gift']}
+{/if}
+
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+
+<div class="notif_gift_wish"><div class="n_gift_w_txt">{$g_dt.descr}</div></div>
+<div class="notif_gift_umbr">
+<img class="gift_ic" src="/stcmd/gifts/{$gift_details.gift}">
+</div>
+
+<div class="notif_btn">
+
+<button onclick="acceptGift(event,this,'{$res.id}');" data-giftq='{ldelim}"cmd":"acceptGift","notif_id":"{$res.id}","gift_send_at":"{$res.time}","gift_id":"{$gift_details.id}","fromuser":"{$fromuser.id}","gift_descr":"{$g_dt.descr}","gift_private":"{$g_dt.private}","gift_anonym":"{$g_dt.anonym}"{rdelim}' class="flat_button _green __def __small mr-8 vmiddle">{$this->lang['accept']}</button>
+
+<a href="javascript:void(0);" onclick="ga('#hook_FormButton_fri_{$res.id}').trigger('click');" class="mr-l10 vmiddle">{$this->lang['Decline']}</a>
+</div>
+</div></div>
+
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ data-removenotif="{$res.id}" id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+</div></div>
+{/foreach}
+                    </div></div>
+                </div>
+				{/strip}

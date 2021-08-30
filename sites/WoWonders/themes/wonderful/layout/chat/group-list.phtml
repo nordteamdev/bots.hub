@@ -1,0 +1,29 @@
+<div class="recipient-chat-user groups-list" id="group_tab_<?php echo $wo['group']['group_id'];?>" data-chat-group="<?php echo $wo['group']['group_id'];?>">
+   <div class="user-info" onclick="Wo_OpenChatTab(0,<?php echo $wo['group']['group_id'];?>);">
+      <div  class="<?php echo Wo_RightToLeft('pull-right');?>" style="margin-right:15px; margin-top:5px;">
+         <span class="chat-loading-icon"></span>
+      </div>
+      <span class="chat-user-text" id="chat-tab-id">
+      	<div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['group']['avatar'];?>"/>
+        </div>
+        <?php echo $wo['group']['group_name']; ?>
+        <span class="<?php echo Wo_RightToLeft('pull-right');?> group-lastseen">
+          <?php if (is_array($wo['group']['last_seen']) && in_array($wo['group']['group_id'], $wo['group']['last_seen'])): ?>
+            <i class="fa fa-circle main" style="font-size:10px;"></i>
+          <?php endif;?>
+        </span>
+      </span>
+      <?php if (!empty($wo['group']['last_message'])): ?>
+	      <div class="user-lastseen" >
+	         <?php echo $wo['group']['last_message']['user_data']['name']; ?>: <?php echo Wo_Time_Elapsed_String($wo['group']['last_message']['time']); ?>
+	      </div>
+      <?php else: ?>
+        <div class="user-lastseen" >
+          <?php echo $wo['lang']['never']; ?>
+        </div>
+  	  <?php endif; ?>
+
+   </div>
+</div>
+<div class="clear"></div>

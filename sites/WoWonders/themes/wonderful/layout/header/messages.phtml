@@ -1,0 +1,37 @@
+<?php
+$unread_class = '';
+$message = Wo_GetMessagesHeader(array('user_id' => $wo['message']['user_id']), 1);
+if (!empty($message['from_id'])) {
+   if ($message['seen'] == 0 && $wo['message']['user_id'] == $message['from_id']) {
+    $unread_class = ' unread';
+   }
+   $message['text'] = mb_substr( $message['text'], 0, 40, "utf-8") . '...';
+}
+
+?>
+<li>
+   <div class="notification-list messages-list <?php echo $unread_class;?>" onclick="Wo_OpenChatTab(<?php echo $wo['message']['user_id']; ?>);">
+         <div class="notification-user-avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['message']['avatar']; ?>" alt="<?php echo $wo['notification']['notifier']['name']; ?> Profile picture">
+         </div>
+         <div class="notification-text">
+            <span class="main-color">
+            <?php echo $wo['message']['name']; ?>
+            </span>
+            <?php if (!empty($message['from_id'])): ?>
+            <div class="header-message">
+               <i class="zmdi zmdi-comments"></i>
+                  <?php echo ($wo['message']['user_id'] != $message['from_id']) ? $wo['lang']['me'] . ': ' : '';?>
+                  <?php echo (!empty($message['media'])) ? '<i class="fa fa-paperclip"></i> ' . $wo['lang']['file_n_label'] : $message['text']; ?>
+            </div>
+            <div class="notification-time active">
+               <div class="ajax-time" title="<?php echo date('c',$message['time']); ?>">
+                <?php echo Wo_Time_Elapsed_String($message['time'])?>
+               </div>
+            </div>
+            <?php endif ?>
+         </div>
+         <div class="clear"></div>
+   </div>
+</li>
+<li class="divider"></li>

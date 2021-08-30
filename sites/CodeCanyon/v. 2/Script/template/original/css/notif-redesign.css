@@ -1,0 +1,59 @@
+.notifs_menu .mml_cat_ul {
+    background: #F2F2F2;
+}
+.notifs_menu_btn.__active {
+    color: #000;
+    background-color: #E3C7A1;
+}
+.notifs_menu_btn:hover {
+    color: #333;
+    background-color: #DADADA;
+}.notifs_h {
+    width: 534px;
+    margin-left: 250px;
+}.notifs {
+
+    width: 798px;
+    margin-left: -344px;
+}.notifs_menu {
+    width: 250px;
+}
+.fcofw .notifs {
+    margin-left: -512px;
+}.notifs_wrap {
+
+    max-width: 547px;
+
+}.notifs_menu_btn{
+    font-size: 16px;
+    color: #676262;
+    font-family: sans-serif;
+    border-top: 0;
+    border-bottom: 0;
+}.notifs_menu_btn {
+    padding: 21px 7px 21px 11px;
+    -webkit-transition: none;
+    transition:none;
+	cursor:default;
+}
+.notifs_wrap {
+    background: #EBEBEB;
+}.notifs_menu .mml_cat_li {
+    margin-left: 0px; 
+}
+
+.notifs_menu .mml_notif__num {
+    background-color: #FDFDFD;
+    color: #333;
+    line-height: 16px;
+    text-shadow: initial;
+}.notifs_menu_btn .tico {
+    line-height: 18px;
+}.notifs_lst {
+    margin: 0 0 0 250px;
+}.notifs_cnt{
+    width: 798px;
+}
+#hook_Block_NotificationsLayerContent .notif {
+    background: #d9e2f2;
+}

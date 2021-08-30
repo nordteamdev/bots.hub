@@ -1,0 +1,20 @@
+<tr class="setting-banlist report-list-{{REPORT_ID}}">
+   <td>{{REPORT_ID}}</td>
+   <td>
+      <a href="{{REPORT_USER}}" target="_blank">{{REPORT_USERNAME}}</a>
+   </td>
+   <td>
+     <a href="{{REPORT_POST}}" target="_blank">Link</a>
+   </td>
+   <td>
+     {{REPORT_TIME}}
+   </td>
+   <td>
+      <button onclick="FL_ManageReport('{{REPORT_ID}}','s',this);" class="btn btn-info waves-effect"> 
+         MARK SAFE
+      </button>
+      <span onclick="FL_ManageReport('{{REPORT_ID}}','d',this);" class="btn btn-danger waves-effect"> 
+         DELETE
+      </span>
+   </td>
+</tr>

@@ -1,0 +1,269 @@
+<?php echo Wo_LoadPage('ads/includes/header'); ?>
+<div class="wo_settings_page create-ads-cont" style="padding: 0 15px 15px;">
+	<form class="form form-horizontal" method="get" id="create-ads">
+		<div class="row">
+			<div class="col-md-7 col-lg-7 col-sm-7 col-xs-12 create-ads-inner-left">
+				<div id="create-ads-alert" class="w100"></div>
+				<div class="setting-panel row">
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['company']; ?>:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="name" max="50">
+						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<small class="main"><?php echo $wo['lang']['select_a_page_or_link'] ?></small>
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['url']; ?>:</label>
+						<div class="col-md-12">
+							<input type="url" class="form-control" name="website">
+						</div>
+					</div>
+					<?php if ($wo['config']['pages'] == 1) { ?>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['my_pages']; ?>:</label>
+						<div class="col-md-12">
+							<select class="form-control" name="page" id="select-page">			
+								<?php if ($wo['my-pages'] && count($wo['my-pages']) > 0): ?>
+									<option value="" selected><?php echo $wo['lang']['select']; ?></option>
+								<?php foreach ($wo['my-pages'] as $wo['pageItem']): ?>
+									<option value="<?php echo $wo['pageItem']['page_name']; ?>">
+										<?php echo $wo['pageItem']['page_name']; ?>
+									</option>
+								<?php endforeach; ?>
+								<?php else:?>
+									<option disabled="disabled" selected="selected">
+										<?php echo $wo['lang']['no_pages_found']; ?>
+									</option>
+								<?php endif;?>
+							</select>
+						</div>
+					</div>
+					<?php } ?>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['title']; ?>:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="headline">
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['description']; ?>:</label>
+						<div class="col-md-12">
+							<textarea class="form-control" name="description"></textarea>
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['media']; ?></label>
+						<div class="col-md-12">
+							<div class="select-admedai-box" id="select-ad-media">
+								<button class="btn btn-default" type="button">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg> <?php echo $wo['lang']['choose_file']; ?>
+								</button>
+								<input type="text" readonly placeholder="<?php echo $wo['lang']['no_file_chosen']; ?>">
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+	
+			<div class="col-md-5 col-sm-5 col-lg-5 col-xs-12 create-ads-inner-right">
+				<div class="setting-panel row">
+					<div class="form-group col-lg-12">
+						<div class="form-group col-lg-12">
+							<label class="col-md-12"><?php echo $wo['lang']['location']; ?>:</label>
+							<div class="col-md-12" id="review-ads-location">
+								<input id="ads-location" name="location"  type="text" class="form-control"> 
+							</div>
+						</div>
+						<?php if ($wo['config']['google_map']) { ?>
+						<div class="form-group col-lg-12" id="review-ads-location">
+							<div class="col-md-12" id="place"></div>
+						</div>
+					    <?php }?>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12"><?php echo $wo['lang']['audience']; ?></label>
+							<div class="col-md-12">
+								<select data-live-search="true" data-actions-box="true" name="audience-list[]" id="ads-audience" class="selectpicker form-control" data-size="7" multiple>
+								<?php foreach ($wo['audience'] as $country_ids => $country): ?>
+									<?php if ($country_ids == 0): ?>
+										<option value="<?php echo $country_ids; ?>" disabled>
+											<?php echo $country; ?>
+										</option>
+									<?php else: ?>
+										<option value="<?php echo $country_ids; ?>">
+											<?php echo $country; ?>
+										</option>
+									<?php endif; ?>
+								<?php endforeach;?>
+								</select>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group col-lg-12">
+								<label class="col-md-12" style="padding: 0;"><?php echo $wo['lang']['gender'] ?></label>
+								<select name="gender" id="gender" class="form-control">
+									<option value="all" selected><?php echo $wo['lang']['all']; ?></option>
+									<option value="male"><?php echo $wo['lang']['male']; ?></option>
+									<option value="female"><?php echo $wo['lang']['female']; ?></option>
+								</select>
+							</div>
+							<div class="form-group col-lg-12">
+								<label class="col-md-12" style="padding: 0;"><?php echo $wo['lang']['appears'] ?></label>
+								<select name="appears" class="form-control">
+									<option value="post" selected><?php echo $wo['lang']['post']; ?> (<?php echo $wo['lang']['format_image']; ?>)</option>
+									<option value="sidebar"><?php echo $wo['lang']['sidebar']; ?> (<?php echo $wo['lang']['format_image']; ?>)</option>
+									<!-- <option value="video"><?php echo $wo['lang']['video_player']; ?> (<?php echo $wo['lang']['format_video']; ?>)</option> -->
+								</select>
+							</div>
+							<div class="form-group col-lg-12">
+								<label class="col-md-12" style="padding: 0;"><?php echo $wo['lang']['bidding']; ?></label>
+								<select name="bidding" id="bidding" class="form-control">
+									<option value="clicks"><?php echo str_replace('${{PRICE}}',  Wo_GetCurrency($wo['config']['currency']) . $wo['config']['ad_c_price'], $wo['lang']['pay_per_click']); ?></option>
+									<option value="views"><?php echo str_replace('${{PRICE}}', Wo_GetCurrency($wo['config']['currency']) . $wo['config']['ad_v_price'], $wo['lang']['pay_per_imprssion']); ?></option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group col-lg-12" id="estimated" style="display: none;">
+							<div class="col-md-12">
+								<div class="estimated_ad_limit">
+									<p class="bold"><?php echo $wo['lang']['estimated_reach']; ?></p>
+									<p><svg class="feather feather-users" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-reactid="1266"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> ~<span class="estimated_text"></span> <?php echo $wo['lang']['users']; ?></p>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group col-lg-12">
+							<div class="col-md-12">
+								<?php 
+									if ($wo['user']['wallet'] == '0.00' || $wo['user']['wallet'] == '0') {
+								?>
+									<div class="alert alert-warning">
+										<?php echo $wo['lang']['balance_is_0'] ?> 
+										<a href="<?php echo Wo_SeoLink('index.php?link1=wallet'); ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg> <?php echo $wo['lang']['top_up'] ?></a>
+									</div>
+								<?php } ?>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group last-sett-btn modal-footer" style="margin-right: -15px;">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button class="btn btn-main setting-panel-mdbtn" type="submit" style="border: 0;margin: 2px 15px;" <?php echo ($wo['user']['wallet'] == '0.00' || $wo['user']['wallet'] == '0') ? 'disabled' : ''; ?>>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+				<?php echo $wo['lang']['publish']; ?>
+			</button>
+			<div class="clear"></div>
+		</div>
+	
+		<input type="file" name="media" class="hidden" id="ad-media-file" accept="image/* video/*">
+	</form>
+	<div class="clear"></div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+
+
+		$("#ads-audience").change(function(event) {
+			var self = $(this);
+				get_estimated_users();
+		});
+
+		$("#gender").change(function(event) {
+			var self = $(this);
+			if (self.val() != '') {
+				get_estimated_users();
+			}
+		});
+
+		function get_estimated_users(){
+			var audience = null;
+			var gender = "ALL";
+			if ( $("#ads-audience").val() != '') {
+				audience = $("#ads-audience").val().join(',');
+			}
+			if ( $("#gender").val() != '') {
+				gender = $("#gender").val();
+			}
+
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'ads',s:'get_estimated_users', estimated_audience:audience, estimated_gender:gender},
+			}).done(function(data) {
+				if (data.status == 200) {
+					$('.estimated_text').text(data.count);
+					$("#estimated").show();
+				}
+			});
+		}
+
+	  	$('.selectpicker').selectpicker();
+
+	  	<?php if ($wo['config']['google_map']) { ?>
+	    $("#ads-location").keyup(function(event) {
+	        if ($(this).val().length >= 3) {
+	          Wo_Delay(function(){$("#review-ads-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=' + $("#ads-location").val() + '&language=en"></iframe>')},1000)
+	        }
+	        else{
+	          Wo_Delay(function(){$("#review-ads-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=us&language=en"></iframe>')},1000)
+	        }
+      	});
+	   <?php } ?>
+
+	    $("#select-page").change(function(event) {
+		  	var self     = $(this);
+		  	if (self.val() != '') {
+		  		var page_url = document.location.origin +'/'+ self.val();
+		  		$('#create-ads').find("input[name=website]").val(page_url);
+		  	}
+
+		  	else{
+		  		$('#create-ads').find("input[name=website]").val('');
+		  	}
+	  	});
+
+        $("#select-ad-media").click(function(event) {
+      		$("#ad-media-file").click();
+        });
+
+
+      	$("#ad-media-file").change(function(event) {
+	      	var filename = $(this).val().split('\\').pop();
+	      	$("#select-ad-media").find('input').val(filename);
+      	});
+
+		$('#create-ads').ajaxForm({
+			url: Wo_Ajax_Requests_File() + '?f=ads&s=new',
+			type:"POST",
+			beforeSend: function() {
+				$('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+			},
+			success: function(data) {
+				scrollToTop();
+				if (data['status'] == 200) {
+					$("#create-ads-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+					window.location = data.url;
+				} 
+
+				else if (data['message']) {
+					$("#create-ads-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+				} 
+
+				$('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+			}
+		});
+
+	});
+</script>

@@ -1,0 +1,36 @@
+<div class="page-margin">
+  <div class="row">
+    <div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+    <div class="col-md-7 middlecol">
+     <?php
+     $up = Wo_GetUserProType($wo['user']['pro_type']);
+     ?>
+      <div class="alert alert-warning">
+        <i class="fa fa-<?php echo $up['icon'];?> fa-fw"></i> 
+        <?php 
+        $string = str_replace('{type_name}', $up['type_name'], $wo['lang']['boost_page_in_same_time']);
+        $string = str_replace('{can_boost}', $up['can_boost'], $string);
+        echo $string;
+        ?>
+      </div>
+      <div class="alert alert-info">
+        <i class="fa fa-check fa-fw"></i> <?php echo $wo['lang']['boosted_pages_viewable'];?>
+      </div>
+      <div class="saved-posts wo_my_pages">
+        <?php
+        $stories = Wo_GetBoostedPages($wo['user']['user_id']);
+        if (count($stories) <= 0) {
+            echo Wo_LoadPage('boosted-pages/no-posts');
+        } else {
+            foreach ($stories as $wo['PageList']) {
+               $wo['PageList']['user_name'] = $wo['PageList']['name'];
+               $wo['PageList']['view_category'] = 1;
+               echo Wo_LoadPage('boosted-pages/pages-list');
+            }
+        }
+       ?>
+       </div>
+    </div>
+    <?php echo Wo_LoadPage('sidebar/content');?>
+  </div>
+</div>

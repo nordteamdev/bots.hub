@@ -1,0 +1,117 @@
+<?php
+$user_id            = $wo['user']['user_id'];
+$wo['is_admin']     = Wo_IsAdmin();
+$wo['is_moderoter'] = Wo_IsModerator();
+
+$wo['setting']['admin'] = false;
+if (isset($_GET['user']) && !empty($_GET['user']) && ($wo['is_admin'] === true || $wo['is_moderoter'] === true)) {
+    if (Wo_UserExists($_GET['user']) === false) {
+        header("Location: " . $wo['config']['site_url']);
+        exit();
+    }
+    $user_id                = Wo_UserIdFromUsername($_GET['user']);
+    $wo['setting']['admin'] = true;
+}
+$wo['setting'] = Wo_UserData($user_id);
+if ($wo['is_moderoter']) {
+  if ($wo['setting']['admin'] == 1) {
+       header("Location: " . $wo['config']['site_url']);
+       exit();
+  }
+}
+$wo['setting']['fileds'] = Wo_UserFieldsData($user_id);
+$wo['setting_page'] = 'general-setting';
+$pages_array = array(
+   'general-setting',
+   'profile-setting',
+   'privacy-setting',
+   'change-password-setting',
+   'social-links',
+   'design-setting',
+   'avatar-setting',
+   'email-setting',
+   'verification',
+   'blocked-users',
+   'transaction_log',
+   'my_points',
+   'manage-sessions',
+   'notifications-settings',
+   'two-factor'
+);
+if ($wo['setting']['user_id'] == $wo['user']['user_id']) {
+  $pages_array = array(
+   'general-setting',
+   'profile-setting',
+   'privacy-setting',
+   'change-password-setting',
+   'social-links',
+   'delete-account',
+   'design-setting',
+   'avatar-setting',
+   'email-setting',
+   'verification',
+   'blocked-users',
+   'transaction_log',
+   'my_points',
+   'manage-sessions',
+   'notifications-settings',
+   'two-factor'
+   );
+}
+if ($wo['config']['affiliate_system'] == 1) {
+  $pages_array[] = 'affiliates';
+  $pages_array[] = 'payments';
+}
+if (!empty($_GET['page'])) {
+   if (in_array($_GET['page'], $pages_array)) {
+      $wo['setting_page'] = $_GET['page'];
+   }
+}
+$wo['user_setting'] = '';
+if (!empty($_GET['user'])) {
+    $wo['user_setting'] = 'user=' . $_GET['user']. '&';
+}
+?>
+<style>
+.mobi-sidebar-setting{display:none}
+
+@media (max-width:992px){
+.pc-sidebar-setting{display:none}
+.mobi-sidebar-setting {display: block;}
+.cushomewider{margin-top:60px}
+.navbar-default{box-shadow:none}
+ul.scrollmenu::-webkit-scrollbar{display:none}
+ul.scrollmenu{background-color: <?php echo $wo['config']['header_background'];?>;}
+ul.scrollmenu li a{color: <?php echo $wo['config']['header_color'];?>;text-transform: uppercase;font-family: roboto;font-size: 15px;}
+ul.scrollmenu li{background:none !important;height: 49px;line-height: 44px;}
+ul.scrollmenu li:nth-child(2){margin-left: 30px;}
+ul.scrollmenu li:last-child{margin-right: 25px;}
+.filterbyz .avtive{border-bottom-color:<?php echo $wo['config']['header_color'];?> !important;}
+#mobi-set-side{width: 100%;padding: 0;top: 50px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);position: fixed;z-index: 9;left: 0px;}
+}
+</style>
+<div class="page-margin">
+   <div class="row setting-panel">
+      <div class="col-md-2 offnavmenu" style="z-index: 9;">
+         <?php echo Wo_LoadPage("sidebar/left-sidebar"); ?>
+      </div>
+	  <div class="mobi-sidebar-setting">
+          <?php echo Wo_LoadPage('setting/user-setting-sidebar');?>
+      </div>
+      <div class="col-md-7 cushomewider" style="padding-left: 0px;">
+         <?php echo Wo_LoadPage("setting/" . $wo['setting_page']); ?>
+      </div>
+      <div class="col-md-3 cushomesmaller sidebar pc-sidebar-setting cussidefix">
+          <?php echo Wo_LoadPage('setting/setting-sidebar');?>
+      </div>
+   </div>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+  var totalWidth = $("#mobi-set-side").outerWidth()
+  $('#mobi-set-side ul').css('width', totalWidth);
+    var myScrollPos = $('.avtive').offset().left + $('.avtive').outerWidth(true) / 2 + $('.scrollmenu').scrollLeft() - $('.scrollmenu').width() / 2;
+    $('.scrollmenu').scrollLeft(myScrollPos);
+});
+</script>

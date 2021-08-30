@@ -1,0 +1,329 @@
+<div class="sidebar">
+	<div class="ads-content">
+		{{SIDEBAR_AD}}
+	</div>
+	<div class="sidebar-community">
+	<?php if (!empty($fl['config']['fb_page'])) { ?>
+		<h4 class="videos">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" /></svg> Stay in contact
+		</h4>
+		<div class="fl_fb_like_box">
+			<div>
+				<div class="fb-page" data-href="{{CONFIG fb_page}}" data-tabs="timeline" data-height="100" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+					<blockquote cite="{{CONFIG fb_page}}" class="fb-xfbml-parse-ignore"></blockquote>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+		<br><br><br>
+		<?php if ($fl['config']['show_subscribe_box'] == 1): ?>
+		<!-- Subscribe -->
+		<h4 class="videos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4M12,11L20,6H4L12,11M4,18H20V8.37L12,13.36L4,8.37V18Z" /></svg>{{LANG subscribe_us}}</h4>
+		<div class="width-100"> 
+			<div class="sidebar_subscribe_box">
+				<div class="sidebar-subscribe-box-wrapper">
+					<span class="subscribe_svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4M12,11L20,6H4L12,11M4,18H20V8.37L12,13.36L4,8.37V18Z" /></svg></span>
+					<p>{{LANG subscribe_info}}</p>
+					<div class="sidebar-subscribe-box-form">
+						<form action="https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}" class="sidebar-subscribe-box-form" method="post" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" target="popupwindow">
+							<input name="uri" type="hidden" value="{{CONFIG subscribe_box_username}}" />
+							<input name="loc" type="hidden" value="en_US" />
+							<input class="form-control" name="email" type="email" required placeholder="{{LANG email_address}}"/>
+							<input class="btn btn-main fl_btn" title="" type="submit" value="{{LANG subscribe_now}}" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+		<div class="clear"></div>
+	</div>
+	{{SB_UAD_1}}
+	<div class="sidebar-content">
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_news = array(
+				'table' => T_NEWS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetNews',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_news['where'], $array);
+			}
+			$news_n = FL_FetchDataFromDB($fetch_data_array_news);
+			?><?php if (!empty($news_n)) { ?>
+				<h4 class="news"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z" /></svg> {{LANG more_news}}</h4>
+			<?php } ?><?php
+			if (!empty($news_n)) {
+				foreach ($news_n as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_list = array(
+				'table' => T_LISTS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetLists',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_list['where'], $array);
+			}
+			$news_l = FL_FetchDataFromDB($fetch_data_array_list);
+			?><?php if (!empty($news_l)) { ?>
+				<h4 class="lists"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5,9.5L7.5,14H2.5L5,9.5M3,4H7V8H3V4M5,20A2,2 0 0,0 7,18A2,2 0 0,0 5,16A2,2 0 0,0 3,18A2,2 0 0,0 5,20M9,5V7H21V5H9M9,19H21V17H9V19M9,13H21V11H9V13Z" /></svg> {{LANG more_lists}}</h4>
+			<?php } ?><?php
+			if (!empty($news_l)) {
+				foreach ($news_l as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		{{SB_UAD_2}}
+		
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_videos = array(
+				'table' => T_VIDEOS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetVideos',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_videos['where'], $array);
+			}
+			$news_v = FL_FetchDataFromDB($fetch_data_array_videos);
+			?><?php if (!empty($news_v)) { ?>
+				<h4 class="videos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> {{LANG more_videos}}</h4>
+			<?php } ?><?php
+			if (!empty($news_v)) {
+				foreach ($news_v as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_music = array(
+				'table' => T_MUSIC,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetMusic',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_music['where'], $array);
+			}
+			$news_m = FL_FetchDataFromDB($fetch_data_array_music);
+			?><?php if (!empty($news_m)) { ?>
+				<h4 class="music"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z" /></svg> {{LANG more_music}}</h4>
+			<?php } ?><?php
+			if (!empty($news_m)) {
+				foreach ($news_m as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		{{SB_UAD_3}}
+		
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_quiz = array(
+				'table' => T_QUIZZES,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetQuizzes',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_quiz['where'], $array);
+			}
+			$news_q = FL_FetchDataFromDB($fetch_data_array_quiz);
+			?><?php if (!empty($news_q)) { ?>
+				<h4 class="quizzes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /></svg> {{LANG more_quizzes}}</h4>
+			<?php } ?><?php
+			if (!empty($news_q)) {
+				foreach ($news_q as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array_poll = array(
+				'table' => T_POLLS_PAGES,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetPolls',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_poll['where'], $array);
+			}
+			$news_p = FL_FetchDataFromDB($fetch_data_array_poll);
+			?><?php if (!empty($news_p)) { ?>
+				<h4 class="polls"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z" /></svg> {{LANG more_polls}}</h4>
+			<?php } ?><?php
+			if (!empty($news_p)) {
+				foreach ($news_p as $key => $fl['sidebar']) {
+					$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+					echo FL_LoadPage('sidebar/news');
+				}
+			}
+			?></div>	
+	</div>
+</div>

@@ -1,0 +1,193 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > General Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 ">
+            <div class="card">
+                <div class="header">
+                    <h2>User Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success user-settings-alert"></div>
+                    <form class="user-settings" method="POST">
+                        <label for="registration">User Registration</label>
+                        <div class="form-group">
+                            <input type="radio" name="registration" id="registration-enabled" value="1" <?php echo ($fl['config']['registration'] == '1') ? 'checked': '';?>>
+                            <label for="registration-enabled">Enabled</label>
+                            <input type="radio" name="registration" id="registration-disabled" value="2" <?php echo ($fl['config']['registration'] == '2') ? 'checked': '';?>>
+                            <label for="registration-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="validation">User E-mail Verification</label>
+                        <div class="form-group">
+                            <input type="radio" name="validation" id="validation-enabled" value="1" <?php echo ($fl['config']['validation'] == '1') ? 'checked': '';?>>
+                            <label for="validation-enabled">Enabled</label>
+                            <input type="radio" name="validation" id="validation-disabled" value="2" <?php echo ($fl['config']['validation'] == '2') ? 'checked': '';?>>
+                            <label for="validation-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="delete_account">Delete User Account</label>
+                        <div class="form-group">
+                            <input type="radio" name="delete_account" id="delete_account-enabled" value="1" <?php echo ($fl['config']['delete_account'] == '1') ? 'checked': '';?>>
+                            <label for="delete_account-enabled">Enabled</label>
+                            <input type="radio" name="delete_account" id="delete_account-disabled" value="2" <?php echo ($fl['config']['delete_account'] == '2') ? 'checked': '';?>>
+                            <label for="delete_account-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6  pull-right">
+            <div class="card">
+                <div class="header">
+                    <h2>Feature Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success feature-settings-alert"></div>
+                    <form class="feature-settings" method="POST">
+                    	<label for="news">News System</label>
+                        <div class="form-group">
+                            <input type="radio" name="news" id="news-enabled" value="1" <?php echo ($fl['config']['news'] == '1') ? 'checked': '';?>>
+                            <label for="news-enabled">Enabled</label>
+                            <input type="radio" name="news" id="news-disabled" value="0" <?php echo ($fl['config']['news'] == '0') ? 'checked': '';?>>
+                            <label for="news-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <!--  -->
+                        <label for="lists">Lists System</label>
+                        <div class="form-group">
+                            <input type="radio" name="lists" id="lists-enabled" value="1" <?php echo ($fl['config']['lists'] == '1') ? 'checked': '';?>>
+                            <label for="lists-enabled">Enabled</label>
+                            <input type="radio" name="lists" id="lists-disabled" value="0" <?php echo ($fl['config']['lists'] == '0') ? 'checked': '';?>>
+                            <label for="lists-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <!--  -->
+                        <label for="polls">Polls System</label>
+                        <div class="form-group">
+                            <input type="radio" name="polls" id="polls-enabled" value="1" <?php echo ($fl['config']['polls'] == '1') ? 'checked': '';?>>
+                            <label for="polls-enabled">Enabled</label>
+                            <input type="radio" name="polls" id="polls-disabled" value="0" <?php echo ($fl['config']['polls'] == '0') ? 'checked': '';?>>
+                            <label for="polls-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                         <!--  -->
+                        <label for="music">Music System</label>
+                        <div class="form-group">
+                            <input type="radio" name="music" id="music-enabled" value="1" <?php echo ($fl['config']['music'] == '1') ? 'checked': '';?>>
+                            <label for="music-enabled">Enabled</label>
+                            <input type="radio" name="music" id="music-disabled" value="0" <?php echo ($fl['config']['music'] == '0') ? 'checked': '';?>>
+                            <label for="music-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                         <!--  -->
+                        <label for="videos">Videos System</label>
+                        <div class="form-group">
+                            <input type="radio" name="videos" id="videos-enabled" value="1" <?php echo ($fl['config']['videos'] == '1') ? 'checked': '';?>>
+                            <label for="videos-enabled">Enabled</label>
+                            <input type="radio" name="videos" id="videos-disabled" value="0" <?php echo ($fl['config']['videos'] == '0') ? 'checked': '';?>>
+                            <label for="videos-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                         <!--  -->
+                        <label for="quizzes">Quizzes System</label>
+                        <div class="form-group">
+                            <input type="radio" name="quizzes" id="quizzes-enabled" value="1" <?php echo ($fl['config']['quizzes'] == '1') ? 'checked': '';?>>
+                            <label for="quizzes-enabled">Enabled</label>
+                            <input type="radio" name="quizzes" id="quizzes-disabled" value="0" <?php echo ($fl['config']['quizzes'] == '0') ? 'checked': '';?>>
+                            <label for="quizzes-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <hr>
+                        <label for="review_posts">Review Posts Before Publishing?</label>
+                        <div class="form-group">
+                            <input type="radio" name="review_posts" id="review_posts-enabled" value="1" <?php echo ($fl['config']['review_posts'] == '1') ? 'checked': '';?>>
+                            <label for="review_posts-enabled">Yes</label>
+                            <input type="radio" name="review_posts" id="review_posts-disabled" value="0" <?php echo ($fl['config']['review_posts'] == '0') ? 'checked': '';?>>
+                            <label for="review_posts-disabled" class="m-l-20">No</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6  pull-left">
+            <div class="card">
+                <div class="header">
+                    <h2>Comment Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success comment-settings-alert"></div>
+                    <form class="comment-settings" method="POST">
+                        <label for="comment_system">Comemnt System</label>
+                        <div class="form-group">
+                            <input type="radio" name="comment_system" id="comment_system-both" value="both" <?php echo ($fl['config']['comment_system'] == 'both') ? 'checked': '';?>>
+                            <label for="comment_system-both">Both</label>
+                            <input type="radio" name="comment_system" id="comment_system-own" value="default" <?php echo ($fl['config']['comment_system'] == 'default') ? 'checked': '';?>>
+                            <label for="comment_system-own" class="m-l-20">Site Comments System</label>
+                            <input type="radio" name="comment_system" id="comment_system-facebook" value="fb" <?php echo ($fl['config']['comment_system'] == 'fb') ? 'checked': '';?>>
+                            <label for="comment_system-facebook" class="m-l-20">Facebook</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_user_settings = $('form.user-settings');
+    var form_comment_settings = $('form.comment-settings');
+    var form_feature_settings = $('form.feature-settings');
+
+    form_user_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_user_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_user_settings.find('button').text('Save');
+            	$('.user-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.user-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    form_comment_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_comment_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_comment_settings.find('button').text('Save');
+                $('.comment-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.comment-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    form_feature_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_feature_settings.find('button').text('{{LANG please_wait}}');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_feature_settings.find('button').text('Save');
+                $('.feature-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.feature-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

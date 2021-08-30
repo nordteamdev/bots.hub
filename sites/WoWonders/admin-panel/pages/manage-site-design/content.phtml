@@ -1,0 +1,183 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Design > Change Site Design</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Change Site Design</h2><br>
+                    <p>This system is only supported for the default theme, for sunshine you can edit the colors thru CSS files:</p>
+                    <p>./themes/sunshine/css/style.css</p>
+                    <p>./themes/sunshine/layout/style.phtml</p>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success d-settings-alert"></div>
+                    <form class="d-settings" method="POST">
+                    	<h4>Welcome Page</h4><hr>
+                        <div class="input-group">
+                    	   <span>Favicon</span>
+                           <span class="btn btn-default btn-file">
+		                     <i class="fa fa-camera"></i>
+		                     <input type="file" id="favicon" accept="image/x-png, image/gif, image/jpeg" name="favicon">
+		                   </span>
+		                    <div class="form-group hidden" id="favicon-i">
+					            <input type="text" class="form-control" readonly>
+					        </div>
+                        </div>
+                        <br><h4>Header</h4><hr>
+                        <div class="input-group">
+                    	   <span>Logo (470x75)</span>
+                           <span class="btn btn-default btn-file">
+		                     <i class="fa fa-camera"></i>
+		                     <input type="file" id="logo" accept="image/x-png, image/gif, image/jpeg" name="logo">
+		                   </span>
+		                    <div class="form-group hidden" id="logo-i">
+					            <input type="text" class="form-control" readonly>
+					        </div>
+                        </div>
+                    	<span>Header Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['header_background'] ?>" name="header_background">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Header Icons/Text color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['header_color'] ?>" name="header_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Header Search Input Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['header_search_color'] ?>" name="header_search_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Header Icons Shadow Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['header_button_shadow'] ?>" name="header_button_shadow">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <br><h4>Body</h4><hr>
+                        <span>Body Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['body_background'] ?>" name="body_background">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <br><h4>Buttons</h4><hr>
+                        <span>Text Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['btn_color'] ?>" name="btn_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['btn_background_color'] ?>" name="btn_background_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Hover Text Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['btn_hover_color'] ?>" name="btn_hover_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Hover Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['btn_hover_background_color'] ?>" name="btn_hover_background_color">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <span>Disabled Background Color</span>
+                        <div class="input-group colorpicker colorpicker-element">
+                            <div class="form-line">
+                                <input type="text" class="form-control" value="<?php echo $wo['config']['btn_disabled'] ?>" name="btn_disabled">
+                            </div>
+                            <span class="input-group-addon">
+                                <i></i>
+                            </span>
+                        </div>
+                        <div>Please make sure to clean your browser cache after changing the design settings.</div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+	$('.colorpicker').colorpicker();
+	$("#background-image").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $("#background-image-i input").val(filename);
+         $("#background-image-i").removeClass('hidden');
+    });
+    $("#favicon").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $("#favicon-i input").val(filename);
+         $("#favicon-i").removeClass('hidden');
+    });
+    $("#logo").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $("#logo-i input").val(filename);
+         $("#logo-i").removeClass('hidden');
+    });
+    var form_d_settings = $('form.d-settings');
+    form_d_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_design_setting',
+        beforeSend: function() {
+            form_d_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_d_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.d-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.d-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>
+<style>
+.colorpicker {
+    z-index: 0 !important;
+}
+</style>

@@ -1,0 +1,81 @@
+{strip}
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+
+{include file={$_usermenu}}
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+
+<div class="wide_friends_lf_cl">
+<div id="mainContentContentColumn" class="groups_pg">
+
+
+
+            <div id="middleColumn">
+			
+	   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$this->lang['Gifts']}</div>
+							<div class="separator_slv"></div>
+                        </div>
+
+ 
+<section id="user_gifts">
+ 
+						<ul class="ap_giftslist">
+						{foreach $query as $gift}
+						 
+							<li class="gift_item" id="gift_{$gift.id}" data-gift-tooltip='{ldelim}"giftid":"{$gift.id}","gift":"{$gift.gift}","user_fullname":"{if !$gift.private && !$gift.anonym}{$gift.fullname}{/if}","user_id":"{if !$gift.private && !$gift.anonym}{$gift.uid}{/if}","private":"{$gift.private}","anonym":"{$gift.anonym}"{rdelim}'>
+							<a href="javascript:void(0);" data-giftid="{$gift.id}" onclick="return sendGift(this,event);" class="gift-hv"><img class="gift_ic" src="/stcmd/gifts/{$gift.gift}" /></a>
+							</li>
+
+						{foreachelse}
+						
+			 
+<div class="clear_fix apps_cat_wrap"><div class="stub-empty __gifts">
+    <div class="stub-empty_img"></div>
+    <div class="stub-empty_t">{$this->lang['user_dont_have_gifts']}</div>
+    	<div class="stub-empty_tx"><a class="ob" href="/gifts/u/{$user.id}" hrefattr="true">{$this->lang['Send_gift_for']}&nbsp;{$user.fullname}</a></div>
+	</div>
+</div>
+						{/foreach}
+						</ul>
+						 
+</section>
+
+</div>
+
+
+{$pagination}
+</div>
+
+
+
+
+<div class="uprofile-nav-side-right">
+
+						<div class="nav-side">
+						
+						<a class="nav-side_i {if $filter == 'private'}__ac{/if}" data-scrolltop="10" href="/user/gifts/{$user.id}/private" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['private_gifts']} {if $filter == 'private'}{$g_count}{/if}</div>
+							</a>
+						
+						<a class="nav-side_i {if $filter == 'anonym'}__ac{/if}" data-scrolltop="10" href="/user/gifts/{$user.id}/anonym" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['anonym_gifts']} {if $filter == 'anonym'}{$g_count}{/if}</div>
+							</a>
+						<div class="nav-side_delim"></div>
+						
+							<a class="nav-side_i {if !$filter || $filter == ''}__ac{/if}" data-scrolltop="10" href="/user/gifts/{$user.id}" hrefattr="true">
+								<div class="nav-side_tx ellip">{$this->lang['All']} {if !$filter || $filter == ''}{$g_count}{/if}</div>
+							</a>
+						
+					
+						</div>
+					</div>
+
+</div>
+
+{/if}
+{/strip}

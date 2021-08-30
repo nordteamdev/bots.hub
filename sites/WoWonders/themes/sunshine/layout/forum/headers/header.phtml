@@ -1,0 +1,47 @@
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.js"></script>
+<link rel="stylesheet" href="<?php echo $wo['config']['theme_url'];?>/javascript/bbcode/jquery.bbcode.css" media="all">
+<style>
+.my_pages_header ul li.active a {background: #e91e63;}
+.member_list,.adv-mbr-search,.g_search, .bg-main, .blocksubhead {background-color: #3d8cfa;color: #fff;}
+.section-list {padding: 10px;}
+.forum-tabs{width: 100%;overflow: hidden;margin-bottom: 20px;}
+.forum-tabs li{width: 25%;background-color: #a84849;float: left;text-align: center;font-size: 14px;}
+.forum-tabs li a{width: 100%;padding: 10px 0px;background-color: #a84849;color: #fff;vertical-align: middle;}
+.forum-tabs li a:hover{background: rgba(245, 245, 245, 0.04);}
+.navbar-forum .navbar-nav>.active>a, .navbar-forum .navbar-nav>.active>a:focus, .navbar-forum .navbar-nav>.active>a:hover, .nav-names li:hover{color: <?php echo $wo['config']['btn_color'];?> !important;background-color: <?php echo $wo['config']['btn_hover_background_color'];?> !important;border-color: <?php echo $wo['config']['btn_hover_background_color'];?> !important;}
+.navbar-collapse {padding-left: 0 !important;}
+.flink {color: <?php echo $wo['config']['btn_background_color'];?> !important;}
+blockquote {border-left: 2px solid <?php echo $wo['config']['btn_background_color'];?> !important;}
+.bbcode-editor .bbcode-toolbar {color: #fff;background: #3d8cfa !important;padding: 8px;}
+.bbcode-textarea {padding: 10px;font-size: 14px;}
+.no-float{float:none !important;margin: 0;}
+@media (max-width:768px){
+.navbar-forum{text-align:center;}
+}
+</style>
+<?php 
+$forum_class = 'search-forums';
+if (!empty($_GET['fid'])) {
+	$forum_class = 'search-forum-threads';
+}
+if ($_GET['link1'] == 'showthread') {
+	$forum_class = 'forum-messages-search';
+}
+
+ ?>
+
+<div class="page-margin" id="forum-cont">
+	<div class="my_pages_header row">
+		<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+			<li class="<?php if ($wo['active'] == 'forums') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum'); ?>" data-ajax="?link1=forum"><?php echo $wo['lang']['forum'] ?></a></li>
+			<li class="<?php if ($wo['active'] == 'members') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-members'); ?>" data-ajax="?link1=forum-members"><?php echo $wo['lang']['members']; ?>	</a></li>
+			<li class="<?php if ($wo['active'] == 'search') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-search'); ?>" data-ajax="?link1=forum-search"><?php echo $wo['lang']['search']; ?></a></li>
+		</ul>
+		<ul class="<?php echo Wo_RightToLeft('pull-right'); ?>">
+			<li class="<?php if ($_GET['link1'] == 'mythreads') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads'); ?>" data-ajax="?link1=mythreads"><?php echo $wo['lang']['my_threads']; ?></a></li>
+			<li class="<?php if ($_GET['link1'] == 'mymessages') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages'); ?>" data-ajax="?link1=mymessages"><?php echo $wo['lang']['my_messages']; ?></a></li>
+		</ul>
+	</div>
+
+	<!-- Tab panes -->
+	<div class="tab-content" id="tab-content">

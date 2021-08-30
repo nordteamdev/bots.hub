@@ -1,0 +1,155 @@
+{strip}
+
+{if !$this->USER}
+<!--<div class="login-home-wallpaperbg"></div>-->
+{/if}
+
+<div id="page_layout">
+<div id="pointerOverlay" class=""></div>
+
+
+	  
+
+
+  <div class="toolbar __redesign __right __common-buttons fixed_always">
+  <div id="global_helper_close_top_boxes" class="global_helper_close_top_boxes __none"></div>
+  
+		{if !$this->USER}
+  	     <a  class=" a_toolbar_logo __toCenter" href="{$this->settings['HOST']}"><div class="nat_logo"> </div></a>
+		
+		{else}
+    <div class="toolbar_decor">
+      <div class="toolbar_c">
+	  
+	  
+	  <div class="user_menu_control"><div class="user_menu_control_ic"></div></div>
+	
+	  
+	     <a {if $this->USER > 0}hrefattr="true"{/if} class="{if $this->USER <= 0} a_toolbar_logo {else} a_user_toolbar_logo reloadwall{/if}" href="{$this->settings['HOST']}"><div class="nat_logo {if $this->USER <= 0} __toCenter {/if}"> </div></a>
+	  
+	  
+	 
+<div class="toolbar_search">
+<div class="search_wrapp">
+<div class="it_w">
+<i class="ic ic_close __to_right"></i>
+<span class="glyphicon glyphicon-search __to_right" aria-hidden="false"></span>
+<input type="text" placeholder="Search" class="it _tophead_search italic_placeholder">
+<a id="topheader_search_a" href="/search?key=" class="topheader_submit_search_btn" hrefattr="true" ><span class="glyphicon glyphicon-search bb" aria-hidden="false"></span></a>
+</div>
+</div></div>
+
+
+<section id="user_top_header">
+<div class="user_top_info soh-s">
+<a href="/user/{$this->USER.id}" hrefattr="true" class="inv unup">
+
+<div class="user_firstname ellip u3divtop inline middle">{$this->USER['name']}</div>
+<div class="top_user_avatar u3divtop inline middle"><img src="/getPhoto?p={$this->USER['profile_photo']}&sz=small" /></div>
+<div class="dropdownic-font u3divtop inline middle"><i class="icofont icofont-rounded-down">&#xeb5a;</i></div>
+</a>
+
+<section class="user_more_act foh-s">
+
+<div class="U_more_tab"><a href="/user/{$this->USER.id}" class="ob" hrefattr="true"><span class="u_balance">{$this->lang['My_profile']}</a></div>
+<div class="U_more_tab"><a href="/settings/{$this->USER['id']}" hrefattr="true"><i class="vic _settings"></i><span class="u_settings">{$this->lang['user_settings']}</span></a></div>
+<div class="U_more_tab"><a href="javascript:void(0);"  onclick="buyVotes(event);"><span class="u_balance">{$this->lang['Balance']}:&nbsp;</span>{$this->USER['balance']}&nbsp;{$this->lang['votes']}</a></div>
+<div class="U_more_tab"><a href="/users-on-map" class="ob" hrefattr="true"><span class="u_balance">{$this->lang['Friends_on_map']}</a></div>
+<div class="U_more_tab"><a href="/themes" class="ob" hrefattr="true"><span class="u_balance">{$this->lang['Themes']}</a></div>
+<div class="U_more_tab"><a href="/user/about/{$this->USER.id}" class="ob" hrefattr="true"><span class="u_balance">{$this->lang['About_me']}</a></div>
+{if $this->USER['class'] != 'UC_USER'}
+<div class="U_more_tab"><a href="/admin" class="ob" target="_blank"><span class="u_balance">{$this->lang['Admin_panel']}</a></div>
+{/if}
+ 
+<div class="U_more_tab"><A title="{$this->lang['Logout']}" href="javascript:void(0);" onclick="{literal}return confirm_act(false,function(event){window.location='/logout';},1);{/literal}"><i class="ic_left_mn _logout"></i><span class="ic_cl_name">{$this->lang['Logout']}</span></a>
+</div>
+
+</section>
+</div>
+</section>
+
+
+
+
+
+<ul class="toolbar_nav fl_r">
+<li class="header_mus_player">
+<div class="controls_btn">
+<div><span class="glyphicon glyphicon-backward __back"></span></div>
+<div><span class="glyphicon glyphicon-play mini_player_play_pause __play"></span></div>
+<div><span class="glyphicon glyphicon-forward __forward"></span></div>
+</div>
+
+<div class="header_play_scrubber">
+<div class="mini_player_song_info ellip">
+<span class="mini_player_artist"></span>&nbsp;-&nbsp;<span class="mini_player_song"></span>
+</div>
+<div class="bg-head-pl-col"></div>
+<div class="mini_player_loader_controls">
+<div class="mini_progressbar mus_player-slider_drag"></div>
+<div class="mus_player-slider_tooltip mini_progressTooltip progressTooltip"></div>
+<div class="mini_player_loaderClass mus_player-slider_fill"></div>
+</div>
+
+
+</div>
+
+</li>
+<li id="music-module"></li> 
+
+</ul>
+
+<div class="toolbar_basic_ntf fl_r">
+<ul>
+ 
+
+<li class="bas_ntf_top msgs">
+<a class="bas_ntf_top_a top_notifa" rel="tipsy" {if $this->settings['_NODE_ENABLED']}onclick="return messenger.open(event,this);"{else}onclick="return privateMessages(event,this);"{/if} href="javascript:void(0);" title="{$this->lang['My']} {$this->lang['Messages']}">
+<i class="top_header_ic _messenger"></i>
+<div class="messenger_space"></div>
+</a>
+<section id="messenger-box-app"></section>
+</li>
+ 
+
+<li class="bas_ntf_top notifcs">
+<a class="bas_ntf_top_a top_notifa" rel="tipsy" onclick="return getMyNotifications(this,event);" href="/profile?cmd=Notif&token={time()}" title="{$this->lang['My']} {$this->lang['Notifications']}">
+<i class="top_header_ic _notifications"></i>
+<div class="notif_space"></div>
+</a>
+<section id="notif_flying_box"></section>
+</li>
+{if !$this->settings['_NODE_ENABLED']}
+<li class="bas_ntf_top" id="space_f_map_posts">
+
+<a class="bas_ntf_top_a invisible-href-mp" href="javascript:void(0);" id="top_friends_on_map_click"  rel="tipsy" title="{$this->lang['Friends_on_map']}">
+<i class="top_header_ic _mapnotif"></i>
+<div class="map-notif_space"></div>
+</a>
+
+</li>
+{/if}
+
+</ul>
+</div>
+
+
+      </div>     
+    </div> 
+ {/if}
+
+
+
+  </div>
+
+
+{if $this->USER > 0}
+{$this->user_content()}
+{else}
+{$this->anonym_content()}
+{/if}
+
+
+{/strip}
+
+

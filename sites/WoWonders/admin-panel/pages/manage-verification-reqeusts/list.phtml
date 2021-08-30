@@ -1,0 +1,62 @@
+<tr class="setting-verificationlist" id="VerificationID_<?php echo $wo['verification']['id']?>" >
+   <td><?php echo $wo['verification']['id']?> </td>
+   <td>
+      <a href="<?php echo $wo['verification']['request_from']['url']; ?>">
+      <img src="<?php echo $wo['verification']['request_from']['avatar']?>" class="setting-avatar" alt="<?php echo $wo['verification']['request_from']['name']; ?> Profile Picture">
+      <?php echo $wo['verification']['request_from']['name']; ?>
+      </a>
+      <?php if ($wo['verification']['type'] == 'User'): ?>
+         <span class="pointer toggle-verification-request" onclick="Wo_ToggleVerfRequest(<?php echo $wo['verification']['id']; ?>,this)">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+         </span>
+      <?php endif ?>
+   </td>
+   <td><?php echo $wo['verification']['type']; ?></td>
+   <td>
+      <span class="verify pointer" onclick="Wo_Verify(<?php echo $wo['verification']['request_from']['id']?>,<?php echo $wo['verification']['id']?>,'<?php echo $wo['verification']['type']?>');">
+      <i class="fa fa-check-circle progress-icon" data-icon="check-circle"></i> <?php echo $wo['lang']['verify'];?>
+      </span>|
+      <span class="delete-verification pointer" onclick="Wo_DeleteVerification(<?php echo $wo['verification']['id']?>);">
+      <i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i> <?php echo $wo['lang']['ignore'];?>
+      </span>
+   </td>
+</tr>
+<?php if ($wo['verification']['type'] == 'User'): ?>  
+   <tr id="review-verif-request-info-<?php echo $wo['verification']['id']; ?>" style="display: none;">
+      <td colspan="4">
+         <div class="review-verif-request-cont">
+            <div class="verification-request-img-<?php echo $wo['verification']['id']; ?>">
+               <a 
+               href="<?php echo Wo_GetMedia($wo['verification']['passport']); ?>" 
+               style="
+               background-image: url('<?php echo Wo_GetMedia($wo['verification']['passport']); ?>');
+               width: 100%; 
+               height: 150px; 
+               display: block;
+               background-size: cover;
+               "
+               > 
+               </a>
+               <a href="<?php echo Wo_GetMedia($wo['verification']['passport']); ?>"></a>
+            </div>
+             <div class="verification-request-img-<?php echo $wo['verification']['id']; ?>">
+               <a 
+               href="<?php echo Wo_GetMedia($wo['verification']['photo']); ?>" 
+               style="
+               background-image: url('<?php echo Wo_GetMedia($wo['verification']['photo']); ?>');
+               width: 100%; 
+               height: 150px; 
+               display: block;
+               background-size: cover;
+               "
+               > 
+               </a>
+               <a href="<?php echo Wo_GetMedia($wo['verification']['photo']); ?>"></a>
+            </div>
+            <h4><?php echo $wo['verification']['user_name']; ?></h4>
+            <p><?php echo $wo['verification']['message']; ?></p>
+         </div>
+      </td>
+   </tr>
+
+<?php endif; ?>   

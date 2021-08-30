@@ -1,0 +1,33 @@
+{strip}
+{if count($q)}
+<div class="apps_list_content" id="apps_search_res">
+    <div class="clear_fix apps_cat_wrap">
+	{foreach $q as $r}
+        <div id="app{$r.id}" data-approw="true" class="apps_cat_row">
+            <div class="apps_cat_cont">
+                <div class="app_cat_image_cont"><span class="app_card_new"></span>
+                    <div class="app_deleted_layer"></div>
+                    <div class="app_cat_image">
+                        <a href="javascript:;" onclick="runApp(event);"><img class="apps_wide_img" src="/appGetPhoto?i={$r.cover}&t=1"></a>
+                    </div>
+                </div>
+                <div class="apps_cat_info">
+                    <div class="app_cat_name sl_nowrap"><a href="javascript:;" onclick="runApp(event);" class="app_link">{str_highlight($r.title,$key,null,'<span class="search_highlight_key">\1</span>')}</a></div>
+                    <div class="apps_cat_users">
+                    
+
+                        <div class="app_type_label">{$r.views} {$this->lang['users']}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		{/foreach}
+    </div>
+</div>
+{else}
+<div class="apps_list_content" id="apps_search_res">
+<div class="no_rows" id="no_apps"><div>{str_replace("%s","\"<b>{$key}</b>\"", $this->lang['apps_search_no_result'])} {if $genre} {$this->lang['in']} {$this->lang['category']} {$genre}.{/if}</div></div>
+</div>
+{/if}
+{/strip}

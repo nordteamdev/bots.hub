@@ -1,0 +1,78 @@
+<!------------------------------------- Playlists [template] ------------------------------------------>
+
+{strip}
+
+<div class="mus_content_w">
+  <div class="pl-mb-90">
+    <!-- foreach loop -->
+    {foreach $rows as $res}
+    {assign var=pl_name value={urldecode($res.name)}}
+    {assign var=pl_new value={strtotime($days,$res.added)}}
+    {assign var=pl_id value={$res.id}}
+    {assign var=pl_songs_count value={$res.songs_count}}
+    {assign var=pl_cover value={$res.favorite_cover}}
+
+    
+    
+    
+    
+    
+    <div class="mus_card_i">
+      <div id="crdI_{$pl_id}" data-pl-count="{$pl_songs_count}" class="mus_card" uid="card">
+        <div class="col-card">
+          <div class="mus_card_img_w mus_card_img_w__col">
+            <img src="{$pl_cover}" class="mus_card_img">
+            <div class="mus_card_ac_lst">
+              <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="playlist" data-action="true" data-query="?action=playlist&play=true&i={$pl_id}">
+                <span class="mus_card_play">
+                </span>
+                Play
+              </span>
+              
+              <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause">
+                <span class="mus_card_play __pause">
+                </span>
+                Pause
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__add" uid="add">
+                <span class="mus_card_add">
+                </span>
+                add
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__success">
+                <span class="mus_card_add __added">
+                </span>
+                Added
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__more" data-href="playlist" data-action="true" data-query="?action=playlist&i={$pl_id}">
+                <span class="mus_card_more">
+                </span>
+                more
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="mus_card_n_w">
+          <div class="mus_card_n textWrap" data-href="playlist" data-action="true" data-query="?action=playlist&i={$pl_id}">
+            <span class="mus_card_n_a" title="{$pl_name}">
+              {$pl_name}
+            </span>
+          </div>
+        </div>
+        
+        {if $pl_new >= time()}
+        <span class="mus_card_new">
+          {/if}
+        </span>
+      </div>
+    </div>
+    
+    
+    {foreachelse}
+    <div style="margin:10px 0px 10px;">
+      Sorry, but there no playlists.
+    </div>
+    {/foreach}
+  </div>
+</div>
+{/strip}

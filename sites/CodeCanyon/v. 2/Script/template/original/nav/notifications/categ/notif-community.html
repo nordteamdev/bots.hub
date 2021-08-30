@@ -1,0 +1,66 @@
+{strip}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		{assign var=fromuser value=$this->getUserDetails($res.condition)}
+	
+		           <div id="ne-n" data-category="Group" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+				
+
+                    <div class="ucard-v __xs">
+                        <div class="section">
+					 <a href="/community/{$res.club_id}" hrefattr="true" data-clbk="removePopup">
+                           <img class="photo_img" onerror="this.setAttribute('src','{$smarty.const.__COMMUNITIES_DEFAULT_IMAGE}');" src="/clubpicture?i={$res.club_id}&size=small&clubid={$res.club_id}&corr=1&logo=true" alt="{$res.club_name}" width="64" height="64">
+						</a>
+                        </div>
+                    </div>
+		
+                  <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+				
+<a class="o bold black" data-clbk="removePopup" href="/user/{$fromuser.id}" hrefattr="true">{$fromuser.fullname}</a>
+
+{if $res.json == 'removed_from_admin'}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['community_notif_remove_from_admin']}</span>
+{else if $res.json == 'added_to_admin'}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['community_notif_you_are_admin']}</span>
+{else}
+<span class="__frrpkc_txt">&nbsp;{$this->lang['invited_you_to_join_the_group']}</span>
+{/if}
+
+
+&nbsp;<a class="o bold" data-clbk="removePopup" href="/community/{$res.club_id}" hrefattr="true">{$res.club_name}</a>
+
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+
+{if $res.json == 'removed_from_admin' || $res.json == 'added_to_admin'}
+<a href="javascript:void(0);" onclick="ga('#hook_FormButton_fri_{$res.id}').trigger('click');" class="">{$this->lang['Hide_notif']}</a>
+{else}
+<div class="notif_btn">
+<div id="subscribed_success_{$res.club_id}" style="display:none;" class="subscribed_success">{$this->lang['notif_group_subscribed_ok']}</div>
+{if $this->CheckUserInGroup($res.club_id)}
+<div class="notif_group_already_subscbrib">{$this->lang['notif_group_subscribed']}</div>
+<a href="javascript:;" onclick="ga('#hook_FormButton_fri_{$res.id}').trigger('click');" class="">{$this->lang['close']}</a>
+{else}
+<button data-id="{$res.club_id}" onclick="joinThisGroup(event,1);" id="join_button_{$res.club_id}" class="flat_button vmiddle inline button_small">{$this->lang['Subscribe']}</button>
+<a href="javascript:;" onclick="ga('#hook_FormButton_fri_{$res.id}').trigger('click');" class="mr-l10 vmiddle" id="notif_club_close_{$res.club_id}">{$this->lang['Decline']}</a>
+{/if}
+</div>
+{/if}
+
+</div></div>
+
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ data-removenotif="{$res.id}" id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+</div></div>
+{/foreach}
+                    </div></div>
+                </div>
+				{/strip}

@@ -1,0 +1,16 @@
+<div class="modal fade" id="delete-thread" >
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i> <?php echo $wo['lang']['delete_post']; ?></h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['confirm_delete_post']; ?></p>
+         </div>
+         <div class="modal-footer">
+            <button  type="button" onclick="Wo_DelThread($('#delete-thread').attr('data-thread-ident'))" class="btn  btn-main"><i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i> <?php echo $wo['lang']['delete']; ?></button>
+            <button  type="button" class="btn btn-default" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+         </div>
+      </div>
+   </div>
+</div>

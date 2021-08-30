@@ -1,0 +1,19 @@
+<ul class="list-group" id="sidebar-pages-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['more_info']; ?></li>
+	<li class="list-group-item text-muted widget-heading" contenteditable="false">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid" style="background:#03A9F4;"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=groups');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=groups"><?php echo $wo['lang']['groups'];?></a>
+		<h5><?php echo $wo['user_profile']['details']['groups_count'];?></h5>
+	</li>
+	<li>
+		<div class="sidebar-groups-container">
+			<?php 
+			foreach (Wo_GetUsersGroups($wo['user_profile']['user_id'], 9, array('in' => 'profile_sidebar', 'groups_data' => $wo['user_profile']['groups_data'])) as $wo['GroupList']) {
+				$wo['GroupList']['name'] = mb_substr($wo['GroupList']['name'], 0, 10, "utf-8");
+				echo Wo_LoadPage('sidebar/sidebar-groups-list');
+			}
+			?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>

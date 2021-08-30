@@ -1,0 +1,170 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Mobile & API Settings > Push Notifications Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Push Notifications Settings</h2><br>
+                    <div>This system allows your script to send push notifications to any application who uses our API.<br> To get started, <a href="https://onesignal.com/" target="_blank">Register Here</a>.</div>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <label for="push">Push Notifications System</label>
+                        <div class="form-group">
+                            <input type="radio" name="push" id="push-enabled" value="1" <?php echo ($wo['config']['push'] == 1) ? 'checked': '';?>>
+                            <label for="push-enabled">Enabled</label>
+                            <input type="radio" name="push" id="push-disabled" value="0" <?php echo ($wo['config']['push'] == 0) ? 'checked': '';?>>
+                            <label for="push-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+                        <label for="push_notifications">Push Site Notifications (Likes, Followed, Wonder, Comment etc)</label>
+                        <div class="form-group">
+                            <input type="radio" name="push_notifications" id="push_notifications-enabled" value="1" <?php echo ($wo['config']['push_notifications'] == 1) ? 'checked': '';?>>
+                            <label for="push_notifications-enabled">Enabled</label>
+                            <input type="radio" name="push_notifications" id="push_notifications-disabled" value="0" <?php echo ($wo['config']['push_notifications'] == 0) ? 'checked': '';?>>
+                            <label for="push_notifications-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+                        <label for="push_messages">Push Messages (Push User Messages)</label>
+                        <div class="form-group">
+                            <input type="radio" name="push_messages" id="push_messages-enabled" value="1" <?php echo ($wo['config']['push_messages'] == 1) ? 'checked': '';?>>
+                            <label for="push_messages-enabled">Enabled</label>
+                            <input type="radio" name="push_messages" id="push_messages-disabled" value="0" <?php echo ($wo['config']['push_messages'] == 0) ? 'checked': '';?>>
+                            <label for="push_messages-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+                        <label for="web_push">Web Push Notifications (Chrome, Firefox etc..) SSL required</label>
+                        <div class="form-group">
+                            <input type="radio" name="web_push" id="web_push-enabled" value="1" <?php echo ($wo['config']['web_push'] == 1) ? 'checked': '';?>>
+                            <label for="web_push-enabled">Enabled</label>
+                            <input type="radio" name="web_push" id="web_push-disabled" value="0" <?php echo ($wo['config']['web_push'] == 0) ? 'checked': '';?>>
+                            <label for="web_push-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+
+                        <span class="help-block">Need Help? <a href="https://documentation.onesignal.com/v3.0/docs/setup" target="_blank">Read The Documentation</a></span>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Messenger & Chat Push Notifications Settings</h2><br>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email3-settings-alert"></div>
+                    <form class="email3-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="push_id" name="push_id" class="form-control" value="<?php echo $wo['config']['push_id'];?>">
+                                <label class="form-label">OneSignal APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="push_key" name="push_key" class="form-control" value="<?php echo $wo['config']['push_key'];?>">
+                                <label class="form-label">REST API Key</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Global Notifications Settings (Likes, Dislikes, Comments, Follow etc.)</h2><br>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email2-settings-alert"></div>
+                    <form class="email2-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="push_id_2" name="push_id_2" class="form-control" value="<?php echo $wo['config']['push_id_2'];?>">
+                                <label class="form-label">OneSignal APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="push_key_2" name="push_key_2" class="form-control" value="<?php echo $wo['config']['push_key_2'];?>">
+                                <label class="form-label">REST API Key</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_email_settings = $('form.email-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.email-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_email2_settings = $('form.email2-settings');
+    form_email2_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email2_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email2_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email2-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.email2-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_email3_settings = $('form.email3-settings');
+    form_email3_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email3_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email3_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email3-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.email3-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

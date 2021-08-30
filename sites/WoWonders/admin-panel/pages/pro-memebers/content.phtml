@@ -1,0 +1,158 @@
+<?php 
+
+$page           = (!empty($_GET['page-id']) && is_numeric($_GET['page-id'])) ? $_GET['page-id'] : 1;
+$filter_keyword = (!empty($_GET['query'])) ? Wo_Secure($_GET['query']) : '';
+$filter_type    = '';
+$db->pageLimit  = 20;
+
+
+if (!empty($filter_keyword)) {
+  $sql   = "(
+    `username`     LIKE '%$filter_keyword%' OR 
+    `email`        LIKE '%$filter_keyword%' OR 
+    `first_name`   LIKE '%$filter_keyword%' OR 
+    `ip_address`   LIKE '%$filter_keyword%' OR 
+    `phone_number` LIKE '%$filter_keyword%' OR 
+    `last_name`    LIKE '%$filter_keyword%'
+  )";
+  
+  $pro_users = $db->where($sql)->where('is_pro','1')->orderBy('user_id', 'DESC')->objectbuilder()->paginate(T_USERS, $page);
+} 
+
+else {
+  $pro_users = $db->where('is_pro','1')->objectbuilder()->orderBy('user_id', 'DESC')->paginate(T_USERS, $page);
+}
+
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+  header("Location: " . Wo_LoadAdminLinkSettings('pro-memebers'));
+  exit();
+}
+
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Manage Pro Memebers</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Pro Memebers</h2>
+                    <button onclick="Wo_CancelPro();" type="button" class="button-cancel btn btn-danger waves-effect waves-light m-t-10"> Cancel Expired Subscriptions</button>
+                </div>
+                <div class="body">
+                  <div class="row">
+                      <div class="col-md-4" style="margin-bottom:0;">
+                        <form method="get" action="<?php echo Wo_LoadAdminLinkSettings('pro-memebers'); ?>">
+                          <div class="row">
+                            <div class="col-md-11">
+                              <div class="form-group form-float">
+                                  <div class="form-line">
+                                      <input type="text" name="query" id="query" class="form-control" value="<?php echo($filter_keyword); ?>">
+                                      <label class="form-label search-form">
+                                        Search for Username, E-mail,First Name, Last Name
+                                      </label>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-1">
+                               <button class="btn btn-info">Search</button>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </form>
+                      </div>
+                  </div>
+                  <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+    				                  <th>Username</th>
+    				                  <th>Pro Type</th>
+    				                  <th>Subscribed</th>
+    				                  <th>Status</th>
+    				                  <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php 
+    				                  foreach ($pro_users as $userlist) {
+                                $wo['userlist'] = Wo_UserData($userlist->user_id);
+    				                    echo Wo_LoadAdminPage('pro-memebers/list');
+    				                  }
+    				                ?>
+                          </tbody>
+                        </table>
+                  </div>
+                  <div class="wo-admincp-feturepager">
+                    <div class="pull-left">
+                        <span>
+                          <?php echo "Showing $page out of " . $db->totalPages; ?>
+                        </span>
+                    </div>
+                    <div class="pull-right">
+                      <nav>
+                          <ul class="pagination">
+                              <li>
+                                <a href="<?php echo Wo_LoadAdminLinkSettings('pro-memebers?page-id=1'); ?>" class="waves-effect" title='First Page'>
+                                    <i class="material-icons">first_page</i>
+                                </a>
+                              </li>
+                              <?php if ($page > 1) {  ?>
+                                <li>
+                                    <a href="<?php echo Wo_LoadAdminLinkSettings('pro-memebers?page-id=' . ($page - 1)); ?>" class="waves-effect" title='Previous Page'>
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                              <?php  } ?>
+
+                              <?php 
+                                $nums       = 0;
+                                $nums_pages = ($page > 4) ? ($page - 4) : $page;
+
+                                for ($i=$nums_pages; $i <= $db->totalPages; $i++) { 
+                                  if ($nums < 20) {
+                              ?>
+                                <li class="<?php echo ($page == $i) ? 'active' : ''; ?>">
+                                  <a href="<?php echo Wo_LoadAdminLinkSettings('pro-memebers?page-id=' . ($i)); ?>" class="waves-effect">
+                                    <?php echo $i ?>   
+                                  </a>
+                                </li>
+
+                              <?php } $nums++; }?>
+
+                              <?php if ($db->totalPages > $page) { ?>
+                                <li>
+                                    <a href="<?php echo Wo_LoadAdminLinkSettings('pro-memebers?page-id=' . ($page + 1)); ?>" class="waves-effect" title="Next Page">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                              <?php } ?>
+                              <li>
+                                <a href="<?php echo Wo_LoadAdminLinkSettings('pro-memebers?page-id=' . ($db->totalPages)); ?>" class="waves-effect" title='Last Page'>
+                                    <i class="material-icons">last_page</i>
+                                </a>
+                              </li>
+                          </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+<script>
+
+function Wo_CancelPro() {
+   $('.button-cancel').text('Please wait..');
+   $.get(Wo_Ajax_Requests_File(), {f: 'admin_setting', s:'cancel_pro'}, function(data) {
+      if (data.status == 200) {
+      	 $('.button-cancel').text('Expired subscriptions has been cleared');
+      }
+   });
+}
+
+</script>

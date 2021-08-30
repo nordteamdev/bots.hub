@@ -1,0 +1,35 @@
+<div id="posts">
+	<?php
+		if ($wo['config']['pro'] == 1) {
+		$promoted = $wo['story'] = Wo_GetPromotedPost();
+		if (count($promoted) > 0) {
+		$wo['story']['post_is_promoted'] = 1;
+	?>
+	<div class="promoted-post">
+		<h4 class="boosted_post"><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,8H4A2,2 0 0,0 2,10V14A2,2 0 0,0 4,16H5V20A1,1 0 0,0 6,21H8A1,1 0 0,0 9,20V16H12L17,20V4L12,8M21.5,12C21.5,13.71 20.54,15.26 19,16V8C20.53,8.75 21.5,10.3 21.5,12Z"></path></svg></div> <?php echo $wo['lang']['promoted'];?></h4>
+		<?php echo Wo_LoadPage('story/content'); ?>
+	</div>
+	<?php } } ?>
+	<?php
+		$stories = Wo_GetPosts(array('limit' => 10, 'publisher_id' => 0));
+		if (count($stories) <= 0) {
+			echo Wo_LoadPage('story/no-stories');
+		} else {
+			foreach ($stories as $wo['story']) {
+				echo Wo_LoadPage('story/content');
+			}
+		}
+		?>
+</div>
+<?php if (count($stories) > 0) { ?>
+<div class="load-more pointer" id="load-more-posts" onclick="Wo_GetMorePosts();">
+	<button class="btn text-center wo_load_more">
+		<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></span> <?php echo $wo['lang']['load_more_posts'] ?>
+	</button>
+</div>
+<?php } ?>
+<!-- .load-more pointer -->
+<div id="load-more-filter">
+	<span class="filter-by-more hidden" data-filter-by="all"></span>
+</div>
+<!-- #load-more-filter -->

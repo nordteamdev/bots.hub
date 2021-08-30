@@ -1,0 +1,245 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    <!-- Widgets -->
+    <div class="row clearfix">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-light-green hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL USERS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_USERS, 'user_id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-red hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">insert_drive_file</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL NEWS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_NEWS, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-orange hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">format_list_bulleted</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL LISTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_LISTS, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-blue hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">videocam</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL VIDEOS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_VIDEOS, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-purple hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">music_note</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL MUSIC</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_MUSIC, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-teal hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">data_usage</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL POLLS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_POLLS, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-green hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">question_answer</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL QUIZZES</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_QUIZZES, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box bg-pink hover-expand-effect">
+                <div class="icon">
+                    <i class="material-icons">comment</i>
+                </div>
+                <div class="content">
+                    <div class="text">TOTAL COMMENTS</div>
+                    <div class="number count-to" data-from="0" data-to="<?php echo FL_CountData(false, T_COMMENTS, 'id');?>" data-speed="1000" data-fresh-interval="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Widgets -->
+    <div class="row clearfix">
+        <!-- Bar Chart -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>STATICS</h2>
+                </div>
+                <div class="body">
+                    <div id="admin-chart-container" style="min-width: 100%; height: 400px; margin: 0 auto;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Bar Chart -->
+    </div>
+</div>
+<script>
+<?php
+$percentage = (30 / 58) * 100;
+//echo $percentage . "%";
+$user_statics = array();
+$news_statics = array();
+$lists_statics = array();
+$videos_statics = array();
+$music_statics = array();
+$polls_statics = array();
+$q_statics = array();
+
+$months = array('1','2','3','4','5','6','7','8','9','10','11','12');
+
+// user_statics
+foreach ($months as $value) {
+   $user_statics[] = FL_GetRegisteredDataStatics($value, 'user');
+}
+$user_statics = implode(', ', $user_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $news_statics[] = FL_GetRegisteredDataStatics($value, 'news');
+}
+$news_statics = implode(', ', $news_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $lists_statics[] = FL_GetRegisteredDataStatics($value, 'lists');
+}
+$lists_statics = implode(', ', $lists_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $videos_statics[] = FL_GetRegisteredDataStatics($value, 'videos');
+}
+$videos_statics = implode(', ', $videos_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $music_statics[] = FL_GetRegisteredDataStatics($value, 'music');
+}
+$music_statics = implode(', ', $music_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $polls_statics[] = FL_GetRegisteredDataStatics($value, 'polls');
+}
+$polls_statics = implode(', ', $polls_statics);
+
+// user_statics
+foreach ($months as $value) {
+   $q_statics[] = FL_GetRegisteredDataStatics($value, 'quizzes');
+}
+$q_statics = implode(', ', $q_statics);
+?>
+$(function () {
+    Highcharts.setOptions({
+      colors: ['#f7931a', '#f33d4c', '#ed9e6a', '#2b87ce', '#5462a5', '#008484', '#4CAF50']
+    });
+    $('#admin-chart-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '<?php echo date("Y");?>'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+           name: 'USERS',
+           data: [<?php echo $user_statics;?>]
+       }, {
+           name: 'NEWS',
+           data: [<?php echo $news_statics;?>]
+
+       }, {
+           name: 'LISTS',
+           data: [<?php echo $lists_statics;?>]
+
+       }, {
+           name: 'VIDEOS',
+           data: [<?php echo $videos_statics;?>]
+
+       }, {
+           name: 'MUSIC',
+           data: [<?php echo $music_statics;?>]
+
+       }, {
+           name: 'POLLS',
+           data: [<?php echo $polls_statics;?>]
+
+       }, {
+           name: 'QUIZZES',
+           data: [<?php echo $polls_statics;?>]
+
+       }]
+    }); });
+</script>

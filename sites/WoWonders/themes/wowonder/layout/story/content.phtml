@@ -1,0 +1,7 @@
+<?php if ($wo['story']['postType'] == 'ad'): ?>
+  <?php echo Wo_LoadPage('story/includes/advertisement'); ?>
+<?php else: ?>
+  <?php if ( is_array($wo['story']) ): ?>
+  <?php echo Wo_LoadPage('story/includes/post-layout'); ?>
+  <?php endif; ?>
+<?php endif; ?>

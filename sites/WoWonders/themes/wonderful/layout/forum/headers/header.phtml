@@ -1,0 +1,101 @@
+<style>
+.navbar-forum {
+	background-color: #fff;
+	margin-top: 20px;
+	height: inherit;
+}
+.f_category,.member_list,.adv-mbr-search,.g_search, .bg-main, .blocksubhead  {
+	background-color: <?php echo $wo['config']['header_background'];?>;
+	color: #fff;
+}
+.section-list {
+	padding: 10px;
+}
+.forum-tabs{
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+.forum-tabs li{
+	width: 25%;
+	background-color: #a84849;
+	float: left;
+	text-align: center;
+	font-size: 14px;
+}
+.forum-tabs li a{
+	width: 100%;
+	padding: 10px 0px;
+	background-color: #a84849;
+	color: #fff;
+	vertical-align: middle;
+}
+.forum-tabs li a:hover{
+	background: rgba(245, 245, 245, 0.04);
+}
+.navbar-forum .navbar-nav>.active>a, .navbar-forum .navbar-nav>.active>a:focus, .navbar-forum .navbar-nav>.active>a:hover, .nav-names li:hover{
+	color: <?php echo $wo['config']['btn_background_color'];?> !important;
+	background-color: #fff !important;
+	border-color: <?php echo $wo['config']['btn_background_color'];?> !important;
+	border-bottom: 3px solid;
+    font-weight: bold;
+}
+.navbar-collapse {
+	padding-left: 0 !important;
+}
+.flink {
+	color: <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+blockquote {
+	border-left: 2px solid <?php echo $wo['config']['btn_background_color'];?> !important;
+}
+.bbcode-editor .bbcode-toolbar {
+	color: #fff;
+	background: <?php echo $wo['config']['header_background'];?> !important;
+	padding: 8px;
+	padding-bottom: 5px;
+}
+.ad-placement-header-footer {margin: auto;}
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+@media (max-width: 767px){
+.navbar-nav {margin-left: 0px;}
+}
+</style>
+<?php 
+$forum_class = 'search-forums';
+if (!empty($_GET['fid'])) {
+	$forum_class = 'search-forum-threads';
+}
+if ($_GET['link1'] == 'showthread') {
+	$forum_class = 'forum-messages-search';
+}
+
+ ?>
+<nav class="navbar navbar-default navbar-forum" role="navigation" style="padding-right: 0;">
+  <div class="collapse navbar-collapse no-padding-right no-padding-left" id="bs-example-navbar-collapse-1" style="display: block !important;">
+    <ul class="nav navbar-nav">
+      <li class="<?php if ($wo['active'] == 'forums') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum');?>" style="color: #868686;"><i class="zmdi zmdi-home" style="font-size: 19px;margin: -5px 0px 0px 0px;"></i>  <span><?php echo $wo['lang']['forum']; ?></span></a></li>
+      <li class="<?php if ($wo['active'] == 'members') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-members');?>" style="color: #868686;"><i class="zmdi zmdi-accounts" style="font-size: 19px;margin: -5px 0px 0px 0px;"></i>  <span><?php echo $wo['lang']['members']; ?></span></a></li>
+      <li class="<?php if ($wo['active'] == 'search') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=forum-search');?>" style="color: #868686;"><i class="zmdi zmdi-search" style="font-size: 19px;margin: -5px 0px 0px 0px;"></i>  <span><?php echo $wo['lang']['search']; ?></span></a></li>
+    </ul>
+    <ul class="nav navbar-nav <?php echo Wo_RightToLeft('pull-right') ?>">
+      <li class="<?php if ($_GET['link1'] == 'mythreads') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads');?>" style="color: #868686;"><i class="zmdi zmdi-book" style="font-size: 19px;margin: -5px 0px 0px 0px;"></i> <span><?php echo $wo['lang']['my_threads']; ?></span></a></li>
+      <li class="<?php if ($_GET['link1'] == 'mymessages') echo 'active'; ?>"><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages');?>" style="color: #868686;"><i class="zmdi zmdi-comment" style="font-size: 19px;margin: -5px 0px 0px 0px;"></i>  <span><?php echo $wo['lang']['my_messages']; ?></span></a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+<div class="page-margin" id="forum-cont">
+	<!-- Tab panes -->
+	<div class="tab-content" id="tab-content">

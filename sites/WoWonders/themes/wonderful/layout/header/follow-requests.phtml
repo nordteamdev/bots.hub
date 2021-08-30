@@ -1,0 +1,25 @@
+<li class="request-list-style">
+   <div class="user-request-list user-follow-request-<?php echo $wo['request']['user_id'];?>">
+      <div class="user-info">
+         <a href="<?php echo $wo['request']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['request']['username'];?>" style="font-weight: bold;line-height: 24px;">
+            <div class="avatar">
+               <img src="<?php echo $wo['request']['avatar'];?>" alt="<?php echo $wo['request']['name']; ?> Profile Picture" />
+            </div>
+            <?php echo $wo['request']['name']; ?>
+         </a>
+         <?php if($wo['config']['user_lastseen'] == 1 && $wo['request']['showlastseen'] != 0) { ?>
+         <div class="user-lastseen" data-toggle="tooltip" title="<?php echo $wo['lang']['last_seen']; ?>">
+            <?php echo Wo_UserStatus($wo['request']['user_id'],$wo['request']['lastseen']); ?>
+         </div>
+         <?php } ?>
+      </div>
+      <div class="accept-btns user-follow-button">
+         <button type="button" id="accept-<?php echo $wo['request']['user_id']?>" onclick="Wo_AcceptFollowRequest(<?php echo $wo['request']['user_id'];?>)" onclick="Wo_AcceptFollowRequest()" class="btn btn-default btn-sm rqst-btn" title="<?php echo $wo['lang']['accept']; ?>" style="border-color: rgba(80, 176, 84, 0.24);">
+		 <i class="fa fa-check progress-icon" data-icon="check" style="color: #4CAF50;"></i>
+         </button>
+         <button type="button" id="delete-<?php echo $wo['request']['user_id']?>" onclick="Wo_DeleteFollowRequest(<?php echo $wo['request']['user_id'];?>)" class="btn btn-default btn-sm rqst-btn" title="<?php echo $wo['lang']['delete']; ?>" style="border-color: rgba(244, 69, 56, 0.24);">
+         <i class="fa fa-close progress-icon" data-icon="close" style="color: #F44336;"></i>
+         </button>
+      </div>
+   </div>
+</li>

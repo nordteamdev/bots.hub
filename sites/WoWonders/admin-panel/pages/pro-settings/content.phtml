@@ -1,0 +1,110 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Pro System Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Pro System Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success pro-settings-alert"></div>
+                    <form class="pro-settings" method="POST">
+                        <label for="pro">Pro System <span class="black" data-toggle="popover" data-trigger="hover" data-content="If you disbale Pro Mode, All features will be free and activated without the boost feature."><i class="fa fa-question-circle fa-fw"></i></span></label>
+                        <div class="form-group">
+                            <input type="radio" name="pro" id="pro-enabled" value="1" <?php echo ($wo['config']['pro'] == 1) ? 'checked': '';?>>
+                            <label for="pro-enabled">Enabled</label>
+                            <input type="radio" name="pro" id="pro-disabled" value="0" <?php echo ($wo['config']['pro'] == 0) ? 'checked': '';?>>
+                            <label for="pro-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="weekly_price" name="weekly_price" class="form-control" value="<?php echo $wo['config']['weekly_price'];?>">
+                                <label class="form-label">Weekly Price (USD)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="monthly_price" name="monthly_price" class="form-control" value="<?php echo $wo['config']['monthly_price'];?>">
+                                <label class="form-label">Monthly Price (USD)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="yearly_price" name="yearly_price" class="form-control" value="<?php echo $wo['config']['yearly_price'];?>">
+                                <label class="form-label">Yearly Price (USD)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="lifetime_price" name="lifetime_price" class="form-control" value="<?php echo $wo['config']['lifetime_price'];?>">
+                                <label class="form-label">LifeTime Price (USD)</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="monthly_boosts" name="monthly_boosts" class="form-control" value="<?php echo $wo['config']['monthly_boosts'];?>">
+                                <label class="form-label">Monthly Boosts <small>Monthly Max posts/pages boosts allowed.</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="yearly_boosts" name="yearly_boosts" class="form-control" value="<?php echo $wo['config']['yearly_boosts'];?>">
+                                <label class="form-label">Yearly Boosts <small>Yearly Max posts/pages boosts allowed.</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="lifetime_boosts" name="lifetime_boosts" class="form-control" value="<?php echo $wo['config']['lifetime_boosts'];?>">
+                                <label class="form-label">Lifetime Boosts <small>Lifetime Max posts/pages boosts allowed.</small></label>
+                            </div>
+                        </div><br>
+                        <label for="currency">Currency</label>
+                        <select class="form-control show-tick" id="currency" name="currency">
+                          <option value="USD" <?php echo ($wo['config']['currency'] == 'USD')  ? ' selected': '';?>>USD</option>
+		                  <option value="EUR" <?php echo ($wo['config']['currency'] == 'EUR')  ? ' selected': '';?>>EUR</option>
+		                  <option value="JPY" <?php echo ($wo['config']['currency'] == 'JPY')  ? ' selected': '';?>>JPY</option>
+		                  <option value="TRY" <?php echo ($wo['config']['currency'] == 'TRY')  ? ' selected': '';?>>TRY</option>
+		                  <option value="GBP" <?php echo ($wo['config']['currency'] == 'GBP')  ? ' selected': '';?>>GBP</option>
+		                  <option value="RUB" <?php echo ($wo['config']['currency'] == 'RUB')  ? ' selected': '';?>>RUB</option>
+		                  <option value="PLN" <?php echo ($wo['config']['currency'] == 'PLN')  ? ' selected': '';?>>PLN</option>
+		                  <option value="ILS" <?php echo ($wo['config']['currency'] == 'ILS')  ? ' selected': '';?>>ILS</option>
+		                  <option value="BRL" <?php echo ($wo['config']['currency'] == 'BRL')  ? ' selected': '';?>>BRL</option>
+                          <option value="INR" <?php echo ($wo['config']['currency'] == 'INR')  ? ' selected': '';?>>INR</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_pro_settings = $('form.pro-settings');
+    form_pro_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_pro_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_pro_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.pro-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.pro-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

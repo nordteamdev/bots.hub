@@ -1,0 +1,33 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 profile-lists middlecol">
+			<div class="wo_my_pages">
+				<div class="my_pages_header row" style="margin: 0px 0px 20px;">
+					<ul class="<?php echo Wo_RightToLeft('pull-left'); ?>">
+						<li class="active"><a href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>" data-ajax="?link1=pages"><?php echo $wo['lang']['my_pages'] ?></a></li>
+						<li><a href="<?php echo Wo_SeoLink('index.php?link1=suggested-pages'); ?>" data-ajax="?link1=suggested-pages"><?php echo $wo['lang']['suggested_pages'] ?></a></li>
+					</ul>
+					<span class="btn btn-success <?php echo Wo_RightToLeft('pull-right'); ?>" title="<?php echo $wo['lang']['create'] ?>">
+						<a href="<?php echo Wo_SeoLink('index.php?link1=create-page');?>" data-ajax="?link1=create-page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
+					</span>
+				</div>
+				
+				<div>
+					<?php
+						$pages = Wo_GetMyPages();
+						if (count($pages) > 0) {
+							foreach ($pages as $wo['page']) {
+								echo Wo_LoadPage('page/pages-list');
+							}
+						} else {
+							echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg> ' . $wo['lang']['no_pages_found'] . '</h5>';
+						}
+					?>
+				<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+</div>

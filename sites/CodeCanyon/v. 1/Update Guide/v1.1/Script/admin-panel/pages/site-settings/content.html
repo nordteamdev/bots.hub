@@ -1,0 +1,202 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Site Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Website Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="title" name="title" class="form-control" value="{{CONFIG title}}">
+                                <label class="form-label">Site Title</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="name" name="name" class="form-control" value="{{CONFIG name}}">
+                                <label class="form-label">Site Name</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="email" name="email" class="form-control" value="{{CONFIG email}}">
+                                <label class="form-label">Site E-mail</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="keywords" name="keywords" class="form-control" value="{{CONFIG keywords}}">
+                                <label class="form-label">Site Keywords</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="description" id="description" class="form-control" cols="30" rows="5">{{CONFIG description}}</textarea>
+                                <label class="form-label">Site Description</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+         <div class="col-lg-6 col-md-6 pull-right">
+            <div class="card">
+                <div class="header">
+                    <h2>Other Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success other-settings-alert"></div>
+                    <form class="other-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="censored" name="censored" class="form-control" value="{{CONFIG censored}}">
+                                <label class="form-label">Censored Words</label>
+                            </div>
+                        </div><br>
+                        <label for="language">Default Language</label>
+                        <select class="form-control show-tick" id="language" name="language">
+                        	<option value="">-- Please select --</option>
+	                        <?php foreach (FL_GetLanguages() as $key => $lang_file) { 
+					    	$lang_file = explode('.php', $lang_file);
+					    	$lang_file = $lang_file[0];
+						    ?>
+						    <option value="<?php echo $lang_file ?>" <?php echo ($fl['config']['language'] == $lang_file) ? 'selected': '' ?>><?php echo ucfirst($lang_file) ?></option>
+						    <?php } ?>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="upload">Max Upload Size</label>
+                        <select class="form-control show-tick" id="upload" name="upload">
+                        	<option value="2000000" <?php echo ($fl['config']['upload'] == '2000000') ? 'selected' : '';?>>2MB</option>
+						    <option value="6000000" <?php echo ($fl['config']['upload'] == '6000000') ? 'selected' : '';?>>6MB</option>
+						    <option value="12000000" <?php echo ($fl['config']['upload'] == '12000000') ? 'selected' : '';?>>12MB</option>
+						    <option value="24000000" <?php echo ($fl['config']['upload'] == '24000000') ? 'selected' : '';?>>24MB</option>
+						    <option value="48000000" <?php echo ($fl['config']['upload'] == '48000000') ? 'selected' : '';?>>48MB</option>
+						    <option value="96000000" <?php echo ($fl['config']['upload'] == '96000000') ? 'selected' : '';?>>96MB</option>
+						    <option value="256000000" <?php echo ($fl['config']['upload'] == '256000000') ? 'selected' : '';?>>256MB</option>
+						    <option value="512000000" <?php echo ($fl['config']['upload'] == '512000000') ? 'selected' : '';?>>512GB</option>
+						    <option value="1000000000" <?php echo ($fl['config']['upload'] == '1000000000') ? 'selected' : '';?>>1GB</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <label for="reCaptcha">reCaptcha</label>
+                        <div class="form-group">
+                            <input type="radio" name="reCaptcha" id="reCaptcha-enabled" value="1" <?php echo ($fl['config']['reCaptcha'] == '1') ? 'checked' : '';?>>
+                            <label for="reCaptcha-enabled">Enabled</label>
+                            <input type="radio" name="reCaptcha" id="reCaptcha-disabled" value="2" <?php echo ($fl['config']['reCaptcha'] == '2') ? 'checked' : '';?>>
+                            <label for="reCaptcha-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="reCaptcha_key" name="reCaptcha_key" class="form-control" value="{{CONFIG reCaptcha_key}}">
+                                <label class="form-label">Recaptcha Key</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="google_code" name="google_code" class="form-control" value="{{CONFIG google_code}}">
+                                <label class="form-label">Google Analytics ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="fb_page" name="fb_page" class="form-control" value="{{CONFIG fb_page}}">
+                                <label class="form-label">Your Facebook Page URL, For Sidebar</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 pull-left">
+            <div class="card">
+                <div class="header">
+                    <h2>RSS Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success rss-settings-alert"></div>
+                    <form class="rss-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="rss_feed" name="rss_feed" class="form-control" value="{{CONFIG rss_feed}}">
+                                <label class="form-label">RSS Feed URL (XML)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="rss_feed_limit" name="rss_feed_limit" class="form-control" value="{{CONFIG rss_feed_limit}}">
+                                <label class="form-label">RSS Resutls Limit</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_site_settings = $('form.site-settings');
+    var form_other_settings = $('form.other-settings');
+    var form_rss_settings = $('form.rss-settings');
+
+    form_site_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_site_settings.find('button').text('{{LANG please_wait}}');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings.find('button').text('Save');
+            	$('.site-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.site-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+    form_rss_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_rss_settings.find('button').text('{{LANG please_wait}}');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_rss_settings.find('button').text('Save');
+            	$('.rss-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.rss-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    form_other_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=admincp&s=general&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_other_settings.find('.waves-effect').text('{{LANG please_wait}}');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_other_settings.find('.waves-effect').text('Save');
+                $('.other-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.other-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

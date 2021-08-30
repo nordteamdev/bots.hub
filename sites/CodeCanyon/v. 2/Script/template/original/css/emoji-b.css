@@ -1,0 +1,41 @@
+/*
+.em_disc_toolbar_i_ic__sm {
+    margin-left: -20px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: transparent url(images/messages/smiles.png) 0 0 no-repeat;
+}*/
+.em_disc_toolbar_i_ic__sm {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: transparent url(images/messages/smiles.png) 0 0 no-repeat;
+    position: relative;
+    float: left;
+}
+
+.em_disc_toolbar_i_ic__sm:hover {
+    background-position: 0 -24px;
+}.ms_items_more_wrap {
+    position: relative;
+    float: left;
+    margin-right: 3px;
+}.emoji_input_controls {
+    float: right;
+    display: block;
+    margin: -26px 0px 0px 0px;
+    position: relative;
+}
+	
+.bgpost.smiles_w{
+ position: absolute;
+    top: 0;
+    right: 6px;
+    z-index: 1;
+}
+
+.postHasBg .emoji-menu{
+	margin:-295px 0px 0px 171px!important;
+}

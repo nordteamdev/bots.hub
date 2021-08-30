@@ -1,0 +1,91 @@
+{strip} 
+
+                                    <div id="hook_Block_MyFriendsSquareCardPagingB" class="hookBlock __sktshowcase">
+                                        <div class="portlet" id="listBlockPanelMyFriendsSquareCardPagingB">
+                                            <div class="portlet_b">
+                                                <div class="ugrid {if $list} __v __xl mt-8x mb-6x {else} __xxxl mt-8x {/if}">
+                                                    <div id="hook_Loader_MyFriendsSquareCardPagingBLoader" data-delimiter="5" data-max="100000" data-block="MyFriendsSquareCardPagingB" data-params="" data-dynamic="" data-page="2" data-updateparams="false" class="loader-container" data-last-element="12" data-manualpagescount="1">
+
+
+
+
+
+
+						{if $list}
+						<div class="ugrid_cnt" id="hook_friends_list">
+						{else}
+                                               <ul class="ugrid_cnt" id="hook_friends_list">
+						{/if}
+
+						
+						{foreach $query as $res}
+ 
+
+	                                                           {if $list}
+							<div id="friendCardId_{$res.id}" class="ugrid_i">
+							{else} 
+						<li id="friendCardId_{$res.id}" class="ugrid_i">
+								{/if}
+                                                                <div class="ucard-v {if $list}__xs __h __list-view{/if}">
+                                                                    <div class="section">
+							{if !$list}
+											{assign var=friend_status value=$res.text_post}
+                                            {if !empty(trim($friend_status))}
+                                            <div class="ust">
+                                              <div class="ust_tx">
+                                                <a data-type-post="1" class="ust_a" href="/post?uid={$res.id}&userstatus=1">{$this->str_smilies($friend_status)}
+                                                </a>
+                                              </div>
+                                            </div>
+           
+                                            {/if}
+											{/if}
+
+                                                                        <a href="/profile?q={$res.id}" hrefattr="true">
+                                                                            <div class="photo">
+                                                                                <!--<div class="stub-img stub-img__user128-female stub-img__128 photo_img"></div>-->
+										<img src="/getPhoto?p={$res.profile_photo}&sz=thumb" class="photo_img" width="128" height="128" alt="{$res.fullname}" />
+										{if $this->is_online($res.id)}<span class="ic-online"></span>{/if}
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="caption">
+{if $list}
+
+<div class="ucard-v_ac"><a title="Send a gift" href="#" class="lp"><span class="tico"><i class="tico_img ic ic_present"></i>Send a gift</span></a>
+ <a title="send a message" href="javascript:;" onclick="chatWith(event,this,1)" id="y-{$res.id}" data-uconv='{literal}{{/literal}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{literal}}{/literal}' class="lp"><span class="tico"><i class="tico_img ic ic_message"></i>send a message</span>
+</a></div>
+{/if}
+
+                                                                        <div class="ellip"><a class="o" href="/profile?q={$res.id}" hrefattr="true">{$res.fullname}</a></div>
+                                                                        <div class="timestamp">{$this->friendsLastOnline($res.online)}</div>
+
+
+					{if $list}
+
+											{assign var=friend_status value=$res.text_post}
+                                            {if !empty(trim($friend_status))}
+                                            <div class="ust">
+                                              <div class="ust_tx">
+                                                <a data-type-post="1" class="ust_a" href="/post?uid={$res.id}&userstatus=1">{$this->str_smilies($friend_status)}
+                                                </a>
+                                              </div>
+                                            </div>
+           
+                                            {/if}
+{/if}
+
+                                                                    </div>
+                                                                </div>
+							{if $list}</div>{else} </li>{/if}
+
+							{foreachelse} NO DATA TO SHOW {/foreach}
+
+{if $list}
+</div>
+{else}
+</ul>
+{/if}     </div>   
+
+
+{/strip}

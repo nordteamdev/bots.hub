@@ -1,0 +1,90 @@
+{strip}
+<div class="pf __gifts">
+    <div class="pf_layout">
+        <div class="pf_layout_h">
+            <div class="portlet_h __center">
+                <div class="portlet_h_name_t">{$this->lang['Gift_for']} {$us.fullname}</div>
+            </div>
+        </div>
+
+        <div class="pf_layout_cnt pf_pattern">
+            <div class="pf_layout_hld">
+                <form method="POST" name="buygift" action="/cmd.php" id="tosubmit">
+				
+				<input name="cmd" id="bb" type="hidden" value="buygift">
+				<input name="giftid" id="wrap" type="hidden" value="{$gf.id}">
+				<input name="touser" id="js-present-token" type="hidden" value="{$us.id}">
+				<input name="price" id="bb" type="hidden" value="{$gf.price}">
+				
+                    <div class="pf_cnt pf_send-present __center">
+                        <div class="pf_present_img">
+                            <div>
+                                <div class="userCard">
+                                    <div class="card_main"><img src="/getPhoto?p={$us.profile_photo}&g={$us.gender}&sz=thumb" alt="" width="224" height="224">
+                                        <div class="gift-card __s">
+                                            <div class="gift h-mod __no-frame" style="background-image: url(/stcmd/gifts/{$gf.gift});">
+                                                <
+                                            </div>
+                                        </div>
+                                    </div>
+                      
+                                </div>
+                            </div><a class="pf_send-present_remove nameConstructor-remove __hidden" href="#" id="js-nameConstructor-remove"><span class="tico tico__12 "><i class="tico_img ic12 ic12_close"></i>Delete text</span></a></div>
+                        <div class="pf_message">
+                            <div id="presentComment" class="form_i form_i__txt-counter-active"><span class="input-d input-d__w-counter"><span id="txt-counter" class="txt-counter">200</span></span>
+                                <div class="itx_w"><textarea placeholder="{$this->lang['Write_a_wish']}" id="textarea" name="gift.wish" data-limit="200" id="itx-2" autofocus="autofocus" class="itx"></textarea></div>
+
+                            </div>
+                            <div class="form_i __wide">
+                                <div class="irc_w-p"><span class="irc_l"><span class="input_w"><input onclick="uncheckOther('m222')" name="gift.private" id="m111" type="checkbox" class="irc"><span class="input_visual __checkbox"></span></span><label for="m111">{$this->lang['Privately']}</label><span class="lstp-t __nextline">{$this->lang['gift_private_descr']}</span></span>
+                                </div>
+                            </div>
+                            <div class="form_i __wide">
+                                <div class="irc_w-p"><span class="irc_l"><span class="input_w"><input onclick="uncheckOther('m111')" name="gift.anonymous" id="m222" type="checkbox" class="irc"><span class="input_visual __checkbox"></span></span><label for="m222">{$this->lang['Secretly']}</label><span class="lstp-t __nextline">{$this->lang['gift_secret_descr']}</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+        <div class="pf_layout_footer">
+            <div class="pf_footer">
+                <div class="pf_footer_content">
+                    <div class="pf_col">
+                        <div id="js-nameConstructor-price" class="pf_info_tx pf_price">{$this->lang['Price']}: <span id="prPrice">{$gf.price}</span> {$this->lang['votes']}</div>
+                        <div class="pf_info_tx">{$this->lang['Balance']}:&nbsp;<span class="pf_info_tx_count">{$this->USER['balance']}</span>{$this->lang['votes']}</div>
+                    </div>
+                </div>
+                <div class="pf_footer_actions">
+				
+				<div class="cant_buy_gift {if $this->USER['balance'] >= $gf.price}__none{/if}">{$this->lang['You_dont_have_enough_votes_to_buy_this_gift']} - {if !($this->USER['balance'] >= $gf.price)}<a href="javascript:void(0);" onclick="buyVotes(event);" class="ob tcenter">{$this->lang['Top_up_balance']}</a>{/if}</div>
+                    <div class="form-actions __center">
+					<button {if $this->USER['balance'] < $gf.price}data-gifts="n"{/if} onclick="return buyGift(event,document.buygift);" name="button_buy" id="proceedButton" class="flat_button {if $this->USER['balance'] < $gf.price}__disabled{/if} form-actions__yes">{$this->lang['Send_a_gift']}</button><span onclick="javascript:document.getElementById('nohook_modal_close').click();" class="flat_button secondary">{$this->lang['close']}</span></div>
+                </div></form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+{literal}
+
+document.getElementById('textarea').onkeyup = function(event) {
+var val = this;
+        var len = val.value.length;
+
+
+
+        if (len > 200) {
+          val.value = val.value.substring(0, 200);
+        } else {
+          document.getElementById('txt-counter').innerHTML = (200-len);
+        }
+};
+
+{/literal}
+</script>
+
+{/strip}

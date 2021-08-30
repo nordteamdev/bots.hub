@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>API Settings > Manage API Server Keys</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>API Settings (API v1)</h2><br>
+                    <div>Use these keys to setup your application(s).</div>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="app-id" name="app-id" class="form-control" value="<?php echo $wo['config']['widnows_app_api_id'];?>" disabled>
+                                <label class="form-label">API ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="app-key" name="app-key" class="form-control app-key" value="<?php echo $wo['config']['widnows_app_api_key'];?>" disabled>
+                                <label class="form-label">API Secret Key</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_ResetKeys()">RESET KEYS</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Server Key (API v2)</h2><br>
+                    <div>Use this key to setup and access the API endpoints. <a href="<?php echo $wo['config']['site_url']; ?>/api/v2/Documentation.html" target="_blank">Read Documentation</a></div>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="app-key" name="app-key" class="form-control app-key" value="<?php echo $wo['config']['widnows_app_api_key'];?>" disabled>
+                                <label class="form-label">Server Key</label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect" onclick="Wo_ResetKeys()">RESET SERVER KEY</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+function Wo_ResetKeys() {
+    if (!confirm('Are you sure you want to reset the api secret key? all of your windows / phone applications will stop working on all your users devices.')) {
+        return false;
+    }
+    $('.email-settings').find('button').text('Please wait..');
+    $.get(Wo_Ajax_Requests_File(), {f:'admin_setting', s: 'reset_windows_app_keys'}, function (data) {
+        if (data.status == 200) {
+            $('.app-key').val(data.app_key);
+        } else {
+            alert('Erorr found while reseting, please try again later.');
+        }
+        $('.email-settings').find('button').text('RESET KEYS');
+    });
+}
+</script>

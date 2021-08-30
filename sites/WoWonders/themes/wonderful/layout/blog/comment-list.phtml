@@ -1,0 +1,72 @@
+<div class="blog-comment-item" data-blog-comment="<?php echo $wo['comment']['id']; ?>">
+  <div>
+    <div class="col-md-1 col-sm-1 col-xs-1 pull-left blog-comment-item-img">
+      <img src="<?php echo $wo['comment']['user_data']['avatar']; ?>" alt="" class="responsive-img img-circle">
+    </div>
+    <div class="col-md-11 col-sm-10 col-xs-10 blog-comment-item-body">
+      <h5>
+        <a class="pointer" data-ajax="?link1=timeline&u=<?php echo $wo['comment']['user_data']['username']; ?>" href="<?php echo $wo['comment']['user_data']['url']; ?>" style="font-weight: bold;"><?php echo $wo['comment']['user_data']['name']; ?></a>
+        <span class="time">
+          <span class="ajax-time" title="<?php echo date('c',$wo['comment']['posted']); ?>">
+            <?php echo Wo_Time_Elapsed_String($wo['comment']['posted']); ?>
+          </span>
+        </span>
+        <?php if ($wo['comment']['is_owner']): ?>
+  	  	<span class="pointer pull-right del-blog-comment" id="<?php echo $wo['comment']['id']; ?>"><i class="zmdi zmdi-delete"></i></span>
+  	  <?php endif ?>
+      </h5>
+      <p><?php echo $wo['comment']['text']; ?></p>
+      <div>
+        <span class="comment-icons">
+          <span class="pointer reply-toblog-comm"  id="<?php echo $wo['comment']['id']; ?>">
+            <i class="zmdi zmdi-comment"></i>
+          </span>
+          &nbsp;
+          <span class="pointer add-blog-commlikes-<?php echo $wo['comment']['id']; ?>" onclick="Wo_AddBlogCommentLike(<?php echo $wo['comment']['id']; ?>)">
+          	<i class="zmdi zmdi-thumb-up"></i>
+          </span> 
+          
+          <span id="blog-comment-likes" data-blog-comlikes="<?php echo $wo['comment']['id']; ?>">
+          <?php if ($wo['comment']['likes'] > 0): ?>
+            <?php echo $wo['comment']['likes']; ?>
+          <?php endif; ?>
+          </span>
+          &nbsp;
+          <?php if ($wo['config']['second_post_button'] != 'disabled') { ?>
+          <span class="pointer add-blog-commdislikes-<?php echo $wo['comment']['id']; ?>" onclick="Wo_AddBlogCommentDisLike(<?php echo $wo['comment']['id']; ?>)" >
+            <i class="zmdi zmdi-thumb-down"></i>
+          </span>
+          <span id="blog-comment-likes" data-blog-comdislikes="<?php echo $wo['comment']['id']; ?>">
+            <?php if ($wo['comment']['dislikes'] > 0): ?>
+              <?php echo $wo['comment']['dislikes']; ?>
+            <?php endif; ?>
+          </span>
+          <?php } ?>
+        </span>
+        
+        &nbsp;
+        <?php if (count($wo['comment']['replies']) > 5): ?>
+  		<span class="pointer"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+        <?php endif; ?>
+
+
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="blog-comment-reply-cont">
+  	<?php 
+  		foreach ($wo['comment']['replies'] as $wo['comm-reply']) {
+  			echo Wo_LoadPage('blog/commreplies-list');
+  		}
+  	?>
+  </div>
+  <div class="blog-comment-reply-box col-md-11 col-sm-11 col-xs-11  pull-right hidden">
+  	<form class="form">
+	    <div class="form-group">
+	      <textarea  class="form-control blog-comment-reply" onkeydown="Wo_RegisterBlogCommReply(<?php echo $wo['comment']['id']; ?>,event,this)"  placeholder="<?php echo $wo['lang']['write_comment'];?>" type="text"></textarea>
+	    </div>
+    </form>
+  </div>
+  
+</div>

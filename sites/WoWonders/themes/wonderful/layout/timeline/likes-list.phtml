@@ -1,0 +1,17 @@
+<div class="profile-style user-data" data-page-id="<?php echo $wo['PageList']['page_id'];?>">
+  <a href="<?php echo $wo['PageList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['PageList']['username']?>">
+    <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+      <img src="<?php echo $wo['PageList']['avatar'];?>" alt="<?php echo $wo['PageList']['name']; ?> Profile Picture" />
+    </div>
+    <?php echo $wo['PageList']['name']; ?>
+    <?php if($wo['PageList']['verified'] == 1) {   ?>
+        <span class="verified-color"><i class="fa fa-check-circle" title="<?php echo $wo['lang']['verified_user'];?>"></i></span>
+    <?php  } ?>
+  </a>
+  <div class="user-lastseen">
+    <?php echo $wo['lang']['category'];?>: <?php echo $wo['PageList']['category']; ?>
+  </div>
+  <div class="user-follow-button">
+    <?php echo Wo_GetLikeButton($wo['PageList']['page_id']);?>
+  </div>
+</div>

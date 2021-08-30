@@ -1,0 +1,288 @@
+{strip}
+{assign var=market_not_empty value=0}
+{assign var=products_count value=$this->myProductsCount()}
+<div id="marketplace">
+<div id="mainContentContentColumn">
+<div id="search_ajax_new_results">
+ <div id="market-loading-query"></div>
+<h2 class="page_block_h2">
+    <div class="page_block_header clear_fix">
+        <div class="page_block_header_extra_left _header_extra_left"></div>
+        <div class="page_block_header_extra _header_extra"><span class="header_side_link _market_create_item_btn"><button class="flat_button button_small" onclick="return market.addProduct(this,event);">{$this->lang['Add_product']}</button></span></div>
+        <div class="page_block_header_inner _header_inner">{$this->lang['Market']}</div>
+    </div>
+</h2>
+
+
+<h2 class="page_block_h2 ">
+
+<div class="page_block_header clear_fix fff searching">{if $filter}{$this->lang['Products']}{else}{$this->lang['Products_from_friends']}{/if}&nbsp;<span class="page_block_sub_header_count">{$count}</span>
+    <ul class="ui_tabs clear_fix market_place_box_tabs fl_right">
+ 
+        <div class="market_change_view market_change_view_tabs" style="">
+            <div class="marketplace_icons" onclick="market.changeView(event,this,1)">
+                <div id="card-icon" class="marketplace-icon {if !readCookie('market_products_list_view')}selected{/if}">&nbsp;</div>
+            </div>
+            <div class="marketplace_icons" onclick="market.changeView(event,this,2)">
+                <div id="list-icon" class="marketplace-icon {if readCookie('market_products_list_view') == '10'}selected{/if}">&nbsp;</div>
+            </div>
+        </div>
+ 
+    </ul></div>
+</h2>
+
+<div class="market_col_main">
+
+
+<div id="market_u_search_input_wrap">
+ 
+				
+                <input type="text" onkeypress="clearTimeout(this.market_search_timeout);" onkeydown="clearTimeout(this.market_search_timeout);" onkeyup="{literal}var _this = this;clearTimeout(_this.market_search_timeout); _this.market_search_timeout = setTimeout(function(){ clearTimeout(_this.market_search_timeout);market.searchProducts(_this,event);  },500);{/literal}" id="market_search_query" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="{$this->lang['Search_by_products']}">
+				<button class="searching_ic_right_wrap"><span class="searching_ic_right"></span></button>
+</div>
+
+    <div id="hook_Block_ContentColumnContainer" class="hookBlock">
+
+ 
+            <div id="middleColumn">
+               
+                    <div class="portlet search_market_results" id="results">
+                        
+		
+				<a class="__none" id="market_search_a_href" hrefattr="true" href="/market">&nbsp;</a>
+				<a class="__none" id="market_browse_products" hrefattr="true" href="/market">&nbsp;</a>
+				<section id="market_content" class="market_content">
+				<section id="produts_listed_db">
+				{foreach $query as $product}
+				{assign var="author" value=$this->getUserDetails($product.userid)}
+				{assign var=is_favorite value=$this->itemIsFavorite($product.id)}
+				{assign var="mutual_friends_c" value=$this->getMutualFriends($author.id,1,1)}
+				{assign var="edit_product" value=0}
+				
+				{if $product.userid === $this->USER['id']}
+				{assign var="edit_product" value=1}
+				{/if}
+				<div id="market_item{$product.id}" data-id="{$product.id}" class="{if readCookie('market_products_list_view') == '10'}market_row_line{else}market_row{/if}  {if $is_favorite}_isfav{/if}">
+    <div class="market_row_inner_cont">
+        <div class="market_row_photo">
+				{if $this->USER.id != $author.id}
+					<div id="market_row_fav{$product.id}" onclick="market.addProductToFav(event,this,'{$product.id}',1);" class="market_edit_actions {if $is_favorite}selected{/if}">
+						<div class="fav"><div class="icon"></div></div>
+					</div>
+				{/if}
+            <a href="/market/product/{$product.id}" hrefattr="true" data-open-marketproduct="{$product.id}">
+				<img class="market_row_img" src="/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=medium">
+ 
+ 
+	 
+			<span class="kn_shortcutmenu wh100">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$product.id}","product_author_avatar":"{$author.profile_photo}","product_author_name":"{$author.fullname}","product_author_id":"{$author.id}","uname":"{$product.product_name}","uphoto":"/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=small","ugender":"","ulmen":{ldelim}"product":"1","edit_product":"{$edit_product}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$product.id}">
+			</div></span>
+				
+				
+			</a>
+		<div class="market_product_loc_abs">{$product.product_location}</div>
+        </div>
+        <div class="market_row_info">
+            <div class="market_row_name"><a class="link" hrefattr="true" data-open-marketproduct="{$product.id}" href="/market/product/{$product.id}">{$product.product_name}</a></div>
+            
+			<div class="marketplace_icons fav_row">
+				  <div id="market_row_fav{$product.id}" onclick="market.addProductToFav(event,this,'{$product.id}',1);" class="market_favourite marketplace-icon {if $is_favorite}selected{/if}"></div>
+				</div>
+			<div class="market_row_price globalpriceformat">{$product.price}&nbsp;{$this->settings['MARKETPLACE_CURRENCY']}</div>
+            <div class="market_row_address">
+
+                <div class="market_row_address_metro metro_color_F07E24">{$product.product_location}</div>
+            </div>
+			<div class="market_row_usrtm">
+				<span class="market_row_time">{$this->time_elapsed($product.added)}</span>
+				<span class="market_row_user"><a hrefattr="true" href="/{if !empty($author.username)}{$author.username}{else}user/{$author.id}{/if}" class="mem_link">{$author.fullname}</a>
+				
+			 
+				{if $mutual_friends_c > 0}
+				&nbsp;(<a href="javascript:void(0);" data-mtforui='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}"{rdelim}' onclick="return popupMutualFriends(this,event);" class="mem_link">{if $mutual_friends_c == 1}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friend']}{else}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friends']}{/if}</a>)
+				{/if}
+				</span>
+			</div>
+			<div class="market_row_for_grid">
+            <div class="market_row_user"><a hrefattr="true" href="/{if !empty($author.username)}{$author.username}{else}user/{$author.id}{/if}" class="market_row_user_link with_friends">{$author.fullname}</a>
+              <span class="market_row_user_ban"></span>
+                {if $mutual_friends_c > 0}<a href="javascript:void(0);" data-mtforui='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}"{rdelim}' onclick="return popupMutualFriends(this,event);" rel="tipsy" title="{if $mutual_friends_c == 1}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friend']}{else}{$mutual_friends_c}&nbsp;{$this->lang['mutual_friends']}{/if}" class="market_place_common_friend_badge _badge"></a>{/if}
+            </div>
+            <div class="market_row_time">{$this->time_elapsed($product.added)}</div>
+			</div>
+			<div class="ui_actions_menu_icons">
+					<span class="kn_shortcutmenu wh100">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$product.id}","product_author_avatar":"{$author.profile_photo}","product_author_name":"{$author.fullname}","product_author_id":"{$author.id}","uname":"{$product.product_name}","uphoto":"/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=small","ugender":"","ulmen":{ldelim}"product":"1","edit_product":"{$edit_product}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$product.id}">
+			</div></span>
+			</div>
+        </div>
+    </div>
+</div>
+{assign var=market_not_empty value=1}
+{foreachelse}
+<div class="stub-empty-cnt">
+<div class="stub-empty_img"></div>
+<div class="stub-empty_t">{$this->lang['market_empty']}</div>
+<div class="stub-empty_tx">{$this->lang['market_empty_descr']}</div>
+</div>
+{/foreach}
+
+</section>
+<section id="search_app_products"></section>
+{if $market_not_empty && count($query) >= $limit}
+<div class="link-show-more loader-controls"  data-loadd='{ldelim}"cmd":"market_browse_product_more","c":"0","i":"{$this->USER.id}","appto":"#produts_listed_db","p":"1"{rdelim}'>{$this->lang['More_products']}</div>
+{/if}
+ 
+
+</section>
+						
+						
+						
+						
+                    </div>
+					
+					
+					
+                
+            </div>
+     
+    </div>
+</div>
+</div>
+
+</div>
+
+{if !$filter || !$view_as}
+<div id="mainContentLeftColumn">
+ <div class="fixed_always">
+    <div id="hook_Block_LeftColumn" class="hookBlock">
+        <div id="leftColumn">
+       
+                <div class="portlet">
+                    <div class="portlet_b">
+
+                            <div id="cppaste_injava">
+							
+							
+								<a class="nav-side_i __ac" href="/market" hrefattr="true">
+                                    <div data-defaultmdrelat="comm_popular" class="nav-side_tx ellip">{$this->lang['Browse_products']}</div>
+                                </a>
+							
+							
+							 <a class="nav-side_i" href="/market/products/my" hrefattr="true">
+                                    <div data-defaultmdrelat="all" class="nav-side_tx ellip">{$this->lang['My_products']} <span>{$products_count}</span></div>
+							</a>
+	
+
+								
+								
+								<a class="nav-side_i" href="/market/products/favorites"  hrefattr="true">
+                                    <div  class="nav-side_tx ellip">{$this->lang['Favorite_products']} <span>{$this->myFavoritProductsCount()}</div>
+                                </a>	
+								
+                            </div>
+                            
+                    </div>
+                </div>
+            
+ </div>
+
+</div>
+ 
+    <div id="hook_Block_LeftColumn" class="hookBlock market_filters">
+        <div id="leftColumn">
+<div id="market_search_filters_minimized" class="search_filters_minimized page_block {if $filter}ui_rmenu_item_expanded{/if}">
+  <div class="search_filters_minimized_text" onclick="market.toggleMinimizedFilters(event,this); ">Search parameters<span class="ui_rmenu_item_arrow"></span></div>
+  
+  <form accept-charset="UTF-8" action="/market" class="market_submit_filter" id="market_submit_filter" method="post" novalidate="novalidate">
+  
+  <div class="search_filters_wrap unshown">
+ 
+  
+	<Div class="market-filter-unshown">
+	<input type="hidden" name="cmd" value="filter" />
+	<input type="hidden" name="order" />
+	<input type="hidden" name="category" />
+
+	
+	<a id="market_trigger_filter_query" class="__none search-filter-box reloadwall" hrefattr="true" href="/market?cmd=filter"></a>
+		<div class="market-unshonw-td">
+			<div class="market-unshownh">Order</div>
+			
+			<div class="market-unshown-inp">
+			
+				<Select name="price-order" id="market-filter-order">
+				<option {if $order == 'new' || !$order}selected{/if} value="new">By newes</option>
+				<option {if $order == 'low'}selected{/if} value="low">By price: low to high</option>
+				<option {if $order == 'high'}selected{/if} value="high">By price: high to low</option>
+				</select>
+			
+			</div>
+		</div>
+		<div class="market-unshonw-td">
+			<div class="market-unshownh">Category</div>
+			
+			<div class="market-unshown-inp">
+			
+				<Select name="products_category" id="market-filter-category">
+				<option selected value="">All products</option>
+				
+				
+{foreach from=$this->settings['MARKETPLACE_PRODUCTS_CATEGORIES'] item=label key=key}
+ 
+
+    <optgroup label="{$this->lang["market_categ_{$key}"]}">
+		{foreach $this->settings['MARKETPLACE_PRODUCTS_CATEGORIES'][$key] as $subcateg}
+		<option {if $category == $subcateg}selected{/if} value="{base64_encode($subcateg)}">{$this->lang["market_subcateg_{$subcateg}"]}</option>
+		{/foreach}
+ 
+    </optgroup>
+	{/foreach}
+ 
+				</select>
+			
+			</div>
+		</div>
+		
+		
+		<div class="market-unshonw-td">
+			<div class="market-unshownh">Price</div>
+			
+			<div class="market-unshown-inp">
+			
+				<div class="range_to"><input type="text" value="{$price_from}" class="dark" name="price_from" placeholder="From" /></div>
+				<div class="range_sep"> – </div>
+				<div class="range_to"><input type="text" value="{$price_to}" class="dark" name="price_to" placeholder="To" /></div>
+			
+			</div>
+		</div>
+		
+		<div class="market-unshonw-td">
+			<div class="market-unshownh">Region</div>
+			
+			<div class="market-unshown-inp">
+			
+					<input id="field_location_int" autocomplete="off" name="location_name" placeholder="ex. Amsterdam, Netherlands" class="dark getuserlocation" type="text" value="{$location}">
+					<input type="hidden" name="location_id" id="location_id" value="">
+			</div>
+		</div>
+		
+	</div>
+	</form>
+  
+  </div>
+  
+  
+</div>
+
+</div>
+</div>
+
+       </div>
+    </div>
+{/if}
+
+
+</div>
+{/strip}

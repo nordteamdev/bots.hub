@@ -1,0 +1,88 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">
+            <div class="wo_settings_page">
+				<div class="sun_head_onboard shortpwidth page">
+					<img class="sho_img" src="<?php echo $wo['config']['theme_url'];?>/img/cads/page.svg" alt="<?php echo $wo['lang']['page'] ?>" />
+					<span class="go_back_link">
+						<a data-ajax="?link1=pages" href="<?php echo Wo_SeoLink('index.php?link1=pages');?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg><?php echo $wo['lang']['my_pages'];?>
+						</a>
+					</span>
+					<div class="sun_head_onboard_innr">
+						<h2><?php echo $wo['lang']['create_new_page'];?></h2>
+					</div>
+				</div>
+				
+				<form class="create-page-form form-horizontal" method="post">
+					<div class="setting-panel row">
+						<!-- Text input-->
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="page_title"><?php echo $wo['lang']['page_name'];?> *</label>  
+							<div class="col-md-12">
+								<input name="page_title" id="page_title" type="text" class="form-control input-md">
+								<span class="help-block"><?php echo $wo['lang']['your_page_title'];?></span>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="page_name"><?php echo $wo['lang']['page'];?> URL *</label>  
+							<div class="col-md-12 input-group">
+								<span class="input-group-addon"><?php echo $wo['config']['site_url'];?>/</span>
+								<input id="page_name" name="page_name" type="text" class="form-control input-md">
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="page_category"><?php echo $wo['lang']['page_category'];?> *</label>  
+							<div class="col-md-12">
+								<select name="page_category" id="page_category" class="form-control">
+									<?php foreach ($wo['page_categories'] as $category_id => $category_name) {?>
+									<option value="<?php echo $category_id?>"><?php echo $category_name; ?></option>
+									<?php } ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="page_description"><?php echo $wo['lang']['page_description'];?></label>  
+							<div class="col-md-12">
+								<textarea name="page_description" id="" rows="3" class="form-control input-md"></textarea>
+								<span class="help-block"><?php echo $wo['lang']['page_description_info'];?></span>
+							</div>
+						</div>
+					 </div>
+				  	<div class="app-general-alert setting-update-alert"></div>
+                     <div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['create'];?></button>
+					</div>
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+				</form>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+   <!-- .row -->
+</div>
+<!-- .page-margin -->
+<script type="text/javascript">
+   $(function() {
+     $('form.create-page-form').ajaxForm({
+       url: Wo_Ajax_Requests_File() + '?f=pages&s=create_page',
+       beforeSend: function() {
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+       },
+       success: function(data) {
+         scrollToTop();
+         if (data.status == 200) {
+           window.location.href = data.location;
+         } else {
+             var errors = data.errors.join("<br>");
+             $('.app-general-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+             $('.alert-danger').fadeIn(300);
+         }
+         $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+       }
+     });
+   });
+</script>

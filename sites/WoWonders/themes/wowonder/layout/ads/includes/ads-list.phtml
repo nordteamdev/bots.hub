@@ -1,0 +1,52 @@
+<tr data-ad-id="<?php echo $wo['ad']['id']; ?>">
+	<td>
+	<span>
+		<?php echo $wo['ad']['id']; ?>
+	</span>
+	</td>
+	<td width="300">
+		<span><?php echo $wo['ad']['name']; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['lang'][$wo['ad']['bidding']]; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['ad']['clicks']; ?></span>
+	</td>
+	<td>
+		<span><?php echo $wo['ad']['views']; ?></span>
+	</td>
+	<td data-ad-status="<?php echo $wo['ad']['id']; ?>" width="150">
+		<span>
+			<?php if ($wo['ad']['status'] == 1): ?>
+				<?php echo $wo['lang']['active']; ?>
+			<?php else: ?>
+				<?php echo $wo['lang']['not_active']; ?>
+			<?php endif; ?>
+		</span>
+	</td>
+	<td>
+		<a href="<?php echo $wo['ad']['edit-url']; ?>">
+			<span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+			</span>
+		</a>
+		&nbsp;
+		<span class="pointer delete-ad" id="<?php echo $wo['ad']['id']; ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+		</span>
+		&nbsp;
+		<span class="toggle-user-ad-status pointer" id="<?php echo $wo['ad']['id']; ?>" title="<?php echo $wo['lang']['status']; ?>" data-status="<?php echo $wo['ad']['status']; ?>">
+		<?php if ($wo['ad']['status'] == 1): ?>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+		<?php else: ?>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
+		<?php endif;?>
+		</span>
+
+		<a href="<?php echo $wo['ad']['chart-url']; ?>">
+			&nbsp;
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+		</a>
+	</td>
+</tr>

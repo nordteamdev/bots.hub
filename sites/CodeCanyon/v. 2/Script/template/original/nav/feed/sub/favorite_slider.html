@@ -1,0 +1,70 @@
+{strip}
+<section class="w_slider _favorite">
+
+{if !$fav_count_us}
+<div id="hook_Block_FeedsNavigationJS" class="hookBlock _empty">
+    <div id="feedSlider" data-type="feedSlider" class="uslider __active feed-nav h-mod" data-module="uslider">
+        <div class="uslider_cnt">
+         <a onclick="return jbPopup(event,this);" data-unselectable="true" data-jbst='{ldelim}"title":"Add to favorites","cmd":"all_friends","wd":"920"{rdelim}' href="javascript:void(0)" class="uslider_i">
+          <span class="add-stub al add-stub__64 __center"><i class="add-stub_img add-stub_img__ppl"></i></span></a></div>
+    </div>
+</div>
+{else}
+
+<div id="hook_Block_FeedsNavigationJS" class="hookBlock">
+    <div id="feedSlider" data-type="feedSlider" class=" uslider __active feed-nav h-mod" data-module="uslider">
+        <div class="uslider_cnt">
+         <div class="nb-carousel" style="display:inline-block;"><a onclick="return jbPopup(event,this);" data-jbst='{ldelim}"title":"Add to favorites","cmd":"all_friends","wd":"920"{rdelim}' href="javascript:void(0)" class="uslider_i"><span class="add-stub al add-stub__64 __center"><i class="add-stub_img add-stub_img__ppl"></i></span></a>
+	</div>
+	
+	{foreach $gl_rs as $rs}
+         <div class="nb-carousel {if $rs.uid === $faktive_us}__active{/if} _clickitem" style="display:inline-block;">   <a href="javascript:void(0)" onclick="return getWall(this,'certain',1);" class="uslider_i" data-fvid="hook_{$rs.uid}">
+                <div class="feed-nav_i">
+				<div class="nozoom"><img alt="{$rs.fullname}" title="{$rs.fullname}" src="/getPhoto?p={$rs.profile_photo}&sz=small" width="80" class="uslider_img" height="80"></div>
+				<div class="uslider_ufn_ovr"><div class="uslider_u_fname ellip">{$rs.fullname}</div></div>
+				</div>
+		</a></div>
+	{/foreach}
+
+
+</div>
+	
+        <div class="uslider_ctrl __next" onclick="return feedFilterSlide(this,'forward');"></div>
+        <div class="uslider_ctrl __prev hidden" onclick="return feedFilterSlide(this,'back');"></div>
+    </div>
+</div>
+{/if}
+
+{if !$fav_count_us}
+<div id="hook_Block_MainFeedsContent" class="hookBlock favoriteslider_empty">
+    <div class="feed_stub">
+        <div class="feed">
+            <div class="feed_ava"></div>
+            <div class="feed_cnt">
+                <div class="feed_b">
+                    <div class="portlet_h portlet_h__nb noMargin">{$this->lang['feed_favorite_friends_add']}</div>
+                    <div class="jt62">{$this->lang['their_updates_here']}</div>
+                    <div class="feed_stub_dec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+
+
+
+
+
+
+<script>
+{literal}
+		ga('.uslider_cnt').mousewheel(function(event, delta) {
+			this.scrollLeft -= (delta * 30);
+			event.preventDefault();
+		});
+		feedFilterSlideByArrws();
+{/literal}
+</script>
+</section>
+{/strip}

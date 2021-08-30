@@ -1,0 +1,26 @@
+<tr tabindex="1" class="topic-list my-thread-reply-list" data-thread-reply="<?php echo ($wo['message']['id']); ?>">
+	<td class="main small " style="width: 25%;">
+		    <a class="flink" href="<?php echo $wo['message']['url']?>">
+	        	<?php echo $wo['message']['post_subject']?>	
+        	</a>
+	</td>
+	<td style="width:15%;">
+    	<div>
+    		<span>
+	        	<?php echo $wo['message']['forum']['name']?>	
+        	</span>
+    	</div>
+	</td>
+	<td class="small" style="width: 10%">
+		<?php echo Wo_Time_Elapsed_String($wo['message']['posted_time']); ?>
+	</td>
+
+	<td class="small" style="width: 10%">
+		<a class="btn btn-default btn-sm" href="<?php echo $wo['message']['edit_url']?>" data-ajax="?link1=editreply&tid=<?php echo $wo['message']['id'];?>">
+	        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>        
+        </a>
+		<a class="btn btn-default delete-reply btn-sm" id="<?php echo $wo['message']['id']?>">
+			<i class="fa fa-trash" aria-hidden="true"></i>
+		</a>
+	</td>
+</tr>

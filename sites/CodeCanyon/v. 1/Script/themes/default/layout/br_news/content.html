@@ -1,0 +1,30 @@
+<div class="fl-breaking-news">
+  <span>{{LANG br_news}}</span>
+  <h3 class="fl-marquee-bn" data-duplicated='true'>
+	<?php foreach ($fl['breaking_news'] as $br_news): ?>
+		<?php if (!empty($br_news['url'])) { ?> 
+		  <a href="<?php echo($br_news['url']); ?>" target="_blank"><?php echo($br_news['text']); ?></a>
+		<?php } else { ?>
+          <?php echo($br_news['text']); ?>
+        <?php } ?>
+	<?php endforeach; ?>   
+  </h3>  
+</div>
+<script type="text/javascript" src="{{CONFIG theme_url}}/js/jquery-marquee/jquery.marquee.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	  $('.fl-marquee-bn').marquee({
+	      duration: 15000,
+	      gap: 30,
+	      delayBeforeStart: 0,
+	      direction: 'left',
+	      duplicated: true
+	  });
+	  $(".fl-marquee-bn").hover(function() {
+	     $('.fl-marquee-bn').marquee('pause');
+	  }, 
+	  function() {
+	    $('.fl-marquee-bn').marquee('resume');
+	  });
+	});
+</script>

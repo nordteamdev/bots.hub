@@ -1,0 +1,173 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div role="tabpanel" class="tab-pane active" id="showthread">
+	<div class="thraed-header-content sun_thread_head">
+		<div class="col-md-9 no-padding-right no-padding-left">
+			<h4 class="forum_title"><?php echo ($wo['thread']['headline']); ?></h4>
+			<div class="clear"></div>
+			<div>
+				<span><?php echo $wo['lang']['started_by']; ?> <?php echo ($wo['thread']['user_data']['name']); ?></span>
+				<span class="middot">·</span>
+				<span><?php echo($wo['thread']['replies']); ?>  <?php echo $wo['lang']['replies']; ?></span>
+			</div>
+		</div>
+		<div class="col-md-3 no-padding-right no-padding-left">
+			<span class="btn-glossy">
+				<a class="btn btn-default <?php echo Wo_RightToLeft('pull-right') ?>" href="<?php echo Wo_SeoLink('index.php?link1=threadreply&tid='.$wo['thread']['id']);?>" data-ajax="?link1=threadreply&tid=<?php echo $wo['thread']['id'];?>"><?php echo $wo['lang']['reply_to_topic']; ?></a>
+			</span>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div>
+		<div class="thread-replies sun_thread_main_reply">
+			<div class="t-left_prt text-center">
+				<div>
+					<a href="<?php echo ($wo['thread']['user_data']['url']); ?>" data-ajax="?link1=timeline&u=<?php echo $wo['thread']['user_data']['username']; ?>"><img src="<?php echo $wo['thread']['user_data']['avatar']; ?>" alt="Avatar" class="avatar"></a>
+				</div>
+				<a href="<?php echo ($wo['thread']['user_data']['url']); ?>" data-ajax="?link1=timeline&u=<?php echo $wo['thread']['user_data']['username']; ?>">
+					<h4 class="user-title-thread"><?php echo ($wo['thread']['user_data']['name']); ?></h4>
+				</a>
+				<hr>
+				<p class="small mb0" title="<?php echo $wo['lang']['joined']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" /></svg> <?php echo Wo_Time_Elapsed_String($wo['thread']['user_data']['joined']); ?></p>
+			</div>
+			<div class="t-right_prt">
+				<div>
+					<h5 class="time"><?php echo $wo['lang']['posted']; ?>: <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo Wo_Time_Elapsed_String($wo['thread']['posted']); ?></h5>
+				</div>
+				<div class="small">
+					<?php echo Wo_BbcodeToHtml($wo['thread']['post']); ?>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="sun_thread_replies" id="thread-reply-list">
+			<?php 
+				if (count($wo['thread']['threadreplies']) > 0) {
+					foreach ($wo['thread']['threadreplies'] as $wo['threadreply']) {
+						echo Wo_LoadPage("forum/includes/threadreply-list");
+					}
+				}
+			?>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="">
+	    <div class="posts_load">
+	        <?php if (count($wo['thread']['threadreplies']) >= 1): ?>
+	        <div class="load-more">
+	            <button class="btn btn-default text-center wo_load_more" id="load-thread-replies" >
+					<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></span> <?php echo $wo['lang']['load_more_posts'] ?>
+				</button>
+	        </div>
+	        <?php endif ?>
+	    </div>  
+	</div>
+	<div class="margin-b30">
+		<div class="btn-group dropup">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> &nbsp; <span class="caret"></span></button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="<?php echo Wo_SeoLink('index.php?link1=mythreads'); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book" style="margin-top: -2px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> <?php echo $wo['lang']['my_threads']; ?></a></li>
+				<li><a href="<?php echo Wo_SeoLink('index.php?link1=mymessages'); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle" style="margin-top: -2px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> <?php echo $wo['lang']['my_messages']; ?></a></li>
+				<li class="divider"></li>
+			</ul>
+        </div>
+        <?php if ($wo['forums'] && count($wo['forums']) > 0): ?>
+        <div class="btn-group dropup">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Jump to &nbsp; <span class="caret"></span></button>
+			<ul class="dropdown-menu" role="menu">
+				<?php foreach ($wo['forums'] as $jump): ?>         	
+					<li>
+						<a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$jump['id']);?>" class="<?php if ($jump['id'] ==  $wo['thread']['forum']) echo 'bold'; ?>"><?php echo $jump['name']; ?></a>
+					</li>
+				<?php endforeach ?>
+			</ul>
+        </div>
+        <?php endif ?>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>
+<?php echo Wo_LoadPage('forum/includes/delete-reply'); ?>
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+
+<script>
+	$('#forum-messages-search').submit(function(event) {
+		if (true) {}
+		event.preventDefault()
+	    $.ajax({
+          url: Wo_Ajax_Requests_File()  +  '?f=forum-messages-search&tid=<?php echo $wo['thread']['id']; ?>',
+          data:$(this).serialize(),
+          type: 'GET',
+          dataType: 'json',
+          beforeSend: function() {
+            Wo_progressIconLoader($('#forum-messages-search').find('button'));
+          },
+          success: function(data) {
+            $(".posts_load").remove()
+            if (data['status'] == 200) {
+                $("#thread-reply-list").html(data['html']);
+            } else {
+                $("#thread-reply-list").html('<h5 class="search-filter-center-text">' + data['html'] + '</h5>');
+            } 
+            Wo_progressIconLoader($('#quotereply').find('button'));
+          }
+        });
+    });
+
+      $("#load-thread-replies").click(function () {
+        $.ajax({
+             url: Wo_Ajax_Requests_File(),
+             type: 'GET',
+             dataType: 'json',
+             data: {
+                f:"load-thread-replies",
+                tid:<?php echo $wo['thread']['id']; ?>,
+                offset:($(".thread-replies").length > 0) ? $(".thread-replies:last").attr('data-thread-reply') : 0
+             },
+             success:function(data){
+                if (data['status'] == 200) {
+                    $("#thread-reply-list").append(data['html'])
+                 }
+                 else{
+                   $(".posts_load").remove()
+                 }
+             }
+          });
+      });
+
+  	var delay = (function(){
+	var timer = 0;
+	return function(callback, ms){
+	  clearTimeout (timer);
+	  timer = setTimeout(callback, ms);
+		};
+	})();
+
+	$("#forum-messages-search").keyup(function(event) {
+
+      delay(function(){
+      if ($("#forum-messages-search").val().trim()) {
+	      $.ajax({
+	        url: Wo_Ajax_Requests_File(),
+	        type: 'GET',
+	        data: {	f:"forum-messages-search",
+	        		keyword:$("#forum-messages-search").val(),
+	        		tid:<?php echo $wo['thread']['id']; ?>
+	        	},
+	        dataType: "json",
+	        success: function(data){
+	          if (data['status'] == 200) {
+	          	$("#thread-reply-list").html(data['html']);
+	          	$(".posts_load").remove()
+	          }
+	          else if(data['status'] == 404){
+	         	$("#thread-reply-list").html('<h5 class="search-filter-center-text">' + data['html'] + '</h5>');
+	         	$(".posts_load").remove()
+	          }
+	        }
+	      })}
+
+      }, 1000 );
+  	});
+
+</script>
+

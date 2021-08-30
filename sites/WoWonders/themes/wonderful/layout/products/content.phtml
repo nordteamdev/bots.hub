@@ -1,0 +1,203 @@
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+#good-catz .list-group-item.active a{background-color:<?php echo $wo['config']['btn_background_color'];?>;color:<?php echo $wo['config']['btn_color'];?> !important;text-decoration:none}
+#good-catz .list-group-item.active a:hover{background-color:<?php echo $wo['config']['btn_background_color'];?>;color:<?php echo $wo['config']['btn_color'];?>;}
+#product-front .image_overlay{background: <?php echo $wo['config']['btn_background_color'];?>;}
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+.navbar-default {padding-right: 260px;}
+}
+@media (max-width: 992px) {
+body {padding-left: 0px;overflow-x: auto;}
+#good-catz .list-group-item a {box-shadow: none;padding: 9px 15px;border-radius: 0px;}
+#good-catz .list-group-item.active a, #good-catz .list-group-item.active a:hover, #good-catz .list-group-item a:hover {background-color: #fff;color: #111 !important;}
+}
+</style>
+<div class="market-header"> 
+	<div class="container">
+		<div style="font-size: 20px;margin-bottom: 7px;margin-top: 12px;">
+			<?php if($wo['language'] == "english") { ?>Just start typing to find product.<?php } ?>
+			<?php if($wo['language'] == "arabic") { ?>مجرد بدء الكتابة للعثور على المنتج.<?php } ?>
+			<?php if($wo['language'] == "dutch") { ?>Begin met het typen om product te vinden.<?php } ?>
+			<?php if($wo['language'] == "french") { ?>Commencez simplement à taper pour trouver le produit.<?php } ?>
+			<?php if($wo['language'] == "german") { ?>Geben Sie einen Begriff ein um das Produkt zu finden.<?php } ?>
+			<?php if($wo['language'] == "italian") { ?>Basta iniziare a digitare per trovare il prodotto.<?php } ?>
+			<?php if($wo['language'] == "portuguese") { ?>Basta começar a digitar para encontrar o produto.<?php } ?>
+			<?php if($wo['language'] == "russian") { ?>Просто начните печатать, чтобы найти продукт.<?php } ?>
+			<?php if($wo['language'] == "spanish") { ?>Simplemente comience a escribir para encontrar el producto.<?php } ?>
+			<?php if($wo['language'] == "turkish") { ?>Sadece ürün bulmak için yazmaya başlayın.<?php } ?>
+		</div>
+		<div class="row mt20"> 
+			<div class="col-sm-6 col-sm-offset-3"> 
+				<form action="">
+				    <div class="form-group inner-addon left-addon wo_market__search">
+				    	<i class="glyphicon zmdi zmdi-search main-color"></i>
+				    	<?php
+				    	$placeholder = $wo['lang']['search_for_products_main'];
+				    	if (!empty($category_name)) {
+				    	$placeholder = str_replace('{category_name}', $category_name, $wo['lang']['search_for_products']);
+				    	}
+				    	?>
+				    	<input type="text" class="form-control" onkeyup="Wo_SearchProducts(this.value)" placeholder="<?php echo $placeholder; ?>" autofocus id="product-text">
+				    </div>
+				</form> 
+			</div> 
+		</div> 
+	</div> 
+</div>
+
+<div class="page-margin products" style="margin-top: 205px;">
+	<div class="row">
+		<div class="col-md-3 cussidefix">
+			<div class="market_widget">
+				<div class="m_widget_head cattitle"><?php echo $wo['lang']['location_dist'];?></div>
+				<div class="select-nearby-users-distance">
+					<form style="display: table;width:100%">
+						<input type="range" class="cusrange" id="nearby-users-distance" name="amountRange" onchange="Wo_SearchProductsNearBy();" value="0" min="0" max="300" oninput="this.form.amountInput.value=this.value">
+						<input type="number" name="amountInput" min="0" max="4000" value="0" oninput="this.form.amountRange.value=this.value" readonly id="cusrange-reader"/> km
+					</form>
+				</div>
+			</div>
+			<div class="procuts-categories" id="good-catz">
+				<ul class="list-group" style="background: transparent !important;border: none;box-shadow: none !important;">
+				    <li class="list-group-item catpadlow cattitle">
+					<?php echo $wo['lang']['categories'] ?>
+					<div class="procattogg <?php echo Wo_RightToLeft('pull-right');?> hideinmenup" style="cursor:pointer;user-select: none;"><i class="zmdi zmdi-chevron-down" style="font-size: 21px;line-height: 1;font-weight:bold"></i></div>
+					<div class="procatsho <?php echo Wo_RightToLeft('pull-right');?> hideinmenup" style="cursor:pointer;user-select: none;"><i class="zmdi zmdi-close" style="font-size: 21px;line-height: 1;font-weight:bold"></i></div>
+					</li>
+				    <?php 
+				    $category_id = (!empty($_GET['c_id'])) ? (int) $_GET['c_id'] : 0;
+				    foreach ($wo['products_categories'] as $key => $category) {
+				    	$active = ($category_id == $key) ? ' active' : '';
+				    ?>
+					<div class="hideprocat">
+				    <li class="list-group-item gray-list<?php echo $active?>"><a href="<?php echo Wo_SeoLink('index.php?link1=products&c_id=' . $key);?>"><?php echo $category;?></a></li>
+					</div>
+				    <?php
+				    }
+				    ?>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="list-group" style="background: transparent !important;border: none;box-shadow: none !important;">
+				<div class="list-group-item cattitle" style="border: 0px;">
+					<span class="pull-right">
+						<a data-ajax="?link1=new-product" href="<?php echo Wo_SeoLink('index.php?link1=new-product');?>" style="font-size: 16px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> <?php echo $wo['lang']['new'] ?></a>
+					</span>
+					<?php echo $wo['lang']['latest_products'] ?>
+				</div>
+				<div class="latest-products">
+					<?php
+					$category_name = '';
+					$data = array();
+					if (!empty($_GET['c_id'])) {
+						if (is_numeric($_GET['c_id'])) {
+							if (array_key_exists($_GET['c_id'], $wo['products_categories'])) {
+								?>
+								<input type="hidden" value="<?php echo Wo_Secure($_GET['c_id']); ?>" id="c_id" />
+								<?php
+								$category_name = $wo['products_categories'][$_GET['c_id']];
+								$data['c_id'] = Wo_Secure($_GET['c_id']);
+							}
+						}
+					} else {
+						echo '<input type="hidden" value="0" id="c_id" />';
+					}
+					$data['limit'] = 15;
+					$products = Wo_GetProducts($data);
+					if (count($products) > 0) {
+						?>
+						 
+				         <div id="products">
+						<?php
+						foreach ($products as $key => $wo['product']) {
+							echo Wo_LoadPage('products/products-list'); 
+						}
+					} else {
+				       echo $wo['lang']['no_available_products'];
+					}
+					?>
+					</div> 
+				</div> 	
+			</div>
+			<div class="posts_load load-produts">
+			    <?php if (count($products) > 0): ?>
+				<div class="load-more">
+                    <button class="mdbtn wabe btn btn-default text-center pointer" onclick="Wo_LoadProducts();">
+                    <i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_products'] ?></button>
+                </div>
+                <?php endif ?>
+			</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<script>
+function Wo_SearchProductsNearBy() {
+	length = $('#cusrange-reader').val();
+	text_value = $('#product-text').val();
+	var c_id = 0;
+	if ($('#c_id').length > 0) {
+		c_id = $('#c_id').val();
+	}
+	$.post(Wo_Ajax_Requests_File() + '?f=search_products', {value: text_value, c_id:c_id, length: length}, function (data) {
+		if (data.status == 200) {
+			if (data.html.length > 0) {
+				$('#products').html(data.html);
+			} else {
+				$('#products').html('<?php echo $wo['lang']['no_available_products'] ?>');
+			}
+		}
+	});
+}
+function Wo_LoadProducts() {
+	$('.load-produts').html('<div class="white-loading list-group"><div class="cs-loader"><div class="cs-loader-inner"><label> ●</label><label> ●</label><label> ●</label><label> ●</label><label> ●</label><label> ●</label></div></div></div>');
+	var $c_id = $('#c_id').val();
+	var $last_id = $('.product:last').attr('data-id');
+	var length = $('#cusrange-reader').val();
+	$.post(Wo_Ajax_Requests_File() + '?f=load_more_products', {last_id: $last_id, c_id:$c_id, length: length}, function (data) {
+		if (data.status == 200) {
+			if (data.html.length > 0) {
+				$('.load-produts').html('<div class="load-more"><button class="btn btn-default text-center pointer" onclick="Wo_LoadProducts();"><i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more_products'] ?></button></div>');
+				$('#products').append(data.html);
+			} else {
+				$('.load-produts').html('<div class="load-more"><button class="btn btn-default text-center pointer" onclick="Wo_LoadProducts();"><?php echo $wo['lang']['no_available_products'] ?></button></div>');
+			}
+		}
+	});
+}
+function Wo_SearchProducts(value) {
+	length = $('#cusrange-reader').val();
+	var c_id = 0;
+	if ($('#c_id').length > 0) {
+		c_id = $('#c_id').val();
+	}
+	$.post(Wo_Ajax_Requests_File() + '?f=search_products', {value: value, c_id:c_id, length:length}, function (data) {
+		if (data.status == 200) {
+			if (data.html.length > 0) {
+				$('#products').html(data.html);
+			} else {
+				$('#products').html('<?php echo $wo['lang']['no_available_products'] ?>');
+			}
+		}
+	});
+}
+
+$('.procattogg').on('click',function (){
+	$(this).fadeOut(1);
+	$('.procatsho').fadeIn(100);
+    $('.hideprocat').fadeIn(100);
+});
+
+$('.procatsho').on('click',function (){
+	$('.procattogg').fadeIn(100);
+	$(this).fadeOut(1);
+    $('.hideprocat').fadeOut(100);
+});
+</script>

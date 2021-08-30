@@ -1,0 +1,38 @@
+.login_left_combo_parent, .wo_regi_features{float: right;left: auto;}
+.login .col-md-6, .login .col-md-7 {margin-left: 0;}
+.login_left_combo, .login form, .login input, .login select, .login textarea {text-align: right;direction: rtl;}
+.forgot_password {text-align: left;}
+.spinner{margin-right: 0;margin-left: 15px;}
+.wo_r_features {margin-left: 80px;}
+.terms{padding-left: 0;}
+.terms label{padding-right: 30px;}
+.terms label::before{left: auto;right: 0;}
+
+@media (max-width: 992px) {
+.login .col-md-6 {margin-right: 50%;}
+.login .col-md-7 {margin-right: 41.66666667%;}
+}
+
+@media (max-width: 880px) {
+.wo_r_features {margin: auto;}
+}
+
+@media (max-width: 800px) {
+.login .col-md-6 {margin-right: 40%;}
+}
+
+@media (max-width: 720px) {
+.login_left_combo_parent {float: none;height: 270px;}
+.login_left_combo {width: 100%;}
+.login .col-md-6 {margin-right: 0;}
+}
+
+@media (max-width: 670px) {
+.login_left_combo_parent {height: 250px;}
+.wo_regi_features {float:none;}
+.login .col-md-7 {margin-right: 0;}
+}
+
+@media (max-width: 440px) {
+.login_left_combo_parent {height: 160px;}
+}

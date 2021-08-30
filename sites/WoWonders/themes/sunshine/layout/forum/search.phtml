@@ -1,0 +1,65 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div class="row">
+	<label class="col-md-3"></label>
+	<div class="col-md-6">
+		<div class="red-list">
+			<div class="wo_settings_page">
+				<form id="forum-search" action="<?php echo Wo_SeoLink('index.php?link1=forum-search-result');?>" method="get" class="forum form-horizontal">
+					<input type="hidden" name="mode" value="search">
+					<div class="setting-panel row">
+						<div class="sun_input">
+							<textarea class="form-control" cols="20" rows="5" name="search-terms" id="search-subject" placeholder="<?php echo $wo['lang']['search_for_term']?>"></textarea>
+							<label for="search-subject"><?php echo $wo['lang']['search_for_term']?></label>
+							<span class="help-block"><?php echo $wo['lang']['search_terms_more4']; ?></span>
+						</div>
+						<!-- Text input-->
+						<div class="sun_input">
+							<select id="search-only" name="search-only" class="form-control">
+								<option value="0" ><?php echo $wo['lang']['search_subject_only']; ?></option>
+								<option value="1" ><?php echo $wo['lang']['search']; ?> <?php echo $wo['lang']['post']; ?></option>
+							</select>
+							<label for="search-only"><?php echo $wo['lang']['search_type']?></label>
+						</div>
+						<div class="sun_input">
+							<select id="search-in" name="search-in" class="form-control">
+								<option value="forums"><?php echo $wo['lang']['search_in_forums']; ?></option>
+								<option value="messages"><?php echo $wo['lang']['search_in_messages']; ?></option>
+								<option value="threads" selected><?php echo $wo['lang']['search_in_threads']; ?></option>
+							</select>
+							<label for="search-in"><?php echo $wo['lang']['search_in']?></label>
+						</div>
+						<div class="sun_input">
+							<select id="search-section" name="section" class="form-control">
+								<?php foreach ($wo['sections'] as $wo['section']): ?>
+									<option value="<?php echo $wo['section']['id']; ?>"><?php echo $wo['section']['section_name']; ?></option>
+								<?php endforeach; ?>
+							</select>
+							<label for="search-section"><?php echo $wo['lang']['search_section']?></label>
+						</div>
+					</div>
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" id="forum-search-btn" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['search'];?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- .col-md-8 -->
+	<label class="col-md-3"></label>
+</div>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>
+<script>
+	jQuery(document).ready(function($) {
+        $("#forum-search").submit(function(event) {
+	        var empty = $("#search-subject").val();
+            if ($("#search-subject").val().length < 4) {
+            	event.preventDefault();
+            	$("#search-terms").addClass('alert alert-danger');
+            	scrollToTop();
+            	$("#search-subject").focus();
+            }
+        });
+	});
+</script>

@@ -1,0 +1,24 @@
+<div class="page_list row boosted_pages">
+	<div class="col-xs-2 col-md-2 no-padding-left">
+		<a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>">
+			<div class="avatar">
+				<img src="<?php echo $wo['app']['app_avatar'];?>" alt="<?php echo $wo['app']['app_name']; ?>" style="border-radius: 5px;" />
+			</div>
+		</a>
+	</div>
+	<div class="col-xs-8 col-md-8">
+		<a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>">
+			<span class="page_title"><?php echo $wo['app']['app_name']; ?></span>
+		</a>
+		<div class="page_info">
+			<ul>
+				<li>
+					App ID: <?php echo $wo['app']['app_id']; ?>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-xs-2 col-md-2">
+		<a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>" class="btn btn-info btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg> <?php echo $wo['lang']['edit']; ?></a>
+	</div>
+</div>

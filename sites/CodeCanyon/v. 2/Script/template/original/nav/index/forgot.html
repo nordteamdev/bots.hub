@@ -1,0 +1,37 @@
+{strip}
+
+<div id="content" class="page_block page-forgot"><div id="forgot_panel">
+  <h2 class="page_block_h2">
+<div class="page_block_header clear_fix">
+  <div class="page_block_header_extra_left _header_extra_left"></div>
+  <div class="page_block_header_extra _header_extra"></div>
+  <div class="page_block_header_inner _header_inner"><div class="ui_crumb">{$this->lang['Password_retrieval']}</div></div>
+</div>
+</h2>
+  <div class="page_section restore_page_section">
+    <div id="error"></div>
+    <div class="info">
+      {$this->lang['password_recover_descr']}
+    </div>
+    <div class="section_row clear_fix">
+      <div class="label">{$this->lang['email']}</div>
+      <div class="labeled">
+        <div class="input_back_content">
+          <input type="email" id="forgot_input" class="text restore_login_input" value="" placeholder="john@gmail.com">
+        </div>
+      </div>
+    </div>
+    <div class="section_row section_actions_row clear_fix">
+      <div class="label"></div>
+      <div class="labeled">
+        <button class="flat_button" id="submitBtn" onclick="forgotFormSend();">{$this->lang['Next']}</button>
+      </div>
+    </div>
+  </div>
+  <div class="bottom_row">
+    {$this->lang['Recover_not_remember']} <a href="javascript:;" onclick="alert('Under construction');">{$this->lang['contact_us']}.</a>.
+  </div>
+</div></div>
+
+
+{/strip}

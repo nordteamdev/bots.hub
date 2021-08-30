@@ -1,0 +1,88 @@
+{strip}
+{assign var=rand_n value=mt_rand(11,9999)}
+<div class="feed h-mod small">
+
+
+
+	<header>
+	
+    <div class="feed_ava">
+        <a href="/profile?q={$res.uid}" hrefattr="true">
+            <div><img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small" alt="{$res.fullname}" width="48" height="48">
+            </div>
+        </a>
+    </div>
+    <div class="feed_ac"><span class="feed_date">{$this->feedConvDate($res.added)}</span>
+        <a title="{$this->lang['hide_from_feed']}" data-gth="{$res.id}" href="javascript:;" class="al feed_close"></a>
+    </div>
+	
+	
+	
+        <div class="feed_h">
+		<span class="kn_shortcutmenu">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.uid}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.ugender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+		</div>
+		<a href="/user/{$res.uid}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+           &nbsp;{$this->lang['added']} {$tracks_c} {if $tracks_c > 1}{$this->lang['tracks']}{else}{$this->lang['a_track']}{/if}
+			{if $res.parent_id}
+			{assign var=coll_dt value=$this->getMusicCollectionName($res.parent_id)}
+			&nbsp;{$this->lang['in']} <span rel="tipsy" title="{$this->lang['collection']}" class="feed_collection_name"><i class="ic playlist_ic_12"></i>{$coll_dt[0]['name']}</span>{/if} 
+        </div>
+	
+	
+	
+	
+	</header>
+
+
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$res.id}","uid":"{$res.uid}"{rdelim}'>
+         
+
+
+
+
+        <div class="feed_b ">
+            <div class="m_portal_track-hld clearfix ">
+               {foreach $tracks_arr as $id}
+		{assign var=t_rows value=$this->getTrackInfo($id)}
+
+{if $c == 0}
+		<div uid="card " class="mus_card ">
+                    <div class="col-card __no-decor ">
+                        <div class="mus_card_img_w mus_card_img_w__album "><div style="background-position: 50% 0;background-image:url({$t_rows.cover});background-repeat:no-repeat;background-size:cover;" class="m_portal_tr_cover_img "></div>
+                            <div class="col-card_ovr "></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-music media-block ">
+                    <div class="m_portal_tracks ">
+{/if}
+                        <div class="track js-track soh-s ">
+                          <div class="track_hld ">
+<span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{literal}{{/literal}"track":"{$t_rows.path}","cover":"{$t_rows.cover}","artist":"{$t_rows.artist}","songname":"{$t_rows.title}","albumname":"{$t_rows.album}"{literal}}{/literal}' title="{$this->lang['play']}" id="{$res.uid}_{$t_rows.id}" class="track_play __play js-track_play __mus_out"></span>
+
+                                <div class="track_cnt "><a class="track_artist" onclick="nobilMusicSearch('{$t_rows.artist}')">{$t_rows.artist}</a>&nbsp;&#8211;&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$t_rows.title}')">{$t_rows.title}</a><span class="foh-s track_info"> {$this->lang['from']} <a lass="track_album" onclick="nobilMusicSearch('{$t_rows.album}')">{$t_rows.album}</a></span></div>
+			<div class="track_ac foh-s" id="{$res.uid}_{$t_rows.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['feed_add_track']}" class="track_add js-track_add "></span></div>
+			</div>
+			</div>
+		{assign $c $c++ nocache}
+{/foreach}
+
+{if $tracks_c > 5}
+
+<div class="media_more_pos __tracks">
+<div class="media_more"><a title="{$this->lang['more']}" data-tracks='{ldelim}"id":"{$all_s_id}","ufn":"{$res.fullname}","uid":"{$res.uid}"{rdelim}' onclick="feedAllAddedTracks(this,event)" href="javascript:;" class="media_more_a"><span class="media_more_ic">&#149;&#149;&#149;</span></a></div>
+</div>
+
+{/if}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{/strip}

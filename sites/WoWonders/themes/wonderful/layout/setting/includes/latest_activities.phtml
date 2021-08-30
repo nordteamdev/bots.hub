@@ -1,0 +1,30 @@
+<div class="ads-cont-wrapper">
+	<table class="table table-striped">
+		<thead>
+		  <tr>
+		    <th><b><?php echo $wo['lang']['type']; ?></b></th>
+            <th width="300"><b><?php echo $wo['lang']['status']; ?></b></th>
+		    <th><b><?php echo $wo['lang']['date']; ?></b></th>
+		    <th><b><?php echo $wo['lang']['amount']; ?></b></th>
+		  </tr>
+		</thead>
+		<tbody id="user-ads">
+		<?php if (count($wo['trans']) > 0): ?>
+		    <?php foreach ($wo['trans'] as $key => $transaction): ?>
+                <tr data-ad-id="<?php echo $transaction['id']; ?>">
+                    <td><span><?php echo $transaction['kind']; ?></span></td>
+                    <td width="300"><span><?php echo $transaction['notes']; ?></span></td>
+                    <td><span><?php echo $transaction['transaction_dt']; ?></span></td>
+                    <td><span><?php echo Wo_GetCurrency($wo['config']['ads_currency']); ?><?php echo sprintf('%.2f', $transaction['amount'] ); ?></span></td>
+                </tr>
+		    <?php endforeach; ?>
+		<?php else: ?>
+			<tr>
+				<td colspan="4" class="text-center" style="height: 200px;">
+					<?php echo $wo['lang']['no_transactions_found']; ?>
+				</td>
+			</tr>
+		<?php endif; ?>
+		</tbody>
+	</table>
+</div>

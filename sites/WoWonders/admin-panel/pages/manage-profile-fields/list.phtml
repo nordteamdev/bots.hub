@@ -1,0 +1,21 @@
+<tr class="setting-postlist" id="<?php echo $wo['field']['id'];?>">
+   <td><?php echo $wo['field']['id'];?></td>
+   <td><?php echo $wo['field']['name'];?></td>
+   <td>
+      <?php
+         if ($wo['field']['select_type'] == 'yes') {
+          echo 'Select box';
+         } else if ($wo['field']['type'] == 'textarea') {
+          echo 'Text area';
+         } else if ($wo['field']['type'] == 'textbox') {
+          echo 'Text box';
+         }
+         ?>
+   </td>
+   <td><?php echo $wo['field']['length'];?></td>
+   <td><?php echo ucfirst($wo['field']['placement']);?></td>
+   <td>
+      <a class="btn btn-info waves-effect waves-light" href="<?php echo Wo_LoadAdminLinkSettings('edit-profile-field?id=' . $wo['field']['id']); ?>">EDIT</a>
+      <button onclick="Wo_DeleteField(<?php echo $wo['field']['id'];?>);" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>

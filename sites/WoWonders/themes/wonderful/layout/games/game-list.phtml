@@ -1,0 +1,12 @@
+<div class="profile-style">
+   <a href="<?php echo $wo['game']['url'];?>" data-ajax="?link1=game&id=<?php echo $wo['game']['id'];?>">
+      <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+         <img src="<?php echo $wo['game']['game_avatar'];?>" alt="<?php echo $wo['game']['game_name']; ?> Profile Picture" />
+      </div>
+      <?php echo $wo['game']['game_name']; ?>
+   </a>
+   <div class="page-website">
+     <?php echo $wo['lang']['last_play'];?> <?php echo Wo_Time_Elapsed_String($wo['game']['last_play']);?>
+   </div>
+   <a href="<?php echo $wo['game']['url'];?>" class="btn btn-default btn-sm"><i class="fa fa-fw fa-gamepad"></i> <?php echo $wo['lang']['play'];?></a>
+</div>

@@ -1,0 +1,34 @@
+<tr class="forum-mbr-list" id="<?php echo $wo['member']['id']; ?>">
+
+    <td>
+        <p>
+            <b>
+                <a href="/<?php echo $wo['member']['username'] ?>/"
+                   data-ajax="?link1=timeline&u=<?php echo $wo['member']['username'] ?>">
+                <?php echo $wo['member']['username'] ?>
+                    
+                </a>
+            </b>
+        </p>
+        <p>
+            <?php if ($wo['member']['admin'] == 1): ?>
+                <?php echo $wo['lang']['site_admin']; ?>
+            <?php else: ?>
+                <?php echo $wo['lang']['registered']; ?> 
+            <?php endif; ?>
+        </p>
+    </td>
+    <td>
+        <span><?php echo Wo_Time_Elapsed_String($wo['member']['joined']) ?></span>
+    </td>
+    <td>
+        <span><?php echo Wo_Time_Elapsed_String($wo['member']['lastseen']) ?></span>
+        
+    </td>
+
+
+    <td><?php echo($wo['member']['forum_posts']) ?></td>
+    <td>
+          <span><?php echo($wo['member']['referrer']) ?></span>
+    </td>
+</tr>

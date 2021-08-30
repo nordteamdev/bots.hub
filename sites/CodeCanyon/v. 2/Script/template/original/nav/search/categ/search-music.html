@@ -1,0 +1,172 @@
+{assign var="cc" value=0}
+
+{$header}
+<div id="search_hints"></div>
+<div class="__none" id="is_search_page"></div>
+
+
+<div class="v2_gs_main gm-cl-aft __search_result">
+
+
+<div id="hook_Block_PortalSearchFilters">
+	<div class="v2_gs_filter_column_w">
+		<div id="facets" class="v2_gs_filter_column">
+			<div id="gender" class="v2_gs_filter __open __show">
+				<div class="v2_gs_filter_t"><span class="lwa-bef __close-l">{$this->lang['Search']}</span></div>
+				<ul class="v2_gs_filter_list __gender">
+					<li><a href="/search?key={$key}&c=m&filter=tracks" hrefattr="true"><span class="v2_gs_filter_i {if $filter == 'tracks' || !$filter}__active{/if} mcateg __default gs_it ellip">{$this->lang['tracks']}</span></a></li>
+					<li><a href="/search?key={$key}&c=m&filter=artist" hrefattr="true"><span class="v2_gs_filter_i {if $filter == 'artist'}__active{/if} gs_it ellip" data-search-filter-mcateg="artist">{$this->lang['by_artist']}</span></a></li>
+					<li><a href="/search?key={$key}&c=m&filter=album" hrefattr="true"><span class="v2_gs_filter_i {if $filter == 'album'}__active{/if} gs_it ellip" data-search-filter-mcateg="album">{$this->lang['by_album']}</span></a></li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div></div>
+
+
+
+<div id="hook_Block_PortalSearchResults" class="hookBlock">
+	<div id="searchResults" class="v2_gs_left_column _fon_alb nopadding">
+		<div id="hook_Native">
+			<div class="disabling-layer v1_gs_result_fader"></div>
+			
+
+			
+			<div class="loader-container" id="search_ajax_new_results">
+			{if $filter !== 'artist'}
+			<div class="portlet_h2"><span class="portlet_h2_tx">{$c} {$found}</span></div>
+			{/if}
+			<div id="gs_result_list" class="v1_gs_result_list {if $filter === 'album'}__album{/if}">
+				{if $filter !== 'artist'}{$pagination} {/if}
+			<div class="mus_search_mt">
+			<!--- Tracks --->
+			{if !$filter || $filter === 'tracks'}
+			
+				
+					{foreach $q as $r}
+					{$cc = $cc+1}
+
+					
+					<div class="track js-track soh-s __search_mt_mbt">
+					<div class="track_hld ">
+					<span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$r.path}","cover":"{$r.cover}","artist":"{$r.artist}","songname":"{$r.title}","albumname":"{$r.album}"{rdelim}' title="{$this->lang['play']}" id="{$user_id}_{$r.id}" class="track_play __play js-track_play __mus_out"></span>
+					<div class="track_cnt ">
+					<a class="track_artist" onclick="nobilMusicSearch('{$r.artist}')">{$r.artist}</a>&nbsp;–&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$r.title}')">{$r.title}</a><span class="foh-s track_info"> {$this->lang['from']} <a class="track_album" onclick="nobilMusicSearch('{$r.album}')">{$r.album}</a></span></div><div class="Track_time">{$r.time}</div><div class="track_ac foh-s" id="{$user_id}_{$r.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['feed_add_track']}" class="track_add js-track_add "></span></div></div></div>
+					
+					{/foreach}
+					
+					
+				</div>
+
+			{else if $filter === 'album'}
+			{assign var=al_c value=0}
+			{foreach $q as $ralb}
+			{if $al_c == 0} <div class="ar_sort3"> {/if}
+			<div data-id="{$ralb.id}" class="mus_card_i"><div uid="card" id="result{$ralb.id}" class="mus_card">
+			<div class="mus_card_img_w mus_card_img_w__album">{if $ralb.cover}<img src="{$this->artist_cover_lv($ralb.cover,1)}" class="mus_album-list_img mus_card_img">{/if}<div class="mus_card_ac_lst">
+			<span uid="pl" class="mus_card_ac_i mus_card_ac_i__pl"><span class="mus_card_play"></span>play</span>
+			<span uid="pause" class="mus_card_ac_i mus_card_ac_i__ps"><span class="mus_card_play __pause"></span>pause</span>
+			<span class="mus_card_ac_i mus_card_ac_i__more"><span class="mus_card_more"></span>more details</span></div></div>
+			<div class="mus_card_n_w"><div class="mus_card_n textWrap"><span title="{$ralb.album}" rel="tipsy" class="mus_card_n_a">{$ralb.album}</span></div>
+			<div class="mus_card_n_artist ellip"><span uid="art" title="{$ralb.artist}" rel="tipsy" class="mus_card_n_artist_a">{$ralb.artist}</span></div></div></div></div>
+			
+					{if $al_c == 2} {$al_c = 0}</div>{else}
+					{$al_c = $al_c +1} {/if}
+			{foreachelse}
+			{$this->searchEmpty($this->lang['no_albums_match_search'])}
+			{/foreach}
+			{else if $filter === 'artist'}
+
+			{if !$q_top_artist && !$q} {$this->searchEmpty($this->lang['no_artist_match_search'])} {else}
+			
+<div id="hook_Block_PortalSearchResults" class="artist_details hookBlock">
+	<div class="v2_gs_left_column v1_gs_result_music" id="searchResults">
+		<div id="hook_Native_845499090" data-name="PSStickyFiltersHook">
+			<div class="disabling-layer v1_gs_result_fader"></div>
+			
+			
+			{if $q_top_artist}
+			<div>
+				<div class="portlet_h2"><span class="portlet_h2_tx">Most relevant results</span></div>
+				<div id="psBestMatch" class="mus_album mus_album__animated">
+					<div id="bmDetails" class="mus_album_i_w">
+						<div class="mus_card_img_w mus_card_img_w__artist"><img uid="active" src="{$this->artist_cover_lv($q_top_artist.cover)}" class="mus_album-list_img mus_card_img"></div>
+						<div class="m_c_a_go_to"><span class="al">More details</span></div>
+					</div>
+					<div class="mus_h2"><span class="mus_h2_tx ellip">{$q_top_artist.artist}</span></div>
+					<div class="mus_submenu">
+						<div class="mus_submenu_i"><span class="mus_submenu_a mus_submenu_a__active _pointer_evt">Hits</span></div>
+						<div id="bmSimilar" onclick="return nobilMusicArtistRadio('{$q_top_artist.artist}');" class="mus_submenu_i"><span class="mus_submenu_a"><i class="mus_submenu_play __invert"></i><span>Similar tracks</span></span>
+						</div>
+						<div id="bmAlbums" onclick="return nobilMusicSearchAlbum('{$q_top_artist.artist}');" class="mus_submenu_i"><span class="mus_submenu_a"><span>Albums</span></span>
+						</div>
+					</div>
+					{assign var=c_limit_song value=0}
+					{foreach $this->getSongsArt({$q_top_artist.artist}) as $songs}
+					<!--<div id="tri_okSearch122880065905882" class="mus-tr_i __invert soh-s {if $c_limit_song >=5}m_art_n __none{/if}">
+						<div class="mus-tr_hld"><span title="Play" id="p3okSearch122880065905882" class="mus-tr_play __play js-mus-tr_play"></span>
+							<div class="mus-tr_cnt"><a class="mus-tr_song">{$songs.title}</a><span class="mus-tr_info foh-s">&nbsp;{$this->lang['from']}&nbsp;<a class="mus-tr_album"><span class="mus-tr_album-ic"></span>{$songs.album}</a>
+								</span>
+							</div>
+							<div class="mus-tr_right-controls foh-s"><span id="rc_okSearch122880065905882" class="mus-tr_ac"><span title="Add to My music" id="k3okSearch122880065905882" class="mus-tr_add js-mus-tr_add"></span><span title="Add to..." uid="addToPpl" id="ppld3okSearch122880065905882" class="mus-tr_dropdown js-mus_dropdown_trigger"></span></span>
+							</div><span id="d3okSearch122880065905882" class="mus-tr_time">{$songs.time}</span></div>
+					</div>-->
+					
+<div class="track js-track soh-s __search_mt_mbt {if $c_limit_song >=5}m_art_n __none{/if}">
+	<div class="track_hld "> <span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$songs.path}","cover":"{$songs.cover}","artist":"{$songs.artist}","songname":"{$songs.title}","albumname":"{$songs.album}"{rdelim}' title="Play" id="{$songs.uploader}_{$songs.id}" class="track_play __play js-track_play __mus_out"></span>
+		<div class="track_cnt "><a class="track_song" onclick="nobilMusicSearch('{$songs.title}')">{$songs.title}</a><span class="foh-s track_info">&nbsp;{$this->lang['from']}&nbsp;<a class="track_album" onclick="nobilMusicSearch('{$songs.album}')">{$songs.album}</a></span></div>
+		<div class="Track_time">{$songs.time}</div>
+		<div class="track_ac foh-s" id="{$songs.uploader}_{$songs.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['mus_add_to_my_music']}" class="track_add js-track_add "></span></div>
+	</div>
+</div>
+
+					
+					
+					{if $c_limit_song === 6}<a onclick="$(this).remove();$('.m_art_n.__none').removeClass('__none');" class="mus_more-link al">+&nbsp;{$this->lang['more_tracks']}</a>{/if}
+					{$c_limit_song = $c_limit_song+1}
+					{/foreach}
+				</div>
+			</div>
+			{/if}
+			{if count($q)}<div class="portlet_h2"><span class="portlet_h2_tx">{count($q)} more {if count($q) === 1}{$this->lang['artist']}{else}{$this->lang['artists']}{/if}</span></div>{/if}
+			<div id="hook_Loader_PortalSearchResultsLoader" class="loader-container">
+				<div id="gs_result_list" class="mus_card_lst">
+				{assign var=ar_c value=0}
+				{foreach $q as $rsp_m_art}
+				
+				{if $ar_c == 0} <div class="ar_sort3"> {/if}
+					<div class="mus_card_i">
+						<div class="mus_card">
+							<div class="mus_card_img_w"><img src="{$this->artist_cover_lv($rsp_m_art.cover)}" class="mus_album-list_img mus_card_img">
+								<div class="mus_card_ac_lst"><span uid="pl" onclick="return nobilMusicPlayAlbumArtist('{$rsp_m_art.artist}');" class="mus_card_ac_i mus_card_ac_i__pl"><span class="mus_card_play"></span>play</span><span uid="pause" class="mus_card_ac_i mus_card_ac_i__ps"><span class="mus_card_play __pause"></span>pause</span><a href="/search?key={$rsp_m_art.artist}&c=m&filter=artist" hrefattr="true" class="mus_card_ac_i mus_card_ac_i__more"><span class="mus_card_more"></span>more details</a>
+								</div>
+							</div>
+							<div class="mus_card_n_w">
+								<A href="/search?key={urlencode($rsp_m_art.artist)}&artist_id={$rsp_m_art.id}&c=m&filter=artist" hrefattr="true"><div class="mus_card_n textWrap"><span title="{$rsp_m_art.artist}" class="mus_card_n_a">{$rsp_m_art.artist}</span></div></a>
+							</div>
+						</div>
+					</div>
+					{if $ar_c == 2} {$ar_c = 0}</div>{else}
+					{$ar_c = $ar_c +1} {/if}
+				{/foreach}
+				<!--
+				<div class="loader-controls loader-controls-bottom">
+					<div class="link-show-more_loading"><span class="fetching-hor"><span class="fetching-hor_i"></span>loading...</span>
+					</div><a id="nohook_845499091" class="js-show-more link-show-more" data-show-more="link-show-more" href="#">Show more</a></div>-->
+			</div>
+		</div>
+	</div>
+
+</div>
+
+			
+			
+			{/if}
+			</div>
+			{/if}
+		{if $filter !== 'artist'}	 {$pagination} {/if}
+			</div>
+		</div>
+	</div>
+</div>

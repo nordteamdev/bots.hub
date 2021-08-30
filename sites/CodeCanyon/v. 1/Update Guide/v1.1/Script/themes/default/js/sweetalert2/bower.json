@@ -1,0 +1,40 @@
+{
+  "name": "sweetalert2",
+  "homepage": "https://limonte.github.io/sweetalert2/",
+  "authors": [
+    "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
+    "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
+    "Johan Fagerberg (https://github.com/birjolaxew)",
+    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
+    "Joseph Schultz (https://github.com/acupajoe)",
+    "Patrick H. Lauke (https://github.com/patrickhlauke)"
+  ],
+  "ignore": [
+    "assets",
+    "config",
+    "test",
+    ".babelrc",
+    ".editorcofig",
+    ".gitignore",
+    ".sass-lint.yml",
+    ".travis.yml",
+    "contributing.md",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "main": [
+    "dist/sweetalert2.js",
+    "src/sweetalert2.scss",
+    "dist/sweetalert2.css"
+  ],
+  "keywords": [
+    "alert",
+    "modal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:limonte/sweetalert2.git"
+  },
+  "license": "MIT"
+}

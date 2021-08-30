@@ -1,0 +1,202 @@
+<div class="content">
+   <input type="hidden" value="{{USER user_id}}" id="user_id">
+   <div class="profile-content">
+      <div class="profile-images">
+         <div class="cover-content">
+            <div class="cover-image">
+               <img src="{{USER cover}}" alt="{{USER name}}'s cover image">
+            </div>
+         </div>
+         <div class="avatar-content">
+            <div class="avatar-image">
+               <img src="{{USER avatar}}" alt="{{USER name}}'s avatar image">
+            </div>
+            <div class="profile-name">
+               <span>{{USER name}} </span> {{USER verified}}
+
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <div class="info-content">
+      <div class="row">
+         <div class="col-md-9 no-padding-right">
+            <div>
+               <div id="search-page" style="padding: 4px;">
+                  <div id="exTab2">
+                     <ul class="nav nav-tabs user-post-nav">
+                        <li class="active" data-toggle="tooltip" title="{{USER news_count}}">
+                           <a href="#news" data-toggle="tab" class="nav-news"><i class="fa fa-newspaper-o"></i> <span class="hide-from-mobile">{{LANG news}}</span></a>
+                        </li>
+                        <li data-toggle="tooltip" title="{{USER lists_count}}">
+                           <a href="#lists" data-toggle="tab" class="nav-lists"><i class="fa fa-list"></i> <span class="hide-from-mobile">{{LANG lists}}</span></a>
+                        </li>
+                        <li data-toggle="tooltip" title="{{USER videos_count}}">
+                           <a href="#videos" data-toggle="tab" class="nav-videos"><i class="fa fa-video-camera"></i> <span class="hide-from-mobile">{{LANG videos}}</span></a>
+                        </li>
+                        <li data-toggle="tooltip" title="{{USER music_count}}">
+                           <a href="#music" data-toggle="tab" class="nav-music"><i class="fa fa-music"></i> <span class="hide-from-mobile">{{LANG music}}</span></a>
+                        </li>
+                        <li data-toggle="tooltip" title="{{USER polls_count}}">
+                           <a href="#polls" data-toggle="tab" class="nav-polls"><i class="fa fa-pie-chart"></i> <span class="hide-from-mobile">{{LANG polls}}</span></a>
+                        </li>
+                        <li data-toggle="tooltip" title="{{USER quiz_count}}">
+                           <a href="#quizzes" data-toggle="tab" class="nav-quizzes"><i class="fa fa-check-square-o"></i> <span class="hide-from-mobile">{{LANG quizzes}}</span></a>
+                        </li>
+                     </ul>
+                     <div class="tab-content custom-page" style="margin-top: 0; padding: 10px; padding-top: 20px;" >
+                        <div class="tab-pane active" id="news">
+                           <div class="row">
+                                  <?php 
+                                  $len = count($fl['latest_page_news']);
+                                  foreach ($fl['latest_page_news'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="lists">
+                           <div class="row">
+                              <div class="col-md-12 no-padding-left">
+                                 <?php 
+                                  $len = count($fl['latest_page_lists']);
+                                  foreach ($fl['latest_page_lists'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="videos">
+                           <div class="row">
+                              <div class="col-md-12 no-padding-left">
+                                 <?php 
+                                  $len = count($fl['latest_page_videos']);
+                                  foreach ($fl['latest_page_videos'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="music">
+                           <div class="row">
+                              <div class="col-md-12 no-padding-left">
+                                 <?php 
+                                  $len = count($fl['latest_page_music']);
+                                  foreach ($fl['latest_page_music'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="polls">
+                           <div class="row">
+                              <div class="col-md-12 no-padding-left">
+                                 <?php 
+                                  $len = count($fl['latest_page_polls']);
+                                  foreach ($fl['latest_page_polls'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane" id="quizzes">
+                           <div class="row">
+                              <div class="col-md-12 no-padding-left">
+                                 <?php 
+                                  $len = count($fl['latest_page_quizzes']);
+                                  foreach ($fl['latest_page_quizzes'] as $key => $fl['latest_news_data']): 
+                                      $fl['latest_news_data']['last'] = false;
+                                      if ($key == $len - 1) {
+                                         $fl['latest_news_data']['last'] = true;
+                                      } 
+                                      echo FL_LoadPage('home/latest-news');
+                                  endforeach;
+                                  echo ($len == 0) ? '<div class="center no-results">{{LANG no_posts_to_show}}</div>' : '';
+                                  ?>
+                              </div>
+                              <div class="clear"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="clear"></div>
+         </div>
+         <div class="col-md-3">
+            <div class="profile-info">
+               <ul class="list-group">
+                  <li class="list-group-item text-muted"><i class="fa fa-fw fa-bars"></i> {{LANG details}}</li>
+                  <li class="list-group-item"><i class="fa fa-fw fa-eye"></i> <?php echo ($fl['profile_data']['last_active'] < (time() - 60)) ? FL_Time_Elapsed_String($fl['profile_data']['last_active']) : '<span class="green">{{LANG online}}</span>';?></li>
+                  <li class="list-group-item"><i class="fa fa-fw fa-transgender"></i> <?php echo ($fl['profile_data']['gender'] == 'male') ? $fl['lang']['male'] : $fl['lang']['female'];?></li>
+                  <?php if (!empty($fl['profile_data']['country_id'])) { ?><li class="list-group-item"><i class="fa fa-fw fa-globe"></i> <?php echo $fl['countries_name'][$fl['profile_data']['country_id']];?></li> <?php } ?>
+                  <?php if (!empty($fl['profile_data']['facebook'])) { ?><li class="list-group-item"><i class="fa fa-fw fa-facebook-official"></i> <a href="http://www.facebook.com/{{USER facebook}}">@{{USER facebook}}</a></li><?php } ?>
+                  <?php if (!empty($fl['profile_data']['twitter'])) { ?><li class="list-group-item"><i class="fa fa-fw fa-twitter-square "></i> <a href="http://www.twitter.com/@{{USER twitter}}">@{{USER twitter}}</a></li><?php } ?>
+                  <?php if (!empty($fl['profile_data']['google'])) { ?><li class="list-group-item"><i class="fa fa-fw fa-google-plus-square"></i> <a href="http://plus.google.com/u/@{{USER google}}">@{{USER google}}</a></li><?php } ?>
+                  <?php if (!empty($fl['profile_data']['about'])) { ?><li class="list-group-item padding-0">
+                     <hr>
+                  </li>
+                  <li class="list-group-item"><i class="fa fa-fw fa-info"></i> {{USER about}}</li>
+                  <?php } ?>
+               </ul>
+               <?php if (!empty($fl['fields'])): ?>
+                <ul class="list-group">
+                    <li class="list-group-item text-muted" contenteditable="false">
+                      <i class="fa fa-info progress-icon fa-fw" data-icon="info"></i> {{LANG more_info}}
+                    </li>
+                    <?php foreach ($fl['fields'] as $key => $fl['field']): ?>
+                        <?php echo FL_LoadPage('profile/custom-fields'); ?>
+                    <?php endforeach; ?>
+                </ul>
+               <?php endif ?>
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<style>
+.search-header input { width: 200px !important; }
+body {background: #fff !important}
+.list-more-info span{
+  font-weight: 700;
+  font-family: arial;
+
+}
+</style>
+

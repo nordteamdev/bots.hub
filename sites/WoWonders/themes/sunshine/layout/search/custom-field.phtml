@@ -1,0 +1,37 @@
+<div class="">
+	<div class="">
+		<?php $fid = '';
+			if (!empty($wo['setting']['fileds'][$wo['field']['fid']])) {
+				$fid = $wo['setting']['fileds'][$wo['field']['fid']];
+			} 
+			if( isset( $_GET[ $wo['field']['fid'] ] ) && !empty( $_GET[ $wo['field']['fid'] ] ) ){
+				$fid = Wo_Secure( $_GET[ $wo['field']['fid'] ] );
+			}
+		?>
+		<label class="col-md-12" for="<?php echo $wo['field']['fid'];?>"></label>  
+		<div class="col-md-12" <?php if( isset( $wo['field']['issearch'] ) ){ ?> style="padding-left: 0px;padding-right: 0px;" <?php } ?>>
+			<?php 
+				if ($wo['field']['select_type'] == 'yes') {
+				$options = @explode(',', $wo['field']['type']); ?>
+			<select name="<?php echo $wo['field']['fid'];?>" class="form-control">
+				<option value=""></option>
+				<?php
+					foreach ($options as $key => $value) {
+					$selected = (($key + 1) == $fid) ? 'selected' : '';
+				?>
+				<option value="<?php echo $key + 1;?>" <?php echo $selected;?>><?php echo $value;?></option>
+				<?php } ?>
+			</select>
+			<?php
+			} else {
+			if ($wo['field']['type'] == 'textbox') { ?>
+            <input id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" type="text" class="form-control input-md" value="<?php echo $fid?>" placeholder="<?php echo $wo['field']['name']; ?>">
+			<?php } else if ($wo['field']['type'] == 'textarea') {?>
+            <textarea class="form-control" id="<?php echo $wo['field']['fid'];?>" name="<?php echo $wo['field']['fid'];?>" cols="20" rows="3" placeholder="<?php echo $wo['field']['name']; ?>"><?php echo br2nl($fid);?></textarea>
+			<?php } } ?>
+			<?php if( !isset( $wo['field']['issearch'] ) ){ ?>
+				<span class="help-block"><?php echo $wo['field']['description'];?></span>
+			<?php } ?>
+		</div>
+	</div>
+</div>

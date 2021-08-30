@@ -1,0 +1,279 @@
+<div class="chat-wrapper chat_group_<?php echo $wo['chat']['group']['group_id'];?>">
+	<div class="online-toggle pointer" onclick="javascript:$('.group-tab-container-<?php echo $wo['chat']['group']['group_id'];?>').slideToggle(100)";>
+		<span class="chat-tab-status">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" style="margin-top: -3px;width: 14px;height: 14px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+			<?php echo mb_substr($wo['chat']['group']['group_name'], 0, 20, "UTF-8");?>
+		</span>
+		<span class="<?php echo Wo_RightToLeft('pull-right');?> close-chat">
+			<?php if ($wo['chat']['group']['user_id'] == $wo['user']['id']): ?>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash" title="<?php echo $wo['lang']['delete_group'];?>" data-toggle="tooltip" onclick="Wo_DeleteGroupChat(<?php echo $wo['chat']['group']['group_id'];?>)"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>&nbsp;
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-scissors" title="<?php echo $wo['lang']['clear_history']; ?>" data-toggle="tooltip" onclick="Wo_ClearGroupHistory(<?php echo $wo['chat']['group']['group_id'];?>)"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>&nbsp;
+			<?php endif ?>
+
+			<?php if ($wo['chat']['group']['user_id'] != $wo['user']['id']): ?>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out" title="<?php echo $wo['lang']['exit_group']; ?>" data-toggle="tooltip" onclick="Wo_ExitGroupChat('<?php echo $wo['chat']['group']['group_id'];?>');"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>&nbsp;
+			<?php endif; ?>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" title="<?php echo $wo['lang']['members']; ?>" data-toggle="tooltip" onclick="Wo_ManageGChat();"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>&nbsp;
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" title="<?php echo $wo['lang']['close']; ?>" data-toggle="tooltip" onclick="Wo_CloseChat(<?php echo $wo['chat']['group']['group_id'];?>,'group')"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+		</span>
+	</div>
+
+	<div class="chat-tab-container group-tab-container-<?php echo $wo['chat']['group']['group_id'];?> chat-tab-box-<?php echo $wo['chat']['group']['group_id'];?>">
+		<div class="chat-messages-wrapper group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>">
+			<div class="chat-messages">
+				<?php if (count($wo['chat']['group']['messages']) > 0): ?>
+					<?php foreach ($wo['chat']['group']['messages'] as $wo['chatMessage']): ?>
+						<?php echo Wo_LoadPage('chat/group-chat-list'); ?>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<p class="no_message" id="no_messages_<?php echo $wo['chat']['group']['group_id'];?>"><?php echo $wo['lang']['no_messages']; ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="chat-textarea btn-group">
+			<form action="#" id="hren" class="group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>">
+				<textarea name="textSendMessage" id="sendMessage" class="form-control" cols="10" rows="5" placeholder="<?php echo $wo['lang']['write_something'];?>"  onkeydown="Wo_SubmitChatGroupForm(event, <?php echo $wo['chat']['group']['group_id'];?>);" dir="auto" ></textarea>
+				<div class="w-10 chat-btns-w">
+					<span>
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<span class="btn btn-file chat_optns" id="progressIcon">
+							<?php if($wo['config']['fileSharing'] == 1) { ?>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+								<input type="file" id="sendMessasgeFile" name="sendMessageFile" class="pointer" onchange="Wo_SubmitChatGroupForm(event,<?php echo $wo['chat']['group']['group_id'];?>)" />
+							<?php } else { ?>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+								<input type="file" id="sendMessasgeFile" name="sendMessageFile" onchange="Wo_SubmitChatGroupForm(event,<?php echo $wo['chat']['group']['group_id'];?>);" accept="image/x-png, image/gif, image/jpeg" />
+							<?php } ?>
+						</span>
+						<span class="dropup chat_optns chat_optns">
+							<span class="emo-btn-<?php echo $wo['chat']['group']['group_id'];?> dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+								<span class="btn btn-file">
+									<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="feather feather-user-plus"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"></path></svg>
+								</span>
+							</span>
+							<ul class="emo-container dropdown-menu emo-group-container-<?php echo $wo['chat']['group']['group_id'];?>" role="menu">
+								<?php  
+									foreach ($wo['emo'] as $code => $name) {
+									$code   = $code;
+									echo  '<span onclick="Wo_AddEmoToGroup(\'' . $code . '\', ' . $wo['chat']['group']['group_id'] . ');"><i class="pointer twa-lg twa twa-' . $name . '"></i></span>'; 
+									} 
+								?>
+							</ul>
+						</span>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('[data-toggle="tooltip"]').tooltip(); 
+    var main_hash_id = $('.main_session').val();
+    $('.emo-btn-<?php echo $wo['chat']['group']['group_id'];?>').click(function () {
+        $('.emo-group-container-<?php echo $wo['chat']['group']['group_id'];?>').toggle();
+    });
+
+    $(".clear_group_chat_<?php echo $wo['chat']['group']['group_id'];?>").click(function(event) {
+      event.stopPropagation();
+      $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'chat',s:'clear_group_chat',id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+      })
+      .done(function(data) {
+        if (data.status == 200) {
+          $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").empty();
+        }
+      })
+      .fail(function() {
+        console.log("error");
+    });
+    });
+
+    var chat_messages_wrapper = $('.group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>');
+    chat_messages_wrapper.scrollTop(chat_messages_wrapper[0].scrollHeight);
+    $('.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=chat&s=send_message&group_id=<?php echo $wo['chat']['group']['group_id'];?>&hash=' + main_hash_id,
+        type:"POST",
+        uploadProgress: function() {
+		  $('form.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').find('.ball-pulse').fadeIn(100);
+        },
+        success: function(data) {
+            if (data.status == 200) {
+
+              if ($('#no_messages_<?php echo $wo['chat']['group']['group_id'];?>').length > 0) {
+                $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").find('.chat-messages').html(data.html);
+              }
+              else{
+                $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").find('.chat-messages').append(data.html);
+              }
+              if (data.invalid_file == 1) {
+                  $("#invalid_file").modal('show');
+                  Wo_Delay(function(){
+                    $("#invalid_file").modal('hide');
+                  },3000);
+                  
+              }
+              if (data.invalid_file == 2) {
+                  $("#file_not_supported").modal('show');
+                  Wo_Delay(function(){
+                    $("#file_not_supported").modal('hide');
+                  },3000);
+              }
+              if (data.file == true) {
+                $('form.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').find('.ball-pulse').fadeOut(100);
+              }
+              
+            }
+            else if(data.status == 500 && data.invalid_file == 1){
+              $("#invalid_file").modal('show');
+                  Wo_Delay(function(){
+                    $("#invalid_file").modal('hide');
+              },3000);
+              $('form.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').find('.ball-pulse').fadeOut(100);
+            }
+            else if(data.status == 500 && data.invalid_file == 2){
+              $("#file_not_supported").modal('show');
+                  Wo_Delay(function(){
+                    $("#file_not_supported").modal('hide');
+              },3000);
+              $('form.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').find('.ball-pulse').fadeOut(100);
+            }
+            $(".chat_group_<?php echo $wo['chat']['group']['group_id'];?>").find('#sendMessasgeFile').val('');
+            $(".chat_group_<?php echo $wo['chat']['group']['group_id'];?>").find('textarea').val('');
+            setTimeout(function() {
+                  chat_messages_wrapper.scrollTop(chat_messages_wrapper[0].scrollHeight);
+            }, 100);
+
+        }
+
+    });
+
+    setInterval(function(){
+      var last_group_message = ($("[data-group-tmessage-id]").length > 0) ? $("[data-group-tmessage-id]").last().attr('data-group-tmessage-id') : 0;
+      $.ajax({
+        url: Wo_Ajax_Requests_File(),
+        type: 'GET',
+        dataType: 'json',
+        data: {f: 'chat',s:'get_new_group_messages',message_id:last_group_message,group_id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+      })
+      .done(function(data) {
+        if (data.status == 200) {
+          if ($(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").find('.no_message').length > 0) {
+            $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").find('.chat-messages').html(data.html);
+          }else{
+            $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>").find('.chat-messages').append(data.html);
+          }
+          
+          chat_messages_wrapper.scrollTop(chat_messages_wrapper[0].scrollHeight);
+        }
+      })
+      .fail(function() {
+        console.log("error");
+      })
+    },5000);
+
+  });
+
+  function Wo_SubmitChatGroupForm(e, id) {
+    document.title = document_title;
+    chat_tab_container = $('.chat_main_' + id);
+    if (e.keyCode == 13 && e.shiftKey == 0 || $("#sendMessasgeFile").val() != '') {
+        e.preventDefault();
+        $('.group-chat-sending-<?php echo $wo['chat']['group']['group_id'];?>').submit();
+    }
+  }
+
+ function Wo_ClearGroupHistory(id = false){
+    if (!id) { return false;}
+    $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'chat',s:'clear_group_chat',group_id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+    })
+    .done(function(data) {
+      if (data.status == 200) {
+        $(".group-messages-wrapper-<?php echo $wo['chat']['group']['group_id'];?>")
+        .find('.chat-messages')
+        .html(
+          '\
+            <p class="no_message" id="no_messages_<?php echo $wo['chat']['group']['group_id'];?>">\
+            <?php echo $wo['lang']['conversation_deleted']; ?>\
+            </p>'
+          );
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  }
+  function Wo_DeleteGroupChat(id = false){
+    if (!id) {return false}
+    $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'chat',s:'delete_group_chat',group_id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+    })
+   .done(function(data) {
+      if (data.status == 200) {
+        $('.chat_main_0').toggle(100,function(){
+          $(this).remove();
+          $("#group_tab_<?php echo $wo['chat']['group']['group_id'];?>").slideUp(function(){
+            $(this).remove();
+          })
+        });
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  }
+  function Wo_ExitGroupChat(id = false){
+    if (!id) {return false}
+    $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'chat',s:'exit_group_chat',group_id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+    })
+   .done(function(data) {
+      if (data.status == 200) {
+        $('.chat_main_0').toggle(100,function(){
+          $(this).remove();
+          $("#group_tab_<?php echo $wo['chat']['group']['group_id'];?>").slideUp(function(){
+            $(this).remove();
+          })
+        });
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  }
+
+  function Wo_ManageGChat(){
+    $.ajax({
+      url: Wo_Ajax_Requests_File(),
+      type: 'GET',
+      dataType: 'json',
+      data: {f: 'chat',s:'group_parts',group_id:'<?php echo $wo['chat']['group']['group_id'];?>'},
+    })
+    .done(function(data) {
+      if (data.status == 200) {
+        $('#manage_group_chat').find('.modal-body').html(data.parts);
+        $('#manage_group_chat').find('#group_chat_mbrs').html(data.count);
+        $('#manage_group_chat').modal('show');
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+  }
+
+</script>

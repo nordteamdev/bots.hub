@@ -1,0 +1,28 @@
+<div class="col-md-6 col-sm-6">
+	<div class="wo_my__groups">
+		<div class="avatar">
+			<a href="<?php echo $wo['group']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['group']['group_name'];?>">
+				<img src="<?php echo $wo['group']['avatar'];?>" alt="<?php echo $wo['group']['group_name']; ?> Profile Picture" />
+			</a>
+		</div>
+		<div class="middle">
+			<div class="title" title="<?php echo $wo['group']['group_title']; ?>"><a href="<?php echo $wo['group']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['group']['group_name'];?>"><?php echo $wo['group']['group_title']; ?></a></div>
+			<div class="page-website"><?php echo Wo_CountGroupMembers($wo['group']['id']);?> <?php echo $wo['lang']['members']; ?></div>
+		</div>
+		<?php if( isset( $wo['group']['Wo_GroupSug'] ) ){ ?>
+			<div style="<?php if($wo['language_type'] == 'rtl') { ?>margin-right:<?php }else { ?>margin-left:<?php } ?> auto;">
+			<?php echo Wo_GetJoinButton($wo['group']['id']);?>
+			</div>
+		<?php }else{ ?>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></button>
+				<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+					<li><a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' .  $wo['group']['group_name']); ?>"><?php echo $wo['lang']['general_setting']; ?></a></li>
+					<li><a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['group']['group_name'] . '&link3=privacy-setting');?>"><?php echo $wo['lang']['edit']; ?> <?php echo $wo['lang']['privacy'];?></a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="<?php echo Wo_SeoLink('index.php?link1=group-setting&group=' . $wo['group']['group_name'] . '&link3=delete-group');?>"><?php echo $wo['lang']['delete_group'];?></a></li>
+				</ul>
+			</div>
+		<?php } ?>
+	</div>
+</div>

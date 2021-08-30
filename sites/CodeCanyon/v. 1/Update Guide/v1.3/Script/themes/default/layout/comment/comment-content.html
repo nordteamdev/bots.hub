@@ -1,0 +1,32 @@
+<div class="fl-comment-item" data-comm-item="{{COMM_ID}}">
+	<div class="fl-comment-item-img"> 
+		<a href="{{COMM_USER_URL}}"><img src="{{COMM_USER_AVATAR}}" alt="{{COMM_USER_NAME}}" class="responsive-img"></a>
+	</div>
+	<div class="comment_right_part">
+		<div class="fl-comment-item-cont">
+			<div>
+				<a href="{{COMM_USER_URL}}">{{COMM_USER_NAME}} {{USER_VERIFIED}}</a><span class="dot">•</span><time>{{COMM_TIME}}</time>
+				<?php if ($fl['comment']['owner']): ?>
+					<span class="pull-right pointer delete-comment" onclick="FL_DeleteComment('{{COMM_ID}}','{{STORY_PAGE}}');">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>
+					</span>
+				<?php endif ?>
+			</div>
+			<p>{{COMM_TEXT}}</p>
+			<span class="pointer comms-reply" onclick="$('#comm-reply-{{COMM_ID}}').removeClass('hidden').find('input').val('').focus().scrollTo();"><small><i class="fa fa-fw fa-reply"></i> {{LANG reply}}</small></span>
+		</div>
+		<div class="fl-comment-item-replies">
+			<div class="fl-comment-item-replies-list" id="fl-comment-item-replies-list-{{COMM_ID}}">
+				{{COMM_REPLIES}}
+			</div>
+			<div class="fl-comment-item-reply-form hidden" id="comm-reply-{{COMM_ID}}">
+				<input type="text" class="form-control" placeholder="{{LANG write_comment_reply}}" onkeydown="FL_RegisterReply(this.value,{{COMM_ID}},event,{{POST_ID}},'{{STORY_PAGE}}')" id="comm-reply-box-{{COMM_ID}}">
+				<small onclick="$('#comm-reply-box-{{COMM_ID}}').val('');">
+					<i class="fa fa-times-circle progress-icon" data-icon="times-circle"></i>
+				</small>
+				<br>
+			</div>		
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

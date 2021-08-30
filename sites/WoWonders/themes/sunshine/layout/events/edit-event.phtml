@@ -1,0 +1,129 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol wo-create-forms">			
+			<div class="wo_settings_page">
+				<div class="sun_head_onboard shortpwidth event">
+					<img class="sho_img" src="<?php echo $wo['config']['theme_url'];?>/img/cads/event.svg" alt="<?php echo $wo['lang']['event'] ?>" />
+					<span class="go_back_link">
+						<a href="<?php echo Wo_SeoLink('index.php?link1=my-events'); ?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg><?php echo $wo['lang']['my_events'];?>
+						</a>
+					</span>
+					<div class="sun_head_onboard_innr">
+						<h2><?php echo $wo['lang']['edit'];?> <?php echo $wo['lang']['event'];?></h2>
+					</div>
+				</div>
+				
+				<form  class="form form-horizontal" method="post" id="update-event" >
+					<div class="setting-panel row">
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="event-name"><?php echo $wo['lang']['name']; ?>:</label>  
+							<div class="col-md-12">
+								<input name="event-name" id="event-name" type="text" class="form-control" value="<?php echo $wo['event']['name']; ?>"> 
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="event-description"><?php echo $wo['lang']['description'] ?>:</label>  
+							<div class="col-md-12">
+								<?php $text = br2nl($wo['event']['description']); ?> 
+								<textarea name="event-description" id="event-description" class="form-control" rows="5"><?php echo $text; ?></textarea>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="event-locat"><?php echo $wo['lang']['location']; ?>:</label>  
+							<div class="col-md-12">
+								<input id="event-locat" name="event-locat"  type="text" class="form-control" value="<?php echo $wo['event']['location']; ?>"> 
+							</div>
+						</div>
+						<?php if ($wo['config']['google_map'] == 1) { ?>
+						<div class="form-group col-lg-12" id="review-location">
+							<div class="col-md-12"></div>
+							<div class="col-md-12" id="place">
+								<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=<?php echo $wo['event']['location']; ?>&language=en"></iframe>
+							</div>
+						</div>
+						<?php } ?>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="event-start"><?php echo $wo['lang']['start_date']; ?>:</label>  
+							<div class="col-md-6">
+								<input type="text" class="form-control date" id="event-start" name="event-start-date" value="<?php echo $wo['event']['start_date']; ?>">
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control time1" name="event-start-time" value="<?php echo $wo['event']['start_time']; ?>">
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<label class="col-md-12" for="event-end-date"><?php echo $wo['lang']['end_date']; ?>:</label>  
+							<div class="col-md-6">
+								<input type="text" class="form-control date1" name="event-end-date" id="event-end-date" value="<?php echo $wo['event']['end_edit_date']; ?>">
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control time1" name="event-end-time" value="<?php echo $wo['event']['start_time']; ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-12" for="event-description"><?php echo $wo['lang']['cover'] ?>:</label>  
+							<div class="col-md-12">
+								<div class="select_ev_covr" id="select-cover">
+									<img src="<?php echo $wo['event']['cover']; ?>" alt="<?php echo $wo['event']['name']; ?>">  
+								</div>
+							</div>
+						</div>
+					</div>
+  
+					<div class="setting-general-alert setting-update-alert" id="event-alert"></div>
+  
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+					</div>
+					<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+					<input type="file" name="event-cover" class="hidden" id="event-cover">
+				</form>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
+<script>
+  jQuery(document).ready(function($) {
+  	$( ".date" ).datepicker({ dateFormat: 'yy-mm-dd', minDate: 'today',prevText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>',nextText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>'});
+      $( ".date1" ).datepicker({ dateFormat: 'yy-mm-dd', minDate: '+1day',prevText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>',nextText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>'});
+      $( ".time1" ).timepicker();
+      $("#select-cover").click(function(event) {
+        $("#event-cover").click()
+      });
+
+      $("#event-locat").change(function(event) {
+        if ($(this).val().length >= 3) {
+          $("#review-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=' + $("#event-locat").val() + '&language=en"></iframe>')
+        }else{
+          $("#review-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=us&language=en"></iframe>')
+        }
+      });
+
+      $("#event-cover").change(function(event) {
+        $("#select-cover").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture'>")
+      });
+
+      $('#update-event').ajaxForm({
+            url: Wo_Ajax_Requests_File() + '?f=update-event&eid=<?php echo $wo['event']['id']; ?>',
+            beforeSend: function() {
+              $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+            },
+            success: function(data) {
+              if (data['status'] == 200) {
+                $("#event-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+                window.location = data['url'];
+              } else if (data['message']) {
+                $("#event-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+              } 
+              $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+            }
+      });
+       
+  });
+</script>

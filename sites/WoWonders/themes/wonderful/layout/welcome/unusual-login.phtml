@@ -1,0 +1,47 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+<div class="wrapper">
+  <?php echo Wo_LoadPage('welcome/welcome-header-logo');?>
+  <form class="login" id="confirm-form" method="post">
+   <p class="title"><?php echo $wo['lang']['confirm_your_account']?></p>
+	<p><?php echo $wo['lang']['sign_in_attempt']?></p>
+	<p><?php echo $wo['lang']['we_have_sent_you_code']?></p>
+    <input name="confirm_code" type="text" placeholder="Confirmation code" autofocus/>
+    <i class="zmdi zmdi-email"></i>
+    <button>
+    <i class="spinner"></i>
+    <span class="state"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <?php echo $wo['lang']['confirm'];?></span>
+    </button>
+  </form>
+  <?php echo Wo_LoadPage('footer/welcome');?>
+</div>
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('button > .state');
+var confirm_button_text = "<i class='zmdi zmdi-check-all zmdi-hc-fw'></i> <?php echo $wo['lang']['confirm']?>";
+$(function() {
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user_unusal_login',
+    beforeSend: function() {
+      working = true;
+      $this.addClass('loading');
+      $state.html('Please wait..');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $this.addClass('ok');
+        $state.html('Welcome!');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $state.html(confirm_button_text);
+        $this.removeClass('ok loading', function () {
+         $state.html(data.errors);
+        });
+      }
+      working = false;
+    }
+  });
+});
+</script>

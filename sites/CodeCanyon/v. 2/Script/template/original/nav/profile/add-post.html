@@ -1,0 +1,91 @@
+		<div class="posting-form_itx_w" id="main_ff_share">
+        <div id="posting_form_text_field-w" class="posting-form_itx_dec itx_w">
+        <div class="input_placeholder" id="posting_form_placeholder" onclick="postingFormPlaceHolder(event,this);"><img src="/getPhoto?p={$this->USER.profile_photo}&sz=small" class="user_news_avatar" /><span class="user_news_avatar_txt">{$this->lang['add_st_post']}</span></div><span class="pform_name-bg"></span>
+ 
+		
+		<textarea style="display:none;" id="post_contenteditable_txt"></textarea>
+		<a id="smiles_w_{time()}" style="display:none;" class="em_disc_toolbar_i_ic__sm post smiles_w" href="javascript:;"></a>
+		
+		<div class="post_bottom_opts __op1 brd">
+	    <div class="post_url_link"></div>
+		<div class="post_up_photos"></div>
+		<div class="post_up_videos"></div>
+		<div class="__none"><input type="hidden" id="bgcolor-post" value="false" /></div>
+		<div class="post_add_songs"><ul></ul></div>
+		<div class="post_poll"></div>
+		
+
+		<section id="post_btmm_btnss">
+		
+ 
+ 
+<button class="_50o7 touchable _21db" type="button">
+<input type="file" name="photo" id="attachPhotoFile" multiple="true" accept="image/*" title="Add a photo" onchange="post_build_upload(event);" class="pos_relative post-html5-upload-file">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img sp_dQWL7sN2w0i sx_d9485e"></i></div>
+        <div class="_4g34 _6ity">{$this->lang['share_images']}</div>
+    </div>
+</button>
+ 
+ <button class="_50o7 touchable _21db" type="button">
+<input type="file" name="video" id="attachVideoFile" multiple="true" accept="video/*" title="Add a video" onchange="post_build_vid_upload(event);" class="pos_relative post-html5-upload-file">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="img _21dd img _2sxw p_vid_ic"></i></div>
+        <div class="_4g34 _6ity">{$this->lang['share_videos']}</div>
+    </div>
+</button>
+
+<button onclick="postAddSongs(event,this);" class="_50o7 touchable _21db" type="button">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img p_mus_ic"></i></div>
+        <div class="_4g34 _6ity">{$this->lang['share_songs']}</div>
+    </div>
+</button>
+
+
+<button onclick="return gLocation(event,this);" class="_50o7 touchable _21db" type="button">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img sp_dQWL7sN2w0i sx_eddb59"></i></div>
+        <div class="_4g34 _6ity">{$this->lang['check_in']}</div>
+    </div>
+</button>
+
+
+
+<button onclick="postAddPoll(event);" id="post_add_poll" class="_50o7 touchable _21db" type="button">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img ic_global_11 sx_poll"></i></div>
+        <div class="_4g34 _6ity">Poll</div>
+    </div>
+</button>
+
+<button onclick="return market.addProduct(this,event);" class="_50o7 touchable _21db" type="button">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img ic_global_11 sx_sell"></i></div>
+        <div class="_4g34 _6ity">Sell something</div>
+    </div>
+</button>
+		
+ <!--<button onclick="return article.New(this,event);" id="post_add_article" class="_50o7 touchable _21db" type="button">
+    <div class="_4g33 _21dc">
+        <div class="_5s61 _6itx"><i class="_21dd img ic_global_11 sx_article"></i></div>
+        <div class="_4g34 _6ity">Write article</div>
+    </div>
+</button>-->
+		
+ 
+
+
+		<!--<div title="What do you do or feeling ?" class="bottom-post-ic ic-post-feeling"></div>--->
+		<div class="form_btns ">
+		
+
+		<button class="button wide_button" id="post_share">{$this->lang['Post']}</button>
+		<!--<button class="button-pro __def __small" id="post_cancel">Cancel</button>-->
+		</div>
+		</section>
+		
+		</div>
+		<i class="posting-form_itx_arw_w"><i class="posting-form_itx_arw"></i></i>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="page-margin">
+  <div class="video-con">
+   <div id="remote-media">
+     <h3><i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['please_wait']?></h3>
+   </div>
+  <div id="controls">
+    <div id="preview">
+      <div id="local-media"><video id="basic-stream" class="hidden videostream" autoplay=""></video></div>
+    </div>
+  <div id="invite-controls">
+  </div>
+  <div id="log">
+    <p></p>
+  </div>
+</div>
+</div>
+</div>
+<script>
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+if (!navigator.getUserMedia) {
+  $('#remote-media h3').text('Sorry, WebRTC is not available in your browser.');
+}
+
+var video = document.getElementById('basic-stream');
+
+Twilio.Video.connect('<?php echo $wo['video_call']['access_token'];?>', { name: '<?php echo $wo['video_call']['room'];?>' }).then(room => {
+  console.log('Connected to Room "%s"', room.name);
+ 
+  room.participants.forEach(participantConnected);
+  room.on('participantConnected', participantConnected);
+ 
+  room.on('participantDisconnected', participantDisconnected);
+  room.once('disconnected', error => room.participants.forEach(participantDisconnected));
+  $(document).on('click', 'a[data-ajax]', function(e) {
+      room.disconnect();
+  });
+});
+ 
+function participantConnected(participant) {
+  console.log('Participant "%s" connected', participant.identity);
+ 
+  const div = document.createElement('div');
+  div.id = participant.sid;
+  //div.innerText = participant.identity;
+ 
+  participant.on('trackAdded', track => trackAdded(div, track));
+  participant.tracks.forEach(track => trackAdded(div, track));
+  participant.on('trackRemoved', trackRemoved);
+ 
+  $('#remote-media').html(div);
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia({audio: false, video: true}, function(stream) {
+      $('#basic-stream').removeClass('hidden');
+      video.src = window.URL.createObjectURL(stream);
+    }, function() {});
+  }
+}
+ 
+function participantDisconnected(participant) {
+  console.log('Participant "%s" disconnected', participant.identity);
+ 
+  participant.tracks.forEach(trackRemoved);
+  document.getElementById(participant.sid).remove();
+  alert("Connection has been lost.");
+  window.location.href = '<?php echo $wo['config']['site_url'];?>';
+}
+ 
+function trackAdded(div, track) {
+  div.appendChild(track.attach());
+}
+ 
+function trackRemoved(track) {
+  track.detach().forEach(element => element.remove());
+}
+
+</script>

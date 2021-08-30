@@ -1,0 +1,139 @@
+{strip}
+{assign var="community_sel_cover" value="{$r.cover}"}
+{assign var="community_src_logo" value="{$r.logo}"}
+{assign var="checks3pict" value=$this->communityCheckS3Pictures($community_sel_cover)}
+{assign var="checks3pictLogo" value=$this->communityCheckS3Pictures($community_src_logo)}
+
+
+
+
+{if $this->communityCheckS3Pictures($community_src_logo)}
+
+{assign var="community_src_logo" value={$checks3pictLogo}}
+{else}
+{assign var="community_src_logo" value="{$group_small_logo_path}{$r.logo}"}
+{/if}
+
+
+{if $this->communityCheckS3Pictures($community_sel_cover)}
+
+{assign var="community_sel_cover" value={$checks3pict}}
+{else}
+{assign var="community_sel_cover" value="{$group_covers_path}{$r.cover}"}
+{/if}
+
+<div class="page_block" id="{$r.id}">
+<a href="/community/{$r.id}?tk={time()}" data-scrolltop="635" hrefattr="true" id="autoclickclub" style="display:none;"></a>
+    <div class="page_cover crisp_image _page_cover">
+        
+		<Div class="comm_page_cover">
+		<img class="community_page_cover _default_cur {if $r.cover == ''}height100{/if}" {if $r.cover_position != '' && $r.cover != ''}style="top:{$r.cover_position}px;"{/if} src="{if $r.cover != ''}{$community_sel_cover} {else} {$group_default_cover} {/if}">
+		<div class="c_no_pointer"></div>
+		</div>
+		
+		<div class="theme_custom_cvk_sv">
+		<div class="reposition_cover">{$this->lang['drag_to_reposition_cover']}</div><div class="fl_right">
+		<button id="comm_cancel_wrap_theme" class="flat_button _cancel mr_r12">{$this->lang['cancel']}</button>
+		<button class="flat_button" id="comm_save_wrap_theme">{$this->lang['Save']}</button></div>
+		</div>
+		{if $isadmin}
+		<div class="page_cover_menu" data-id="{$r.id}">
+		<input type="hidden" id="community_cover_position" />
+            <div {if $r.cover == ''} style="display:none;" {/if} class="page_cover_action delete" rel="tipsy" onclick="var evt = event;this.a = '{$this->lang['community_confirm_delete_cover']}';{literal}return confirm_act(this.a,function(event){deleteCommunityCover(evt);});{/literal}" title="{$this->lang['Delete_cover']}"></div>
+            <div {if $r.cover == ''} style="display:none;" {/if} data-id="{$r.id}" data-position="{$r.cover_position}" class="page_cover_action edit" rel="tipsy" onclick="communityCoverEdit(event);" title="{$this->lang['Edit_cover']}"></div>
+            <div class="page_cover_action upload" rel="tipsy" onclick="changeCommunityCover(event);" title="{$this->lang['Change_cover']}"></div>
+        </div>{/if}
+    </div>
+	
+	
+
+	
+	
+	<div class="page_cover_info clear_fix">
+	
+<div class="page_cover_actions">
+    <div id="group_actions_wrap" class="group_actions_wrap">
+        <aside aria-label="Actions">
+            <div id="page_actions" class="page_actions" style="">
+                <div class="page_actions_wide clear_fix">
+				
+				{if $r.privacy != 'Closed' || ($r.privacy == 'Closed' && ($this->isAdmin() || $this->isSubscribed($r.id) ))}
+                    <div class="page_action_left fl_l">
+                        <button class="flat_button button_wide btn_f_unf_group {if !$subscribed}show{/if}" data-id="{$r.id}" onclick="joinThisGroup(event);" id="join_button_{$r.id}"><i class="join_to_group_ic"></i>{$this->lang['join_community']}</button>
+						<button class="flat_button button_wide secondary page_actions_btn btn_f_unf_group {if $subscribed}show{/if}" data-id="{$r.id}" onclick="confirmUnjoin(event);" id="unjoin_button_{$r.id}"><i class="unjoin_to_group_ic"></i>{$this->lang['Group_following']}</button>
+					</div>
+				{/if}
+				
+                    <div class="page_actions_cont narrow fl_r">
+                        <div class="flat_button secondary page_actions_btn page_extra_actions_btn" onclick="communityActionsMenu(event);">
+                            <span class="page_actions_dd_label">{$this->lang['Actions']}</span>
+                            <span class="page_actions_dd_icon">&nbsp;</span>
+                        </div>
+						<ul class="comm_action_menu" id="community_action_menu">
+						
+						<li><A href="javascript:void(0);" onclick="return reshareContent(event,this,'{$r.id}');" class="sharecommunity sharecommunityclub">{$this->lang['Share_community']}</a></li>
+						{if $isadmin}<li><A href="javascript:void(0);" onclick="editCommunity(event,'{$r.id}');">{$this->lang['Manage_community']}</a></li>{/if}
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+	
+	
+	
+	<a class="page_cover_image" id="group_update_profile_image" data-id="{$r.id}" href="javascript:void(0);">
+    <img src="/clubpicture?i={$r.id}&size=small&clubid={$r.id}&corr=1&logo=true" class="post_img">
+
+  </a>
+
+	
+<div class="page_top">
+
+    <h2 class="page_name">{$r.name} {if $r.verified == 'yes'}<i title="{$this->lang['verified_community']}" rel="tipsy" class="community verified-ic"></i>{/if}</h2>
+	
+	
+<div class="page_current_info" id="page_current_info">
+
+{if $this->checkAdmin($this->USER['id'],$r.admin)}
+    <div id="currinfo_wrap" class="group_add_info" tabindex="0" role="button">
+
+		<div class="comm_status_update" style="display:none;">
+		
+			<textarea id="comm_update_status">{$r.status}</textarea>
+		<span class="comm_status_update_maxlength">100</span>	
+<table cellspacing="0" cellpadding="0" class="fl_r">
+<tbody>
+<tr><td><button id="community_cancel_updating_status" onclick="communityUpdateStatusCancel(event);" class="flat_button secondary">{$this->lang['cancel']}</button></td>
+<td><button class="flat_button" data-clubid="{$r.id}" onclick="return communityStatusSave(event);">{$this->lang['Save']}</button></td></tr>
+</tbody></table>
+			
+			
+			
+		</div>
+	
+        <span id="comm_current_info" onclick="communityUpdateStatus(event);" data-nocurrinfotxt="{$this->lang['community_edit_status_msg']}" class="current_info">
+		
+		{if $r.status != ''}
+		<span class="my_current_info">{$this->str_smilies($r.status)}</span>
+		{else if $r.status == '' && $isadmin}
+		<span class="no_current_info">{$this->lang['community_edit_status_msg']}</span>
+		{/if}
+		
+		</span>
+    </div>
+	{else}
+	{if $r.status != ''}<div id="comm_active_status_msg" class="my_current_info">{$this->str_smilies($r.status)}</div>
+	{else}
+	<div class="labeled ">{$this->lang[$r.category]} {if !empty($r.subcategory)}<span class="communities_row_info_bullet">&#8226;</span> {$this->lang[$r.subcategory]}{/if}</div>
+	{/if}
+{/if}
+</div>
+	
+
+</div>
+		</div>
+	</div>
+	
+	{/strip}

@@ -1,0 +1,17 @@
+<div id="wo_sidebar_users">
+	<div class="avatar">
+		<img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture"/>
+	</div>
+     <span class="user-popover" data-id="<?php echo $wo['UsersList']['id'];?>" data-type="<?php echo $wo['UsersList']['type'];?>">
+		<a href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username']?>" class="wo_user_link_name">
+			<span class="user-name" title="<?php echo $wo['UsersList']['name']; ?>"><?php echo $wo['UsersList']['name']; ?></span>
+		</a>
+    </span>
+	<div class="wo_user_username_cont">
+	</div>
+    <div class="user-follow-btn">
+        <div class="user-follow-button">
+            <?php echo Wo_GetFollowButton($wo['UsersList']['user_id']);?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<div class="product col-md-4 col-sm-6" id="product-<?php echo $wo['product']['id']?>" data-id="<?php echo $wo['product']['id']?>" style="padding-right: 10px;padding-left: 10px;">
+	<div id="make-3D-space">
+		<div id="product-card" class="product-card<?php echo $wo['product']['id']?>">
+			<div id="product-front" class="product-front<?php echo $wo['product']['id']?>">
+				<div class="shadow"></div>
+				<img src="<?php echo $wo['product']['images'][0]['image_org'];?>" alt="" />
+				<div class="image_overlay"></div>
+				<div id="view_details" class="wabe view_details<?php echo $wo['product']['id']?>">
+					<?php if($wo['language'] == "english") { ?>View details<?php } ?>
+					<?php if($wo['language'] == "arabic") { ?>عرض التفاصيل<?php } ?>
+					<?php if($wo['language'] == "dutch") { ?>Bekijk details<?php } ?>
+					<?php if($wo['language'] == "french") { ?>Voir les détails<?php } ?>
+					<?php if($wo['language'] == "german") { ?>Details anzeigen<?php } ?>
+					<?php if($wo['language'] == "italian") { ?>Visualizza dettagli<?php } ?>
+					<?php if($wo['language'] == "portuguese") { ?>Ver detalhes<?php } ?>
+					<?php if($wo['language'] == "russian") { ?>Посмотреть детали<?php } ?>
+					<?php if($wo['language'] == "spanish") { ?>Ver detalles<?php } ?>
+					<?php if($wo['language'] == "turkish") { ?>Detayları göster<?php } ?>
+				</div>
+				<div class="stats">
+					<div class="stats-container">
+						<span class="product_price"><?php echo (!empty($wo['currencies'][$wo['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];?><?php echo $wo['product']['price']?></span>
+						<div style="height: 50px;">
+							<span class="product_name">
+								<a href="<?php echo $wo['product']['url'];?>" title="<?php echo $wo['product']['name']?>">
+									<?php if (strlen($wo['product']['name']) > 35):?>
+										<?php echo mb_substr($wo['product']['name'],0,35,"UTF-8") . ".."; ?>
+										<?php else:?>
+										<?php echo $wo['product']['name']?>
+									<?php endif;?>
+								</a>
+							</span>
+						</div>
+						<p><?php echo $wo['products_categories'][$wo['product']['category']];?></p>
+						<div class="product-options">
+							<div style="width: 100%;">
+								<div class="product-by">
+									<div class="pull-left image">
+										<a href="<?php echo $wo['product']['seller']['url'];?>"><img src="<?php echo $wo['product']['seller']['avatar'];?>" style="margin-right: 10px;margin-top: -1px;width: 35px;height: 35px;display: block;border-radius: 50%;border: 1px solid rgba(221, 221, 221, 0.65);"/></a>
+									</div>
+									<a href="<?php echo $wo['product']['seller']['url'];?>"><?php echo $wo['product']['seller']['name'];?></a><br>
+									<?php echo $wo['product']['time_text'];?>
+								</div>
+								<?php 
+								if ($wo['product']['seller']['id'] != $wo['user']['user_id']) {
+								?>
+								<span class="contact btn" onclick="Wo_OpenChatTab(<?php echo $wo['product']['seller']['id']?>)" data-toggle="tooltip" title="<?php echo $wo['lang']['contact_seller'] ?>">
+									<i class="zmdi zmdi-comment-text-alt" style="font-size:24px;color:#ff9800"></i> 
+								</span> 
+								<?php } ?>
+							</div>
+						</div>                       
+					</div>
+				</div>
+			</div>
+		
+			<div id="product-back" class="product-back<?php echo $wo['product']['id']?>">
+				<div class="shadow"></div>
+				<div id="carousel">
+					<p>
+						<?php if (strlen($wo['product']['description']) > 300):?>
+							<?php echo mb_substr($wo['product']['description'],0,300,"UTF-8") . ".."; ?>
+							<?php else:?>
+							<?php echo $wo['product']['description']; ?>
+						<?php endif;?>
+					</p>
+					<div class="product-thumb-info" style="width: 100%;position: absolute;text-align: center;bottom: 10px;">
+						<a class="wabe mdbtn btn btn-primary btn-sm" href="<?php echo $wo['product']['url'];?>" style="background-color: <?php echo $wo['config']['btn_background_color'];?> !important;border-color: <?php echo $wo['config']['btn_background_color'];?> !important;"><i class="fa fa-info-circle"></i> <?php echo $wo['lang']['more_info'] ?></a>
+					</div>
+				</div>
+				<div id="flip-back" class="flip-back<?php echo $wo['product']['id']?>">
+					<div id="cy" class="cy<?php echo $wo['product']['id']?>"></div>
+					<div id="cx" class="cx<?php echo $wo['product']['id']?>"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+	
+	// Lift card and show stats on Mouseover
+	$('.product-card<?php echo $wo['product']['id']?>').hover(function(){
+			$(this).addClass('animate');
+		 }, function(){
+			$(this).removeClass('animate');
+	});	
+	
+	// Flip card to the back side
+	$('.view_details<?php echo $wo['product']['id']?>').click(function(){
+		$('.product-card<?php echo $wo['product']['id']?>').addClass('flip-10');
+		setTimeout(function(){
+			$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip-10').addClass('flip90').find('div.shadow').show().fadeTo( 80 , 1, function(){
+				$('.product-front<?php echo $wo['product']['id']?>, .product-front<?php echo $wo['product']['id']?> div.shadow').hide();			
+			});
+		}, 50);
+		
+		setTimeout(function(){
+			$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip90').addClass('flip190');
+			$('.product-back<?php echo $wo['product']['id']?>').show().find('div.shadow').show().fadeTo( 90 , 0);
+			setTimeout(function(){				
+				$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip190').addClass('flip180').find('div.shadow').hide();						
+				setTimeout(function(){
+					$('.product-card<?php echo $wo['product']['id']?>').css('transition', '100ms ease-out');			
+					$('.cx<?php echo $wo['product']['id']?>, .cy<?php echo $wo['product']['id']?>').addClass('s1');
+					setTimeout(function(){$('.cx<?php echo $wo['product']['id']?>, .cy<?php echo $wo['product']['id']?>').addClass('s2');}, 100);
+					setTimeout(function(){$('.cx<?php echo $wo['product']['id']?>, .cy<?php echo $wo['product']['id']?>').addClass('s3');}, 200);					
+				}, 100);
+			}, 100);			
+		}, 150);			
+	});			
+	
+	// Flip card back to the front side
+	$('.flip-back<?php echo $wo['product']['id']?>').click(function(){		
+		
+		$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip180').addClass('flip190');
+		setTimeout(function(){
+			$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip190').addClass('flip90');
+	
+			$('.product-back<?php echo $wo['product']['id']?> div.shadow').css('opacity', 0).fadeTo( 100 , 1, function(){
+				$('.product-back<?php echo $wo['product']['id']?>, .product-back<?php echo $wo['product']['id']?> div.shadow').hide();
+				$('.product-front<?php echo $wo['product']['id']?>, .product-front<?php echo $wo['product']['id']?> div.shadow').show();
+			});
+		}, 50);
+		
+		setTimeout(function(){
+			$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip90').addClass('flip-10');
+			$('.product-front<?php echo $wo['product']['id']?> div.shadow').show().fadeTo( 100 , 0);
+			setTimeout(function(){						
+				$('.product-front<?php echo $wo['product']['id']?> div.shadow').hide();
+				$('.product-card<?php echo $wo['product']['id']?>').removeClass('flip-10').css('transition', '100ms ease-out');		
+				$('.cx<?php echo $wo['product']['id']?>, .cy<?php echo $wo['product']['id']?>').removeClass('s1 s2 s3');			
+			}, 100);			
+		}, 150);			
+		
+	});	
+
+});
+
+</script>

@@ -1,0 +1,16 @@
+<div class="modal fade" id="edit-post" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa-pencil"></i> <?php echo $wo['lang']['edit_post']; ?></h4>
+         </div>
+         <div class="modal-body edit-textarea-<?php echo $wo['story']['id'];?>">
+            <textarea class="form-control" placeholder="Edit Post" dir="auto" rows="6"><?php echo $wo['story']['Orginaltext']?></textarea>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn  btn-main" id="edit-post-button" onclick="Wo_EditPost(<?php echo $wo['story']['id'];?>)" ><i class="fa fa-pencil progress-icon" data-icon="pencil"></i> <?php echo $wo['lang']['update']; ?></button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $wo['lang']['cancel']; ?></button>
+         </div>
+      </div>
+   </div>
+</div>

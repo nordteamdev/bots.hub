@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Users > Manage Verification Reqeusts</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Verification Reqeusts</h2>
+                </div>
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                      <th>ID</th>
+                                      <th class="hidden">User</th>
+					                  <th>User</th>
+					                  <th>Type</th>
+					                  <th>Status</th>
+					                  <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $fetch_verif_requests_array = array(
+							        'table' => T_VER_REQUESTS,
+							        'column' => '*',
+							        'limit' => 500000,
+							        'order' => array(
+							            'type' => 'DESC',
+							            'column' => 'id'
+							        ),
+							    );
+							    $verification_users_req      = FL_FetchDataFromDB($fetch_verif_requests_array); 
+							    $verification_users_req_html = '';
+							    if (count($verification_users_req) > 0) {
+							        foreach ($verification_users_req as $fl['request']) {
+							           echo  FL_LoadAdminPage("manage-verification-requests/list", array(
+							                'REQUEST_ID'       => $fl['request']['id'],
+							                'REQUEST_USERNAME' => $fl['request']['name'],
+							                'USER_DATA' => Fl_UserData($fl['request']['user_id']),
+							                'REQUEST_TYPE'     => $fl['request']['type'],
+							                'REQUEST_AJAX'     => $fl['config']['site_url'] . '/ajax_requests.php?f=verification&s=load&id='.$fl['request']['id'],
+							            ));
+							        }
+							    } else{
+							        echo FL_LoadAdminPage("manage-verification-requests/no-requests");
+							    } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<div class="modal fade in" id="user-verified" role="dialog">
+  <div class="modal-dialog">
+  
+    <div class="modal-content">
+      <p style="">
+        <i class="fa fa-check verified-icon" aria-hidden="true"></i>      
+        Account has been successfully verified.
+      </p>
+    </div>
+    
+  </div>
+</div>
+<script>
+
+jQuery(document).ready(function($) {
+		
+		$('.fl-load-verif-request').magnificPopup({
+			type: 'ajax',
+			alignTop: true,
+			overflowY: 'scroll'
+		});
+	});
+
+
+
+	function FL_VerifyUser(request_id) {
+		if (!request_id) { 
+			return false;
+		}
+		$('#user-verified').modal('show');
+		$("[data-verif-request-id='"+request_id+"']").slideUp(function(){
+			$(this).remove();
+		});
+		$.ajax({
+			url: '{{LINK ajax_requests.php}}',
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'verification',s:'verify',id:request_id},
+		})
+		.done(function(data) {
+			if (data.status == 200) {
+				FL_Delay(function(){
+					$('#user-verified').modal('hide');
+				},2000);
+			}
+		})
+		.fail(function() {
+			console.log("Something went wrong. Please try later");
+		})
+	}
+
+	function FL_DeleteVerifRequest(request_id) {
+		if (!request_id) { 
+			return false;
+		}
+		$("[data-verif-request-id='"+request_id+"']").slideUp(function(){
+			$(this).remove();
+		});
+		$.ajax({
+			url: '{{LINK ajax_requests.php}}',
+			type: 'GET',
+			dataType: 'json',
+			data: {f: 'verification',s:'ignore',id:request_id},
+		})
+		.done(function(data) {
+			if (data.status == 200) {
+				
+			}
+		})
+		.fail(function() {
+			console.log("Something went wrong. Please try later");
+		})
+	}
+</script>
+
+<style>
+	.verification-action span{
+		color: #666;
+		margin-right: 3px;
+		cursor: pointer;
+	}
+
+	#user-verified{
+		margin-top: 150px;
+	}
+
+	#user-verified p{
+		text-align: center;
+		padding: 30px 20px;
+		font-family: Hind,Arial;
+		font-size: 16px;
+		margin: 0;
+	}
+</style>

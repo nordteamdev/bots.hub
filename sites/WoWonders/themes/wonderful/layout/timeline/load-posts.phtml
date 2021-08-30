@@ -1,0 +1,27 @@
+<div id="posts" data-story-user="<?php echo $wo['user_profile']['user_id'];?>">
+            <div class="pinned-post-container">
+                <?php
+                    $pinedstory = Wo_GetPinnedPost($wo['user_profile']['user_id']);
+                    if (count($pinedstory) == 1) {
+                        foreach ($pinedstory  as $wo['story']) {
+                          echo Wo_LoadPage('story/content');
+                        }
+                    }
+                    ?>
+        </div>
+            <?php
+                $stories = Wo_GetPosts(array('filter_by' => 'all','publisher_id' => $wo['user_profile']['user_id'])); 
+                if (count($stories) == 0 && count($pinedstory) == 0) {
+                   echo Wo_LoadPage('story/profile-no-stories');
+                } else {
+                   foreach ($stories as $wo['story']) {
+                     echo Wo_LoadPage('story/content');
+                   }
+                }
+                ?>
+        </div>
+        <?php if ($wo['loggedin'] == true && count($stories) > 0) {  ?>
+        <div class="load-more pointer" id="load-more-posts" onclick="Wo_GetMorePosts();">
+            <span class="btn btn-default"><i class="fa fa-chevron-circle-down progress-icon" data-icon="chevron-circle-down"></i> <?php echo $wo['lang']['load_more_posts']; ?><span>
+        </div>
+        <?php } ?>

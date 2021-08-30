@@ -1,0 +1,63 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 singlecol">
+			<div class="wo_settings_page" style="padding: 15px 15px;">
+				<h3>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+					App Permissions
+					<div class="clear"></div>
+				</h3>
+				
+				<div class="form-horizontal setting-panel row text-center" method="post" style="font-family: lato;">
+					<div class="avatar">
+						<img src="<?php echo $wo['app']['app_avatar'];?>" alt="<?php echo $wo['app']['app_name']; ?> Profile Picture" style="width: 100px;border-radius: 10px;height: 100px;box-shadow: 0 1px 2px #0000001f;pointer-events: none;user-select: none;"/>
+					</div>
+					<br>
+					<div style="font-size: 25px;text-transform: capitalize;"><?php echo $wo['app']['app_name']; ?></div>
+					<div class="app-website" style="font-size: 14px;">
+						<p><?php echo $wo['app']['app_description']?></p>
+					</div>
+					<div class="clear"></div>
+					<hr>
+					<h4 style="font-size: 15px;">
+						<b style="margin: 0;"><?php echo $wo['app']['app_name']; ?></b> would to receive the following info: <br><small>(email, profile info, posts)</small>
+					</h4>
+					<hr>
+					<div class="form-inline">
+						<button onclick="Wo_AcceptPermissions(<?php echo $wo['app']['id'];?>);" class="btn btn-main okdok" style="padding: 10px 60px;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+							Accept
+						</button>
+						<?php 
+							$url = $wo['app']['app_website_url'];
+							if (isset($_GET['redirect_uri']) && !empty($_GET['redirect_uri'])) {
+								$url = $_GET['redirect_uri'];
+							} else if (!empty($wo['app']['app_callback_url'])) {
+								$url = $wo['app']['app_callback_url'];
+							}
+						?>
+						<input type="hidden" id="url" name="url" value="<?php echo urlencode($url);?>">
+					</div>
+			
+					<div class="form-inline">
+						<a href="<?php echo $wo['app']['app_website_url'];?>" class="btn btn-link" style="margin-top: 50px;font-size: 15px;color: #7f7f7f;padding: 6px 40px;">Back</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .row -->
+</div>
+<!-- .page-margin -->
+<script>
+  function Wo_AcceptPermissions(id) {
+	  $('.okdok').addClass('disabled');
+    var url = $('#url').val();
+    $.post(Wo_Ajax_Requests_File() + '?f=apps&s=acceptPermissions', {id:id, url:url}, function (data) {
+      if (data.status == 200) {
+        window.location.href = data.location;
+      }
+    });
+  }
+</script>

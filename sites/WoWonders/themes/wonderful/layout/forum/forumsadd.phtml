@@ -1,0 +1,66 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div class="">
+	<h4><a href="<?php echo Wo_SeoLink('index.php?link1=forums&fid='.$wo['forum_data']['id']);?>"><?php echo $wo['forum_data']['name']; ?></a></h4>
+	<p class="small"><?php echo($wo['forum_data']['description']) ?></p>
+</div>
+<div role="tabpanel" class="tab-pane active list-group" id="forumsadd"> 
+	<div class="blocksubhead"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> <?php echo $wo['lang']['create_new_topic']; ?></div>
+	<div class="col-md-12" id="newpost-alert"></div>
+	<div class="clear"></div>
+	<div class="">
+		<form action="#" class="form" id="newtopic" method="post">
+			<div class="form-group">
+				<label for="headline" class="col-md-2"><?php echo $wo['lang']['headline']; ?>:</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" name="headline" id="headline">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="topicpost" class="col-md-2"><?php echo $wo['lang']['your_post']; ?>:</label>
+				<div class="col-md-10">
+					<textarea id="topicpost" name="topicpost"></textarea>
+				</div>
+			</div>
+	       <div class="form-group">
+	          <label class="col-md-2"></label>
+	          <div class="col-sm-10">
+	             <button type="submit" class="btn btn-main">
+	                <i class="fa fa-reply fa-fw progress-icon" data-icon="reply"></i> <?php echo $wo['lang']['publish']; ?>
+	             </button>
+	          </div>
+	       </div>
+		</form>
+	</div>
+</div>
+<div class="clear"></div>
+<script>
+jQuery(document).ready(function($) {
+
+	$('#newtopic').ajaxForm({
+
+	      url: Wo_Ajax_Requests_File()  +  '?f=addtopic&fid=<?php echo $wo['forum_data']['id']; ?>&hash=' + $('.main_session').val(),
+	      beforeSend: function() {
+	        Wo_progressIconLoader($('#newtopic').find('button'));
+	      },
+	      success: function(data) {
+	        scrollToTop();
+	        if (data['status'] == 200) {
+	        	
+	         	$("#newpost-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	          	window.location = data['url'];
+	        } else {
+	        	
+	         	$("#newpost-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        } 
+	        Wo_progressIconLoader($('#newtopic').find('button'));
+	      }
+	});
+
+	$("#topicpost").bbcode()
+	$("#topicpost").autogrow({vertical: true, horizontal: false});
+
+	
+});
+</script>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

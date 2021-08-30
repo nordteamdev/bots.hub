@@ -1,0 +1,102 @@
+<div class="entry" data-type="question" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+	<div class="entry-name pull-left">
+	   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"></path></svg>
+	    {{LANG question}}
+	</div>
+	<div class="pull-right manage-entries">
+	   <i class="material-icons down" onclick="FL_DownEntry({{ENTRY_TIME}});">keyboard_arrow_down</i>
+	   <i class="material-icons up" onclick="FL_UpEntry({{ENTRY_TIME}});">keyboard_arrow_up</i>
+	   <i class="material-icons" onclick="FL_RemoveEntry({{ENTRY_TIME}});">delete</i>
+	</div>
+	<div class="clear"></div>
+	<div class="error-con"></div>
+	<div class="form-group">
+	    <input type="text" class="form-control" data-name="entry_question_name" placeholder="{{LANG question}}">
+	    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadImage('{{ENTRY_TIME}}', '{{LANG set_as_p_image}}');">
+	    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+	</div>
+	<div class="img-content">
+		<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+		    <div class="content">
+			    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z"></path></svg> {{LANG choose_img}}
+		    </div>
+	    </div>
+	    <div class="img-set-as"></div>
+	</div>
+	<hr>
+	<div class="image-link">
+	    <div class="form-group">
+		    <input type="text" class="form-control" id="entry-image-link" placeholder="{{LANG img_link}}">
+		</div>
+		<div class="form-group pull-right">
+	        <button class="btn btn-blue fl_btn" type="button" onclick="FL_FetchQuestionImage({{ENTRY_TIME}}, '{{LANG set_as_p_image}}');">
+		      <i class="fa fa-link progress-icon" data-icon="link"></i> {{LANG fetch_url}}
+	        </button>
+	    </div>
+	    <div class="clear"></div>
+	</div>
+	<hr>
+	<span href="#" class="fetch-image-link btn btn-gray fl_btn" onclick="FL_OpenFetchImageInput({{ENTRY_TIME}});"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" /></svg> {{LANG fetch_url_from_image}}</span>
+	<hr>
+	<div class="answers">
+		<div id="question-answers">
+			<div class="answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="1">
+						<div class="preview">
+							<div class="upload_img" id="preview-image-{{ENTRY_TIME}}-1"><div><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z" /></svg></span> {{LANG choose_img}}</div></div>
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="1" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="1" type="text" placeholder="{{LANG option}} 1">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></span>
+			</div>
+			<div class="answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="2">
+						<div class="preview">
+							<div class="upload_img" id="preview-image-{{ENTRY_TIME}}-2"><div><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z" /></svg></span> {{LANG choose_img}}</div></div>
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="2" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="1" type="text" placeholder="{{LANG option}} 2">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></span>
+			</div>
+			<div class="answer-img-wrapper question-ans-wrapper">
+				<div class="answer-img question-ans-header" >
+					<div class="pick-questionans-img question-ans-preview-{{ENTRY_TIME}}" id="{{ENTRY_TIME}}" data-id="3">
+						<div class="preview">
+							<div class="upload_img" id="preview-image-{{ENTRY_TIME}}-3"><div><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#222" d="M5,3A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H14.09C14.03,20.67 14,20.34 14,20C14,19.32 14.12,18.64 14.35,18H5L8.5,13.5L11,16.5L14.5,12L16.73,14.97C17.7,14.34 18.84,14 20,14C20.34,14 20.67,14.03 21,14.09V5C21,3.89 20.1,3 19,3H5M19,16V19H16V21H19V24H21V21H24V19H21V16H19Z" /></svg></span> {{LANG choose_img}}</div></div>
+						</div>
+						<input class="hidden entry_answer" data-answer="entry_answer_img" id="3" value="">
+					</div>
+				</div>
+				<div class="question-ans-footer">
+					<input class="entry_answer form-control" data-answer="entry_answer_text" id="3" type="text" placeholder="{{LANG option}} 3">
+					<select class="entry_answer form-control"  data-answer="entry_answer_result">
+						<option value="1">{{LANG result}} 1</option>
+					</select>
+				</div>
+				<span onclick="$(this).parent().remove();"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></span>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<hr>
+		<button class="btn btn-main fl_btn" onclick="FL_AddQuizAnswer({{ENTRY_TIME}}, '{{LANG choose_img}}');" type="button">
+		<i class="fa fa-plus progress-icon" data-icon="plus"></i> {{LANG add_answer}}
+		</button>
+	</div>	
+	<input type="file" id="questionans-img-{{ENTRY_TIME}}" class="hidden" onchange="FL_UploadQuestionImg({{ENTRY_TIME}},this);">	
+</div>

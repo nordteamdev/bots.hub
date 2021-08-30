@@ -1,0 +1,65 @@
+<div class="wo_settings_page sun_sett_page">
+	<h3><?php echo $wo['lang']['privacy_setting'];?></h3>
+
+	<form  method="post" class="form-horizontal setting-information-form">
+		<div class="setting-information-alert setting-update-alert"></div>
+		
+		<div class="setting-panel row">
+         <div class="form-group">
+            <label class="col-md-5" for="privacy"><?php echo $wo['lang']['group_type'];?> </label>
+            <div class="col-md-5">
+               <select id="privacy" name="privacy" class="form-control">
+                  <?php 
+                  $selected_privacy_yes   = ($wo['setting']['privacy'] == 1)   ? ' selected' : '';
+                  $selected_privacy_no  = ($wo['setting']['privacy'] == 2)   ? ' selected' : '';
+                  ?>
+                  <option value="1" <?php echo $selected_privacy_yes; ?>><?php echo $wo['lang']['public'];?> </option>
+                  <option value="2" <?php echo $selected_privacy_no; ?>><?php echo $wo['lang']['private'];?> </option>
+               </select>
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-md-5" for="join_privacy"><?php echo $wo['lang']['confirm_request_group_privacy_label'];?></label>
+            <div class="col-md-5">
+               <select id="join_privacy" name="join_privacy" class="form-control">
+                  <?php 
+                  $selected_followp_yes   = ($wo['setting']['join_privacy'] == 1)   ? ' selected' : '';
+                  $selected_followp_no  = ($wo['setting']['join_privacy'] == 2)   ? ' selected' : '';
+                  ?>
+                  <option value="1" <?php echo $selected_followp_yes; ?>><?php echo $wo['lang']['no'];?></option>
+                  <option value="2" <?php echo $selected_followp_no; ?>><?php echo $wo['lang']['yes'];?></option>
+               </select>
+            </div>
+         </div>
+		</div>
+         
+		<div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+            <button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+		</div>
+		<input type="hidden" name="group_id" value="<?php echo $wo['setting']['id'];?>">
+		<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+	</form>
+</div>
+<script type="text/javascript">
+$(function() {
+  $('form.setting-information-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=groups&s=update_privacy_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        scrollToTop();
+        $('.setting-information-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      }
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+</script>

@@ -1,0 +1,10 @@
+<div class="ref" id="<?php echo $wo['ref']['user_id'];?>">
+	<div class="ref-image">
+		<img src="<?php echo $wo['ref']['avatar'];?>" alt="Image">
+	</div>
+	<div class="name">
+		<a href="<?php echo $wo['ref']['url'];?>"><?php echo $wo['ref']['name'];?><br></a>
+		<div class="joined"><?php echo $wo['lang']['joined'] ?>: <?php echo Wo_Time_Elapsed_String($wo['ref']['joined']);?></div>
+	</div>
+	<div class="clear"></div>
+</div>

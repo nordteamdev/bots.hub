@@ -1,0 +1,67 @@
+<!------------------ More results by respectively artist [ template ] ---------------------------->
+{strip}
+
+{if $mrs !== false}
+{$this->search_build_header($this->keyword)}
+<div class="m_c_s_scrollable" style="height: 590px;">
+  <div class="mus_content_w" aria-hidden="false">
+    <div>
+      <div class="mus_content_w mt-15">
+        {/if}
+        
+        {if $count > 0}
+        {if $mrs === false}
+  <span class="gwt-InlineHTML">
+    <div class="mus_separator mt-50">
+    </div>
+    <div class="mus_h2">
+      More Results
+    </div>
+  </span>
+  <div id="search_result_more_artist">
+    {/if}
+    {foreach $query as $result}
+    
+    
+    <div class="mus_card_i">
+      <div class="mus_card" uid="card" id="crdI_{$result.m_id}">
+        <div  class="mus_card_img_w">
+          <img src="{$result.m_cover}" class="mus_card_img" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.m_artist)}">
+          <div class="mus_card_ac_lst">
+            <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.m_artist)}&play=true">
+              <span class="mus_card_play">
+              </span>
+              Play
+            </span>
+            <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause">
+              <span class="mus_card_play __pause">
+              </span>
+              pause
+            </span>
+            <span class="mus_card_ac_i mus_card_ac_i__more" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.m_artist)}">
+              <span class="mus_card_more">
+              </span>
+              More
+            </span>
+          </div>
+        </div>
+        <div class="mus_card_n_w">
+          <div class="mus_card_n textWrap" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.m_artist)}">
+            <span class="mus_card_n_a" title="{$result.m_artist}">
+              {$result.m_artist}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/foreach}
+    
+    {else}
+    {if $mrs !== false}
+    {$this->empty_result(null,null,'No artists that matched to your search')}
+    {/if}
+    
+    {/if}
+
+{/strip}

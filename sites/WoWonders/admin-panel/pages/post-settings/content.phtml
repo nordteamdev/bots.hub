@@ -1,0 +1,154 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Post Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="header">
+                    <h2>Social share links</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert"></div>
+                    <form class="site-settings" method="POST">
+                        <label for="social_share_twitter">Twitter</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_twitter" id="social_share_twitter-enabled" value="1" <?php echo ($wo['config']['social_share_twitter'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_twitter-enabled">Enabled</label>
+                            <input type="radio" name="social_share_twitter" id="social_share_twitter-disabled" value="0" <?php echo ($wo['config']['social_share_twitter'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_twitter-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_google">Google +</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_google" id="social_share_google-enabled" value="1" <?php echo ($wo['config']['social_share_google'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_google-enabled">Enabled</label>
+                            <input type="radio" name="social_share_google" id="social_share_google-disabled" value="0" <?php echo ($wo['config']['social_share_google'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_google-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_facebook">Facebook</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_facebook" id="social_share_facebook-enabled" value="1" <?php echo ($wo['config']['social_share_facebook'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_facebook-enabled">Enabled</label>
+                            <input type="radio" name="social_share_facebook" id="social_share_facebook-disabled" value="0" <?php echo ($wo['config']['social_share_facebook'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_facebook-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_whatsup">What's up</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_whatsup" id="social_share_whatsup-enabled" value="1" <?php echo ($wo['config']['social_share_whatsup'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_whatsup-enabled">Enabled</label>
+                            <input type="radio" name="social_share_whatsup" id="social_share_whatsup-disabled" value="0" <?php echo ($wo['config']['social_share_whatsup'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_whatsup-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_pinterest">Pinterest</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_pinterest" id="social_share_pinterest-enabled" value="1" <?php echo ($wo['config']['social_share_pinterest'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_pinterest-enabled">Enabled</label>
+                            <input type="radio" name="social_share_pinterest" id="social_share_pinterest-disabled" value="0" <?php echo ($wo['config']['social_share_pinterest'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_pinterest-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_linkedin">Linkedin</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_linkedin" id="social_share_linkedin-enabled" value="1" <?php echo ($wo['config']['social_share_linkedin'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_linkedin-enabled">Enabled</label>
+                            <input type="radio" name="social_share_linkedin" id="social_share_linkedin-disabled" value="0" <?php echo ($wo['config']['social_share_linkedin'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_linkedin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="social_share_telegram">Telegram</label>
+                        <div class="form-group">
+                            <input type="radio" name="social_share_telegram" id="social_share_telegram-enabled" value="1" <?php echo ($wo['config']['social_share_telegram'] == 1) ? 'checked': '';?>>
+                            <label for="social_share_telegram-enabled">Enabled</label>
+                            <input type="radio" name="social_share_telegram" id="social_share_telegram-disabled" value="0" <?php echo ($wo['config']['social_share_telegram'] == 0) ? 'checked': '';?>>
+                            <label for="social_share_telegram-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Post Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success site-settings-alert2"></div>
+                    <form class="site-settings2" method="POST">
+                        <label for="comment_reports">Comment reports</label>
+                        <div class="form-group">
+                            <input type="radio" name="comment_reports" id="comment_reports-enabled" value="1" <?php echo ($wo['config']['comment_reports'] == 1) ? 'checked': '';?>>
+                            <label for="comment_reports-enabled">Enabled</label>
+                            <input type="radio" name="comment_reports" id="comment_reports-disabled" value="0" <?php echo ($wo['config']['comment_reports'] == 0) ? 'checked': '';?>>
+                            <label for="comment_reports-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="watermark">Watermark Overlay</label>
+                        <div class="form-group">
+                            <input type="radio" name="watermark" id="watermark-enabled" value="1" <?php echo ($wo['config']['watermark'] == 1) ? 'checked': '';?>>
+                            <label for="watermark-enabled">Enabled</label>
+                            <input type="radio" name="watermark" id="watermark-disabled" value="0" <?php echo ($wo['config']['watermark'] == 0) ? 'checked': '';?>>
+                            <label for="watermark-disabled" class="m-l-20">Disabled</label>
+                            <p>Icon Path: <?php echo "./themes/{$wo['config']['theme']}/img/icon.png";?></p>
+                        </div>
+
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_site_settings = $('form.site-settings');
+    form_site_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_site_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            	$('.site-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.site-settings-alert').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+    var form_site_settings2 = $('form.site-settings2');
+    form_site_settings2.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_site_settings2.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	form_site_settings2.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            	$('.site-settings-alert2').html('<i class="fa fa-check"></i> Settings updated successfully');
+            	setTimeout(function () {
+            		$('.site-settings-alert2').empty();
+            	}, 2000);
+            }
+        }
+    });
+
+});
+
+</script>

@@ -1,0 +1,42 @@
+<?php if (Wo_FriendPrivacy($wo['user_profile']['id'],$wo['user_profile']['friend_privacy'])): ?>
+<ul class="list-group sun_side_widget" id="sidebar-followers-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['friends_btn']; ?></li>
+	<h3 class="sun_side_widget_title">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#009da0" d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z"></path></svg> 
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=followers');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=followers"><?php echo $wo['lang']['friends_btn'];?></a>
+		<span><?php echo $wo['user_profile']['details']['following_count'];?></span>
+	</h3>
+	<li>
+		<div class="sidebar-followers-users-container sun_prof_foll_ing">
+			<?php 
+			foreach (Wo_GetFollowing($wo['user_profile']['user_id'], 'sidebar', 9 , 0, array('in' => 'profile_sidebar', 'following_data' => $wo['user_profile']['following_data'])) as $wo['UsersList']) {
+				$wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'], 0, 10, "utf-8");
+				echo Wo_LoadPage('sidebar/profile-sidebar-user-list');
+			}
+			?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>
+<?php endif; ?>
+<?php if ($wo['loggedin'] == true && $wo['user_profile']['details']['mutual_friends_count'] > 0 && !Wo_IsOnwerUser($wo['user_profile']['user_id'])) { ?>
+<ul class="list-group sun_side_widget" id="sidebar-mutual-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['mutual_friends']; ?></li>
+	<h3 class="sun_side_widget_title">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#8d73cc" d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z"></path></svg> 
+		<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u=' . $wo['user_profile']['username'] . '&type=mutual_friends');?>" data-ajax="?link1=timeline&u=<?php echo $wo['user_profile']['username']?>&type=mutual_friends"><?php echo $wo['lang']['mutual_friends'];?></a>
+		<span><?php echo $wo['user_profile']['details']['mutual_friends_count'];?></span>
+	</h3>
+	<li>
+		<div class="sidebar-mutual-users-container sun_prof_foll_ing">
+			<?php 
+			foreach (Wo_GetMutualFriends($wo['user_profile']['user_id'], 'sidebar', 9 , 0, array('in' => 'profile_sidebar', 'mutual_friends_data' => $wo['user_profile']['mutual_friends_data'])) as $wo['UsersList']) {
+				$wo['UsersList']['user_name'] = mb_substr($wo['UsersList']['name'], 0, 10, "utf-8");
+				echo Wo_LoadPage('sidebar/profile-sidebar-user-list');
+			}
+			?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>
+<?php } ?> 

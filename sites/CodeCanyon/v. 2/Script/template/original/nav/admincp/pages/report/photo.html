@@ -1,0 +1,60 @@
+{strip}
+
+<div class="adrowcol">
+<h2>Reported photo</h2>
+<hr>
+{assign var=rp_by_user value=$this->userdetails($rby)}
+<fieldset class="bgwhite">
+
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">Photo id</label>
+        <div class="col-md-6">#{$r.id}
+        </div>
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_message">Photo</label>
+        <div class="col-md-6">
+		{if $item_id > 0}
+				<img src="/getPhoto?p={$r.id}&sz=medium" />
+		{else}
+				The photo has been deleted
+		{/if}
+		
+        </div>
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Uploaded by</label>
+        <div class="col-md-6"><A href="/user/{$uid}" target="_blank">{$ufn}</a>
+        </div>
+    </div>
+	
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reason</label>
+        <div class="col-md-6">{$this->lang[$report_q.reason]}
+        </div>
+    </div>
+	
+	    <div class="form-group fleft w100"><label class="col-md-3" for="mail_to-button">Reported by</label>
+        <div class="col-md-6"><A target="_blank" href="/user/{$rp_by_user.id}">{$rp_by_user.fullname}</a>
+        </div>
+
+    </div>
+    <div class="form-group fleft w100"><label class="col-md-3" for="mail_subject">Report about</label>
+        <div class="col-md-6">{$this->time_elapsed($report_q.added)}
+        </div>
+    </div>
+</fieldset>
+
+<hr>
+
+     <form class="setting-general-form form-horizontal" action="/admin.php" target="_blank" id="fform" method="get">
+	 <input type="hidden" name="id" value="{$r.id}" />
+	 <input type="hidden" name="rid" value="{$id}" />
+	 <input type="hidden" name="returnto" value="/admin.php?cmd=viewreport&id={$id}&type=photo&itemid={$r.id}&rby={$rby}"/>
+	 <input type="hidden" name="cmd" value="rdeletephoto" />
+	 <div class="form-group last-btn tcenter">
+     
+            <div class="col-sm-3">
+                <button type="submit" class="form-actions_yes button-pro js-submit">Delete photo</button>
+            </div>
+        </div>
+		</form>
+</div>
+
+{/strip}

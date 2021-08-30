@@ -1,0 +1,12 @@
+
+{if $mode === 'error'}
+<div class="alert-box error"><span>Error: </span>{$msg}</div>
+<button class="form-actions_no button-pro __sec fff" onclick="history.go(-1);">< Back</button>
+{else if $mode === 'success'}
+<div class="alert-box success"><span>Success: </span>{$msg}</div>
+<div style="color:#666;margin:10px;">Please wait .. redirecting in 5 seconds.</div>
+{else if $mode === 'warning'}
+<div class="alert-box warning"><span>Warning: </span>{$msg}</div>
+{else if $mode === 'notice'}
+<div class="alert-box notice"><span>Notice: </span>{$msg}</div>
+{/if}

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Generate SiteMap</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Update SiteMap</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success sitemap-settings-alert"></div>
+                    <form class="sitemap-settings" method="POST">
+                        <label for="order_posts_by">Updating*</label>
+                        <select class="form-control show-tick" id="order_posts_by" name="order_posts_by">
+                              <option value="" disabled selected>SiteMap updating rate. Default (daily)</option>
+			                  <option value="daily">Daily</option>
+			                  <option value="always">Always</option>
+			                  <option value="hourly">Hourly</option>
+			                  <option value="weekly">Weekly</option>
+			                  <option value="monthly">Monthly</option>
+			                  <option value="yearly">Yearly</option>
+			                  <option value="never">Never</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div>Note: This may take up to 10 minutes.</div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Generate</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_sitemap_settings = $('form.sitemap-settings');
+    form_sitemap_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + "?f=admincp&s=update-sitemap",
+        beforeSend: function() {
+            form_sitemap_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.sitemap-settings-alert').html('<i class="fa fa-check"></i> SiteMap successfully updated');
+            }
+            form_sitemap_settings.find('.waves-effect').text('Generate');
+        }
+    });
+});
+</script>

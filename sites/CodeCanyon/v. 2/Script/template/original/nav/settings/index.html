@@ -1,0 +1,863 @@
+{strip}
+
+<div class="wide_friends_lf_cl __settings">
+
+
+{if !$getTab}
+<div class="main-content-column">
+  
+ 
+         
+	
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['General_settings']}</div></div></h2>
+ 
+                <div id="hook_Block_UserConfigMRB" class="hookBlock">
+                    <div class="user-settings">
+                        <div  data-stcateg="personalInfo" onclick="editGeneralSettings(this,event);" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['Personal_Information']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx textWrap">{$this->USER['fullname']}, {$this->lang['wasbornon']} <span id="update_birthday">{$this->getUserBirthday($this->USER['birthday'])}</span> {$this->lang['in']} <span id="user_location"><span rel="getusercountry" id="buser_{$this->USER.id}"></span></span></div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+						
+                        <div  data-stcateg="phone" onclick="editGeneralSettings(this,event);" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['reg_phone']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">{if empty($this->USER['phone']) || $this->USER['phone'] == ' '}<span style="color: #ccc;" id="updated_phone">{$this->lang['reg_phone']}</span>{else}<span id="updated_phone">{$this->USER['phone']}</span>{/if}</div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+						
+                        <div  data-stcateg="nickname" onclick="editGeneralSettings(this,event);" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['NickName']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">{if empty($this->USER['username'])}<span style="color: #ccc;" id="updated_nickname">{$this->lang['Add_Username']}</span>{else}<span id="updated_nickname">{$this->USER['username']}</span>{/if}</div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+                        <div  data-stcateg="password" onclick="editGeneralSettings(this,event);" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['Password']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">{str_repeat('*',strlen($this->USER['real_pass']))}</div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+						
+						
+						<!--- Currently don't need the phone number
+                        <a href="/dk?st.cmd=userConfig&amp;cmd=PopLayer&amp;st.layer.cmd=PopLayerFreeSMSActivationOuter&amp;st.layer.mode=initChange&amp;st._aid=UserSettings_ChangePhone" class="user-settings_i">
+                            <div class="user-settings_i_n">Phone number</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">+373 XXXXXX45</div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </a>
+						--->
+						
+						
+                        <div  data-stcateg="email" onclick="editGeneralSettings(this,event);" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['EmailAddr']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx" id="curr_email_div">{$this->USER['email']}</div>
+                                <div class="user-settings_i_lk lstp-t al">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+                        <div  onclick="globalLangSet(event);ga(this).removeAttr('onclick');ga('#hide_cur-lang,#hide_id_cur_lang').hide();" class="user-settings_i curPointer">
+                            <div class="user-settings_i_n">{$this->lang['Language']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx" id="hide_cur-lang">{$this->translate_languages($this->USER['language'])}</div>
+                                <div class="user-settings_i_lk lstp-t al" id="hide_id_cur_lang">{$this->lang['Edit']}</div>
+                            </div>
+                        </div>
+                        <div class="user-settings_i">
+                            <div class="user-settings_i_n">{$this->lang['ProfileLink']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">{if $this->USER['username']}{$this->settings['HOST']}/{$this->USER['username']}{else}{$this->settings['HOST']}/{$this->USER['id']}{/if}</div>
+                            </div>
+                        </div>
+                        <div class="user-settings_i">
+                            <div class="user-settings_i_n">{$this->lang['yourProfileId']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx">{$this->USER['id']}</div>
+                            </div>
+                        </div>
+						{if $this->settings['delete_user_account'] === "true"}
+                        <div class="user-settings_i">
+                            <div class="user-settings_i_n">{$this->lang['delete_account']}</div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_tx"><button data-uid="{$this->USER['id']}" onclick="return deleteUserAccount(event);">Delete</button></div>
+                            </div>
+                        </div>
+						{/if}
+                    </div>
+                </div>
+ 
+    
+</div>
+
+{else if $getTab == 'basic-info'}
+
+<div class="main-content-column">
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['basic_info']}</div></div></h2>
+						
+				 <div class="main-content-panel">
+ 
+                <div id="hook_Block_UserProfileSettingsMRB" class="hookBlock">
+                    <div id="hook_Form_UserProfileSettingsMRBFormForm" class="hook">
+                        <form method="post" action="/cmd.php" id="sv_st_form">
+						<input type="hidden" name="cmd" value="basic_info_update" />
+                           
+<div id="pedit_interests" class="pedit_content">
+
+
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['interests']}:</div>
+      <div class="pedit_labeled soh-s">
+        <textarea id="pedit_interests_interests" name="dk.interests" class="dark" autocomplete="off" style="overflow: hidden; resize: none;">{$this->str_smilies_fpost($this->USER['interests'])}</textarea>
+		<a id="pedit_interests_interests_emoji_btn" class="em_disc_toolbar_i_ic__sm smiles_w foh-s" href="javascript:void(0);"></a>
+      </div>
+    </div>
+
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['favorite_quotes']}:</div>
+      <div class="pedit_labeled soh-s">
+        <textarea id="pedit_interests_quotes" name="dk.quotes" class="dark" autocomplete="off" style="overflow: hidden; resize: none;">{$this->str_smilies_fpost($this->USER['quotes'])}</textarea>
+		<a id="pedit_interests_quotes_emoji_btn" class="foh-s em_disc_toolbar_i_ic__sm smiles_w" href="javascript:void(0);"></a>
+      </div>
+    </div>
+	
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['My_Hobbies']}:</div>
+      <div class="pedit_labeled soh-s">
+        <textarea id="pedit_interests_hobby" name="dk.hobby" class="dark" autocomplete="off" style="overflow: hidden; resize: none;">{$this->str_smilies_fpost($this->USER['hobby'])}</textarea>
+		<a id="pedit_interests_hobby_emoji_btn" class="foh-s em_disc_toolbar_i_ic__sm smiles_w" href="javascript:void(0);"></a>
+      </div>
+    </div>
+	
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['About_me']}:</div>
+      <div class="pedit_labeled soh-s">
+        <textarea id="pedit_interests_about" name="dk.aboutme" class="dark" autocomplete="off" style="overflow: hidden; resize: none;">{$this->str_smilies_fpost($this->USER['aboutme'])}</textarea>
+		<a id="pedit_interests_about_emoji_btn" class="foh-s em_disc_toolbar_i_ic__sm smiles_w" href="javascript:void(0);"></a>
+      </div>
+    </div>
+	
+
+	
+    <div class="pedit_separator"></div>
+    <div class="pedit_controls clear_fix taCenter">
+      <button class="flat_button button_big_width taCenter" onclick="saveFormSettings(this.form,event);">{$this->lang['Save']}</button>
+    </div>
+  </div>
+							
+							
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+	   </div>		
+
+{else if $getTab == 'personal-views'}
+
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['personal_views']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+			
+ 
+			
+                <div id="hook_Block_UserProfileSettingsMRB" class="hookBlock">
+                    <div id="hook_Form_UserProfileSettingsMRBFormForm" class="hook">
+                        <form method="post" action="/cmd.php" id="sv_st_form">
+						<input type="hidden" name="cmd" value="personal_views_update" />
+                           
+<div id="pedit_personalviews" class="pedit_content">
+
+
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['political_views']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="political_views">
+	   <option value="">------</option>
+	   <option {if $this->USER['political_views'] == 'Apathetic'}selected{/if} value="Apathetic">{$this->lang['Apathetic']}</option>
+	   <option {if $this->USER['political_views'] == 'Communist'}selected{/if} value="Communist">{$this->lang['Communist']}</option>
+	   <option {if $this->USER['political_views'] == 'Socialist'}selected{/if} value="Socialist">{$this->lang['Socialist']}</option>
+	   <option {if $this->USER['political_views'] == 'Moderate'}selected{/if} value="Moderate">{$this->lang['Moderate']}</option>
+	   <option {if $this->USER['political_views'] == 'Liberal'}selected{/if} value="Liberal">{$this->lang['Liberal']}</option>
+	   <option {if $this->USER['political_views'] == 'Conservative'}selected{/if} value="Conservative">{$this->lang['Conservative']}</option>
+	   <option {if $this->USER['political_views'] == 'Monarchist'}selected{/if} value="Monarchist">{$this->lang['Monarchist']}</option>
+	   <option {if $this->USER['political_views'] == 'Ultraconservative'}selected{/if} value="Ultraconservative">{$this->lang['Ultraconservative']}</option>
+	   <option {if $this->USER['political_views'] == 'Libertarian'}selected{/if} value="Libertarian">{$this->lang['Libertarian']}</option>
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['world_view']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="world_view">
+	   <option value="">------</option>
+	   <option {if $this->USER['world_view'] == 'Judaism'}selected{/if} value="Judaism">{$this->lang['Judaism']}</option>
+	   <option {if $this->USER['world_view'] == 'Orthodoxy'}selected{/if} value="Orthodoxy">{$this->lang['Orthodoxy']}</option>
+	   <option {if $this->USER['world_view'] == 'Catholicism'}selected{/if} value="Catholicism">{$this->lang['Catholicism']}</option>
+	   <option {if $this->USER['world_view'] == 'Protestantism'}selected{/if} value="Protestantism">{$this->lang['Protestantism']}</option>
+	   <option {if $this->USER['world_view'] == 'Islam'}selected{/if} value="Islam">{$this->lang['Islam']}</option>
+	   <option {if $this->USER['world_view'] == 'Buddhism'}selected{/if} value="Buddhism">{$this->lang['Buddhism']}</option>
+	   <option {if $this->USER['world_view'] == 'Confucianism'}selected{/if} value="Confucianism">{$this->lang['Confucianism']}</option>
+	   <option {if $this->USER['world_view'] == 'Secular_humanism'}selected{/if} value="Secular_humanism">{$this->lang['Secular_humanism']}</option>
+	   <option {if $this->USER['world_view'] == 'Pastafarianism'}selected{/if} value="Pastafarianism">{$this->lang['Pastafarianism']}</option>
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+	
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['personal_priority']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="personal_priority">
+	   <option value="NOT_SPECIFIED">------</option>
+	   <option {if $this->USER['personal_priority'] == 'Family_and_children'}selected{/if} value="Family_and_children">{$this->lang['Family_and_children']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Career_and_money'}selected{/if} value="Career_and_money">{$this->lang['Career_and_money']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Entertainment_and_leisure'}selected{/if} value="Entertainment_and_leisure">{$this->lang['Entertainment_and_leisure']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Science_and_research'}selected{/if} value="Science_and_research">{$this->lang['Science_and_research']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Improving_the_world'}selected{/if} value="Improving_the_world">{$this->lang['Improving_the_world']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Personal_development'}selected{/if} value="Personal_development">{$this->lang['Personal_development']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Beauty_and_art'}selected{/if} value="Beauty_and_art">{$this->lang['Beauty_and_art']}</option>
+	   <option {if $this->USER['personal_priority'] == 'Fame_and_influence'}selected{/if} value="Fame_and_influence">{$this->lang['Fame_and_influence']}</option>
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+	
+	
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['important_in_others']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="important_in_others">
+	   <option value="NOT_SPECIFIED">------</option>
+	   <option {if $this->USER['important_in_others'] == 'Intellect_and_creativity'}selected{/if} value="Intellect_and_creativity">{$this->lang['Intellect_and_creativity']}</option>
+	   <option {if $this->USER['important_in_others'] == 'Kindness_and_honesty'}selected{/if} value="Kindness_and_honesty">{$this->lang['Kindness_and_honesty']}</option>
+	   <option {if $this->USER['important_in_others'] == 'Health_and_beauty'}selected{/if} value="Health_and_beauty">{$this->lang['Health_and_beauty']}</option>
+	   <option {if $this->USER['important_in_others'] == 'Wealth_and_power'}selected{/if} value="Wealth_and_power">{$this->lang['Wealth_and_power']}</option>
+	   <option {if $this->USER['important_in_others'] == 'Courage_and_persistence'}selected{/if} value="Courage_and_persistence">{$this->lang['Courage_and_persistence']}</option>
+	   <option {if $this->USER['important_in_others'] == 'Humor_and_love_for_life'}selected{/if} value="Humor_and_love_for_life">{$this->lang['Humor_and_love_for_life']}</option>
+	  
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+	
+	
+	
+    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['views_on_smoking']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="views_on_smoking">
+	   <option value="NOT_SPECIFIED">------</option>
+	   <option {if $this->USER['views_on_smoking'] == 'Smoking_Alcohol_very_negative'}selected{/if} value="Smoking_Alcohol_very_negative">{$this->lang['Smoking_Alcohol_very_negative']}</option>
+	   <option {if $this->USER['views_on_smoking'] == 'Smoking_Alcohol_negative'}selected{/if} value="Smoking_Alcohol_negative">{$this->lang['Smoking_Alcohol_negative']}</option>
+	   <option {if $this->USER['views_on_smoking'] == 'Smoking_Alcohol_compromisable'}selected{/if} value="Smoking_Alcohol_compromisable">{$this->lang['Smoking_Alcohol_compromisable']}</option>
+	   <option {if $this->USER['views_on_smoking'] == 'Smoking_Alcohol_neutral'}selected{/if} value="Smoking_Alcohol_neutral">{$this->lang['Smoking_Alcohol_neutral']}</option>
+	   <option {if $this->USER['views_on_smoking'] == 'Smoking_Alcohol_positive'}selected{/if} value="Smoking_Alcohol_positive">{$this->lang['Smoking_Alcohol_positive']}</option>
+	   
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+	
+	
+	
+	    <div class="pedit_row clear_fix">
+      <div class="pedit_label">{$this->lang['views_on_alcohol']}:</div>
+      <div class="pedit_labeled">
+	  
+       <select name="views_on_alcohol">
+	   <option value="NOT_SPECIFIED">------</option>
+	   <option {if $this->USER['views_on_alcohol'] == 'Smoking_Alcohol_very_negative'}selected{/if} value="Smoking_Alcohol_very_negative">{$this->lang['Smoking_Alcohol_very_negative']}</option>
+	   <option {if $this->USER['views_on_alcohol'] == 'Smoking_Alcohol_negative'}selected{/if} value="Smoking_Alcohol_negative">{$this->lang['Smoking_Alcohol_negative']}</option>
+	   <option {if $this->USER['views_on_alcohol'] == 'Smoking_Alcohol_compromisable'}selected{/if} value="Smoking_Alcohol_compromisable">{$this->lang['Smoking_Alcohol_compromisable']}</option>
+	   <option {if $this->USER['views_on_alcohol'] == 'Smoking_Alcohol_neutral'}selected{/if} value="Smoking_Alcohol_neutral">{$this->lang['Smoking_Alcohol_neutral']}</option>
+	   <option {if $this->USER['views_on_alcohol'] == 'Smoking_Alcohol_positive'}selected{/if} value="Smoking_Alcohol_positive">{$this->lang['Smoking_Alcohol_positive']}</option>
+	   
+	   
+	   </select>
+	   
+	   
+      </div>
+    </div>
+	
+	
+    <div class="pedit_separator"></div>
+    <div class="pedit_controls clear_fix taCenter">
+      <button class="flat_button button_big_width taCenter" onclick="saveFormSettings(this.form,event);">{$this->lang['Save']}</button>
+    </div>
+  </div>
+							
+							
+                        </form>
+                    </div>
+                </div>
+</div></div>
+
+{else if $getTab == 'privacy'}
+
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Privacy']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+			
+			
+			
+                <div id="hook_Block_UserProfileSettingsMRB" class="hookBlock">
+                    <div id="hook_Form_UserProfileSettingsMRBFormForm" class="hook">
+                        <form method="post" action="/cmd.php" id="sv_st_form">
+						<input type="hidden" name="cmd" value="privacyupdate" />
+                            <div class="user-settings h-mod">
+                                <div class="portlet_h3">{$this->lang['whoCanView']}</div>
+                                <table class="table-std __full-width __tx-center user-settings_table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>{$this->lang['Everyone']}</th>
+                                            <th>{$this->lang['Only_friends']}</th>
+                                            <th>{$this->lang['Only_me']}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{$this->lang['My_age']}</td>
+                                            <td>
+                                                <input type="radio" {if $this->USER['privacy_age'] == 'everyone'}checked{/if} name="st.accessForAGE_VISIBILITY" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="radio" {if $this->USER['privacy_age'] == 'friends'}checked{/if} name="st.accessForAGE_VISIBILITY" value="1">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['privacy_age'] == 'only_me'}checked{/if} type="radio" name="st.accessForAGE_VISIBILITY" value="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{$this->lang['My_games_and_applications']}</td>
+                                            <td>
+                                                <input type="radio" {if $this->USER['privacy_apps'] == 'everyone'}checked{/if} name="st.accessForGAMES_APPS_VISIBILITY" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="radio" {if $this->USER['privacy_apps'] == 'friends'}checked{/if} name="st.accessForGAMES_APPS_VISIBILITY" value="1">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['privacy_apps'] == 'only_me'}checked{/if} type="radio" name="st.accessForGAMES_APPS_VISIBILITY" value="2">
+                                            </td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td>{$this->lang['My_groups_and_communities']}</td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForGROUPS_VISIBILITY" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForGROUPS_VISIBILITY" value="1">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForGROUPS_VISIBILITY" value="2">
+                                            </td>
+                                        </tr>-->
+                                        
+										<!--<tr>
+                                            <td>{$this->lang['My_partner']}</td>
+                                            <td>
+                                                <input {if $this->USER['privacy_love'] == 'everyone'}checked{/if} type="radio" name="st.accessForRELATIONS_BLOCK_VISIBILITY" value="0">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['privacy_love'] == 'friends'}checked{/if} type="radio" name="st.accessForRELATIONS_BLOCK_VISIBILITY" value="1">
+                                            </td>
+                                            <td></td>
+                                        </tr>
+										--> 
+                                        <!--<tr>
+                                            <td>{$this->lang['My_achievements']}</td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForACHIEVEMENTS_VISIBILITY" value="0">
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <input type="radio" name="st.accessForACHIEVEMENTS_VISIBILITY" value="2">
+                                            </td>
+                                        </tr>-->
+                                    </tbody>
+                                </table>
+                                <div class="portlet_h3">{$this->lang['I_allow']}</div>
+                                <table class="table-std __full-width __tx-center user-settings_table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>{$this->lang['All_users']}</th>
+                                            <th>{$this->lang['Friends_only']}</th>
+                                            <th>{$this->lang['Nobody']}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{$this->lang['Tag_me_in_photos']}</td>
+                                            <td></td>
+                                            <td>
+                                                <input {if $this->USER['allow_tag_photos'] == 'friends'}checked{/if} type="radio" name="st.accessForMAKE_PHOTOPINS" value="1">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_tag_photos'] == 'nobody'}checked{/if} type="radio" name="st.accessForMAKE_PHOTOPINS" value="0">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{$this->lang['Tag_me_in_posts']}</td>
+                                            <td></td>
+                                            <td>
+                                                <input {if $this->USER['allow_tag_posts'] == 'friends'}checked{/if} type="radio" name="st.accessForMARK_IN_TOPICS" value="1">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_tag_posts'] == 'nobody'}checked{/if} type="radio" name="st.accessForMARK_IN_TOPICS" value="0">
+                                            </td>
+                                        </tr>
+                                       <!-- <tr>
+                                            <td>{$this->lang['Tag_oneself_in_my_photos']}</td>
+                                            <td></td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForPHOTOPINS_ON_MY_PHOTOS" value="1">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForPHOTOPINS_ON_MY_PHOTOS" value="2">
+                                            </td>
+                                        </tr>-->
+                                        <!--<tr>
+                                            <td>{$this->lang['Invite_me_to_games']}</td>
+                                            <td></td>
+                                            <td>
+                                                <input type="radio" name="st.accessForGAMES_INVITE" value="1">
+                                            </td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForGAMES_INVITE" value="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{$this->lang['Invite_me_to_groups']}</td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForGROUPS_INVITE" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForGROUPS_INVITE" value="1">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForGROUPS_INVITE" value="2">
+                                            </td>
+                                        </tr>-->
+                                        <tr>
+                                            <td>{$this->lang['Share_my_personal_photos']}</td>
+                                            <td>
+                                                <input {if $this->USER['allow_share_myphotos'] == 'everyone'}checked{/if} type="radio" name="st.accessForPERSONAL_PHOTOS_RESHARE" value="0">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_share_myphotos'] == 'friends'}checked{/if} type="radio" name="st.accessForPERSONAL_PHOTOS_RESHARE" value="1">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_share_myphotos'] == 'nobody'}checked{/if} type="radio" name="st.accessForPERSONAL_PHOTOS_RESHARE" value="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{$this->lang['Comment_on_my_personal_photos']}</td>
+                                            <td>
+                                                <input {if $this->USER['allow_comment_myphotos'] == 'everyone'}checked{/if} type="radio" name="st.accessForPERSONAL_PHOTOS_COMMENT" value="0">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_comment_myphotos'] == 'friends'}checked{/if} type="radio" name="st.accessForPERSONAL_PHOTOS_COMMENT" value="1">
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <!--<tr>
+                                            <td>{$this->lang['Comment_on_my_forum']}</td>
+                                            <td>
+                                                <input checked="checked" type="radio" name="st.accessForPERSONAL_FORUM_COMMENT" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="radio" name="st.accessForPERSONAL_FORUM_COMMENT" value="1">
+                                            </td>
+                                            <td></td>
+                                        </tr>-->
+                                        <tr>
+                                            <td>{$this->lang['Send_me_messages']}</td>
+                                            <td>
+                                                <input {if $this->USER['allow_send_pm'] == 'everyone'}checked{/if} type="radio" name="st.accessForPERSONAL_MESSAGES" value="0">
+                                            </td>
+                                            <td>
+                                                <input {if $this->USER['allow_send_pm'] == 'friends'}checked{/if} type="radio" name="st.accessForPERSONAL_MESSAGES" value="1">
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="portlet_h3">{$this->lang['Additional']}</div>
+                                <table class="table-std __full-width __tx-center user-settings_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>{$this->lang['Display_me_in_the_Online_users_section']}</td>
+                                            <td>
+                                                <input name="st.accessForON_SITE_NOW_VISIBILITY" type="checkbox" {if $this->USER['display_online'] == 'false'}value="0"{else}value="1" checked{/if}>
+                                            </td>
+                                        </tr>
+                                        <!---<tr>
+                                            <td>{$this->lang['Check_every_photo_Im_tagged_in_before_publication']}</td>
+                                            <td>
+                                                <input checked="checked" name="st.accessForPHOTOPIN_MODERATION" type="checkbox" value="0">
+                                            </td>
+                                        </tr>
+										-->
+                                    </tbody>
+                                </table>
+                                <div style="min-height: 55px;">
+                                    <div class="sticky-plank u-settings_sticky __on" style="bottom: 0px;">
+                                        <div class="sticky-plank_hld">
+                                            <div class="sticky-plank_cnt">
+                                                <div class="formButtonContainer">
+                                                    <button class="flat_button" onclick="saveFormSettings(this.form,event);" type="submit" name="button_changeProfileType" id="hook_FormButton_button_changeProfileType">{$this->lang['Save']}</button>&nbsp;&nbsp;&nbsp;<span class="flat_button secondary" onclick="ga('#sv_st_form')[0].reset();">Reset Settings</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+  
+    </div>
+</div>
+
+{else if $getTab == 'media'}
+
+
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['settings_media']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+                <div id="hook_Block_UserLocationHistory" class="hookBlock">
+ 
+ 
+
+ <form method="post" action="/cmd.php" id="sv_st_media_form">
+ 	<input type="hidden" name="cmd" value="mediaupdate" />
+<table class="table-std __full-width __tx-center user-settings_table">
+<tbody>
+<tr><td>{$this->lang['hide_attachments']}</td><td><input name="st.hideEmberaAttachments" type="checkbox" {if $this->USER.show_embera == 'no'}checked="true"{/if}></td></tr>
+<tr><td>{$this->lang['auto_play_videos']}</td><td><input name="st.autoPlayVideos" type="checkbox" {if $this->USER.auto_play_videos == 'yes'}checked="true"{/if}></td></tr>
+</tbody>
+</table>
+
+
+<div class="sticky-plank u-settings_sticky __on" style="bottom: 0px;">
+<div class="sticky-plank_hld"><div class="sticky-plank_cnt">
+<div class="formButtonContainer">
+<button class="flat_button" onclick="saveFormSettings(this.form,event);" type="submit" name="button_changeProfileType" id="hook_FormButton_button_changeProfileType">{$this->lang['Save']}</button>
+&nbsp;&nbsp;&nbsp;<span class="flat_button secondary" onclick="ga('#sv_st_media_form')[0].reset();">Reset Settings</span>
+</div></div></div></div>
+</form>
+
+
+                </div>
+            </div>
+        </div>
+ 
+{else if $getTab == 'locHistory'}
+
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Location_history']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+                <div id="hook_Block_UserLocationHistory" class="hookBlock">
+                    <div class="user-settings __history">
+                        <div class="portlet_h3">{$this->lang['Your_location_history_for_the_last_2_months']}</div>
+                        <div class="user-settings_desc">{$this->lang['if_you_dont_recognize_location']} <a href="/profile?q={$this->USER['id']}&cmd=settings&nav=settings" hrefattr="true" class="al">{$this->lang['change_your_pass']}</a></div>
+
+						{foreach $this->getUserLocationHistory() as $res}
+                        <div class="user-settings_i">
+                            <div class="user-settings_i_n">{$res.city} {$res.region_name}, {$res.country_name}
+                                <div class="user-settings_i_ip">IP {$res.ip}</div>
+                            </div>
+                            <div class="user-settings_i_cnt">
+                                <div class="user-settings_i_time">{$res.time}</div>
+                            </div>
+                        </div>
+
+                    {/foreach}
+				    </div> 
+					
+					
+					<!---
+                    <div class="user-settings __historysub">
+                        <div class="portlet_h3">{$this->lang['logout_on_all_devices']}<i class="inew"><i class="inew_ic">{$this->lang['new']}</i></i>
+                        </div>
+                        <div class="user-settings_desc">{$this->lang['logout_on_all_devices_descr']} <a href="javsacript:;" class="al">{$this->lang['logout_on_all_devices']}</a></div>
+                    </div>-->
+					
+					
+					
+                </div>
+            </div>
+        </div>
+ 
+
+{else if $getTab == 'notifications'}
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Notification_settings']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+                <div id="hook_Block_BlacklistRBlock" class="hookBlock">
+ 
+			
+                    <div class="portlet" id="paneBlocks">
+	
+	  {if isJson( $this->USER['notifications_settings'] )}
+	  {assign var=notif_sound_enabled_arr value=json_decode($this->USER['notifications_settings'],true)}
+	 
+	  
+	  
+	  {if isset($notif_sound_enabled_arr['notification_sound'])}
+	   {assign var=notif_sound_enabled value=$notif_sound_enabled_arr['notification_sound']}
+	  {else}
+	  {assign var=notif_sound_enabled value="on"}
+	  {/if}
+	  
+	  {else}
+	  {assign var=notif_sound_enabled value="on"}
+	  {/if}
+<div class="settings_panel  settings_notify settings_site_notify">
+    <div data-notif-key="sound" class="settings_separated_row icon_type_ienable settings_separated_row_iconed {if $notif_sound_enabled == 'on'}enabled{/if}" onclick="saveNotificationSettings(this,event);">
+	<Div class="notif-left-ic"><span class="glyphicon glyphicon-volume-up"></span></div>
+  <div class="settings_separated_row_extra"><div class="ui_toggler_wrap">
+  <div class="_ui_toggler ui_toggler  _settings_ienable {if $notif_sound_enabled == 'on'}on{/if}"></div>
+  <div class="ui_toggler_label"></div>
+</div></div><div class="settings_separated_row_text">
+    <div class="settings_separated_row_text_inner">
+      {$this->lang['notif_settings_enable_sound']}
+    </div>
+  </div>
+</div>
+
+  </div>
+	  
+	  {if isJson( $this->USER['notifications_settings'] )}
+	  {assign var=notif_dropdown_arr value=json_decode($this->USER['notifications_settings'],true)}
+	  
+	  {if isset($notif_dropdown_arr['important_notif_dropdown'])}
+	  {assign var=notif_dropdown value=$notif_dropdown_arr['important_notif_dropdown']}
+	  {else}
+	  {assign var=notif_dropdown value="on"}
+	  {/if}
+	  
+	  {else}
+	  {assign var=notif_dropdown value="on"}
+	  {/if}
+<div class="settings_panel  settings_notify settings_site_notify">
+    <div data-notif-key="dropdown" class="settings_separated_row icon_type_ienable settings_separated_row_iconed {if $notif_dropdown == 'on'}enabled{/if}" onclick="saveNotificationSettings(this,event);">
+	<Div class="notif-left-ic"><span class="glyphicon glyphicon-comment"></span></div>
+  <div class="settings_separated_row_extra"><div class="ui_toggler_wrap">
+  <div class="_ui_toggler ui_toggler  _settings_ienable {if $notif_dropdown == 'on'}on{/if}"></div>
+  <div class="ui_toggler_label"></div>
+</div></div><div class="settings_separated_row_text">
+    <div class="settings_separated_row_text_inner">
+      {$this->lang['notif_settings_dropdown']}
+    </div>
+  </div>
+</div>
+
+  </div>
+	  
+	  
+	  
+	  
+	  
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+{else if $getTab == 'blacklist'}
+
+
+<div class="main-content-column">
+ 		
+						
+						
+						
+<h2 class="page_block_h2"><div class="page_block_header clear_fix">
+<div class="page_block_header_inner _header_inner">{$this->lang['Black_list']}</div></div></h2>
+						
+						
+						
+						
+						
+						
+						
+                        <div class="main-content-panel">
+                <div id="hook_Block_BlacklistRBlock" class="hookBlock">
+	 
+                    <div class="portlet" id="paneBlocks">
+                        <div class="portlet_b">
+                            <div class="hook" id="hook_Form_userBlockForm">
+                                <form action="/" method="post">
+                                    <div>
+                                        <input type="hidden" name="fr.posted" value="set">
+                                        <ul class="cardsList blacklist cardsList__portlet-top-align">
+										{assign var=c_g value=0}
+										{foreach $this->getUsersFromBlackList() as $res}
+										{if $c_g == 0} <div class="ar_sort4"> {/if}
+                                            <li id="blck_uid_{$res.id}"	class="u_cardsList_li cardsList_li blacklist show-on-hover">
+                                                <div class="userCard">
+											
+                                                    <div class="card_main">
+                                                        <div class="card_wrp">
+                                                            <div class="photoWrapper">
+															 
+                                                                <a href="/user/{$res.id}" hrefattr="true">
+																   	  <span class="kn_shortcutmenu wh100"><div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","unblock":"1","ulmen":{ldelim}"guest":"0","block":"0","unblock":"1"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+                                                                        </div></span>
+                                                                  <img src="/getPhoto?p={$res.profile_photo}&sz=thumb&g={$res.gender}" alt="{$res.fullname}" width="128" height="128">
+                                                                   
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card_add">
+                                                        <div class="ellip"><a href="/user/{$res.id}" class="o" hrefattr="true">{$res.fullname}</a></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+											{if $c_g == 3} {$c_g = 0} </div> {else} {$c_g = $c_g +1} {/if}												
+											{foreachelse}
+											{assign var="empty_blacklist" value=1}
+											{/foreach}
+                                        </ul>
+                                    </div>
+									{if isset($empty_blacklist)}{$this->info_msg($this->lang['no_blacklist'])}{/if}
+                                    <br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+
+
+{/if}
+
+ <div class="nav-side-right">
+ <div class="fixed_always">
+                        <div class="nav-side">
+                            <div class="nav-side_h">{$this->lang['SETTINGS']}</div>
+							<a class="nav-side_i {if !$getTab}__ac{/if}" href="/settings/{$this->USER['id']}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_settings"></i>{$this->lang['General']}</span></a>
+							
+							<a href="/settings/{$this->USER['id']}/pview" class="nav-side_i {if $getTab == 'personal-views'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_personal_views"></i>{$this->lang['personal_views']}</span></a>
+							<a href="/settings/{$this->USER['id']}/binfo" class="nav-side_i {if $getTab == 'basic-info'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_basic_info"></i>{$this->lang['basic_info']}</span></a>
+							<a href="/settings/{$this->USER['id']}/privacy"" class="nav-side_i {if $getTab == 'privacy'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_private"></i>{$this->lang['Privacy']}</span></a>
+							<a href="/settings/{$this->USER['id']}/notifications" class="nav-side_i {if $getTab == 'notifications'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_notifications"></i>{$this->lang['Notification_settings']}</span></a>
+							<a href="/settings/{$this->USER['id']}/lhistory" class="nav-side_i {if $getTab == 'locHistory'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_history"></i>{$this->lang['Location_history']}</span></a>
+							<!---<a href="/profile?q={$this->USER['id']}&cmd=settings&tab=video&nav=settings" class="nav-side_i {if $getTab == 'video'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_video"></i>{$this->lang['Video']}</span></a>
+							-->
+							<a href="/settings/{$this->USER['id']}/media" class="nav-side_i {if $getTab == 'media'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_media"></i>{$this->lang['settings_media']}</span></a>
+                            <div class="nav-side_h">{$this->lang['HIDDEN']}</div>
+							<!--<a href="/profile?q={$this->USER['id']}&cmd=settings&tab=users&nav=settings" class="nav-side_i {if $getTab == 'users'}__ac{/if}" hrefattrs="st.cmd=userConfigFeed&amp;st.type=0&amp;st._aid=UserSettingsMenu_userConfigFeed_FRIEND"><span class="tico"><i class="tico_img ic ic_nav_friends"></i>{$this->lang['People']} <span class="lstp-t">1</span></span></a>
+							<a href="/profile?q={$this->USER['id']}&cmd=settings&tab=groups&nav=settings" class="nav-side_i {if $getTab == 'groups'}__ac{/if}" hrefattrs="st.cmd=userConfigFeed&amp;st.type=1&amp;st._aid=UserSettingsMenu_userConfigFeed_GROUP"><span class="tico"><i class="tico_img ic ic_nav_groups"></i>{$this->lang['Groups']} <span class="lstp-t">0</span></span></a>
+							--><!---<a href="/settings/feed/apps" class="nav-side_i " hrefattrs="st.cmd=userConfigFeed&amp;st.type=2&amp;st._aid=UserSettingsMenu_userConfigFeed_APP"><span class="tico"><i class="tico_img ic ic_nav_games"></i>{$this->lang['Games']} <span class="lstp-t">0</span></span></a>-->
+							<a href="/settings/{$this->USER['id']}/blacklist" class="nav-side_i {if $getTab == 'blacklist'}__ac{/if}" hrefattr="true"><span class="tico"><i class="tico_img ic ic_nav_blocked"></i>{$this->lang['Black_list']} <span class="lstp-t">{$this->getBlackListCount()}</span></span></a>
+                            {if $this->settings['private_user_account'] === 'true'}
+							<div class="nav-side_delim"></div>
+							  {if $this->USER['private'] === 'no'}
+							
+							<a data-mode="on" onclick="privateAccount(event,'on');" href="javascript:void(0);" class="nav-side_i"><span class="tico"><i class="tico_img ic ic_nav_open"></i>{$this->lang['Enable_Friends_only_mode']}</span></a>
+							
+							{else}
+
+	
+							<a data-mode="off" onclick="privateAccount(event,'off');" href="javascript:void(0);" class="nav-side_i"><span class="tico"><i class="tico_img ic ic_nav_closed"></i>{$this->lang['Disable_Friends_only_mode']}</span></a>
+							
+							{/if}
+							
+							{/if}
+							</div>
+
+</div>
+</div>
+</div>
+
+{/strip}

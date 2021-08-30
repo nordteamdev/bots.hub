@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Tools > Add New Breaking News</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6 ">
+            <div class="card">
+                <div class="header">
+                    <h2>Add New Breaking News</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success general-settings-alert"></div>
+                    <div class="alert alert-danger general-settings-error-alert"></div>
+                    <form class="general-settings" method="POST">
+                    	<div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea name="text" id="hren" cols="30" rows="5" class="form-control"></textarea>
+                                <label class="form-label">Breaking News Text</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="url" name="url" class="form-control">
+                                <label class="form-label">Source URL (Optional)</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="number" name="time" class="form-control" id="brnews-time">
+                                <label class="form-label">Show Breaking News For (Hours)</label>
+                            </div>
+                        </div>
+                        <label for="region">Publish</label>
+                        <select class="form-control show-tick" id="publish" name="publish">
+                          <option value="1">Immediately (Now)</option>
+		                  <option value="0">Save & Publish Later</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br>
+                        <button type="submit" class="btn btn-danger m-t-15 waves-effect">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_general_settings = $('form.general-settings');
+    form_general_settings.ajaxForm({
+        url: '{{LINK ajax_requests.php?f=brnews&s=insert&hash_id=}}' + $('.main_session').val(),
+        beforeSend: function() {
+            form_general_settings.find('.btn-danger').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+            	$('.general-settings-error-alert').empty();
+            	$('.general-settings-alert').html('<i class="fa fa-check"></i> Breaking news added successfully');
+            	setTimeout(function () {
+            		$('.general-settings-alert').empty();
+            		window.location.href = '{{LINK admin-cp/manage-breaking-news}}';
+            	}, 2000);
+            } else {
+            	$('.general-settings-error-alert').html(data.message);
+            }
+            form_general_settings.find('.btn-danger').text('Save');
+        }
+    });
+});
+</script>

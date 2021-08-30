@@ -1,0 +1,35 @@
+<div class="fl-plus-trending-news-list-wrapper">
+	<div class="item">
+		<div class="image_block">
+			<div class="fl-plus-trending-news-list-thumb">
+				<a href="<?php echo $fl['trending_data']['news']['url']; ?>"><img src="<?php echo $fl['trending_data']['news']['small_image']; ?>" alt="Picture" class="image"></a>
+			</div>
+		</div>
+		<div class="content_block">
+			<div class="fl-plus-trending-news-list-info">
+				<div class="fl-plus-trending-news-list-title">
+					<a href="<?php echo $fl['trending_data']['news']['url']; ?>">
+						<h4><?php echo $fl['trending_data']['news']['title']; ?></h4>
+					</a>
+				</div>
+				<div class="fl-plus-trending-news-list-meta">
+					<span class="hide_meta">
+						<a href="<?php echo $fl['trending_data']['news']['publisher']['url']; ?>">
+							<?php echo $fl['trending_data']['news']['publisher']['name']; ?>
+							<?php if ($fl['trending_data']['news']['publisher']['verified'] == 1): ?>
+								<span class="verified-icon"><i class="fa fa-check-circle"></i></span>
+							<?php endif; ?>
+						</a> - 
+					</span>
+					<time><?php echo $fl['trending_data']['news']['posted']; ?></time>	
+				</div>
+				<div class="fl-plus-trending-news-list-desc">
+					<article>
+						<?php echo $fl['trending_data']['news']['description']; ?>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>

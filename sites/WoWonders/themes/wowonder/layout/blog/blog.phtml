@@ -1,0 +1,109 @@
+<style>body{overflow-x:hidden;}</style>
+<div class="page-margin products">
+	<div class="row">
+		<!--Random Articles-->
+		<div class="featuredBlock--carousel row">
+			<div class="featuredBlock--child">
+				<?php 
+					if( isset( $wo['article'] ) ){
+						$blogs = Wo_GetBlogs(array('limit' => 6, 'order_by' => 'RAND', 'id' => $wo['article']['id']));
+						foreach ($blogs as $key => $wo['article']) {
+							echo Wo_LoadPage('blog/includes/card-list-rand');
+						}
+					}
+				?>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-8">
+			<h3 class="recent-articles"><?php echo $wo['lang']['most_recent_art'] ?></h3>
+			<div class="clear"></div>
+			<div id="recent-blogs" class="fluid">
+				<?php
+					$pages = Wo_GetBlogs(array("limit" => 9));
+		               if (count($pages) > 0) {
+		                   foreach ($pages as $key => $wo['article']){
+		                   	$wo['article']['first'] = ($key == 0) ? true : false;
+		                       echo Wo_LoadPage('blog/includes/card-list');
+						}
+					} 
+					else {
+						echo '<h5 class="search-filter-center-text empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> ' . $wo['lang']['no_blogs_found'] . '</h5>';
+					}
+				?>
+			</div>
+			
+			<div class="posts_load">
+				<?php if (count($pages) >= 9): ?>
+				<div class="load-more">
+					<button class="btn btn-default text-center pointer load-more-blogs" id="hren" >
+	                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg> <?php echo $wo['lang']['load_more_blogs'] ?>
+					</button>
+				</div>
+				<?php endif ?>
+			</div>
+		</div>
+
+		<div class="col-md-4 custom-fixed-element"><?php echo Wo_LoadPage('blog/main-sidebar') ?></div>
+	</div>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+
+    $(".load-more-blogs").click(function () {
+  		var last_id = (($("div[data-blog-id]").length > 0) ? $("div[data-blog-id]:last").attr('data-blog-id') : 0);
+		$.ajax({	  
+		     url: Wo_Ajax_Requests_File(),
+		     type: 'GET',
+		     dataType: 'json',
+		     data: {f:"load-recent-blogs",offset:last_id,total:9},
+		     success:function(data){
+		        if (data['status'] == 200) {
+		            $("#recent-blogs").append(data['html']);
+		        }
+
+		        else{
+		           $(".posts_load").remove()
+		        }
+		     }
+		});
+	});
+});
+
+$(document).ready(function(){
+  $('.featuredBlock--child').slick({
+  infinite: false,
+  slidesToShow: 3,
+  variableWidth: false,
+  slidesToScroll: 1,
+  autoplay: false,
+  autoplaySpeed: 2000,
+  <?php if($wo['language_type'] == 'rtl') { ?>
+  rtl: true,
+  <?php } ?>
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 560,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+  });
+});
+</script>

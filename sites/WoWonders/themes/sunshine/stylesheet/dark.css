@@ -1,0 +1,332 @@
+.navbar-default, .chat-container, .chat-container .online-toggle, .sidebar-profile-style, .wowonder-well, .ads-cont-wrapper, .list-group, #send-money-form h5 input, .wo_ads_wallet #replenish-user-account input, .modal-content, .payment_box .btn, .wo_settings_page, .dropdown-menu, .wo-create-forms .wo_settings_page form, .blog-h-list, .read-blog-container .read-blog .read-blog-head, .read-blog, .read-blog .blog-author-info, .read-blog-container .related-post, .blog-com-wrapper, .movies-com-wrapper, .read-blog-container .related-post .blog-sidebar h4.title, .blog-ls-box .view-blog, .wo_game_style a, .wo_my_pages .page_list, .wo_my_products a, .panel, .post .post-description .post-actions .stat-item, #wo_post_stat_button .stat-item, .like-emo > .how_reacted, .events-list-cover, .wo_page_profile .page-info-cont, .list-group-item, .event_invite_frnd, .event_two_blocks, .threads-table tr td, .thread-replies, #search-nearby-users .nearby-users-gender, #search-nearby-users, #search-nearby-users .nearby-users-gender-collapse, .wo_game_list .list_parent, .pricing, .tab-container, .app_dv_head, .wo_loading_post, .lightbox-content .comment-section, .lightbox-content .comment-section .stats .stat-item, .movies-navbar-wrapper, .played-film-image-wrap, .played-film-description-wrapper, .watch-film-top-nav, .film-player-wrapper, .played-film-details, .related-movies-wrapper, .related-movies-container, .related-movies-wrapper .related-movies-carousel .related-film-wrapper, .wo_pokes_cont, .wo_poke_users, .user-fetch, .wo_market .market_bottom .product .product_info, .wo_search_page .nav-tabs li a, .search-filter-form input[readonly], .nearby_user_wrapper, .featured-users, .sidebar .sidebar-title-back, input[readonly].bg_read_input, #video-form div.video-poster-image, .feeling-type.feeling-types, .wo_user_profile .user-bottom-nav, .wo_r_features, .modal .modal-footer, #head_menu_rght .create_head_menu:before, #wo_msg_right_prt .wo_msg_user_dtl, .mobilerightpane .inner-addon, #wo_msg_right_prt .text-sender-container .sendMessages .input-group, #sendMessage, .text-sender-container, #wo_main_sett_mid .wo_settings_page h3, ul.profile-completion-bar li.percentage-bar h4, .sun_article_list, .wo_my_articlez, .my_pages_header ul li a, .sun_modal .modal-header, .main-blog-sidebar .widget, .sun_thread_replies .thread-replies .t-left_prt .avatar .btn, .sun_thread_replies .thread-replies .t-right_prt, .sun_find_frns_hdr, .sun_pop_games .sun_pop_gam_list a, .sun_pro_features .spf_block, .sun_sec_pay .sun_sec_pblock, .wo_my__groups, .sun_sett_page h3, .sun_sett_sidebar, .navbar-nav.left_part_header .search-container, .wo_imagecombo_lbox .lightbox-post-footer.post-comments textarea, .movies .movies-film-wrapper figure, .sun_watch_movie_top, .sun_oops, .wo_search_page .wo_sidebar_groups, .wo_search_page .wo_sidebar_pages, .sun_startup, .sun_side_widget, .publisher-box textarea.postText, .sun_pub_privacy_menu, .sun_terms, .sun_user_actions_item, .sun_about_page, .sun_lang_select_menu:before {background: #212121 !important;}
+
+
+body {background: #131313 !important;color: #dfdfdf;}
+.chat-container input, .modal-header {background: #010101 !important;}
+
+.sidebar-profile-style, .list-group, .create-ads-cont .select-admedai-box, .wo-create-forms .wo_settings_page, .panel-white, .wo_page_profile .page-info-cont, #members table, .f_topics, .thread-replies, .setting-well input[type=text], .setting-well input[type=password], .setting-well select, #search-nearby-users, .colloape-panel-stg, .sidebar-ad-wrapper, .wo-content-shadow, .wo_loading_post, .movies-navbar-wrapper, .played-film-image-wrap, .played-film-description-wrapper, .related-movies-container, .wo_pokes_cont, .featured-users, .greetalert, .fake_ad_post, .sun_watch_movie_top {box-shadow: 0 1px 0 0 #212121, 0 0 0 1px #212121 !important;}
+
+.table-striped>tbody>tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.42);}
+
+
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th, .form-control, output, .create-ads-cont .select-admedai-box, .create-ads-cont .select-admedai-box button, .create-ads-cont .select-admedai-box input[readonly], .create-ads-cont .create-ads-inner-right button, .dropdown-menu>li>a, .bootstrap-tagsinput, .wo_my_pages .page_title, .setting-well input[type=text], .setting-well input[type=password], .setting-well select, #search-nearby-users .nearby-users-gender, .admin-panel .col-md-9 .list-group-item:first-child, .setting-panel .col-md-8 .list-group-item:first-child, .profile-lists .list-group-item:first-child, .col-md-8 .list-group-item:first-child, .col-md-3.custom .list-group-item:first-child, .col-sm-4 .list-group-item:first-child, .col-md-7 .list-group-item:first-child, .col-md-9 .list-group-item:first-child, .red-list .list-group-item:first-child, .active.list-group-item:first-child, pre, .messages-recipients-list > span, .related-movies-wrapper h4.related-movies, .related-movies-wrapper .related-movies-carousel .related-film-wrapper h4, .wo_page_profile .first_row .title a, .wo_poke_users .poke_info .user-name, .user-fetch .user-name, .user-fetch .user-name a, .wo_market .market_widget .m_widget_head, .wo_market .market_bottom .market_bottom_header, .products .product .product-title a, .nearby_user_wrapper .user_wrapper_link, .wo_search_page .wo_game_style .game-name, .wo_settings_page .setting-panel .avatar-holder strong, .wo_settings_page .setting-panel .avatar-holder strong a, .sidebar-conatnier .sidebar-profile-style .card.hovercard .info .title p, .second-user-color, .sidebar-ad-wrapper .sidebar-ad-footer p.ad-title, .publisher-box #camera-button-btn, .publisher-box .add-emoticons .dropdown-toggle, .publisher-box #camera-button-btn svg, .publisher-box .publisher-box-footer .poster-left-buttons svg.feather, #video-form div.video-poster-image .thumb-renderer #post_vthumb_droparea, .post-fetched-url .fetched-url-text h4, .wo_post_ad h3, .product-description, .options .poll-option, .login .title, .login input, .login select, .login textarea, .admin-panel .col-md-9 .list-group-item:first-child a, .setting-panel .col-md-8 .list-group-item:first-child a, .profile-lists .list-group-item:first-child a, .col-md-8 .list-group-item:first-child a, .col-md-7 .list-group-item:first-child a, .active.list-group-item:first-child a, .wo_adv_search_filter_side .wo_settings_page .setting-panel input[type=text].age_number, .user-request-list .user-info a, .modal-title, ul.profile-completion-bar li.percentage-bar h4, .wallet_transactions h3, .sun_article_list .blog-h-desc .art-title a, .wo_my_articlez .art-title a, .wo_my_articlez .post-options li a, blockquote, .sun_forum_sections table .ftitle, .sun_ftitle, .sun_find_frns_hdr label, .sun_find_friends .nearby_user_wrapper .user_wrapper_link a, .sun_users_count, .sun_pro_features .spf_block p, .sun_sec_pay .sun_sec_pblock, .wo_my__groups .middle .title a, .watch-film-top-nav li.last-bread, .wo_page_profile .page-info-cont .last_row span.p-mata-tag, .sun_startup h4, .upload-image-content, .skip-step, .sun_side_widget .sun_side_widget_title, .sun_pub_name span, .sun_pic_info .info .title > a, .sun_side_widget .sun_side_widget_title a, .sun_user_actions_item, .sun_user_actions_item a, .sun_side_widget .sun_prof_foll_ing .sidebar-listed-user-name, .sun_post .post-options li > a, .sun_post .post-options li > div, .sun_post .post-privacy-options li > div {color: #e5e5e5 !important;}
+
+.publisher-box .add-emoticons .dropdown-toggle svg.feather {fill: #e5e5e5 !important;}
+.ads-cont-wrapper .table td, #wo_sidebar_users {outline: 1px solid rgba(255, 255, 255, 0.05);}
+a, .blog-h-list h3, .main-blog-sidebar .popular-articles li .article-title, .wo_settings_page .setting-panel .avatar-holder .chavatlink, .earn_points .ep_illus .ep_how_many b {color: #c6c6c6;}
+.btn-default, .slide-film-desc, .wo_search_page .wo_game_style .btn-link {background: #363636;color: #c8c8c8;}
+.btn-default:hover, .btn-default:active, .btn-default:focus, .blog-ls-box .art-text h4:hover, .wo_my_pages .page_title:hover, .read-blog-container .related-post .recommended-articles .article-title h4:hover, a:focus, a:hover, .payment_box .btn:hover, .blog-h-list h3:hover, .close:focus, .close:hover, .btn-default.active, .btn-default.focus, .open>.dropdown-toggle.btn-default, .wo_find_friends .find_friends_header h3, .related-movies-wrapper .related-movies-carousel .related-film-wrapper h4:hover, .wo_poke_users .poke_info .user-name:hover, .sidebar-conatnier .sidebar-profile-style .card.hovercard .info .title a, .publisher-box .publisher-box-footer .poster-left-buttons:hover svg.feather, .wo_product_row .product-name .product_row_title, .post .post-footer .comments-list .comment .comment-heading .user, .sun_price_plan tbody tr td:first-child, .sun_startup h2, .sun_pub_mid_foot .poster-left-buttons .btn:hover {color: #fff !important;}
+
+.wo_ads_wallet .my_wallet, .form-control, .wo_settings_page .setting-panel input[type=email], .wo_settings_page .setting-panel input[type=password], .wo_settings_page .setting-panel input[type=text], .wo_settings_page .setting-panel select, .modal-footer, .create-ads-cont input, .wo_settings_page .setting-panel textarea, .create-ads-cont .create-ads-inner-right button, .create-ads-cont .create-ads-inner-left, .postFooter, .read-blog .blog-author-info, .create-article-form .bootstrap-tagsinput, .chat-btns-w, #sendMessage, .event_two_blocks li:first-child, .thread-replies, textarea, #search-nearby-users .nearby-users-gender, .table-bordered, pre, .nav-tabs, .wo_sidebar_groups, .wo_settings_page .wo_design_button, .recent, .notifications-dropdown .turn-off-sound, .messages-recipients-list, .movies-top-breadcrumb, .movies-search input, input, .wo_market .market_bottom .market_bottom_header, .wo_market .market_bottom .product .product_info, .wo_search_page .tab-content, .wo_search_page_side .wo_settings_page, .earn_points .counter, .wo_user_side_info li, .activity-container .activity, .wo_sidebar_pages, .publisher-box .publisher-box-footer .pub-footer-bottom, .feeling-type.feeling-types, .feeling-type ul, .answers input, .post-fetched-url, .wo_post_ad, .image-file, .wo_product_row, .wo_product_row .product-name, .wo_r_features ul li, select, .admin-panel .col-md-9 .list-group-item:first-child, .setting-panel .col-md-8 .list-group-item:first-child, .profile-lists .list-group-item:first-child, .col-md-8 .list-group-item:first-child, .col-md-3.custom .list-group-item:first-child, .col-sm-4 .list-group-item:first-child, .col-md-7 .list-group-item:first-child, .col-md-9 .list-group-item:first-child, .red-list .list-group-item:first-child, .active.list-group-item:first-child, .order-by, .wowonder-well, .wallet_transactions, .create-ads-cont.wo_settings_page, .create-ads-cont .create-ads-inner-right, .fake_ad_post .fads_cover, .wo_my_articlez, .wo_my_articlez .post-options, .main-blog-sidebar .widget, .main-blog-sidebar .popular-articles li, .sun_chat_bottom, .event_invite_frnd, .right_user_info li.user-desc-field, .sun_forum_sections table tr, .sun_thread_main_reply .t-right_prt h5.time, .sun_thread_replies .thread-replies .t-right_prt h5.time, .sun_price_plan tbody td, .sun_sec_pay .sun_sec_pblock, .wo_my__groups, .sun_sett_sidebar > ul > li, .wo_imagecombo_lbox .lightbox-post-footer.post-comments, .wo_page_profile .page-info-cont .first_row, .wo_market .market_widget .m_widget_head, .sun_sett_sidebar .sun_sett_submenu > ul, .wo_sidebar_users, .sun_startup .continue-button, #wo_post_stat_button, .sun_pub_mid_foot, .sun_side_widget .right_user_info .user-social-links {border-color: #363636 !important;}
+
+.payment_box .btn {border-bottom: 1px solid rgba(188, 188, 188, 0.07);color: #c4c4c4;}
+.alert, .form-control, .modal-footer, .create-ads-cont .select-admedai-box, .create-ads-cont .select-admedai-box button, .create-ads-cont .select-admedai-box input[readonly], .create-ads-cont .create-ads-inner-right button, .create-article-form .prv-img, .bootstrap-tagsinput, .chat-btns-w, #wo_comment_combo.comment-toggle, #wo_comment_combo .comment_combo_footer, textarea, #cusrange-reader, .pricing .price-table-head, pre, code, .wo_settings_page .wo_design_button, input, .wo_radio_btn input[type=radio]+span, .earn_points .counter, .wo_sidebar_products, #select-status-media, .publisher-box #camera-button-btn, .publisher-box .add-emoticons .dropdown-toggle, #video-form div.video-poster-image .thumb-renderer, .post-fetched-url:hover, .options .poll-option, select, .wo_adv_search_filter_side .wo_settings_page .setting-panel input[type=text].age_number, .wo_adv_search_filter_side .ui-slider, .key_shortcts th span, ul.profile-completion-bar li.completion-bar div.completion-bar-wrapper {background: #363636 !important;}
+.alert-info {color: #57acd7;}
+.estimated_ad_limit, .earn_points .points_tip, #select-status-media, #video-form div.video-poster-image .thumb-renderer, .wo_votes, .key_shortcts th span, .modal-header {border-color: rgba(255, 255, 255, 0.23);}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .left-sidebar ul li a:hover {background: #333 !important;}
+hr, .lightbox-content .comment-section .stats {border-color: #424242 !important;}
+.dropdown-menu .divider {background: #424242 !important;}
+.my_pages_header, .cool-style-album .album_parent, .blog-h-list, .read-blog, .read-tags, .read-blog-container .related-post, .blog-com-wrapper, .wo_blogcomm_combo img{border-color: #2c2c2c;}
+.cool-style-album .album_parent:after, .cool-style-album .album_parent:before {border-color: #000;}
+.cool-style-album .album_parent:after {box-shadow: 0 0 2px #000;}
+.recent-articles {border-color: #4b4b4b;}
+.blog-h-desc p.desc {color: #959595;}
+
+#welcomeheader .mdbtn:hover{background-color:rgba(0, 0, 0, 0.2) !important;}
+.postFooter .u-floatRight a, .blog-h-list .middot, .read-blog .read-blog-info-user .middot {color: rgba(255, 255, 255, 0.5);}
+.main-blog-sidebar .popular-articles li .article-info, .read-blog .read-blog-info-user {color: rgba(255, 255, 255, 0.4);}
+#category-page .popular-categories li {background-color: #212121;}
+#category-page .popular-categories li a, #search-nearby-users .nearby-users-gender-collapse ul li {color: #c4c4c4;}
+.read-blog-container .read-blog h1 {color: rgba(255, 255, 255, 0.8);}
+.read-blog-container .read-blog .read-blog-desc {color: #ababab;}
+#wo_msg_right_prt .text-sender-container .incoming .message-model .message p{color: #333 !important;}
+.read-blog .read-blog-info-user, .post .post-footer .comments-list .comment .avatar, .wo_imagecombo_lbox .lightbox-post-footer .comment .avatar {border-color: rgba(255, 255, 255, 0.07);}
+.read-blog-container .read-blog .read-content {color: #bababa;}
+.read-blog-container .read-tags .postTag {border-color: #454545;background: #303030;}
+.read-blog-container .related-post .recommended-articles .article-title h4 {color: #d0d0d0;}
+.wo_my_pages .page_info ul li {color: #9d9d9d;}
+.input-group-addon {color: #c2c2c2;background-color: #171717;border-color: #171717;}
+.wo_create_chat_group .input-group-addon {border-color: #171717;}
+.group_chat_mbr_part {border-color: #383838;}
+.chat-messages-wrapper {background-color: #212121;border-color: #000000;}
+.chat-textarea {border: 0;background-color: #212121;border-top: 1px solid #383838;}
+.chat-textarea .chat-btns-w .chat_optns svg.feather {color: #b3b3b3;}
+.chat-user-desc {background-color: #2b2b2b;}
+.chat-user-desc .head-text {color: #cfcfcf;}
+.chat-user-desc .desc-text {color: #aeaeae;}
+.chat-messages-wrapper .incoming, .chat-messages-wrapper .outgoing, .text-sender-container .message-model .message {color: #cacaca;background-color: #444;}
+.message p {color: #cacaca;}
+.chat_main {color: #969696;}
+.post .post-heading .meta .title a, .user-story-container .ads-meta .title b, .user-ad-container div.post-advertisement .ads-meta .title b {color: #cecece;}
+.post .post-description p, .user-story-container .ads-headline, .user-ad-container div.post-advertisement .ads-headline p {color: #c0c0c0;}
+#wo_post_stat_button .stat-item {color: #b2b2b2;}
+#wo_post_stat_button .dropdown.open .stat-item, #wo_post_stat_button .stat-item:hover {background-color: rgba(255, 255, 255, 0.04) !important;}
+.reactions-box {background: #424242;}
+.post .post-footer, .wo_imagecombo_lbox .comment-section-inner .comment-inner-footer, .wo_imagecombo_lbox .lightbox-post-footer .comments-list, .sun_lightbox_right .comment-inner-footer {background: #2a2a2a !important;}
+#wo_comment_combo, #wo_comment_combo.comment-toggle {border-color: #474747;}
+.post .post-file {background: #2a2a2a;}
+.event-l-info ul li {color: #a5a5a5;}
+.wo_event_profile .card.hovercard .info .title {color: #e5e5e5;}
+.event_cdown li span {background: linear-gradient(#494949,#363636);}
+.event_cdown li span::before {background: rgba(255, 255, 255, 0.1);}
+.list-group-item {color: #b6b6b6;}
+iframe, .post-map img {border-color: #4b4b4b;}
+.event_two_blocks {border-color: rgba(255, 255, 255, 0.12);}
+.event_invite_frnd input {border-color: #595959!important;}
+#wo_language_modal {background-color: #212121;}
+.close {color: #fff;filter: alpha(opacity=30);opacity: .3;}
+.f_topics {color: #cccccc;background: #212121;}
+.small, .colloape-panel-stg, .sidebar-ad-wrapper .sidebar-ad-footer p.ad-descrition {color: #a3a3a3;}
+.threads-table tr td {box-shadow: 0 1px 0 0 #6e6e6e, 0 0 0 1px #3e3e3e;}
+.forum_title {color: #e7e7e7;}
+.friends_nearby_status_ul li[data-gender=all].active svg.feather, .friends_nearby_status_ul li[data-nearby-user-status="2"].active svg.feather {fill: #2196F3;background-color: rgba(33, 150, 243, 0.4);}
+.wo_game_list_info .page-website {color: #9d9d9d;}
+.pricing {box-shadow: 0 1px 2px rgba(255, 255, 255, 0.16);}
+.wo_settings_page h3, .wo_terms_page h3, .wo_search_page_side .wo_settings_page h3 {color: #ababab;border-color: #2c2c2c;background-color: #0b0b0b;}
+.gray {color: #bcbcbc;}
+.search-advanced-container a, .search-advanced-container a svg.feather {color: #9d9d9d !important;}
+.search-advanced-container a:hover {color: #e7e7e7 !important;background-color: rgba(255, 255, 255, 0.02);}
+.headtoppoint, .user-details.not-profile:before {border-bottom-color: #212121;}
+.notification-list .notification-text, .activities-wrapper .notification-list .notification-text {color: #bcbcbc;}
+.notification-list span.main-color {color: #e7e7e7 !important;}
+.notification-list .notification-time, .notification-list .notification-time svg.feather {color: #a1a1a1;}
+.notification-list:hover {background: rgba(0, 0, 0, 0.5);}
+.show-message-link-container {background: #0f0f0f;}
+.center-text {color: #8a8a8a;}
+.wo_loading_post_child, .wo_loading_post_child2 {background-image: radial-gradient(circle 30px at 60px 30px,#363636 99%,transparent 0),linear-gradient(100deg,rgba(255, 255, 255, 0),rgba(33, 33, 33, 0.5) 50%,rgba(255,255,255,0) 80%),linear-gradient(#363636 15px,transparent 0),linear-gradient(#363636 10px,transparent 0),linear-gradient(#363636 10px,transparent 0),linear-gradient(#363636 10px,transparent 0);}
+#filterby-post .filter_negative_clr, #filterby-post .filter_negative_clr svg  {color: #dfdfdf;}
+.lb-preloader svg {background-color: #000;}
+.text-sender-container .red-list, .wo_msg_tabs, #wo_nw_msg_page .messages-users-list {background: #151515 !important;border-color: #151515 !important;}
+.messages-users-list {background-color: #222;}
+.empty_state {color: #939393;}
+.unread {background: #2e2e2e;}
+.wo_page_profile .page-info-cont .page_navbar {background: linear-gradient(to right,#212121,#171717);}
+.wo_page_profile .first_row .title .page_username { color: #c6c6c6;}
+.wo_page_profile .first_row .title .page_info { color: #959595;}
+.wo_sidebar_pages .page_middle .title a {color: #e3e3e3!important;}
+.wo_poke_users {border-color: rgba(255, 255, 255, 0.07);}
+.user-fetch .user-information {color: #ababab;border-color: #454545;}
+.wo_market .market_categories ul li a:before, .round-check input+label:before, .wo_adv_search_filter_side .round_check input+label:before {border-color: rgba(255, 255, 255, 0.3);}
+.wo_radio_btn input[type=radio]:checked+span {background-color: #4285F4 !important;}
+.nearby_user_wrapper {box-shadow: 0 0 0 1px #3c3c3c;}
+.left-sidebar ul li a {color: #a3a3a3;}
+.left-sidebar ul li a:hover {color: #fff;background: rgba(255, 255, 255, 0.05) !important;}
+.sidebar .sidebar-title-back, .featured-users .sidebar-title-back, .featured-users .pro-me-here a {color: #c2c2c2 !important;}
+.left-sidebar ul.list-group {box-shadow: none !important;}
+.left-sidebar ul.list-group li {background: #131313 !important;}
+.dropdown-menu.post-privacy-menu {background-color: #151515 !important;}
+.post-privacy-menu li a, .post-privacy-menu li div {color: #9f9f9f;}
+.post-privacy-menu li a:hover, .post-privacy-menu li div:hover, .feeling-type.feeling-types li:hover {background-color: #2a2a2a;color: #ffffff;}
+.wo_adaptive_media_4 .album-image .image-file, .wo_adaptive_media .album-image:last-child .image-file {border-color: #212121!important;}
+.options .poll-option:hover, .wo_votes.active, .wo_votes.active .poll-option {background-color: #000000;}
+.wo_page_profile .page-info-cont .page_navbar .dropdown-menu li .menu-item, .wo_user_profile .options-buttons .dropdown-menu li .menu-item, .wo_page_profile .page-info-cont .page_navbar .dropdown-menu li .menu-item a, .wo_user_profile .options-buttons .dropdown-menu li .menu-item a {color: rgba(223, 223, 223, 0.87);}
+.ball-pulse>div {background-color: #cecece;}
+.product-navigate a {background-color: rgba(95, 95, 95, 0.98);}
+.round-check input+label:after, .wo_adv_search_filter_side .round_check input+label:after {border-color: #212121;}
+#night_mode_toggle svg {fill: #e5e5e5;}
+#wo_nw_msg_page .msg_under_hood {box-shadow: 0px 10px 15px 0px rgba(15, 15, 15, 0.6);}
+#wo_msg_right_prt .message-option-btns .btn:hover {background-color: #3f3f3f !important;}
+#wo_msg_right_prt .wo_msg_user_dtl {border-color: rgba(255, 255, 255, 0.4)}
+#wo_msg_right_prt .text-sender-container .sendMessages .input-group {border-color: rgba(255, 255, 255, 0.07);}
+.greetalert {background: #212121 !important;}
+.wo_market .market_bottom .product .product-links .info-middle .more-info:hover {color: #000 !important;}
+.sett_tab_noti {border-color: rgba(255, 255, 255, 0.08);}
+.sett_tab_noti li.active a {background-color: rgba(255, 255, 255, 0.05);color: white;}
+.wo_load_more { color: #c7c7c7;}
+.sun_head_onboard:after {background: url("data:image/svg+xml;charset=UTF-8,%3csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 792 78.7' xml:space='preserve'%3e%3cpath fill='%23212121' d='M396,72.2C237.1,72.2,95.2,44.1,0.3,0v78.3h791.3V0C696.8,44.1,554.9,72.2,396,72.2z'/%3e%3c/svg%3e") bottom no-repeat;}
+.select_radio_btn .sr_btn_lab_innr {border-color: rgba(255, 255, 255, 0.12);background-color: #212121;}
+.select_radio_btn .sr_btn_img {opacity: .4;}
+.select_radio_btn .sr_btn_lab_innr > span {color: #c7c7c7;}
+.fake_ad_post, .fake_ad_post .fads_meta .fads_m_info .company, .fake_ad_post .fads_meta .fads_m_info .location, .fake_ad_post .fads_headline textarea, .fake_ad_post .fads_cover .fcov_title input {background-color: #212121 !important;}
+.fake_ad_post .fads_cover .fcov_title {color: rgba(191, 191, 191, 0.87);}
+.fake_ad_post .fads_cover .fcov_image {background: #2d2d2d;}
+.sun_input > input:placeholder-shown:not(:focus) + label, .sun_input > textarea:placeholder-shown:not(:focus) + label {color: rgba(255, 255, 255, 0.38);}
+.sun_input > input, .sun_input > textarea, .sun_input > select {color: #fbfbfb;}
+.create-ads-cont .create-ads-inner-left .bootstrap-select button {border-color:#363636;background-color: #363636;color: #fbfbfb!important;}
+.sun_blog_head .create_blog_ara .btn {background-color: #363636;}
+.sun_blog_cats .dropdown-toggle {background-color: #2f2f2f;}
+.my_pages_header ul li.active a {background: #3ac2ff !important;}
+.main-blog-sidebar .popular-categories li {background-color: #464847;}
+.chat_acts .list-group .sidebar-title-back {color: #a9a9a9;}
+.wo_sidebar_activity .sun_act_msg a {color: #adadad !important;}
+.wo_sidebar_activity .sun_act_icon {background-color: #505050;}
+.loading {background-color: #363636;}
+.sun_innr_comm {background-color: #444;}
+.sun_innr_comm:before {border-right-color: #444;}
+.comment-text, .reply-text {color: #eaeaea;}
+.sun_comm_addmore.open > .dropdown-toggle {background-color: rgba(255, 255, 255, 0.05);}
+.sun_comm_addmore > .dropdown-menu {background: transparent !important;}
+.sun_comm_addmore > .dropdown-menu > li .btn {color: #949494;}
+.sun_comm_addmore > .dropdown-menu > li .btn:hover {color: #e0e0e0;}
+.sun_comm_rec_time {background-color: #525252;}
+.widget-heading, .right_user_info li.widget-heading {color: #dcdcdc;}
+.right_user_info li {color: #cecece;}
+.sun_thread_replies .thread-replies {box-shadow: none !important;background: transparent !important;}
+.sun_thread_main_reply .t-left_prt {background-color: #2f2f2f;border-color: #363636;}
+.sun_thread_replies .thread-replies .t-right_prt:before {border-right-color: #212121;}
+.sun_find_frns_hdr .dropdown-toggle, .select-nearby-users-distance .currentVal {background: #363636;color: #969696;}
+.select-nearby-users-distance .currentVal:before {border-right-color: #363636;}
+.sun_find_friends .nearby_user_wrapper .sun_friends_fetrs li > span {background: #3c3c3c;color: #b7b7b7;}
+.sun_pop_games .sun_pop_gam_list .avatar {border-color: #737373;}
+.spop_head .pop_gams_arow button {background-color: #212121;color: #ececec;}
+.spop_head .pop_gams_arow button.slick-disabled {background-color: #212121;}
+.table-hover>tbody>tr:hover, .table>tbody>tr.active>td, .table>tbody>tr.active>th, .table>tbody>tr>td.active, .table>tbody>tr>th.active, .table>tfoot>tr.active>td, .table>tfoot>tr.active>th, .table>tfoot>tr>td.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>thead>tr.active>th, .table>thead>tr>td.active, .table>thead>tr>th.active {background-color: #212121;}
+.wo_my__groups .dropdown .btn svg {fill: #cacaca;}
+.wo_settings_page .input-group .input-group-addon {background-color: #404040;border-color: #363636;}
+.sun_sett_sidebar > ul > li > a {color: rgba(236, 236, 236, 0.87);}
+.sun_sett_sidebar > ul > li > a span {background-color: #3a3a3a;}
+.search-container .search-input {background: #131313 !important;}
+.navbar-default .dropdown-menu.ani-acc-menu >li:first-child>a {color: #e4e4e4 !important;}
+.movies-top-breadcrumb:after {background-color: #363636;}
+.movies-top-breadcrumb > li > a {border-color: #363636;color: #909090;}
+.movies-search input {background: #131313 !important;}
+.c-share__toggler, .c-share_options, .c-share__input:checked ~ .c-share__toggler {background-color: #363636;}
+.sun_watch_movie_info .sun_simp_info span {color: #d0d0d0;}
+.rating > label {color: #656565;}
+.sun_loading_pop {background-color: #212121;}
+.sun_loading_pop .skel_cover {background-color: #3c3c3c;}
+.sun_loading_pop .skel_mid .skel_avatar {background-color: #363636;border-color: #757575;background: linear-gradient(-90deg, #363636 0%, #696565 45%, #696565 55%, #363636 100%);background-size: 300% 300%;}
+.sun_loading_pop .skel_mid .skel_mid_innr .skel_name, .sun_loading_pop .skel_mid .skel_mid_innr .skel_list {
+    background-color: #3a3a3a;background: linear-gradient(-90deg, #3a3a3a 0%, #696565 45%, #696565 55%, #3a3a3a 100%);background-size: 300% 300%;}
+.sun_loading_pop .skel_footer {border-color: #363636;}
+.sun_loading_pop .skel_footer button {background-color: #424242;}
+.wo_market .market_categories ul li a:before {border-color: #404040;background-color: #404040;}
+.wo_market .market_categories ul li a:before, .round-check input+label:before, .wo_adv_search_filter_side .round_check input+label:before {border-color: #404040;}
+.wo_market .market_bottom .market_bottom_header .dropdown .dropdown-toggle {color: #c3c3c3;}
+.sun_cp_cats label > span > span {background-color: #383838;}
+.sun_srch_tp_filtr .dropdown .dropdown-menu label {color: #b9b9b9;}
+.sun_srch_tp_filtr .dropdown .dropdown-menu label:hover span {background: #3c3c3c;}
+.left-sidebar ul li.link_separator {color: #d2d2d2;}
+.order_by ul li a {color: #d2d2d2 !important;}
+.user-status-home ul.status-list li.create_new a {color: #ababab;border-color: #565656;}
+.sun_htag .htag_bottom {color: #b1b1b1;}
+.wo_pro_users li .user img {background-color: #5a5a5a;}
+.wo_pro_users li .user {box-shadow: 0 0 0 1px #2f2f2f;}
+.sidebar .wo_sidebar_groups {background-color: #363636;}
+.wo_sidebar_groups .user-follow-btn {box-shadow: -6px 0px 6px #212121;}
+.sidebar .wo_sidebar_groups .user-follow-btn {box-shadow: -6px 0px 6px #363636;}
+.slick-dots li button:before, .slick-dots li.slick-active button:before {color: white;}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {background-color: #383838 !important;}
+.ui.horizontal.divider {color: #929292;}
+.ui.horizontal.divider:after, .ui.horizontal.divider:before {border-top: 1px solid rgba(255, 255, 255, 0.15);}
+.sun_pub_mid_foot .poster-left-buttons .btn {background: #3c3c3c;}
+.sun_pub_more_items .btn > span {background: #4c4c4c !important;}
+.sun_pub_privacy_dropdown {background-color: #363636;border-color: #4c4c4c;color: #c7c7c7;}
+.sun_pub_privacy_menu li:hover label span {background: #383838;}
+.sun_pub_more_items .btn.aud span svg path {fill: pink;}
+.sun_pic_info .info .opt_buttons .btn-link {background-color: #313131;}
+.sun_side_widget .nearby_user_wrapper {box-shadow: 0 0 0 1px #353535;}
+.sun_status {border-color: #212121;}
+.sun_input_holder {border-color: #404040;}
+.sun_input input, .sun_input textarea, .sun_input select {background-color: #232323 !important;}
+.sun_pic_info .info .opt_buttons .btn.wo_follow_btn, .sun_side_widget .nearby_user_wrapper .btn.wo_follow_btn {
+	background: #363636 !important;
+}
+.sun_post .post-options li > a:hover, .sun_post .post-options li > div:hover, .sun_post .post-privacy-options li > div:hover {
+    color: #fff !important;
+    background: #3D8CFA !important;
+}
+.user-status-home ul.status-list li.create_new a svg {
+background-color: #333333;}
+.sun_user_actions.mobi_show .dropdown .dropdown-toggle {
+    background: #363636;
+    color: #e4e4e4;
+}
+
+
+
+
+
+@media (min-width: 850px){
+.blog-share-buttons {
+    background-color: #212121;
+}
+}
+
+@media (min-width: 992px){
+#wo_nw_msg_page .mobilerightpane .inner-addon {
+    width: 268px;border-color: rgba(255, 255, 255, 0.07);
+}
+#wo_msg_right_prt .text-sender-container .incoming .message-model .message {
+    background-color: #3d3d3d;
+}
+.msg_mrk_rd2 {
+    background: #151515;
+}
+#wo_nw_msg_page .messages-recipients-list.active {
+    background: #212121;
+}
+#wo_msg_right_prt .text-sender-container .outgoing .message-model .message:before {
+    box-shadow: inset 0px 8px 0 4px #212121, inset 9px 0px 0 0px #3D8CFA, 0 0 0 0px #212121;
+}
+#wo_msg_right_prt .text-sender-container .incoming .message-model .message:before {
+    box-shadow: inset 0px 8px 0 4px #212121, inset -9px 0px 0 0px #f1f0f0, 0 0 0 0px #212121;
+}
+#wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_mid .user_nm a {
+    color: #ffffff;
+}
+#wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_bottom ul li:first-child:after {
+    background-color: #363636;
+}
+#wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_most_bottom > span a, #wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_most_bottom > span > span, #wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_most_bottom > span a svg, #wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_most_bottom > span > span svg {
+    color: #e0e0e0 !important;
+}
+#wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_attch {
+    border-color: #363636;
+}
+#wo_msg_right_prt .wo_msg_user_dtl .wo_msg_dtl_mid .avatar .icon {
+    border-color: #212121;
+}
+}
+
+@media (min-width: 1420px){
+.recipient-chat-user .chat-user-text, .chat-container .online-toggle {
+    color: #d2d2d2;
+}
+.chat-opacity {
+    background-color: rgba(27, 27, 27, 0.9);
+}
+.chat-opacity .text-center .empty_state {
+    color: #c7c7c7;
+}
+.chat-opacity .text-center .empty_state span {
+    background-color: #333333;
+}
+}
+
+@media (max-width: 767px){
+.wo_user_profile .pic-info-cont {background-color: #212121;box-shadow: 0 1px 0 0 #212121, 0 0 0 1px #212121;}
+.wo_user_profile .btn-glossy a, .wo_user_profile .btn-glossy button {color: #ffffff;background: rgba(255, 255, 255, 0.23);}
+.profile-container .card.hovercard .info .title a {color: #f2f2f2;}
+.container .wo_user_profile .card.hovercard .info .title svg.feather {fill: #f2f2f2;}
+}
+
+@media (max-width: 600px) {
+body .sun_pub_mid_foot .poster-left-buttons {
+    margin: 0;
+}
+}
+
+@media (max-width: 550px) {
+.sun_comm_addmore > .dropdown-menu {
+    background: #2e2e2e !important;
+}
+}
+
+@media (max-width: 520px){
+.navbar-default .dropdown-menu.ani-acc-menu li a {
+    color: #e6e6e6 !important;
+}
+.navbar-default .dropdown-menu.ani-acc-menu li a svg.mobi_hd_ico {
+    background-color: #383838;
+}
+}
+
+@media (max-width: 480px){
+.pub-focus .sun_pub_mid_foot .poster-left-buttons .btn {
+    background: #212121;
+}
+.pub-focus .sun_pub_mid_foot .poster-left-buttons .btn img {
+	background: #4c4c4c;
+}
+}

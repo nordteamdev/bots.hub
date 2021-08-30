@@ -1,0 +1,95 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div class="row clearfix">
+	<div class="col-md-3">
+		<?php echo Wo_LoadPage('ads/includes/header'); ?>
+	</div>
+	<div class="col-md-9">
+		<div class="card">
+			<div class="header">
+				<h2><?php echo $wo['ad_data']['name']; ?></h2>
+			</div>
+			<div class="body">
+				<div id="admin-chart-container" style="min-width: 100%; height: 350px; margin: 0 auto;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php 
+$categories = "";
+$views = "";
+$spend = "";
+
+if( $wo['ad_data']['bidding'] == "views" ){
+    foreach ($wo["views"] as $key => $value) {
+        $categories .= '"' . $value["DateOnly"] . '", ';
+        $views .= $value["ADviews"] . ', ';
+        $spend .= number_format($value["Spend"], 2) . ', ';
+    }
+}
+
+if( $wo['ad_data']['bidding'] == "clicks" ){
+    foreach ($wo["clicks"] as $key => $value) {
+        $categories .= '"' . $value["DateOnly"] . '", ';
+        $views .= $value["ADClicks"] . ', ';
+        $spend .= number_format($value["Spend"], 2) . ', ';
+    }
+}
+
+$title = "";
+?>
+
+<?php if( $wo['ad_data']['bidding'] == "views" ){ $title = "Views"; }else{ $title = "Clicks"; }?>
+
+<script>
+   $(function () {
+    Highcharts.setOptions({
+      colors: ['#4c75a3', '#ce3d3d', '#f2b92b', '#6abd46']
+    });
+    $('#admin-chart-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly <?php echo $title;?>'
+        },
+        xAxis: {
+            categories: [ <?php echo $categories; ?> ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Last 30 Days'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            series: {
+                minPointLength: 10
+            },
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '<?php echo $title;?>',
+            data: [ <?php echo $views; ?> ]
+        },
+        {
+            name: 'Spend',
+            data: [ <?php echo $spend; ?> ]
+        }]
+    });
+});
+</script>

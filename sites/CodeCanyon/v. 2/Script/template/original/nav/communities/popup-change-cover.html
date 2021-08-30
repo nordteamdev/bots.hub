@@ -1,0 +1,26 @@
+<div id="owner_photo_upload" class="single">
+    <div class="owner_photo_content">
+	
+
+	
+	<div id="owner_photo_upload_desc" class="owner_photo_desc">{$this->lang['community_change_cover']}&nbsp;{$this->lang['communities_images_support_types']}</div>
+		
+
+		<div class="community_add_cover">
+		 <div class="community_add_cover_txt">+&nbsp;{$this->lang['Add_cover']}</div>
+		 <form name="commCover" id="commCover" enctype="multipart/form-data" method="post">
+          <input type="hidden" name="cmd" value="addcover">
+		  <input type="hidden" name="act" value="update">
+		  <input type="hidden" name="id" value="{$id}">
+		  
+          <input accept="image/*" onchange="checkCommCoverSize(event);" class="html5-upload-link _community_cover" id="file" name="file" size="1" title="" type="file" value="">
+         </form>
+		 <div class="comm_upload_bar"></div>
+		 <div class="comm_cover_preview_succ"></div>
+		 <div class="comm_cover_error"></div>
+		 </div>
+		 <button class="button-pro mt20" style="display:none;float:right;" id="comm_cover_update_okay_btn">{$this->lang['Ok']}</button>
+		 </div>
+		 
+	
+</div>

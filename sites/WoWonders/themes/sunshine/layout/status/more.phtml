@@ -1,0 +1,29 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol">
+			<div class="sun_side_widget">
+				<h3 class="sun_side_widget_title mainpage">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#3D8CFA" d="M12,16L19.36,10.27L21,9L12,2L3,9L4.63,10.27M12,18.54L4.62,12.81L3,14.07L12,21.07L21,14.07L19.37,12.8L12,18.54Z"></path></svg> <?php echo $wo['lang']['friends_stories'] ?>
+				</h3>
+				<div class="setting-well">
+					<div class="user-status-home user-status-all">
+						<ul class="status-list">
+							<?php
+								if ($wo['config']['user_status'] == 1) {
+									$get_user_status = Wo_GetFriendsStatus(array('limit' => 100000));
+									if (!empty($get_user_status)) {
+										foreach ($get_user_status as $key => $wo['user_status']) {
+											echo Wo_LoadPage('home/user-status');
+										}
+									} 
+								} 
+							?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo Wo_LoadPage('sidebar/content');?>
+	</div>
+</div>

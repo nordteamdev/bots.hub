@@ -1,0 +1,10 @@
+.detector-face{
+	position: absolute;
+	border: 0px;
+	background: transparent;
+}
+
+.detector-face:hover{
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px 1px #000;
+}

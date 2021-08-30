@@ -1,0 +1,49 @@
+<div id="create-quiz-results">
+	<div class="entry" data-type="result" data-id="{{ENTRY_TIME}}" id="entry-{{ENTRY_TIME}}">
+		<div class="entry-name pull-left">
+		   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z"></path></svg>
+		   <span>{{LANG quiz_result}}</span>  
+		</div>
+		<div class="pull-right manage-entries">
+		   <i class="entry-times material-icons" onclick="FL_RemoveResultEntry({{ENTRY_TIME}});">delete</i>
+		</div>
+		<div class="clear"></div>
+		<div class="error-con"></div>
+		<div class="form-group">
+		    <input type="text" class="form-control" data-name="entry_result_titile" placeholder="{{LANG result}}">
+		    <input type="file" class="form-control hidden" id="entry-image-file-{{ENTRY_TIME}}" onchange="FL_UploadResultCover('{{ENTRY_TIME}}');">
+		    <input type="hidden" class="form-control" data-name="entry_image" id="entry-image-file-name">
+		</div>
+		<div class="form-group">
+		    <textarea class="form-control" data-name="entry_result_description" rows="4" placeholder="{{LANG add_desc}}"></textarea>
+		</div>
+		<div class="form-group">
+		    <div class="img-content">
+				<div class="preview-image" onclick="document.getElementById('entry-image-file-{{ENTRY_TIME}}').click();">
+				    <div class="content">
+					    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z"></path></svg> {{LANG choose_img}}
+				    </div>
+			    </div>
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-result-btn fl_btn" type="button" onclick="FL_CreateQuizResult(this);">
+	 <i class="fa fa-plus-square-o progress-icon" data-icon="plus-square-o"></i>
+	 {{LANG add_result}}
+	</button>
+</div>
+<hr style="border-color: #999;">
+<div class="quiz-questions-header">
+	<h5>{{LANG quiz_questions}}</h5>
+</div>
+<div id="create-quiz-questions">
+	{{QUESTION}}
+</div>
+<div class="text-center">
+	<button class="btn btn-default add-question-btn fl_btn" type="button" onclick="FL_CreateQuizQuestion(this);">
+	 <i class="fa fa-question-circle progress-icon" data-icon="question-circle"></i>
+	 {{LANG add_question}}
+	</button>
+</div>

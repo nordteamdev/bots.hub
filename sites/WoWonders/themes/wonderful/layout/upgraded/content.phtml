@@ -1,0 +1,14 @@
+<div class="page-margin list-group"> 
+        <?php 
+        $user_pro_type = Wo_GetUserProType();
+        ?>
+   	  <div class="center-container">
+   	    <?php 
+        $string = str_replace('{color}', $user_pro_type['color_name'], $wo['lang']['cong']);
+        $string = str_replace('{icon}', $user_pro_type['icon'], $string);
+        $string = str_replace('{type_name}', $user_pro_type['type_name'], $string);
+        ?>
+        <h2><?php echo $string;?></span><br><br></h2>
+        <h4><a href="<?php echo Wo_SeoLink('index.php?link1=welcome');?>" class="mdbtn wabe btn btn-lg btn-main"><?php echo $wo['lang']['cong_2']?></a></h4>
+      </div>
+</div>

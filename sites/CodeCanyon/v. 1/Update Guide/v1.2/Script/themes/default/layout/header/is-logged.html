@@ -1,0 +1,75 @@
+<?php if (FL_IsAdmin() || $fl['config']['can_post'] == 1): ?>
+<li class="dropdown hide-from-mobile">
+      <a href="#" class="dropdown-toggle create" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-plus-circle"></i></a>
+      <ul class="dropdown-menu" role="menu">
+
+         <?php if ($fl['config']['news'] == 1): ?>
+            <li><a href="{{LINK create-new?type=news}}"><i class="fa fa-fw fa-file"></i> {{LANG news}}</a></li>
+         <?php endif; ?>
+
+         <?php if ($fl['config']['lists'] == 1): ?>
+            <li><a href="{{LINK create-new?type=list}}"><i class="fa fa-fw fa-bars"></i> {{LANG list}}</a></li>
+         <?php endif; ?>
+
+         <?php if ($fl['config']['polls'] == 1): ?>
+            <li><a href="{{LINK create-new?type=poll}}"><i class="fa fa-fw fa-bar-chart"></i> {{LANG poll}}</a></li>
+         <?php endif; ?>
+
+         <?php if ($fl['config']['quizzes'] == 1): ?>
+             <li><a href="{{LINK create-new?type=quiz}}"><i class="fa fa-fw fa-check-square" aria-hidden="true"></i> {{LANG quiz}}</a></li>
+         <?php endif; ?>
+
+         <?php if ($fl['config']['videos'] == 1): ?>
+            <li><a href="{{LINK create-new?type=video}}"><i class="fa fa-fw fa-video-camera"></i> {{LANG video}}</a></li>
+         <?php endif; ?>
+
+         <?php if ($fl['config']['music'] == 1): ?>
+            <li><a href="{{LINK create-new?type=music}}"><i class="fa fa-fw fa-volume-up"></i> {{LANG music}}</a></li>
+         <?php endif; ?>   
+      </ul>
+</li>
+<?php endif; ?>
+<li class="dropdown hide-from-mobile">
+   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="header-user-img" src="{{USER avatar}}" alt="My avatar"><span class="caret"></span></a>
+   <ul class="dropdown-menu" role="menu">
+      <?php if ($fl['config']['go_pro'] && empty($fl['user']['is_pro'])): ?>
+         <li>
+            <a href="{{LINK go_pro}}">
+               <i class="fa fa-product-hunt fa-fw"></i> {{LANG go_pro}}
+            </a>
+         </li>
+      <?php endif; ?>
+      
+      <li>
+         <a href="{{USER url}}">
+            <i class="fa fa-fw fa-user"></i> {{LANG my_profile}}
+         </a>
+      </li>
+      <li><a href="{{LINK settings/profile}}"><i class="fa fa-fw fa-pencil"></i> {{LANG edit}}</a></li>
+      <li class="divider"></li>
+
+      <li>
+         <a href="{{LINK saved-drafts}}">
+            <i class="fa fa-fw fa-file-o"></i> {{LANG saved_drafts}}
+         </a>
+      </li>
+
+      <?php if ($fl['config']['usr_ads'] == 1): ?>
+         <li>
+            <a href="{{LINK ads}}">
+               <i class="material-icons fa-fw">new_releases</i> {{LANG ads}}
+            </a>
+         </li>
+      <?php endif; ?>
+      
+
+      <li class="divider"></li>
+      <?php if (FL_IsAdmin()) {?> <li><a href="{{LINK admin-cp}}"><i class="fa fa-fw fa-bar-chart"></i> {{LANG admin_panel}}</a></li><?php } ?>
+      <li><a href="{{LINK settings}}"><i class="fa fa-fw fa-cog"></i> {{LANG settings}}</a></li>
+      <li><a href="{{LINK logout}}"><i class="fa fa-fw fa-sign-out"></i> {{LANG logout}}</a></li>
+   </ul>
+</li>
+<li class="show-from-mobile"><hr></li> 
+<li class="show-from-mobile"><a href="{{LINK create-new-mobile}}">{{LANG create_new_post}}</a></li> 
+<li class="show-from-mobile"><a href="{{USER url}}">{{LANG my_profile}}</a></li> 
+<li class="show-from-mobile"><a href="{{LINK settings}}">{{LANG settings}}</a></li> 

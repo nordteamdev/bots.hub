@@ -1,0 +1,172 @@
+<?php echo Wo_LoadPage('ads/includes/header'); ?>
+<div class="wo_settings_page create-ads-cont" style="padding: 0 15px 15px;">
+	<form class="form form-horizontal" method="get" id="update-ads">
+		<div class="row">
+			<div class="col-md-7 col-lg-7 col-sm-7 col-xs-12 create-ads-inner-left">
+				<div id="update-ads-alert" class="w100"></div>
+				<div class="setting-panel row">
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['company']; ?>:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="name" max="50"  value="<?php echo $wo['ad-data']['name']; ?>">
+						</div>
+					</div>
+					<div>
+						<div class="col-md-12">
+							<small class="main"><?php echo $wo['lang']['select_a_page_or_link'] ?></small>
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['url']; ?>:</label>
+						<div class="col-md-12">
+							<input type="url" class="form-control" name="website" value="<?php echo $wo['ad-data']['url']; ?>">
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['my_pages']; ?>:</label>
+						<div class="col-md-12">
+							<select class="form-control">			
+								<?php if ($wo['my-pages'] && count($wo['my-pages']) > 0): ?>
+									<option value=""><?php echo $wo['lang']['select']; ?></option>
+								<?php foreach ($wo['my-pages'] as $wo['pageItem']): ?>
+									<option value="<?php echo $wo['pageItem']['page_id']; ?>">
+										<?php echo $wo['pageItem']['page_name']; ?>
+									</option>
+								<?php endforeach; ?>
+								<?php else:?>
+									<option disabled="disabled" selected="selected">
+										<?php echo $wo['lang']['no_pages_found']; ?>
+									</option>
+								<?php endif;?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['title']; ?>:</label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" name="headline" value="<?php echo $wo['ad-data']['headline']; ?>">
+						</div>
+					</div>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['description']; ?>:</label>
+						<div class="col-md-12">
+							<textarea class="form-control" name="description" placeholder="Type ads Description"><?php echo $wo['ad-data']['description']; ?></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-5 col-sm-5 col-lg-5 col-xs-12 create-ads-inner-right">
+				<div class="setting-panel row">
+				<div class="form-group col-lg-12">
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['location']; ?>:</label>
+						<div class="col-md-12" id="review-ads-location">
+							<input id="ads-location" name="location"  type="text" class="form-control" value="<?php echo $wo['ad-data']['location']; ?>"> 
+						</div>
+					</div>
+					<?php if ($wo['config']['google_map'] == 1) { ?>
+					<div class="form-group col-lg-12" id="review-ads-location">
+						<div class="col-md-12" id="place">
+							<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=<?php echo $wo['ad-data']['location']; ?>&language=en"></iframe>
+						</div>
+					</div>
+				   <?php } ?>
+					<div class="form-group col-lg-12">
+						<label class="col-md-12"><?php echo $wo['lang']['audience']; ?></label>
+						<div class="col-md-12">
+							<select name="audience-list[]" class="form-control selectpicker" data-size="7" multiple data-live-search="true" data-actions-box="true">
+								<?php foreach ($wo['audience'] as $key => $value): ?>
+									<option value="<?php echo $key; ?>" <?php if (in_array($key, $wo['ad-data']['country_ids']) && $key != 0){ echo 'selected';}?>>
+										<?php echo $value; ?>
+									</option>
+								<?php endforeach;?>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="form-group col-lg-12">
+						<div class="col-md-12">
+							<label class="col-md-12" style="padding: 0;"><?php echo $wo['lang']['gender'] ?></label>
+							<select name="gender" class="form-control">
+								<option value="all" <?php if ($wo['ad-data']['gender'] == 'all') {echo "checked";}?> >
+									<?php echo $wo['lang']['all']; ?>
+								</option>
+								<option value="male" <?php if ($wo['ad-data']['gender'] == 'male') {echo "checked";}?>>
+									<?php echo $wo['lang']['male']; ?>
+								</option>
+								<option value="famale" <?php if ($wo['ad-data']['gender'] == 'famale') {echo "checked";}?>>
+									<?php echo $wo['lang']['female']; ?>
+								</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="form-group col-lg-12">
+						<div class="col-md-12">
+							<label class="col-md-12" style="padding: 0;"><?php echo $wo['lang']['bidding']; ?></label>
+							<select name="bidding" id="bidding" class="form-control">
+								<option value="clicks" <?php echo ($wo['ad-data']['bidding'] == 'clicks') ? 'selected' : ''; ?>>
+									<?php echo str_replace('{{PRICE}}', $wo['config']['ad_c_price'], $wo['lang']['pay_per_click']); ?>
+								</option>
+								<option value="views" <?php echo ($wo['ad-data']['bidding'] == 'views') ? 'selected' : ''; ?>>
+									<?php echo str_replace('{{PRICE}}', $wo['config']['ad_v_price'], $wo['lang']['pay_per_imprssion']); ?>
+								</option>
+							</select>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="form-group last-sett-btn modal-footer" style="margin-right: -15px;">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button class="btn btn-main setting-panel-mdbtn" type="submit" style="border: 0;margin: 2px 15px;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+				<?php echo $wo['lang']['save']; ?>
+			</button>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>
+
+<script>	
+	jQuery(document).ready(function($) {
+
+	    $('.selectpicker').selectpicker();
+
+	    $("#ads-location").change(function(event) {
+	        if ($(this).val().length >= 3) {
+	          Wo_Delay(function(){$("#review-ads-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=' + $("#ads-location").val() + '&language=en"></iframe>')},1000)
+	        }
+
+	        else{
+	          Wo_Delay(function(){$("#review-ads-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=us&language=en"></iframe>')},1000)
+	        }
+      	});
+
+
+      	$('#update-ads').ajaxForm({
+	       	url: Wo_Ajax_Requests_File() + '?f=ads&s=update&ad-id=<?php echo $_GET['id']; ?>&a=0',
+	       	type:"POST",
+	       	beforeSend: function() {
+	        	$('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+	       	},
+	       	success: function(data) {
+	        	scrollToTop();
+	        	if (data['status'] == 200) {
+	          		$("#update-ads-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	          		window.location = data.url;
+	        	} 
+
+	        	else if (data['message']) {
+	          		$("#update-ads-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        	} 
+
+	       		$('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+      		}
+  		});
+
+	});
+</script>

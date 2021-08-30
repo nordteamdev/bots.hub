@@ -1,0 +1,37 @@
+<!--<div class="photo-sm ">
+<div class="mark-ul_w mark-ul_w__sm">
+    <ul class="mark-ul">
+        <li class="mark"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=2.0&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetBonusMark"><span class="mark_ic mark_ic__10"></span></a></li>
+        <li class="mark"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=1.0&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetMark"><span class="mark_ic mark_ic__5"></span></a></li>
+        <li class="mark"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=0.8&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetMark"><span class="mark_ic mark_ic__4"></span></a></li>
+        <li class="mark"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=0.6&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetMark"><span class="mark_ic mark_ic__3"></span></a></li>
+        <li class="mark"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=0.4&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetMark"><span class="mark_ic mark_ic__2"></span></a></li>
+        <li class="mark mark__last"><a href="/dk?cmd=PopLayerViewFriendPhotoRating&amp;st.ver=1&amp;st.layer.markId=0.2&amp;st.layer.showNav=off&amp;st.layer.photoId=803829005794&amp;st.layer.check=off&amp;st.cmd=friendPersonalPhotos&amp;st.friendId=519447885794&amp;st._aid=FriendPersonalPhotos_Photos_SetMark"><span class="mark_ic mark_ic__1"></span></a></li>
+    </ul>
+</div>
+</div>-->
+
+
+{assign var="rates" value=$this->pwGetPhotoStars($photoid)}
+{if $rates}
+<div class="photo_rate_res">
+<div class="photo_rate_bg" style="width:{$rates}%;"></div>
+<div class="photo_rate_stars"></div>
+</div>
+{/if}
+<div class="profilephoto-wall widgets">
+<span class="widged_albname ellip">
+
+</span>
+
+<div class="klass_comm_wdg_p __{$photoid}">
+<div {if $photo_owner !== $this->USER['id']}data-callback="phwallLikeClick" data-log-click='{ldelim}"type":"like","item":"photo","itemid":"{$photoid}"{rdelim}'{/if} class="ic ic_klass_wd {if $photo_owner == $this->USER['id']}_curDef{/if} {if $liked_byme}__active{/if}"></div>
+<span data-pplikt="ppo_{$photoid}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$photoid}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$likes_count}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$photoid}" data-categ="{$item_type}" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$comments_count}</span>
+</div>
+
+</div>

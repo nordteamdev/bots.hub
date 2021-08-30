@@ -1,0 +1,33 @@
+<div class="page-margin">
+	<div class="row">
+		<div class="col-md-2 offnavmenu"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 cushomewider" style="padding-left: 0px;padding-right: 0px;">
+			<div class="list-group">
+				<div class="list-group-item">
+					<i class="zmdi zmdi-chart-donut" style="font-size: 18px;margin: -2px 10px 0px 2px;"></i> 
+					<?php echo $wo['lang']['friends_stories'] ?>
+					<div class="clear"></div>
+				</div>
+				<div class="setting-well">
+					<div class="user-status-home" style="border: 0px;margin-bottom: 0px;">
+						<ul class="status-list">
+							<?php
+							if ($wo['config']['user_status'] == 1) {
+							$get_user_status = Wo_GetFriendsStatus(array('limit' => 100000));
+							if (!empty($get_user_status)) {
+							foreach ($get_user_status as $key => $wo['user_status']) {
+							echo Wo_LoadPage('home/user-status');
+							}
+							} 
+							} 
+							?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- .col-md-8 -->
+		<div class="col-md-3 cushomesmaller"><?php echo Wo_LoadPage('sidebar/content');?></div>
+	</div>
+   <!-- .row -->
+</div>

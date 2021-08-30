@@ -1,0 +1,68 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+<div class="wrapper">
+	<div class="container">
+		<div class="row login">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="sun_welcome_heading">
+					<h1><?php echo $wo['lang']['confirm_your_account']?></h1>
+					<p><?php echo $wo['lang']['sign_in_attempt']?></p>
+					<p><?php echo $wo['lang']['we_have_sent_you_code']?></p>
+					<br>
+				</div>
+				<form id="confirm-form" class="small-padd" method="post">
+					<div class="errors"></div>
+					<div class="loading_cont">
+						<div class="loading hidden"></div>
+					</div>
+					<div class="sun_input_holder">
+						<div class="sun_input">
+							<input name="confirm_code" type="text" id="confirm_code" placeholder="Confirmation code" autofocus />
+							<label for="confirm_code">Confirmation code</label>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+						</div>
+					</div>
+					<div class="login_signup_combo">
+						<div class="login__">
+							<button type="submit" class="btn btn-main"><?php echo $wo['lang']['confirm']?></button>
+						</div>
+						<div class="signup__">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
+</div>
+<div class="container"><?php echo Wo_LoadPage('footer/welcome');?></div>
+
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('.errors');
+$(function() {
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user_unusal_login',
+    beforeSend: function() {
+		working = true;$this.find('button').attr("disabled", true);
+		$this.find('.loading').removeClass('hidden');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $state.addClass('success');
+        $state.html('<?php echo $wo['lang']['welcome_'] ?>');
+		$this.find('.loading').addClass('hidden');
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $this.find('button').attr("disabled", false);
+		$this.find('.loading').addClass('hidden');
+        $state.html(data.errors);
+      }
+      working = false;
+    }
+  });
+});
+</script>

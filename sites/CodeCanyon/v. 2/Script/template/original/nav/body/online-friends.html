@@ -1,0 +1,62 @@
+{strip}
+
+<section class="nav_tool_friends_online">
+	<div class="online_fr_flex online-fr_block">
+	
+<div class="hook_search_friends">
+<div class="search_wrapp">
+<div class="it_w">
+<span class="glyphicon glyphicon-search" onclick="expandOnlineHook(event,this);" id="gliphy_search_chat_ic"></span>
+<span class="glyphicon glyphicon-log-out" onclick="expandOnlineHook(event,this,this);" id="gliphy_search_minimize"></span>
+
+<span class="ic tico_img" style="display:none;" id="gliphy_loading_chat_ic"></span>
+<input type="text" placeholder="{$this->lang['Type_and_press_enter']}" id="online_field_search" class="it italic_placeholder">
+<span class="ic clear_chat_search" style="display:none;" id="clear_chat_search"></span>
+</div>
+</div>
+</div>
+	
+	
+	<div class="nano online-fr_list">
+	<div class="nano-content">
+	<div class="flex_online-100">
+	<div id="s_result"></div>
+	<div id="fcards_hide_f_sch">
+   {foreach $query as $res}
+   {assign var=online value={$this->getUserStatus($res.id)}}
+    <div class="friends-online" data-friend-id="{$res.id}" id="friend_{$res.id}" data-int-on="{$res.online}" data-onl="{if $online}1{else}0{/if}">
+        <a href="/user/{$res.id}" title="{$res.fullname}" rel="tipsy" data-tipsy-orientation="e" onclick="return new_chat_window(this,event);" id="y-{$res.id}"  data-uch='{ldelim}"id":"{$res.id}","fullname":"{$res.fullname}","photo":"{$res.profile_photo}"{rdelim}'>
+        
+		<div class="online_u_cnt">
+		<div class="online_u_avatar">
+		<img src="/getPhoto?p={$res.profile_photo}&onlinehook=1&sz=small&g={$res.gender}" alt="{$res.fullname}" />
+		<div class="online_fr_status_avatar">{if $online}<i class="ic-online"></i>{/if}
+		{if !$online}<div class="online_timestamp_str">{$this->time_elapsed($res.online,1)}</div>{/if}</div>
+		</div>
+		<div class="online_u_str ellip">
+			<div class="online_u_name">{$res.fullname}</div>
+			<div class="online_fr_status">{if $online}<span>{$this->lang['active_now']}</span>{else} <span>{$this->time_elapsed($res.online,1)}</span> {/if} </div>
+		</div>
+		</div>
+		
+		
+	
+		</a>
+    </div>
+	{foreachelse}
+		<div class="empty_online_hook"><div class="em_o_hk_text">Your friends will be displayed here.<br/>Make friends.</div></div>
+		<div class="online-fr_all">
+		{$this->lang['user_not_have_friends']}
+		</div>
+    {/foreach}                 
+	
+</div>
+</div></div></div>
+<a class="online-online-users" href="/online" hrefattr="true" title="Online users" rel="tipsy" data-tipsy-orientation="e"><i class="ic-online"></i><span class="online-online-str">{$this->lang['online_users']}</span></a>
+
+</div>
+<script>
+{literal}nanoScrollStart();{/literal}
+</script>
+</section>
+{/strip}

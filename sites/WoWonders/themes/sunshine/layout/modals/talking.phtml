@@ -1,0 +1,82 @@
+<div class="modal fade" id="re-talking-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa fa-phone"></i> <?php echo $wo['lang']['audio_call'];?></h4>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+              <div class="col-md-2" style="<?php echo ($wo['language_type'] == 'rtl') ? 'padding-left: 0; padding-right: 15px;' : 'padding-right:0; ';?>">
+                <img src="<?php echo $wo['incall']['in_call_user']['avatar'];?>" alt="" class="hidden-mobile-image">
+              </div>
+              <div class="col-md-10">
+                <p><?php echo $wo['lang']['audio_call_desc'];?><b> <?php echo $wo['incall']['in_call_user']['name'];?></b></p>
+              </div>
+              <div class="clear"></div>
+              <div id="remote-media">
+                  <h3><i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['please_wait']?></h3>
+              </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn decline-call btn-default" onclick="Wo_CloseCall('<?php echo $wo['incall']['id'];?>');"><i class="fa fa-times progress-icon" data-icon="times"></i> <?php echo $wo['lang']['cancel'];?></button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+if (!navigator.getUserMedia) {
+  $('#remote-media h3').text('Sorry, WebRTC is not available in your browser.');
+}
+
+
+Twilio.Video.connect('<?php echo $wo['incall']['access_token'];?>', { name: '<?php echo $wo['incall']['room'];?>', audio: true, video: false }).then(room => {
+  console.log('Connected to Room "%s"', room.name);
+ 
+  room.participants.forEach(participantConnected);
+  room.on('participantConnected', participantConnected);
+ 
+  room.on('participantDisconnected', participantDisconnected);
+  room.once('disconnected', error => room.participants.forEach(participantDisconnected));
+  $(document).on('click', 'a[data-ajax]', function(e) {
+      room.disconnect();
+  });
+  $(document).on('click', '.decline-call', function(e) {
+      room.disconnect();
+  });
+});
+ 
+function participantConnected(participant) {
+  console.log('Participant "%s" connected', participant.identity);
+ 
+  const div = document.createElement('div');
+  div.id = participant.sid;
+  //div.innerText = participant.identity;
+ 
+  participant.on('trackAdded', track => trackAdded(div, track));
+  participant.tracks.forEach(track => trackAdded(div, track));
+  participant.on('trackRemoved', trackRemoved);
+ 
+  $('#remote-media').html(div);
+}
+ 
+function participantDisconnected(participant) {
+  console.log('Participant "%s" disconnected', participant.identity);
+ 
+  participant.tracks.forEach(trackRemoved);
+  document.getElementById(participant.sid).remove();
+  alert("Connection has been lost.");
+
+  window.location.href = '<?php echo $wo['config']['site_url'];?>';
+}
+ 
+function trackAdded(div, track) {
+  div.appendChild(track.attach());
+}
+ 
+function trackRemoved(track) {
+  track.detach().forEach(element => element.remove());
+}
+</script>

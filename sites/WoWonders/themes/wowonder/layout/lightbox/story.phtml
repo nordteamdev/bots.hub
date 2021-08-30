@@ -1,0 +1,112 @@
+<div class="lightbox-backgrond" onclick="Wo_CloseLightbox();"></div>
+<?php if ($wo['story']['story_media'][0]['type'] == 'image') { ?>
+<style>
+.wo_imagecombo_lbox.story_lightbox .story_image_owner .draggableHelper_story:before, .wo_imagecombo_lbox.story_lightbox .story_image_not_owner .draggableHelper_story:before {background-image: url(<?php echo $wo['story']['story_media'][0]['filename']. "?cache=" . time();?>)}
+</style>
+<?php } ?>
+<div class="lightbox-content post wo_imagecombo_lbox lightpost-<?php echo $wo['story']['id'];?> <?php echo ($wo['story']['is_owner']) ? 'mobi_stor_box' : '' ?> <?php echo (!$wo['story']['is_owner']) ? 'story_width_' : '' ?> story_lightbox" id="post-<?php echo $wo['story']['id'];?>" data-post-id="<?php echo $wo['story']['id'];?>">
+	<div class="mfp-wrap"><span class="mfp_progress_line_"><span class="width_ load"></span><span></div>
+	<div class="wo_story_header">
+		<div class="wo_stor_h_info">
+			<div class="user-avatar">
+				<img src="<?php echo $wo['story']['user_data']['avatar'];?>" alt="">
+			</div>
+			<div class="wo_s_h_i_r">
+				<div class="user-name h5">
+					<a href="<?php echo $wo['story']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['story']['user_data']['username']; ?>"><?php echo $wo['story']['user_data']['name'];?></a>
+				</div>
+				<span class="ajax-time" title="<?php echo date('c',$wo['story']['posted']); ?>"><?php echo Wo_Time_Elapsed_String($wo['story']['posted']); ?></span>
+			</div>
+		</div>
+		<div class="wo_stor_h_opts">
+			<?php if ($wo['story']['is_owner']) { ?>
+				<div class="close-lightbox" onclick="Wo_DeleteStatus(<?php echo $wo['story']['id']; ?>)">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"></path></svg>
+				</div>
+			<?php } ?>
+			<div class="close-lightbox" onclick="Wo_CloseLightbox();">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x" style="margin-top: 0px;width: 24px;height: 24px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+			</div>
+		</div>
+	</div>
+	
+	<div class="story-img <?php echo ($wo['story']['is_owner']) ? 'story_image_owner' : 'story_image_not_owner' ?> user_story_" id="<?php echo $wo['story']['id'];?>">
+		<span class="changer previous-btn pointer" onclick="Get_PreviousStory('<?php echo $wo['story']['id'];?>','<?php echo($wo['story_type']) ?>')">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>
+		</span>
+		<span class="changer next-btn pointer" onclick="Get_NextStory('<?php echo $wo['story']['id'];?>','<?php echo($wo['story_type']) ?>')">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+		</span>
+		<div id="draggableHelper" class="draggableHelper_story">
+			<?php if ($wo['story']['story_media'][0]['type'] == 'image') { ?>
+				<img src="<?php echo $wo['story']['story_media'][0]['filename']. "?cache=" . time();?>" alt="media" class="">
+			<?php }else{ ?>
+				<video class="" preload="auto" autoplay  style="width: 100%; height: 100%;" data-story-video="<?php echo $wo['story']['story_media'][0]['id'];?>" id="video_story">
+					<source src="<?php echo $wo['story']['story_media'][0]['filename'];?>" type='video/mp4'>
+					<source src="<?php echo $wo['story']['story_media'][0]['filename'];?>" type='video/webm'> 
+				</video>
+			<?php } ?>
+		</div>
+		<?php if (!$wo['story']['is_owner']) { ?>
+			<?php if (!empty($wo['story']['description'])) { ?>
+				<div class="draggableHelper_story_content"><?php echo $wo['story']['description']; ?></div>
+			<?php } ?>
+		<?php } ?>
+	</div>
+	<?php if ($wo['story']['is_owner']) { ?>
+	<div class="comment-section">
+		<div class="comment-section-inner">
+			<div class="clear"></div>
+			<div class="comment-inner-header views_count">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+				<?php echo (!empty($wo['story']['view_count']))?$wo['story']['view_count']:0; ?> <?php echo $wo['lang']['views'];?>
+			</div>
+			<div class="clear"></div>
+			<div class="views_container_">
+				<?php if (!empty($wo['story']['story_views'])) {
+				foreach ($wo['story']['story_views'] as $key => $value) { ?>
+					<div class="story_views_" id="<?php echo $value['id']; ?>">
+						<div class="story_view_list">
+							<div class="user-avatar">
+								<img src="<?php echo $value['avatar'];?>" alt="">
+							</div>
+							<div class="user-name">
+								<span class="user-popover" data-type="user" data-id="<?php echo $value['user_id']; ?>">
+									<a href="<?php echo $value['url'];?>" data-ajax="?link1=timeline&u=<?php echo $value['username']; ?>"><?php echo $value['name'];?></a>
+								</span>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				<?php } } ?>
+			</div>
+			<?php if (!empty($wo['story']['story_views']) && count($wo['story']['story_views']) > 9) { ?>
+				<div class="load-more pointer" onclick="Wo_GetMoreStoryViews(<?php echo $wo['story']['id'];?>,this);">
+					<button class="btn btn-default text-center pointer" id="load_more_friends">
+						<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather"><polyline points="6 9 12 15 18 9"></polyline></svg> <?php echo $wo['lang']['load_more'];?>
+					</button>
+				</div>
+			<?php } ?>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<?php } ?>
+</div>
+<script>
+$(document).keydown(function(e) {
+    if (e.keyCode == 27) {
+        Wo_CloseLightbox();
+    }
+    $(".lighbox.textarea").triggeredAutocomplete({
+       hidden: '#hidden_inputbox_comment_lighbox',
+       source: Wo_Ajax_Requests_File() + "?f=mention",
+       trigger: "@" 
+    });
+});
+$( ".story-img" ).mouseover(function() {
+  $( ".changer" ).fadeIn(200);
+});
+$( ".story-img" ).mouseleave(function() {
+  $( ".changer" ).fadeOut(200);
+});
+</script>

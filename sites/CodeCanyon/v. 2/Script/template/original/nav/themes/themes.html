@@ -1,0 +1,70 @@
+{strip}
+{include file={$_usermenu}}
+<div class="profile-themes-settings">
+<div id="hook_Block_MiddleColumn" class="hookBlock">
+    <div id="middleColumn">
+        <div id="hook_Block_ThemesShowcaseMRB" class="hookBlock">
+            <div class="covers_cat">
+                <div class="covers_cat_lst">
+                     <!--<div class="covers_cat_lst_placeholders">-->
+					 
+					 <div class="my_themes_kl"><span class="right_triangle_bb">&#9654;</span><A href="javascript:;" id="show_my_old_themes1548" onclick="return showMyOwnThemes(event);">{$this->lang['show_my_created_themes']}</a><div class="my_themes_cnt"> <div class="knt_themes"><div class="ic loader_own_themes"><div class="pls_wt">{$this->lang['please_wait']}...</div></div></div> <div class="separator_slv"></div></div></div>
+
+                        <div class="portlet_h _b0 vberts">
+                            <div class="ellip"><div class="themes_header_ic"></div>{$this->lang['Themes']}</div>
+                        </div>
+                        <!--<div class="covers_cat_i_placeholder"></div>
+						
+                    </div>-->
+                    <div id="hook_Loader_ThemesShowcaseMRBLoader" class="">
+                        <div>
+                            <div>
+                                <a class="covers_cat_i _fav show-on-hover" onclick="createTheme(this,event);" href="/themes">
+                                    <div class="covers_cat_i_cnt">
+                                        <div class="covers_cat_preview _fav"><img src="/cmd/themes/a/Add Image-80.png" class="covers_cat_img _trans" height="90"></div>
+                                        <div class="covers_cat_descr_w">
+                                            <div class="covers_cat_descr">
+                                                <div class="covers_cat_name ellip">{$this->lang['add_your_fave_theme']}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+								
+                                <a class="covers_cat_i show-on-hover" onclick="return standartTheme(event);" href="/themes">
+                                    <div class="covers_cat_i_cnt">
+                                        <div class="covers_cat_preview"></div>
+                                        <div class="covers_cat_descr_w">
+                                            <div class="covers_cat_descr">
+                                                <div class="covers_cat_name ellip">Standart</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+				{foreach $query as $res}
+                                <a class="covers_cat_i show-on-hover" onclick="return themePreview({$res.id},this,event);" href="/themes">
+                                    <div class="covers_cat_i_cnt">
+                                        <div class="covers_cat_preview"><img src="/cmd/themes/thumb/{$res.photo}" class="covers_cat_img" height="90"></div>
+                                        <div class="covers_cat_descr_w">
+                                            <div class="covers_cat_descr">
+                                                <div class="covers_cat_name ellip">{$res.name}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+				{/foreach}
+
+                            </div>
+                        </div>
+						<!--
+                        <div class="loader-controls loader-controls-bottom">
+                            <div class="link-show-more_loading"><span class="fetching-hor"><span class="fetching-hor_i"></span>loading...</span>
+                            </div><a id="nohook_8629451898" class="js-show-more link-show-more" data-show-more="link-show-more" href="#">More</a></div>
+							-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{/strip}

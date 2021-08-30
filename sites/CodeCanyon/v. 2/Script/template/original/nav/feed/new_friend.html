@@ -1,0 +1,171 @@
+{strip}
+
+{assign var="res" value=$this->gFriendDt($frid)}
+<div class="feed h-mod medium">
+
+	<header>
+	
+		<div class="feed_ava">
+			<a href="/user/{$uid}" hrefattr="true">
+			 <img class="feed_ava_img" src="/getPhoto?p={$res.profile_photo}&sz=small&g={$res.gender}" alt="{$res.fullname}" width="48" height="48">
+				
+			</a>
+		</div>
+		
+		<div class="feed_ac"><span class="feed_date">{$this->feedConvDate($fadded)}</span>
+			<a title="{$this->lang['hide_from_feed']}" data-gth="{$fid}" href="javascript:;" class="al feed_close"></a>
+		</div>
+	
+        <div class="feed_h"><span class="kn_shortcutmenu">
+				<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$res.id}","uname":"{$res.fullname}","uphoto":"{$res.profile_photo}","ugender":"{$res.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$res.id}">
+				</div>
+		<a href="/profile?q={$res.id}" class="ob" hrefattr="true">{$res.fullname}</a></span>
+         
+       
+            {if $f_count > 1} {$this->lang['added']} {$f_count} {$this->lang['friends']} {else} {$this->lang['feed_added_friend']} {/if}
+        </div>
+	</header>
+
+
+
+    <div class="feed_cnt" id='{ldelim}"fid":"{$fid}","uid":"{$uid}"{rdelim}'>
+       
+
+
+<div class="feed_b">
+
+{if count($outp.w_ids) > 1}
+
+    <div class="ugrid __s">
+        <ul class="ugrid_cnt">
+
+{foreach $outp.w_ids as $friend}
+
+{assign var="friend" value=$this->gFriendDt($friend.fr_id)}
+            <li class="ugrid_i feed_friends_li {if sizeof($outp.w_ids) > 1}__smallest_multiple{else if sizeof($outp.w_ids) > 4}__very_small_multiple_fr{/if}">
+                <div class="ucard-v 15">
+                    <div class="ucard-v">
+                        <div class="section">
+						
+                            <a href="/user/{$friend.id}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$friend.profile_photo}&sz=thumb" alt="{$friend.fullname}" title="{$friend.fullname}" width="64" height="64"></a>
+                        </div>
+                        <div class="caption">
+                            <div class="ellip taLeft"><span><span class="shortcut-wrap  kn_shortcutmenu ">
+								<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$friend.id}","uname":"{$friend.fullname}","uphoto":"{$friend.profile_photo}","ugender":"{$friend.gender}","ulmen":{ldelim}"photo":"0","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$friend.id}">
+							</div>
+							<a href="/user/{$friend.id}" class="o" hrefattr="true">{$friend.fullname}</a>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+						
+                </div>
+            </li>
+
+{/foreach}
+        </ul>
+    </div>
+	{else}
+	{foreach $outp.w_ids as $friend}
+	{assign var="friend" value=$this->gFriendDt($friend.fr_id)}
+	{assign var="mutual_friends_c" value=$this->getMutualFriends($friend.id,1,1)}
+	{assign var="fr_status" value=$this->friendStatus($friend.id)}
+	<div class="_kngf0">
+	<div class="_kngf1">
+
+	{if $friend.theme === '-1'}
+
+	{assign var="ph_slideshow" value=$_d->getSlideshowConfig($friend.id)}
+
+		<div class="feed_fr_slideshow">
+			<div class="hookJsData" data-jsonsliderconf='{$ph_slideshow}'></div>
+		</div>
+	{else if $friend.theme === '0'}
+	<div class="_kngf2"></div>
+{else if !$friend.theme}
+
+<div class="_fknga1">
+<div class=" uprof_ntheme_photos_collage">
+{assign var=ph_collage value=$this->createUserThemeFromCollage($friend.id)}
+{foreach $ph_collage as $vphoto}
+{if $vphoto.is_video}
+<div class="vp_header_item">
+<a href="#"><i class="vid_ic16 _abs_pos"></i><img class="prof_header_v" src="/videoCover?v={$vphoto.id}&empty=1" />
+<div class="vp_header_item_likes"><div class="ic ic_klass_wd _curDef "></div><span class="vp_hd_likes_count">{$this->getLikesCount($vphoto.id,'video')}</span></div>
+</a>
+</div>
+{else}
+<div class="vp_header_item">
+<a href="#"><img class="prof_header_p" src="/getPhoto?p={$vphoto.id}&sz=medium" />
+<div class="vp_header_item_likes"><div class="ic ic_klass_wd _curDef "></div><span class="vp_hd_likes_count">{$this->getLikesCount($vphoto.id,'photo')}</span></div>
+</a>
+</div>
+{/if}
+{/foreach}
+</div>
+</div>
+
+{else}
+
+{assign var=k_theme value=$this->getThemeDetails($friend.theme)}
+{if $k_theme['kn'] === 'true'}
+<div class="feed_kn_theme">
+<div class="vp_header_kn_theme_bg" style="background-image:url({$this->settings['THEMES_DIR']}body/{$k_theme.body});"></div>
+	<img class="feed_kn_theme_img" src="{$this->settings['THEMES_DIR']}{$k_theme.photo}">
+
+</div>
+{else}
+<div class="vp_header_custom_theme _ifeed"><img class="kn_theme_cust_cover _default_cur" style="top:{if strpos($k_theme.position, '-') !== false}-{/if}{abs($k_theme.position)/2}px;" src="{$smarty.const.__COVERS_DIR}{$k_theme.userid}/covers/{$k_theme.id}.{$k_theme.ext}" /></div>
+{/if}
+
+
+
+
+	{/if}
+		</div>
+		
+		<div class="_kngf4">
+		
+		<div class="_kngf5">
+		<img class="photo_img" alt="{$friend.fullname}" src="/getPhoto?p={$friend.profile_photo}&sz=thumb&g={$friend.gender}" /> 
+		</div>
+		
+		<div class="_kngf6">
+		<div class="_kngf33">
+		<div class="_kngf7">
+				<a href="/profile?q={$friend.id}" class="o _nfrNm ellip" hrefattr="true">{$friend.fullname}</a>
+		
+		<span class="_kngf8 _kngf08">{$friend.yearsold} {$this->lang['years_old']}</span><span class="ellip _kngf9 _kngf08"><span rel="getusercountry" id="friend_{$friend.id}"></span></span>
+		</div>
+	
+		<div class="vertical_separator"></div>
+	
+		<div class="_kngf10">
+		<div class="_kngf11"><A href="javascript:;" title="{$this->lang['view_all_mutual_friends']}" rel="tipsy" onclick="return popupMutualFriends(this,event);" data-mtforui='{ldelim}"uid":"{$friend.id}","uname":"{$friend.fullname}"{rdelim}' class="_kngfh42">{$mutual_friends_c} {if $mutual_friends_c == 1}{$this->lang['mutual_friend']}{else}{$this->lang['mutual_friends']}{/if}</a></div>
+		<div class="_kngf12">
+		{if $fr_status === 'pending'}
+				<button class="_aj7mu __disabled _2hpcs _95tat _o0442">{$this->lang['friend_req_sent']}</button>
+		{else if $fr_status === 'confirmed'}
+				<button class="_aj7mu isfriend _2hpcs _95tat _o0442">{$this->lang['friends']}</button>
+		{else}
+				<button href="/profile?q={$this->USER['id']}&cmd=addFriend&i={$friend.id}" onclick="addFriend(this,event,''+o_krypt({$friend.id})+'','button')" class="_aj7mu _2hpcs _95tat _o0442">{$this->lang['friend_request']}</button>
+		{/if}
+		</div>
+		</div>
+		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+	{/foreach}
+	{/if}
+</div>
+
+
+</div>
+</div>
+
+{/strip}

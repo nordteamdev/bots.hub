@@ -1,0 +1,261 @@
+<div class="wo_settings_page">
+	<h3><?php echo $wo['lang']['profile_setting']; ?></h3>
+
+	<form  method="post" class="form-horizontal setting-profile-form">
+         <div class="setting-profile-alert setting-update-alert"></div>
+		 
+         <!-- Text input-->
+		 <div class="setting-panel row">
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="first_name"><?php echo $wo['lang']['first_name']; ?></label>  
+				<div class="col-md-12">
+					<input id="first_name" name="first_name" type="text" class="form-control input-md" value="<?php echo $wo['setting']['first_name'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="last_name"><?php echo $wo['lang']['last_name']; ?></label>  
+				<div class="col-md-12">
+					<input id="last_name" name="last_name" type="text" class="form-control input-md" value="<?php echo $wo['setting']['last_name'];?>">
+				</div>
+			</div>
+			<!-- Textarea -->
+			<div class="form-group col-lg-12">
+				<label class="col-md-12" for="about"><?php echo $wo['lang']['about_me']; ?></label>
+				<div class="col-md-12">
+					<?php 
+					$text = br2nl($wo['setting']['about']);
+					?>
+					<textarea class="form-control" id="about" name="about" cols="20" rows="3"><?php echo $text;?></textarea>
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="address"><?php echo $wo['lang']['location']; ?></label>  
+				<div class="col-md-12">
+					<input id="address" name="address" type="text" class="form-control input-md" value="<?php echo $wo['setting']['address'];?>">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="school"><?php echo $wo['lang']['school']; ?></label>  
+				<div class="col-md-12">
+					<input id="school" name="school" type="text" class="form-control input-md" value="<?php echo $wo['setting']['school'];?>">
+				</div>
+			</div>
+         </div>
+         
+		 <hr>
+         
+         <div class="setting-panel row">
+			<!-- Text input-->
+			<div class="form-group col-lg-12">
+				<label class="col-md-12" for="working"><?php echo $wo['lang']['working_at']; ?></label>  
+				<div class="col-md-6">
+					<input id="working" name="working" type="text" class="form-control input-md" value="<?php echo $wo['setting']['working'];?>">
+					<span class="help-block">(e.g Apple)</span>
+				</div>
+				<div class="col-lg-6">
+					<input id="working_link" name="working_link" type="text" class="form-control input-md" value="<?php echo $wo['setting']['working_link'];?>">
+					<span class="help-block"><?php echo $wo['lang']['company_website']; ?></span>
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="website"><?php echo $wo['lang']['website']; ?></label>  
+				<div class="col-md-12">
+					<input id="website" name="website" type="text" class="form-control input-md" value="<?php echo $wo['setting']['website'];?>">
+				</div>
+			</div>
+			<!-- Select Basic -->
+			<div class="form-group col-lg-6">
+				<label class="col-md-12" for="relationship"><?php echo $wo['lang']['relationship']; ?></label>
+				<div class="col-md-12">
+					<select id="relationship" name="relationship" class="form-control" onchange="if(this.value > 1 && this.value <= 4){$('#choose_rel_ship').modal('show');}">
+						<option value="0"><?php echo $wo['lang']['none']; ?></option>
+						<?php 
+							foreach ($wo['relationship'] as $relationship_ids => $relationship) { 
+							$relationship_id = $wo['setting']['relationship_id'];
+							$selected_relationship = ($relationship_ids == $relationship_id) ? ' selected' : '' ;
+						?>
+						<option value="<?php echo $relationship_ids;?>" <?php echo $selected_relationship;?> ><?php echo $relationship;?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+		 </div>
+
+         <?php
+         $fields = Wo_GetProfileFields('profile');
+         if (count($fields) > 0) {
+           foreach ($fields as $key => $wo['field']) {
+              echo Wo_LoadPage('setting/profile-fields');
+           }
+           echo '<input name="custom_fields" type="hidden" value="1">';
+         }
+         ?>
+         <div class="form-group last-sett-btn modal-footer">
+			<div class="ball-pulse"><div></div><div></div><div></div></div>
+			<button type="submit" class="btn btn-main setting-panel-mdbtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 
+				<?php echo $wo['lang']['save']; ?>
+			</button>
+         </div>
+         <input type="hidden" name="user_id" id="user-id" value="<?php echo $wo['setting']['user_id'];?>">
+         <input type="hidden" name="relationship_user" id="relationship_user_id" value="0">
+         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+   </form>
+</div>
+<div class="modal fade" id="choose_rel_ship" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#relationship_user_id').val(0);"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+					<?php echo $wo['lang']['relationship_status']; ?>
+				</h4>
+			</div>
+			<div class="choose_rel_ship_alert">
+             
+			</div>
+			<div class="modal-body">
+				<div class="col-md-3">
+					<div class="choose_rel_ship_avatar">
+						<div>
+							<i class="fa fa-user-circle-o"></i>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="form-group">
+						<input type="text" class="form-control" onkeyup="Wo_RelationshipSearch(this.value);" placeholder="<?php echo $wo['lang']['username']; ?>">
+						<div>
+							<div class="dropdown" id="select_relationship_with">
+								<ul class="dropdown-menu" style="width: 100%;">
+                        
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group choose_rel_ship_meta" >
+						<h4></h4>
+						<p class="user-lastseen"></p>  
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-main" data-dismiss="modal">
+					<i class="fa fa-floppy-o progress-icon" data-icon="progress-icon"></i>
+					<?php echo $wo['lang']['save']; ?>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var relationship_users = [];
+var relationship_user  = 0;
+function Wo_RelationshipSearch(name = ''){
+  if (!name) { return false;}
+  $.ajax({
+    url: Wo_Ajax_Requests_File(),
+    type: 'GET',
+    dataType: 'json',
+    data: {f: 'family',s:'search',name:name},
+  })
+  .done(function(data) {
+    if (data.status == 200 && data.users.length > 0) {
+      relationship_users = data.users
+      var html = '';
+      for (var i = 0; i < data.users.length; i++) {
+        html += '<li class="pointer select_relationship_user" data-id="'+i+'"><a>'+data.users[i].name+'</a></li>';        
+      }
+      $("#select_relationship_with").addClass('open').find('ul').html(html);
+    }
+    else{
+      $("#select_relationship_with").removeClass('open');
+    }
+  })
+  .fail(function() {
+    console.log("error");
+  })
+}
+
+$(function() {
+  $(document).on('click', '.select_relationship_user', function(event) {
+    event.preventDefault();
+    var user_data     = relationship_users[$(this).attr('data-id')];
+    $("#relationship_user_id").val(user_data.user_id);
+    $(".choose_rel_ship_meta").find('h4').text(user_data.name);
+    $(".choose_rel_ship_meta").find('p').html(user_data.lastseen);
+    $(".choose_rel_ship_avatar").html('<img src="'+user_data.avatar+'" alt="Picture">');
+    $("#select_relationship_with").removeClass('open').find('ul').empty();
+  });
+
+  $('form.setting-profile-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_profile_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        <?php if($wo['user']['user_id'] == $wo['setting']['user_id']) { ?>
+        if (data.first_name != '' || data.last_name != '') {
+          $('[id^=user-full-name]').text(data.first_name + ' ' + data.last_name);
+        }
+        <?php } ?>
+        scrollToTop();
+        $('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      } else if (data.errors) {
+        var errors = data.errors.join("<br>");
+        scrollToTop();
+        $('.setting-profile-alert').html('<div class="alert alert-danger">' + errors + '</div>');
+        $('.alert-danger').fadeIn(300);
+      }
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+});
+  var pac_input = document.getElementById('address');
+  (function pacSelectFirst(input) {
+    // store the original event binding function
+    var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+    function addEventListenerWrapper(type, listener) {
+      // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+      // and then trigger the original listener.
+      if(type == "keydown") {
+        var orig_listener = listener;
+        listener = function (event) {
+          var suggestion_selected = $(".pac-item-selected").length > 0;
+          if(event.which == 13 && !suggestion_selected) {
+            var simulated_downarrow = $.Event("keydown", {
+              keyCode: 40,
+              which: 40
+            });
+            orig_listener.apply(input, [simulated_downarrow]);
+          }
+          orig_listener.apply(input, [event]);
+        };
+      }
+      // add the modified listener
+      _addEventListener.apply(input, [type, listener]);
+    }
+    if(input.addEventListener)
+      input.addEventListener = addEventListenerWrapper;
+    else if(input.attachEvent)
+      input.attachEvent = addEventListenerWrapper;
+  })(pac_input);
+
+  <?php if ($wo['config']['google_map']) { ?>
+  $(function () {
+     var autocomplete = new google.maps.places.Autocomplete(pac_input);
+  });
+  <?php }?>
+</script>

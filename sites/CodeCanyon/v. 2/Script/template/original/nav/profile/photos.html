@@ -1,0 +1,306 @@
+{strip}
+{assign var="Acnt" value="1"}
+{assign var=existTaggedAlbum value="0"}
+{assign var=existDeletedAlbum value="0"}
+{assign var=is_friend value=$this->isfriend($user.id)}
+
+
+{include file={$_usermenu}}
+
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+<div class="profile-photos-gallery">
+{if isset($this->USER['id']) && $this->USER['id'] === $user['id']}
+{include file={$_addPhoto}}
+
+{if !$is_photos}
+{$this->info_msg($this->lang['is_empty_add_pictures'])}
+{/if}
+{/if}
+
+{if $is_photos}
+<div class="photo-sc_h2 portlet-i_h2 photo-sc_h2__alb-page show-on-hover">
+
+{if isset($this->USER['id']) && $this->USER['id'] === $user['id']}
+    <div class="portlet-i_h_inf">
+<a href="/profile?q={$user['id']}&cmd=aAlbum&nav=photos" onclick="addAlbum(this,event)" class="portlet-i_h_ac lp">
+<span class="tico _underline">
+<i class="tico_img ic ic_stackphotos"></i>{$this->lang['new_album']}</span></a></div>
+{/if}
+
+<span title="{$this->lang['photo_albums']}" class="portlet-i_h2_tx ellip">
+<span class="photo-sc_h2_alb-title">{$this->lang['Photo_albums']}</span></span>
+<span class="photo-sc_h2_alb-count portlet-i_h2_tx">{$this->getUserAlbumsCount($user['id'])}</span></div>
+{else}
+{if isset($this->USER['id']) && $this->USER['id'] !== $user['id']}
+{$this->info_msg($this->lang['friend_no_albums'])}
+{/if}
+{/if}
+<div class="user_albums_grid">
+
+<!-- personal photos --> 
+{if $countPhotosP}
+
+
+<div class="ul_album soh-s">
+<div class="col-card ovr-menu_soh">
+
+<div class="photo-sc_i_cover">
+<div class="photo-sc_i_cnt __prw">
+<a hrefattr="true" href="/profile?q={$user['id']}&cmd=pphotos&nav=photos" class="photo-sc_i_cnt_a">
+<span class="va"></span>
+<img class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$personalPhotos['id']}&sz=thumb&token={time()}" />
+<div class="col-card_ovr"></div>
+
+<div class="photo-album_collage foh-s">
+{assign var="getAlbumHoverCovers" value=$this->getAlbumHoverPhotos(0,$user.id)}
+{if sizeof($getAlbumHoverCovers) >= 4}
+{foreach $getAlbumHoverCovers as $r_alb_cv}
+    <div class="photo-album_collage_i"><span class="va"></span><img src="/getPhoto?p={$r_alb_cv.pid}&sz=small" class="photo-album_collage_img va_target"></div>
+{/foreach}
+{/if}
+	</div>
+
+<div class="col-card_num">{$countPhotosP}</div>
+</a>
+</div></div>
+
+</div>
+<div class="photo-sc_grid_abt ellip">
+<A class="o" hrefattr="true" href="/profile?q={$user['id']}&cmd=pphotos&nav=photos" title="{$this->lang['p_photos']}">
+{$this->lang['p_photos']}
+</a>
+</div>
+</div>
+
+{/if}
+{assign var=c_trash_alb value=$this->checkForTrashAlbum()}
+{if $c_trash_alb && $user.id == $this->USER['id']}
+<!-- deleted photos -->
+<div class="ul_album _delalb">
+<div class="col-card ovr-menu_soh">
+
+<div class="photo-sc_i_cover">
+<div class="photo-sc_i_cnt __prw">
+<a hrefattr="true" href="/profile?q={$user['id']}&cmd=deleted_alb&nav=photos" class="photo-sc_i_cnt_a">
+<span class="va"></span>
+<div class="trash_album"></div>
+<div class="col-card_ovr"></div>
+<div class="col-card_num">{$c_trash_alb}</div>
+</a>
+</div></div>
+
+</div>
+<div class="photo-sc_grid_abt ellip">
+<a class="o" hrefattr="true" href="/profile?q={$user['id']}&cmd=deleted_alb&nav=photos" title="{$this->lang['deleted_photos']}">
+{$this->lang['trash_album']}
+</a>
+</div>
+</div>
+{$existDeletedAlbum = 1}
+{/if}
+<!-- Tagged Album -->
+{assign var="getTaggedAlbum" value=$this->buildTaggedAlbum($user['id'])}
+{assign var="existTaggedAlbum" value='0'}
+{foreach $getTaggedAlbum[0] as $tagged_result}
+<div class="ul_album">
+<div class="col-card ovr-menu_soh">
+
+<div class="photo-sc_i_cover">
+<div class="photo-sc_i_cnt __prw">
+<a hrefattr="true" href="/profile?q={$user['id']}&cmd=tagged_alb&nav=photos" class="photo-sc_i_cnt_a">
+<span class="va"></span>
+<img class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$tagged_result.photoid}&sz=thumb&token={time()}" />
+<div class="col-card_ovr"></div>
+<div class="col-card_num">{$getTaggedAlbum[1]}</div>
+</a>
+</div></div>
+
+</div>
+<div class="photo-sc_grid_abt ellip">
+<a class="o" hrefattr="true" href="/profile?q={$user['id']}&cmd=tagged_alb&nav=photos" title="{$this->lang['tagged_album']}">
+{$this->lang['tagged_album']}
+</a>
+</div>
+</div>
+{$existTaggedAlbum = 1}
+{/foreach}
+
+
+<!-- albums --> 
+{if $countPhotosA }
+
+{foreach $query as $res}
+
+{if $this->albumVisibleTo($res.visible_to,$user.id)}
+
+{if $existTaggedAlbum && $existDeletedAlbum}
+{assign var="limit_alb_c" value="1"}
+{else if $existTaggedAlbum || $existDeletedAlbum}
+{assign var="limit_alb_c" value="2"}
+{else}
+{assign var="limit_alb_c" value="3"}
+{/if}
+
+<div class="ul_album soh-s" {if $Acnt > $limit_alb_c}data-albumvis="hidden" style="display:none;"{/if}  id="a_{$res.id}">
+<div class="col-card ovr-menu_soh">
+
+<div class="photo-sc_i_cover">
+<div class="photo-sc_i_cnt __prw">
+<a hrefattr="true" href="/profile?q={$user['id']}&cmd=album&i={$res['id']}&nav=photos" class="photo-sc_i_cnt_a {if $res.video === 'yes'}__video{/if}">
+<span class="va"></span>
+
+{if $res.cover > 0}
+<img class="photo-sc_i_cnt_a_img va_target" src="/getPhoto?p={$res['cover']}&album=true&sz=thumb&token={time()}" />
+{else if $res.video === 'yes'}
+<img class="photo-sc_i_cnt_a_img va_target" src="/videoCover?v={$this->selectCoverForLastVideo($user.id)}&album=1" />
+{else}
+<div class="stub-img stub-img__photoalbum184 stub-img__184"></div>
+{/if}
+
+<div class="col-card_ovr"></div>
+
+
+<div class="photo-album_collage foh-s">
+{assign var="getAlbumHoverCovers" value=$this->getAlbumHoverPhotos($res.id,$user.id)}
+{if sizeof($getAlbumHoverCovers) >= 4}
+{foreach $getAlbumHoverCovers as $r_alb_cv}
+    <div class="photo-album_collage_i"><span class="va"></span><img src="/getPhoto?p={$r_alb_cv.pid}&sz=thumb" class="photo-album_collage_img va_target"></div>
+{/foreach}
+{/if}
+	</div>
+
+<div class="col-card_num">{if $res.video === 'yes'}{$this->getAlbumVideosCount($res.id,$user.id)}{else}{$this->getAlbumPhotoCount($res['id'])}{/if}</div>
+</a>
+
+{if $this->USER.id === $user.id}
+<div class="col_card_slide_up">
+<div class="card_sl_menu_it tico"><a href="/profile?q={$this->USER['id']}&cmd=aAlbum&nav=photos" data-album-ni='{ldelim}"name":"{urlencode($this->getAlbumName($res.name))}","id":"{$res.id}"{rdelim}' data-album-c='{$res.visible_to}' onclick="addAlbum(this,event,1)" class="ic_a_mn"><i class="tico_img ic ic_settings ic_mn"></i><span>{$this->lang['Settings']}</span></a></div>
+</div>
+{/if}
+</div></div>
+
+</div>
+<div class="photo-sc_grid_abt ellip">
+<A class="o" hrefattr="true" href="/profile?q={$user['id']}&cmd=album&i={$res['id']}&nav=photos" title="{$this->getAlbumName($res['name'])}">
+{$this->getAlbumName($res.name)}
+</a>
+</div>
+</div>
+
+{if $alb_count > $limit_alb_c && $alb_count == $Acnt}
+<div class="link-show-more loader-controls private" onclick="ga('[data-albumvis]').fadeIn();this.remove();">{$this->lang['Load_more']}</div>
+{/if}
+
+{$Acnt = $Acnt+1}
+{/if}
+{/foreach}
+
+{/if}
+</div>
+
+
+
+{if $is_photos}
+<div class="u_images_wall">
+<!--- All photos walll ---->
+<div class="photo-sc_h2 portlet-i_h2">
+
+<span title="{$this->lang['All_photos']}" class="portlet-i_h2_tx ellip">
+<span class="photo-sc_h2_alb-title">{$this->lang['All_photos']}</span></span>
+<span class="photo-sc_h2_alb-count portlet-i_h2_tx">{intval($countPhotosA + $countPhotosP)}</span>
+</div>
+<div class="b0t5" id="profile_wall_photos" data-photoswall="1">
+{assign var="recentPadded" value=date('Y')}
+{foreach $all_photos_q as $res}
+{assign var="padded" value=$this->getPhotoAddedYear($res.added)}
+
+{if isset($res.vid)}
+<a class="ce11 image-hover this_wall_family micro noclone" data-ivideo="1" href="/video?cmd=open&vid={$res.vid}&userplaylist=1">
+
+<img src="/videoCover?v={$res.vid}&empty=1" class="video_img_err">
+<div>
+<i class="vid_play _m"></i>
+<i class="vid-card_duration">{$res.dur}</i>
+{if !empty($res.external)}
+<i class="vid-card_extern">{$res.external}</i>
+{/if}
+</div>
+<div class="vd_wll_prof_title ellip">{$res.vtitle}</div>
+<div class="profilephoto-wall widgets">
+<span class="widged_albname ellip">
+
+{$this->lang['videos']}
+
+</span>
+
+<div class="klass_comm_wdg_p __{$res.vid}">
+<div {if $res.vuserid !== $this->USER['id']}data-callback="phwallLikeClick" data-log-click='{ldelim}"type":"like","item":"video","itemid":"{$res.vid}"{rdelim}'{/if} class="ic ic_klass_wd {if $res.vuserid == $this->USER['id']}_curDef{/if} {if $res.lbyme}__active{/if}"></div>
+<span data-pplikt="ppo_{$res.vid}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.vid}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$res.lc}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$res.vid}" data-categ="video" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$res.kc}</span>
+</div>
+
+</div>
+
+
+
+</a>
+
+{else}
+
+{assign var=is_gif value=$this->is_gif($res.id)}
+<a class="ce11 image-hover this_wall_family micro noclone" href="/photo?q={$user.id}&show=profileWall&from=medium&a={b_encode($res.albumid)}&o={b_encode($res.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($res.id)}">
+
+<img src="/getPhoto?p={$res.id}&sz=medium&g={$user.gender}&corr=1" />
+{if $is_gif} <ins class="play-gif _tocenter">GIF</ins>{/if}
+{assign var="rates" value=$this->pwGetPhotoStars($res.id)}
+{if $rates}
+<div class="photo_rate_res">
+<div class="photo_rate_bg" style="width:{$rates}%;"></div>
+<div class="photo_rate_stars"></div>
+</div>
+{/if}
+<div class="profilephoto-wall widgets">
+<span class="widged_albname ellip">
+
+{$this->getAlbumName($res.name)}
+
+</span>
+
+<div class="klass_comm_wdg_p __{$res.id}">
+<div {if $res.userid !== $this->USER['id']}data-callback="phwallLikeClick" data-log-click='{ldelim}"type":"like","item":"photo","itemid":"{$res.id}"{rdelim}'{/if} class="ic ic_klass_wd {if $res.userid == $this->USER['id']}_curDef{/if} {if $res.lbyme}__active{/if}"></div>
+<span data-pplikt="ppo_{$res.id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$res.lc}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$res.id}" data-categ="photo" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$res.kc}</span>
+</div>
+
+</div>
+
+
+
+</a>
+{/if}
+{$recentPadded = $padded}
+{/foreach}
+
+
+</div>
+ 
+<div class="link-show-more loader-controls" data-loadd='{ldelim}"cmd":"profileWallPhotosMore","i":"{$user.id}","appto":"#profile_wall_photos","p":"1"{rdelim}' uid="profileWallImages">{$this->lang['View_more_photos']}</div>
+
+{/if}
+
+</div>
+</div>
+</div>
+{/if}
+{/strip}

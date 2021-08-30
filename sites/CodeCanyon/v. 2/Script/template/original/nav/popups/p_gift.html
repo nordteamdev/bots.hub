@@ -1,0 +1,72 @@
+{strip}
+
+
+<div class="modal-new_header __with-header __gifts">
+    <div class="modal-gift">
+        <div class="">
+            <div class="gift-card soh-s __no-frame __1 __s h-mod">
+                <div class="gift " style="background-image: url(/stcmd/gifts/{$rgift.gift})"></div>
+                <div class="gift-badge_w __hidden __hide-price __no-frame __1">
+                    <div class="gift-badge __hidden __hide-price __no-frame __1"><span class="gift-badge_tx">{$rgift.price} {$this->lang['votes']}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="hook_Block_SelectFriendSearchBlock" class="hookBlock">
+    <div class="portlet_h portlet_h__sa">{$this->lang['Gift_for_a_friend']}</div>
+    <div class="mb-4x">
+        <form method="post" action="/" class="search-wrapper-form">
+            <div class="search-wrapper __medium">
+                <div class="it_w search-input"><label>
+                  <input type="text" name="gift.popup.search" value="" autocomplete="off" id="field_search_query_gift" class="it search-input_it" placeholder="{$this->lang['Enter_friends_name']}" maxlength="50" previoussearchvalue="">
+                    <div class="search-input_control search-input_process"><i class="search-input_ic ic18 ic18_anim-procces"></i></div>
+                      <span class="search-input_control search-input_search-ic"><i class="search-input_ic ic ic_search"></i></span>
+                        <a class="search-input_control search-input_close"><i id="friendForGift_cancelId" class="search-input_ic ic curPointer ic_close-g"></i></a></label></div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="present-stream" id="friend_scroll_pane">
+    <div id="hook_Loader_SelectFriendToGiftBlockLoader">
+        <div>
+            <div id="photo-sc_grid-{$rgift.id}" class="ugrid __xxl mb-6x">
+                <ul class="ugrid_cnt mbt60fajy3">
+{foreach $all_friends as $friend}
+
+
+
+
+                  
+                  
+                    <li class="ugrid_i">
+                        
+                            <div class="sel-single shopac" onclick="return sendGiftTo({$friend.id},{$rgift.id});">
+                                <div class="ucard-v">
+                                    <div class="section"><img class="photo_img" src="/getPhoto?p={$friend.photo}&g={$friend.gender}&sz=thumb" alt="{$friend.uname}" width="128" height="128"></div>
+                                    <div class="caption">
+                                        <div class="ellip">{$friend.uname}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </li>
+
+
+
+
+{foreachelse}
+{$this->lang['do_friends_to_send_gifts']}
+{/foreach}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{/strip}

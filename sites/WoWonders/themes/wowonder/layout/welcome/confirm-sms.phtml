@@ -1,0 +1,58 @@
+<?php echo Wo_LoadPage('welcome/welcome-header');?>
+<div class="wrapper">
+	<div class="login forgot_pass fadeInUp animated animated_5">
+		<form id="confirm-form" class="fadeInUp animated animated_9" method="post">
+			<p class="title">Confrim your phone</p>
+			<div class="errors"></div>
+			<input name="phone_num" id="phone-num" type="text" value="<?php echo $wo['confirm_user']['phone_number'];?>" />
+			<input name="confirm_code" type="text" placeholder="Confirmation code" autofocus/>
+			<input type="hidden" name="user_id" id="confirm-user-id" value="<?php echo $wo['confirm_user']['user_id'];?>"/>
+			<div id="hideMsg" class="item">
+				<h2><span>60</span></h2>
+			</div>
+			<div class="form-group" id="re-send" style="display:none">
+				<div class="text-center"><?php echo $wo['lang']['activation_get_code_again'];?> <a href="javascript:void(0);" onclick="Wo_ResendCode();"><i class="fa fa-repeat"></i> <?php echo $wo['lang']['activation_resend'];?></a>
+				</div>
+			</div>
+			<div class="login_signup_combo">
+				<div class="signup__"></div>
+				<div class="login__">
+					<svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="spinner__path" fill="none" stroke-width="7" stroke-linecap="round" cx="33" cy="33" r="29"></circle></svg>
+					<button type="submit" class="btn btn-main"><?php echo $wo['lang']['confirm']?></button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="container"><?php echo Wo_LoadPage('footer/welcome');?></div>
+
+<script>
+var working = false;
+var $this = $('#confirm-form');
+var $state = $this.find('.errors');
+$(function() {
+  Wo_SetTimer();
+  $this.ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=confirm_user',
+    beforeSend: function() {
+		working = true;$this.find('button').attr("disabled", true);
+		$this.find('.spinner').addClass("show");
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        $state.addClass('success');
+        $state.html('<?php echo $wo['lang']['welcome_'] ?>');
+		$this.find('.spinner').removeClass("show");
+        setTimeout(function () {
+         window.location.href = data.location;
+        }, 1000);
+      } else {
+        $this.find('button').attr("disabled", false);
+		$this.find('.spinner').removeClass("show");
+        $state.html(data.errors);
+      }
+      working = false;
+    }
+  });
+});
+</script>

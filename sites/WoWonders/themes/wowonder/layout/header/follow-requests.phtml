@@ -1,0 +1,25 @@
+<li class="row">
+	<div class="user-request-list user-follow-request-<?php echo $wo['request']['user_id'];?>">
+		<div class="user-info">
+			<a href="<?php echo $wo['request']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['request']['username'];?>">
+				<div class="avatar">
+					<img src="<?php echo $wo['request']['avatar'];?>" alt="<?php echo $wo['request']['name']; ?> Profile Picture" />
+				</div>
+				<?php echo $wo['request']['name']; ?>
+			</a>
+			<?php if($wo['config']['user_lastseen'] == 1 && $wo['request']['showlastseen'] != 0) { ?>
+			<div class="user-lastseen" data-toggle="tooltip" title="<?php echo $wo['lang']['last_seen']; ?>">
+				<?php echo Wo_UserStatus($wo['request']['user_id'],$wo['request']['lastseen']); ?>
+			</div>
+			<?php } ?>
+		</div>
+		<div class="accept-btns user-follow-button">
+			<button type="button" id="accept-<?php echo $wo['request']['user_id']?>" onclick="Wo_AcceptFollowRequest(<?php echo $wo['request']['user_id'];?>)" class="btn btn-default btn-sm btn-active" title="<?php echo $wo['lang']['accept']; ?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+			</button>
+			<button type="button" id="delete-<?php echo $wo['request']['user_id']?>" onclick="Wo_DeleteFollowRequest(<?php echo $wo['request']['user_id'];?>)" class="btn btn-default btn-sm" title="<?php echo $wo['lang']['delete']; ?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+			</button>
+		</div>
+	</div>
+</li>

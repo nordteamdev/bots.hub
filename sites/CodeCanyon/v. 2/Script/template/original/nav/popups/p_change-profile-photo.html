@@ -1,0 +1,222 @@
+{strip}
+<div id="profile_change_picture">
+
+<div class="pcgcover_header">
+<div class="fleft pcgcover_title">Change profile picture</div>
+<div class="fright"><span class="tico tico__n-t notifs_close"><i class="tico_img ic ic_close"></i></span></div>
+</div>
+
+<div class="pcgcover_cnt">
+
+ 
+<div class="pcgcover_albums">
+
+
+
+ 
+
+
+      <label class="wLabel-left-album">{$this->lang['Photo_albums']}:</label>
+      <select id="pcgcover_selectmenu" tabindex="1">
+	  
+ </select>
+ <div id="pcgcover_upload_picture" class="fright pcgcover_upload_picture">
+ 
+    <div class="upload_bar_percent"></div>
+ 
+    <div class="slideshow-preview-uploaded-img"></div><i class="plus_slideshow_photo"></i>
+    <form method="post" name="change-profile-picture-form" id="change-profile-picture-form" enctype="multipart/form-data">
+	<input type="hidden" name="request" value="upload">
+	<input type="hidden" name="mode" value="feed">
+	<input id="files" class="_ff_slw_sorting html5-link-upload _80" type="file" accept="image/*" name="files[]"></form>
+ 
+ 
+ </div>
+ <script>
+ {literal}
+ var ddData = new Array();
+ {/literal}
+ </script>
+	  {foreach $albums_r as $album}
+
+        <script>
+		 ddData.push(
+    {
+        text: "{$this->getAlbumName($album.name)}",
+        value: "{$album.id}",
+        selected: false,
+        description: "{$this->time_elapsed($album.added)}<br/>"+lang.album_photos_count+" {$this->albumPhotosCount($album.id)}",
+        imageSrc: "/getPhoto?p={if $album.cover}{$album.cover}{else}0{/if}&album=true&sz=small&token={time()}"
+    }
+	);
+	</script>
+ 
+		{/foreach}
+      
+<script>
+var personal_album_p_count = '{$this->albumPhotosCount(0)}';
+{literal}
+		 ddData.unshift(
+    {
+        text: lang.personal_photos,
+        value: '0',
+        selected: true,
+        description: lang.album_photos_count+" "+personal_album_p_count,
+        imageSrc: "/getPhoto?p=0&album=true&sz=small&token={time()}"
+    }
+	);
+$("#pcgcover_selectmenu").ddslick({
+    data: ddData,
+    width: 300,
+    imagePosition: "left",
+    selectText: lang.select_picture_from_album,
+    onSelected: function (data) {
+
+		var album_id = data.selectedData.value, album_name = data.selectedData.text;
+		getPhotosFromAlbum(album_id,album_name);
+    }
+});
+
+
+function getPhotosFromAlbum(albumid,albumname){
+var p_river = ga('#album_pictures_river'), collect_pictures = '';
+p_river.html('<div class="process50 process-ic-center"></div>');
+
+var send = jAjax('/cmd.php', 'post', {'cmd':'change-profile-picture-get-picture-from-album', 'album_id':escape(albumid)});
+send.done(function(d){
+ 
+var dt = validateJson(d);
+
+
+if(dt.length) {
+
+for(var i=0;i<dt.length;i++){
+var x = dt[i];
+ 
+collect_pictures += '<div class="pcgcover_picture"><a href="/profile?q='+_U.i+'&id='+x.id+'&cmd=crop_photo" onclick="upProfPh(this,event)"><img src="/getPhoto?p='+x.id+'&sz=small" /></a></div>';
+}
+
+p_river.html(collect_pictures);
+p_river.parent().nanoScroller();
+} else {
+p_river.html('<div id="error"><div class="msg ferror"><div class="msg_text"><b>'+lang.empty_pictures_album+'</b><br>'+lang.empty_pictures_album_desc+'</div></div></div>');
+p_river.parent().nanoScroller();
+}
+ga('.pcgcover_titleh3').text(albumname);
+});
+
+}
+
+ga('form#change-profile-picture-form')
+		.on('change drop', function (e)
+		{
+			var $this = ga(this);
+		
+		
+		var upload_bar = ga('#pcgcover_upload_picture .upload_bar_percent');
+		
+  $.ajax({
+        // Your server script to process the upload
+        url: _st.uploadFile,
+        type: 'POST',
+
+        // Form data
+        data: new FormData($this[0]),
+
+        // Tell jQuery not to process data or worry about content-type
+        // You *must* include these options!
+        cache: false,
+        contentType: false,
+        processData: false,
+
+        // Custom XMLHttpRequest
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+					
+			var reader = new FileReader();
+			reader.onload = function ()
+			{
+				var dataURL = reader.result;
+			 
+				ga('.slideshow-preview-uploaded-img').css({
+							'background-image': 'url('+dataURL+')'
+						
+						});
+						
+						ga('.plus_slideshow_photo').hide();
+						ga('.attach-photo_del').show();
+ 
+			};
+			reader.readAsDataURL($this.find('#files').get(0).files[0]);
+					
+					
+					
+					
+                        upload_bar.css({
+                            'width': Math.round((e.loaded / e.total) * 100),
+                            'display':'block'
+                        });
+						
+                    }
+                } , false);
+            }
+            return myXhr;
+        },
+		success:function(a,b,c) {
+		
+		 
+		
+		if(b == 'success') {
+		
+		var d = validateJson(a);
+		
+		if(d.status == 'OK') {
+		
+		ga('.slideshow-preview-uploaded-img').css({
+							'background-image': 'url(/getPhoto?p='+d.photoid+'&size=small)'
+						
+						});
+						
+		var new_pic_upload_click = ga('<a/>').addClass('__none').attr({'onclick' : 'upProfPh(this,event)','href':'/profile?q='+_U.i+'&id='+d.photoid+'&cmd=crop_photo'});				
+		ga('#profile_change_picture').prepend(new_pic_upload_click);
+		new_pic_upload_click.trigger('click');
+		
+		}
+		
+		
+		}
+		}
+    });
+		
+		
+		
+		
+		});
+
+{/literal}
+
+</script>
+
+
+
+
+</div>
+
+<div class="pcgcover_pics_cnt">
+<div class="pcgcover_titleh3">Personal photos</div>
+<div id="pcgcover_nano" class="nano">
+<div id="album_pictures_river" class="nano-content"><div class="process50 process-ic-center"></div></div>
+</div>
+</div>
+
+</div>
+
+
+
+
+</div>
+{/strip}

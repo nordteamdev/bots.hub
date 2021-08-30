@@ -1,0 +1,11 @@
+<div class="wo_sidebar_products products-hover" id="product_<?php echo $wo['product']['id'];?>">
+<a href="<?php echo $wo['product']['url'];?>" data-ajax="?link1=post&id=<?php echo $wo['product']['post_id'];?>">
+      <div class="avatar">
+         <img src="<?php echo $wo['product']['images'][0]['image_org'];?>" alt="<?php echo $wo['product']['name']; ?> Profile Picture" />
+      </div>
+      <div class="produc_info">
+      	 <span title="<?php echo $wo['product']['name']; ?>"><?php echo $wo['product']['name']; ?></span>
+		 <h4><?php echo (!empty($wo['currencies'][$wo['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];?><?php echo $wo['product']['price']; ?></h4>
+      </div>
+</a>
+</div>

@@ -1,0 +1,21 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="content-shadow delete-post-wrapper text-center">
+				<div class="svg_header">
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"><path fill="currentColor" d="M20.37,8.91L19.37,10.64L7.24,3.64L8.24,1.91L11.28,3.66L12.64,3.29L16.97,5.79L17.34,7.16L20.37,8.91M6,19V7H11.07L18,11V19A2,2 0 0,1 16,21H8A2,2 0 0,1 6,19Z" /></svg>
+				</div>
+				<div class="news-title">
+					<h3>{{LANG delete_confirm}}</h3>
+					<p>"{{DELETE_DATA__TITLE}}".</p><br>
+				</div>
+				<div class="delete-buttons">
+					<button class="btn btn-red" id="delete-button" onclick="FL_DeletePost({{DELETE_DATA__ID}}, '{{DELETE_DATA__TYPE}}');">{{LANG delete_yes}}</button><br>
+					<a class="btn" href="{{DELETE_DATA__URL}}">{{LANG delete_no}}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

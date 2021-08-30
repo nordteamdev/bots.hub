@@ -1,0 +1,48 @@
+
+<div class="friend-top-cnt">
+
+<A href="/user/{$user.id}" hrefattr="true" class="profbackb"><div class="prof-top-back-d"><span class="glyphicon glyphicon-menu-left prof-top-back"></span></div></a>
+<div class="f-top-cnt">
+<a href="/user/{$user.id}" class="inline middle" hrefattr="true"><img class="f-top-img" src="/getPhoto?p={$user['profile_photo']}&sz=small" /></a>
+<a href="/user/{$user.id}" class="ellip middle ob top-a-uname" hrefattr="true">{$user.name}</a>
+
+<div class="f-header-page-nameic">
+
+
+<a href="/user/{$user.id}" hrefattr="true">{$this->lang['Home']}</a>
+<span class="video_row_info_bullet mtop">&#8226;</span>
+<a href="/friends/{$user.id}" class="{if $this->activePage === 'friends'}topum_active{/if}" hrefattr="true">{$this->lang['Friends_Page']} <span class="navMenuCount mtopb">{$this->friendsCount($user.id)}</span></a>
+<span class="video_row_info_bullet mtop">&#8226;</span>
+<a href="/photos/{$user.id}" hrefattr="true">{$this->lang['Photos']} <span class="navMenuCount mtopb">{$this->userPhotosCount($user.id)}</span></a>
+<span class="video_row_info_bullet mtop">&#8226;</span>
+<a href="/apps/m/user/{$user.id}" class="{if $this->activePage === 'apps'}topum_active{/if}" hrefattr="true">{$this->lang['Games']} <span class="navMenuCount mtopb">{$this->userAppsCount($user.id)}</span></a>
+<span class="video_row_info_bullet mtop">&#8226;</span>
+<a href="/posts/{$user.id}" class="{if $this->activePage === 'posts'}topum_active{/if}" hrefattr="true">{$this->lang['Posts']} <span class="navMenuCount mtopb">{$this->postsCount($user.id)}</span></a>
+<span class="video_row_info_bullet mtop">&#8226;</span>
+
+<a href="javascript:;" id="mctc_navMenuDropdownSec_otherSections" class="mctc_navMenuSec">
+#
+</a>
+<div class="mctc_navMenuDDC mtop">
+
+            <ul class="mctc_navMenuDDL">
+
+				
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/groups/{$user.id}" hrefattr="true">{$this->lang['Communities']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/user/about/{$user.id}" hrefattr="true">{$this->lang['About_me']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/user/gifts/{$user.id}" hrefattr="true">{$this->lang['Gifts']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/movies/{$user.id}" hrefattr="true">{$this->lang['movies']}</a></li>
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/books/{$user.id}" hrefattr="true">{$this->lang['Books']}</a></li>
+				{if $user.id === $this->USER['id']}
+				<li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/bookmarks?nav=bookmarks" hrefattr="true" data-navact="bookmarks">{$this->lang['Bookmarks']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/profile?q={$user.id}&cmd=settings&tab=blacklist&nav=settings" hrefattr="true">{$this->lang['Black_list']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/profile?q={$user.id}&cmd=settings&nav=settings" hrefattr="true">{$this->lang['Settings']}</a></li>
+                <li class="mctc_navMenuDDLI"><a class="mctc_navMenuDDLIL" href="/themes?nav=themes" hrefattr="true" data-navact="themes">{$this->lang['Themes']}</a></li>
+				{/if}
+				            </ul>
+        </div>
+
+
+</div>
+</div>
+</div>

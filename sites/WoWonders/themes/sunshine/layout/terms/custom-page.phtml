@@ -1,0 +1,16 @@
+<?php
+if ($wo['page_data']['page_type'] == 0) {
+?>
+<div class="page-margin">
+    <?php echo htmlspecialchars_decode($wo['page_data']['page_content']);?>
+</div>
+<?php
+} else {
+?>
+<div class="page-margin">
+	<div class="sun_terms">
+		<h3><?php echo $wo['page_data']['page_title']?></h3>
+		<?php echo htmlspecialchars_decode($wo['page_data']['page_content']);?>
+	</div>
+</div>
+<?php } ?>

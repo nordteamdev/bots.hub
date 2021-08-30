@@ -1,0 +1,35 @@
+FLAME v1.3 Update Documentation
+
+Note:
+
+This update is just for who is using 1.2, if you're still using older verisons, PLEASE UPDATE the script version by version.
+
+// ------------------------------------- //
+
+1) How To Update
+
+- BACKUP, BACKUP, AND BACKUP everything, files, DATABASE.
+
+- Upload "update.php" file located on "Update Guide/v1.3" folder to your server.
+
+- Upload and overwrite ALL files/folders (SELECT ALL) file(s) located inside "Update Guide/v1.3/Script/" folder to your server, if you have renamed your theme, please open "Update Guide/v1.3/Script/themes/default/" and upload & overwrite ALL files/folders to your theme folder.
+
+- Once the files are uploaded, open and run http://www.YOURSITE.COM/update.php
+
+- Note: Don't run "update.php" file till all the files are uploaded.
+
+- Refresh your page, Done !
+
+- For more information, please read our FAQ http://docs.phpflame.com/#faq
+
+// ------------------------------------- //
+
+if you're facing any problems, please contact me so i can help.
+
+Created: 8/04/2017
+Last Update: 07/02/2018
+By: Deen Doughouz (DoughouzForest)
+Email: wowondersocial@gmail.com
+Website: http://www.phpflame.com
+
+Copyright © 2018 FLAME All rights reserved

@@ -1,0 +1,17 @@
+<tr data-verif-request-id="{{REQUEST_ID}}">
+	<td>{{REQUEST_ID}}</td>
+	<td class="hidden">{{REQUEST_USERNAME}}</td>
+	<td><a href="{{USER url}}" target="_blank">{{REQUEST_USERNAME}}</a></td>
+	<td>{{REQUEST_TYPE}}</td>
+	<td>Pending</td>
+
+	<td class="pointer verification-action">	
+		<button class="btn btn-success waves-effect waves-light" onclick="FL_VerifyUser({{REQUEST_ID}});">	VERIFY
+		</button>
+	  	<button class="btn btn-danger waves-effect waves-light delete-content" onclick="FL_DeleteVerifRequest({{REQUEST_ID}});">DELETE
+	  	</button>
+	  	<a href="{{REQUEST_AJAX}}" class="btn btn-info fl-load-verif-request">
+	  		VIEW
+	  	</a>
+	</td>
+</tr>

@@ -1,0 +1,58 @@
+<div class="login-con">
+	<div class="login-form content-shadow">
+		<form method="post" id="forgot-form">
+			<fieldset>
+				<div class="login_head_svg"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A5,5 0 0,0 7,6V8H6A2,2 0 0,0 4,10V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V10A2,2 0 0,0 18,8H17V6A5,5 0 0,0 12,1M12,2.9C13.71,2.9 15.1,4.29 15.1,6V8H8.9V6C8.9,4.29 10.29,2.9 12,2.9M12.19,10.5C13.13,10.5 13.88,10.71 14.42,11.12C14.96,11.54 15.23,12.1 15.23,12.8C15.23,13.24 15.08,13.63 14.79,14C14.5,14.36 14.12,14.64 13.66,14.85C13.4,15 13.23,15.15 13.14,15.32C13.05,15.5 13,15.72 13,16H11C11,15.5 11.1,15.16 11.29,14.92C11.5,14.68 11.84,14.4 12.36,14.08C12.62,13.94 12.83,13.76 13,13.54C13.14,13.33 13.22,13.08 13.22,12.8C13.22,12.5 13.13,12.28 12.95,12.11C12.77,11.93 12.5,11.85 12.19,11.85C11.92,11.85 11.7,11.92 11.5,12.06C11.34,12.2 11.24,12.41 11.24,12.69H9.27C9.22,12 9.5,11.4 10.05,11.04C10.59,10.68 11.3,10.5 12.19,10.5M11,17H13V19H11V17Z" /></svg></div>
+				<h4>{{LANG reset_your_password}}</h4>
+				<!-- email_address input-->
+				<div class="errors hidden"></div>
+				<div class="success hidden"></div>
+				<div class="form-group fl_cus_input">
+					<input id="email" name="email" type="text" class="form-control input-login" placeholder="">
+					<label for="email">{{LANG email}}</label>
+				</div>
+				<div class="login_signup_combo">
+					<div class="signup__">
+						<a class="dec" href="{{LOGIN_LINK}}">{{LANG login}}</a>
+					</div>
+					<div class="login__">
+						<button type="submit" class="btn btn-main">{{LANG request_new_password}}</button>
+					</div>
+				</div>
+			</fieldset>
+			
+			<div class="fl_loading_bar">
+				<svg width="120px" height="120px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(20 50)"> <circle cx="0" cy="0" r="7" fill="#f05125" transform="scale(0.59121 0.59121)"> <animateTransform attributeName="transform" type="scale" begin="-0.5625s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(40 50)"> <circle cx="0" cy="0" r="7" fill="#928efb" transform="scale(0.897436 0.897436)"> <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(60 50)"> <circle cx="0" cy="0" r="7" fill="#7fbb42" transform="scale(0.987321 0.987321)"> <animateTransform attributeName="transform" type="scale" begin="-0.1875s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g><g transform="translate(80 50)"> <circle cx="0" cy="0" r="7" fill="#32a0da" transform="scale(0.759663 0.759663)"> <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1.5s" repeatCount="indefinite"></animateTransform> </circle> </g></svg>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var forgot_form = $("form#forgot-form");
+	var forgot_button = forgot_form.find("button");
+    forgot_form.ajaxForm({
+    url: FL_Ajax_Requests_File() + '?f=forgot_password',
+    beforeSend: function() {
+      forgot_button.attr("disabled", true);
+      $('.fl_loading_bar').addClass('show');
+    },
+    success: function(data) {
+      if (data.status == 200) {
+      	$(".errors").addClass('hidden');
+      	$(".success").removeClass('hidden');
+      	$(".success").html('<i class="fa fa-check"></i> {{LANG email_has_sent}}');
+      } else {
+        var errors = data.errors.join("<br>");
+        $(".success").addClass('hidden');
+        $(".errors").removeClass('hidden');
+        $(".errors").html(errors);
+        forgot_button.attr("disabled", false);
+      }
+      forgot_button.attr("disabled", false);
+      $('.fl_loading_bar').removeClass('show');
+    }
+  });
+});
+</script>

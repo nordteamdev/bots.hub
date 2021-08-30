@@ -1,0 +1,67 @@
+{strip}
+<div data-headername="{$user.fullname}" data-backhref="/user/{$user.id}" id="modifyheader"></div>
+ 
+<div id="mainContentContentColumn" class="books_pg">
+ 
+   <div id="middleColumn">
+
+	   
+	   
+	   {if $this->USER.id !== $user.id}
+	   <div class="panelRounded_head">
+                            <div class="panelRounded_head_header">{$books[0]}&nbsp;{$this->lang['Books_read_by_user']}&nbsp;<a href="/user/{$user.id}" hrefattr="true">{$user.fullname}</a></div>
+							<div class="separator_slv"></div>
+				
+       </div>
+		{else}			
+<div class="books_pg_search">
+<div>
+				<div><div class="input_serch_ic"><input type="text" class="it" onkeyup="{literal}var t = this;setTimeout(function(){hideBooksPgSugg(t)},500);{/literal}" rel="input_search_books" search-callback="profileAddBooks" placeholder="ex. Brothers Grimm" value="" /><i class="div-loader input-ic-loader __none"></i></div>
+				 </div><div class="bookspg_search_res"><div class="nano"><div class="nano-content"><ul id="books_list"></ul></div></div></div>
+	</div></div>
+		{/if}					
+
+<div class="user_books_content">
+
+<ul class="user-books-while">
+{foreach $books[1] as $book}
+{assign var=book_in_coll value=$this->checkIfTheBookIsAlreadyInColl($book.page_id)}
+
+<li rel="tipsy" title="{$book.book_title}" class="prof_book_item soh-s">
+
+
+{if $this->USER.id == $user.id}
+<a href="javascript:void(0);" title="{$this->lang['delete_from_my_collection']}" {if !$book_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-remove" rel="{$book.page_id}" rel-categ="book" data-send='{ldelim}"id":"{$book.page_id}","type":"book","cover":"{$book.book_cover}","title":"{urlencode($book.book_title)}","page_id":"{$book.p_pageid}"{rdelim}' onclick="removeItemPgFromMyColl(this,event);" class="book_add-remove_from_coll author foh-s"><i class="icofont icofont-close">&#xefb8;</i></a>
+{else}
+<a href="javascript:void(0);" title="{$this->lang['delete_from_my_collection']}" {if !$book_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-remove" rel="{$book.page_id}" rel-categ="book" data-send='{ldelim}"id":"{$book.page_id}","type":"book","cover":"{$book.book_cover}","title":"{urlencode($book.book_title)}","page_id":"{$book.p_pageid}"{rdelim}' onclick="removeItemPgFromMyColl(this,event);" class="book_add-remove_from_coll foh-s"><i class="icofont icofont-close">&#xefb8;</i></a>
+<a href="javascript:void(0);" title="{$this->lang['add_to_my_collection']}" {if $book_in_coll}style="display:none;"{/if} id="bmv-pg-sub-btn-add" rel="{$book.page_id}" rel-categ="book" data-send='{ldelim}"id":"{$book.page_id}","type":"book","cover":"{$book.book_cover}","title":"{urlencode($book.book_title)}","page_id":"{$book.p_pageid}"{rdelim}' onclick="addItemPgToMyColl(this,event);" class="book_add-remove_from_coll foh-s"><i class="icofont icofont-plus">&#xf0a5;</i></a>
+{/if}
+
+
+
+
+
+
+
+<a href="/page/book/{$book.page_id}/" hrefattr="true">
+<div class="book_cover" style="background-image:url(/bookGetPoster.php?p={urlencode($book.book_cover)})"></div>
+<div class="book_title">{$book.book_title}</div>
+</a>
+<div class="ratings_ul_sys">
+<ul class="page_rating_stars" rel="start-rating" data-rating='{ldelim}"item_id":"{$book.page_id}","stars":"5","static":"{$this->checkItemIsRatedByMe($book.page_id,"book")}","current_stars":"{$this->getItemStars($book.page_id,"book")}","item_type":"book"{rdelim}'></ul>
+</div>
+</li>
+{foreachelse}
+	<h3>{$this->info_msg($this->lang['user_no_books'])}</h3>
+{/foreach}
+</ul>
+
+
+</div>
+
+	
+	</div>
+
+
+</div>
+{/strip}

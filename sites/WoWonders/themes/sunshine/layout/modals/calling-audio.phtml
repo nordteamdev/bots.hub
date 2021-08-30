@@ -1,0 +1,15 @@
+<div class="modal fade" id="calling-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><i class="fa fa fa-phone"></i> <?php echo $wo['lang']['calling'];?> <?php echo $wo['calling_user']['name'];?> ..</h4>
+         </div>
+         <div class="modal-body">
+            <p><?php echo $wo['lang']['calling_desc'];?></p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default cancel-call" onclick="Wo_CancelCall();"><i class="fa fa-times progress-icon" data-icon="times"></i> <?php echo $wo['lang']['cancel'];?></button>
+         </div>
+      </div>
+   </div>
+</div>

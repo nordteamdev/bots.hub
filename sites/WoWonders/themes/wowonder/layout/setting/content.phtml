@@ -1,0 +1,86 @@
+<?php
+$user_id            = $wo['user']['user_id'];
+$wo['is_admin']     = Wo_IsAdmin();
+$wo['is_moderoter'] = Wo_IsModerator();
+
+$wo['setting']['admin'] = false;
+if (isset($_GET['user']) && !empty($_GET['user']) && ($wo['is_admin'] === true || $wo['is_moderoter'] === true)) {
+    if (Wo_UserExists($_GET['user']) === false) {
+        header("Location: " . $wo['config']['site_url']);
+        exit();
+    }
+    $user_id                = Wo_UserIdFromUsername($_GET['user']);
+    $wo['setting']['admin'] = true;
+}
+$wo['setting'] = Wo_UserData($user_id);
+if ($wo['is_moderoter']) {
+  if ($wo['setting']['admin'] == 1) {
+       header("Location: " . $wo['config']['site_url']);
+       exit();
+  }
+}
+$wo['setting']['fileds'] = Wo_UserFieldsData($user_id);
+$wo['setting_page'] = 'general-setting';
+$pages_array = array(
+   'general-setting',
+   'profile-setting',
+   'privacy-setting',
+   'change-password-setting',
+   'social-links',
+   'design-setting',
+   'avatar-setting',
+   'email-setting',
+   'verification',
+   'blocked-users',
+   'transaction_log',
+   'my_points',
+   'manage-sessions',
+   'notifications-settings',
+   'two-factor'
+);
+if ($wo['setting']['user_id'] == $wo['user']['user_id']) {
+  $pages_array = array(
+   'general-setting',
+   'profile-setting',
+   'privacy-setting',
+   'change-password-setting',
+   'social-links',
+   'delete-account',
+   'design-setting',
+   'avatar-setting',
+   'email-setting',
+   'verification',
+   'blocked-users',
+   'transaction_log',
+   'my_points',
+   'manage-sessions',
+   'notifications-settings',
+   'two-factor'
+   );
+}
+if ($wo['config']['affiliate_system'] == 1) {
+  $pages_array[] = 'affiliates';
+  $pages_array[] = 'payments';
+}
+if (!empty($_GET['page'])) {
+   if (in_array($_GET['page'], $pages_array)) {
+      $wo['setting_page'] = $_GET['page'];
+   }
+}
+$wo['user_setting'] = '';
+if (!empty($_GET['user'])) {
+    $wo['user_setting'] = 'user=' . $_GET['user']. '&';
+}
+?>
+<style>
+#wo_main_sett_mid .wo_settings_page{border-color: <?php echo $wo['config']['btn_background_color'];?>;}
+#wo_main_sett_mid .wo_settings_page h3, #wo_main_sett_side ul li.avtive a {color: <?php echo $wo['config']['btn_background_color'];?>;}
+@media (max-width: 600px){.wo_settings_page {margin-top: 0;}}
+</style>
+<div class="page-margin">
+	<div class="row setting-panel" style="position:relative;">
+		<div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+		<div class="col-md-7 middlecol sett_page" id="wo_main_sett_mid"><?php echo Wo_LoadPage("setting/" . $wo['setting_page']); ?></div>
+		<div class="col-md-3 sidebar rightcol sett_page" id="wo_main_sett_side"><?php echo Wo_LoadPage('setting/user-setting-sidebar');?></div>
+	</div>
+</div>

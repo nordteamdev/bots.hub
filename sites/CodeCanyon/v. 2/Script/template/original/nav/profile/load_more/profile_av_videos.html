@@ -1,0 +1,47 @@
+
+{foreach $q as $result}
+<div class="ec_items _pfvd image-hover">
+<div class="eg_gotph this_wall_family micro thumb">
+<span id="pp_{$result.id}"></span>
+{if $user['id'] === $this->USER['id']}  
+<div class="ph disabling-layer"><span class="photo-sc_i_utility_delete-status">{$this->lang['video_deleted']}</span>
+<div class="photo-sc_i_utility_undo-delete"><a onclick="restoreVideo(this,event)" href="/cmd.php?q={$user.id}&cmd=restoreVideo&vid={$result.id}" class="il">{$this->lang['restore']}</a></div></div>
+<a class="x_delete_pp _left" title="{$this->lang['delete_video']}" onclick="deleteVideo(this,event)" href="/cmd.php?q={$user.id}&cmd=deletevideo&vd={$result.id}"></a>
+<a class="e_edit_video _left" data-videoinf='{ldelim}"id":"{$result.id}","title":"{base64_encode($result.title)}","descr":"{base64_encode($result.description)}","tags":"{base64_encode($result.tags)}"{rdelim}' title="{$this->lang['Edit_video']}" onclick="editVideo(this,event)" href="javascript:;"></a>
+{/if}
+<a href="/video?vid={$result.id}&cmd=open&userplaylist=1" data-ivideo="1">
+<div class="album_cover" style="background-image:url(/videoCover?v={$result['id']})"></div>
+<i class="vid_play _m"></i>
+<i class="vid-card_duration">{$result.dur}</i>
+{if !empty($result.external)}<i class="vid-card_extern">{$result.external}</i>{/if}
+<div class="vd_wll_prof_title ellip">{$result.title}</div>
+</a>
+{if $user['id'] !== $this->USER['id']}
+
+<div class="profilephoto-wall widgets vd">
+<span class="widged_albname ellip vd">
+
+<a href="/video?vid={$result.id}&cmd=open&userplaylist=1" data-ivideo="1" class="open_video_href"><i class="ic ic_view_video"></i><span>{$this->lang['view']}</span></a>
+
+</span>
+
+<div class="klass_comm_wdg_p __{$result.id}">
+<div data-callback="phwallLikeClick" data-log-click='{ldelim}"type":"like","item":"video","itemid":"{$result.id}"{rdelim}' class="ic ic_klass_wd {if $result.lbyme}__active{/if}"></div>
+<span data-pplikt="ppo_{$result.id}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$result.id}" data-appendtooltipto=".klass_comm_wdg_p" class="prbt_klass_count">{$result.lc}</span>
+</div>
+
+<div class="klass_comm_wdg_p __comments" data-thicommi="comm_{$result.id}" data-categ="video" onclick="return photoCommentBfLayer(event,this);">
+<div class="ic ic_comm_wd"></div>
+<span class="prbt_comm_count">{$result.kc}</span>
+</div>
+
+</div>
+
+
+{/if}
+</div>
+<div id="video_editable_section"></div>
+
+</div>
+ 
+{/foreach}

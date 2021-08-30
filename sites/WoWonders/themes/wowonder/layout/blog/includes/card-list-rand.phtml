@@ -1,0 +1,23 @@
+<div class="owl-item" data-blog-id="<?php echo $wo['article']['id']; ?>">
+	<div class="format-standard" style="background-image:url(<?php echo $wo['article']['thumbnail']; ?>)">
+		<div class="blog-h-desc postCategory">
+			<h5><?php echo $wo['page_categories'][$wo['article']['category']]; ?></h5>
+			<h4 class="art-title"><?php echo $wo['article']['title']; ?></h4>
+		 	<div class="blog-meta-desc">
+			 	<span>
+				 	<span>
+				 		<?php echo $wo['lang']['by'] ?>
+				 	</span>
+				 	<a href="<?php echo $wo['article']['author']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['article']['author']['username']; ?>">
+				 		<?php echo $wo['article']['author']['name']; ?>
+				 	</a>
+			 	</span>
+				<span class="middot">·</span>
+			 	<time>
+				 	<?php echo date("d M Y",$wo['article']['posted']); ?>
+			 	</time>
+		 	</div>
+	 	</div>
+		<a href="<?php echo $wo['article']['url']; ?>" class="o-overlayLink"></a>
+	</div>
+</div>

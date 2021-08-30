@@ -1,0 +1,58 @@
+<?php echo Wo_LoadPage('forum/headers/header'); ?>
+<div class="row">
+	<label class="col-md-2"></label>
+	<div class="col-md-8">
+		<div class="red-list">
+			<div class="wo_settings_page">
+				<h3><?php echo $wo['lang']['reply']; ?></h3>
+				<form action="#" class="form" id="quotereply" method="post">
+					<div class="setting-panel row">
+						<div class="sun_input">
+							<textarea id="newquotereply" name="content" placeholder="<?php echo $wo['lang']['your_reply']?>">[quote][b]<?php echo $wo['reply']['user_data']["username"]; ?> <?php echo $wo['lang']['wrote']; ?>:[/b][nl]<?php echo $wo['reply']['post_text']; ?>[/quote]</textarea>
+							<label for="newquotereply"><?php echo $wo['lang']['your_reply']?></label>
+						</div>
+						<!-- Text input-->
+						<div class="sun_input">
+							<input type="text" class="form-control" name="subject" id="subject" placeholder="<?php echo $wo['lang']['subject']?>" value="<?php echo $wo['reply']['post_subject']; ?>">
+							<label for="subject"><?php echo $wo['lang']['subject']?></label>
+						</div>
+					</div>
+					<div id="quotereply-alert"></div>
+					<div class="form-group last-sett-btn modal-footer">
+						<div class="ball-pulse"><div></div><div></div><div></div></div>
+						<button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['reply'];?></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- .col-md-8 -->
+	<label class="col-md-2"></label>
+</div>
+<?php if (isset($wo['bbcodeditor']) && $wo['bbcodeditor']): ?>
+<script>
+	jQuery(document).ready(function($) {
+		$('#quotereply').ajaxForm({
+	      url: Wo_Ajax_Requests_File()  +  '?f=threadreply&tid=<?php echo $wo['reply']['thread_id']; ?>&fid=<?php echo $wo['reply']['forum_id']; ?>&q=1&hash=' + $('.main_session').val(),
+	      beforeSend: function() {
+	        Wo_progressIconLoader($('#quotereply').find('button'));
+	      },
+	      success: function(data) {
+	        scrollToTop();
+	        if (data['status'] == 200) {
+	         	$("#quotereply-alert").html('<div class="alert alert-success">'+ data['message'] +'</div>');
+	         	window.location = data.url;
+	        } else {
+	         	$("#quotereply-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+	        } 
+	        Wo_progressIconLoader($('#quotereply').find('button'));
+	      }
+		});
+		$('#newquotereply').bbcode();
+		$("#newquotereply").autogrow({vertical: true, horizontal: false});
+	});
+</script>
+	
+<?php endif ?>
+
+<?php echo Wo_LoadPage('forum/headers/footer'); ?>

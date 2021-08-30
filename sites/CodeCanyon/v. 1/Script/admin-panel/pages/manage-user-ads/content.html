@@ -1,0 +1,149 @@
+<?php 
+$page           = (!empty($_GET['page-id'])) ? $_GET['page-id'] : 1;
+$db->pageLimit  = 50;
+$user_ads       = $db->objectbuilder()->orderBy('id', 'DESC')->paginate(T_USER_ADS, $page);
+
+if (($page > $db->totalPages) && !empty($_GET['page-id'])) {
+	header("Location: " . FL_LoadAdminLinkSettings('manage-user-ads'));
+	exit();
+}
+?>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Advertisements &gt; Manage User Advertisements</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage User Advertisements</h2>
+                </div>
+                <div class="body">
+                	<div class="table-responsive1">
+	                	<table class="table table-bordered table-striped table-hover">
+		                	<thead>
+		                        <tr role="row">
+		                        	<th>Website</th>
+		                        	<th>Title</th>
+		                        	<th>User</th>
+		                        	<th>Published</th>
+		                        	<th>Results</th>
+		                        	<th>Action</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<?php 
+	                                foreach ($user_ads as $key => $fl['user_ad']) {
+	                                	$fl['user_ad']  = FL_ObjectToArray($fl['user_ad']);
+	                                	$ad_owner       = FL_UserData($fl['user_ad']['user_id']);
+	                                	
+	                                	echo FL_LoadAdminPage('manage-user-ads/list',array(
+	                                		'AD_ID' => $fl['user_ad']['id'],
+	                                		'AD_WEBSITE' => fl_url_domain($fl['user_ad']['url']),
+	                                		'AD_TITLE' => $fl['user_ad']['title'],
+	                                		'AD_URL' => $fl['user_ad']['url'],
+	                                		'DATE' => date('Y-M-d',$fl['user_ad']['time']),
+	                                		'RESULTS' => $fl['user_ad']['results'], 
+	                                		'USER_NAME' => $ad_owner['name'], 
+	                                		'SETTINGS_LINK' => FL_Link('settings/general/' . $ad_owner['username']), 
+	                                	));
+	                                }
+	                            ?>
+		                    </tbody>
+	                    </table>
+                	</div>
+                	<div class="acp-usrads-pagination">
+	                	<div class="pull-left">
+	                		<?php echo "Showing $page out of " . $db->totalPages; ?>
+	                	</div>
+		                <div class="pull-right">
+		                	<nav>
+		                        <ul class="pagination">
+		                        	<li>
+		                                <a href="<?php echo FL_LoadAdminLinkSettings('manage-user-ads?page-id=1'); ?>" class="waves-effect" title='First Page'>
+		                                    <i class="material-icons">first_page</i>
+		                                </a>
+		                            </li>
+		                            <?php if ($page > 1) {  ?>
+		                            <li>
+		                                <a href="<?php echo FL_LoadAdminLinkSettings('manage-user-ads?page-id=' . ($page - 1)); ?>" class="waves-effect" title='Previous Page'>
+		                                    <i class="material-icons">chevron_left</i>
+		                                </a>
+		                            </li>
+		                            <?php  } ?>
+		                            <?php 
+		                            $nums = 0;
+		                            $nums_pages = ($page > 4) ? ($page - 4) : $page;
+		                            for ($i=$nums_pages; $i <= $db->totalPages; $i++) { 
+		                            	if ($nums < 20) {
+		                            	?>
+		                            	<li class="<?php echo ($page == $i) ? 'active' : ''; ?>"><a href="<?php echo FL_LoadAdminLinkSettings('manage-user-ads?page-id=' . ($i)); ?>" class="waves-effect"><?php echo $i ?></a></li>
+		                            	<?php
+		                            	}
+		                            	$nums++;
+		                            }
+		                            ?>
+		                            <?php if ($db->totalPages > $page) { ?>
+		                            <li>
+		                                <a href="<?php echo FL_LoadAdminLinkSettings('manage-user-ads?page-id=' . ($page + 1)); ?>" class="waves-effect" title="Next Page">
+		                                    <i class="material-icons">chevron_right</i>
+		                                </a>
+		                            </li>
+		                            <?php } ?>
+		                            <li>
+		                                <a href="<?php echo FL_LoadAdminLinkSettings('manage-user-ads?page-id=' . ($db->totalPages)); ?>" class="waves-effect" title='Last Page'>
+		                                    <i class="material-icons">last_page</i>
+		                                </a>
+		                            </li>
+		                        </ul>
+		                    </nav>
+		                </div>
+	                	<div class="clearfix"></div>
+                	</div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<style>
+	.acp-usrads-pagination{
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.acp-usrads-pagination ul{
+		margin: 0px;
+	}
+
+	.acp-usrads-pagination div.pull-left{
+		padding: 5px 0px;
+	}
+</style>
+<div id="delete-modal" class="modal fade" role="dialog" data-id="">
+  <div class="modal-dialog">
+    <div class="modal-content modal-col-red">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">DELETE USER AD</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to continue? this action can't be undo</p>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-link waves-effect delete-button" data-dismiss="modal" data-type="user-ad">DELETE</button>
+        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$('.delete-content').on('click', function(event) {
+			event.preventDefault();
+			$('#delete-modal').attr('data-id', $(this).attr('data-id')).modal('show');
+		});
+	});
+</script>

@@ -1,0 +1,48 @@
+{strip}
+
+<div class="ad-rowcol">
+<h2>{$count} users registered on {$this->settings['SITENAME']}.</h2>
+
+
+<!-- users list -->
+<div style="padding:1px;">
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+	<tr>
+
+			<th sort="id">#id</th>
+			<th sort="cover">Picture</th>
+			<th sort="title">Fullname</th>
+			<th sort="title">Username</th>
+			<th sort="genre">E-mail</th>
+			<th sort="descr">Gender</th>
+			<th sort="reg">Region</th>
+			<th sort="time">Added</th>
+			<th sort="status">Status</th>
+			<th sort="*">*</th>
+		</tr>
+
+	
+
+	{foreach $q as $r}
+		<tr id="app{$r.id}">
+			<td>#{$r.id}</td>
+			<td><div class="tbl_user_td_cover photo"><img class="tbl_user_picture" width="32" height="32" src="/getPhoto?p={$r.profile_photo}&sz=small&g={$r.gender}"></div></td>
+			<td><a href="/user/{$r.id}" target="_blank">{$r.name}<br/>{$r.surname}</a></td>
+			<td class="f11">{if $r.username}@{$r.username}{else}No username setted.{/if}</td>
+			<td><div class="f11">{$r.email}</div></td>
+			<td class="f11">{$r.gender}</td>
+			<td class="f11">{$this->getUserCityAndCountry($r)}</td>
+			<td class="f11">{$this->time_elapsed($r.added)}</td>
+			<td class="f11">{if $r.status === 'confirmed'}<span style="color:green">{$r.status}</span>{else}<span style="color:red">{$r.status}</span>{/if}</td>
+			<td><a href="/admin.php?cmd=useredit&id={$r.id}" target="_blank" title="Edit" rel="tipsy">E</a> / <a href="javascript:;" title="Delete" rel="tipsy" onclick="deleteApp({$r.id});">D</a></td>
+		</tr>
+		{/foreach}
+
+</table>
+
+{$pagination}
+</div>
+
+
+</div>
+{/strip}

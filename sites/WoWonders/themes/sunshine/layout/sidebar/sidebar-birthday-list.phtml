@@ -1,0 +1,20 @@
+<div class="home-sidebar profile-style">
+    <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+            <img src="<?php echo $wo['UsersList']['avatar'];?>" alt="<?php echo $wo['UsersList']['name']; ?> Profile Picture" style="width:40px;"/>
+     </div>
+     <span class="user-popover" data-id="<?php echo $wo['UsersList']['id'];?>" data-type="<?php echo $wo['UsersList']['type'];?>">
+    <a href="<?php echo $wo['UsersList']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['username']?>">
+        <span class="user-name">
+            <?php echo $wo['UsersList']['name']; ?>
+            <?php  if($wo['UsersList']['verified'] == 1) {   ?>
+            <span class="verified-color">
+            <i class="fa fa-check-circle" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"></i>
+            </span>
+            <?php  } ?>
+        </span>
+    </a>
+    </span>
+    <div class="user-lastseen">
+       (<?php echo date_diff(date_create($wo['UsersList']['birthday']), date_create('today'))->y;?>) <?php echo $wo['lang']['years_old'];?>
+    </div>
+</div>

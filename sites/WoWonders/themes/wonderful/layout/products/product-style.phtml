@@ -1,0 +1,12 @@
+<div class="products-hover sideprolist" id="product_<?php echo $wo['product']['id'];?>">
+<a href="<?php echo $wo['product']['url'];?>" data-ajax="?link1=post&id=<?php echo $wo['product']['post_id'];?>" style="text-decoration: none;">
+    <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+        <img src="<?php echo $wo['product']['images'][0]['image_org'];?>" alt="<?php echo $wo['product']['name']; ?> Profile Picture" style="width: 40px;margin-right: 5px;"/>
+    </div>
+	  
+	<div style="font-size: 13px;">
+		<?php echo $wo['product']['name']; ?><br>
+        <span style="font-size: 11px;color: #9197a3;"><?php echo $wo['products_categories'][$wo['product']['category']];?></span>
+    </div>
+</a>
+</div>

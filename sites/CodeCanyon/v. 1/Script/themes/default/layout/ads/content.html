@@ -1,0 +1,71 @@
+<div class="manage-user-ads content-shadow">
+	<div class="manage-ads-header">
+		<ul>
+			<li class="ads <?php echo ($fl['page'] == 'user_ads') ? 'active': '';?>">
+				<a href="{{LINK ads}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z"></path></svg> {{LANG ads}}</a>
+			</li>
+			<li class="ads">
+				<a href="{{LINK settings/wallet}}">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,18V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5V6H12C10.89,6 10,6.9 10,8V16A2,2 0 0,0 12,18M12,16H22V8H12M16,13.5A1.5,1.5 0 0,1 14.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,12A1.5,1.5 0 0,1 16,13.5Z"></path></svg> {{LANG wallet}}
+			</a>
+			</li>
+			<li class="pull-right">
+				<a href="{{LINK ads/create-new}}" class="btn btn-main fl_btn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path></svg> {{LANG create_ad}}
+			</a>
+			</li>
+		</ul>
+	</div>
+	<div class="manage-ads-table-wrapper">
+		<table class="table table-striped" id="user-ads-table">
+			<thead>
+				<th>
+					{{LANG status}}
+				</th>
+				<th>
+					{{LANG cname}}
+				</th>
+				<th>
+					{{LANG results}}
+				</th>
+				<th>
+					{{LANG spent}}
+				</th>
+				<th>
+					{{LANG published}}
+				</th>
+				<th>
+					{{LANG action}}
+				</th>
+			</thead>
+			<tbody class="table-striped">
+				{{USER_ADS}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$("#user-ads-table").DataTable({
+			"oLanguage": {
+		      "oPaginate": {
+		        "sNext": "<i class='fa fa-angle-right'></i>",
+		        "sPrevious": "<i class='fa fa-angle-left'></i>",
+		      }
+		    }
+		});
+	});
+
+	function FL_DeleteAD(ad_id){
+		if (!ad_id || !confirm("Are you sure that you want to delete this ad?")) {
+			return false;
+		}
+		else{
+			$("tr[data-ad='" + ad_id + "']").slideUp('fast',function(){
+				$(this).remove();
+			})
+			$.post(FL_Ajax_Requests_File() + '?f=ads&s=delete', {id: ad_id});
+		}
+	}
+</script>

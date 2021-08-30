@@ -1,0 +1,63 @@
+<div class="list-group page-margin" style="text-align:center">
+<div class="startSteps">
+	<span class="step stepped"><i class="zmdi zmdi-camera"></i></span>
+	<span class="step stepped"><i class="zmdi zmdi-edit"></i></span>
+	<span class="step stepped"><i class="zmdi zmdi-accounts-add"></i></span>
+</div>
+    <div class="add-photo row">
+       <div class="col-lg-9" style="width:100%">
+       	<h2><?php echo $wo['lang']['follow_head'];?></h2>
+        <h4><?php echo $wo['lang']['get_latest_activity'];?></h4>
+        <br>
+		<div>
+        <?php
+        $user_id = array();
+        foreach ($wo['users'] as $wo['result']) {
+        	$user_id[] = $wo['result']['user_id'];
+        	$wo['result']['no_btn'] = true;
+        	echo Wo_LoadPage('start_up/user-result');
+        }
+        echo '<input type="hidden" name="users" id="users-id" value="' . implode(',' , $user_id) . '">';
+        ?>
+       </div>
+	   
+       
+	   </div>
+	   <div class="continue-button">
+       	<button class="mdbtn wabe con-button btn btn-main" onclick="Wo_SubmitFollow();">
+        <?php
+        $string = str_replace('{number}', count($wo['users']), $wo['lang']['follow_num']);
+        echo $string;
+        ?>
+        </button><br>
+       </div>
+       <div class="clear"></div>
+    </div>
+</div>
+<style>
+body {padding-left: 0px;}
+.navbar-default {padding-right: 0px;}
+
+@media (min-width: 1200px){
+body {padding-left: 0px;padding-right: 205px;}
+.navbar-default {padding-right: 205px;}
+}
+@media (min-width: 1500px){
+body {padding-left: 0px;padding-right: 260px;}
+}
+@media (max-width: 990px) {
+body {padding-left: 0px;overflow-x: auto;}
+}
+</style>
+<script type="text/javascript">
+function Wo_SubmitFollow() {
+	$('.con-button').attr('disabled', true);
+  $('.con-button').text("<?php echo $wo['lang']['please_wait'];?>");
+	var users = $('#users-id').val();
+	$.post(Wo_Ajax_Requests_File() + '?f=follow_users', {user:users}, function (data) {
+		if (data.status == 200) {
+			window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+		}
+	});
+}
+</script>

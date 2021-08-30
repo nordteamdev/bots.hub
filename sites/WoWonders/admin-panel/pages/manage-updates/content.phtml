@@ -1,0 +1,123 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Updates > Updates & Bug Fixes</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Check For New Updates</h2><br>
+                    <!-- <div>This system allows to update your site automatically, or download the script updates from our servers.</div> -->
+                </div>
+                <div class="body">
+                    <div class="alert alert-warning">
+                        The auto update system is disabled for now due multiple themes, if you want to update your site, you can update your site manually following this <a href="https://docs.wowonder.com/faqs.html#a-23423422" style="color: #fff; text-decoration: underline;">guide</a>
+                    </div>
+                	<!-- <div class="alert alert-danger">
+                		<b>Important:</b> <br><br>
+
+                		<b>1.</b> If you have edited the themes name, this system won't update your site.<br><br>
+                		<b>2.</b> If you are using wonderful, the theme folder should be reset to "wonderful".<br><br>
+                		<b>3.</b> If you are using wowonder, the theme folder should be reset to "wowonder".
+                	</div>
+                    <div class="alert alert-success email-settings-alert"></div>
+                    <form class="email-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="purchase_code" name="purchase_code" class="purchase_code form-control">
+                                <label class="form-label">Purchase Code</label>
+                            </div>
+                        </div>
+                        <span class="help-block">Your WoWonder purchase code, your purchase code won't be saved for security reasons.</span>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <input type="hidden" value="<?php echo $wo['script_version']?>" id="script-version">
+                        <button type="button" class="btn btn-primary m-t-15 waves-effect check-update-button" onclick="Wo_CheckForUpdates()">Check For Updates</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+         <div class="col-lg-6 col-md-6">
+            <div class="card updates-layout hidden">
+                <div class="header">
+                    <h2>New update is available!</h2>
+                </div>
+                <div class="body">
+                    <div>The following version(s) will be installed:</div>
+                    <div class="updates"></div>
+                    <button class="btn btn-success waves-effect waves-light m-t-10 run-update" onclick="Wo_RunUpdates()">Install Updates</button>
+                    <button class="btn btn-success waves-effect waves-light m-t-10 download-update" onclick="Wo_DownloadUpdates()">Download Updates</button>
+                    <br><br>
+                    <div>
+                    	1. "Install updates" button will download and automatically update your site to latest version(s). <span class="help-block red" style="color: red">Note: "Install updates" will repalce and overwrite all your code modifications, If you want to keep your modifications, please use the manual process (download button).<br>Make sure to create a backup before starting the update process.</span><br>
+                    </div>
+                     <div>
+                    	2. "Download updates" button will download the latest version(s) and save them to your server disk, you can find them in "/updates" folder. You can update your site manually using the guide included in the update.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+function Wo_CheckForUpdates() {
+	var purchase_code = $('.purchase_code').val();
+	var script_version = $('#script-version').val();
+	$('.check-update-button').text('Please wait..');
+	$.get(Wo_Ajax_Requests_File(), {f: 'check_for_updates', purchase_code: purchase_code}, function (data) {
+		if (data.status == 200) {
+			$('.updates-layout').removeClass('hidden');
+			$('.updates').html('<ul class="list-group"></ul>').find('ul').append('<li class="list-group-item hidden">Versions</li>');;
+			data.versions.forEach(function(entry) {
+			    $('.updates').find('ul').append('<li class="list-group-item"> ' + entry + '</li>');
+			});
+			$('#script-version').val(data.script_version);
+		} else if (data.status == 300) {
+			alert('Your site is up to date.');
+		} else if (data.status == 400) {
+			alert(data.ERROR_NAME);
+		}  else  {
+			alert('Error while connecting to server, please check your details');
+		}
+		$('.check-update-button').text('Check For Updates');
+	});
+}
+function Wo_DownloadUpdates() {
+	$('.download-update').text('Downloading, Please wait..');
+	var purchase_code = $('.purchase_code').val();
+	$.get(Wo_Ajax_Requests_File(), {f: 'download_updates', purchase_code: purchase_code}, function (data) {
+		if (data.status == 200) {
+			alert('The update(s) was downloaded.');
+			$('.updates-layout').addClass('hidden');
+		} else if (data.status == 300) {
+			alert('Your site is up to date.');
+		} else if (data.status == 400) {
+			alert(data.ERROR_NAME);
+		}  else  {
+			alert('Error while connecting to server, please check your details');
+		}
+		$('.download-update').text('Download Updates');
+	});
+}
+
+function Wo_RunUpdates() {
+	$('.run-update').text('Updating, Please wait..');
+	var purchase_code = $('.purchase_code').val();
+	var script_version = $('#script-version').val();
+	$.get('<?php echo $wo['config']['site_url']?>/updater.php', {f: 'run_updater', purchase_code: purchase_code, script_version:script_version}, function (data) {
+		if (data.status == 200) {
+			alert('Your site was updated, please refresh your page and clean your browser cache.');
+			$('.updates-layout').addClass('hidden');
+		} else if (data.status == 300) {
+			alert('Your site is up to date.');
+		} else if (data.status == 400) {
+			alert(data.ERROR_NAME);
+		}  else  {
+			alert('Error while connecting to server, please check your details');
+		}
+		$('.run-update').text('Install Updates');
+	});
+}
+</script>

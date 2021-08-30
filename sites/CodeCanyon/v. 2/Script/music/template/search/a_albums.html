@@ -1,0 +1,118 @@
+<!--------------------- Artist's albums [ template ] ------------------------->
+
+{strip}
+
+{if $count_a > 0}
+<div class="m_c_s_searchResult" m_mus_similar_artists="1">
+  <div class="mus_h2 {$mt}">
+    Similar artists
+  </div>
+  <div aria-hidden="false">
+    {foreach $query_a as $result}
+    
+    {if ($c > 7)}
+    {assign var=display_sm_art value='style="display:none"'}
+    {assign var=aria_hidden value='true'}
+    {/if}
+    <div class="mus_card_i" {$display_sm_art} aria-hidden="{$aria_hidden}">
+      <div class="mus_card __s" uid="card" id="crdI_{$result.id}">
+        <div class="mus_card_img_w">
+          <img data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.artist)}" src="{$result.cover}" width="100%" height="100%">
+          <div class="mus_card_ac_lst">
+            <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.artist)}&play=true" title="Play">
+              <span class="mus_card_play">
+              </span>
+              Play
+            </span>
+            <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause" title="pause">
+              <span class="mus_card_play __pause">
+              </span>
+              pause
+            </span>
+            <span data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.artist)}" class="mus_card_ac_i mus_card_ac_i__more" title="More">
+              <span class="mus_card_more">
+              </span>
+              More
+            </span>
+          </div>
+        </div>
+        <div class="mus_card_n_w">
+          <div class="mus_card_n textWrap" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.artist)}">
+            <span class="mus_card_n_a" title="{$result.artist}">
+              {$result.artist}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {assign $c $c++ nocache}
+    {/foreach}
+    <div style="width: 500px;">
+      <span class="m_c_s_c_go_to" data-srch-mr-sm-ar="true">
+        More artists
+      </span>
+    </div>
+  </div>
+</div>
+{/if}
+
+
+{if $count_b > 0}
+<div class="mus_separator mt-20">
+</div>
+<div class="mus_h2" id="artists_albums">
+  Artist's albums
+</div>
+<div class="mus_album-list" aria-hidden="false">
+  <div>
+    <div>
+      {foreach $query_b as $result}
+      
+      <div class="mus_card_i wd24">
+        <div class="mus_card" uid="card" id="crdI_{$result.b_id}">
+          <div class="mus_card_img_w mus_card_img_w__album">
+            <img src="{$result.b_cover}" class="mus_card_img" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($result.b_artist)}&alb={urlencode($result.b_album)}">
+            <div class="mus_card_ac_lst">
+              <span class="mus_card_ac_i mus_card_ac_i__pl" uid="pl" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($result.b_artist)}&alb={urlencode($result.b_album)}&play=true">
+                <span class="mus_card_play">
+                </span>
+                Play
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__ps" uid="pause">
+                <span class="mus_card_play __pause">
+                </span>
+                pause
+              </span>
+              <span class="mus_card_ac_i mus_card_ac_i__more" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($result.b_artist)}&alb={urlencode($result.b_album)}">
+                <span class="mus_card_more">
+                </span>
+                More
+              </span>
+            </div>
+          </div>
+          <div class="mus_card_n_w">
+            <div class="mus_card_n textWrap">
+              <span class="mus_card_n_a" data-href="search" data-action="true" data-query="?action=searchResult&method=album&key={urlencode($result.b_artist)}&alb={urlencode($result.b_album)}" title="{$result.b_album}">
+                {$result.b_album}
+              </span>
+            </div>
+       <div class="mus_card_n_artist ellip">
+         <span class="mus_card_n_artist_a" data-href="search" data-action="true" data-query="?action=searchResult&method=inx&key={urlencode($result.b_artist)}" title="{$result.b_artist}">
+           {$result.b_artist}
+         </span>
+       </div>
+  </div>
+  </div>
+  </div>
+  
+  {/foreach}
+            </div>
+    </div>
+</div>
+{else}
+<div class="mus_h2">
+  Sorry, but did't found any albums
+</div>
+{/if}
+
+{/strip}

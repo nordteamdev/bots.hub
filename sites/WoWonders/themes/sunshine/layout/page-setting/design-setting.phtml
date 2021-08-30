@@ -1,0 +1,90 @@
+<div class="wo_settings_page sun_sett_page">
+   <h3><?php echo $wo['lang']['design'];?></h3>
+
+   <form  method="post" class="form-horizontal setting-profile-form" enctype="multipart/form-data">
+         <div class="setting-profile-alert setting-update-alert"></div>
+         <div class="setting-panel row">
+          <!-- Text input-->
+         <div class="form-group col-lg-6">
+            <label class="col-md-12" for="background_image"><?php echo $wo['lang']['background']; ?></label>  
+            <div class="col-md-12">
+               <span class="btn wo_design_button btn-file">
+                     <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></span>
+                     <input type="file" id="background_image" accept="image/x-png, image/jpeg" name="background_image">
+               </span>
+            </div>
+            <div class="avatar-read" id="photo-form">
+               <label class="col-md-12"></label>  
+               <div class="col-md-12">
+                  <input type="text" class="form-control input-md" readonly>
+               </div>
+         </div>
+         </div>
+         
+                 
+        <?php if (!empty($wo['setting']['background_image'])) { ?>
+         <div class="form-group col-lg-6">
+            <?php 
+            $selected_my_background   = ($wo['setting']['background_image_status'] == '1')   ? ' checked' : '';
+            $selected_defualt_background = ($wo['setting']['background_image_status'] == '0')   ? ' checked' : '';
+            ?>
+            <label class="col-md-12" for="background_image_status"><?php echo $wo['lang']['theme']; ?></label>
+            <div class="col-md-12"> 
+               <label class="radio-inline" for="background_image_status-0">
+               <input type="radio" name="background_image_status" id="background_image_status-0" value="defualt" <?php echo $selected_defualt_background; ?>>
+               <?php echo $wo['lang']['deafult']; ?>
+               </label> 
+               <label class="radio-inline" for="background_image_status-1">
+               <input type="radio" name="background_image_status" id="background_image_status-1" value="my_background" <?php echo $selected_my_background; ?>>
+               <?php echo $wo['lang']['my_background']; ?>
+               </label>
+            </div>
+         </div>
+         <?php }?>
+        </div> 
+         <div class="form-group last-sett-btn modal-footer">
+      <div class="ball-pulse"><div></div><div></div><div></div></div>
+      <button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['save']; ?></button>
+         </div>
+         <input type="hidden" name="page_id" id="page-id" value="<?php echo $wo['setting']['id'];?>">
+         <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+
+   </form>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $("#background_image").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $(".avatar-read input").val(filename);
+         $(".avatar-read").slideDown(200);
+    });
+  $("#css_file").change(function () {
+         var filename = $(this).val().replace(/C:\\fakepath\\/i, '');
+         $(".css_file-read input").val(filename);
+         $(".css_file-read").slideDown(200);
+    });
+  $('form.setting-profile-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_page_design_setting',
+    beforeSend: function() {
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeIn(100);
+    },
+    success: function(data) {
+      if (data.status == 200) {
+        scrollToTop();
+        $('.setting-profile-alert').html('<div class="alert alert-success">' + data.message + '</div>');
+        $('.alert-success').fadeIn('fast', function() {
+          $(this).delay(2500).slideUp(500, function() {
+            $(this).remove();
+          });
+        });
+      } 
+      $('.wo_settings_page').find('.last-sett-btn .ball-pulse').fadeOut(100);
+    }
+  });
+  $("#background_image").on('change', function() {
+         $("#background_image_status-1").attr("checked", true);
+  });
+});
+</script>

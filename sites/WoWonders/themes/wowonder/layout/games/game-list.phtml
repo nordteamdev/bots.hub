@@ -1,0 +1,20 @@
+<div class="wo_game_list col-sm-6 col-md-6">
+	<div class="list_parent">
+		<div class="avatar <?php echo Wo_RightToLeft('pull-left'); ?>">
+			<a href="<?php echo $wo['game']['url'];?>" data-ajax="?link1=game&id=<?php echo $wo['game']['id'];?>">
+				<img src="<?php echo $wo['game']['game_avatar'];?>" alt="<?php echo $wo['game']['game_name']; ?> Profile Picture" />
+			</a>
+		</div>
+	
+		<div class="wo_game_list_info">
+			<h3><a href="<?php echo $wo['game']['url'];?>" data-ajax="?link1=game&id=<?php echo $wo['game']['id'];?>"><?php echo $wo['game']['game_name']; ?></a></h3>
+			<div class="page-website">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+				<?php echo $wo['lang']['last_play'];?> <?php echo Wo_Time_Elapsed_String($wo['game']['last_play']);?>
+			</div>
+			<a href="<?php echo $wo['game']['url'];?>" class="btn btn-info btn-sm">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> <?php echo $wo['lang']['play'];?>
+			</a>
+		</div>
+	</div>
+</div>

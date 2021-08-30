@@ -1,0 +1,96 @@
+
+
+<div class="ad-rowcol">
+<h2>Themes</h2>
+<a href="javascript:;" class="addgame" onclick="ga(this).remove();ga('#new_theme_cnt').slideDown();">+ New theme</a>
+<div id="new_theme_cnt" style="visibility:hidden;">
+<form id="new-theme" method="post" action="/admin.php">
+<input type="hidden" name="cmd" value="createnewtheme">
+<input type="hidden" name="json" value="1">
+<input type="hidden" name="th_image" value="">
+<input type="hidden" name="covers" value="">
+<div class="form form__gl-2-2">
+
+
+    <div class="form_i" data-type="text"><span class="input-l">Theme Name</span>
+        <div class="it_w it_w it_w__3gc"><input type="text" name="theme.name" class="it" placeholder="For example, Fruit Paradise" maxlength="280">
+        </div>
+    </div>
+
+
+    <div class="form_i" data-type="text"><span class="input-l">Theme Image</span>
+        <div class="it_w it_w it_w__3gc">
+		
+	<form id="upload_form" enctype="multipart/form-data" method="post">
+    <input type="file" onchange="uploadThemeImage(event);" id="file" name="file" multiple="1" accept="image/*"><br>
+    <progress  id="progressBar" value="0" max="100" style="width:300px;"></progress>
+    <h3 id="status"></h3>
+    <p id="loaded_n_total"></p>
+</form>
+		<ul id="covers"></ul>
+	
+		</div>
+    </div>
+
+	
+
+    <div class="form form__gl-2-2">
+        <div class="form_i mb-x">
+            <div class="form-actions"><button type="submit" name="button_send" class="form-actions_yes button-pro js-submit">Create theme</button><span onclick="ga('#new-app')[0].reset();" class="form-actions_no button-pro __sec">Reset</span></div>
+        </div>
+    </div>
+
+
+	
+</div>
+</div>
+</form>
+
+<!-- themes list -->
+<div style="padding:1px;">
+<table style="table-layout: fixed;" cellspacing="0" width="100%" class="jTPS" id="themesTable">
+	<thead>
+		<tr>
+			<th sort="id">id</th>
+			<th sort="cover">Image</th>
+			<th sort="title">Theme name</th>
+			<th sort="time">Added</th>
+			<th sort="time">*</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	{foreach $q as $r}
+		<tr id="theme{$r.id}">
+			<td>#{$r.id}</td>
+			<td class="tbl_theme_td_cover"><a title="View large image" href="/cmd/themes/{$r.photo}" target="_blank"><img class="tbl_theme_cover" src="/cmd/themes/thumb/{$r.photo}"></a></td>
+			<td class="tbl_app_title">{$r.name}</td>
+			<td>{$this->time_elapsed($r.added)}</td>
+			<td><a href="javascript:;" onclick="deleteTheme({$r.id});">Delete</a></td>
+		</tr>
+		{/foreach}
+	</tbody>
+	<tfoot class="nav">
+		<tr>
+			<td colspan="4">
+				<div class="pagination"></div>
+				<div class="paginationTitle">Page</div>
+				<div class="selectPerPage"></div>
+				<div class="status"></div>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+</div>
+
+
+</div>
+<script>
+{literal}
+ga(document).ready(function(){
+ga('#new_theme_cnt').removeAttr('style').hide();
+			ga('#themesTable').jTPS( {perPages:[8]} );
+
+});
+{/literal}
+</script>

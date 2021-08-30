@@ -1,0 +1,77 @@
+.Button {
+    outline: none;
+    position: relative;
+}.Button.btn {
+    background-color: #f8f8f8;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f0f0f0));
+    background: -webkit-linear-gradient(#fff, #f0f0f0);
+    background: linear-gradient(#fff, #f0f0f0);
+    border: 1px solid #ccc;
+    color: #5f5f5f;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 0 1px #fff;
+    white-space: nowrap;
+    background-color: #f0f0f0;
+  /*  padding: 7px 13px;*/
+}.Button.knSmall {
+    height: 22px;
+   /* padding-top: 7px;*/
+}.Button.knMedium {
+    height: 28px;
+   /* padding-top: 7px;*/
+}.Button.btn.rounded {
+    border-radius: 3px;
+}.Button.btn.primary, .Button.btn.primaryOnHover:hover, .Button.btn.primaryOnHover:focus, .Button.btn.primaryOnHover.active {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#366175), to(#244656));
+    background-image: -webkit-linear-gradient(#366175, #244656);
+    background-image: linear-gradient(#366175, #244656);
+    background-color: #366175;
+    border-bottom-color: #38515C;
+    border-left-color: #2E4651;
+    border-right-color: #2E4651;
+    border-top-color: #273B44;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-box-shadow: 0 1px 0 0 rgba(255,255,255,0.34);
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.34);
+    color: #fff;
+    text-shadow: 0 -1px rgba(0,0,0,0.11);
+}.kn.summary .knSendButtonWrapper .knSmall {
+    border: 1px solid;
+    border-color: #670f13;
+    float: left;
+}.kn.summary .knSendButtonWrapper .btn, .kn.summary .likeEditButtonWrapper .btn {
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    font-size: 13px;
+}.Button .accessibilityText {
+    font: 0 / 0 serif;
+    text-shadow: none;
+    color: transparent;
+    position: absolute;
+}
+
+.kn.summary .knSendButtonWrapper .btn:active, .kn.summary .likeEditButtonWrapper .btn:active {
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.1) inset;
+    box-shadow: 0 0 2px rgba(0,0,0,0.1) inset;
+}.Button.btn.primary:not(.noHoverActive):active, .Button.btn.primary:not(.noHoverActive).active, .Button.btn.primaryOnHover:hover:not(.noHoverActive):active, .Button.btn.primaryOnHover:hover:not(.noHoverActive).active, .Button.btn.primaryOnHover:focus:not(.noHoverActive):active, .Button.btn.primaryOnHover:focus:not(.noHoverActive).active, .Button.btn.primaryOnHover.active:not(.noHoverActive):active, .Button.btn.primaryOnHover.active:not(.noHoverActive).active {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#244656), to(#366175));
+    background-image: -webkit-linear-gradient(#244656, #366175); 
+    background-image: linear-gradient(#244656, #366175); 
+    background-image: linear-gradient(#244656, #366175);
+    -webkit-box-shadow: 0 1px 7px 0 rgba(0,0,0,0.5) inset;
+    box-shadow: 0 1px 7px 0 rgba(0,0,0,0.5) inset;
+    background-color: #244656;
+    border-color: #36444C;
+    text-shadow: 0 1px rgba(0,0,0,0.6);
+
+}
+.Button.btn.font-normal{
+font-weight:normal;
+}

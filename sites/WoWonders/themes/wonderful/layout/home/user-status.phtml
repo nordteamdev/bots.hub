@@ -1,0 +1,26 @@
+<li>
+	<div class="user-avatar" data-toggle="tooltip" title="<?php echo $wo['user_status']['user_data']['name']?>" data-placement="bottom">
+		<a href="<?php echo $wo['user_status']['user_data']['url'] . $wo['marker'];?>story=true" data-ajax="?link1=timeline&u=<?php echo $wo['user_status']['user_data']['username'];?>&story=true">
+			<img src="<?php echo $wo['user_status']['thumb']['filename'];?>" >
+		</a> 
+	</div>
+	<p>
+		<a href="<?php echo $wo['user_status']['user_data']['url'] . $wo['marker'];?>story=true">
+			<?php if($wo['user_status']['user_data']['first_name']) { ?>
+				<?php if (strlen($wo['user_status']['user_data']['first_name']) > 6):?>
+					<?php echo mb_substr($wo['user_status']['user_data']['first_name'], 0, 6, "UTF-8") . ".."; ?>
+				<?php else:?>
+					<?php echo $wo['user_status']['user_data']['first_name']; ?>
+				<?php endif;?>	
+			<?php } else { ?>
+			<?php if($wo['user_status']['user_data']['username']) { ?>
+				<?php if (strlen($wo['user_status']['user_data']['username']) > 6):?>
+					<?php echo mb_substr($wo['user_status']['user_data']['username'], 0, 6, "UTF-8") . ".."; ?>
+				<?php else:?>
+					<?php echo $wo['user_status']['user_data']['username']; ?>
+				<?php endif;?>
+			<?php } ?>
+			<?php } ?>
+		</a>
+	</p>
+</li>

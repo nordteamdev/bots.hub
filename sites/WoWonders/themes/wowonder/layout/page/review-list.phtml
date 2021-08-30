@@ -1,0 +1,50 @@
+<div class="profile-style" id="review-<?php echo $wo['review']['id']?>" data-user-review="<?php echo $wo['review']['id'];?>" style="width: 100%;">
+   <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+      <img src="<?php echo $wo['review']['user_data']['avatar'];?>" alt="<?php echo $wo['review']['user_data']['name']; ?> Profile Picture" />
+   </div>
+   <span class="user-popover" data-id="<?php echo $wo['review']['user_data']['id'];?>" data-type="<?php echo $wo['review']['user_data']['type'];?>">
+   <a href="<?php echo $wo['review']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['review']['user_data']['username'];?>">
+   <?php echo $wo['review']['user_data']['name']; ?>
+   <?php if($wo['review']['user_data']['verified'] == 1) {   ?>
+   	<span class="verified-color"><i class="fa fa-check-circle" title="<?php echo $wo['lang']['verified_user'];?>"></i></span>
+   <?php  } ?>
+   </a>
+   <span>
+   	<?php 
+	   	for ($i=0; $i < $wo['review']['valuation']; $i++) { 
+	   		echo '<i class="fa fa-fw fa-star-o"></i>';
+	   	}
+   	 ?>
+   </span>
+   </span>
+   <?php if($wo['config']['user_lastseen'] == 1 && $wo['review']['user_data']['showlastseen'] != 0): ?>
+   <div class="user-lastseen">
+      <?php echo Wo_UserStatus($wo['review']['user_data']['user_id'],$wo['review']['user_data']['lastseen']); ?>
+   </div>
+   <article class="pointer" style="height: 40px; overflow: hidden;">
+   	    <?php if (strlen($wo['review']['review']) > 150):?>
+            <?php echo mb_substr($wo['review']['review'],0,150,"UTF-8") . ".."; ?>
+            <span class="main" onclick="$('#review-read-<?php echo $wo['review']['id'];?>').modal();"><?php echo $wo['lang']['more']; ?></span>
+        <?php else:?>
+            <?php echo $wo['review']['review']; ?>
+        <?php endif;?> 
+   </article>
+   <?php endif; ?>
+   <div class="modal fade" id="review-read-<?php echo $wo['review']['id'];?>" role="dialog">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <h4 class="modal-title">
+	            <i class="fa fa-user"></i> <?php echo $wo['review']['user_data']['name']; ?>
+	            <i class="fa fa-times pointer pull-right" data-dismiss="modal"></i>
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+	            <p>
+	            	<?php echo $wo['review']['review'];?>
+	            </p>
+	         </div>
+	      </div>
+	   </div>
+	</div> 
+</div>

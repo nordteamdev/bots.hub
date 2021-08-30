@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Users > Affiliates System > Affiliates Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="header">
+                    <h2>Affiliates Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success affiliates-settings-alert"></div>
+                    <form class="affiliates-settings" method="POST">
+                        <label for="affiliate_system">Affiliates System</label>
+                        <div class="form-group">
+                            <input type="radio" name="affiliate_system" id="affiliate_system-enabled" value="1" <?php echo ($wo['config']['affiliate_system'] == 1) ? 'checked': '';?>>
+                            <label for="affiliate_system-enabled">Enabled</label>
+                            <input type="radio" name="affiliate_system" id="affiliate_system-disabled" value="0" <?php echo ($wo['config']['affiliate_system'] == 0) ? 'checked': '';?>>
+                            <label for="affiliate_system-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="affiliate_type">User will earn money when</label>
+                        <select class="form-control show-tick" id="affiliate_type" name="affiliate_type">
+                          <option value="0" <?php echo ($wo['config']['affiliate_type'] == 0) ? 'selected': '';?> >New user is registred</option>
+                          <option value="1" <?php echo ($wo['config']['affiliate_type'] == 1) ? 'selected': '';?> >New user is registred & bought a pro package</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="m_withdrawal" name="m_withdrawal" class="form-control" value="<?php echo $wo['config']['m_withdrawal']?>">
+                                <label class="form-label">Minimum withdrawal request</label>
+                            </div>
+                        </div><br>
+                        <div class="form-group form-float amount_ref">
+                            <div class="form-line">
+                                <input type="text" id="amount_ref" name="amount_ref" class="form-control" value="<?php echo $wo['config']['amount_ref']?>">
+                                <label class="form-label">Amount <small>The price you'll pay for each new referred user. Default 0.10</small></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float amount_percent_ref">
+                            <div class="form-line">
+                                <input type="number" min="0" max="100" id="amount_percent_ref" name="amount_percent_ref" class="form-control" value="<?php echo $wo['config']['amount_percent_ref']?>">
+                                <label class="form-label">Amount % <small>The price you'll pay for each new referred user. After he join any pro package.</small></label>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(document).ready(function() {
+    $('#amount_ref').focus(function() { $(this).select(); } );
+    $('#amount_percent_ref').focus(function() { $(this).select(); } );
+});
+$(function() {
+
+    //to ensure that value is Between 0-100
+    $('#amount_percent_ref').keyup(function(e) {
+        var num = $(this).val();
+        if(isNaN(num)||num<0 ||num>100) {
+            alert("Only Enter Number Between 0-100");
+            $(this).val("0");
+        }
+
+        $('#amount_ref').val(0);
+    });
+
+    $('#amount_ref').keyup(function(e) {
+        var num = $(this).val();
+        if(isNaN(num)||num<0) {
+            alert("Only Enter Number");
+            $(this).val("0");
+        }
+
+        $('#amount_percent_ref').val(0);
+    });
+
+    //to hide and show inputs according to selected value
+    // $('#affiliate_type').change(function(e){
+    //     var selected_affiliate_type = $('#affiliate_type :selected').text();
+    //     if( selected_affiliate_type == "New user is registred" ){
+    //         $('.amount_ref').show();
+    //         $('.amount_percent_ref').hide();
+    //     }else if( selected_affiliate_type == "New user is registred & bought a pro package" ){
+    //         $('.amount_ref').hide();
+    //         $('.amount_percent_ref').show();
+    //     }
+    // });
+
+
+    var form_affiliates_settings = $('form.affiliates-settings');
+    form_affiliates_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_affiliates_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_affiliates_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.affiliates-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.affiliates-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

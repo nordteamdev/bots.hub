@@ -1,0 +1,144 @@
+<div class="reply reply-container" id="comment_reply_<?php echo $wo['reply']['id'];?>" data-reply-id="<?php echo $wo['reply']['id'];?>">
+	<a class="<?php echo Wo_RightToLeft('pull-left'); ?>" href="<?php echo $wo['reply']['publisher']['url']?>" onclick="InjectAPI('{&quot;profile_id&quot; : &quot;<?php echo $wo['reply']['publisher']['id']?>&quot;, &quot;type&quot;:&quot;<?php echo $wo['reply']['publisher']['type']?>&quot;}', event);">
+		<img class="avatar <?php echo Wo_RightToLeft('pull-left'); ?>" src="<?php echo $wo['reply']['publisher']['avatar']?>" alt="avatar">
+	</a>
+	<div class="comment-body">
+		<div class="<?php echo Wo_RightToLeft('pull-right');?> comment-options sfsfsf"  style="<?php if ($wo['language_type'] == 'rtl') {?> right: auto !important; <?php }else{ ?> right: 0 !important;left: inherit; <?php }?>">
+            <?php if ($wo['reply']['post_onwer'] === true|| $wo['reply']['onwer'] === true || Wo_IsAdmin()) {?>
+			<?php if ($wo['reply']['post_onwer'] === true|| $wo['reply']['onwer'] === true): ?>
+				<span class="pointer"  onclick="Wo_EditReplyComment(<?php echo $wo['reply']['id']?>);" data-toggle="tooltip" title="Edit">
+					<i class="zmdi zmdi-edit" style="font-size: 13px;"></i>
+				</span>
+			&nbsp;
+			<?php endif; ?>
+				<span class="pointer" id="deleteComment" onclick="Wo_DeleteReplyComment(<?php echo $wo['reply']['id']?>);" data-toggle="tooltip" title="Delete">
+					<i class="zmdi zmdi-delete" style="font-size: 13px;"></i>
+				</span>           
+			<?php } ?>
+		</div>
+		<div class="comment-heading reply-heading wo_fb_comm">
+			<div class="innr_div">
+				<div class="comm_head">
+					<span class="user-popover" data-id="<?php echo $wo['reply']['publisher']['id'];?>" data-type="<?php echo $wo['reply']['publisher']['type'];?>">
+						<a href="<?php echo $wo['reply']['publisher']['url']?>" data-ajax="?link1=timeline&u=<?php echo $wo['reply']['publisher']['username'];?>"  onclick="InjectAPI('{&quot;profile_id&quot; : &quot;<?php echo $wo['reply']['publisher']['id']?>&quot;, &quot;type&quot;:&quot;<?php echo $wo['reply']['publisher']['type']?>&quot;}', event);">
+							<h4 class="user"><?php echo $wo['reply']['publisher']['name']?></h4>
+						</a>
+					</span>
+					<?php  if($wo['reply']['publisher']['verified'] == 1) {   ?>
+						<span class="verified-color" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"><i class="fa fa-check-circle"></i></span>
+					<?php } ?>
+				</div>
+				
+				<div class="comment-text" data-post-comm-reply-text="<?php echo $wo['reply']['id']?>"><?php echo $wo['reply']['text']?></div>
+			</div>
+			<div class="clear"></div>   
+		</div>
+
+		<?php if ($wo['config']['second_post_button'] == 'reaction') { ?>
+            <!-- reaction -->
+
+            <div class="like-stat  stat-item " style="<?php if ($wo['language_type'] == 'rtl') {?> float: right;margin: -2px 10px 0px 0px; <?php }else{ ?> float: left;margin: -2px 10px 0px 0px; <?php }?>">
+              <span class="like-emo replay-reactions-icons-<?php echo $wo['reply']['id']; ?>">
+              <?php echo Wo_GetPostReactions($wo['reply']['id'],"replay");?>
+              </span>
+            </div>
+
+            <div class="wo-reaction wo-reaction-replay stat-item" data-id="<?php echo $wo['reply']['id']; ?>" id="comment_reactions" data-id="<?php echo $wo['comment']['id']; ?>">
+                <span class="like-btn like-btn-replay" data-id="<?php echo $wo['reply']['id']; ?>">
+                    <?php
+                    if (Wo_IsReacted($wo['reply']['id'], $wo['reply']['user_id'],"replay") === true) {
+                        echo '<span class="replay-status-reaction-'.$wo['reply']['id'].' active-like"><i class="zmdi zmdi-thumb-up" style="font-size: 13px;"></i>  <span class="r_likes-'.$wo['reply']['id'].'"></span></span>';
+                    } else {
+                        echo '<span class="replay-status-reaction-'.$wo['reply']['id'].'"><i class="zmdi zmdi-thumb-up" style="font-size: 13px;color: #2196f3;"></i>  <span class="r_likes-'.$wo['reply']['id'].'"></span></span>';
+                    }
+                    ?>
+                </span>
+                <ul class="reactions-box reactions-box-comment-replay-container-<?php echo $wo['reply']['id']; ?>" data-id="<?php echo $wo['reply']['id']; ?>" style="<?php if ($wo['language_type'] == 'rtl') {?> left: auto; <?php }else{ ?> right: auto; <?php }?>">
+                    <li class="reaction reaction-like" data-reaction="Like" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Like');">
+						<div class="emoji emoji--like">
+							<div class="emoji__hand"><div class="emoji__thumb"></div></div>
+						</div>
+					</li>
+                    <li class="reaction reaction-love" data-reaction="Love" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Love');">
+						<div class="emoji emoji--love">
+							<div class="emoji__heart"></div>
+						</div>
+					</li>
+                    <li class="reaction reaction-haha" data-reaction="HaHa" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'HaHa');">
+						<div class="emoji emoji--haha">
+							<div class="emoji__face">
+								<div class="emoji__eyes"></div>
+								<div class="emoji__mouth">
+									<div class="emoji__tongue"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+                    <li class="reaction reaction-wow" data-reaction="Wow" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Wow');">
+						<div class="emoji emoji--wow">
+							<div class="emoji__face">
+								<div class="emoji__eyebrows"></div>
+								<div class="emoji__eyes"></div>
+								<div class="emoji__mouth"></div>
+							</div>
+						</div>
+					</li>
+                    <li class="reaction reaction-sad" data-reaction="Sad" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Sad');">
+						<div class="emoji emoji--sad">
+							<div class="emoji__face">
+								<div class="emoji__eyebrows"></div>
+								<div class="emoji__eyes"></div>
+								<div class="emoji__mouth"></div>
+							</div>
+						</div>
+					</li>
+                    <li class="reaction reaction-angry" data-reaction="Angry" onclick="Wo_RegisterReplyReaction(<?php echo $wo['reply']['user_id']; ?>,<?php echo $wo['reply']['id']; ?>,'Angry');">
+						<div class="emoji emoji--angry">
+							<div class="emoji__face">
+								<div class="emoji__eyebrows"></div>
+								<div class="emoji__eyes"></div>
+								<div class="emoji__mouth"></div>
+							</div>
+						</div>
+					</li>
+                </ul>
+            </div>
+
+
+        <?php } else { ?>
+
+		<span class="comment-options">
+            <span class="comment-icons" style="display: inline-block;">
+            	<span class="pointer" id="LikeReplyComment" onclick="Wo_RegisterCommentReplyLike(<?php echo $wo['reply']['id']; ?>);">
+            		<?php if($wo['reply']['is_comment_liked'] !== true) { ?>
+            			<i class="zmdi zmdi-thumb-up" style="font-size: 13px;"></i>
+               		<?php } else { ?>
+			   			<i class="zmdi zmdi-thumb-up active-like" style="font-size: 13px;"></i>
+            		<?php } ?>
+				</span>
+            	<span id="comment-reply-likes">
+            		<?php echo $wo['reply']['comment_likes'];?>
+            	</span> · 
+            </span>
+			<div style="display: inline-block;">
+            	<span class="pointer" id="WonderReplyComment" onclick="Wo_RegisterCommentReplyWonder(<?php echo $wo['reply']['id']; ?>);">
+            		<?php if($wo['reply']['is_comment_wondered'] !== true) { ?>
+            			<i class="zmdi zmdi-<?php echo $wo['second_post_button_icon'];?>" style="font-size: 13px;"></i>
+            		<?php } else {  ?>
+						<i class="zmdi zmdi-<?php echo $wo['second_post_button_icon'];?> active-wonder" style="font-size: 13px;"></i>
+            		<?php } ?>
+				</span>
+         		<span id="comment-reply-wonders">
+            		<?php echo $wo['reply']['comment_wonders'];?>
+            	</span> ·
+			</div> 
+         	<span class="time ajax-time" title="<?php echo date('c',$wo['reply']['time']);?>"><?php echo $wo['reply']['time']?></span>
+        </span>
+		<?php } ?>
+	  <div class="hidden" data-post-comm-reply-edit="<?php echo $wo['reply']['id']?>">
+            <br>
+            <textarea class="edit-box form-control" onkeydown="Wo_UpdatCommReply(<?php echo $wo['reply']['id']?>,event,this)"></textarea>
+      </div>
+   </div>
+   <?php echo Wo_LoadPage('modals/delete-comment-reply');?>
+</div>

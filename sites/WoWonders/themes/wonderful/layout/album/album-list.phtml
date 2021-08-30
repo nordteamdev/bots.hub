@@ -1,0 +1,16 @@
+<div class="cool-style-album col-xs-6 col-sm-6 col-lg-3" id="album_<?php echo $wo['album']['id'];?>">
+	<div class="album_parent">
+		<div class="avatar">
+			<a href="<?php echo $wo['album']['url'];?>" data-ajax="?link1=post&id=<?php echo $wo['album']['id'];?>">
+				<img src="<?php echo $wo['album']['first_image'];?>" alt="<?php echo $wo['album']['first_image']; ?> Picture" />
+			</a>
+		</div>
+		<div class="album-name">
+			<h4><a href="<?php echo $wo['album']['url'];?>" data-ajax="?link1=post&id=<?php echo $wo['album']['id'];?>"><?php echo $wo['album']['album_name']; ?></a></h4>
+			<div class="album-count">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+				<?php echo Wo_CountAlbumImages($wo['album']['id']);?> <?php echo $wo['lang']['photos']; ?>
+			</div>
+		</div>
+	</div>
+</div>

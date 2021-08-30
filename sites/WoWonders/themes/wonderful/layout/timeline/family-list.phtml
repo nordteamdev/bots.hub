@@ -1,0 +1,31 @@
+<div class="profile-style user-data" data-family-member="<?php echo $wo['UsersList']['user_data']['user_id'];?>" style="width: 100%;">
+  <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+      <img src="<?php echo $wo['UsersList']['user_data']['avatar'];?>" alt="<?php echo $wo['UsersList']['user_data']['name']; ?> Profile Picture" />
+    </div>
+  <span class="user-popover" data-id="<?php echo $wo['UsersList']['user_data']['id'];?>" data-type="<?php echo $wo['UsersList']['user_data']['type'];?>">
+  <a href="<?php echo $wo['UsersList']['user_data']['url'];?>" data-ajax="?link1=timeline&u=<?php echo $wo['UsersList']['user_data']['username'];?>"><?php echo $wo['UsersList']['user_data']['name']; ?></a>
+  <?php if($wo['UsersList']['user_data']['verified'] == 1) {   ?>
+        <span class="verified-color"><i class="fa fa-check-circle" title="<?php echo $wo['lang']['verified_user'];?>"></i></span>
+  <?php  } ?>
+  
+    <span class="small"> &#64;<?php echo $wo['lang'][$wo['family'][$wo['UsersList']['member']]];?>
+    </span>
+
+  
+  </span>
+  <?php if($wo['config']['user_lastseen'] == 1 && $wo['UsersList']['user_data']['showlastseen'] != 0): ?>
+  <div class="user-lastseen">
+    <?php echo Wo_UserStatus($wo['UsersList']['user_data']['user_id'],$wo['UsersList']['user_data']['lastseen']); ?>
+  </div>
+  <?php endif; ?>
+  <div class="user-follow-button">
+    <?php if ($wo['UsersList']['active'] == 1 && $wo['user_profile']['id'] == $wo['user']['id']): ?>
+      <span>
+          <button type="button" class="btn btn-default btn-sm" onclick="$('#delete_family_mbr_modal').attr('data-family-member-id', '<?php echo $wo['UsersList']['user_data']['id'];?>').modal('show');">
+             <i class="fa fa-times progress-icon" data-icon="fa-times"></i>
+             <span class="button-text"> <?php echo $wo['lang']['delete'];?></span>
+          </button>
+      </span>
+    <?php endif; ?>
+  </div>
+</div>

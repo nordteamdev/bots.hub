@@ -1,0 +1,39 @@
+{strip}
+<div id="ntf_layer_content_inner">
+    <div>
+        <div id="hook_Block_Ntf" class="hookBlock">
+		{foreach $query as $res}
+		           <div id="ne-n" data-category="Other" class="nn{$res.id} notif {if $res.unread == 'yes'} __marked {/if} notif__111 show-on-hover">
+                <div class="notif_media clearfix">
+                    <div class="ucard-v __xs">
+                        <div class="section">
+					 
+                           <a class="photo" data-clbk="removePopup" href="/user/{$res.uid}" hrefattr="true"><img class="photo_img" src="/getPhoto?p={$res.uphoto}&sz=small" width="64" height="64"></a>
+					 
+                        </div>
+                    </div>
+                    <div id="hook_Form_confirmn" class="notif_media_cnt">
+
+                        <div class="notif_tx">
+						{if $res.gender == 'male'}
+							{assign var=g value=$this->lang['his']}
+						{else}
+							{assign var=g value=$this->lang['her']}
+						{/if}
+						<a href="/user/{$res.uid}" data-clbk="removePopup" class="f500 bold" hrefattr="true">{$res.fullname}</a>{if $res.json == 'added_new_story'} {str_replace('%s', $g, $this->lang['notif_added_to_story'])} <a href="javascript:void(0);" id="u-{$res.uid}" onclick="story.openStory(this,event,'{$res.story_id}',1);">{$this->lang['notif_story']}</a>. {else} {str_replace('%s',$g,$this->lang['notif_updated_story'])} <a href="javascript:void(0);" id="u-{$res.uid}" onclick="story.openStory(this,event,'{$res.story_id}',1);">{$this->lang['notif_story']}</a>.{/if}
+
+<div class="notif_footer">{$this->time_elapsed($res.time)}</div>
+ 
+</div></div>
+
+
+
+
+<div class="notif_ac fade-on-hover"><span class="hook inlineBlock">
+<span title="{$this->lang['remove_notif']}" data-norelationrelativ id="hook_FormButton_fri_{$res.id}" data-freq="{$res.time}-{$res.id}" href="/profile?cmd=removeNotif&i={$res.id}&type=pos&view_as=json" onclick="removeThisNotif(this,event)" class="ic12 ic12_close-g lp"></span></span></div>
+</div>
+</div></div>
+{/foreach}
+                    </div></div>
+                </div>
+				{/strip}

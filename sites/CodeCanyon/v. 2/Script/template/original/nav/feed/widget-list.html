@@ -1,0 +1,100 @@
+{if !isset($item_type)}
+{assign var=item_type value=""}
+{/if}
+		  <ul class="widget-list redesv116">
+		  
+		  
+		   {if isset($disable_share) || isset($comment_sticky)}
+		   
+                <li class="widget-list_i">
+                    <div class="widget "><button href="javascript:void(0);" onclick="foucsCommentInput(event);" class="h-mod widget_cnt">
+					<span class="widget_ico ic12 ic12_comment"></span>
+					<span class="widget_tx">{$this->lang['feed_comment_widget']}</span>
+					<span class="widget_delim"></span>
+					<span class="widget_count js-count">{$wd_comm_count}</span></button></div>
+                </li>
+				
+			{else}
+	
+                <li class="widget-list_i">
+                    <div class="widget "><button href="{$wd_comm_href}" hrefattr="true" {$wd_comm_data} data-module="CommentWidgets" class="h-mod widget_cnt">
+					<span class="widget_ico ic12 ic12_comment"></span>
+					<span class="widget_tx">{$this->lang['feed_comment_widget']}</span>
+					<span class="widget_delim"></span>
+					<span class="widget_count js-count">{$wd_comm_count}</span></button></div>
+                </li>
+	
+			{/if}
+				
+				{if isset($disable_share)}
+				&nbsp;
+				{else}
+			
+                <li class="widget-list_i">
+                    <div data-compact="true">
+                        <div id="sharebuttonwp" class="widget __compact">
+                            <button onclick="shareBox(this,event,'{$item_type}','{$res.uid}');" id="reshare_{$res.itemid}" class="h-mod widget_cnt {if $clubid > 0}sharecommunity{/if} {if $this->cntSharedByMe($res.itemid,$item_type)}__active{/if}"><span class="widget_ico ic12 ic12_share"></span>
+							<span class="widget_tx">{$this->lang['Share']}</span>
+							<span class="widget_delim"></span>
+							<span class="widget_count js-count">{$this->getShareCount($res.itemid,$item_type)}</span></button>
+                        </div>
+                    </div>
+                    <div class="h-mod sc-menu_w" data-module="ShortcutMenu">
+                        <div id="hook_Block_" class="posR"></div>
+                    </div>
+                </li>
+				{/if}
+				
+				
+                <li class="widget-list_i _aflvkl __{$res.itemid}">
+                    <div data-compact="true">
+                        <div {if $item_type !== 'photo'}data-itemcateg="{$item_type}"{/if} data-pplikt="ppo_{$res.itemid}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.itemid}" data-appendtooltipto="._aflvkl" class="widget _lightp {if $kl_eu}__active{/if}  /*{if $res.byuser == $this->USER['id']}_widged_disabled __nohover{/if}*/ __compact">
+                            <button data-log-click='{ldelim}{if $clubid > 0}"community":"{$clubid}",{/if}"type":"like","item":"{$item_type}","itemid":"{$res.itemid}"{rdelim}' class="h-mod widget_cnt controls-list_lk">
+							<span class="widget_ico ic12 ic12_klass"></span>
+							<span class="widget_tx">{$this->lang['Like']}</span>
+							<span class="widget_delim"></span>
+							<span class="widget_count js-count">{$kl_count}</span></button>
+                        </div>
+                    </div>
+                    <div class="h-mod sc-menu_w">
+                        <div id="hook_Block" class="posR"></div>
+                    </div>
+                </li>
+            </ul>
+	<!--		
+<div class="like_wrap _like_wall469709804_314 ">
+    <div class="like_cont ">
+	
+	
+        <ul class="like_btns widget-list">
+		<li class="_aflvkl __{$res.itemid}">
+		<div {if $item_type !== 'photo'}data-itemcateg="{$item_type}"{/if} data-pplikt="ppo_{$res.itemid}" data-popup-people-likedphoto="1" data-photolikesdropdown="{$res.itemid}" data-appendtooltipto="._aflvkl" class="widget _lightp {if $kl_eu}__active{/if}  /*{if $res.byuser == $this->USER['id']}_widged_disabled __nohover{/if}*/ __compact" >
+            <a class="like_btn like _like empty" data-log-click='{ldelim}{if $clubid > 0}"community":"{$clubid}",{/if}"type":"like","item":"{$item_type}","itemid":"{$res.itemid}"{rdelim}' onclick="Likes.toggle(this, event, 'wall469709804_314', 'b112ef5d05e634deb5');" href="javascript:void(0);" title="{$this->lang['Like']}">
+                <div class="like_button_icon"></div>
+                <div class="like_button_label"></div>
+                <div class="like_button_count js-count">{$kl_count}</div>
+                <span class="blind_label">{$this->lang['Like']}</span>
+            </a>
+			</div>
+			</li>
+            <a class="like_btn comment _comment _reply_wrap empty" onclick="return Wall.showEditReply('469709804_314', event)" data-count="0" href="#" title="Comment">
+                <div class="like_button_icon"></div>
+                <div class="like_button_label"></div>
+                <div class="like_button_count"></div>
+                <span class="blind_label">Comment</span>
+            </a>
+			
+            <a class="like_btn share _share empty" onclick="Likes.share('wall469709804_314', {}); return false;" onmouseover="Likes.showShare(this, 'wall469709804_314');" data-count="0" href="#" title="Share">
+                <div class="like_button_icon"></div>
+                <div class="like_button_label"></div>
+                <div class="like_button_count"></div>
+                <span class="blind_label">Share</span>
+            </a>
+            
+
+        </ul>
+  
+
+    </div>
+</div>-->
+			

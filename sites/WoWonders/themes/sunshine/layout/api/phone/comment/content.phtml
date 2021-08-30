@@ -1,0 +1,137 @@
+<?php $replies = Wo_CountCommentReplies($wo['comment']['id']);?>
+<div class="comment comment-container" id="comment_<?php echo $wo['comment']['id'];?>" data-comment-id ="<?php echo $wo['comment']['id'];?>">
+   <img class="avatar <?php echo Wo_RightToLeft('pull-left'); ?>" src="<?php echo $wo['comment']['publisher']['avatar']?>" alt="avatar" onclick="InjectAPI('{&quot;profile_id&quot; : &quot;<?php echo $wo['comment']['publisher']['id']?>&quot;, &quot;type&quot;:&quot;<?php echo $wo['comment']['publisher']['type']?>&quot;}');">
+   <div class="comment-body">
+      <div class="comment-heading">
+         <span onclick="InjectAPI('{&quot;profile_id&quot; : &quot;<?php echo $wo['comment']['publisher']['id']?>&quot;, &quot;type&quot;:&quot;<?php echo $wo['comment']['publisher']['type']?>&quot;}');">
+            <h4 class="user">
+            <?php echo $wo['comment']['publisher']['name']?>
+            </h4>
+            <?php  if($wo['comment']['publisher']['verified'] == 1) {   ?>
+            <span class="verified-color" data-toggle="tooltip" title="<?php echo $wo['lang']['verified_user'];?>"><i class="fa fa-check-circle"></i></span>
+            <?php } ?>
+         </span>
+         <div class="<?php echo Wo_RightToLeft('pull-right');?> comment-options">
+            <?php if ($wo['comment']['onwer'] === true) { ?>
+            <span class="pointer comment-icons" id="editComment" onclick="Wo_OpenCommentEditBox(<?php echo $wo['comment']['id']?>);">
+               <i class="fa fa-pencil progress-icon" data-icon="pencil"></i>
+            </span>
+            <?php } ?>
+            <?php if ($wo['comment']['post_onwer'] === true|| $wo['comment']['onwer'] === true) {?>
+            <span class="pointer" id="deleteComment" onclick="Wo_DeleteComment(<?php echo $wo['comment']['id']?>);">
+               <i class="fa fa-trash-o progress-icon" data-icon="trash-o"></i>
+            </span>
+            <?php } ?>
+         </div>
+         <span class="time ajax-time" title="<?php echo date('c',$wo['comment']['time']);?>"><?php echo $wo['comment']['time']?></span>
+         <div class="comment-text"><?php echo $wo['comment']['text']?></div>
+         <div class="comment-image">
+            <?php if (!empty($wo['comment']['c_file'])): ?>
+               <img onclick="InjectAPI('{&quot;image_url&quot; : &quot;<?php echo Wo_GetMedia($wo['comment']['c_file']);?>&quot;, &quot;type&quot;:&quot;lighbox&quot;}');" src="" alt="Comment image">
+            <?php endif ?>
+         </div>
+         <div class="clear"></div>
+      </div>
+      <?php if ($wo['config']['second_post_button'] == 'reaction') { ?>
+            <!-- reaction -->
+
+            <div class="like-stat  stat-item post-like-status" style="float: left;margin: -2px 10px 0px 0px;">
+              <span class="like-emo comment-reactions-icons-<?php echo $wo['comment']['id']; ?>">
+              <?php echo Wo_GetPostReactions($wo['comment']['id'],"comment");?>
+              </span>
+              <!-- <span class="like-details">Arkaprava Majumder and 1k others</span> -->
+            </div>
+
+            <div class="wo-reaction stat-item" style="max-width: 100%;padding: inherit;float: left;font-size: 13px;margin-top: 3px;position: relative;">
+                <span class="like-btn" >
+                    <?php
+                    if (Wo_IsReacted($wo['comment']['id'], $wo['story']['user_id'],"comment") === true) {    
+                    echo '<span class="status-reaction-'.$wo['comment']['id'].' active-like"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="c_likes-'.$wo['comment']['id'].'">' . $wo['lang']['liked'] . '</span></span>';   
+                    } else {   
+                    echo '<span class="status-reaction-'.$wo['comment']['id'].'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg> <span class="c_likes-'.$wo['comment']['id'].'">' . $wo['lang']['like'] . '</span></span>';   
+                    }    
+                    ?>
+                    <ul class="reactions-box">
+                        <li class="reaction reaction-like" data-reaction="Like" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'Like');"></li>
+                        <li class="reaction reaction-love" data-reaction="Love" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'Love');"></li>
+                        <li class="reaction reaction-haha" data-reaction="HaHa" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'HaHa');"></li>
+                        <li class="reaction reaction-wow" data-reaction="Wow" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'Wow');"></li>
+                        <li class="reaction reaction-sad" data-reaction="Sad" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'Sad');"></li>
+                        <li class="reaction reaction-angry" data-reaction="Angry" onclick="Wo_RegisterCommentReaction(<?php echo $wo['comment']['id']; ?>,'Angry');"></li>
+                    </ul>
+                </span>
+            </div>
+        <?php } ?>
+      <span class="comment-options">
+        <?php if ($wo['config']['second_post_button'] == 'reaction') { ?>
+
+        <?php }else{ ?>
+         <span class="comment-icons">
+            <span class="pointer" id="LikeComment" onclick="Wo_RegisterCommentLike(<?php echo $wo['comment']['id']; ?>);">
+               <?php if($wo['comment']['is_comment_liked'] !== true) { ?>
+               <i class="fa fa-thumbs-up progress-icon" data-icon="thumbs-up"></i>
+               <?php } else { ?>
+               <i class="fa fa-thumbs-up progress-icon active-like" data-icon="thumbs-up"></i>
+               <?php } ?>
+            </span>
+            <span id="comment-likes">
+               <?php echo $wo['comment']['comment_likes'];?>
+            </span> ·
+         </span>
+         <span class="pointer" id="WonderComment" onclick="Wo_RegisterCommentWonder(<?php echo $wo['comment']['id']; ?>);">
+            <?php if($wo['comment']['is_comment_wondered'] !== true) { ?>
+            <i class="fa fa-<?php echo $wo['second_post_button_icon'];?> progress-icon" data-icon="<?php echo $wo['second_post_button_icon'];?>"></i>
+            <?php } else {  ?>
+            <i class="fa fa-<?php echo $wo['second_post_button_icon'];?> progress-icon active-wonder" data-icon="<?php echo $wo['second_post_button_icon'];?>"></i>
+            <?php } ?>
+         </span>
+         <span id="comment-wonders">
+            <?php echo $wo['comment']['comment_wonders'];?>
+         </span>
+         <?php } ?>
+         
+         <?php if ($replies == 0) { ?>
+         ·
+         <span class="pointer" id="ReplyComment" onclick="Wo_OpenReplyBox(<?php echo $wo['comment']['id']; ?>);">
+            <i class="fa fa-comment progress-icon" data-icon="comment"></i>
+         </span>
+         <span id="comment-replies">
+            <?php echo $replies;?>
+         </span>
+         <?php } ?>
+      </span>
+      <div class="comment-edit">
+         <textarea onkeyup="textAreaAdjust(this, 26)" class="edit-box form-control" onkeydown="Wo_EditComment(this.value,<?php echo $wo['comment']['id']?>, event)" placeholder="Edit Comment" dir="auto"><?php echo $wo['comment']['Orginaltext']?></textarea>
+      </div>
+      <div class="comment-replies">
+         <div class="comment-replies-text">
+            <div class="reply-container"></div>
+         </div>
+         <?php if ($replies > 0) { ?>
+         <div class="view-more-replies" onclick="Wo_ViewMoreReplies(<?php echo $wo['comment']['id'];?>);">
+            <i class="fa fa-share fa-fw"></i> <?php echo $replies;?> <?php echo $wo['lang']['replies']?>
+         </div>
+         <?php } ?>
+         <div class="comment-reply">
+            <textarea onkeyup="textAreaAdjust(this, 26)" class="reply-box form-control textarea" onkeydown="Wo_RegisterReply(this.value,<?php echo $wo['comment']['id']; ?>,<?php echo $wo['story']['publisher']['user_id']; ?>, event, <?php echo (!empty($wo['story']['publisher']['page_id'])) ? $wo['story']['publisher']['page_id'] : '0'; ?>)" placeholder="<?php echo $wo['lang']['reply_to_comment'];?>" dir="auto"></textarea>
+            <div id="hidden_inputbox_comment_reply"></div>
+         </div>
+      </div>
+   </div>
+   <?php echo Wo_LoadPage('modals/delete-comment');?>
+   <script>
+   $(function () {
+   $("#comment_<?php echo $wo['comment']['id'];?> .comment-text").readmore({
+   speed: 75,
+   moreLink: '<a href="#" class="hash font-13"><?php echo $wo["lang"]["read_more"];?></a>',
+   lessLink: '<a href="#" class="hash font-13"><?php echo $wo["lang"]["read_less"];?></a>',
+   });
+   $("#comment_<?php echo $wo['comment']['id']; ?> .comment-reply input").triggeredAutocomplete({
+   hidden: '#hidden_inputbox_comment_reply',
+   source: Wo_Ajax_Requests_File() + "?f=mention",
+   trigger: "@"
+   });
+   
+   });
+   </script>
+</div>

@@ -1,0 +1,166 @@
+<div class="manage-user-ads content-shadow  manage-user-ads-form">
+	<div class="settings-header main-border-color manage-ads-header">
+		<h3>
+			<a href="{{LINK ads}}">
+				<i class="material-icons">new_releases</i> {{LANG ads}} 
+			</a>
+			&nbsp;
+			<a href="{{LINK settings/wallet}}">
+				<i class="material-icons">keyboard_arrow_right</i> {{LANG create_new_ad}}
+			</a>
+		</h3>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<form id="manage-ads-form" class="form">
+		<div id="manage-ads-alert">
+			<?php if (empty(floatval($fl['user']['wallet']))): ?>
+				<div class="alert alert-warning">
+				<i class="fa fa-fw fa-info-circle"></i>	
+				<?php 
+					$subject = $fl['lang']['refill_balance'];
+					echo str_replace('{{AMOUNT}}', $fl['user']['wallet'], $subject);
+				?>
+				<a href="{{LINK settings/wallet}}">{{LANG top_up}}</a>
+				</div>
+			<?php endif; ?>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2" for="">
+				{{LANG cname}}
+			</label>
+			<div class="col-md-5">
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2" for="">
+				{{LANG dest_url}}*
+			</label>
+			<div class="col-md-5">
+				<input type="urlcx" class="form-control" name="url">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2" for="">
+				{{LANG placement}}*
+			</label>
+			<div class="col-md-5">
+				<select class="form-control" name="placement">
+					<option value="1">
+						{{LANG sidebar}}
+					</option>
+					<option value="2">
+						{{LANG hpage}}
+					</option>
+					<option value="3">
+						{{LANG spage}}
+					</option>
+				</select> 
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2" for="">
+				{{LANG status}}*
+			</label>
+			<div class="col-md-5">
+				<select class="form-control" name="status">
+					<option value="1">
+						{{LANG active}}
+					</option>
+					<option value="2">
+						{{LANG inactive}}
+					</option>
+				</select> 
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2" for="">
+				{{LANG image}}*
+			</label>
+			<div class="col-md-5">
+				<div class="form-control select-image">
+					<span class="col-md-4 col-lg-4 col-xs-12" onclick="$('#ad-image-input').trigger('click');">
+						<i class="material-icons">file_upload</i> {{LANG choose_image}}
+					</span>
+					<small class="col-md-8 col-lg-8 col-xs-12" id="ad-image-file-name">
+						{{LANG no_file_chosen}}
+					</small>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<hr>
+		<div class="form-group">
+			<label class="col-md-2">
+				
+			</label>
+			<div class="col-md-5">
+				<button type="submit" class="btn btn-main" <?php if (empty(floatval($fl['user']['wallet']))){ echo "disabled";} ?>>
+					<i class="material-icons">publish</i> {{LANG submit}}
+				</button>
+
+				<button type="reset" class="btn btn-default">
+					<i class="material-icons">not_interested</i> {{LANG cancel}}
+				</button>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<input type="file" class="hidden" id="ad-image-input" name="image">
+	</form>
+	<div class="clear"></div>
+</div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$("#ad-image-input").change(function(event) {
+			var file = $(this).prop('files')[0];
+			$("#ad-image-file-name").text(file.name)
+		});
+
+		$("#manage-ads-form").ajaxForm({
+			url: FL_Ajax_Requests_File() + '?f=ads&s=new',
+			dataType: 'json',
+			type: 'POST',
+			beforeSend: function() {
+				$("#manage-ads-form").find("button[type='submit']").text("{{LANG please_wait}}");
+				$("#manage-ads-form").find("button[type='submit']").attr('disabled');
+			},
+			success: function(data) {
+
+				scrollToTop();
+
+				if (data.status == 200) {
+
+					var alert_msg = $("<div>",{
+						class: 'alert alert-success',
+						html: data.message
+					});
+
+					$("#manage-ads-alert").html(alert_msg);
+
+					FL_Delay(function(){
+						window.location.href = "{{LINK ads}}";
+					},1500);
+				} 
+
+				else {
+
+					var alert_msg = $("<div>",{
+						class: 'alert alert-danger',
+						html: data.message
+					});
+
+					$("#manage-ads-alert").html(alert_msg);
+				}
+			}	
+		});
+	});
+</script>
+<style>
+  .search-header input { width: 200px !important; }
+</style>

@@ -1,0 +1,185 @@
+{strip}
+{assign var="slider_preloader" value="/template/original/css/images/preloaders/nbblank.GIF"}
+{assign var="default_likes" value="0"}
+{assign var="default_shares" value="0"}
+{assign var="default_comments" value="0"}
+{assign var="default_description" value=""}
+{assign var="photo_exist" value="0"}
+
+<section id="pp_photo_viewer">
+<div id="sharebuttonwp">
+<div class="modal-new-phly __b9">
+
+<div class="pright_corner bvkr"><div class="js_popup_close ic"></div></div>
+
+<div class="photo-layer __alt">
+<div class="photo-layer_cnt">
+
+
+    <div id="boss-gallery" class="nobleSlider">
+        <div class="nb-slides">
+	
+
+	   {foreach $query as $res}
+ 
+            <div data-slpid="{$res.id}" style="position:absolute;" class="nb-slide {if $res.id === $photo}__starter{/if}">
+                <img class="nb-image" 
+									 src="{$slider_preloader}"
+									 data-src="/getPhoto?p={$res.id}&sz=large"
+									 data-medium="/getPhoto?p={$res.id}&sz=medium"
+									 data-small="/getPhoto?p={$res.id}&sz=thumb"
+									 data-large="/getPhoto?p={$res.id}&sz=large"
+/>
+<!--<div class="widget_lsco_bot_shadow"></div>-->
+
+
+{if $res.id === $photo}
+{$default_likes=$res.likes}
+{$default_shares = $this->getLikesCount($res.id,'photo')}
+{$default_description=$res.info}
+{$default_comments=$res.count_comments}
+{$photo_exist=$res.id}
+
+{/if}
+
+ </div>
+		{/foreach}
+
+        </div>
+
+
+
+  <div class="photo_viewer_top_sidebar">
+  <div class="options_arrg">
+ 
+  <div id="phly_crop_photo_btn" href="#" onclick="upProfPh(this,event,1)" class="pli" title="Crop photo" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_crop"></i></div>
+  <div id="phlayer_zoom" class="pli" title="Zoom Image" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_zoom"></i></div>
+  <div id="phlayer_tag_friends" class="pli" title="Tag friends" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_tags"></i></div>
+
+  {if $bookmarked <= 0}
+  <div id="phlayer_bookmark_photo" data-bookmark='{ldelim}"categ":"photo","itemid":"{$photo}"{rdelim}' onclick="return bookmarkthis(this,event);" class="pli" title="Bookmark" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_bookmark"></i></div>
+
+  {else}
+  <div id="phlayer_bookmark_photo" data-deletebookmark="{$bookmarked}" onclick="return deleteBookmark(event,this,'photo');" class="pli" title="Remove from bookmark" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_bookmarked"></i></div>
+  {/if}
+  
+  <div id="phlayer_get_link" class="pli" title="Get a link" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_link"></i></div>
+  <div id="reshare_{$photo}" onclick="ga('#pp_photo_viewer').prepend('<div class=layer_ovr id=share_box_layer_ovr></div>');shareBox(this,event,'photo','{$uid}');" class="pli" title="Share picture" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_share_picture"></i></div>
+  <div id="phly_report_photo" class="pli" title="Report photo" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_report"></i></div>
+  <div id="phly_rotate_photo" data-photoc="0" onclick="rotate_photo(this,'',event,1)" data-angle="0" class="pli" title="Rotate" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_rotate"></i></div>
+  <div id="phly_delete_photo" class="pli" href="#" onclick="deletePhoto(this,event,1)" title="Delete photo" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_trash"></i></div>
+  <div class="pli" onclick="ga('.nb-full-screen-button').trigger('click');" title="View in full screen" data-tipsy-orientation="n" rel="tipsy"><i class="ic tico ic_phly_expand"></i></div>
+  </div>
+</div>
+
+<div class="photo-layer_panel __pins __off"><span class="va"></span><div class="va_target"><button type="button" id="finish_tag_edit" onclick="return finishTagging(this,event);" class="js-cancelEditMode button-pro">Done</button></div></div>
+<!-- Like button -->
+<section id="s_phlayer_big_like_btn">
+{if $nav_uid !== $uid}
+<div id="phlayer_big_like_btn" data-callback="phlayerClickBigLike" onclick="return likeClick(this,event);" data-log-click='{literal}{{/literal}"type":"like","item":"photo","itemid":"{$photo}"{literal}}{/literal}' class="phlayer_like_btn"><i class="ic tico_img ic-klass-big"></i></div>
+{/if}
+</section>
+
+    </div>
+
+<div class="photo-layer_bottom">
+<div class="photo-layer_bottom_cnt">
+
+<div class="photo_layer_bottom_com">
+
+<div class="phlayer_widget_plus_rating_sticky">
+<section id="phlayer_ratings"></section>
+<div class="widget_photoLayer">
+<div class="widget_lsco"><span id="phly_likes_id">{$default_likes}</span><div class="widget_lsco_subtxt">{$this->lang['likes']}</div></div>
+<div class="widget_lsco"><span id="phly_shares_id">{$default_shares}</span><div class="widget_lsco_subtxt">{$this->lang['Share']}</div></div>
+<div class="widget_lsco"><span id="phly_comments_id">{$default_comments}</span><div class="widget_lsco_subtxt">{$this->lang['Comments']}</div></div>
+</div>
+</div>
+
+<!---- Tags --->
+<section class="phlayer_bottom_tags" style="display:none;">
+<div class="ic_pht-pin tico_img ic"></div>
+<tgdt></tgdt>
+</section>
+
+
+
+<div id="hook_Block_UserDescPLLB" class="hookBlock">
+    <div class="photo-layer_bottom_block">
+    <input type="hidden" id="phlayer_act_f" value="{b_encode($photo)}" />
+    <input type="hidden" id="phlayer_act_f2" value="{$photo}" />
+        <div class="photo-layer_description">
+            <div id="plp_descrCnt" class="pl_content-area_cont"> 
+                <div class="photo-layer_description_tx textWrap show-on-hover"><span id="plp_descrCntText">
+				<a href="javascript:void(0)" class="pl_description_edit fade-on-hover"><i class="ic12 ic12_edit"></i></a>
+				
+<span id="phlayer_photo_descr">{$default_description}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<h2>Comments (0)</h2>
+-->
+
+
+<div class="photo_layer_bottom_com_input">
+<!--<div class="phlayer_ul_comms">
+<ul>
+</ul>
+</div>-->
+{if $this->allowCommentPhoto($uid) }
+<!--
+<div class="phlayer_emoji_input_sticky __nocoms">
+<div class="phlayer_user_cover_atinput"><img src="/getPhoto?p={$this->USER['profile_photo']}&sz=small&g={$this->USER['gender']}" /></div>
+<div class="emoji_space">
+<textarea style="display:none;" placeholder="Write a comment..." id="phlayer-com-emoji" class="crmTextarea"></textarea>
+<div class="em_bot_sm"><a class="em_disc_toolbar_i_ic__sm com_smiles_w" href="javascript:void(0);"></a></div>
+</div>
+
+</div>-->
+<div id="phlayer-com-emoji"></div>
+{else}
+<div class="user_phviewer_cant_comm"><span>{$this->lang['addusertofriendstoleavecomments']}</span></div>
+{/if}
+</div> 
+
+</div>
+
+
+<div class="pl_right_w" style="min-height: 226px;"></div>
+
+
+
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+    <script id="phlayer_store_slides">
+    var exist_photo = '{$photo_exist}',clubid = 0,
+	slides = validateJson('{json_encode($query)}'),
+	slides_C = slides.length;
+    var preloader = '{$slider_preloader}',
+	photo_direct_link = '{$photo_direct_link}',
+	phlayer_save_comments = [],
+	__tags_users_ck = [],
+	phlayer_last_infID = 0,
+	phl_inited_photo = '{$photo}',
+	navuid = '{$nav_uid}', 
+	uid = '{$uid}',
+	ply_r_time, 
+	_phlayer_is_own_photo = _U.i,
+	__tag_friends = '';
+    </script>
+    <script type="text/javascript" src="{$this->theme_url}/js/cmd/photo-layer/photo-layer.js?v={time()}"></script>
+	</div>
+</section>
+
+{/strip}

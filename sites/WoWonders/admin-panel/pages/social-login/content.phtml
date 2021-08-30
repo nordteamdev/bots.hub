@@ -1,0 +1,195 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Settings > Social Login Settings</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 ">
+            <div class="card">
+                <div class="header">
+                    <h2>Social Login Settings</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success social-settings-alert"></div>
+                    <form class="social-settings" method="POST">
+                        <label for="facebookLogin">Facebook</label>
+                        <div class="form-group">
+                            <input type="radio" name="facebookLogin" id="facebookLogin-enabled" value="1" <?php echo ($wo['config']['facebookLogin'] == 1) ? 'checked': '';?>>
+                            <label for="facebookLogin-enabled">Enabled</label>
+                            <input type="radio" name="facebookLogin" id="facebookLogin-disabled" value="0" <?php echo ($wo['config']['facebookLogin'] == 0) ? 'checked': '';?>>
+                            <label for="facebookLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+                        <label for="VkontakteLogin">Vkontakte</label>
+                        <div class="form-group">
+                            <input type="radio" name="VkontakteLogin" id="VkontakteLogin-enabled" value="1" <?php echo ($wo['config']['VkontakteLogin'] == 1) ? 'checked': '';?>>
+                            <label for="VkontakteLogin-enabled">Enabled</label>
+                            <input type="radio" name="VkontakteLogin" id="VkontakteLogin-disabled" value="0" <?php echo ($wo['config']['VkontakteLogin'] == 0) ? 'checked': '';?>>
+                            <label for="VkontakteLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="googleLogin">Google+</label>
+                        <div class="form-group">
+                            <input type="radio" name="googleLogin" id="googleLogin-enabled" value="1" <?php echo ($wo['config']['googleLogin'] == 1) ? 'checked': '';?>>
+                            <label for="googleLogin-enabled">Enabled</label>
+                            <input type="radio" name="googleLogin" id="googleLogin-disabled" value="0" <?php echo ($wo['config']['googleLogin'] == 0) ? 'checked': '';?>>
+                            <label for="googleLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="twitterLogin">Twitter</label>
+                        <div class="form-group">
+                            <input type="radio" name="twitterLogin" id="twitterLogin-enabled" value="1" <?php echo ($wo['config']['twitterLogin'] == 1) ? 'checked': '';?>>
+                            <label for="twitterLogin-enabled">Enabled</label>
+                            <input type="radio" name="twitterLogin" id="twitterLogin-disabled" value="0" <?php echo ($wo['config']['twitterLogin'] == 0) ? 'checked': '';?>>
+                            <label for="twitterLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="linkedinLogin">Linkedin</label>
+                        <div class="form-group">
+                            <input type="radio" name="linkedinLogin" id="linkedinLogin-enabled" value="1" <?php echo ($wo['config']['linkedinLogin'] == 1) ? 'checked': '';?>>
+                            <label for="linkedinLogin-enabled">Enabled</label>
+                            <input type="radio" name="linkedinLogin" id="linkedinLogin-disabled" value="0" <?php echo ($wo['config']['linkedinLogin'] == 0) ? 'checked': '';?>>
+                            <label for="linkedinLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <label for="instagramLogin">Instagram</label>
+                        <div class="form-group">
+                            <input type="radio" name="instagramLogin" id="instagramLogin-enabled" value="1" <?php echo ($wo['config']['instagramLogin'] == 1) ? 'checked': '';?>>
+                            <label for="instagramLogin-enabled">Enabled</label>
+                            <input type="radio" name="instagramLogin" id="instagramLogin-disabled" value="0" <?php echo ($wo['config']['instagramLogin'] == 0) ? 'checked': '';?>>
+                            <label for="instagramLogin-disabled" class="m-l-20">Disabled</label>
+                        </div>
+
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <div class="card">
+                <div class="header">
+                    <h2>API Keys</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success api-settings-alert"></div>
+                    <form class="api-settings" method="POST">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="facebookAppId" name="facebookAppId" class="form-control" value="<?php echo $wo['config']['facebookAppId']?>">
+                                <label class="form-label">Facebook APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="facebookAppKey" name="facebookAppKey" class="form-control" value="<?php echo $wo['config']['facebookAppKey']?>">
+                                <label class="form-label">Facebook APP Key</label>
+                            </div>
+                        </div><br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="googleAppId" name="googleAppId" class="form-control" value="<?php echo $wo['config']['googleAppId']?>">
+                                <label class="form-label">Google Client ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="googleAppKey" name="googleAppKey" class="form-control" value="<?php echo $wo['config']['googleAppKey']?>">
+                                <label class="form-label">Google Client Secret Key</label>
+                            </div>
+                        </div><br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="twitterAppId" name="twitterAppId" class="form-control" value="<?php echo $wo['config']['twitterAppId']?>">
+                                <label class="form-label">Consumer Key</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="twitterAppKey" name="twitterAppKey" class="form-control" value="<?php echo $wo['config']['twitterAppKey']?>">
+                                <label class="form-label">Consumer Secret</label>
+                            </div>
+                        </div><br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="linkedinAppId" name="linkedinAppId" class="form-control" value="<?php echo $wo['config']['linkedinAppId']?>">
+                                <label class="form-label">Linkedin APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="linkedinAppKey" name="linkedinAppKey" class="form-control" value="<?php echo $wo['config']['linkedinAppKey']?>">
+                                <label class="form-label">Linkedin APP Key</label>
+                            </div>
+                        </div><br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="VkontakteAppId" name="VkontakteAppId" class="form-control" value="<?php echo $wo['config']['VkontakteAppId']?>">
+                                <label class="form-label">VK APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="VkontakteAppKey" name="VkontakteAppKey" class="form-control" value="<?php echo $wo['config']['VkontakteAppKey']?>">
+                                <label class="form-label">VK APP Key</label>
+                            </div>
+                        </div><br><br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="instagramAppId" name="instagramAppId" class="form-control" value="<?php echo $wo['config']['instagramAppId']?>">
+                                <label class="form-label">Instagram APP ID</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input type="text" id="instagramAppkey" name="instagramAppkey" class="form-control" value="<?php echo $wo['config']['instagramAppkey']?>">
+                                <label class="form-label">Instagram APP Key</label>
+                            </div>
+                        </div><br><br>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_social_settings = $('form.social-settings');
+    form_social_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_social_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_social_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.social-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.social-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+
+    var form_api_settings = $('form.api-settings');
+    form_api_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_api_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_api_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.api-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.api-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

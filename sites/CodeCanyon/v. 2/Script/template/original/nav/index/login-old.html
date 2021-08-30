@@ -1,0 +1,64 @@
+<script>
+
+	{literal}
+    window.onload = function() {
+        document.getElementById('footer').classList.add('__ovr');
+}
+$(function() {
+    $('body').vegas({
+	overlay: true,shuffle:true,transition:'fade',preloadImage: true,transitionDuration: 3000,timer:false,delay:8000,
+        slides: [
+            { src: '../login-page-slideshow/images/1.jpg' },
+            { src: '../login-page-slideshow/images/2.jpg' },
+            { src: '../login-page-slideshow/images/3.jpg' },
+			{ src: '../login-page-slideshow/images/4.jpg' },
+			{ src: '../login-page-slideshow/images/5.jpg?v=2' },
+			{ src: '../login-page-slideshow/images/6.jpg' },
+			{ src: '../login-page-slideshow/images/7.jpg' },
+			{ src: '../login-page-slideshow/images/8.jpg' },
+        ]
+    });
+});
+{/literal}
+
+</script>
+<!--<div class="our_color_top_lg_pg"></div>
+<div class="prl">
+
+    <div class="wbkg_slide">
+        <div class="welcome_bckg"></div>
+
+    </div>
+
+</div>-->
+<div class="lg_loggPo">
+<div class="nat_logo __login_pg"> </div></div>
+<div class="anonym_login">
+    <div class="anonym_login_top">
+        <div class="anonym_login_t">{$this->lang['lg_login_btn']}
+            <div class="anonym_login_t_corner_w">
+                <div class="anonym_login_t_corner"></div>
+            </div>
+        </div><a href="/signup" class="button-pro anonym_login_reg">{$this->lang['lg_reg_btn']}</a></div>
+    <div class="anonym_login_cont">
+        <form method="post" id="login_form" action="/nav/index/takelogin">
+
+            <label for="field_email" class="anonym_login_l">{$this->lang['lg_email_field']}</label>
+            <div class="it_w">
+                <input type="text" name="st.email" value="" id="field_email" class="it anonym_login_it " maxlength="100">
+            </div>
+            <label for="field_password" class="anonym_login_l">{$this->lang['lg_pass_field']}</label>
+            <div class="it_w">
+                <input maxlength="50" name="st.password" id="field_password" type="password" class="it anonym_login_it ">
+            </div>
+
+            <div id="anonymLoginMsg"></div>
+
+            <div class="anonym_log_remember_me">
+                <label for="field_remember" class="anonym_login_rem">
+                    <input name="st.remember" checked="checked" id="field_remember" type="checkbox" class="anonym_log_rem_check"><span class="anonym_log_rem_check_tx">{$this->lang['lg_remember_checkbox']}</span></label>
+            </div>
+
+            <input value="{$this->lang['lg_login_btn']}" type="submit" class="button-pro __blue inlineBlock"><a href="/cdk/st.cmd/anonymPasswordRecovery?st._aid=LeftColumn_Login_ForgotPassword" class="al-log">{$this->lang['lg_forgot_pass']}</a></form>
+    </div>
+</div>

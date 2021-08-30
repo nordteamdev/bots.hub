@@ -1,0 +1,643 @@
+.options-buttons {
+    left: -20px;
+}
+.profile-container .card.hovercard .user-avatar {
+    margin-right: 10px;
+}
+.post-options {
+    left: 0 !important;
+    right: auto !important;
+}
+.panel .meta {
+    margin-right: 60px;
+}
+.offnavmenu .sidebar-conatnier .profile-style .card.hovercard .info .title {
+    left: -50px;
+}
+textarea.postText {
+    direction: rtl;
+}
+.comment-textarea {
+    padding-left: 85px !important;
+}
+.left-sidebar li a img {
+    margin-right: 0 !important;
+    margin-left: 7px;
+}
+.profile-icon {
+    margin-right: 0 !important;
+    margin-left: 5px;
+}
+.header-brand {
+    float: right !important;
+    margin-right: 0 !important;
+}
+.events-list-name {
+    left:auto !important;
+    right: 20px !important;
+}
+.pricing {
+    padding-right: 0 !important;
+}
+.nav-names {
+    margin-right: 115px !important;
+    margin-left:0 !important;
+}
+.search-dropdown-result li {
+    padding-right: 10px;
+}
+.emo-comment {
+    left: 33px !important;
+    right: auto !important;
+}
+.emo-message {
+    left: 0 !important;
+    right: auto !important;
+}
+.text-sender-container textarea {
+    padding-right: 10px !important;
+    padding-left: 100px !important;
+}
+.emo-message-container {
+    left: 0 !important;
+    right: auto !important;
+}
+.textarea {
+    padding-left: 90px;
+    padding-right: 5px !important;
+}
+.wowonder-well img {
+    float: right;
+    margin-left: 10px;
+}
+.next-btn {
+    right: 0 !important;
+}
+.post .post-footer .comments-list .comment .comment-body,
+.lightbox-post-footer .comments-list .comment .comment-body {
+    margin-left: 0 !important;
+}
+.wowonder-well .profile-style {
+    float: right;
+}
+.profile-style .avatar img {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+.home-sidebar.profile-style .user-follow-btn{
+   padding-left: 10px;
+}
+.post .post-heading .avatar {
+    margin-right: 5px;
+}
+.post-fetched-url img {
+    margin-right: 0 !important;
+    margin-left: 10px !important;
+}
+.user-fetch .user-information {
+    margin-right: 100px !important;
+    margin-left:auto !important; 
+}
+.user-fetch .user-name {
+    margin-right: 10px !important;
+}
+.pin-icon {
+    left: 11px;
+
+}
+.search-dropdown-container {
+    margin-right: 15px !important;
+}
+.messages-wrapper .user-avatar {
+    margin-left: 10px;
+}
+.messages-container {
+    overflow-x: hidden;
+}
+
+.profile-cover-changer .btn-file {
+    float: right !important;
+}
+.chat-container {
+    left: 0;
+    border-right: 1px solid #ededed;
+}
+.chat-container input {
+    border-right: 0 !important;
+    width: 204px !important;
+}
+.chat_main {
+    left: 195px !important;
+    right: auto !important;
+}
+.chat_main:nth-child(2) {
+    left: 440px !important;
+    right: auto !important;
+}
+.chat_main:nth-child(3) {
+    left: 685px !important;
+    right: auto !important;
+}
+.chat-user-desc .col-sm-4 {
+    padding-right: 15px !important;
+    padding-left: 5px !important;
+}
+.chat-user-desc .col-sm-8 {
+    padding-left: 10px !important;
+    padding-right: 0 !important;
+}
+#re-calling-modal .col-md-2 {
+    padding-left: 15px !important;
+    padding-left: 0 !important;
+}
+.chat-textarea #sendMessage {
+    padding-left: 60px;
+    direction: rtl;
+}
+.chat-textarea .input-group-btn {
+    left: 30px;
+}
+b,
+strong {
+    margin-left: 7px !important;
+}
+.search-container .search-input,
+.post-footer .form-control.textarea,
+.messages-search-users-form input,
+.publisher-hidden-option input {
+    direction: rtl;
+}
+.navbar-right .dropdown-menu.notifications-dropdown {
+    left: 0 !important;
+    right: auto;
+}
+.messages-recipients-list img {
+    margin-left: 5px;
+}
+.recipient-chat-user img {
+    margin-right: 10px;
+    margin-left:5px
+}
+.profile-container .card.hovercard .info .title {
+    top: -10px !important;
+    left: -30px !important;
+}
+
+.filter-text {
+    font-size: 14px !important;
+}
+.publisher-box .publisher-hidden-option {
+    margin-left: 10px;
+}
+.publisher-box .charsLeft-post {
+    margin-right: 5px;
+}
+.chat-opacity {
+    width: 190px !important;
+}
+.post .post-heading .meta .title a b {
+    font-size: 13px;
+}
+.post .post-heading .meta .title a {
+    margin-right: 0px !important;
+}
+.post .post-footer .comments-list .comment .avatar {
+    margin-left: 10px !important;
+}
+.post .post-footer .comments-list .comment .comment-body {
+    margin-left: 0px !important;
+    margin-right: 50px !important;
+}
+.user-fetch .user-avatar {
+    margin-right: 5px;
+}
+.user-fetch .user-name {
+    left: auto !important;
+    right: 30%;
+}
+.activities-wrapper * {
+    font-size: 11px;
+}
+.activities-wrapper .ajax-time {
+    font-size: 10px;
+}
+.notification-list .notification-user-avatar img {
+    margin-right: 0 !important;
+    margin-left: 5px !important;
+}
+.sidebar-conatnier .profile-style .card.hovercard .info .title {
+    /* top: -23px !important; */
+    /* left: -80px !important; */
+    /* font-size: 15px !important; */
+}
+.search-dropdown-result .search-user-avatar img {
+    margin-left: 7px;
+}
+.small-last-seen {
+    font-size: 11px !important;
+}
+.sidebar-page-data .sidebar-listed-page-avatar img {
+    padding:0px 0px 1px 1px !important;
+}
+.sidebar-page-data .sidebar-listed-page-name {
+    right: 8px !important;
+    left: auto !important;
+}
+.sidebar-page-data .sidebar-listed-page-like-btn {
+    left: 8px !important;
+    right: auto !important;
+}
+.chat-status {
+    right: auto !important;
+    left: 7px !important;
+}
+.user-details:before {
+    left: auto;
+    right: 10px;
+}
+.video-icon {
+    cursor: pointer;
+    margin-right: 0 !important;
+    margin-left: 4px !important;
+}
+.lightbox-content .comment-section {
+    border-top-right-radius:0 !important;
+    border-bottom-right-radius:0 !important;
+    border-top-left-radius:3px !important;
+    border-bottom-left-radius:3px !important;
+}
+.lightbox-content .comment-section .post-info {
+    padding-right: 10px;
+}
+.lightbox-post-footer .comment .avatar {
+    margin-left: 10px;
+}
+.post .post-footer .comments-list .comment .comment-body, .lightbox-post-footer .comments-list .comment .comment-body {
+    margin-right: 50px;
+}
+.answers input {
+    padding-right: 5px !important;
+    padding-left: 100px;
+}
+.create-album {
+    margin-left: 5px;
+    margin-right: 0 !important;
+}
+.image-comment {
+    right: auto !important;
+    left: 25px;
+}
+.send-comment {
+   right: auto !important;
+    left: 80px;
+}
+.left-sidebar ul {
+    padding-left: auto !important;
+    padding-right: 0px !important;
+}
+.left-sidebar ul li a i {
+    margin-right: auto !important;
+    margin-left: 10px;
+}
+.blog-sidebar {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+    border-right: 1px solid #eee;
+    padding-right: 10px;
+}
+.read-blog .read-blog-info-user .user-image {
+    margin-right: 0 !important;
+    margin-left: 7px !important;
+}
+.post .post-heading .meta {
+	margin-right: 15px !important;
+}
+.post .post-heading .time {
+	margin-left: 15px !important;
+    margin-right: 10px !important;
+}
+
+.sidebar-conatnier .profile-style .card.hovercard .info .title{
+	left: -80px;
+}
+.topheadbar{
+	float: right !important;
+}
+.notification-mico{
+	right: auto !important;
+	left: 10px;
+}
+.header-fixed1000 .navbar-home{
+	margin-left: 0px !important;
+}
+.sidebar-conatnier .sidebar-profile-style .card.hovercard .avatar {
+    float: right !important;
+}
+.sidebar-conatnier .sidebar-profile-style .card.hovercard .infolinkz {
+    margin-right: 65px;
+	margin-left: 0px !important;
+}
+.publisher-box #publisher-button{
+	right: auto !important;
+	left: 8px;
+}
+.publisher-box .charsLeft-post{
+	right: auto !important;
+    left: 110px;
+}
+.publisher-box-footer .emo-form {
+    margin-left: -5px;
+}
+.home-sidebar.profile-style .user-follow-btn {
+    margin-right: 60px;
+}
+
+.postheadproico{
+	margin-left: 0px !important;
+	margin-right: 33px;
+}
+.post .post-description .stats .stat-item i{
+	float: right !important;
+    margin-right: 0px !important;
+    margin-left: 5px;
+}
+.sidebar-conatnier .trending li i{
+	float: right !important;
+    margin-right: 0px !important;
+    margin-left: 5px;
+}
+.chat-container .activities-wrapper i{
+	float: right !important;
+    margin-right: 0px !important;
+    margin-left: 5px;
+}
+.post-footer .comment-btn-wrapper .btn-upload-comment {
+    padding: 3px 7px 3px 10px !important;
+}
+.sidebar-latest-products .activities-wrapper img{
+	margin-right: 5px !important;
+	margin-left: 5px;
+}
+#timelineusernam {
+    margin-right: 20px;
+}
+.pageprofilecont .card.hovercard .info .title{
+    top: 0px !important;
+    left: 0px !important;
+	margin-left:auto;
+	margin-right: inherit !important;
+}
+.pagesidebarlisttop li i{
+	float: right !important;
+    margin-right: 0px !important;
+    margin-left: 5px;
+}
+.groupuserpic{
+	left: 0px !important;
+    right: 10px;
+}
+.cusgrouptito {
+    padding: 27px 20px 0px 25px !important;
+}
+.charsLeft-message{
+	right: auto !important;
+	left: 150px;
+	display:none !important;
+}
+.post .post-heading .image {
+    float: right !important;
+}
+.post .post-heading .meta {
+    float: right !important;
+}
+.post .post-heading .aftermetapost {
+    float: left !important;
+}
+.filterbyz li {
+    float: right !important;
+}
+.mobiaccmenuz .dropdown-menu li i{
+	margin-left: 15px !important;
+}
+/*.offnavmenu{
+	left:auto;
+	right:0px;
+}
+.customfbchat{
+	right:auto !important;
+	left:0px;
+}*/
+.publisher-box .post-avatar{
+	left: auto;
+	right: 9px;
+}
+.camera-button{
+	right: auto !important;
+	left: 6px;
+}
+.chat-toggle-bar .chat-status{
+	float: left;
+}
+.post .post-description .stats .stat-item {
+    line-height: 11px !important;
+}
+.post-commentimg-grid {
+    padding-right: 8px;
+	padding-left: 0px !important;
+}
+.wonderful-group .user-follow-btn {
+    right: auto !important;
+    left: 0px;
+    box-shadow: 6px 0px 6px white !important;
+}
+.ps-container .left-sidebar ul li a {
+    text-align: right;
+}
+
+.modal.modal-left.fade .modal-dialog{
+	left: auto;
+	right: -70%;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+	-moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+	-o-transition: opacity 0.3s linear, right 0.3s ease-out;
+	transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+.modal.modal-left.fade.in .modal-dialog{
+	left: auto !important;
+	right: 0;
+}
+
+.sop-icon {
+    right: auto !important;
+	left: 15px;
+}
+.profiletopcoversize {
+    margin-left: 0px;
+}
+#groupuserpic{
+	left: auto;
+	right: 10px;
+}
+#profilenav ul li:last-child {
+    border-right: 1px solid #ddd !important;
+}
+.blog-h-desc .float-fab {
+    right: auto !important;
+	left:0px;
+}
+.pricing .header-red:after, .pricing .header-orange:after, .pricing .header-cyan:after, .pricing .header-green:after {
+    top: 16.9% !important;
+}
+.message-option-btns{
+	right: auto !important;
+	left: 50px;
+}
+.movies-search div.w100 {
+    float: left !important;
+}
+.page-mobi-info .options-buttons{
+	margin: 0px;
+}
+#product-front .stats-container .product_price{
+	margin: -27px -10px 10px 0px !important;
+	border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+	border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#mobi-set-side .filterbyz li{
+	float: none !important;
+}
+#mobi-set-side ul.scrollmenu li:nth-child(2) {
+    margin-left: 0px !important;
+	margin-right: 30px;
+}
+#mobi-set-side ul.scrollmenu li:last-child {
+    margin-right: 0px !important;
+	margin-left: 25px;
+}
+#fullsizeimg{
+	margin-right:-15px;
+}
+.inline_post_emoji {
+	margin-right: 0 !important;margin-left: 4px;
+}
+.inline_post_emoji .emoji {
+    right: auto !important;
+    left: 285%;
+}
+.reactions-box {
+    right: -10px;
+}
+.reaction {
+    float: right !important;
+}
+.emoji {
+    right: auto !important;
+	left: 76%;
+}
+.like-emo > .how_reacted {
+    margin: 0 -6px 0 0 !important;
+}
+.like-emo > .how_reacted:nth-child(1) {
+	margin-left:0 !important;
+    margin-right: -10px !important;
+}
+.inline_post_count_emoji .emoji {
+    right: auto !important;
+	left: 324%;
+}
+#comment_reacted {
+    float: right !important;
+}
+#inline_emo_react .wo_who_react_this .inline_act_emoji {
+    margin: 0px !important;
+}
+#inline_emo_react .wo_who_react_this {
+    right: auto !important;
+    left: 10px;
+}
+#wo_comm_emojis {
+	left: 0;
+    right: auto;
+}
+.post .post-footer .comments-list .comment .wo_fb_comm {
+    padding-right: 0 !important;padding-left: 50px;
+}
+.post .post-footer .comments-list .comment .comment-options.sfsfsf {
+    left: 0;
+}
+.post .post-footer .comments-list .comment .wo_fb_comm .comm_head {
+	float: right;margin-right: 0 !important;margin-left: 6px;
+}
+
+
+
+
+
+
+@media (min-width: 1200px){
+body {
+    padding-left: 0px !important;
+	    padding-right: 185px !important;
+}
+}
+
+@media (min-width: 1500px){
+.chat-container input {
+    width: 258px !important;
+}
+}
+
+@media (max-width: 767px) {
+    .header-brand {
+        right: 10px !important;
+        margin-left: 0px !important;
+        margin-top: -3px;
+    }
+	.mobilemsgclose {
+    margin: -2px 2px 0px 12px !important;
+}
+}
+@media (max-width: 667px){
+.wonder-userz {
+    padding-right: 0px !important;
+	padding-left: 20px;
+}
+}
+@media (max-width: 600px) {
+
+    .profile-container .card {
+        border-bottom-right-radius: 3px !important;
+    }
+    .profile-container .card.hovercard .info .title {
+        left: -10px !important;
+    }
+    .options-buttons {
+        left: -10px !important;
+        right: auto !important;
+    }
+	.toprightsmallcar {
+    padding: 10px 13px !important;
+    margin-right: 7px;
+}
+}
+
+@media (max-width: 510px){
+.name-cont-mobile {
+    margin-left: 0px !important;
+    width: 100% !important;
+}
+#upload-propic-mobile i {
+    margin: -5px -3px 0px -3px !important;
+}
+}
+
+@media (max-width: 420px){
+.equmobiwidthul {
+    width: calc(100% - 30px) !important;
+}
+.equmobiwidth {
+    width: 15.97% !important;
+}
+}

@@ -1,0 +1,19 @@
+<div id="owner_photo_upload" class="single">
+    <div class="owner_photo_content">
+        <div id="owner_photo_upload_desc" class="owner_photo_desc">{$this->lang['communities_add_photo_descr']}<br>{$this->lang['communities_images_support_types']}</div>
+         <form name="commLogo" id="commLogo" enctype="multipart/form-data" method="post">
+          <input type="hidden" name="cmd" value="addlogo">
+		  <input type="hidden" name="id" value="{$id}">
+		<div class="owner_photo_input_wrap">
+            <div id="owner_photo_input"><button class="flat_button upload_btn ">{$this->lang['Select_a_file']}
+			<input class="file commfileadd" accept="image/*" type="file" size="28" onchange="communityAddLogo(event);" name="file">
+			</button>
+			</div>
+			
+        </div>
+		<div class="comm_logo_error"></div>
+		<div class="parentcommuploadprbar"><div class="comm-upload-progress-bar"></div></div>
+		</form>
+    </div>
+   
+</div>

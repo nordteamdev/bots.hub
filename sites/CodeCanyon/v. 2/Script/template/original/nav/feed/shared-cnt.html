@@ -1,0 +1,248 @@
+{strip}
+
+
+ {assign var=post_mode value=''}
+		<div class="feed_map_cnt_f _shared"> 
+		
+			{if $r.id == '' || $r.id <= 0 || empty($r.id) || $r.p_type == '' || empty($r.p_type)}
+		
+		
+		<div class="yx43GB">{$this->lang['shared_post_was_not_found']}</div>
+		
+		{else if ((isset($clubid) && $clubid > 0) || (isset($r) && $r.original_post_community == 'yes')) && $post_type == 'club'}
+
+		{$this->generateCommunitySharedPost($clubid)}
+ 
+		{else if $post_type == 'photo'}
+		{assign var=author value=$this->getUserDetails($r.post_author_id)}
+
+		{assign var=post_mode value=$this->lang['added_a_photo']}
+		{if $r.original_post_community == 'yes'}
+				{assign var=clubid value=$this->getClubidFromMediaPhotos($r.original_post_id)}
+		{/if}
+		
+ 
+		{include file="{$this->theme_dir}/feed/shared-cnt-author-header.html"}
+ 
+		
+		<div class="sp_shared_photo">
+	{if $r.original_post_community == 'yes'}
+			<a href="/photo?cmd=openPhotoViewer&_token={time()}&show=album-community&from=medium&clubid={b_encode($clubid)}&q={$r.userid}&o={b_encode($r.original_post_id)}&cur_pid={b_encode($r.original_post_id)}" data-vphopen="1" data-vphi="{base64_encode($r.original_post_id)}" class="image-hover">
+			<img src="/clubpicture?i={$r.original_post_id}&sz=medium&clubid={$clubid}" />
+			</a>
+	{else}
+			<a href="/photo?q={$r.post_author_id}&show=single&from=medium&o={b_encode($r.original_post_id)}&cmd=openPhotoViewer&_token={time()}" data-vphopen="1" data-vphi="{base64_encode($r.original_post_id)}" class="image-hover">
+			<img src="/getPhoto?p={$r.original_post_id}&sz=medium" />
+			</a>
+	{/if}
+		</div>
+		
+		{else if $post_type == 'market_product'}
+		{assign var=author value=$this->getUserDetails($r.post_author_id)}
+		{assign var=post_mode value=$this->lang['posted_an_item_for_sale']}
+		{$r.text = "[product_{$r.original_post_id}]"}
+		{assign var=product value=$this->getMarketProductDetails($r.original_post_id)}
+ 
+	 
+		<div class="media-link_cnt">
+			<div class="media-link_ic">
+				<div class="ic ic_reshare"></div>
+			</div>
+
+			<div class="media-link_c va_target">
+
+
+				<div class="media-shared_n">
+
+					<div class="ucard-mini"><img class="ucard-mini_img _shared" src="/getPhoto?p={$author.profile_photo}&sz=small&g={$author.gender}" alt="{$author.fullname}" width="32" height="32">
+					   <div class="ucard-mini_cnt _shared">
+							<div class="ucard-mini_cnt_i ellip"><span><span class="shortcut-wrap kn_shortcutmenu">
+					<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$author.id}","uname":"{$author.fullname}","uphoto":"{$author.profile_photo}","ugender":"{$author.gender}","ulmen":{ldelim}"photo":"1","guest":"0","block":"0","unblock":"0","unfriend":"0"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$author.id}">
+					</div>
+
+										<a href="/user/{$author.id}" class="ob" hrefattr="true">{$author.fullname}</a>
+									</span>
+									&nbsp;{$this->lang['posted_an_item_for_sale']}
+
+
+
+
+
+									<div class="h-mod sc-menu_w" data-module="ShortcutMenu"></div>
+								</span>
+
+
+							</div>
+							<div class="ucard-mini_cnt_i ellip"></div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+		
+		
+		<div class="shared-product">
+			
+			<div class="shared-product-cover"><img src="/getMarketPictures?p={$product.product_cover}&product_id={$product.id}&sz=medium" /></div>
+			<div class="shared-product-info">
+			
+		<div class="feed-product-bottom">
+		
+		<div class="feed-product-2gap _big">
+			<div class="feed-product-name"><A href="/market/product/{$product.id}" hrefattr="true">{$product.product_name}</a></div>
+			<div class="feed-product-descr">{pellipse($product.product_description,100)} {if strlen($product.product_description) > 180}<A data-open-marketproduct="{$res.itemid}" href="/market/product/{$product.id}" class="ob" hrefattr="true">{$this->lang['Read_more']}</a>{/if}</div>
+			<div class="market_item_param market_row_address_metro market_item_param_geo feed-product-location">{$product.product_location}</div>
+			
+		</div>
+		<div class="feed-product-2gap">
+			<div class="feed-product-price globalpriceformat">{$product.price} {$this->settings['MARKETPLACE_CURRENCY']}.</div>
+			<div class="feed-product-contact"><a class="market_contact_btn flat_button button_wide" href="/market/product/{$product.id}" data-open-marketproduct="{$product.id}" hrefattr="true">{$this->lang['View_product']}</a></div>
+		</div>
+		</div>
+			
+			</div>
+		
+		</div>
+		
+		{else if $post_type == 'video'}
+
+		{assign var=author value=$this->getUserDetails($r.post_author_id)}
+		{if $r.original_post_community == 'yes'}
+				{assign var=clubid value=$this->getClubidFromMediaPhotos($r.original_post_id)}
+		{/if}
+	
+		{assign var=post_mode value=$this->lang['added_a_video']}
+		{include file="{$this->theme_dir}/feed/shared-cnt-author-header.html"}
+		
+		{assign var=c_video value={"[postVideo]{$r.original_post_id}[/postVideo]"}}
+
+		{assign var="video" value=$this->generateMediaPost($c_video,'videos',0,$clubid)}
+ 
+				{if $video[0] != '' && $video[1] != ''}
+				<div class="feed_videos_cnt">{$video[0]}</div>
+				{/if}
+	
+		
+	
+		{else}
+
+{assign var=author value=$this->getUserDetails($r.post_author_id)}
+
+
+{assign var="p_text" value=$r.text}
+{assign var="str_text" value=$this->str_smilies($this->generateMediaPost($p_text,'text',0,$clubid))}
+{assign var="bgcolor" value=$this->generateMediaPost($p_text,'bgcolor',0,$clubid)}
+{assign var="track_cover" value=$this->generateMediaPost($p_text,'songs_cover',0,$clubid)}
+{assign var="tagged_friends" value=$this->generateMediaPost($p_text,'tagged_people',0,$clubid)}
+{assign var="tagged_places" value=$this->generateMediaPost($p_text,'places',0,$clubid)}
+{assign var="photos" value=$this->generateMediaPost($p_text,'photos',$r.id,$clubid)}
+{assign var="video" value=$this->generateMediaPost($p_text,'videos',0,$clubid)}
+{assign var="tracks" value=$this->generateMediaPost($p_text,'tracks',0,$clubid)}
+{assign var="links" value=$this->generateMediaPost($p_text,'links',0,$clubid)}
+{assign var="poll" value=$this->generateMediaPost($p_text,'poll',0,$clubid)}
+{assign var="more" value=0}
+{assign var="c_more" value=0}
+
+	{include file="{$this->theme_dir}/feed/shared-cnt-author-header.html"}
+
+ 
+				{if $r.p_type == 'bgcolor'}
+				{$bgcolor}
+				{else}
+ 
+				{$str_text}
+				
+				{if empty($video[0]) && empty($photos[0]) && !$links && count($tagged_places)}
+				<!-- Show Map Location -->
+				<div class="feed_map_cnt_f">{$tagged_places[1]}</div>
+				{/if}
+				
+			
+				{if $video[0] != '' && $video[1] != ''}
+				
+				{if $c_more < 2}
+				<div class="feed_videos_cnt">{$video[0]}</div>
+				{/if}
+				
+				{if $video[1] == 1} {$k_it_type = 'video'}{/if}
+				
+				{$c_more = $c_more+1}
+				
+				{if $video[1] > 3}
+				{$more = 1}
+				{/if}
+				
+				{else if $r.p_type == 'video'}
+				
+				Video is not available
+				
+				{/if}
+				
+				{if $photos[0] != '' && $photos[1] != ''}
+				{if $photos[1] == 1 && $k_it_type == ''} {$k_it_type = 'photos'}
+				{else if $photos[1] >= 1 && $k_it_type != ''} {$k_it_type = ''}
+				{/if}
+				{if $c_more < 2}
+				<div class="feed_image_collage __{$photos[1]}">{$photos[0]}</div>
+				{/if}
+				{$c_more = $c_more+1}
+				{if $photos[1] && $video[0] != '' || $photos[1] > 2}
+				{$more = 1}
+				{/if}
+				{else if $r.p_type === 'photo'}
+				Photo is not available
+				{/if}
+				
+				
+				{if $links && $c_more < 2}
+				<div class="feed_links_cnt">{$links}</div>
+				{$k_it_type = ''}
+				{$c_more = $c_more+1}
+				{/if}
+				
+				{if $poll}
+				<div class="sh_poll_cnt">{$poll}</div>
+				{/if}
+				
+				
+				{if !empty($tracks[0]) && !empty($tracks[1]) && $c_more < 2}
+				{$k_it_type = ''}
+				
+				{if !$photos && !$video[0] && !$tagged_places && !$links}
+				{if $track_cover}{assign var="song_use_cv" value="1"}<div class="feed_media_post_muz_av"><img src="{$track_cover}"></div>{/if}
+				{/if}
+				
+
+				<div class="feed_songs_cnt {if isset($song_use_cv)}__is_cover{/if}">{$tracks[0]}</div>
+				{$c_more = $c_more+1}
+				{if $tracks[1] > 4 || ($tracks[1] && $tagged_places) }
+				{$more = 1}
+				{/if}
+				
+				
+                    <div class="media_more {if !$more}invisible{/if}"><a href="/post?i={$r.id}" data-type-post="1" class="media_more_a scrollbottom" hrefattr="true"><span class="media_more_ic"><span class="post_view_more_txt">{$this->lang['view_more']}</span>&nbsp;&#8226;&#8226;&#8226;</span></a></div>
+               
+				{/if}
+				
+				
+				
+{/if}
+
+{/if}
+
+ 			
+	 
+<div class="info-widget">
+    <div class="info-widget_i">{$this->getCommentsCount($r.original_post_id,$post_type)} {$this->lang['Comments']}</div>
+    <div class="info-widget_i">{$this->getShareCount($r.original_post_id,$post_type)} {$this->lang['Share']}</div>
+    <div class="info-widget_i">{$this->getLikesCount($r.original_post_id,$post_type)} {$this->lang['likes']}</div>
+</div>
+				</div>
+
+				
+{/strip}

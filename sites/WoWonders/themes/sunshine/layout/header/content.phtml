@@ -1,0 +1,205 @@
+<div class="navbar navbar-default navbar-fixed-top">
+	<nav class="header-fixed1000">
+		<div class="container-fluid">
+			<a class="brand header-brand" href="<?php echo $wo['config']['site_url']; ?>">
+				<img width="130" src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="<?php echo $wo['config']['siteName'];?> Logo"/>
+			</a>
+			<ul class="nav navbar-nav left_part_header">
+				<li class="head_name_links">
+					<a class="sixteen-font-size homelink_count" href="<?php echo $wo['config']['site_url']; ?>" data-ajax="?index.php?link1=home">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
+						<span><?php echo $wo['lang']['home'] ?></span>
+					</a>
+				</li>
+				<li class="head_name_links">
+					<a class="sixteen-font-size homesrch_count" id="open_header_search" href="javascript:void(0);">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+					</a>
+				</li>
+				<li class="head_name_links">
+					<a class="sixteen-font-size keyshort_count" data-toggle="modal" data-target="#keyboard_shortcuts_box" href="javascript:void(0);">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,10H17V8H19M19,13H17V11H19M16,10H14V8H16M16,13H14V11H16M16,17H8V15H16M7,10H5V8H7M7,13H5V11H7M8,11H10V13H8M8,8H10V10H8M11,11H13V13H11M11,8H13V10H11M20,5H4C2.89,5 2,5.89 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7C22,5.89 21.1,5 20,5Z" /></svg>
+					</a>
+				</li>
+				
+				<?php if ($wo['loggedin'] == true) { ?>
+					<?php if ($wo['config']['online_sidebar'] == 1 && $wo['page'] == 'home') { ?>
+						<li class="head_name_links">
+							<?php $online = Wo_CountOnlineData();?>
+							<div class="sixteen-font-size online_count" title="<?php echo $wo['lang']['online_users'];?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg>&nbsp;<?php echo $online;?>
+							</div>
+						</li>
+					<?php } ?>
+				<?php } ?>
+				
+				<li class="search-container">
+					<div class="dropdown head_srch_drop">
+						<div class="head_clos_srch" id="close_header_search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg></div>
+						<form class="navbar-form form-group" data-toggle="dropdown" role="button" id="navbar-searchbox" role="search">
+							<div class="form-group inner-addon <?php echo Wo_RightToLeft('left-addon');?> ">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search glyphicon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+								<input type="text" class="form-control search-input" onkeyup="Wo_DetectSearchType(this.value), document.getElementById('wo_repeat_search').innerHTML = escapeHtml(this.value)" placeholder="<?php echo $wo['lang']['search_header_label']; ?>" dir="auto" <?php if ($wo['loggedin'] == true) { echo 'onfocus="Wo_GetRecentSearchs()"';}?>>
+							</div>
+						</form>
+						<ul class="dropdown-menu search-dropdown-container" style="margin-left:7px;" role="menu">
+							<div class="search-dropdown-result">
+								<?php
+									if ($wo['loggedin'] == true) {
+										foreach (Wo_GetRecentSerachs() as $wo['result']) {
+											if (!empty($wo['result'])) {
+												echo Wo_LoadPage('header/search');
+											}
+										}
+									}
+								?>
+							</div>
+							<li>
+								<span class="search-advanced-container">
+									<a href="<?php echo Wo_SeoLink('index.php?link1=search');?>" class="search-advanced-link" data-ajax="?link1=search">
+										<div class="feather-svg-parent">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+										</div>
+										<span style="vertical-align: middle;display: table-cell;padding-left: 10px;">
+											<?php echo $wo['lang']['advanced_search']; ?> 
+											<span id="wo_repeat_search"></span>
+										</span>
+									</a>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<?php
+				if ($wo['loggedin'] == true) {
+					echo Wo_LoadPage('header/loggedin-header');
+				} else {
+					echo Wo_LoadPage('header/main-header');
+				}
+			?>
+		</div>
+	</nav>
+</div>
+
+<div class="loader"></div>
+
+<script type="text/javascript">
+<?php if (Wo_IsMobile() == true) { ?>
+$('.sun_bd_hd_scrl_menu').on('shown.bs.dropdown', function () {
+  document.body.style.overflow = 'hidden';
+});
+
+$('.sun_bd_hd_scrl_menu').on('hidden.bs.dropdown', function () {
+  document.body.style.overflow = 'auto';
+});
+<?php } ?>
+
+jQuery(document).ready(function($) {
+  $(".search-input").keydown(function(event) {
+    if (event.keyCode == 13 && event.shiftKey == 0) {
+      event.preventDefault();
+      window.location = '<?php echo Wo_SeoLink('index.php?link1=search?query=');?>' + $(this).val();
+    }
+  });
+});
+var Searchcontainer = $('.search-container');
+var SearchBox = $('.search-container .search-input');
+var SearchResult = $('.search-dropdown-result');
+
+function Wo_ChangeHomeButtonIcon() {
+
+  $('.navbar-home #home-button').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+}
+  
+function Wo_DetectSearchType(query) {
+  var Hash = smokeTheHash(query);
+  if (Hash) {
+    $('.search-advanced-container').hide(200);
+    Wo_SearchhashResult(query);
+  } else {
+    $('.search-advanced-container').fadeIn(200);
+    Wo_SearchResult(query);
+  }
+}
+
+function Wo_ClearSearches() {
+  $('.clear-searches').html('<i class="fa fa-spinner fa-spin"></i>');
+   $.get(Wo_Ajax_Requests_File(), {f: 'clearChat'}, function(data) {
+        if (data.status == 200) {
+           location.reload();
+        }
+   });
+}
+
+function Wo_GetRecentSearchs() {
+  $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'recent'}, function(data) {
+      if (data.status == 200) {
+          if (data.html.length > 0) {
+            SearchResult.html('<div class="recent"><div class="gray recent-searches <?php echo Wo_RightToLeft("pull-left");?>"> <?php echo $wo["lang"]["recent_searches"]?></div><div onclick="Wo_ClearSearches();" class="gray recent-searches clear-searches pointer <?php echo Wo_RightToLeft("pull-right");?>" style="color: #F44336;"><svg style="vertical-align: middle;margin-top: -3px;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><?php echo $wo["lang"]["clear"]?></div><div class="clear"></div></div>' + data.html);
+          }
+        }
+  });
+}
+function Wo_SearchResult(query) {
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'normal', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+
+function Wo_SearchhashResult(query) {
+    var Searchcontainer = $('.search-container');
+    var SearchBox = $('.search-container .search-input');
+    var SearchResult = $('.search-dropdown-result');
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'hash', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+function smokeTheHash(str) {
+  var n = str.search("#");
+  if(n != "-1"){
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>

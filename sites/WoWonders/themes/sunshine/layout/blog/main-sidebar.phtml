@@ -1,0 +1,70 @@
+<?php 
+function Wo_GetPopularBlogs($limit) {
+    global $sqlConnect, $wo;
+    $data = array();
+    $query  = mysqli_query($sqlConnect, "SELECT * FROM  " . T_BLOG . "  
+                                         ORDER BY `view` DESC LIMIT $limit");
+    while ($fetched_data = mysqli_fetch_assoc($query)) {
+        $data[] = Wo_GetArticle($fetched_data['id']);
+    }
+    return $data;
+}
+?>
+<div class="main-blog-sidebar">
+	<!-- Search system -->
+	<div class="widget search-blog">
+		<h4 class="recent-articles" style="color: #2196f3;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"></path></svg> <?php echo $wo['lang']['search'] ?></h4>
+		<span id="load-search-icon" class="hidden"><svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#333" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/> </path></svg></span>
+		<input type="text" placeholder="<?php echo $wo['lang']['keyword']?>" class="form-control" id="search-blog-input">
+	</div>
+
+	<!--Popular Posts-->
+	<div class="widget">
+		<h4 class="recent-articles" style="color: #e51c23;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.71,19C9.93,19 8.5,17.59 8.5,15.86C8.5,14.24 9.53,13.1 11.3,12.74C13.07,12.38 14.9,11.53 15.92,10.16C16.31,11.45 16.5,12.81 16.5,14.2C16.5,16.84 14.36,19 11.71,19M13.5,0.67C13.5,0.67 14.24,3.32 14.24,5.47C14.24,7.53 12.89,9.2 10.83,9.2C8.76,9.2 7.2,7.53 7.2,5.47L7.23,5.1C5.21,7.5 4,10.61 4,14A8,8 0 0,0 12,22A8,8 0 0,0 20,14C20,8.6 17.41,3.8 13.5,0.67Z"></path></svg> <?php echo $wo['lang']['popular_posts'] ?></h4>
+		<ul class="popular-articles">
+		<?php 
+		$blogs = Wo_GetPopularBlogs(5);
+		foreach ($blogs as $key => $wo['blog-style']) {
+			echo Wo_LoadPage('blog/blog-popular');
+		}
+		?>
+		</ul>
+	</div>
+	
+	<!--Categories-->
+	<div class="widget">
+		<h4 class="recent-articles" style="color: #4caf50;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z"></path></svg> <?php echo $wo['lang']['categories'] ?></h4>
+		<ul class="popular-categories">
+			<?php 
+				$category_id = (!empty($_GET['id'])) ? (int) $_GET['id'] : 0;
+				foreach ($wo['page_categories'] as $key => $category) {
+			?>
+			<li>
+				<a href="<?php echo Wo_SeoLink('index.php?link1=blog-category&id=' . $key) ?>" data-ajax="?link1=blog-category&id=<?php echo $key?>"><?php echo $category;?></a>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+</div>
+
+<style>
+#load-search-icon svg{
+	margin-left: 2px;
+	margin-bottom: -5px;
+	position: absolute;
+}
+</style>
+<script>
+$('#search-blog-input').keyup(function(event) {
+	$keyword = $(this).val();
+	$('#load-search-icon').removeClass('hidden');
+	$.post(Wo_Ajax_Requests_File() + '?f=search-blog', {keyword: $keyword}, function(data, textStatus, xhr) {
+		if (data.status == 200) {
+			$('#recent-blogs').html(data.html);
+		} else {
+			$('#recent-blogs').html('<div class="text-center">' + data.message + '</div>');
+		}
+		$('#load-search-icon').addClass('hidden');
+	});
+});
+</script>

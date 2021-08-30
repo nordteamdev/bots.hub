@@ -1,0 +1,20 @@
+ <?php $user = Wo_GetUserProType($wo['userlist']['pro_type']);?>
+ <tr class="setting-userlist" id="UserID_<?php echo $wo['userlist']['user_id']?>" data-user-id="<?php echo $wo['userlist']['user_id']?>">
+   <td><?php echo $wo['userlist']['user_id']?></td>
+   <td>
+      <a href="<?php echo $wo['userlist']['url']; ?>">
+      <img src="<?php echo $wo['userlist']['avatar']; ?>" class="setting-avatar" alt="<?php echo $wo['userlist']['avatar']?> Profile Picture">
+      <?php echo $wo['userlist']['name']; ?>
+      </a>
+   </td>
+   <td style="color:<?php echo $user['color_name']?>">
+   <i class="fa fa-<?php echo $user['icon']?>"></i> <?php echo $user['type_name']?>
+   </td>
+   <td>
+     <?php echo Wo_Time_Elapsed_String($wo['userlist']['pro_time'])?>
+   </td>
+   <td><?php echo (Wo_UserActive($wo['userlist']['username']) === true) ? '<span class="label label-success">' . $wo['lang']['active'] . '</span>': '<span class="label label-danger">' . $wo['lang']['pending'] . '</span>';?></td>
+   <td>
+      <a target="_blank" class="btn btn-info waves-effect" href="<?php echo Wo_SeoLink('index.php?link1=setting&user=' . $wo['userlist']['username'] . '&page=general-setting') ?>">EDIT</a>
+   </td>
+</tr>

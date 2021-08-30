@@ -1,0 +1,84 @@
+<div class="add-photo sun_startup">
+	<div class="text-center">
+		<h2><?php echo $wo['lang']['tell_us'];?></h2>
+        <h4><?php echo $wo['lang']['tell_us_des'];?></h4>
+		<form class="setting-general-form form-horizontal row" method="post">
+			<div class="col-md-3 col-sm-2"></div>
+			<div class="col-md-6 col-sm-8">
+				<!-- Text input-->
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="sun_input">
+							<input id="first_name" name="first_name" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['first_name']; ?>" value="<?php echo $wo['user']['first_name']?>" autocomplete="off" autofocus> 
+							<label for="first_name"><?php echo $wo['lang']['first_name']; ?></label>  
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="sun_input">
+							<input name="last_name" id="last_name" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['last_name']; ?>" value="<?php echo $wo['user']['last_name']?>" autocomplete="off">
+							<label for="last_name"><?php echo $wo['lang']['last_name']; ?></label>  
+						</div>
+					</div>
+				</div>
+				<div class="sun_input">
+					<select id="country" name="country" class="form-control">
+						<?php 
+							foreach ($wo['countries_name'] as $country_ids => $country) { 
+								$country_id = $wo['user']['country_id'];
+								$selected_contry = ($country_ids == $country_id) ? ' selected' : '' ;
+						?>
+							<option value="<?php echo $country_ids;?>" <?php echo $selected_contry;?> ><?php echo $country;?></option>
+						<?php } ?>
+					</select>
+					<label for="country"><?php echo $wo['lang']['country']; ?></label>
+				</div>
+				<div class="sun_input">
+					<input id="usr_birthday" name="birthday" type="text" class="form-control input-md" placeholder="<?php echo $wo['lang']['birthday']; ?>" autocomplete="off"> 
+					<label for="usr_birthday"><?php echo $wo['lang']['birthday']; ?></label>
+				</div>
+				
+				<input type="hidden" name="user_id" value="<?php echo $wo['user']['user_id'];?>">
+				<input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+			</div>
+			<div class="col-md-3 col-sm-2"></div>
+		</form>
+	</div>
+	<div class="continue-button">
+		<small class="skip-step" onclick="Wo_SkipStep('start_up_info');"><?php echo $wo['lang']['skip'];?></small>
+		<button class="btn con-button btn-main" onclick="Wo_SubmitInfoForm();"><?php echo $wo['lang']['start_up_continue'];?></button>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$("#usr_birthday").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: 'dd-mm-yy',
+		yearRange: "1930:2020",
+		minDate: "-60Y",
+		maxDate: "today",
+		prevText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>',
+		nextText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>'
+    });
+});
+  
+function Wo_SubmitInfoForm() {
+	$("form.setting-general-form").submit();
+}
+$(function () {
+	$('form.setting-general-form').ajaxForm({
+    url: Wo_Ajax_Requests_File() + '?f=update_user_information_startup',
+    beforeSend: function () {
+      $('button').attr('disabled', true);
+      $('button').text("<?php echo $wo['lang']['please_wait'];?>");
+    },
+    success: function (data) {
+      if(data.status == 200) {
+      	window.location.href = '<?php echo Wo_SeoLink('index.php?link1=start-up');?>';
+      }
+    }
+  });
+});
+</script>

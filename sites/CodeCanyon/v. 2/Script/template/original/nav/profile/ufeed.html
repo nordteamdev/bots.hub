@@ -1,0 +1,498 @@
+{strip}
+
+{assign var=is_friend value=$this->isfriend($user.id)}
+{assign var="stories" value=$this->im_stories()}
+
+
+ 
+
+   {include file={$_usermenu}} 
+
+
+
+{if !$is_friend && $user['private'] === 'yes' && $user['id'] !== $this->USER['id']}
+{include file=$this->private_profile_tpl}
+
+{else}
+
+
+
+
+
+
+
+{assign var="u_uname_header" value="1"}
+{assign var="mutual_friends" value=$this->getMutualFriends($user.id)}
+{assign var="_friends" value=$this->getUserFriends($user.id,3)}
+{assign var="_friends_count" value=$this->friendsCount($user.id)}
+{assign var="_photo_albums" value=$this->getUserPhotoAlbums($user.id)}
+{assign var="_videos" value=$this->getUserVideos($user.id)}
+{assign var="_tracks" value=$this->getUserTracks($user.id,3)}
+{assign var="relative_friends" value=$this->getUserRelativeFriends($user.id,3)}
+{assign var="user_relative_friends_count" value=$this->friendRelationship('relative',$user.id,1)}
+{assign var="user_photos_count" value=$this->userPhotosCount($user['id'],'all')}
+
+{assign var="user_posts_count" value=$this->postsCount($user.id)}
+{assign var="user_groups_count" value=$this->userGroupsCount($user.id)}
+{assign var="user_communities" value=$this->getUserGroups($user.id,3)}
+{assign var="user_friends_count" value=$this->friendsCount($user.id)}
+{assign var="user_apps_count" value=$this->userAppsCount($user.id)}
+{assign var="user_gifts_count" value=$this->getUserGiftsCount($user.id,'')}
+{assign var="ad" value=$this->getAdMarkup('profile')}
+{assign var="user_is_online" value=$this->getUserStatus($user.id)}
+
+{assign var="books" value=$this->getUserBooks($user.id,3)}
+{assign var="movies" value=$this->getUserMovies($user.id,3)}
+
+
+{assign var="story" value=json_decode($smarty.capture.story,true)}
+{assign var="story_seen" value=$smarty.capture.story_seen}
+
+{assign var=clubid value=0}
+
+<input type="hidden" id="wprofileid" value="{$user.id}"/>
+
+
+{if $this->USER['id'] === $user['id']}<div class="__none" id="_wall_itsme"></div>{/if}
+
+ 
+
+
+<div class="pv117-twogp">
+<div class="pv117-wall-cnt">
+
+{if $user_photos_count > 6}
+
+	<div class="YxWgs3Q">
+	
+		<div class="YxWgs1Q"><a href="/profile?q={$user['id']}&cmd=photos&nav=photos" data-navact="photos" hrefattr="true">{$user_photos_count} {$this->lang['photos']}</a></div>
+
+
+<div class="a06">
+{foreach $this->UsergetLastPictures($user.id,7) as $photo}
+
+<a class="image-hover" href="/photo?q={$user.id}&show=profileWall&from=medium&o={b_encode($photo.id)}&cmd=openPhotoViewer&_token={mt_rand(1000,99999)}" data-vphopen="1" data-vphi="{base64_encode($photo.id)}">
+<div class="a07"><img src="/getPhoto?p={$photo.id}&sz=small&g={$user.gender}"></div>
+</a>
+
+{/foreach}
+
+</div>
+
+	</div>
+
+{/if}
+
+<div class="user_profile_v117_filter_a_title">{$this->lang['Wall']}&nbsp;<span class="navMenuCount">({$this->userFeedCount($user.id)})</span></div>
+
+		<section id="hook_feed_wl_pg" data-feed-etp="1" data-uprofile="{$user.id}" class="u_prof_redesign_feed v117 profileu"></section>
+ 
+		<div class="p28">
+		<div class="v117-load-more link-show-more private loader-controls" id="uprofile_load_more_btn" onclick="return plusNFeed(this,event);">{$this->lang['Load_more']}</div>
+		</div>
+		</div>
+
+
+<div class="pv117-right-col" id="profile-sticky-right-side">
+
+					<div id="profile-sticky-right-side-fixed">
+					 
+									<div class="profile_add_text_post">
+									{if $this->USER.id == $user.id}
+									<a href="javascript:void(0);" class="profile_add_text_post_msg_a" onclick="profile_add_text_status(this,event);">
+									{/if}
+
+									{if !empty(trim($user.text_post))} 
+									<div class="ic_status_msg_div">
+									<div class="rightu23jx-ic status"></div>
+									</div>
+									<div class="status_msg_txt">{$this->str_smilies($user.text_post)}</div>
+									{else if $this->USER.id == $user.id && empty(trim($user.text_post))}
+									<div class="ic_status_msg_div">
+									<div class="rightu23jx-ic status"></div>
+									</div>
+									<div class="status_msg_txt">{$this->lang['profile_leave_status_msg']}</div>
+									{/if}
+
+									{if $this->USER.id == $user.id}</a>{/if}
+
+									</div>
+
+									
+									<div class="blocks-p first">
+										<div class="header-n">{$this->lang['About_user']}</div>
+										
+										<div class="block-p-cnt">
+											<ul>
+												<li class="uinfo-r"><i class="rightu23jx-ic location"></i><span class="u_info_about_str"><span rel="getusercountry" id="buser_{$user.id}"></span></span></li>
+												
+							{if $user.privacy_age === 'only_me' && $user.id === $this->USER['id']}
+ 
+							<li class="uinfo-r"><i class="rightu23jx-ic born"></i><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></li>
+							{else if $user.privacy_age === 'friends' && $this->isfriend($user.id)}
+							<li class="uinfo-r"><i class="rightu23jx-ic born"></i><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></li>
+							
+							
+							{else if $user.privacy_age === 'everyone'}
+							<li class="uinfo-r"><i class="rightu23jx-ic born"></i><span class="u_info_about_str">{$this->gMonthName(date("j F, Y", strtotime($user['birthday'])))}. {$this->getUserAge($user['birthday'])} {$this->lang['years_old']}</span></li>
+							
+							{/if}
+											</ul>
+											
+											<div class="block-more-btn">
+												<a href="/user/about/{$user.id}" hrefattr="true" class="flat_button secondary">{$this->lang['Read_more']}</a>
+											</div>
+										
+										</div>
+										
+									</div>
+									
+									
+									{if ($story.exist == 'yes' && $this->USER.id != $user.id) || $this->USER.id == $user.id}
+									<div class="blocks-p">
+										<div class="header-n">{$this->lang['Story']}</div>
+										
+										<div class="block-p-cnt">
+										
+
+										
+	<ul class="stories_while uprofile-right-stories">
+	<!-- My Story--->
+	 <li id="story_uid_{$story.story_id}" data-story-by-user="{$user.id}" class="li_story {if $story_seen}_seen{/if} {if $user.id == $this->USER.id}my{/if}  {if $story.exist == 'yes'}with{else}_empty{/if}">
+	 
+	{if $story.exist == 'yes'} 
+	  <div class="hookData stories-hookData"><!-- {$stories->getMyStoryObject($story.story_id)} --></div>
+	  {else}
+	   <div class="hookData stories-hookData"></div>
+	  {/if}
+	 
+	 <div class="story_uploading_progr">{$this->lang['Uploading_please_wait']}</div>
+	 <a class="story_a_img" onclick="event.preventDefault();this.nextSibling.click();">
+	 <div class="story_img fl_left">
+
+	 {if $story.exist == 'yes'}
+	 
+	 <img id="img_story" src="/stories?cmd=view-picture&id={$story.story_thumb_id}&size=thumb" />
+	 {if $story_seen}
+	 <div class="story_seen_bord"></div>
+	 {/if}
+	 {else} 
+	 <img id="img_story" src="/getPhoto?p={$user['profile_photo']}&sz=small" />
+	 {/if}
+	   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="stories" style="enable-background:new -580 439 577.9 194;"
+		 xml:space="preserve">  
+		<circle cx="50" cy="50" r="40" />
+	  </svg>
+	 
+	 
+	 <div class="coreSpriteStoryCreationAlt TiuNS"></div>
+	 </div>
+	 
+	 <div class="story_info ellip">
+	 {if $story.exist == 'yes' && $this->USER.id == $user.id}
+		<div class="story_a_head_name ellip">{$this->lang['View_your_story']}</div>
+		<div class="story_a_time_ago ellip">{$story.time_ago}</div>
+	 {else if $story.exist == 'no' && $this->USER.id == $user.id}
+		<div class="story_a_head_name ellip">{$this->lang['add_your_story']}</div>
+		<div class="story_a_time_ago ellip">{$this->lang['add_story_descr']}</div>
+	{else}
+		<div class="story_a_head_name ellip">{$user.name}</div>
+		<div class="story_a_time_ago ellip">{$story.time_ago}</div>
+	{/if}
+	 </div>
+ 
+	 </a>
+	
+	 <input accept="image/*,video/*" data-new-story-input="true" {if $story.exist == 'yes'}style="display:none;"{/if} onchange="story.add(event);" class="html5-upload-link add-story-html5" id="files" name="files[]" size="1" title="" type="file" value="">
+	 
+	 {if $story.exist == 'yes' && $this->USER.id == $user.id}
+	 <div class="ui_actions_menu_icons mystory">
+		<span class="kn_shortcutmenu wh100">
+		<div class="hookDataShortcut" data-shortcutmenudata='{ldelim}"uid":"{$user.id}","uname":"Settings","uphoto":"/stories?cmd=view-picture&id={$story.story_thumb_id}&size=thumb","ugender":"","ulmen":{ldelim}"story":"{$story.story_id}"{rdelim}{rdelim}' id="hook_ShortcutMenu_{$story.story_id}">
+		</div></span>
+	 </div>
+
+	 {/if}
+	<A href="javascript:void(0);" {if $story.exist == 'no'}style="display:none;"{/if} class="invisible-a-openstory" id="u-{$user.id}" onclick="story.openStory(this,event,'{$story.story_id}');"></a>
+	 
+	 </li>
+										
+		</ul>						
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										</div>
+										
+										
+									</div>
+									
+									
+									{/if}
+
+									{if $_friends_count}
+
+									<div class="blocks-p">
+										<div class="header-n">{$_friends_count} {if $_friends_count > 1}{$this->lang['friends']}{else}{$this->lang['friend']}{/if}</div>
+										
+										<div class="block-p-cnt">
+										
+											<ul>
+											{foreach $_friends as $f}
+												<li class="ublxx2ww1t">
+												
+													<a href="/user/{$f.id}" hrefattr="true">
+														<img src="/getPhoto?p={$f.photo}&sz=small" />
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{$f.fullname}</div>
+														<div class="fsf3xy6">{$f.location}</div>
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+											{if $_friends_count > 3}
+											<div class="block-more-btn">
+												<a href="/friends/{$user.id}" hrefattr="true" class="flat_button secondary">{$this->lang['All_friends']}</a>
+											</div>
+											{/if}
+										</div>
+										
+										
+									</div>
+									
+									{/if}
+									
+									
+									{if count($relative_friends)}
+									<div class="blocks-p">
+										<div class="header-n">{$this->lang['relative_friends']}</div>
+										
+										<div class="block-p-cnt">
+										
+											<ul>
+											{foreach $relative_friends as $friend}
+												<li class="ublxx2ww1t">
+												
+													<a href="/user/{$friend.id}" hrefattr="true">
+														<img src="/getPhoto?p={$friend.photo}&sz=small" />
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{$friend.fullname}</div>
+														<div class="fsf3xy6">{$this->myFriendRelationName($friend.relationship,'relative')}</div>
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+										
+										</div>
+										
+										
+									</div>
+									{/if}
+									
+									
+{if count($mutual_friends[1]) && $mutual_friends[0]}
+
+									<div class="blocks-p">
+										<div class="header-n">{$mutual_friends[0]} {if $mutual_friends[0] > 1}{$this->lang['mutual_friends']}{else}{$this->lang['mutual_friend']}{/if}</div>
+										
+										<div class="block-p-cnt">
+										
+											<ul>
+											{foreach $mutual_friends[1] as $u}
+												<li class="ublxx2ww1t">
+												
+													<a href="/user/{$u.id}" hrefattr="true">
+														<img src="/getPhoto?p={$u.photo}&sz=small" />
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{$u.fullname}</div>
+														<div class="fsf3xy6">{$u.location}</div>
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+										
+										</div>
+										
+										
+									</div>
+
+{/if}
+									
+									
+									{if $user_communities[0]}
+									
+									<div class="blocks-p">
+										<div class="header-n">{$this->lang['Communities']}</div>
+										
+										<div class="block-p-cnt">
+											<ul>
+											{foreach $user_communities[1] as $g}
+												<li class="ublxx2ww1t">
+												
+													<a href="/community/{$g.id}" hrefattr="true">
+														<img src="/clubpicture?i={$g.id}&size=small&clubid={$g.id}&corr=1&logo=true" />
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{$g.name}</div>
+														<div class="fsf3xy6">{pellipse($g.status,40)}</div>
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+											
+											{if $user_communities[0] > 3}
+											<div class="block-more-btn">
+												<a href="/friends/{$user.id}" hrefattr="true" class="flat_button secondary">{$this->lang['All_communities']}</a>
+											</div>
+											{/if}
+										</div>
+										
+										
+									</div>
+									
+									{/if}
+									
+									
+									
+									
+									
+									
+									{if $books[0] > 0}
+									
+									<div class="blocks-p">
+										<div class="header-n">{$books[0]} {if $books[0] > 1}{$this->lang['books']}{else}{$this->lang['book']}{/if}</div>
+										
+										<div class="block-p-cnt">
+											<ul>
+											{foreach $books[1] as $book}
+												<li class="ublxx2ww1t">
+												
+													<a href="/page/book/{$book.page_id}/" hrefattr="true">
+														<div class="book_cover" style="background-image:url(/bookGetPoster.php?p={urlencode($book.book_cover)})"></div>
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{pellipse($book.book_title,50)}</div>
+	<div class="fsf3xy6">													 
+<div class="ratings_ul_sys">
+<ul class="page_rating_stars" rel="start-rating" data-rating='{ldelim}"item_id":"{$book.page_id}","stars":"5","static":"{$this->checkItemIsRatedByMe($book.page_id,"book")}","current_stars":"{$this->getItemStars($book.page_id,"book")}","item_type":"book"{rdelim}'></ul>
+<div class="rating_sys_count div-loader"></div>
+</div></div>
+														 
+														 
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+											
+											{if $books[0] > 3}
+											<div class="block-more-btn">
+												<a href="/books/{$user.id}" hrefattr="true" class="flat_button secondary">{$this->lang['All_books']}</a>
+											</div>
+											{/if}
+										</div>
+										
+										
+									</div>
+									
+									{/if}
+									
+									
+									
+									
+									{if $movies[0] > 0}
+									
+									<div class="blocks-p">
+										<div class="header-n">{$movies[0]} {if $movies[0] > 1}{$this->lang['movies']}{else}{$this->lang['movie']}{/if}</div>
+										
+										<div class="block-p-cnt">
+											<ul>
+											{foreach $movies[1] as $movie}
+												<li class="ublxx2ww1t">
+												
+													<a href="/page/movie/{$movie.page_id}/" hrefattr="true">
+														<div class="movie_cover" style="background-image:url(/movieGetPoster?p={urlencode($movie.movie_cover)})"></div>
+														<div class="fsf3xy4">
+														<div class="fsf3xy5">{pellipse($movie.movie_title,50)}</div>
+	<div class="fsf3xy6">													 
+<div class="ratings_ul_sys">
+<ul class="page_rating_stars" rel="start-rating" data-rating='{ldelim}"item_id":"{$movie.page_id}","stars":"5","static":"{$this->checkItemIsRatedByMe($movie.page_id,"movie")}","current_stars":"{$this->getItemStars($movie.page_id,"movie")}","item_type":"movie"{rdelim}'></ul>
+<div class="rating_sys_count div-loader"></div>
+</div></div>
+														</div>
+													</a>
+												
+												</li>
+												{/foreach}
+											
+											</ul>
+											
+											{if $movies[0] > 3}
+											<div class="block-more-btn">
+												<a href="/movies/{$user.id}" hrefattr="true" class="flat_button secondary">{$this->lang['All_movies']}</a>
+											</div>
+											{/if}
+										</div>
+										
+										
+									</div>
+									
+									{/if}
+									
+<!-- tracks -->
+{if count($_tracks)}
+
+<div class="blocks-p">
+<div class="header-n">{$_tracks.0.tr_count} {if $_tracks.0.tr_count > 1}{$this->lang['tracks']}{else}{$this->lang['track']}{/if}</div>
+										
+<div class="block-p-cnt">
+
+
+ 
+ 
+
+<div class="m_portal_tracks profile_men_redesign">
+
+{foreach $_tracks as $tr}
+  
+	<div class="track js-track soh-s ">
+		<div class="track_hld "><span onclick="nobilMusicPlayOutsideTrack(this,event)" data-track-inf='{ldelim}"track":"{$tr.filename}","cover":"{$tr.cover}","artist":"{$tr.artist}","songname":"{$tr.title}","albumname":"{$tr.album}"{rdelim}' title="Play" id="{$user.id}_{$tr.id}" class="track_play __play js-track_play __mus_out"></span>
+			<div class="track_cnt "><a class="track_artist" onclick="nobilMusicSearch('{$tr.artist}')">{$tr.artist}</a>&nbsp;–&nbsp;<a class="track_song" onclick="nobilMusicSearch('{$tr.title}')">{$tr.title}</a><span class="foh-s track_info"> <span class="m_From_alb">{$this->lang['mus_from_album']}</span> <a class="track_album" onclick="nobilMusicSearch('{$tr.album}')">{$tr.album}</a></span></div>
+			<div class="track_ac foh-s" id="{$user.id}_{$tr.id}"><span onclick="faddTrackToMyCollection(this,event);" title="{$this->lang['mus_add_to_my_music']}" class="track_add js-track_add "></span></div>
+		</div><div class="Track_time">{$tr.time}</div>
+	</div>
+            
+{/foreach}
+</div>
+
+</div></div>
+{/if}
+
+</div>
+ 				
+</div>
+
+</div>
+
+{/if}
+
+{/strip}
+

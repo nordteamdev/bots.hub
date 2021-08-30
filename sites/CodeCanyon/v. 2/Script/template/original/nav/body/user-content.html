@@ -1,0 +1,64 @@
+<section  id="profile_left_side_bar">
+<div class="left_sd_b_wht {if readCookie('user_menu_on') == 'yes' || $this->settings['collapsed_menu'] === 'true'} /*__collapsed*/{/if}">
+<div class="">
+
+
+<ul class="left_wd_menu">
+<div class="leftmenu-first-col notifred">
+<li class="lf_men _main _userprofile"><A href="/user/{$this->USER.id}" hrefattr="true"><i class="ic_left_mn" style="background-image:url(/getPhoto?p={$this->USER['profile_photo']}&sz=small);"></i><span class="ic_cl_name bold ellip"><strong>{$this->USER['fullname']}</strong></span></a></li>
+<div class="divider"></div>
+<li class="lf_men _feed"><A title="{$this->lang['Wall']}" class="reloadwall" href="{$this->settings['HOST']}" hrefattr="true"><i class="ic_left_mn _feed"></i><span class="ic_cl_name">{$this->lang['Wall']}</span></a></li>
+{if $this->settings['_NODE_ENABLED']}
+<li class="lf_men _main _messages"><A id="triggerMDialog" title="{$this->lang['My']} {$this->lang['Messages']}" href="/messenger" hrefattr="true"><i class="ic_left_mn _messages"></i><span class="ic_cl_name">{$this->lang['Messenger']}</span><div class="m_notif_space"></div></a></li>
+{else}
+<li class="lf_men _main _messages"><a id="triggerMDialog" title="{$this->lang['My']} {$this->lang['Messages']}" href="javascript:void(0);" onclick="return privateMessages(event,this);"><i class="ic_left_mn _messages"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Messages']}</span><div class="m_notif_space"></div></a></li>
+{/if}
+<li class="lf_men _main _guests"><A  title="{$this->lang['my_guests']}" href="/guests?om=1&nav=guests" hrefattr="true"><i class="ic_left_mn _guests"></i><span class="ic_cl_name">{$this->lang['my_guests']}</span><div class="g_notif_space"></div></a></li>
+<!--<li class="lf_men _main _notification"><A title="{$this->lang['My']} {$this->lang['Notifications']}" onclick="return getMyNotifications(this,event);" href="/profile?cmd=Notif&token={time()}"><i class="ic_left_mn _notification"></i><span class="ic_cl_name">{$this->lang['Notifications']}</span><div class="notif_space"></div></a></li>-->
+
+<li class="lf_men _main _grades"><A title="{$this->lang['My']} {$this->lang['Marks']}" onclick="event.preventDefault();evstop(event);return getMyGrades(this,event);" href="/profile?cmd=grades&_token={time()}"><i class="ic_left_mn _grades"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Marks']}</span><div class="gr_notif_space"></div></a></li>
+</div>
+
+<div class="notifsimple">
+<li class="lf_men _friends"><A title="{$this->lang['Friends']}" href="/friends/{$this->USER['id']}" data-navact="friends" hrefattr="true"><i class="ic_left_mn _friends"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Friends']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->friendsCount()}</div></a></li>
+<li class="lf_men _photos"><A title="{$this->lang['My']} {$this->lang['Photos']}" href="/photos/{$this->USER['id']}" hrefattr="true"><i class="ic_left_mn _photos"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Photos']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->getUserPhotosCount($this->USER['id'])}</div></a></li>
+<!--<li class="lf_men _groups"><A href="" hrefattr="true"><i class="ic_left_s _groups"></i><span class="ic_cl_name">Groups</span></a></li>
+-->
+<li class="lf_men _posts"><A title="{$this->lang['My']} {$this->lang['Posts']}" href="/posts/{$this->USER['id']}" hrefattr="true"><i class="ic_left_mn _posts"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Posts']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->getPostsCount($this->USER['id'])}</div></a></li>
+
+<li class="lf_men _communities"><A href="/communities/my" hrefattr="true"><i class="ic_left_mn _communities"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Communities']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->userGroupsCount($this->USER['id'])}</div></a></li>
+<li class="lf_men market"><A href="/market/products/my" hrefattr="true"><i class="ic_left_mn _market"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Products']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->userProductsCount($this->USER['id'])}</div></a></li>
+
+<li class="lf_men _apps"><A href="/apps/user/{$this->USER.id}" hrefattr="true"><i class="ic_left_mn _apps"></i><span class="ic_cl_name">{$this->lang['My']} {$this->lang['Games']}</span><div class="zoomIn animated lnavMenuCount">{$cglb->userAppsCount($this->USER['id'])}</div></a></li>
+<li rel="tipsy" title="Coming Soon"  class="lf_men _events __soon"><A href="javascript:;"><i class="ic_left_mn _events"></i><span class="ic_cl_name">{$this->lang['Events']}</span><div class="zoomIn animated lnavMenuCount">0</div></a></li>
+<li rel="tipsy" title="Coming Soon" class="lf_men _explore __soon"><A href="javascript:;"><i class="ic_left_mn _explore"></i><span class="ic_cl_name">{$this->lang['Explore']}</span><div class="zoomIn animated lnavMenuCount">0</div></a></li>
+<li rel="tipsy" title="Coming Soon" class="lf_men _videos __soon"><A href="javascript:;"><i class="ic_left_mn _videos"></i><span class="ic_cl_name">{$this->lang['Videos']}</span><div class="zoomIn animated lnavMenuCount">0</div></a></li>
+
+
+
+</div>
+
+
+</ul>
+
+
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+ <div id="hook_Block_MainContainer" class="hookBlock">
+
+<a id="stl_left" href="javascript:;" style="width: 178px;" class="stl_active"><div id="stl_bg">
+<nobr id="stl_text" class="up">{$this->lang['up']}</nobr>
+<nobr id="stl_text" class="back">{$this->lang['back']}</nobr>
+</div></a>
+
+<!--
+<div data-height="0" id="scrollToTop" class="scroll-arrow h-mod __animated" data-module="scrollToTop"><span class="scroll-arrow_cnt __top">{$this->lang['up']}</span><span class="scroll-arrow_cnt __bottom">{$this->lang['down']}</span></div>
+-->
+ <div id="mainContent" class="mainContentDoubleColumn gm-cl-aft grid {$wall}">
+

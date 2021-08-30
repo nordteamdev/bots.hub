@@ -1,0 +1,284 @@
+<div class="sidebar">
+	<div class="ads-content">
+		{{SIDEBAR_AD}}
+	</div>
+	<div class="sidebar-community content-shadow main-border-color">
+	<?php if (!empty($fl['config']['fb_page'])) { ?>
+		<h4 class="videos">
+			<i class="fa fa-fw fa-users"></i> Stay in contact
+		</h4>
+		<div class="fb-page" data-href="{{CONFIG fb_page}}" data-tabs="timeline" data-width="290" data-height="100" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+		<blockquote cite="{{CONFIG fb_page}}" class="fb-xfbml-parse-ignore"></blockquote>
+		</div>
+	<?php } ?>
+	</div>
+	{{SB_UAD_1}}
+	<div class="sidebar-content">
+		<div class="sidebar-news content-shadow news-border-color">
+			<h4 class="news">{{LANG more_news}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_NEWS,
+				'column' => 'id',
+				'limit' => 2,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetNews',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>
+		<div class="sidebar-news content-shadow lists-border-color">
+			<h4 class="lists">{{LANG more_lists}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_LISTS,
+				'column' => 'id',
+				'limit' => 3,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetLists',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>
+		{{SB_UAD_2}}
+		<div class="sidebar-news content-shadow videos-border-color">
+			<h4 class="videos">{{LANG more_videos}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_VIDEOS,
+				'column' => 'id',
+				'limit' => 2,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetVideos',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>
+		<div class="sidebar-news content-shadow music-border-color">
+			<h4 class="music">{{LANG more_music}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_MUSIC,
+				'column' => 'id',
+				'limit' => 2,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetMusic',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>
+		{{SB_UAD_3}}
+		<div class="sidebar-news content-shadow quiz-border-color">
+			<h4 class="quizzes" style="border-width: 1px;">{{LANG more_quizzes}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_QUIZZES,
+				'column' => 'id',
+				'limit' => 2,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetQuizzes',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				$fl['sidebar']['news']['posted'] = date('n, M Y h:i A',$fl['sidebar']['news']['time']);
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>
+		<div class="sidebar-news content-shadow polls-border-color">
+			<h4 class="polls">{{LANG more_polls}}</h4>
+			<?php
+			$not_included = '';
+			if (!empty($fl['news']['id'])) {
+				$not_included = $fl['news']['id'];
+			}
+			$fetch_data_array = array(
+				'table' => T_POLLS_PAGES,
+				'column' => 'id',
+				'limit' => 2,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'FL_GetPolls',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array['where'], $array);
+			}
+			$news = FL_FetchDataFromDB($fetch_data_array);
+			foreach ($news as $key => $fl['sidebar']) {
+				echo FL_LoadPage('sidebar/news');
+			}
+			?>
+		</div>	
+	</div>
+</div>
+

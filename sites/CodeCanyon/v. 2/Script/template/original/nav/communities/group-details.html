@@ -1,0 +1,194 @@
+{strip}
+<section id="group_pg_details">
+{foreach $res as $r}
+{assign var=subscribed value=$this->isSubscribed($r.id)}
+{assign var=isadmin value=$this->checkAdmin($this->USER['id'],$r.admin)}
+{if $isadmin}<span id="isadm"></span>{/if}
+
+{include file="{$this->group_templates}/group-header.html"}
+
+	
+	<div class="comm_op_cover_cnt">
+<div class="comm_left_side">
+<div id="mainContentContentColumn"  class="community_pg_info community_pg_mt">
+
+
+<h2 class="page_block_h2 page_info_header_tabs">
+  <ul class="ui_tabs clear_fix page_info_tabs">
+    <li>
+  <div class="ui_tab ui_tab_sel">
+    {$this->lang['Information']}
+    
+  </div>
+</li>
+    
+  </ul>
+</h2>
+<div class="comm_info_top">
+<div class="group_info_block info">
+    <div class="group_info_rows">
+
+	<div class="group_info_row privacy {if $r.privacy == 'Open'}open{/if}" title="{$this->lang[$r.privacy]}">{$this->lang[$r.privacy]}&nbsp;{$this->lang['Group']}</div>
+        {if $r.description != ''}<div class="group_info_row info" title="About the Place">{$this->str_smilies($r.description)}</div>{/if}
+      {if $r.birthday != '0000-00-00'}<div class="group_info_row date" title="Founding date">{$r.birthday}</div>{/if}
+	  {if $r.website != ''}<div class="group_info_row site" title="Website">{createLink($r.website)}</div>{/if}
+	  {if $r.location == 'yes'}<div id="club_map_cnt" class="group_info_row location" title="Location">&nbsp;</div>
+	  <div class="hookData" id="community_location_hook_data">{$r.loc_data}</div>
+
+	  
+	  {/if}
+    </div>
+</div>
+</div>
+</div>
+
+{if ($r.allow_to_post == 'only_followers' && $this->isSubscribed($r.id)) || ($r.allow_to_post == 'only_admins' && $this->isAdmin()) || ($r.allow_to_post == 'everyone')}
+<div id="mainContentContentColumn" class="group_info_block addpost">
+{$this->buildPostBox($r.id)}
+</div>
+{/if}
+{if $r.allow_to_post == 'only_followers' && !$this->isSubscribed($r.id)}
+<div class="panelRounded_head_header info__add_post_subscribe">{str_replace("%alink", "<a href=\"javascript:void(0);\" onclick=\"ga(this).closest('.info__add_post_subscribe').remove();ga('#join_button_{$r.id}').trigger('click');\">{$this->lang['community_subsribe_now']}</a>" ,$this->lang['community_header_info_to_add_post'])}
+</div>
+{/if}
+
+<div id="mainContentContentColumn" class="community_pg_feed community_pg_mt">
+<input type="hidden" id="page_club_id" value="{$r.id}" />
+
+			
+<div class="_4-u2 mbm _2iwp _4-u8">
+    <div style="height:300spx;" class="_2iwo">
+        <div class="_2iwq">
+            <div class="_2iwr"></div>
+            <div class="_2iws"></div>
+            <div class="_2iwt"></div>
+            <div class="_2iwu"></div>
+            <div class="_2iwv"></div>
+            <div class="_2iww"></div>
+            <div class="_2iwx"></div>
+            <div class="_2iwy"></div>
+            <div class="_2iwz"></div>
+            <div class="_2iw-"></div>
+            <div class="_2iw_"></div>
+            <div class="_2ix0"></div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+
+
+
+		<div class="commRightColumn shadow_position_fixed">
+
+		<ul class="comm_right_column_m">
+		
+		<li><a href="/community/{$r.id}/albums" hrefattr="true"><i class="group_ic _images"></i>{$this->lang['Pictures']}</a></li>
+		<li><a href="/community/{$r.id}/album-videos" hrefattr="true"><i class="group_ic _videos"></i>{$this->lang['videos']}</A></li>
+		<li><div class="separator"></div></li>
+		<li><a href="javascript:void(0);" data-clubdata='{ldelim}"clubid":"{$r.id}","title":"{$this->lang['Invite_friends_to_community']}"{rdelim}' onclick="inviteFriendsToCommunity(this,event);"><i class="group_ic _invite"></i>{$this->lang['community_invite_friends']}</A></li>
+		
+		</ul>
+	
+		</div>
+		
+		<section class="comm_fixed_right">
+		<div class="group_fixed_nano">
+		<div class="dgroup_fixed_nano">
+		{assign var=community_followers value=$this->getCommunityFollowers($r.id,'9999',1)}
+		
+		{if $community_followers > 0}
+		<div class="commRightColumn nop">
+
+		<ul class="comm_right_column_f">
+
+<a href="javascript:void(0);"  onclick="return showCommunityFollowersPopup(event,'{$r.id}');" class="module_header">
+  <div class="header_top clear_fix">
+    <span class="header_label fl_l">{$this->lang['Followers']}</span>
+    <span class="header_count fl_l">{$community_followers}</span>
+  </div>
+</a>
+		
+		{foreach $this->getCommunityFollowers($r.id) as $user}
+		<li><A href="/user/{$user.id}" hrefattr="true"><img src="/getPhoto?p={$user.profile_photo}&sz=small" /><span>{$user.name}</span></a></li>
+		{/foreach}
+		</ul>
+	
+		</div>	
+		{/if}
+		
+		{if $albums_count > 1}
+		<div class="commRightColumn nop">
+		<a href="/community/{$r.id}/albums" class="module_header" hrefattr="true">
+		<div class="header_top clear_fix">
+		  <span class="header_label fl_l">{$this->lang['Photo_albums']}</span>
+		  <span class="header_count fl_l">{$albums_count}</span>
+		</div>
+		</a>
+		
+		<ul class="photo_albums_pr_reds">
+		
+		{foreach $albums_q as $album}
+		
+		<li class="photo_album_item col-card" title="{$album.title}">
+			<a href="/community/{$r.id}/album-{$album.id}" hrefattr="true">
+				<div class="prof_album_has_cover" style="background-image:url(/clubpicture?i={$album.picid}&size=medium&clubid={$r.id});"></div>
+				<div class="album_bottom_ovr_title">
+            <div class="album_bt_ovr_cnt"><span class="ellip alb_name_vve">{$album.title}</span><span class="album_photos_count"><i class="ic_photo__album"></i>{$this->getCommunityAlbumsPicturesCount($r.id,$album.id)}</span></div>
+        </div>
+		</a>
+		</li>
+		
+		{/foreach}
+		
+		
+		</ul>
+		
+		
+		
+		</div>
+		{/if}
+		
+		
+		<!-- community contacts -->
+		<div class="commRightColumn nop">
+
+		<ul class="comm_right_column_c">
+
+<span class="module_header">
+  <div class="header_top clear_fix">
+    <span class="header_label fl_l">{$this->lang['Contact']}</span>
+  </div>
+</span>
+		
+		{foreach $this->getCommunityAdmins($r.id) as $user}
+		
+		<li><A href="/user/{$user.id}" hrefattr="true"><img src="/getPhoto?p={$user.photo}&sz=small" />
+		<div class="comm_admin_name">
+		<div class="comm_admin_uname">
+		<div class="admin_name">{$user.fullname}</div>
+		{if $user.username}<div class="admin_username">{$user.username}</div>{/if}
+		</div>
+		<a title="{$this->lang['send_message']}" href="javascript:void(0);" onclick="return new_chat_window(this,event);" id="y-{$user.id}" data-uch='{ldelim}"id":"{$user.id}","fullname":"{$user.fullname}","photo":"{$user.photo}"{rdelim}' class="online-fr_msg"></a>
+		</div>
+		</a></li>
+		
+		{/foreach}
+		</ul>
+	
+		</div>	
+		</div>
+		</div>
+		</section>
+		
+</div>
+
+
+   {/foreach}
+   
+  
+   </section>
+{/strip}

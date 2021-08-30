@@ -1,0 +1,51 @@
+
+<!----- Download song [ popup layer ] ------------->
+
+{strip}
+
+<div id="layer_popup">
+  <div class="layer_ovr">
+  </div>
+  <div class="mus_get_download_popup  mml_popup">
+    <div>
+      <div>
+        <div class="portlet-i_h">
+          {$artist} - {$song_name}
+        </div>
+        <div class="data-with-image">
+          <div class="data-with-image_i_w">
+            
+            <img alt="" class="data-with-image_i" src="{$cover}" width="128" height="128">
+            
+          </div>
+          <div class="data-with-image_t_w">
+            <div class="data-with-image_t mus_store_tx">
+              If you purchase the track, you can download it as many times as you want and store it on any device.';
+              <br>
+              <br>
+              Price: {$download_price} {$download_curr}.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-15 fs-11">
+        The content is provided for private and non-commercial use only. Further distribution is strictly prohibited.
+      </div>
+      <div class="form">
+        <div class="form-actions">
+          
+          <span class="button-pro" data-buy-song="{$song_id}">
+            Buy
+          </span>
+          
+          <span class="vl_a-sw ml-15 curPointer">
+            Cancel
+          </span>
+          
+        </div>
+      </div>
+      <div class="layer_close ic ic_close">
+      </div>
+    </div>
+
+{/strip}

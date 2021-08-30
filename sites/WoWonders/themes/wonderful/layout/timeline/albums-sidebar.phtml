@@ -1,0 +1,19 @@
+<ul class="list-group" id="sidebar-albums-list-container">
+	<li class="list-group-item text-muted hidden" contenteditable="false"><?php echo $wo['lang']['albums']; ?></li>
+	<li class="list-group-item text-muted widget-heading" contenteditable="false">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image" style="background:#8bc34a;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=albums&user=' . $wo['user_profile']['username']);?>" data-ajax="?link1=albums&user=<?php echo $wo['user_profile']['username'];?>"><?php echo $wo['lang']['albums'];?></a>
+		<h5><?php echo $wo['user_profile']['details']['album_count'];?></h5>
+	</li>
+	<li>
+		<div class="sidebar-albums-container">
+			<?php 
+			foreach (Wo_GetUserAlbums($wo['user_profile']['user_id'], 'sidebar', 12) as $wo['album']) {
+				$wo['album']['album_name'] = mb_substr($wo['album']['album_name'], 0, 10);
+				echo Wo_LoadPage('sidebar/sidebar-album-list');
+			}
+			?>
+		</div>
+	</li>
+	<li><div class="clear"></div></li>
+</ul>

@@ -1,0 +1,10 @@
+<div class="profile-style">
+  <a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>">
+    <div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+      <img src="<?php echo $wo['app']['app_avatar'];?>" alt="<?php echo $wo['app']['app_name']; ?>" />
+    </div>
+    <div class="title" title="<?php echo $wo['app']['app_name']; ?>"><?php echo $wo['app']['app_name']; ?></div>
+	
+  </a>
+  <div><a class="btn playbtn wabe" href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>"><i class="zmdi zmdi-edit"></i><?php echo $wo['lang']['edit']; ?></a></div>
+</div>
