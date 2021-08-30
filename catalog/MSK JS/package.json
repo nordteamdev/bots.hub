@@ -1,0 +1,19 @@
+{
+  "name": "MskBot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "msk.js",
+  "scripts": {},
+  "author": "Micha",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.5.0",
+    "google-tts-api": "0.0.4",
+    "mathjs": "^6.0.3",
+    "node-qiwi-api": "^1.1.1",
+    "prequest": "^1.0.0",
+    "sberbank-api": "0.0.2",
+    "tcp-ping": "^0.1.1",
+    "vk-io": "^4.0.0-rc.20"
+  }
+}

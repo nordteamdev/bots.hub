@@ -1,0 +1,175 @@
+[
+	{
+		"id": 573403532,
+		"uid": 0,
+		"balance": 990000000000000,
+		"bank": 50000,
+		"btc": 1000,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"mnc": 0,
+		"manic": 0,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"manic_pribil": 0,
+		"tur": 0,
+		"dostuptur": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"manic_lvl": 1,
+		"nicklimit": 16,
+		"rating": 1,
+		"regDate": "09.12.2019, 19:10:05",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": 86261,
+			"poxod": -151,
+			"poxod2": -151,
+			"kopat": false,
+			"hack": -151,
+			"vidat": -151,
+			"peredat": -151,
+			"ataka": -151,
+			"farm_btc": null
+		},
+		"tag": "'bug",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 0,
+		"level": 1,
+		"case1": 0,
+		"case2": 0,
+		"case3": 0,
+		"case4": 0,
+		"referal": null,
+		"promo": false,
+		"prez": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"manic": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 5,
+			"trade": true,
+			"old": false,
+			"limit": 100000000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"button": [],
+		"buttoncount": 0
+	},
+	{
+		"id": 194177722,
+		"uid": 1,
+		"balance": 990000000000000,
+		"bank": 50000,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 2000,
+		"mnc": 0,
+		"manic": 0,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"zoloto": 0,
+		"manic_pribil": 0,
+		"tur": 0,
+		"dostuptur": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"manic_lvl": 1,
+		"nicklimit": 16,
+		"rating": 1,
+		"regDate": "09.12.2019, 19:12:28",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": -8,
+			"poxod": -8,
+			"poxod2": -8,
+			"kopat": false,
+			"hack": -8,
+			"vidat": -8,
+			"peredat": -8,
+			"ataka": -8,
+			"farm_btc": null
+		},
+		"tag": "Максим",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 0,
+		"level": 1,
+		"case1": 0,
+		"case2": 0,
+		"case3": 0,
+		"case4": 0,
+		"referal": null,
+		"promo": false,
+		"prez": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"manic": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 5,
+			"trade": true,
+			"old": false,
+			"limit": 100000000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"button": [
+			"удалить"
+		]
+	}
+]

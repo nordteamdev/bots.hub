@@ -1,0 +1,45 @@
+{
+	"1": {
+		"balance": 47000,
+		"name": "",
+		"winrate": 0,
+		"usergroups": "user",
+		"sum": 6000
+	},
+	"376037551": {
+		"balance": 9000,
+		"name": "",
+		"winrate": 0,
+		"usergroups": "user",
+		"sum": 1000,
+		"rang": {
+			"lvl": 1,
+			"exp_has": null,
+			"exp_next": 8
+		}
+	},
+	"449051279": {
+		"balance": 10000,
+		"name": "",
+		"winrate": 0,
+		"usergroups": "user",
+		"sum": 0,
+		"rang": {
+			"lvl": 1,
+			"exp_has": 0,
+			"exp_next": 8
+		}
+	},
+	"489137926": {
+		"balance": 9700,
+		"name": "",
+		"winrate": 0,
+		"usergroups": "user",
+		"sum": 300,
+		"rang": {
+			"lvl": 1,
+			"exp_has": null,
+			"exp_next": 8
+		}
+	}
+}

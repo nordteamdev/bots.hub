@@ -1,0 +1,145 @@
+{
+	"users": {
+		"1": {
+			"balance": 111,
+			"bitcoin": 0,
+			"donate": 500,
+			"bloks": {
+				"cases": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false,
+				"bonus": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 4,
+			"exsup": 50,
+			"lvl": 0,
+			"number": 1,
+			"id": 483398970,
+			"nick": true,
+			"game": {
+				"binlose": 2,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 1,
+				"kazwin": 1,
+				"rand_lose": 1,
+				"rand_win": 1,
+				"stavka_win": 1,
+				"stavka_lose": 1,
+				"win": 45,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 166,
+				"last_msg": "23:05:30 | 15:09:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"level": 5,
+			"adm_time": 0,
+			"brak": 2,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": "Каро Top",
+			"duel": false,
+			"duel_summ": false,
+			"uron": 55,
+			"gun_name": "Дробовик \"Sawed-Off\"",
+			"block_game": true,
+			"prefix": "Каро",
+			"rtime": "13:30:24 | 10:09:2018",
+			"nachal": false
+		} 
+	},
+	"curs": 53521,
+	"bit": 31579,
+     "xd": 7687676,
+     "sla": 6567567,
+     "ccapt": 1,
+     "hcapt": 0,
+     "niga": 1,
+     "calentura": -2,
+     "kazino": 76587675675,
+     "kazna": 230700000,
+     "vlock": true,
+     "bro": 0,
+     "den": 0,
+     "capts": false,
+	"msg": 486,
+     "promos": {},
+	"number": 1
+}

@@ -1,0 +1,2 @@
+node bs.js
+pause

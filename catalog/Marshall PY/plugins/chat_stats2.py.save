@@ -1,0 +1,350 @@
+
+from kutana import Plugin
+import peewee_async, peewee, datetime, time, asyncio
+from kutana.database import *
+import traceback
+from kutana.vksm import *
+
+plugin = Plugin(category="Статистика")
+plugin.desc = {'юзер стат': ['(имя)', 'считaет вcю cтaтистику пользователя - количествo соoбщeний, символов, матов и его рейтинг в топе'],
+'стата чата': [0, 'аналогично команде юзер стат, только для чата'],
+'топ бесед': [0, 'пoказывaет топ бeсeд (по cообщениям), в которых пpисутствует бoт'],
+'актив': [0, 'пoказываeт ктo и кoгдa поcлeдний pаз что-тo пиcaл в чатe']}
+plugin.category_desc = 'Считaeт всю статистику бeceды - кoличеcтво cоoбщений, символов, cтикeров, прикреплeний, голocoвыx cooбщeний, иcпoльзованных кoманд - кaк для пoльзoвaтеля, тaк и для всeгo чата, и пoкaзывает эту информацию'
+class chat_stats_vlad(BaseModel):
+    chat_id = peewee.IntegerField(default=0)
+    messages = peewee.BigIntegerField(default=0)
+    clear_messages = peewee.BigIntegerField(default=0)
+    clear_symbols = peewee.BigIntegerField(default=0)
+    symbols = peewee.BigIntegerField(default=0)
+    voice_messages = peewee.BigIntegerField(default=0)
+    resend_messages = peewee.BigIntegerField(default=0)
+    photos = peewee.BigIntegerField(default=0)
+    videos = peewee.BigIntegerField(default=0)
+    audios = peewee.BigIntegerField(default=0)
+    docs = peewee.BigIntegerField(default=0)
+    posts = peewee.BigIntegerField(default=0)
+    stickers = peewee.BigIntegerField(default=0)
+    mentios = peewee.BigIntegerField(default=0)
+    links = peewee.BigIntegerField(default=0)
+    leaved = peewee.BigIntegerField(default=0)
+    messages_with_sw = peewee.BigIntegerField(default=0)
+    last_user_id = peewee.IntegerField(default=0)
+class user_stats_vlad(BaseModel):
+    user_id = peewee.IntegerField(default=0)
+    last_message_date = peewee.DateTimeField(default=datetime.datetime.now())
+    chat_id = peewee.IntegerField(default=0)
+    nl_messages = peewee.BigIntegerField(default=0)
+    symbols = peewee.BigIntegerField(default=0)
+    clear_messages = peewee.BigIntegerField(default=0)
+    clear_symbols = peewee.BigIntegerField(default=0)
+    messages = peewee.BigIntegerField(default=0)
+    messages_with_sw = peewee.BigIntegerField(default=0)
+    lvl = peewee.IntegerField(default=1)
+    remain_msgs = peewee.BigIntegerField(default=0)
+
+plugin.db1 = chat_stats_vlad
+plugin.db2 = user_stats_vlad
+
+def get_level(last_level):
+    result = round(100 * 1.3 ** last_level)
+    return result
+
+def textify_value(value):
+    avalue = abs(value)
+
+    if avalue >= 1000000000000:
+        return str(round(value / 1000000000000, 2)) + "T"
+
+    if avalue >= 1000000000:
+        return str(round(value / 1000000000, 2)) + "B"
+
+    if avalue >= 1000000:
+        return str(round(value / 1000000, 2)) + "M"
+
+    if avalue >= 100000:
+        return  str(value // 1000) + "k"
+
+    if avalue >= 1000:
+        return str(value)
+    return str(value) 
+
+async def seconds(total_seconds):
+    s = int(total_seconds)
+    years = s // 31104000
+    if years > 1:
+        return '%d г.' % years
+    s = s - (years * 31104000)
+    months = s // 2592000
+    if years == 1:
+        r = '1 г.'
+        if months > 0:
+            r += ' %d м.' % months
+        return r
+    if months > 1:
+        return '%d м.' % months
+    s = s - (months * 2592000)
+    days = s // 86400
+    if months == 1:
+        r = '1 м.'
+        if days > 0:
+            r += ' %d дн.' % days
+        return r
+    if days > 1:
+        return '%d дн.' % days
+    s = s - (days * 86400)
+    hours = s // 3600
+    if days == 1:
+        r = '1 дн.'
+        if hours > 0:
+            r += ' %d ч.' % hours
+        return r 
+    s = s - (hours * 3600)
+    minutes = s // 60
+    seconds = s - (minutes * 60)
+    if hours >= 6:
+        return '%d ч.' % hours
+    if hours >= 1:
+        r = '%d ч.' % hours
+        if hours == 1:
+            r = '1 ч.'
+        if minutes > 0:
+            r += ' %d мин.' % minutes
+        return r
+    if minutes == 1:
+        r = '1 мин.'
+        if seconds > 0:
+            r += ' %d сек.' % seconds
+        return r
+    if minutes == 0:
+        return '%d сек.' % seconds
+    if seconds == 0:
+        return '%d мин.' % minutes
+    return '%d мин. %d сек.' % (minutes, seconds)
+
+@plugin.on_text('стата чата')
+async def chat_stats(message,attachments,env):
+    if int(message.peer_id) < 2000000000:
+        return
+    chat_stats, user_stats = plugin.db1, plugin.db2
+    chat_id = int(message.peer_id) - int(2000000000)
+    def digits_recursive(nonneg):
+        digits = []
+        while nonneg:
+            digits += [nonneg % 10]
+            nonneg //= 10
+        return digits[::-1] or [0]
+
+    def num_to_smile(num):
+        if num <= 10:
+            numbers = {0:'0⃣', 1:'1⃣', 2:'2⃣', 3:'3⃣', 4:'4⃣', 5:'5⃣', 6:'6⃣', 7:'7⃣', 8:'8⃣', 9:'9⃣', 10:'🔟'}
+            return numbers[num]
+        numbers = {0:'0⃣.', 1:'1⃣', 2:'2⃣', 3:'3⃣', 4:'4⃣', 5:'5⃣', 6:'6⃣', 7:'7⃣', 8:'8⃣', 9:'9⃣', 10:'🔟'}
+        digits = digits_recursive(num)
+        result = ""
+        for i in digits:
+            result += numbers[i]
+        return result
+    text = ""
+    r, c = await db.get_or_create(chat_stats, chat_id=chat_id)
+    if r.messages > 0:
+        text += f"📧 Сообщений: {textify_value(r.messages)} ({textify_value(r.clear_messages)} чистых)\n"
+    if r.symbols > 0:
+        text += f"🔣 Символов: {textify_value(r.symbols)} ({textify_value(r.clear_symbols)})\n"
+    if r.voice_messages > 0:
+        text += f"🎵 Голосовых: {textify_value(r.voice_messages)}\n"
+    if r.resend_messages > 0:
+        text += f"📩 Пересланных: {textify_value(r.resend_messages)}\n"
+    if r.photos > 0:
+        text += f"📷 Фото: {textify_value(r.photos)}\n"
+    if r.videos > 0:
+        text += f"📹 Видео: {textify_value(r.videos)}\n"
+    if r.audios > 0:
+        text += f"🎧 Аудио: {textify_value(r.audios)}\n"
+    if r.docs > 0:
+        text += f"📑 Документов: {textify_value(r.docs)}\n"
+    if r.posts > 0:
+        text += f"📣 Постов: {textify_value(r.posts)}\n"
+    if r.stickers > 0:
+        text += f"😜 Стикеров: {textify_value(r.stickers)}\n"
+    if r.mentios > 0:
+        text += f"💬 Упоминаний: {textify_value(r.mentios)}\n"
+    if r.links > 0:
+        text += f"📡 Ссылок: {textify_value(r.links)}\n"
+    if r.leaved > 0:
+        text += f"🚪 Покинули чат: {textify_value(r.leaved)}\n"
+    if r.messages_with_sw > 0:
+        text += f"👺 Сообщений с матами: {textify_value(r.messages_with_sw)}\n"
+    if not text:
+        return await env.reply('ошибка получения данных.')
+    text += "статистика пользователей чата:\n"
+    top = await db.execute(user_stats.select().where(user_stats.chat_id == chat_id).order_by((user_stats.messages).desc()))
+    raiting = {}
+    cur = 1
+    for p in top:
+        if int(p.user_id) < 0:
+            continue
+        if p.user_id not in raiting:
+            raiting[p.user_id] = p.messages
+        else:
+            raiting[p.user_id] += p.messages
+    for i in list(raiting.keys())[:10]:
+        exp = raiting.get(i)
+        get_name = await parse_user_name(env, i)
+        num = num_to_smile(cur)
+        last = await db.get(user_stats, chat_id=chat_id, user_id=i)
+        r_exp = get_level(last.lvl)
+        text += f"{num} {textify_value(exp)} [LV. {last.lvl} | {last.messages}/{r_exp}] - @id{i} ({get_name})\n"
+        cur += 1
+    if not await check_admin(env, message.peer_id, -164822827):
+        text += '\nя не являюсь администратором данной конференции, поэтому все сообщения обрабатываются только при упоминании меня.'
+    return await env.request('messages.send', chat_id=chat_id, message=text)
+
+async def parse_admin(env, peer):
+    chat = await env.request('messages.getConversationMembers', peer_id=peer)
+    try:
+        for user in chat.response['items']:
+            if user['member_id'] == user['invited_by']:
+                return user['member_id']
+            else:
+                continue
+    except:
+        pass
+
+async def split(a, n):
+    k, m = divmod(len(a), n)
+    return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
+
+cases = (2, 0, 1, 1, 1, 2)   
+def plural_form(n: int, v: (list, tuple), need_n=False, need_cases=False):
+    """Функция возвращает число и просклонённое слово после него
+
+    Аргументы:
+    :param n: число
+    :param v: варианты слова в формате (для 1, для 2, для 5)
+
+    Пример:
+    plural_form(difference.days, ("день", "дня", "дней"))
+
+    :return: Число и просклонённое слово после него
+    """
+
+    return f"{n if need_n is False else ''}  {v[2 if (4 < n % 100 < 20) else cases[min(n % 10, 5)]] if need_cases is False else ''}"
+@plugin.on_text('чат топ')
+async def chats_raiting(message,attachments,env):
+    chat_stats, user_stats = plugin.db1, plugin.db2
+    chat_id = int(message.peer_id) - int(2000000000)
+    top = await db.execute(chat_stats.select().order_by((chat_stats.messages).desc()))
+    raiting = {}
+    cur = 1
+    text = "тoп 15 бeceд:\n"
+    for p in top:
+        if int(p.chat_id) < 0:
+            continue
+        if p.chat_id not in raiting:
+            raiting[p.chat_id] = p.messages
+        else:
+            raiting[p.chat_id] += p.messagess
+    try:
+        for i in list(raiting.keys())[:15]:
+            peer = int(i) + int(2000000000)
+            owner_id = await parse_admin(env, peer)
+            chat = await env.request('messages.getConversationsById', peer_ids=peer)
+            if not chat.response.get('count') or chat.response.get('count') == 0:
+                continue
+            admin_name = await parse_user_name(env, owner_id)
+            text += f"{cur}. @id{owner_id} ({chat.response['items'][0]['chat_settings']['title']}) (#{i}): {raiting[i]} msg\n"
+            cur += 1
+        if not chat_id in list(raiting.keys())[:15] and chat_id in list(raiting.keys()):
+            num = list(raiting.keys()).index(chat_id) + 1
+            text += f".....\n{num}. ваша конференция\n"
+    except Exception as e:
+        traceback.print_exc()
+        pass
+    if not await check_admin(env, message.peer_id, -164822827):
+        text += '\nваша беседа не отображается в рейтинге, так как я не являюсь её администратором.'
+    return await env.request('messages.send', chat_id=chat_id, message=text)
+
+@plugin.on_startswith_text('send')
+async def send_messages(message, attachments, env):
+    if message.from_id != 139432998:
+        return
+    chat_stats, user_stats = plugin.db1, plugin.db2
+    chat_id = int(message.peer_id) - int(2000000000)
+    top2 = await db.execute(chat_stats.select().order_by((chat_stats.messages).desc()))
+    vk_message = '💌 Не пугайтесь, это обычная рассылка:\n\n' + env.body
+    await env.reply('начинаю рассылку') 
+    top = [
+    try:
+        for q in top:
+            await env.request('messages.send', chat_id=q.chat_id, message=vk_message)
+            await asyncio.sleep(5)
+    except:
+        pass
+    conversations = await env.request('groups.getMembers', count=200)
+    for i in conversations.response['items']:
+        await env.request('messages.send', user_id=i, message=vk_message)
+        await asyncio.sleep(5)
+    return await env.reply('рассылка завершена')
+
+
+@plugin.on_startswith_text('юзер стат')
+async def user_stats(message,attachments,env):
+    if int(message.peer_id) < 2000000000:
+        return
+    chat_stats, user_stats = plugin.db1, plugin.db2
+    chat_id = int(message.peer_id) - int(2000000000)
+    top = await db.execute(user_stats.select().where(user_stats.chat_id == chat_id).order_by((user_stats.messages).desc()))
+    raiting = {}
+    for p in top:
+        if int(p.user_id) < 0:
+            continue
+        if p.user_id not in raiting:
+            raiting[p.user_id] = p.messages
+        else:
+            raiting[p.user_id] += p.messages
+    if message.from_id not in raiting.keys():
+        return await env.reply('пользователь незарегистрирован.')
+    r = await db.get(user_stats, chat_id=chat_id, user_id=message.from_id)
+    r_place = list(raiting.keys()).index(message.from_id) + 1
+    r_exp = get_level(r.lvl)
+    text = f"личная статистика @id{message.from_id} (пользователя):\n📧 Сообщений: {textify_value(r.messages)} ({textify_value(r.nl_messages)} не подряд)\n📨 Чистых сообщений: {textify_value(r.clear_messages)} (символов {textify_value(r.symbols)}/{textify_value(r.clear_symbols)})\n👺 Сообщений с матами: {textify_value(r.messages_with_sw)}\n🏆 Рейтинг активности: {r_place} место\n💻 LVL: {r.lvl} [{r.messages}/{r_exp}]\n"
+    if not await check_admin(env, message.peer_id, -164822827):
+        text += '\nя не являюсь администратором данной конференции, поэтому все сообщения обрабатываются только при упоминании меня.'
+    return await env.request('messages.send', chat_id=chat_id, message=text)
+
+@plugin.on_startswith_text('актив')
+async def active(message,attachments,env):
+    if int(message.peer_id) < 2000000000:
+        return
+    args = message.text.lower().split()
+    if args[0] != 'актив':
+        return
+    chat_stats, user_stats = plugin.db1, plugin.db2
+    chat_id = int(message.peer_id) - int(2000000000)
+    query = user_stats.select().where(user_stats.chat_id == chat_id, user_stats.last_message_date <= datetime.datetime.now()).order_by((user_stats.last_message_date).desc())
+    query_result = await db.execute(query)
+    user_data = [{"id": int(u.user_id), "date": u.last_message_date} for u in query_result]
+    if not user_data:
+        return
+    if len(user_data) > 20:
+        user_data2 = list(await split(user_data, len(user_data) // 20))
+        args = message.text.lower().split(' ')
+        if not args or len(args) < 2:
+            return await env.reply(f"доступно {plural_form(len(user_data2), ('страница', 'страницы', 'страниц'))} с активом пользователей ({len(user_data)}), укажите нужную страницу, используя команду \"актив [1-{len(user_data2)}].\"")
+        if not args[1].isdigit():
+            return await env.reply('Номер страницы принимает числовое значение.')
+        if int(args[1]) < 1 or int(args[1]) > len(user_data2):
+            return await env.reply(f'Укажите номер страницы от 1 до {len(user_data2)}.')
+        vk_message = f'актив пользователей (страница {args[1]}/{len(user_data2)}):\n'
+    else:
+        vk_message = f'актив пользователей:\n'
+    for u_data in enumerate(user_data2[int(args[1])-1] if len(user_data) > 20 else user_data, start=1):
+        result = datetime.datetime.now() - u_data[1]['date']
+        if result.seconds < 120:
+            state = 'актив'
+        else:
+            state = await seconds(result.seconds)
+        name = await parse_user_name(env, u_data[1]['id'])
+        vk_message += f"{u_data[0]}. @{'id' if u_data[1]['id'] > 0 else 'club'}{u_data[1]['id'] if u_data[1]['id'] > 0 else -u_data[1]['id']} ({name}) - {state}\n"
+    return await env.reply(vk_message)
