@@ -1,6 +1,6 @@
-<p align="center">
-![Add](./screens/logotype.png)</p>
-<p align="center">
+
+[](./screens/logotype.png)</p>
+
 
 ## About the repository
 welcome to the bots hub. this repository is a public hub where bots, sites and scripts are collected, in short, everything related to VK and bots.
