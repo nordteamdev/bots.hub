@@ -1,0 +1,10 @@
+{
+	"ru": {
+		"kick_user_msg": "[id%user_id%|Пользователь] исключён из беседы.",
+		"kick_group_msg": "[club%user_id%|Сообщество] исключено из беседы."
+	},
+	"en": {
+		"kick_user_msg": "[id%user_id%|User] has been kicked out.",
+		"kick_group_msg": "[club%user_id%|Community] has been kicked out."
+	}
+}

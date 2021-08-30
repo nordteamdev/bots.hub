@@ -1,0 +1,406 @@
+{
+	"chats": [
+		{
+			"chat": 1,
+			"title": "CYREX BOTS",
+			"new_title": null,
+			"pin_msg": 0,
+			"muted": false,
+			"can_invite": false,
+			"kick_leave": true,
+			"photo": "eyJvaWQiOjIwMDAwMDAwMDEsInBob3RvIjp7InBob3RvIjoiYWI2NTNiMzc5Yzp4Iiwic2l6ZXMiOltbInMiLDg1MDYyNDMxNCwiMWQ3MyIsInBzZ0lra2JCVGVBIiw3NSw3NV0sWyJtIiw4NTA2MjQzMTQsIjFkNzQiLCJia1E4cmVrZ2lmdyIsMTMwLDEzMF0sWyJ4Iiw4NTA2MjQzMTQsIjFkNzUiLCJCMzhGbFdtaTRLayIsNTAwLDUwMF0sWyJvIiw4NTA2MjQzMTQsIjFkNzYiLCJJZzB2RWtzampQQSIsMTMwLDEzMF0sWyJwIiw4NTA2MjQzMTQsIjFkNzciLCJCb0VEQUhLWndyUSIsMjAwLDIwMF0sWyJxIiw4NTA2MjQzMTQsIjFkNzgiLCJiV0lxVTBmckotMCIsMzIwLDMyMF0sWyJyIiw4NTA2MjQzMTQsIjFkNzkiLCJtdDNUeXk1Yy1PVSIsNTAwLDUwMF1dLCJsYXRpdHVkZSI6MCwibG9uZ2l0dWRlIjowLCJraWQiOiI4ZGYwNDA4ZGNkZDEzMDFkMzY1YWYzOTcyZGViYWQ1OSJ9LCJzcXVhcmUiOjEsImRhdGEiOlsie1wicGhvdG9cIjpcIjE2NTZlOWIxYTZ4XCIsXCJzaXplc1wiOltbXCJtYXhcIiw4NTA2MjQzMTQsXCIxZDdhXCIsXCJnTTdPbGtHRjRCSVwiLDUwMCw1MDBdLFtcImJcIiw4NTA2MjQzMTQsXCIxZDdiXCIsXCJfeWNuWVV2Wkk0d1wiLDQwMCw0MDBdLFtcImFcIiw4NTA2MjQzMTQsXCIxZDdjXCIsXCJoaWw4T1B6WFZrUVwiLDIwMCwyMDBdLFtcImRcIiw4NTA2MjQzMTQsXCIxZDdkXCIsXCIyWXNHMGpCU2IwQVwiLDEwMCwxMDBdLFtcImVcIiw4NTA2MjQzMTQsXCIxZDdlXCIsXCJuZ3dGekZKbm9HQVwiLDUwLDUwXSxbXCJvXCIsODUwNjI0MzE0LFwiMWQ3YVwiLFwiZ003T2xrR0Y0QklcIiw1MDAsNTAwXSxbXCJjXCIsODUwNjI0MzE0LFwiMWQ3Y1wiLFwiaGlsOE9QelhWa1FcIiwyMDAsMjAwXV19IiwiMCwwLDUwMCw1MDAsMCwwLDUwMCJdLCJid2FjdCI6Im93bmVyX3Bob3RvIiwic2VydmVyIjo4NTA2MjQsIm1pZCI6NTA2ODcyMzA3LCJfc2lnIjoiMWNjOWY3OTMxNzkwZGU4Y2RjNGY0MGZiZWVlZjc4OGEifQ",
+			"photo_new": false,
+			"creator": 489356469
+		},
+		{
+			"chat": 2,
+			"title": "[A] Админ Панель",
+			"new_title": null,
+			"pin_msg": 0,
+			"muted": false,
+			"can_invite": false,
+			"kick_leave": true,
+			"photo": "eyJvaWQiOjIwMDAwMDAwMDIsInBob3RvIjp7InBob3RvIjoiMzJkYTg5YWE1Nzp4Iiwic2l6ZXMiOltbInMiLDg0NzIxNjcwMiwiZjA5NGYiLCJ4aUgxdEJyaGpwYyIsNzUsNzVdLFsibSIsODQ3MjE2NzAyLCJmMDk1MCIsImJrOUtBUnRUenNRIiwxMzAsMTMwXSxbIngiLDg0NzIxNjcwMiwiZjA5NTEiLCJuNlo1bFNrSnNtcyIsNTAwLDUwMF0sWyJvIiw4NDcyMTY3MDIsImYwOTUyIiwiTmNGNXhXWm95TEUiLDEzMCwxMzBdLFsicCIsODQ3MjE2NzAyLCJmMDk1MyIsIlFXQTVLSTI5MkIwIiwyMDAsMjAwXSxbInEiLDg0NzIxNjcwMiwiZjA5NTQiLCJJZzVrdVJzQW12QSIsMzIwLDMyMF0sWyJyIiw4NDcyMTY3MDIsImYwOTU1IiwiQnFGQXdFSWdPWGsiLDUwMCw1MDBdXSwibGF0aXR1ZGUiOjAsImxvbmdpdHVkZSI6MCwia2lkIjoiOGJmNjgxMWE3MWM5MmEyZjRlYWI2NDkyYTUxODU1YWEifSwic3F1YXJlIjoxLCJkYXRhIjpbIntcInBob3RvXCI6XCJjYTljMzYxMDg5eFwiLFwic2l6ZXNcIjpbW1wibWF4XCIsODQ3MjE2NzAyLFwiZjA5NTZcIixcIndZV2JKZE9GLUw4XCIsNTAwLDUwMF0sW1wiYlwiLDg0NzIxNjcwMixcImYwOTU3XCIsXCJHRkx6NUVraHhOb1wiLDQwMCw0MDBdLFtcImFcIiw4NDcyMTY3MDIsXCJmMDk1OFwiLFwiNjVPRXZJeWF5Nm9cIiwyMDAsMjAwXSxbXCJkXCIsODQ3MjE2NzAyLFwiZjA5NTlcIixcImNETWlPVTBWUUVJXCIsMTAwLDEwMF0sW1wiZVwiLDg0NzIxNjcwMixcImYwOTVhXCIsXCJQcGxfSTJqd2x6b1wiLDUwLDUwXSxbXCJvXCIsODQ3MjE2NzAyLFwiZjA5NTZcIixcIndZV2JKZE9GLUw4XCIsNTAwLDUwMF0sW1wiY1wiLDg0NzIxNjcwMixcImYwOTU4XCIsXCI2NU9Fdkl5YXk2b1wiLDIwMCwyMDBdXX0iLCIwLDAsNTAwLDUwMCwwLDAsNTAwIl0sImJ3YWN0Ijoib3duZXJfcGhvdG8iLCJzZXJ2ZXIiOjg0NzIxNiwibWlkIjo1MDY4NzIzMDcsIl9zaWciOiI2ZGY3NTUwYjMzZWI5YTU0OTVlMmQ0NDMxNjE3ZTA1NCJ9",
+			"photo_new": false,
+			"creator": 489356469
+		},
+		{
+			"chat": 3,
+			"title": "[M] Модераторы",
+			"new_title": null,
+			"pin_msg": 0,
+			"muted": false,
+			"can_invite": false,
+			"kick_leave": true,
+			"photo": "eyJvaWQiOjIwMDAwMDAwMDMsInBob3RvIjp7InBob3RvIjoiMjljYWY3MzdhNjp4Iiwic2l6ZXMiOltbInMiLDg0NjUyMjIxMCwiZWY0NDciLCJJUTAwTndVb192dyIsNzUsNzVdLFsibSIsODQ2NTIyMjEwLCJlZjQ0OCIsInA4d240dEI5SVNFIiwxMzAsMTMwXSxbIngiLDg0NjUyMjIxMCwiZWY0NDkiLCJWSXZKczBVYTk0QSIsNTAwLDUwMF0sWyJvIiw4NDY1MjIyMTAsImVmNDRhIiwic2hTa2tUSGRuWFkiLDEzMCwxMzBdLFsicCIsODQ2NTIyMjEwLCJlZjQ0YiIsIm1XRjRBUVg3dE5vIiwyMDAsMjAwXSxbInEiLDg0NjUyMjIxMCwiZWY0NGMiLCJobGRmQW9GNjRqNCIsMzIwLDMyMF0sWyJyIiw4NDY1MjIyMTAsImVmNDRkIiwiTFNVZGNmWnFILTQiLDUwMCw1MDBdXSwibGF0aXR1ZGUiOjAsImxvbmdpdHVkZSI6MCwia2lkIjoiOGZjODIxZjJjMTQ5NjVlMzc2Njk2NWExYzgxNDI5ZTgifSwic3F1YXJlIjoxLCJkYXRhIjpbIntcInBob3RvXCI6XCIxMjEzNWEwMTJheFwiLFwic2l6ZXNcIjpbW1wibWF4XCIsODQ2NTIyMjEwLFwiZWY0NGVcIixcInFLakRYVHJVSVNBXCIsNTAwLDUwMF0sW1wiYlwiLDg0NjUyMjIxMCxcImVmNDRmXCIsXCJBNElORWdJXzNjMFwiLDQwMCw0MDBdLFtcImFcIiw4NDY1MjIyMTAsXCJlZjQ1MFwiLFwiSW1jZzRseXl3UjRcIiwyMDAsMjAwXSxbXCJkXCIsODQ2NTIyMjEwLFwiZWY0NTFcIixcImxTNHBsbE1FMTg0XCIsMTAwLDEwMF0sW1wiZVwiLDg0NjUyMjIxMCxcImVmNDUyXCIsXCJ2U1VEWk5XM2Vwb1wiLDUwLDUwXSxbXCJvXCIsODQ2NTIyMjEwLFwiZWY0NGVcIixcInFLakRYVHJVSVNBXCIsNTAwLDUwMF0sW1wiY1wiLDg0NjUyMjIxMCxcImVmNDUwXCIsXCJJbWNnNGx5eXdSNFwiLDIwMCwyMDBdXX0iLCIwLDAsNTAwLDUwMCwwLDAsNTAwIl0sImJ3YWN0Ijoib3duZXJfcGhvdG8iLCJzZXJ2ZXIiOjg0NjUyMiwibWlkIjo1MDY4NzIzMDcsIl9zaWciOiIyNWIwNGY0MGJiMTE0Yzk2NjhmMDcxOTY3OTU0MzYxOCJ9",
+			"photo_new": false,
+			"creator": 489356469
+		},
+		{
+			"chat": 4,
+			"title": "New Chat",
+			"new_title": null,
+			"pin_msg": 0,
+			"muted": false,
+			"can_invite": false,
+			"kick_leave": true,
+			"photo": null,
+			"photo_new": false,
+			"creator": 489356469
+		},
+		{
+			"chat": 5,
+			"title": "❌SUICIDE EDITS❌",
+			"new_title": null,
+			"pin_msg": 1699,
+			"muted": false,
+			"can_invite": false,
+			"kick_leave": true,
+			"photo": null,
+			"photo_new": false,
+			"creator": 426462303
+		}
+	],
+	"users": [
+		{
+			"user_id": 489356469,
+			"chat_id": 1,
+			"in_chat": false,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 489356469,
+			"chat_id": 2,
+			"in_chat": true,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 489356469,
+			"chat_id": 3,
+			"in_chat": false,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 201689392,
+			"chat_id": 1,
+			"in_chat": true,
+			"creator": false,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": [
+				{
+					"id_admin": 1
+				},
+				{
+					"id_admin": 1
+				}
+			]
+		},
+		{
+			"user_id": 497044546,
+			"chat_id": 1,
+			"in_chat": true,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 489356469,
+			"chat_id": 4,
+			"in_chat": true,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 497744056,
+			"chat_id": 3,
+			"in_chat": false,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 497044546,
+			"chat_id": 3,
+			"in_chat": false,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 423060973,
+			"chat_id": 1,
+			"in_chat": true,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 366824415,
+			"chat_id": 3,
+			"in_chat": false,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 1,
+			"chat_id": 3,
+			"in_chat": false,
+			"creator": false,
+			"spec_admin": false,
+			"admin": false,
+			"moder": false,
+			"banned": true,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 489356469,
+			"chat_id": 5,
+			"in_chat": true,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		},
+		{
+			"user_id": 426462303,
+			"chat_id": 5,
+			"in_chat": true,
+			"creator": true,
+			"spec_admin": true,
+			"admin": true,
+			"moder": true,
+			"banned": false,
+			"bot_warns": 0,
+			"warns": []
+		}
+	],
+	"vipchats": [],
+	"admins": [
+		{
+			"user_id": 489356469
+		}
+	],
+	"moderators": [
+		{
+			"user_id": 489356469
+		}
+	],
+	"supports": [
+		{
+			"user_id": 489356469
+		}
+	],
+	"created_chats": [],
+	"top": {
+		"moders": [],
+		"supports": [],
+		"chats": [
+			{
+				"chat_id": 1,
+				"count": 333,
+				"banned": false,
+				"creator": 489356469,
+				"title": "CYREX BOTS",
+				"count_sim": 2496,
+				"commands": 62,
+				"stickers": 19,
+				"photos": 3,
+				"fwd_messages": 14
+			},
+			{
+				"chat_id": 2,
+				"count": 1,
+				"banned": true,
+				"creator": 489356469,
+				"title": "[A] Админ Панель",
+				"count_sim": 2,
+				"commands": 6,
+				"stickers": 0,
+				"photos": 0,
+				"fwd_messages": 0
+			},
+			{
+				"chat_id": 3,
+				"count": 371,
+				"banned": true,
+				"creator": 489356469,
+				"title": "[M] Модераторы",
+				"count_sim": 4069,
+				"commands": 222,
+				"stickers": 11,
+				"photos": 5,
+				"fwd_messages": 19
+			},
+			{
+				"chat_id": 4,
+				"count": 0,
+				"banned": false,
+				"creator": 489356469,
+				"title": "New Chat",
+				"count_sim": 0,
+				"commands": 1,
+				"stickers": 0,
+				"photos": 0,
+				"fwd_messages": 0
+			},
+			{
+				"chat_id": 5,
+				"count": 5,
+				"banned": false,
+				"creator": 489356469,
+				"title": "❌SUICIDE EDITS❌",
+				"count_sim": 703,
+				"commands": 5,
+				"stickers": 0,
+				"photos": 0,
+				"fwd_messages": 0
+			}
+		],
+		"users": {
+			"chat2": [
+				{
+					"user_id": 489356469,
+					"in_chat": true,
+					"count": 2,
+					"date": "9/13/2018"
+				}
+			],
+			"chat1": [
+				{
+					"user_id": 489356469,
+					"in_chat": true,
+					"count": 169,
+					"date": "9/14/2018"
+				},
+				{
+					"user_id": -158861435,
+					"in_chat": false,
+					"count": 11,
+					"date": "9/13/2018"
+				},
+				{
+					"user_id": 476346248,
+					"in_chat": false,
+					"count": 2,
+					"date": "9/13/2018"
+				},
+				{
+					"user_id": 366824415,
+					"in_chat": true,
+					"count": 69,
+					"date": "9/14/2018"
+				},
+				{
+					"user_id": 423060973,
+					"in_chat": true,
+					"count": 10,
+					"date": "9/14/2018"
+				}
+			],
+			"chat3": [
+				{
+					"user_id": 489356469,
+					"in_chat": false,
+					"count": 173,
+					"date": "9/15/2018"
+				},
+				{
+					"user_id": 497744056,
+					"in_chat": false,
+					"count": 130,
+					"date": "9/15/2018"
+				},
+				{
+					"user_id": 449591885,
+					"in_chat": true,
+					"count": 10,
+					"date": "9/15/2018"
+				},
+				{
+					"user_id": 366824415,
+					"in_chat": false,
+					"count": 22,
+					"date": "9/15/2018"
+				},
+				{
+					"user_id": 497044546,
+					"in_chat": false,
+					"count": 1,
+					"date": "9/14/2018"
+				},
+				{
+					"user_id": 330864380,
+					"in_chat": true,
+					"count": 4,
+					"date": "9/15/2018"
+				},
+				{
+					"user_id": -171260710,
+					"in_chat": true,
+					"count": 13,
+					"date": "9/15/2018"
+				}
+			],
+			"chat5": [
+				{
+					"user_id": 489356469,
+					"in_chat": true,
+					"count": 5,
+					"date": "9/15/2018"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,2444 @@
+{
+	"chats": [
+		{
+			"chat_id": 3,
+			"key": "W08",
+			"kalimatorniy": {
+				"rules": "🔥Правила беседы:\n🔞Вести себя адекватно",
+				"hi": "пошёл нахуй"
+			},
+			"info": {
+				"title": "Не установлено",
+				"creator": 496175718
+			},
+			"stats": {
+				"msg_count": 148,
+				"mat": 8,
+				"symbols": 795
+			},
+			"defend": {
+				"autokick": 1,
+				"inv_grp": 1
+			},
+			"cmds": {
+				"cmd_info": 1,
+				"cmd_roles": 1,
+				"cmd_defend": 1,
+				"cmd_reload": 2,
+				"cmd_kick": 2,
+				"cmd_black": 3,
+				"cmd_warn": 3,
+				"cmd_ban": 4,
+				"cmd_unban": 4,
+				"cmd_status": 5,
+				"cmd_dostup": 5,
+				"cmd_stats": 1,
+				"cmd_rules": 1,
+				"cmd_newrules": 5,
+				"cmd_eval": 100,
+				"cmd_newmotd": 5,
+				"cmd_motd": 1
+			},
+			"roles": [
+				{
+					"user_id": 496175718,
+					"role": 5
+				}
+			],
+			"banned": [
+				419600547,
+				370271015
+			],
+			"blacklisted": [],
+			"users": [
+				{
+					"user_id": 496175718,
+					"msg_count": 86,
+					"symbols": 762,
+					"warns": 0,
+					"mat": 7
+				},
+				{
+					"user_id": 449532928,
+					"msg_count": 62,
+					"symbols": 33,
+					"warns": 0
+				},
+				{
+					"user_id": 370271015,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 419600547,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				}
+			]
+		},
+		{
+			"chat_id": 4,
+			"key": "1EF",
+			"kalimatorniy": {
+				"rules": "Не установлены",
+				"hi": "${name}, здорова"
+			},
+			"info": {
+				"title": "Gero bot || chat#1",
+				"creator": 496175718
+			},
+			"stats": {
+				"msg_count": 3687,
+				"mat": 178,
+				"symbols": 42863
+			},
+			"defend": {
+				"autokick": 1,
+				"inv_grp": 1
+			},
+			"cmds": {
+				"cmd_info": 1,
+				"cmd_roles": 1,
+				"cmd_defend": 1,
+				"cmd_reload": 2,
+				"cmd_kick": 2,
+				"cmd_black": 3,
+				"cmd_warn": 3,
+				"cmd_ban": 4,
+				"cmd_unban": 4,
+				"cmd_status": 5,
+				"cmd_dostup": 5,
+				"cmd_stats": 1,
+				"cmd_rules": 1,
+				"cmd_newrules": 5,
+				"cmd_eval": 100,
+				"cmd_newmotd": 5,
+				"cmd_motd": 1
+			},
+			"roles": [
+				{
+					"user_id": 496175718,
+					"role": 5
+				},
+				{
+					"user_id": 395638472,
+					"role": 4
+				}
+			],
+			"banned": [
+				363701548,
+				405720558,
+				376231311
+			],
+			"blacklisted": [],
+			"users": [
+				{
+					"user_id": 496175718,
+					"msg_count": 1191,
+					"symbols": 14490,
+					"warns": 0,
+					"mat": 72
+				},
+				{
+					"user_id": 370271015,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 156443139,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 521602301,
+					"msg_count": 114,
+					"symbols": 1047,
+					"warns": 0,
+					"mat": 8
+				},
+				{
+					"user_id": 389712482,
+					"msg_count": 75,
+					"symbols": 707,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 385721476,
+					"msg_count": 255,
+					"symbols": 2663,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 405720558,
+					"msg_count": 90,
+					"symbols": 645,
+					"warns": 1,
+					"mat": null
+				},
+				{
+					"user_id": 520804891,
+					"msg_count": 10,
+					"symbols": 66,
+					"warns": 0
+				},
+				{
+					"user_id": 539690071,
+					"msg_count": 16,
+					"symbols": 128,
+					"warns": 0
+				},
+				{
+					"user_id": 517014845,
+					"msg_count": 1,
+					"symbols": 18,
+					"warns": 0
+				},
+				{
+					"user_id": 449532928,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 541727890,
+					"msg_count": 106,
+					"symbols": 981,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 376231311,
+					"msg_count": 3,
+					"symbols": 36,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 500580851,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 472113514,
+					"msg_count": 272,
+					"symbols": 2381,
+					"warns": 0,
+					"mat": 35
+				},
+				{
+					"user_id": 518106701,
+					"msg_count": 35,
+					"symbols": 395,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 236415210,
+					"msg_count": 184,
+					"symbols": 1959,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 390961228,
+					"msg_count": 59,
+					"symbols": 734,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 517454225,
+					"msg_count": 1,
+					"symbols": 5,
+					"warns": 0
+				},
+				{
+					"user_id": 261515229,
+					"msg_count": 13,
+					"symbols": 96,
+					"warns": 0
+				},
+				{
+					"user_id": 390199146,
+					"msg_count": 43,
+					"symbols": 282,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 363701548,
+					"msg_count": 15,
+					"symbols": 327,
+					"warns": 0
+				},
+				{
+					"user_id": 458769912,
+					"msg_count": 3,
+					"symbols": 18,
+					"warns": 0
+				},
+				{
+					"user_id": 481463931,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 529733234,
+					"msg_count": 3,
+					"symbols": 21,
+					"warns": 0
+				},
+				{
+					"user_id": 316325287,
+					"msg_count": 100,
+					"symbols": 881,
+					"warns": 0
+				},
+				{
+					"user_id": 395638472,
+					"msg_count": 326,
+					"symbols": 4390,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 536045155,
+					"msg_count": 9,
+					"symbols": 140,
+					"warns": 0
+				},
+				{
+					"user_id": 496882826,
+					"msg_count": 360,
+					"symbols": 3817,
+					"warns": 0
+				},
+				{
+					"user_id": 373253785,
+					"msg_count": 56,
+					"symbols": 576,
+					"warns": 1,
+					"mat": null
+				},
+				{
+					"user_id": 348382259,
+					"msg_count": 14,
+					"symbols": 137,
+					"warns": 0
+				},
+				{
+					"user_id": 532738423,
+					"msg_count": 1,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 524682773,
+					"msg_count": 1,
+					"symbols": 3,
+					"warns": 0
+				},
+				{
+					"user_id": 285443942,
+					"msg_count": 9,
+					"symbols": 85,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 293485784,
+					"msg_count": 8,
+					"symbols": 63,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 331534664,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 335867092,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 396328353,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 431393342,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 455656360,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 472471467,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 476476619,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 504104161,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 514618547,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 519576646,
+					"msg_count": 23,
+					"symbols": 234,
+					"warns": 0
+				},
+				{
+					"user_id": 228396476,
+					"msg_count": 10,
+					"symbols": 76,
+					"warns": 0
+				},
+				{
+					"user_id": 165271162,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 266309904,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 524259768,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 530903911,
+					"msg_count": 70,
+					"symbols": 601,
+					"warns": 0
+				},
+				{
+					"user_id": 532961080,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 371774834,
+					"msg_count": 33,
+					"symbols": 283,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 466834466,
+					"msg_count": 10,
+					"symbols": 89,
+					"warns": 0
+				},
+				{
+					"user_id": 433443324,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 414350147,
+					"msg_count": 9,
+					"symbols": 68,
+					"warns": 1,
+					"mat": null
+				},
+				{
+					"user_id": 273155968,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 337045599,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 368691513,
+					"msg_count": 1,
+					"symbols": 7,
+					"warns": 0
+				},
+				{
+					"user_id": 541403297,
+					"msg_count": 14,
+					"symbols": 71,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 474661209,
+					"msg_count": 30,
+					"symbols": 190,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 310004014,
+					"msg_count": 104,
+					"symbols": 3506,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 519079787,
+					"msg_count": 4,
+					"symbols": 41,
+					"warns": 0
+				},
+				{
+					"user_id": 511309429,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 439436192,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 540097657,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 532283956,
+					"msg_count": 2,
+					"symbols": 5,
+					"warns": 0
+				},
+				{
+					"user_id": 121401332,
+					"msg_count": 1,
+					"symbols": 7,
+					"warns": 0
+				},
+				{
+					"user_id": 436352001,
+					"msg_count": 3,
+					"symbols": 594,
+					"warns": 0
+				}
+			]
+		},
+		{
+			"key": "KNH",
+			"kalimatorniy": {
+				"rules": "Не установлены",
+				"hi": "Приветствую тебя путник! изучи обязательно правила /rules"
+			},
+			"info": {
+				"title": "Не установлено",
+				"creator": 0
+			},
+			"stats": {
+				"msg_count": 3,
+				"mat": 0,
+				"symbols": 23
+			},
+			"defend": {
+				"autokick": 0,
+				"inv_grp": 0
+			},
+			"cmds": {
+				"cmd_info": 1,
+				"cmd_roles": 1,
+				"cmd_defend": 1,
+				"cmd_reload": 2,
+				"cmd_kick": 2,
+				"cmd_black": 3,
+				"cmd_warn": 3,
+				"cmd_ban": 4,
+				"cmd_unban": 4,
+				"cmd_status": 5,
+				"cmd_dostup": 5,
+				"cmd_stats": 1,
+				"cmd_rules": 1,
+				"cmd_newrules": 5,
+				"cmd_eval": 100,
+				"cmd_newmotd": 5,
+				"cmd_motd": 1
+			},
+			"roles": [],
+			"banned": [],
+			"blacklisted": [],
+			"users": [
+				{
+					"user_id": 390961228,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 423555969,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 500459306,
+					"msg_count": 1,
+					"symbols": 8,
+					"warns": 0
+				},
+				{
+					"user_id": 263300949,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 228396476,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 535378912,
+					"msg_count": 2,
+					"symbols": 15,
+					"warns": 0
+				}
+			]
+		},
+		{
+			"chat_id": 5,
+			"key": "7CE",
+			"kalimatorniy": {
+				"rules": "Не установлены",
+				"hi": "Приветствую тебя путник! изучи обязательно правила /rules"
+			},
+			"info": {
+				"title": "Не установлено",
+				"creator": 395638472
+			},
+			"stats": {
+				"msg_count": 81,
+				"mat": 2,
+				"symbols": 952
+			},
+			"defend": {
+				"autokick": 0,
+				"inv_grp": 1
+			},
+			"cmds": {
+				"cmd_info": 1,
+				"cmd_roles": 1,
+				"cmd_defend": 1,
+				"cmd_reload": 2,
+				"cmd_kick": 2,
+				"cmd_black": 3,
+				"cmd_warn": 3,
+				"cmd_ban": 4,
+				"cmd_unban": 4,
+				"cmd_status": 5,
+				"cmd_dostup": 5,
+				"cmd_stats": 1,
+				"cmd_rules": 1,
+				"cmd_newrules": 5,
+				"cmd_eval": 100,
+				"cmd_newmotd": 5,
+				"cmd_motd": 1
+			},
+			"roles": [
+				{
+					"user_id": 395638472,
+					"role": 5
+				},
+				{
+					"user_id": 211947590,
+					"role": 4
+				},
+				{
+					"user_id": 529350849,
+					"role": 4
+				}
+			],
+			"banned": [],
+			"blacklisted": [],
+			"users": [
+				{
+					"user_id": 395638472,
+					"msg_count": 33,
+					"symbols": 528,
+					"warns": 0
+				},
+				{
+					"user_id": 211947590,
+					"msg_count": 14,
+					"symbols": 124,
+					"warns": 0
+				},
+				{
+					"user_id": 529350849,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 496175718,
+					"msg_count": 34,
+					"symbols": 300,
+					"warns": 0,
+					"mat": null
+				}
+			]
+		},
+		{
+			"chat_id": 6,
+			"key": "OOL",
+			"kalimatorniy": {
+				"rules": "Не установлены",
+				"hi": "Приветствую тебя путник! изучи обязательно правила /rules"
+			},
+			"info": {
+				"title": "VR BOT|| CHAT",
+				"creator": 496175718
+			},
+			"stats": {
+				"msg_count": 10819,
+				"mat": 678,
+				"symbols": 347375
+			},
+			"defend": {
+				"autokick": 0,
+				"inv_grp": 0
+			},
+			"cmds": {
+				"cmd_info": 1,
+				"cmd_roles": 1,
+				"cmd_defend": 1,
+				"cmd_reload": 2,
+				"cmd_kick": 2,
+				"cmd_black": 3,
+				"cmd_warn": 3,
+				"cmd_ban": 4,
+				"cmd_unban": 4,
+				"cmd_status": 5,
+				"cmd_dostup": 5,
+				"cmd_stats": 1,
+				"cmd_rules": 1,
+				"cmd_newrules": 5,
+				"cmd_eval": 100,
+				"cmd_newmotd": 5,
+				"cmd_motd": 1
+			},
+			"roles": [
+				{
+					"user_id": 496175718,
+					"role": 5
+				},
+				{
+					"user_id": 395638472,
+					"role": 4
+				}
+			],
+			"banned": [
+				360900463,
+				497276622,
+				273772030,
+				521602301
+			],
+			"blacklisted": [
+				461279728
+			],
+			"users": [
+				{
+					"user_id": 496175718,
+					"msg_count": 1452,
+					"symbols": 84164,
+					"warns": 0,
+					"mat": 121
+				},
+				{
+					"user_id": 529350849,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 194711342,
+					"msg_count": 26,
+					"symbols": 313,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 216245742,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 226342422,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 287908009,
+					"msg_count": 15,
+					"symbols": 121,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 393540492,
+					"msg_count": 1,
+					"symbols": 37,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 414350147,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 441620422,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 445925863,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 464414984,
+					"msg_count": 4,
+					"symbols": 20,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 470405936,
+					"msg_count": 4,
+					"symbols": 55,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 481105528,
+					"msg_count": 1,
+					"symbols": 3,
+					"warns": 0
+				},
+				{
+					"user_id": 482742318,
+					"msg_count": 6,
+					"symbols": 259,
+					"warns": 0
+				},
+				{
+					"user_id": 497276622,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 497482955,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 499334187,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 499869989,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 506774545,
+					"msg_count": 40,
+					"symbols": 459,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 499963750,
+					"msg_count": 4,
+					"symbols": 89,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 523265622,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 524682773,
+					"msg_count": 2,
+					"symbols": 13,
+					"warns": 0
+				},
+				{
+					"user_id": 532115208,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 532667159,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 465663092,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 400791888,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 437420855,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 53645751,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 482140389,
+					"msg_count": 2,
+					"symbols": 105,
+					"warns": 0
+				},
+				{
+					"user_id": 526360328,
+					"msg_count": 2,
+					"symbols": 98,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 526558863,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 259750462,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 428010788,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 424504747,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 492858582,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 496605828,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 504714451,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 524927158,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 466465527,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 516590422,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 213541884,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 345363099,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 356568970,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 490237981,
+					"msg_count": 2,
+					"symbols": 55,
+					"warns": 0
+				},
+				{
+					"user_id": 355456719,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 462967060,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 483185084,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522544166,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 509035315,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 419031982,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 427541409,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 437539722,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 516160055,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 308518918,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 524979842,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 446359244,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 474404347,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 460316837,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 259901656,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 476520075,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 335867092,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 307025393,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 263623627,
+					"msg_count": 1,
+					"symbols": 52,
+					"warns": 0
+				},
+				{
+					"user_id": 385721476,
+					"msg_count": 65,
+					"symbols": 584,
+					"warns": 0
+				},
+				{
+					"user_id": 75696433,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 368691513,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 464214589,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 237191853,
+					"msg_count": 41,
+					"symbols": 392,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 486596100,
+					"msg_count": 4,
+					"symbols": 70,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 518106701,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 529748608,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 527860396,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 360041130,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 295527927,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 307201130,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 356093362,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 199884640,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 464135765,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 520682718,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 477913258,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 284443363,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 498610197,
+					"msg_count": 236,
+					"symbols": 2404,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 332147562,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 502485013,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 396524191,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 449242240,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 494766750,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 156443139,
+					"msg_count": 51,
+					"symbols": 649,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 170929779,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 499881638,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 205567769,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 449532928,
+					"msg_count": 33,
+					"symbols": 369,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 305429096,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 468600941,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 514392252,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 506851194,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 523585763,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 366550316,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 443065823,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 261515229,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 373253785,
+					"msg_count": 101,
+					"symbols": 1018,
+					"warns": 1,
+					"mat": 2
+				},
+				{
+					"user_id": 498862893,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 521615857,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522750343,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 228396476,
+					"msg_count": 11,
+					"symbols": 271,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 236415210,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 532368892,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 219352063,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 240881637,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 298422378,
+					"msg_count": 1,
+					"symbols": 50,
+					"warns": 0
+				},
+				{
+					"user_id": 369852659,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 434645769,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 505374298,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 444111589,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 460210244,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 487126316,
+					"msg_count": 5,
+					"symbols": 138,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 409318508,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 387343066,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 532040090,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 279474956,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 504343048,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 208274976,
+					"msg_count": 2,
+					"symbols": 12,
+					"warns": 0
+				},
+				{
+					"user_id": 517586561,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 411008278,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 305259878,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 450578585,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 456520396,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 228954207,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 442079321,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 428619998,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 516909816,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 281954489,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 306499687,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 512564527,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 387326613,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 517035237,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522835496,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 507949943,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 435957023,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 63853387,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 167125112,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 502356413,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 494755856,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 235913306,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 523039763,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 489689899,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 173829914,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 389388443,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 379027514,
+					"msg_count": 1,
+					"symbols": 7,
+					"warns": 0
+				},
+				{
+					"user_id": 306963817,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 295090603,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 509450985,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 517461793,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 499666590,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522196327,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 336008098,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 340758543,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 291229539,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 517131604,
+					"msg_count": 1,
+					"symbols": 1,
+					"warns": 0
+				},
+				{
+					"user_id": 258218537,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 499182362,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522564236,
+					"msg_count": 908,
+					"symbols": 10369,
+					"warns": 0,
+					"mat": 48
+				},
+				{
+					"user_id": 520143588,
+					"msg_count": 1,
+					"symbols": 5,
+					"warns": 0
+				},
+				{
+					"user_id": 514039259,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 343499513,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 462968684,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 530446297,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 330628796,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 211947590,
+					"msg_count": 533,
+					"symbols": 38617,
+					"warns": 0,
+					"mat": 52
+				},
+				{
+					"user_id": 408134115,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 523416204,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 494027607,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 488388014,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 475296689,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 466834466,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 433677697,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 387004642,
+					"msg_count": 5,
+					"symbols": 97,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 379633461,
+					"msg_count": 4,
+					"symbols": 12,
+					"warns": 0
+				},
+				{
+					"user_id": 411121907,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 236258846,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 320933411,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 540600387,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 273772030,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 491878181,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 326431939,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 470913164,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 329218539,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 487592600,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 502569550,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 367157750,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 508121063,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 245274721,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 536820501,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 522615437,
+					"msg_count": 3,
+					"symbols": 18,
+					"warns": 1
+				},
+				{
+					"user_id": 477230598,
+					"msg_count": 7,
+					"symbols": 246,
+					"warns": 0
+				},
+				{
+					"user_id": 442076889,
+					"msg_count": 32,
+					"symbols": 307,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 229906615,
+					"msg_count": 4,
+					"symbols": 64,
+					"warns": 0
+				},
+				{
+					"user_id": 540693229,
+					"msg_count": 16,
+					"symbols": 132,
+					"warns": 0
+				},
+				{
+					"user_id": 396328353,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 196297755,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 394786317,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 500580851,
+					"msg_count": 137,
+					"symbols": 2849,
+					"warns": 0,
+					"mat": 20
+				},
+				{
+					"user_id": 197260241,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 488972886,
+					"msg_count": 2,
+					"symbols": 98,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 303545227,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 530271916,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 403897030,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 503545034,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 342674136,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 291146394,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 359912235,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 462900588,
+					"msg_count": 1,
+					"symbols": 40,
+					"warns": 0
+				},
+				{
+					"user_id": 504673557,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 324437633,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 470703341,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 525895927,
+					"msg_count": 1328,
+					"symbols": 17730,
+					"warns": 2,
+					"mat": 2
+				},
+				{
+					"user_id": 310088759,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 442346910,
+					"msg_count": 1,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 239430051,
+					"msg_count": 22,
+					"symbols": 225,
+					"warns": 0
+				},
+				{
+					"user_id": 172947089,
+					"msg_count": 5,
+					"symbols": 95,
+					"warns": 0
+				},
+				{
+					"user_id": 348382259,
+					"msg_count": 72,
+					"symbols": 874,
+					"warns": 0
+				},
+				{
+					"user_id": 496882826,
+					"msg_count": 126,
+					"symbols": 28483,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 467903819,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 455025529,
+					"msg_count": 227,
+					"symbols": 2687,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 438959241,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 81549860,
+					"msg_count": 19,
+					"symbols": 323,
+					"warns": 0,
+					"mat": 2
+				},
+				{
+					"user_id": 412549144,
+					"msg_count": 3,
+					"symbols": 84,
+					"warns": 0
+				},
+				{
+					"user_id": 503700461,
+					"msg_count": 103,
+					"symbols": 1086,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 395638472,
+					"msg_count": 1005,
+					"symbols": 30750,
+					"warns": 0,
+					"mat": 59
+				},
+				{
+					"user_id": 511770047,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 504184610,
+					"msg_count": 1234,
+					"symbols": 14285,
+					"warns": 0,
+					"mat": 8
+				},
+				{
+					"user_id": 527750128,
+					"msg_count": 486,
+					"symbols": 5808,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 220835186,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 512800895,
+					"msg_count": 1,
+					"symbols": 50,
+					"warns": 0
+				},
+				{
+					"user_id": 537934590,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 541727890,
+					"msg_count": 79,
+					"symbols": 953,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 517014845,
+					"msg_count": 44,
+					"symbols": 254,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 360900463,
+					"msg_count": 1,
+					"symbols": 75,
+					"warns": 0
+				},
+				{
+					"user_id": 195387995,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 367602242,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 407513068,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 389316978,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 466098607,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 471742455,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 468582621,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 511040651,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 502037702,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 525674791,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 533013212,
+					"msg_count": 28,
+					"symbols": 546,
+					"warns": 0
+				},
+				{
+					"user_id": 531968751,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 389712482,
+					"msg_count": 1324,
+					"symbols": 14918,
+					"warns": 0,
+					"mat": 100
+				},
+				{
+					"user_id": 497979022,
+					"msg_count": 127,
+					"symbols": 1418,
+					"warns": 0,
+					"mat": 4
+				},
+				{
+					"user_id": 529681730,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 403342390,
+					"msg_count": 28,
+					"symbols": 721,
+					"warns": 0
+				},
+				{
+					"user_id": 403802140,
+					"msg_count": 2,
+					"symbols": 54,
+					"warns": 0
+				},
+				{
+					"user_id": 510222887,
+					"msg_count": 4,
+					"symbols": 23,
+					"warns": 0
+				},
+				{
+					"user_id": 284245669,
+					"msg_count": 114,
+					"symbols": 1031,
+					"warns": 0,
+					"mat": 8
+				},
+				{
+					"user_id": 535378912,
+					"msg_count": 175,
+					"symbols": 72168,
+					"warns": 0,
+					"mat": 25
+				},
+				{
+					"user_id": 340996276,
+					"msg_count": 0,
+					"symbols": 0,
+					"warns": 0
+				},
+				{
+					"user_id": 542927765,
+					"msg_count": 166,
+					"symbols": 3387,
+					"warns": 0,
+					"mat": 1
+				},
+				{
+					"user_id": 226476438,
+					"msg_count": 2,
+					"symbols": 10,
+					"warns": 0
+				},
+				{
+					"user_id": 316325287,
+					"msg_count": 31,
+					"symbols": 303,
+					"warns": 0
+				},
+				{
+					"user_id": 403335441,
+					"msg_count": 58,
+					"symbols": 604,
+					"warns": 0,
+					"mat": 9
+				},
+				{
+					"user_id": 532755250,
+					"msg_count": 44,
+					"symbols": 1010,
+					"warns": 0,
+					"mat": 6
+				},
+				{
+					"user_id": 227799055,
+					"msg_count": 7,
+					"symbols": 73,
+					"warns": 0
+				},
+				{
+					"user_id": 461279728,
+					"msg_count": 135,
+					"symbols": 1963,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 302412856,
+					"msg_count": 47,
+					"symbols": 660,
+					"warns": 0,
+					"mat": null
+				},
+				{
+					"user_id": 521602301,
+					"msg_count": 4,
+					"symbols": 62,
+					"warns": 2,
+					"mat": null
+				}
+			]
+		}
+	]
+}

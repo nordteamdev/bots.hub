@@ -1,0 +1,19 @@
+{
+  "name": "manager",
+  "version": "1.0.0",
+  "description": "VK Manager bot by Kalimatorniy UID",
+  "main": "manager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "'Kalimatorniy'uid'",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "prequest": "^1.0.0",
+    "request": "^2.88.0",
+    "sync-request": "^6.0.0",
+    "tiny_request": "^1.0.13",
+    "vk-io": "^4.0.0-rc.17"
+  }
+}

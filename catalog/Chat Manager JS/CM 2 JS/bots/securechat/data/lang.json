@@ -1,0 +1,20 @@
+﻿{
+	"ru": {
+		"error_title": "🔄 Вы уже отправляли заявку, ждите ее одобрения, либо отказа.",
+		"request_title": "⏳ Заявка на установку названия беседы отправлена! Ожидайте ответа модератора.",
+		"accepttitle": "",
+		"denytitle": "",
+		"kick_user": "[id%mem_id%|Пользователь] исключён из беседы",
+		"kick_group": "[club%mem_id%|Сообщество] исключено из беседы",
+		"deny_access": "❌ Отказ в доступе!"
+	},
+	"en": {
+		"error_title": "🔄 You have already sent a request, wait for its approval, or rejection.",
+		"request_title": "⏳ Application for the installation of the name of the conversation sent! Wait for the moderator to respond.",
+		"accepttitle": "",
+		"denytitle": "",
+		"kick_user": "[id%mem_id%|User] was kicked out",
+		"kick_group": "[club%mem_id%|Community] was kicked out",
+		"deny_access": "❌ Access denied!"
+	}
+}

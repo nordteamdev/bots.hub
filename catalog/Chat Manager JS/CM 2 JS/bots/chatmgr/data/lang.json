@@ -1,0 +1,32 @@
+﻿{
+	"ru": {
+		"kick_user": "[id%mem_id%|Пользователь] исключён из беседы",
+		"kick_group": "[club%mem_id%|Сообщество] исключено из беседы",
+		"deny_access": "❌ Отказ в доступе!",
+		"usernotinchat": "[id%mem_id%|Пользователь] отсутствует в этой беседе",
+		"groupnotinchat": "[id%mem_id%|Сообщество] отсутствует в этой беседе",
+		"errorkick": "Произошла ошибка.\n%error_text%",
+		"events_on": "Вы включили уведомления\nЕсли вы не разрешили сообществу писать сообщения, то вам уведомления приходить не будут",
+		"events_off": "Вы выключили уведомления",
+		"banwarn": "Пользователь был заблокирован за 3 варна",
+		"ban_user": "[id%mem_id%|Пользователь] заблокирован",
+		"ban_group": "[club%mem_id%|Сообщество] заблокировано",
+		"unban_user": "[id%mem_id%|Пользователь] разблокирован",
+		"unban_group": "[club%mem_id%|Сообщество] разблокировано",
+		"warn_user": "Вы выдали предупреждение [id%mem_id%|пользователю]",
+		"warn_group": "Вы выдали предупреждение [club%mem_id%|сообществу]",
+		"unwarn_user": "Вы сняли предупреждения [id%mem_id%|пользователю]",
+		"unwarn_group": "Вы сняли предупреждения [club%mem_id%|сообществу]"
+	},
+	"en": {
+		"kick_user": "[id%mem_id%|User] was kicked out",
+		"kick_group": "[club%mem_id%|Community] was kicked out",
+		"deny_access": "❌ Access denied!",
+		"usernotinchat": "[id%mem_id%|User] is not in this conversation",
+		"groupnotinchat": "[id%mem_id%|Community] is not in this conversation",
+		"errorkick": "An error has occurred.\n%error_text%",
+		"events_on": "You have enabled notifications\nIf you do not allow the community to write messages, then you will not receive notifications",
+		"events_off": "You turned off notifications",
+		"banwarn": "User was blocked for 3 warns"
+	}
+}

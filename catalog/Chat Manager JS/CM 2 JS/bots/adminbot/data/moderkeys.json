@@ -1,0 +1,6 @@
+{
+	"one_time": false,
+	"buttons": [[{ "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "Панель модератора"}, "color": "primary"}, { "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "Список"}, "color": "default"}, { "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "Обновить клавиатуру"}, "color": "primary"}],
+	[{ "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "accept"}, "color": "positive"}, { "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "reqban"}, "color": "primary"}, { "action": { "type": "text",  "payload": "{\"button\": \"1\"}", "label": "deny"}, "color": "negative"}]
+	]
+}
