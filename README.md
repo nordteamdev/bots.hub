@@ -1,5 +1,5 @@
 
-[](./screens/logotype.png)</p>
+![](./screens/logotype.png)</p>
 
 
 ## About the repository
