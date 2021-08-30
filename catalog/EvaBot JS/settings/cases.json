@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "hube",
+    "title": "Бомж Кейс",
+    "items": [
+      { "slug": "bits", "count": 100 },
+      { "slug": "bits", "count": 400 },
+      { "slug": "bits", "count": 1600 },
+      { "slug": "bits", "count": 6400 },
+      { "slug": "bits", "count": 25600 },
+      { "slug": "bits", "count": 102400 },
+      { "slug": "score", "count": 100 },
+      { "slug": "score", "count": 200 },
+      { "slug": "case", "caseSlug": "hube" },
+      { "slug": "case", "caseSlug": "wood" }
+    ]
+  },
+  {
+    "slug": "wood",
+    "title": "Деревянный Кейс",
+    "items": [
+      { "slug": "bits", "count": 1000 },
+      { "slug": "bits", "count": 4000 },
+      { "slug": "bits", "count": 16000 },
+      { "slug": "bits", "count": 64000 },
+      { "slug": "bits", "count": 256000 },
+      { "slug": "score", "count": 500 },
+      { "slug": "score", "count": 800 },
+      { "slug": "case", "caseSlug": "hube" },
+      { "slug": "case", "caseSlug": "wood" },
+      { "slug": "case", "caseSlug": "metal" }
+    ]
+  },
+  {
+    "slug": "metal",
+    "title": "Железный Кейс",
+    "items": [
+      { "slug": "bits", "count": 10000 },
+      { "slug": "bits", "count": 20000 },
+      { "slug": "bits", "count": 50000 },
+      { "slug": "bits", "count": 100000 },
+      { "slug": "bits", "count": 500000 },
+      { "slug": "bits", "count": 1000000 },
+      { "slug": "score", "count": 1000 },
+      { "slug": "case", "caseSlug": "wood" },
+      { "slug": "case", "caseSlug": "metal" },
+      { "slug": "case", "caseSlug": "gold" }
+    ]
+  },
+  {
+    "slug": "gold",
+    "title": "Золотой Кейс",
+    "items": [
+      { "slug": "bits", "count": 1000000 },
+      { "slug": "bits", "count": 40000 },
+      { "slug": "bits", "count": 500000 },
+      { "slug": "bits", "count": 5000000 },
+      { "slug": "bits", "count": 3000000 },
+      { "slug": "score", "count": 5000 },
+      { "slug": "score", "count": 1000 },
+      { "slug": "case", "caseSlug": "metal" },
+      { "slug": "case", "caseSlug": "gold" },
+      { "slug": "case", "caseSlug": "flex" }
+    ]
+  },
+  {
+    "slug": "flex",
+    "title": "Флекс Кейс",
+    "items": [
+      { "slug": "bits", "count": 13371337 },
+      { "slug": "bits", "count": 1228228 },
+      { "slug": "score", "count": 50000 },
+      { "slug": "score", "count": 15000 },
+      { "slug": "score", "count": 5000 },
+      { "slug": "score", "count": 1000 },
+      { "slug": "case", "caseSlug": "black" },
+      { "slug": "case", "caseSlug": "gold" },
+      { "slug": "case", "caseSlug": "flex" },
+      { "slug": "case", "caseSlug": "uran" }
+    ]
+  },
+  {
+    "slug": "black",
+    "title": "Black Кейс",
+    "items": [
+      { "slug": "bits", "count": 1000000 },
+      { "slug": "bits", "count": 4000000 },
+      { "slug": "bits", "count": 1600000 },
+      { "slug": "bits", "count": 6400000 },
+      { "slug": "bits", "count": 2560000 },
+      { "slug": "bits", "count": 1024000 },
+      { "slug": "score", "count": 1000 },
+      { "slug": "score", "count": 2000 },
+      { "slug": "case", "caseSlug": "flex" },
+      { "slug": "case", "caseSlug": "gold" }
+    ]
+  },
+  {
+    "slug": "uran",
+    "title": "Урановый Кейс",
+    "items": [
+      { "slug": "case", "caseSlug": "hube" },
+      { "slug": "case", "caseSlug": "wood" },
+      { "slug": "case", "caseSlug": "metal" },
+      { "slug": "case", "caseSlug": "gold" },
+      { "slug": "case", "caseSlug": "black" },
+      { "slug": "case", "caseSlug": "flex" },
+      { "slug": "case", "caseSlug": "uran" },
+      { "slug": "case", "caseSlug": "uran" },
+      { "slug": "case", "caseSlug": "uran" }
+    ]
+  },
+  {
+    "slug": "diamond",
+    "title": "Алмазный Кейс",
+    "items": [
+      { "slug": "bits", "count": 1000000000 },
+      { "slug": "bits", "count": 4000000 },
+      { "slug": "score", "count": 10000 },
+      { "slug": "score", "count": 50000 },
+      { "slug": "score", "count": 1000000 },
+      { "slug": "score", "count": 1200000 },
+      { "slug": "score", "count": 2000000 },
+      { "slug": "case", "caseSlug": "flex" },
+      { "slug": "case", "caseSlug": "uran" }
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+[
+
+  {
+    "slug": "cat",
+    "name": "Кот",
+    "femaleName": "Кошка",
+    "emoji": "🐈",
+    "skill": ["wool", "foxery", "mercy", "clutch", "sensitivity", "hypnosis"],
+    "isVip": false
+  },
+  {
+    "slug": "dog",
+    "name": "Пёс",
+    "femaleName": "Собака",
+    "emoji": "🐕",
+    "skill": ["wool", "fear", "pofigizm", "fang", "sensitivity", "weight"],
+    "isVip": false
+  },
+  {
+    "slug": "mouse",
+    "name": "Мыш",
+    "femaleName": "Мышь",
+    "emoji": "🐁",
+    "skill": ["microSize", "foxery", "mercy", "wtf", "hypnosis", "infection"],
+    "isVip": true
+  },
+  {
+    "slug": "turtle",
+    "name": "Черепаха",
+    "femaleName": "Черепаха",
+    "emoji": "🐢",
+    "skill": ["armor", "hide", "microSize", "hypnosis"],
+    "isVip": false
+  },
+  {
+    "slug": "gomunkul",
+    "name": "Гомункул",
+    "femaleName": "Гомункулиха",
+    "emoji": "🐛",
+    "skill": ["fear", "foxery", "mercy", "spit", "wtf", "infection"],
+    "isVip": true
+  }
+]

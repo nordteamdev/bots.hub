@@ -1,0 +1,12 @@
+{
+  "main": "src/index.js",
+  "type": "module",
+  "slug": "common/botcmd",
+  "version": "1.0.1",
+  "remote": "StandardHentaPlugins/botcmd",
+  "dependencies": {
+    "chokidar": "^3.3.0",
+    "clear-module": "^4.0.0",
+    "readdirp": "^3.2.0"
+  }
+}

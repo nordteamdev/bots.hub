@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "owner",
+    "title": "Владелец",
+    "emoji": "🔑",
+    "data": {
+      "allow": true
+    }
+  },
+  {
+    "slug": "mainAdministrator",
+    "title": "Глав. админ",
+    "emoji": "🕶",
+    "includes": [ "administrator" ],
+    "data": {
+      "allow": [
+        "command:set-role",
+        "get-errors"
+      ]
+    }
+  },
+  {
+    "slug": "administrator",
+    "title": "Администратор",
+    "emoji": "🐱‍👤",
+    "includes": [ "moderator" ],
+    "data": {
+      "values": {
+        "max-ban-time": 2592000
+      }
+    }
+  },
+  {
+    "slug": "moderator",
+    "title": "Модератор",
+    "emoji": "🦸‍",
+		"includes": [ "vip" ],
+    "data": {
+      "allow": [
+        "command:kick-user",
+        "command:ban-user",
+        "command:set-nick"
+      ],
+      "values": {
+        "max-ban-time": 86400
+      }
+    }
+  },
+  {
+    "slug": "vip",
+    "title": "VIP",
+    "emoji": "💎",
+    "data": {
+      "allow": [
+        "vip:jobs",
+        "vip:pets",
+        "command:change-nickname",
+        "command:change-pet-name"
+      ],
+      "values": {
+        "casino:max-rate": 1000000000
+      }
+    }
+  },
+  {
+    "slug": "user",
+    "title": "Пользователь",
+    "emoji": "👤",
+    "data": {
+      "values": {
+        "casino:max-rate": 10000000
+      }
+    }
+  }
+]

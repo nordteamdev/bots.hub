@@ -1,0 +1,26 @@
+﻿[
+	{
+		"name": "VIP LEVEL",
+		"price": 25000,
+		"level": "Rare",
+		"photo": "",
+		"admin":"vip",
+		"id": 1
+	},
+	{
+		"name": "PREMIUM LEVEL",
+		"price": 50000,
+		"level": "Epic",
+		"photo": "",
+		"admin":"premium",
+		"id": 2
+	},
+	{
+		"name": "ADMIN LEVEL",
+		"price": 100000,
+		"level": "Epic",
+		"photo": "",
+		"admin":"moderators",
+		"id": 3
+	}
+]

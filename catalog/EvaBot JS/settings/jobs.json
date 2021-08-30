@@ -1,0 +1,31 @@
+[
+    {
+        "slug": "beggar",
+        "name": "Попрошайка",
+        "description": "Монетки сами тянутся в вашу шапочку.",
+        "isVip": false,
+        "price": 0,
+        "salary": 6880,
+        "minLvl": 1
+    },
+
+    {
+        "slug": "cashier",
+        "name": "Кассир",
+        "description": "Бонусная есть?!",
+        "isVip": false,
+        "price": 1000,
+        "salary": 16880,
+        "minLvl": 1
+    },
+
+    {
+        "slug": "car-wash",
+        "name": "Автомойщик",
+        "description": "Только не поцарапай чужую машину",
+        "isVip": false,
+        "price": 1000,
+        "salary": 20000,
+        "minLvl": 1
+    }
+]

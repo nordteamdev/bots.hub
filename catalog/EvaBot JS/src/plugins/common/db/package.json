@@ -1,0 +1,10 @@
+{
+  "main": "src/index.js",
+  "type": "module",
+  "slug": "common/db",
+  "version": "0.9.0",
+  "remote": "StandardHentaPlugins/db",
+  "dependencies": {
+    "sequelize": "^5.21.2"
+  }
+}

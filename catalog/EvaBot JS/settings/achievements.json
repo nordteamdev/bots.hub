@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "itsMe",
+    "title": "Ит'c ми",
+    "description": "посмотреть свой профиль",
+    "bonus": 15000
+  },
+  {
+    "slug": "loterry-winner",
+    "title": "Лотерейный билетик",
+    "description": "выиграть 1КК в лотерее",
+    "bonus": 1000000
+  },
+  {
+    "slug": "portvein",
+    "title": "Портвейн",
+    "description": "получить три семёрки в слотах",
+    "bonus": 5000000
+  },
+  {
+    "slug": "pochti-portvein",
+    "title": "Почти портвейн",
+    "description": "получить две семёрки в слотах",
+    "bonus": 1000000
+  },
+  {
+    "slug": "seeds",
+    "title": "Семяной маньяк",
+    "description": "сщелкать 1000 семечек",
+    "bonus": 1000000
+  }
+]
