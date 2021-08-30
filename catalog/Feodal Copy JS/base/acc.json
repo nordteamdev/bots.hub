@@ -1,0 +1,511 @@
+{
+	"1": {
+		"users": {
+			"1": {
+				"ban": true,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 10,
+				"donate": 0,
+				"card": 0,
+				"level": 1,
+				"exs": 20,
+				"admin": 100,
+				"id": 443389649,
+				"hero": {
+					"id": "1",
+					"name": "Маг",
+					"prefix": "гей",
+					"hp": 0,
+					"zashita": 0,
+					"ataka": 0,
+					"kr_udar": 0,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 401,
+					"stone": 50
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": false,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {
+						"4": {
+							"i": true
+						}
+					},
+					"dohod": 10,
+					"count": 1,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 20150
+				},
+				"clan": false,
+				"registr": "actived",
+				"vip": 0,
+				"rtime": "20:28:19 | 09:02:2018"
+			},
+			"2": {
+				"ban": true,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 100,
+				"donate": 0,
+				"card": 1,
+				"level": 1,
+				"exs": 60,
+				"admin": 0,
+				"id": 335867092,
+				"hero": {
+					"id": "6",
+					"name": "Божество",
+					"prefix": "DEV",
+					"hp": 0,
+					"zashita": 6,
+					"ataka": 32,
+					"kr_udar": 13,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 1000,
+					"stone": 0
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": false,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {},
+					"dohod": 10,
+					"count": 0,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 6306
+				},
+				"clan": false,
+				"registr": "actived",
+				"vip": 0,
+				"rtime": "17:25:14 | 11:02:2018"
+			},
+			"3": {
+				"ban": false,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 1000000000,
+				"donate": 0,
+				"card": 0,
+				"level": 1,
+				"exs": 0,
+				"admin": 5,
+				"id": 263623627,
+				"hero": {
+					"id": "6",
+					"name": "Божество",
+					"prefix": "Саня",
+					"hp": 0,
+					"zashita": 0,
+					"ataka": 0,
+					"kr_udar": 0,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 0,
+					"stone": 0
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": false,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {},
+					"dohod": 10,
+					"count": 0,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 24005
+				},
+				"clan": false,
+				"registr": "actived",
+				"vip": 1000,
+				"rtime": "23:24:09 | 10:02:2018"
+			},
+			"4": {
+				"ban": false,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 24,
+				"donate": 0,
+				"card": 0,
+				"level": 1,
+				"exs": 20,
+				"admin": 0,
+				"id": 264385020,
+				"hero": {
+					"id": "6",
+					"name": "Божество",
+					"prefix": "Странник",
+					"hp": 0,
+					"zashita": 0,
+					"ataka": 10,
+					"kr_udar": 0,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 100,
+					"stone": 316
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": true,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {},
+					"dohod": 10,
+					"count": 0,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 41640
+				},
+				"clan": false,
+				"registr": "actived",
+				"vip": 0,
+				"rtime": "11:05:09 | 11:02:2018"
+			},
+			"5": {
+				"ban": false,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 0,
+				"donate": 0,
+				"card": 0,
+				"level": 1,
+				"exs": 0,
+				"admin": 0,
+				"id": 335287775,
+				"hero": {
+					"id": false,
+					"name": false,
+					"prefix": false,
+					"hp": 0,
+					"zashita": 0,
+					"ataka": 0,
+					"kr_udar": 0,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 0,
+					"stone": 0
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": false,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {},
+					"dohod": 10,
+					"count": 0,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 41353
+				},
+				"clan": false,
+				"registr": 1,
+				"vip": 0,
+				"rtime": "12:48:58 | 11:02:2018"
+			},
+			"6": {
+				"ban": false,
+				"xpm": 0,
+				"setup1": 0,
+				"setup2": 0,
+				"setup3": 0,
+				"setup4": 0,
+				"setup5": 0,
+				"setup6": 0,
+				"setup7": 0,
+				"setup8": 0,
+				"setup9": 0,
+				"setup10": 0,
+				"setup11": 0,
+				"setup12": 0,
+				"setup13": 0,
+				"setup14": 0,
+				"setup15": 0,
+				"setup16": 0,
+				"setup18": 0,
+				"gold": 0,
+				"donate": 0,
+				"card": 0,
+				"level": 1,
+				"exs": 0,
+				"admin": 0,
+				"id": 354412050,
+				"hero": {
+					"id": "6",
+					"name": "Божество",
+					"prefix": "АМИНЬ АГАНЬ",
+					"hp": 0,
+					"zashita": 0,
+					"ataka": 0,
+					"kr_udar": 0,
+					"navik": {
+						"id": false,
+						"name": false,
+						"count": false
+					},
+					"up": false,
+					"gun": false
+				},
+				"res": {
+					"tree": 0,
+					"stone": 0
+				},
+				"objects": {
+					"lesopilka": 0,
+					"kamenolom": 0,
+					"gold": 0,
+					"hp": false,
+					"zashita": false,
+					"ataka": false,
+					"kr_udar": false
+				},
+				"limits": {
+					"stroyka": false,
+					"id": false,
+					"bonus": false,
+					"war": false,
+					"les": false
+				},
+				"msg": 0,
+				"refka": {
+					"activ": false,
+					"level": 1,
+					"lvl_up": 5,
+					"users": {},
+					"dohod": 10,
+					"count": 0,
+					"bonus": {
+						"tree": 100,
+						"stone": 50,
+						"gold": 10
+					},
+					"cod": 23470
+				},
+				"clan": false,
+				"registr": "actived",
+				"vip": 0,
+				"rtime": "13:44:56 | 11:02:2018"
+			}
+		},
+		"number": 6,
+		"name": false,
+		"imperator": false
+	}
+}

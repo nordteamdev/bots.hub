@@ -1,0 +1,43 @@
+[
+	{
+		"id": 0,
+		"users": {
+			"0": {
+				"id": 301015165,
+				"uid": 0,
+				"level": 2,
+				"rub": 5199999999895000,
+				"skazna": false,
+				"atak": 0,
+				"vklad": 0
+			},
+			"494": {
+				"id": 199267518,
+				"uid": 494,
+				"level": 3,
+				"skazna": true,
+				"atak": 0,
+				"vklad": 0
+			},
+			"505": {
+				"id": 379692509,
+				"uid": 505,
+				"level": 2,
+				"rub": 0,
+				"skazna": false,
+				"atak": 0,
+				"vklad": 0
+			}
+		},
+		"name": "BlackBloods",
+		"rub": 0,
+		"rating": 0,
+		"smile": "💎",
+		"peoples": 3,
+		"wons": 1,
+		"los": 0,
+		"open": true,
+		"napad": 0,
+		"lvl": 0
+	}
+]

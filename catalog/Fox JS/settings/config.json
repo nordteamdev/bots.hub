@@ -1,0 +1,10 @@
+module.exports = {
+	codename: "VB",//Кодовое имя
+	namebot: "Vr bot", //Имя бота
+	version: "v2.3", //Версия кода
+	admin: "[sergeykorol96|Сергей Волков]", //2 руководитель бота
+	coder: "[sergeykorol96|Сергей Волков]", //Для доната
+	zam: "Не найден", //Заместитель
+	site: "В группе", //Сайт, если есть
+	group_url: "[vrbotofficical|VR bot]",//12213
+}

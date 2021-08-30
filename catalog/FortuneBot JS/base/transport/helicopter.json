@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"name": "Augusta A129 Mangusta",
+		"cost": 100000000
+	},
+	{
+		"id": 2,
+		"name": "Denel AH-2 Rooivalk",
+		"cost": 200000000
+	},
+	{
+		"id": 3,
+		"name": "Eurocopter Tiger",
+		"cost": 500000000
+	},
+	{
+		"id": 4,
+		"name": "Mil Mi-28 Havoc",
+		"cost": 1000000000
+	},
+	{
+		"id": 5,
+		"name": "Kamov Ka-52 Hokum-B",
+		"cost": 1500000000
+	},
+	{
+		"id": 6,
+		"name": "Bell AH-1Z Viper",
+		"cost": 2000000000
+	},
+	{
+		"id": 7,
+		"name": "Boeing AH-64E Apache Guardian",
+		"cost": 3000000000
+	}
+]

@@ -1,0 +1,457 @@
+{
+	"2": {
+		"owner": {
+			"id": 474668811,
+			"uid": 0,
+			"balance": 5005,
+			"dollars": 0,
+			"euro": 0,
+			"manat": 0,
+			"diamonds": 0,
+			"emeralds": 0,
+			"coal": 0,
+			"iron": 0,
+			"gold": 0,
+			"bank": 0,
+			"btc": 99750,
+			"farm_btc": 0,
+			"biz": 0,
+			"rating": 0,
+			"regDate": "15.11.2018",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false,
+				"commands": false
+			},
+			"tag": "Museum",
+			"work": 0,
+			"business": 0,
+			"notifications": true,
+			"ccard": true,
+			"card": 0,
+			"seccard": "766",
+			"cardss": "6302618024386547",
+			"exp": 1,
+			"level": 1,
+			"right": 1,
+			"foolder": 110,
+			"floder": 156,
+			"operator": 0,
+			"number": 0,
+			"language": 2,
+			"healths": 100,
+			"hunger": 100,
+			"referal": null,
+			"transport": {
+				"car": 0,
+				"yacht": 0,
+				"airplane": 0,
+				"helicopter": 0
+			},
+			"realty": {
+				"home": 0,
+				"apartment": 0
+			},
+			"misc": {
+				"phone": 0,
+				"farm": 0
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			},
+			"pp": 0,
+			"keyboard": false,
+			"call": 10000,
+			"reals": 9745,
+			"clanid": 2
+		},
+		"users": {
+			"0": {
+				"names": "Museum",
+				"level": 2
+			}
+		},
+		"number": 2,
+		"name": "Тест",
+		"balance": 6005,
+		"smile": "🎱",
+		"open": false,
+		"price": 100,
+		"exs": 0,
+		"people": 1
+	},
+	"3": {
+		"owner": {
+			"realname": "Даня",
+			"realfam": "Верховный",
+			"id": 239323586,
+			"uid": 8,
+			"balance": 4934,
+			"diamonds": 0,
+			"emeralds": 0,
+			"coal": 0,
+			"iron": 0,
+			"gold": 0,
+			"bank": 0,
+			"btc": 42000000,
+			"farm_btc": 0,
+			"biz": 0,
+			"rating": 0,
+			"regDate": "20.3.2019",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"commands": false,
+				"clanwar": false,
+				"delacc": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false
+			},
+			"tag": "Даня",
+			"clanid": 3,
+			"keyboard": true,
+			"numberss": false,
+			"work": 0,
+			"business": 0,
+			"pp": 0,
+			"notifications": true,
+			"ccard": false,
+			"card": 0,
+			"seccard": 0,
+			"cardss": 0,
+			"exp": 1,
+			"level": 1,
+			"right": 6,
+			"foolder": 53,
+			"floder": 197,
+			"operator": 0,
+			"number": 0,
+			"call": 0,
+			"language": 1,
+			"healths": 100,
+			"hunger": 100,
+			"reals": 0,
+			"jalobs": 0,
+			"referal": null,
+			"transport": {
+				"car": 0,
+				"yacht": 0,
+				"airplane": 0,
+				"helicopter": 0
+			},
+			"realty": {
+				"home": 0,
+				"apartment": 0
+			},
+			"misc": {
+				"phone": 0,
+				"farm": 0
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			}
+		},
+		"users": {
+			"8": {
+				"names": "Даня",
+				"level": 2
+			}
+		},
+		"number": 3,
+		"name": "Lifen't",
+		"balance": 0,
+		"smile": "💎",
+		"open": true,
+		"price": 100,
+		"exs": 0,
+		"people": 0
+	},
+	"4": {
+		"owner": {
+			"realname": "Ильдар",
+			"realfam": "Нагаев",
+			"id": 499560251,
+			"uid": 25,
+			"balance": null,
+			"diamonds": 5,
+			"emeralds": 10,
+			"coal": 169,
+			"iron": 70,
+			"gold": 84,
+			"bank": 0,
+			"btc": 20000,
+			"farm_btc": 0,
+			"biz": 0,
+			"rating": 53,
+			"regDate": "26.3.2019",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"commands": false,
+				"clanwar": false,
+				"delacc": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false
+			},
+			"tag": "ð3MØŊ",
+			"clanid": 4,
+			"keyboard": true,
+			"numberss": false,
+			"work": 1,
+			"business": 0,
+			"pp": 0,
+			"notifications": true,
+			"ccard": false,
+			"card": 0,
+			"seccard": 0,
+			"cardss": 0,
+			"exp": 7,
+			"level": 1,
+			"right": 2,
+			"foolder": 91,
+			"floder": 542,
+			"operator": 0,
+			"number": 0,
+			"call": 0,
+			"language": 1,
+			"healths": 100,
+			"hunger": 100,
+			"reals": 0,
+			"jalobs": 0,
+			"referal": null,
+			"transport": {
+				"car": 0,
+				"yacht": 0,
+				"airplane": 0,
+				"helicopter": 0
+			},
+			"realty": {
+				"home": 0,
+				"apartment": 0
+			},
+			"misc": {
+				"phone": 0,
+				"farm": 3
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			}
+		},
+		"users": {
+			"25": {
+				"names": "ð3MØŊ",
+				"level": 2
+			}
+		},
+		"number": 4,
+		"name": "🔥🔥Пурпурные Драконы🔥🔥",
+		"balance": 49000,
+		"smile": "💎",
+		"open": true,
+		"price": 100,
+		"exs": 0,
+		"people": 0
+	},
+	"5": {
+		"owner": {
+			"realname": "Рома",
+			"realfam": "Семёнов",
+			"id": 509712543,
+			"uid": 77,
+			"balance": 110944,
+			"diamonds": 0,
+			"emeralds": 0,
+			"coal": 0,
+			"iron": 0,
+			"gold": 0,
+			"bank": 0,
+			"btc": 20000116,
+			"farm_btc": 40000,
+			"biz": 5000000,
+			"rating": 100190,
+			"regDate": "29.3.2019",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"commands": false,
+				"clanwar": false,
+				"delacc": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false
+			},
+			"tag": "красавчик",
+			"clanid": 5,
+			"keyboard": false,
+			"numberss": false,
+			"work": 1,
+			"business": 11,
+			"pp": 0,
+			"notifications": true,
+			"ccard": false,
+			"card": 0,
+			"seccard": 0,
+			"cardss": 0,
+			"exp": 19,
+			"level": 2,
+			"right": 4,
+			"foolder": 493,
+			"floder": 685,
+			"operator": 0,
+			"number": 0,
+			"call": 0,
+			"language": 1,
+			"healths": 100,
+			"hunger": 100,
+			"reals": 0,
+			"jalobs": 0,
+			"referal": 90,
+			"transport": {
+				"car": 26,
+				"yacht": 13,
+				"airplane": 17,
+				"helicopter": 13
+			},
+			"realty": {
+				"home": 15,
+				"apartment": 8
+			},
+			"misc": {
+				"phone": 10,
+				"farm": 3
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			}
+		},
+		"users": {
+			"77": {
+				"names": "красавчик",
+				"level": 2
+			}
+		},
+		"number": 5,
+		"name": "Приспешники Данила",
+		"balance": 0,
+		"smile": "🎃",
+		"open": true,
+		"price": 100,
+		"exs": 0,
+		"people": 0
+	},
+	"6": {
+		"owner": {
+			"realname": "Богдан",
+			"realfam": "Крюков",
+			"id": 466321956,
+			"uid": 212,
+			"balance": null,
+			"diamonds": 0,
+			"emeralds": 0,
+			"coal": 0,
+			"iron": 0,
+			"gold": 0,
+			"bank": 0,
+			"btc": 20,
+			"farm_btc": 40000,
+			"biz": 5000000,
+			"rating": 10111,
+			"regDate": "2.4.2019",
+			"mention": true,
+			"ban": false,
+			"timers": {
+				"translation": false,
+				"hasWorked": false,
+				"commands": false,
+				"clanwar": false,
+				"delacc": false,
+				"bonus": false,
+				"obva": false,
+				"krik": false,
+				"mine": false
+			},
+			"tag": "🔥Blaze🔥",
+			"clanid": 6,
+			"keyboard": true,
+			"numberss": false,
+			"work": 0,
+			"business": 11,
+			"pp": 0,
+			"notifications": true,
+			"ccard": false,
+			"card": 0,
+			"seccard": 0,
+			"cardss": 0,
+			"exp": 1,
+			"level": 1,
+			"right": 3,
+			"foolder": 374,
+			"floder": 527,
+			"operator": 0,
+			"number": 0,
+			"call": 0,
+			"language": 1,
+			"healths": 100,
+			"hunger": 100,
+			"reals": 0,
+			"jalobs": 0,
+			"referal": 1,
+			"transport": {
+				"car": 0,
+				"yacht": 0,
+				"airplane": 0,
+				"helicopter": 0
+			},
+			"realty": {
+				"home": 0,
+				"apartment": 0
+			},
+			"misc": {
+				"phone": 0,
+				"farm": 3
+			},
+			"marriage": {
+				"partner": 0,
+				"requests": []
+			},
+			"dollars": 0,
+			"euro": 0,
+			"manat": 0
+		},
+		"users": {
+			"212": {
+				"names": "🔥Blaze🔥",
+				"level": 2
+			}
+		},
+		"number": 6,
+		"name": "🔥fire gang🔥",
+		"balance": null,
+		"smile": "??",
+		"open": true,
+		"price": 100,
+		"exs": 0,
+		"people": 0
+	}
+}
