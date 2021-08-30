@@ -1,0 +1,106 @@
+[NPC] | «Эй, ${user_info.first_name}, я Энди, и я помогу тебе стать настоящим магнатом! Все что тебе нужно делать — копать все ниже и ниже, открывать новые ресурсы, изучать их, убивать подземных монстров, и наконец найти священный эфириум!
+
+⛏  | Для начала я дарю тебе эту деревянную кирку, с нее ты можешь начать копать, у нее нет ограничений по использованиям, и ты сможешь ее продать за деньги.
+
+[🎒] Новый предмет: Деревянная кирка.
+
+[Энди] | «Начни с простого: копать. Потом когда накопаешь достаточно руды для новой кирки, продай старую и купи новую. А остальное сможешь узнать в группе!»
+
+🍀 | Все команды бота:
+🍀 | Гайд по игре: 
+
+📚 Вы принимаете лицензионное соглашение?
+Напишите: Принять / Отклонить
+`,
+		{
+			keyboard:JSON.stringify(
+		{
+			"one_time": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"1\"}",
+				"label": "Принять"
+		},
+			"color": "positive"
+		}], 
+[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"4\"}",
+				"label": "Отклонить"
+			},
+				"color": "negative"
+			}]
+		]
+			})
+		});	
+botinfo.people += 1;
+}
+users.push({
+			id: users.length,
+			regapi: {
+				realname: user_info.first_name,
+				realfam: user_info.last_name,
+				idv: message.senderId,
+				regDate: `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+				},
+			coins: 0,
+			rub: 0,
+			bank: 0,
+			rating: 0,
+			respect: 0,
+			mention: true,
+			ban: false,
+			tag: user_info.first_name,
+			notifications: true,
+			exp: 1,
+			level: 1,
+			right: 1,
+			foolder: 0,
+			floder: 0,
+			warns: 0,
+     	   warn: 0,
+		    warn_p: `Не имеется`
+});
+
+function getRandomElement(array) { 
+return array[getRandomInt(array.length - 1)]; 
+}
+
+function getRandomInt(x, y) { 
+return y ? Math.round(Math.random() * (y - x)) + x : Math.round(Math.random() * x); 
+}
+
+function spaces(string) {
+	if (typeof string !== "string") string = string.toString();
+	return string.split("").reverse().join("").match(/[0-9]{1,3}/g).join(".").split("").reverse().join("");
+};
+Array.prototype.random = function() {  
+	return this[Math.floor(this.length * Math.random())];
+}
+
+	var parserInt = (str) => parseInt(str.replace(/k|к/ig, "000"));
+
+
+		setInterval(() => {
+			fs.writeFileSync("./base/promo.json", JSON.stringify(promo, null, "\t"));
+			fs.writeFileSync("./base/clans.json", JSON.stringify(clans, null, "\t"));
+			fs.writeFileSync("./base/botinfo.json", JSON.stringify(botinfo, null, "\t"));
+		}, 15000);
+
+
+
+	Array.prototype.random = function() {  
+		return this[Math.floor(this.length * Math.random())];
+	}
+
+	function rand(min, max) {
+		return Math.round(Math.random() * (max - min)) + min
+	}
+
+		function spaces(string) {
+		if (typeof string !== "string") string = string.toString();
+		return string.split("").reverse().join("").match(/[0-9]{1,3}/g).join(".").split("").reverse().join("");
+	};
