@@ -1,0 +1,20 @@
+{
+	"number": 1,
+	"one": 0,
+	"two": 0,
+	"three": 0,
+	"four": 1,
+	"five": 0,
+	"six": 0,
+	"seven": 0,
+	"eight": 0,
+	"undefined": {
+		"id": 0,
+		"name": "Отсутствует",
+		"price": 0,
+		"people": 0,
+		"dohod": 0,
+		"balance": 0,
+		"users": {}
+	}
+}

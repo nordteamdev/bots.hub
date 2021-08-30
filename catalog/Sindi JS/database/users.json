@@ -1,0 +1,439 @@
+[
+	{
+		"id": 161880759,
+		"uid": 0,
+		"balance": 4110080566953,
+		"bank": 0,
+		"btc": 38300,
+		"farm_btc": 4100,
+		"farms": 10,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 3,
+		"varns": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 20,
+		"nicklimit": 16,
+		"rating": 2,
+		"regDate": "6.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": true,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Никита",
+		"work": 1,
+		"business": 15,
+		"notifications": true,
+		"exp": 4,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 3,
+			"pet": 0,
+			"farm_btc": 20179800
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		},
+		"foolder": 74
+	},
+	{
+		"id": 320770971,
+		"uid": 1,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "6.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Ваня",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		}
+	},
+	{
+		"id": 228297042,
+		"uid": 2,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "6.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "👑Коллектор👑",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		},
+		"foolder": null
+	},
+	{
+		"id": 462750418,
+		"uid": 3,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "6.2.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Андрей",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		}
+	},
+	{
+		"id": 530903911,
+		"uid": 4,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "13.9.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Ильдар",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 4,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		},
+		"foolder": null
+	},
+	{
+		"id": 522495110,
+		"uid": 5,
+		"balance": 5000,
+		"bank": 0,
+		"btc": 0,
+		"farm_btc": 0,
+		"farms": 0,
+		"farmslimit": 200,
+		"energy": 10,
+		"opit": 0,
+		"biz": 0,
+		"zhelezo": 0,
+		"stag": 0,
+		"zoloto": 0,
+		"almaz": 0,
+		"bizlvl": 0,
+		"nicklimit": 16,
+		"rating": 0,
+		"regDate": "13.9.2019",
+		"mention": true,
+		"ban": false,
+		"timers": {
+			"hasWorked": false,
+			"bonus": false,
+			"poxod": false,
+			"poxod2": false,
+			"kopat": false,
+			"hack": false
+		},
+		"tag": "Ruslan",
+		"work": 0,
+		"business": 0,
+		"notifications": true,
+		"exp": 1,
+		"level": 1,
+		"referal": null,
+		"promo": false,
+		"transport": {
+			"car": 0,
+			"yacht": 0,
+			"airplane": 0,
+			"helicopter": 0
+		},
+		"realty": {
+			"home": 0,
+			"apartment": 0
+		},
+		"misc": {
+			"phone": 0,
+			"farm": 0,
+			"pet": 0
+		},
+		"settings": {
+			"firstmsg": false,
+			"adm": 0,
+			"trade": true,
+			"old": false,
+			"limit": 1000000
+		},
+		"pet": {
+			"lvl": 0,
+			"poterl": false
+		},
+		"marriage": {
+			"partner": 0,
+			"requests": []
+		},
+		"titles": {
+			"car": false
+		}
+	}
+]

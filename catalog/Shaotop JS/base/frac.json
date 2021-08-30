@@ -1,0 +1,92 @@
+{
+	"Shao Top": {
+		"users": {
+			"1": {
+				"count": 0
+			},
+			"28": {
+				"count": 0
+			},
+			"52": {
+				"count": 0
+			},
+			"101": {
+				"count": 0
+			},
+			"120": {
+				"count": 0
+			},
+			"132": {
+				"count": 0
+			},
+			"157": {
+				"count": 0
+			},
+			"169": {
+				"count": 0
+			},
+			"358": {
+				"count": 0
+			},
+			"388": {
+				"count": 0
+			}
+		},
+		"balance": 33000,
+		"bank": 0,
+		"people": 10,
+		"counts": 0,
+		"owner": 336041508
+	},
+	"You House": {
+		"users": {
+			"29": {
+				"count": 0
+			},
+			"31": {
+				"count": 0
+			},
+			"48": {
+				"count": 0
+			},
+			"209": {
+				"count": 1
+			},
+			"331": {
+				"count": 0
+			},
+			"381": {
+				"count": 0
+			}
+		},
+		"balance": 37500,
+		"bank": 5000,
+		"people": 6,
+		"counts": 0,
+		"owner": 480151419
+	},
+	"Mars": {
+		"users": {
+			"83": {
+				"count": 0
+			},
+			"143": {
+				"count": 0
+			},
+			"169": {
+				"count": 0
+			},
+			"178": {
+				"count": 0
+			},
+			"362": {
+				"count": 0
+			}
+		},
+		"balance": 3000,
+		"bank": 0,
+		"people": 5,
+		"counts": 0,
+		"owner": 210877311
+	}
+}

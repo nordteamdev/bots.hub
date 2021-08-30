@@ -1,0 +1,17 @@
+{
+ 
+	"group_url": "@geo.bots (Игровой бот GeoBot) ", 
+	"bot": "GeoBot",
+	"ver": "v1.0",
+	"group": 175350247,
+	"coder": 275944431,
+	"ban_topic": "",
+	"antiflood_time": 30000,
+	"antiflood_limit": 15,
+	"bonus_balance": false,
+	"bonus_exs": false,
+	"promo": {
+		"activ": 30,
+		"balance": 200000
+	}
+}

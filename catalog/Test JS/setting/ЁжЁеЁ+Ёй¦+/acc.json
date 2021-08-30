@@ -1,0 +1,1063 @@
+{
+	"users": {
+		"1": {
+			"balance": 111,
+			"bitcoin": 0,
+			"donate": 500,
+			"bloks": {
+				"cases": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false,
+				"bonus": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 4,
+			"exsup": 50,
+			"lvl": 0,
+			"number": 1,
+			"id": 483398970,
+			"nick": true,
+			"game": {
+				"binlose": 2,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 1,
+				"kazwin": 1,
+				"rand_lose": 1,
+				"rand_win": 1,
+				"stavka_win": 1,
+				"stavka_lose": 1,
+				"win": 45,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 166,
+				"last_msg": "23:05:30 | 15:09:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"level": 0,
+			"adm_time": 0,
+			"brak": 2,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": "Каро Top",
+			"duel": false,
+			"duel_summ": false,
+			"uron": 55,
+			"gun_name": "Дробовик \"Sawed-Off\"",
+			"block_game": true,
+			"prefix": "Каро",
+			"rtime": "13:30:24 | 10:09:2018",
+			"nachal": false
+		},
+		"2": {
+			"balance": 88179,
+			"level": 5,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 25,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": false,
+				"bcase": false,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": true,
+				"random_game": false,
+				"giverub": false,
+				"a_case": true,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 14,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 2,
+			"id": 275944431,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 24,
+				"last_msg": "16:32:33 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Олег Смородников",
+			"lvl_v": 1,
+			"rtime": "15:58:02 | 05:01:2018"
+		},
+		"3": {
+			"balance": 385575,
+			"level": 5,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 1111144,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": true,
+				"bcase": true,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": true,
+				"random_game": false,
+				"giverub": false,
+				"a_case": true,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 3,
+			"exsup": 100,
+			"lvl": 2,
+			"number": 3,
+			"id": 484490223,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 37,
+				"last_msg": "16:32:06 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Никита Елисеев",
+			"lvl_v": 1,
+			"rtime": "16:00:20 | 05:01:2018"
+		},
+		"4": {
+			"balance": 10000000000010000,
+			"level": 5,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 1,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": false,
+				"bcase": false,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 0,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 4,
+			"id": 481871028,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 9,
+				"last_msg": "16:14:58 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Даниил Майер",
+			"lvl_v": 1,
+			"rtime": "16:10:19 | 05:01:2018"
+		},
+		"5": {
+			"balance": 100282325,
+			"level": 5,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 10011,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": true,
+				"bcase": true,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": true,
+				"random_game": false,
+				"giverub": false,
+				"a_case": true,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 38,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 5,
+			"id": 495598567,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 44,
+				"last_msg": "16:32:01 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Maks Yes",
+			"lvl_v": 1,
+			"rtime": "16:20:59 | 05:01:2018"
+		},
+		"6": {
+			"balance": 10000,
+			"level": 0,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 1,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": false,
+				"bcase": false,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 0,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 6,
+			"id": 248107730,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 13,
+				"last_msg": "16:31:43 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Артём Беляков",
+			"lvl_v": 1,
+			"rtime": "16:24:38 | 05:01:2018"
+		},
+		"7": {
+			"balance": 10000,
+			"level": 0,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 1,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": false,
+				"bcase": false,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 0,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 7,
+			"id": 364739605,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 2,
+				"last_msg": "16:25:31 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Иннокентий Константинов",
+			"lvl_v": 1,
+			"rtime": "16:25:21 | 05:01:2018"
+		},
+		"8": {
+			"balance": 10000,
+			"level": 0,
+			"adm_time": 0,
+			"bitcoin": 1,
+			"donate": 1,
+			"geocoin": 1,
+			"admincoin": 1,
+			"bloks": {
+				"cases": false,
+				"bcase": false,
+				"dadae": false,
+				"erberc": false,
+				"sercas": false,
+				"bonus": false,
+				"bcaseb": false,
+				"random_game": false,
+				"giverub": false,
+				"a_case": false,
+				"pay": false,
+				"frac": false,
+				"gun_case": false
+			},
+			"ferm": {
+				"id": false,
+				"zp": 0
+			},
+			"exs": 0,
+			"exsup": 50,
+			"lvl": 1,
+			"number": 8,
+			"id": -153955265,
+			"nick": true,
+			"game": {
+				"binlose": 0,
+				"binwin": 0,
+				"binstop": false,
+				"kazlose": 0,
+				"kazwin": 0,
+				"rand_lose": 0,
+				"rand_win": 0,
+				"stavka_win": 0,
+				"stavka_lose": 0,
+				"win": 65,
+				"strela_loose": 0,
+				"strela_win": 0
+			},
+			"msg": {
+				"messages": 2,
+				"last_msg": "16:26:39 | 05:01:2018"
+			},
+			"bizs": {
+				"one_biz": false,
+				"one": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				},
+				"two_biz": false,
+				"two": {
+					"count": false,
+					"balance": 0,
+					"id": false,
+					"name": false,
+					"people": 0,
+					"uplvl": 0,
+					"zp": 0,
+					"stop": false
+				}
+			},
+			"cars": false,
+			"reys": false,
+			"aircraft": false,
+			"helicopter": false,
+			"house": false,
+			"housep": 0,
+			"pit": false,
+			"phone": false,
+			"bank": 0,
+			"lodka": false,
+			"tag": "Новичок",
+			"brak": false,
+			"ainfo": {
+				"all_ans": 0,
+				"ans": 0,
+				"good_ans": 0,
+				"bad_ans": 0,
+				"vig": 0
+			},
+			"safe": {
+				"status": false,
+				"key": false
+			},
+			"admin": {
+				"block_pay": false,
+				"block_give": false,
+				"block_rep": false
+			},
+			"rep": {
+				"status": false,
+				"id": false
+			},
+			"ban": false,
+			"mute": false,
+			"warn": 0,
+			"warn_p": [],
+			"credit": 0,
+			"procent": 0,
+			"job": {
+				"name": false,
+				"lvl": 0,
+				"stop": false,
+				"count": 0
+			},
+			"global_exs": 0,
+			"autozp": false,
+			"autobiz": false,
+			"frac_name": false,
+			"duel": false,
+			"duel_summ": false,
+			"nachal": false,
+			"uron": 0,
+			"gun_name": false,
+			"block_game": true,
+			"prefix": "Игрок #8",
+			"lvl_v": 1,
+			"rtime": "16:26:39 | 05:01:2018"
+		}
+	},
+	"curs": 32207,
+	"bit": 31405,
+	"msg": 131,
+	"number": 8
+}

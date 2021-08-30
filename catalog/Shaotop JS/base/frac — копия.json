@@ -1,0 +1,50 @@
+{
+	"Shao Top": {
+		"users": {
+			"1": {
+				"count": 0
+			},
+			"28": {
+				"count": 0
+			},
+			"52": {
+				"count": 1
+			},
+			"101": {
+				"count": 0
+			},
+			"120": {
+				"count": 0
+			},
+			"132": {
+				"count": 1
+			},
+			"169": {
+				"count": 0
+			},
+			"331": {
+				"count": 2
+			},
+			"358": {
+				"count": 4
+			}
+		},
+		"balance": 25000,
+		"bank": 45000,
+		"people": 9,
+		"counts": 0,
+		"owner": 336041508
+	},
+	"You House": {
+		"users": {
+			"31": {
+				"count": 2
+			}
+		},
+		"balance": 0,
+		"bank": 10000,
+		"people": 1,
+		"counts": 0,
+		"owner": 480151419
+	}
+}

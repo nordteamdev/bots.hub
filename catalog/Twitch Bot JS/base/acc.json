@@ -1,0 +1,76 @@
+{
+	"users": {
+		"1": {
+			"name": null,
+			"msg": {
+				"messages": 0,
+				"last_msg": ""
+			},
+			"rtime": "13:09:54 | 06:08:2019",
+			"id": 339551065,
+			"bans": 28,
+			"cmdlevel": 28,
+			"comments": 28,
+			"level": 312,
+			"logs": 28,
+			"promo": 28,
+			"reports": 28,
+			"shoplist": 28,
+			"stats": 28,
+			"streams": 28,
+			"telephones": 28,
+			"users": 28
+		},
+		"12": {
+			"name": "Лололошка",
+			"msg": {
+				"messages": 0,
+				"last_msg": ""
+			},
+			"rtime": "15:39:50 | 06:08:2019",
+			"id": 339551065,
+			"bans": 12,
+			"cmdlevel": 12,
+			"comments": 12,
+			"level": 1.4784817418742811e+71,
+			"logs": 12,
+			"promo": 12,
+			"timers": {
+				"report": false,
+				"job": false,
+				"report2": false,
+				"stream": false
+			},
+			"reports": 12,
+			"shoplist": 12,
+			"stats": 12,
+			"streams": 12,
+			"users": 12,
+			"banan": false,
+			"warns": 0,
+			"money": null
+		},
+		"13": {
+			"name": "28833",
+			"msg": {
+				"messages": 0,
+				"last_msg": ""
+			},
+			"rtime": "15:39:50 | 06:08:2019",
+			"id": 517567280,
+			"bans": 13,
+			"cmdlevel": 13,
+			"comments": 13,
+			"level": 1.4784817418742811e+71,
+			"logs": 13,
+			"promo": 13,
+			"reports": 13,
+			"shoplist": 13,
+			"stats": 13,
+			"streams": 13,
+			"users": 13,
+			"warns": 1
+		}
+	},
+	"number": 14
+}

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "canvas": "^2.6.0",
+    "child_process": "^1.0.2",
+    "cocoscore": "^1.0.2-rc.3",
+    "google-tts-api": "0.0.4",
+    "moment": "^2.24.0",
+    "request": "^2.88.0",
+    "tcp-ping": "^0.1.1",
+    "vk-io": "^4.0.0-rc.19"
+  }
+}

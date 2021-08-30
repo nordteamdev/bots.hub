@@ -1,0 +1,20 @@
+{
+ 
+	"group_url": "[termitbot|Termit Bot]", 
+	"platform": "[magicbot_inc|MagicBot Inc]",
+	"bot": "TermitBot",
+	"ver": "2.3",
+	"group": 160410582,
+	"sozd": "[id422783858|Илья Кинцких]",
+	"coder": "[remdey|Александр Садовой]",
+	"updtime": "14.04.2019",
+	"ban_topic": "https://vk.cc/9f9jpN",
+	"antiflood_time": 30000,
+	"antiflood_limit": 15,
+	"bonus_balance": false,
+	"bonus_exs": false,
+	"promo": {
+		"activ": 30,
+		"balance": 200000
+	}
+}

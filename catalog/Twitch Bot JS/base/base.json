@@ -1,0 +1,60 @@
+{
+	"users": {
+		"12": {
+			"money": 0,
+			"warns": 0,
+			"subs": 417487214127860900,
+			"verify": false,
+			"pc": 5,
+			"telephone": 5,
+			"internet": 0,
+			"keyboard": 0,
+			"mouse": 0,
+			"mic": 5,
+			"cam": 1,
+			"buys": {},
+			"other": {},
+			"timers": {
+				"report": false,
+				"job": false,
+				"report2": false,
+				"stream": false
+			},
+			"messages": 0,
+			"timetrans": 0,
+			"likes": 0,
+			"dizlikes": 0,
+			"streams": 0,
+			"views": 0,
+			"level": 1.4784817418742811e+71,
+			"banan": false
+		},
+		"13": {
+			"money": 166837,
+			"warns": 0,
+			"subs": 0,
+			"verify": false,
+			"pc": 1,
+			"telephone": 0,
+			"internet": 0,
+			"keyboard": 0,
+			"timers": {
+				"report": false,
+				"job": false,
+				"report2": false,
+				"stream": false
+			},
+			"mouse": 0,
+			"mic": 0,
+			"cam": 0,
+			"buys": {},
+			"other": {},
+			"messages": 0,
+			"timetrans": 0,
+			"likes": 0,
+			"dizlikes": 0,
+			"streams": 0,
+			"views": 0
+		}
+	}
+}

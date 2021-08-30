@@ -1,0 +1,62 @@
+{
+	"топовые лохи": {
+		"users": {
+			"22": {
+				"count": 24,
+				"level": 3
+			}
+		},
+		"balance": 1022753,
+		"name": "топовые лохи",
+		"bank": 120000,
+		"people": 1,
+		"counts": 0,
+		"war": false,
+		"exp": 445,
+		"owner": 201455053
+	},
+	"Хачапури": {
+		"users": {
+			"14": {
+				"count": 0,
+				"level": 3
+			},
+			"29": {
+				"count": 0,
+				"level": 0
+			},
+			"30": {
+				"count": 0,
+				"level": 0
+			}
+		},
+		"balance": 715572,
+		"name": "Хачапури",
+		"bank": 0,
+		"people": 3,
+		"counts": 0,
+		"war": false,
+		"exp": 227,
+		"owner": 187917592
+	},
+	"тест": {
+		"users": {
+			"1": {
+				"count": 0,
+				"level": 3
+			},
+			"25": {
+				"count": 0,
+				"level": 1
+			}
+		},
+		"balance": 0,
+		"name": "тест",
+		"bank": 0,
+		"people": 2,
+		"counts": 0,
+		"war": false,
+		"exp": 0,
+		"owner": 489137926
+	}
+}
