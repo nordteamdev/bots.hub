@@ -1,0 +1,28 @@
+[
+  {
+    "price": 20500000,
+    "allias": "6U Nvidia",
+    "per_hour": 2
+  },
+  {
+    "price": 100000000,
+    "allias": "AntminerS9",
+    "per_hour": 10
+  },
+  {
+    "price": 900000000,
+    "allias": "FM2018-BT200",
+    "per_hour": 100
+  },
+  {
+    "price": 0,
+    "allias": "Кастомный майнер",
+    "per_hour": 1000,
+    "details":{
+      "Видеокарта GTX 1080 Ti":1000000000,
+      "Материнская плата ASRock H81 Pro BTC": 1050000000,
+      "Intel core i9 7500K": 1300000000,
+      "Кулер мастер pro btc": 4200000000
+    }
+  }
+]
